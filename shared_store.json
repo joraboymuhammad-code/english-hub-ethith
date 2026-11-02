@@ -15980,6 +15980,7 @@
         "std_orazaliyev_514_amirshox": "O'razaliyev Amirshox",
         "std_kamron_187_raimberdiyev": "Kamron Raimberdiyev",
         "std_ziyoda_799_regdfggyj": "Ziyoda regdfggyj",
+        "std_rayxona_271_qoshqarova": "Rayxona Qo'shqarova",
         "std_rayhona_554_qoshqarova": "Rayhona Qo'shqarova",
         "std_jamshid_843_komilov": "Jamshid Komilov",
         "std_ozodbek_578_mamatqulov": "Ozodbek Mamatqulov",
@@ -15989,22 +15990,107 @@
         "std_xudoyberdiyeva_775_madina": "Xudoyberdiyeva Madina",
         "std_gulruh_365_tangirova": "Gulruh Tangirova",
         "std_shohsasnam_517_bayrbekova": "Shohsasnam Bayrbekova",
-        "std_rayxona_271_qoshqarova": "Rayxona Qo'shqarova",
         "std_azimjon_848_toirov": "Azimjon Toirov",
         "std_oktamova_798_zarina": "O'ktamova Zarina",
         "std_shohista_786_nosurname": "Shohista No Surname",
         "std_diyor_772_suyundikov": "Diyor Suyundikov",
         "std_behruz_942_oktamov": "Behruz O'ktamov",
         "std_sabina_672_ibodullayeva": "Sabina Ibodullayeva",
-        "std_charos_386_baxtiyorova": "Charos Baxtiyorova"
+        "std_charos_386_baxtiyorova": "Charos Baxtiyorova",
+        "std_niyatullo_582_asatullayev": "Niyatullo Asatullayev"
       },
       "customStudentPhones": {
         "std_orazaliyev_514_amirshox": "4",
         "std_kamron_187_raimberdiyev": "456345312",
         "std_ziyoda_799_regdfggyj": "234312354",
-        "std_rayhona_554_qoshqarova": "2542352"
+        "std_rayxona_271_qoshqarova": "253123123",
+        "std_rayhona_554_qoshqarova": "2542352",
+        "std_jamshid_843_komilov": "941973993",
+        "std_ozodbek_578_mamatqulov": "941973993",
+        "std_odina_419_zoirova": "941973993",
+        "std_orozboyev_391_ollohberdi": "941973993",
+        "std_yulduz_938_nosurname": "941973993",
+        "std_xudoyberdiyeva_775_madina": "941973993",
+        "std_gulruh_365_tangirova": "941973993",
+        "std_shohsasnam_517_bayrbekova": "941973993",
+        "std_azimjon_848_toirov": "941973993",
+        "std_oktamova_798_zarina": "941973993",
+        "std_shohista_786_nosurname": "941973993",
+        "std_diyor_772_suyundikov": "941973993",
+        "std_behruz_942_oktamov": "941973993",
+        "std_sabina_672_ibodullayeva": "941973993",
+        "std_charos_386_baxtiyorova": "941973993",
+        "std_niyatullo_582_asatullayev": "941973993"
       },
       "students": [
+        {
+          "id": "std_niyatullo_582_asatullayev",
+          "name": "Niyatullo Asatullayev",
+          "firstName": "Niyatullo",
+          "lastName": "Asatullayev",
+          "email": "niyatullo_582_asatullayev@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "niyatullo_582_asatullayev",
+          "password": "niyatullo582asa",
+          "joinedAt": "2025-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
+          "id": "std_charos_386_baxtiyorova",
+          "name": "Charos Baxtiyorova",
+          "firstName": "Charos",
+          "lastName": "Baxtiyorova",
+          "email": "charos_386_baxtiyorova@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "charos_386_baxtiyorova",
+          "password": "charos386bax",
+          "joinedAt": "2025-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
+          "id": "std_sabina_672_ibodullayeva",
+          "name": "Sabina Ibodullayeva",
+          "firstName": "Sabina",
+          "lastName": "Ibodullayeva",
+          "email": "sabina_672_ibodullayeva@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "sabina_672_ibodullayeva",
+          "password": "sabina672ibo",
+          "joinedAt": "2025-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
+          "id": "std_behruz_942_oktamov",
+          "name": "Behruz O'ktamov",
+          "firstName": "Behruz",
+          "lastName": "O'ktamov",
+          "email": "behruz_942_oktamov@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "behruz_942_oktamov",
+          "password": "behruz942okt",
+          "joinedAt": "2025-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
         {
           "id": "std_nurlan_856_tangatov",
           "name": "Nurlan Tangatov",
@@ -16058,33 +16144,16 @@
         },
         {
           "id": "std_ziyoda_799_regdfggyj",
-          "name": "Ziyoda regdfggyj",
+          "name": "Ziyoda No Surname",
           "firstName": "Ziyoda",
-          "lastName": "regdfggyj",
-          "email": "ziyoda_799_regdfggyj@student.ethith",
+          "lastName": "No Surname",
+          "email": "ziyoda_194_nosurname@student.ethith",
           "role": "student",
           "phone": "234312354",
           "parentPhone": "234312354",
-          "login": "ziyoda_799_regdfggyj",
-          "password": "ziyoda799reg",
+          "login": "ziyoda_194_nosurname",
+          "password": "ziyoda194nos",
           "joinedAt": "2026-10-28",
-          "isTester": false,
-          "manuallyEnrolled": true,
-          "isOnline": false,
-          "coins": 150
-        },
-        {
-          "id": "std_behruz_942_oktamov",
-          "name": "Behruz O'ktamov",
-          "firstName": "Behruz",
-          "lastName": "O'ktamov",
-          "email": "behruz_942_oktamov@student.ethith",
-          "role": "student",
-          "phone": "941973993",
-          "parentPhone": "941973993",
-          "login": "behruz_942_oktamov",
-          "password": "behruz942okt",
-          "joinedAt": "2025-11-02",
           "isTester": false,
           "manuallyEnrolled": true,
           "isOnline": false,
@@ -16310,40 +16379,6 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150
-        },
-        {
-          "id": "std_sabina_672_ibodullayeva",
-          "name": "Sabina Ibodullayeva",
-          "firstName": "Sabina",
-          "lastName": "Ibodullayeva",
-          "email": "sabina_672_ibodullayeva@student.ethith",
-          "role": "student",
-          "phone": "941973993",
-          "parentPhone": "941973993",
-          "login": "sabina_672_ibodullayeva",
-          "password": "sabina672ibo",
-          "joinedAt": "2025-11-02",
-          "isTester": false,
-          "manuallyEnrolled": true,
-          "isOnline": false,
-          "coins": 150
-        },
-        {
-          "id": "std_charos_386_baxtiyorova",
-          "name": "Charos Baxtiyorova",
-          "firstName": "Charos",
-          "lastName": "Baxtiyorova",
-          "email": "charos_386_baxtiyorova@student.ethith",
-          "role": "student",
-          "phone": "941973993",
-          "parentPhone": "941973993",
-          "login": "charos_386_baxtiyorova",
-          "password": "charos386bax",
-          "joinedAt": "2025-11-02",
-          "isTester": false,
-          "manuallyEnrolled": true,
-          "isOnline": false,
-          "coins": 150
         }
       ],
       "studentPayments": {
@@ -16494,14 +16529,14 @@
           "method": "—",
           "date": "To‘lanmagan"
         },
-        "std_rayhona_554_qoshqarova": {
+        "std_rayxona_271_qoshqarova": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
         },
-        "std_gulruh_365_tangirova": {
+        "std_rayhona_554_qoshqarova": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -16515,7 +16550,7 @@
           "method": "—",
           "date": "To‘lanmagan"
         },
-        "std_orozboyev_391_ollohberdi": {
+        "std_ozodbek_578_mamatqulov": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -16529,7 +16564,14 @@
           "method": "—",
           "date": "To‘lanmagan"
         },
-        "std_ozodbek_578_mamatqulov": {
+        "std_orozboyev_391_ollohberdi": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_yulduz_938_nosurname": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -16543,7 +16585,7 @@
           "method": "—",
           "date": "To‘lanmagan"
         },
-        "std_yulduz_938_nosurname": {
+        "std_gulruh_365_tangirova": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -16564,7 +16606,49 @@
           "method": "—",
           "date": "To‘lanmagan"
         },
+        "std_oktamova_798_zarina": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_shohista_786_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_diyor_772_suyundikov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
         "std_behruz_942_oktamov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_sabina_672_ibodullayeva": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_charos_386_baxtiyorova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_niyatullo_582_asatullayev": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -19463,7 +19547,7 @@
         "cls_urolov_azizbek_intermediate_practice",
         "cls_urolov_azizbek_upper_intermediate_standard"
       ],
-      "createdAt": 1793598048461,
+      "createdAt": 1762062389388,
       "level": "C2",
       "updatedAt": 1793473052536,
       "gifts": []
@@ -19953,6 +20037,19 @@
       "updatedAt": 1793597869026
     },
     {
+      "id": "std_rayxona_271_qoshqarova",
+      "name": "Rayxona Qo'shqarova",
+      "role": "student",
+      "login": "rayxona_271_qoshqarova",
+      "password": "rayxona271qos",
+      "phone": "253123123",
+      "parentPhone": "253123123",
+      "classId": "cls_urolov_azizbek_upper",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793598050688
+    },
+    {
       "id": "std_rayhona_554_qoshqarova",
       "name": "Rayhona Qo'shqarova",
       "role": "student",
@@ -20083,19 +20180,6 @@
       "updatedAt": 1762062958652
     },
     {
-      "id": "std_rayxona_271_qoshqarova",
-      "name": "Rayxona Qo'shqarova",
-      "role": "student",
-      "login": "rayxona_271_qoshqarova",
-      "password": "rayxona271qos",
-      "phone": "253123123",
-      "parentPhone": "253123123",
-      "classId": "cls_urolov_azizbek_upper",
-      "isOnline": false,
-      "lastLogin": null,
-      "updatedAt": 1793598050688
-    },
-    {
       "id": "std_oktamova_798_zarina",
       "name": "O'ktamova Zarina",
       "role": "student",
@@ -20166,6 +20250,19 @@
       "role": "student",
       "login": "charos_386_baxtiyorova",
       "password": "charos386bax",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_upper",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1762063210278
+    },
+    {
+      "id": "std_niyatullo_582_asatullayev",
+      "name": "Niyatullo Asatullayev",
+      "role": "student",
+      "login": "niyatullo_582_asatullayev",
+      "password": "niyatullo582asa",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_upper",
@@ -139068,5 +139165,5 @@
       }
     }
   },
-  "updatedAt": 1793599217345
+  "updatedAt": 1762063232282
 }
