@@ -19754,18 +19754,6 @@
       "isOnline": false,
       "lastLogin": null,
       "updatedAt": 1793597497994
-    },
-    {
-      "id": "std_orazaliyev_514_amirshox",
-      "name": "O'razaliyev Amirshox",
-      "role": "student",
-      "login": "orazaliyev_514_amirshox",
-      "password": "orazaliyev514ami",
-      "phone": "4",
-      "parentPhone": "4",
-      "classId": "cls_urolov_azizbek_upper",
-      "isOnline": false,
-      "lastLogin": null
     }
   ],
   "p2pListings": [],
@@ -138663,5 +138651,5 @@
       }
     }
   },
-  "updatedAt": 1793597531236
+  "updatedAt": 1793597547407
 }
