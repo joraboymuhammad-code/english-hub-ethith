@@ -16778,7 +16778,8 @@
         "std_orzumurod_789_bekmurodov": "Orzumurod Bekmurodov",
         "std_shuhrat_255_rahmatullayev": "Shuhrat Rahmatullayev",
         "std_subhon_167_saidmurodov": "Subhon Saidmurodov",
-        "std_abdulaziz_982_habibullayev": "Abdulaziz Habibullayev"
+        "std_abdulaziz_982_habibullayev": "Abdulaziz Habibullayev",
+        "std_ulugbek_746_gulomov": "Ulug'bek G'ulomov"
       },
       "customStudentPhones": {
         "std_ruxshona_493_amalikova": "941973993",
@@ -16791,7 +16792,8 @@
         "std_orzumurod_789_bekmurodov": "941973993",
         "std_shuhrat_255_rahmatullayev": "941973993",
         "std_subhon_167_saidmurodov": "941973993",
-        "std_abdulaziz_982_habibullayev": "941973993"
+        "std_abdulaziz_982_habibullayev": "941973993",
+        "std_ulugbek_746_gulomov": "941973993"
       },
       "students": [
         {
@@ -16982,6 +16984,23 @@
           "coins": 150
         },
         {
+          "id": "std_ulugbek_746_gulomov",
+          "name": "Ulug'bek G'ulomov",
+          "firstName": "Ulug'bek",
+          "lastName": "G'ulomov",
+          "email": "ulugbek_746_gulomov@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "ulugbek_746_gulomov",
+          "password": "ulugbek746gul",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
           "id": "cls_urolov_azizbek_standard_std_1",
           "name": "tester_1",
           "email": "cls_urolov_azizbek_standard_std_1@ethith.uz",
@@ -17065,22 +17084,6 @@
           "id": "cls_urolov_azizbek_standard_std_6",
           "name": "tester_6",
           "email": "cls_urolov_azizbek_standard_std_6@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_7",
-          "name": "tester_7",
-          "email": "cls_urolov_azizbek_standard_std_7@ethith.uz",
           "role": "student",
           "phone": "",
           "parentPhone": "",
@@ -17292,6 +17295,13 @@
           "date": "To‘lanmagan"
         },
         "std_abdulaziz_982_habibullayev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_ulugbek_746_gulomov": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -21312,6 +21322,19 @@
       "role": "student",
       "login": "abdulaziz_982_habibullayev",
       "password": "abdulaziz982hab",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_standard",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793601446234
+    },
+    {
+      "id": "std_ulugbek_746_gulomov",
+      "name": "Ulug'bek G'ulomov",
+      "role": "student",
+      "login": "ulugbek_746_gulomov",
+      "password": "ulugbek746gul",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_standard",
@@ -140221,5 +140244,5 @@
       }
     }
   },
-  "updatedAt": 1793601441341
+  "updatedAt": 1793601464246
 }
