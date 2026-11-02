@@ -87656,8 +87656,8 @@
         "type": "fill",
         "exercise": "3",
         "label": "2",
-        "top": 74.4,
-        "left": 23.1,
+        "top": 73,
+        "left": 64.7,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -87673,8 +87673,8 @@
         "type": "fill",
         "exercise": "3",
         "label": "3",
-        "top": 76.1,
-        "left": 23.1,
+        "top": 74.7,
+        "left": 64.3,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -87692,8 +87692,8 @@
         "type": "fill",
         "exercise": "3",
         "label": "4",
-        "top": 77.9,
-        "left": 23.1,
+        "top": 76.5,
+        "left": 64.5,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -87709,8 +87709,8 @@
         "type": "fill",
         "exercise": "3",
         "label": "5",
-        "top": 79.6,
-        "left": 23.1,
+        "top": 78.7,
+        "left": 64.7,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -87726,8 +87726,8 @@
         "type": "fill",
         "exercise": "3",
         "label": "6",
-        "top": 81.3,
-        "left": 23.1,
+        "top": 80.6,
+        "left": 64.7,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -87743,8 +87743,8 @@
         "type": "fill",
         "exercise": "3",
         "label": "7",
-        "top": 83,
-        "left": 23.1,
+        "top": 83.7,
+        "left": 64.4,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -87760,8 +87760,8 @@
         "type": "fill",
         "exercise": "3",
         "label": "8",
-        "top": 84.7,
-        "left": 23.1,
+        "top": 85.4,
+        "left": 64.4,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -87777,8 +87777,8 @@
         "type": "fill",
         "exercise": "3",
         "label": "9",
-        "top": 88,
-        "left": 23.1,
+        "top": 88.7,
+        "left": 64.4,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -87794,8 +87794,8 @@
         "type": "fill",
         "exercise": "3",
         "label": "10",
-        "top": 89.7,
-        "left": 23.1,
+        "top": 90.4,
+        "left": 64.4,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -137299,7 +137299,7 @@
     "2071": 1793614759844,
     "2072": 1793614759845,
     "2073": 1793614910563,
-    "2074": 1793563274073,
+    "2074": 1793625759329,
     "2075": 1793563274073,
     "2076": 1793563274073,
     "2077": 1793563274073,
@@ -138625,5 +138625,5 @@
       }
     }
   },
-  "updatedAt": 1793625712442
+  "updatedAt": 1793625760104
 }
