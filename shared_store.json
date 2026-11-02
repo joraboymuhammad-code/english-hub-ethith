@@ -19308,8 +19308,8 @@
       "updatedAt": 1793185854362
     },
     {
-      "id": "t_urolov_azizbek",
-      "name": "Azizbek Urolov",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
       "password": "azizbek2026",
@@ -19709,8 +19709,8 @@
       "title": "👑 IELTS Qiroli"
     },
     {
-      "id": "teacher_1793431051291",
-      "name": "Muhammadyusuf",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "login": "muhammadyusuf11",
       "password": "muhammadyusuf2026",
       "email": "muhammadyusuf11@ethith.uz",
@@ -138719,5 +138719,5 @@
       }
     }
   },
-  "updatedAt": 1793597900579
+  "updatedAt": 1793598034913
 }
