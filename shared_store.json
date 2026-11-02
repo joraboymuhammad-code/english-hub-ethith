@@ -17097,7 +17097,8 @@
         "std_azamova_593_asila": "A'zamova Asila",
         "std_xonzoda_538_amirova": "Xonzoda Amirova",
         "std_nozima_834_norqulova": "Nozima Norqulova",
-        "std_nozima_471_yaxshilikova": "Nozima Yaxshilikova"
+        "std_nozima_471_yaxshilikova": "Nozima Yaxshilikova",
+        "std_bahora_639_nosurname": "Bahora No Surname"
       },
       "customStudentPhones": {
         "std_orazaliyev_261_amirshox": "564654654",
@@ -17112,7 +17113,8 @@
         "std_azamova_593_asila": "941973993",
         "std_xonzoda_538_amirova": "941973993",
         "std_nozima_834_norqulova": "941973993",
-        "std_nozima_471_yaxshilikova": "941973993"
+        "std_nozima_471_yaxshilikova": "941973993",
+        "std_bahora_639_nosurname": "941973993"
       },
       "students": [
         {
@@ -17337,6 +17339,23 @@
           "coins": 150
         },
         {
+          "id": "std_bahora_639_nosurname",
+          "name": "Bahora No Surname",
+          "firstName": "Bahora",
+          "lastName": "No Surname",
+          "email": "bahora_639_nosurname@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "bahora_639_nosurname",
+          "password": "bahora639nos",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
           "id": "cls_urolov_azizbek_intermediate_std_1",
           "name": "tester_1",
           "email": "cls_urolov_azizbek_intermediate_std_1@ethith.uz",
@@ -17388,22 +17407,6 @@
           "id": "cls_urolov_azizbek_intermediate_std_4",
           "name": "tester_4",
           "email": "cls_urolov_azizbek_intermediate_std_4@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_5",
-          "name": "tester_5",
-          "email": "cls_urolov_azizbek_intermediate_std_5@ethith.uz",
           "role": "student",
           "phone": "",
           "parentPhone": "",
@@ -17622,6 +17625,13 @@
           "date": "To‘lanmagan"
         },
         "std_nozima_471_yaxshilikova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_bahora_639_nosurname": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20747,6 +20757,19 @@
       "role": "student",
       "login": "nozima_471_yaxshilikova",
       "password": "nozima471yax",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_intermediate",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793600940884
+    },
+    {
+      "id": "std_bahora_639_nosurname",
+      "name": "Bahora No Surname",
+      "role": "student",
+      "login": "bahora_639_nosurname",
+      "password": "bahora639nos",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_intermediate",
@@ -139656,5 +139679,5 @@
       }
     }
   },
-  "updatedAt": 1793600935748
+  "updatedAt": 1793600956800
 }
