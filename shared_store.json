@@ -15995,7 +15995,8 @@
         "std_shohista_786_nosurname": "Shohista No Surname",
         "std_diyor_772_suyundikov": "Diyor Suyundikov",
         "std_behruz_942_oktamov": "Behruz O'ktamov",
-        "std_sabina_672_ibodullayeva": "Sabina Ibodullayeva"
+        "std_sabina_672_ibodullayeva": "Sabina Ibodullayeva",
+        "std_charos_386_baxtiyorova": "Charos Baxtiyorova"
       },
       "customStudentPhones": {
         "std_orazaliyev_514_amirshox": "4",
@@ -16016,9 +16017,27 @@
         "std_shohista_786_nosurname": "941973993",
         "std_diyor_772_suyundikov": "941973993",
         "std_behruz_942_oktamov": "941973993",
-        "std_sabina_672_ibodullayeva": "941973993"
+        "std_sabina_672_ibodullayeva": "941973993",
+        "std_charos_386_baxtiyorova": "941973993"
       },
       "students": [
+        {
+          "id": "std_charos_386_baxtiyorova",
+          "name": "Charos Baxtiyorova",
+          "firstName": "Charos",
+          "lastName": "Baxtiyorova",
+          "email": "charos_386_baxtiyorova@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "charos_386_baxtiyorova",
+          "password": "charos386bax",
+          "joinedAt": "2025-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
         {
           "id": "std_sabina_672_ibodullayeva",
           "name": "Sabina Ibodullayeva",
@@ -16614,6 +16633,13 @@
           "date": "To‘lanmagan"
         },
         "std_sabina_672_ibodullayeva": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_charos_386_baxtiyorova": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20195,6 +20221,19 @@
       "role": "student",
       "login": "sabina_672_ibodullayeva",
       "password": "sabina672ibo",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_upper",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1762063185895
+    },
+    {
+      "id": "std_charos_386_baxtiyorova",
+      "name": "Charos Baxtiyorova",
+      "role": "student",
+      "login": "charos_386_baxtiyorova",
+      "password": "charos386bax",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_upper",
@@ -139097,5 +139136,5 @@
       }
     }
   },
-  "updatedAt": 1762063179760
+  "updatedAt": 1762063202596
 }
