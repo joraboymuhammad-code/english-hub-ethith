@@ -15980,14 +15980,16 @@
         "std_kamron_187_raimberdiyev": "Kamron Raimberdiyev",
         "std_ziyoda_799_regdfggyj": "Ziyoda regdfggyj",
         "std_rayxona_271_qoshqarova": "Rayxona Qo'shqarova",
-        "std_rayhona_554_qoshqarova": "Rayhona Qo'shqarova"
+        "std_rayhona_554_qoshqarova": "Rayhona Qo'shqarova",
+        "std_jamshid_843_komilov": "Jamshid Komilov"
       },
       "customStudentPhones": {
         "std_orazaliyev_514_amirshox": "4",
         "std_kamron_187_raimberdiyev": "456345312",
         "std_ziyoda_799_regdfggyj": "234312354",
         "std_rayxona_271_qoshqarova": "253123123",
-        "std_rayhona_554_qoshqarova": "2542352"
+        "std_rayhona_554_qoshqarova": "2542352",
+        "std_jamshid_843_komilov": "941973993"
       },
       "students": [
         {
@@ -16086,6 +16088,23 @@
           "parentPhone": "2542352",
           "login": "rayhona_554_qoshqarova",
           "password": "rayhona554qos",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
+          "id": "std_jamshid_843_komilov",
+          "name": "Jamshid Komilov",
+          "firstName": "Jamshid",
+          "lastName": "Komilov",
+          "email": "jamshid_843_komilov@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "jamshid_843_komilov",
+          "password": "jamshid843kom",
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
@@ -16267,22 +16286,6 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_12",
-          "name": "tester_12",
-          "email": "cls_urolov_azizbek_upper_std_12@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
         }
       ],
       "studentPayments": {
@@ -16441,6 +16444,13 @@
           "date": "To‘lanmagan"
         },
         "std_rayhona_554_qoshqarova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_jamshid_843_komilov": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -19846,6 +19856,18 @@
       "isOnline": false,
       "lastLogin": null,
       "updatedAt": 1793598095969
+    },
+    {
+      "id": "std_jamshid_843_komilov",
+      "name": "Jamshid Komilov",
+      "role": "student",
+      "login": "jamshid_843_komilov",
+      "password": "jamshid843kom",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_upper",
+      "isOnline": false,
+      "lastLogin": null
     }
   ],
   "p2pListings": [],
@@ -138743,5 +138765,5 @@
       }
     }
   },
-  "updatedAt": 1762062588191
+  "updatedAt": 1762062619764
 }
