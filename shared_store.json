@@ -19705,8 +19705,8 @@
       "updatedAt": 1793185854362
     },
     {
-      "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "id": "t_urolov_azizbek",
+      "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
       "password": "azizbek2026",
@@ -88131,8 +88131,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "2",
-        "top": 78.3,
-        "left": 47.1,
+        "top": 73.7,
+        "left": 80,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -88148,8 +88148,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "3",
-        "top": 90.4,
-        "left": 69.6,
+        "top": 75.2,
+        "left": 81.2,
         "width": 9.3,
         "height": 2,
         "correct": [
@@ -88199,8 +88199,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "6",
-        "top": 55.1,
-        "left": 91.8,
+        "top": 80.4,
+        "left": 86.3,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -88216,8 +88216,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "7",
-        "top": 59.5,
-        "left": 94.6,
+        "top": 82,
+        "left": 74.6,
         "width": 5.8,
         "height": 2,
         "correct": [
@@ -88233,8 +88233,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "8",
-        "top": 63.8,
-        "left": 74.8,
+        "top": 83.7,
+        "left": 81.3,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -88267,8 +88267,8 @@
         "type": "fill",
         "exercise": "5",
         "label": "10",
-        "top": 67.5,
-        "left": 82.8,
+        "top": 87.3,
+        "left": 78.8,
         "width": 7.5,
         "height": 2,
         "correct": [
@@ -138196,7 +138196,7 @@
     "2070": 1793614568744,
     "2071": 1793614759844,
     "2072": 1793614759845,
-    "2073": 1793614887609,
+    "2073": 1793614890395,
     "2074": 1793563274073,
     "2075": 1793563274073,
     "2076": 1793563274073,
@@ -139475,5 +139475,5 @@
       }
     }
   },
-  "updatedAt": 1793614889558
+  "updatedAt": 1793614891009
 }
