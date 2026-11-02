@@ -17087,12 +17087,14 @@
       "customStudentNames": {
         "std_orazaliyev_261_amirshox": "O'razaliyev Amirshox",
         "std_mahfuza_179_bosimova": "Mahfuza Bosimova",
-        "std_oydinoy_472_ibragimova": "Oydinoy Ibragimova"
+        "std_oydinoy_472_ibragimova": "Oydinoy Ibragimova",
+        "std_muxlisa_356_obloqulova": "Muxlisa Obloqulova"
       },
       "customStudentPhones": {
         "std_orazaliyev_261_amirshox": "564654654",
         "std_mahfuza_179_bosimova": "941973993",
-        "std_oydinoy_472_ibragimova": "941973993"
+        "std_oydinoy_472_ibragimova": "941973993",
+        "std_muxlisa_356_obloqulova": "941973993"
       },
       "students": [
         {
@@ -17140,6 +17142,23 @@
           "parentPhone": "941973993",
           "login": "oydinoy_472_ibragimova",
           "password": "oydinoy472ibr",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
+          "id": "std_muxlisa_356_obloqulova",
+          "name": "Muxlisa Obloqulova",
+          "firstName": "Muxlisa",
+          "lastName": "Obloqulova",
+          "email": "muxlisa_356_obloqulova@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "muxlisa_356_obloqulova",
+          "password": "muxlisa356obl",
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
@@ -17369,22 +17388,6 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_15",
-          "name": "tester_15",
-          "email": "cls_urolov_azizbek_intermediate_std_15@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
         }
       ],
       "studentPayments": {
@@ -17522,6 +17525,13 @@
           "date": "To‘lanmagan"
         },
         "std_oydinoy_472_ibragimova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_muxlisa_356_obloqulova": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20517,6 +20527,19 @@
       "role": "student",
       "login": "oydinoy_472_ibragimova",
       "password": "oydinoy472ibr",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_intermediate",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793600737735
+    },
+    {
+      "id": "std_muxlisa_356_obloqulova",
+      "name": "Muxlisa Obloqulova",
+      "role": "student",
+      "login": "muxlisa_356_obloqulova",
+      "password": "muxlisa356obl",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_intermediate",
@@ -139426,5 +139449,5 @@
       }
     }
   },
-  "updatedAt": 1793600731128
+  "updatedAt": 1793600750338
 }
