@@ -15975,10 +15975,47 @@
         }
       },
       "customStudentNames": {
-        "std_nurlan_856_tangatov": "Nurlan Tangatov"
+        "std_nurlan_856_tangatov": "Nurlan Tangatov",
+        "std_orazaliyev_514_amirshox": "O'razaliyev Amirshox"
       },
-      "customStudentPhones": {},
+      "customStudentPhones": {
+        "std_orazaliyev_514_amirshox": "4"
+      },
       "students": [
+        {
+          "id": "std_nurlan_856_tangatov",
+          "name": "Nurlan Tangatov",
+          "firstName": "Nurlan",
+          "lastName": "Tangatov",
+          "email": "nurlan_856_tangatov@student.ethith",
+          "role": "student",
+          "phone": "941234567",
+          "parentPhone": "941234567",
+          "login": "nurlan_856_tangatov",
+          "password": "nurlan856tan",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
+          "id": "std_orazaliyev_514_amirshox",
+          "name": "O'razaliyev Amirshox",
+          "firstName": "O'razaliyev",
+          "lastName": "Amirshox",
+          "email": "orazaliyev_514_amirshox@student.ethith",
+          "role": "student",
+          "phone": "4",
+          "parentPhone": "4",
+          "login": "orazaliyev_514_amirshox",
+          "password": "orazaliyev514ami",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
         {
           "id": "cls_urolov_azizbek_upper_std_1",
           "name": "tester_1",
@@ -16234,58 +16271,143 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_17",
-          "name": "tester_17",
-          "email": "cls_urolov_azizbek_upper_std_17@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_18",
-          "name": "tester_18",
-          "email": "cls_urolov_azizbek_upper_std_18@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "std_nurlan_856_tangatov",
-          "name": "Nurlan Tangatov",
-          "firstName": "Nurlan",
-          "lastName": "Tangatov",
-          "email": "nurlan_856_tangatov@student.ethith",
-          "role": "student",
-          "phone": "941234567",
-          "parentPhone": "941234567",
-          "login": "nurlan_856_tangatov",
-          "password": "nurlan856tan",
-          "joinedAt": "2026-10-28",
-          "isTester": false,
-          "manuallyEnrolled": true,
-          "isOnline": false,
-          "coins": 150
         }
       ],
-      "studentPayments": {},
+      "studentPayments": {
+        "std_nurlan_856_tangatov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_1": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_2": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_3": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_4": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_5": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_6": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_7": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_8": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_9": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_10": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_11": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_12": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_13": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_14": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_15": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_16": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_upper_std_17": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_orazaliyev_514_amirshox": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        }
+      },
       "learningMonths": 2,
       "learningDays": 11,
       "deletedMsgIds": [],
@@ -16662,6 +16784,23 @@
       "customStudentPhones": {},
       "students": [
         {
+          "id": "std_orazaliyev_261_amirshox",
+          "name": "O'razaliyev Amirshox",
+          "firstName": "O'razaliyev",
+          "lastName": "Amirshox",
+          "email": "orazaliyev_261_amirshox@student.ethith",
+          "role": "student",
+          "phone": "564654654",
+          "parentPhone": "564654654",
+          "login": "orazaliyev_261_amirshox",
+          "password": "orazaliyev261ami",
+          "joinedAt": "2026-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
           "id": "cls_urolov_azizbek_intermediate_std_1",
           "name": "tester_1",
           "email": "cls_urolov_azizbek_intermediate_std_1@ethith.uz",
@@ -16932,39 +17071,6 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_18",
-          "name": "tester_18",
-          "email": "cls_urolov_azizbek_intermediate_std_18@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "std_orazaliyev_261_amirshox",
-          "name": "O'razaliyev Amirshox",
-          "firstName": "O'razaliyev",
-          "lastName": "Amirshox",
-          "email": "orazaliyev_261_amirshox@student.ethith",
-          "role": "student",
-          "phone": "564654654",
-          "parentPhone": "564654654",
-          "login": "orazaliyev_261_amirshox",
-          "password": "orazaliyev261ami",
-          "joinedAt": "2026-11-02",
-          "isTester": false,
-          "manuallyEnrolled": true,
-          "isOnline": false,
-          "coins": 150
         }
       ],
       "studentPayments": {},
@@ -19648,6 +19754,18 @@
       "isOnline": false,
       "lastLogin": null,
       "updatedAt": 1793597497994
+    },
+    {
+      "id": "std_orazaliyev_514_amirshox",
+      "name": "O'razaliyev Amirshox",
+      "role": "student",
+      "login": "orazaliyev_514_amirshox",
+      "password": "orazaliyev514ami",
+      "phone": "4",
+      "parentPhone": "4",
+      "classId": "cls_urolov_azizbek_upper",
+      "isOnline": false,
+      "lastLogin": null
     }
   ],
   "p2pListings": [],
@@ -138545,5 +138663,5 @@
       }
     }
   },
-  "updatedAt": 1793597498009
+  "updatedAt": 1793597531236
 }
