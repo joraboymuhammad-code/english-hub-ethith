@@ -17092,7 +17092,8 @@
         "std_nurmuhammad_852_nosurname": "Nurmuhammad No Surname",
         "std_shabnam_737_ergasheva": "Shabnam Ergasheva",
         "std_dilnoza_261_ergasheva": "Dilnoza Ergasheva",
-        "std_charos_327_isroilova": "Charos Isroilova"
+        "std_charos_327_isroilova": "Charos Isroilova",
+        "std_muxlisa_786_xudoyberdiyeva": "Muxlisa Xudoyberdiyeva"
       },
       "customStudentPhones": {
         "std_orazaliyev_261_amirshox": "564654654",
@@ -17102,7 +17103,8 @@
         "std_nurmuhammad_852_nosurname": "941973993",
         "std_shabnam_737_ergasheva": "941973993",
         "std_dilnoza_261_ergasheva": "941973993",
-        "std_charos_327_isroilova": "941973993"
+        "std_charos_327_isroilova": "941973993",
+        "std_muxlisa_786_xudoyberdiyeva": "941973993"
       },
       "students": [
         {
@@ -17242,6 +17244,23 @@
           "coins": 150
         },
         {
+          "id": "std_muxlisa_786_xudoyberdiyeva",
+          "name": "Muxlisa Xudoyberdiyeva",
+          "firstName": "Muxlisa",
+          "lastName": "Xudoyberdiyeva",
+          "email": "muxlisa_786_xudoyberdiyeva@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "muxlisa_786_xudoyberdiyeva",
+          "password": "muxlisa786xud",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
           "id": "cls_urolov_azizbek_intermediate_std_1",
           "name": "tester_1",
           "email": "cls_urolov_azizbek_intermediate_std_1@ethith.uz",
@@ -17373,22 +17392,6 @@
           "id": "cls_urolov_azizbek_intermediate_std_9",
           "name": "tester_9",
           "email": "cls_urolov_azizbek_intermediate_std_9@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_10",
-          "name": "tester_10",
-          "email": "cls_urolov_azizbek_intermediate_std_10@ethith.uz",
           "role": "student",
           "phone": "",
           "parentPhone": "",
@@ -17572,6 +17575,13 @@
           "date": "To‘lanmagan"
         },
         "std_charos_327_isroilova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_muxlisa_786_xudoyberdiyeva": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20632,6 +20642,19 @@
       "role": "student",
       "login": "charos_327_isroilova",
       "password": "charos327isr",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_intermediate",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793600839430
+    },
+    {
+      "id": "std_muxlisa_786_xudoyberdiyeva",
+      "name": "Muxlisa Xudoyberdiyeva",
+      "role": "student",
+      "login": "muxlisa_786_xudoyberdiyeva",
+      "password": "muxlisa786xud",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_intermediate",
@@ -139541,5 +139564,5 @@
       }
     }
   },
-  "updatedAt": 1793600829822
+  "updatedAt": 1793600848865
 }
