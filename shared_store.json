@@ -138990,6 +138990,13 @@
         "parentId": "f_root_t_urolov_azizbek",
         "ownerId": "t_urolov_azizbek",
         "createdAt": 1793596846702
+      },
+      {
+        "id": "f_root_admin_official_teacher",
+        "name": "Azizbek Urolov (Shaxsiy Papka)",
+        "ownerId": "admin_official_teacher",
+        "parentId": null,
+        "createdAt": 1793600145400
       }
     ],
     "tests": [
@@ -139294,5 +139301,5 @@
       }
     }
   },
-  "updatedAt": 1793600138404
+  "updatedAt": 1793600147089
 }
