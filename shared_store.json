@@ -17095,7 +17095,8 @@
         "std_charos_327_isroilova": "Charos Isroilova",
         "std_muxlisa_786_xudoyberdiyeva": "Muxlisa Xudoyberdiyeva",
         "std_azamova_593_asila": "A'zamova Asila",
-        "std_xonzoda_538_amirova": "Xonzoda Amirova"
+        "std_xonzoda_538_amirova": "Xonzoda Amirova",
+        "std_nozima_834_norqulova": "Nozima Norqulova"
       },
       "customStudentPhones": {
         "std_orazaliyev_261_amirshox": "564654654",
@@ -17108,7 +17109,8 @@
         "std_charos_327_isroilova": "941973993",
         "std_muxlisa_786_xudoyberdiyeva": "941973993",
         "std_azamova_593_asila": "941973993",
-        "std_xonzoda_538_amirova": "941973993"
+        "std_xonzoda_538_amirova": "941973993",
+        "std_nozima_834_norqulova": "941973993"
       },
       "students": [
         {
@@ -17299,6 +17301,23 @@
           "coins": 150
         },
         {
+          "id": "std_nozima_834_norqulova",
+          "name": "Nozima Norqulova",
+          "firstName": "Nozima",
+          "lastName": "Norqulova",
+          "email": "nozima_834_norqulova@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "nozima_834_norqulova",
+          "password": "nozima834nor",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
           "id": "cls_urolov_azizbek_intermediate_std_1",
           "name": "tester_1",
           "email": "cls_urolov_azizbek_intermediate_std_1@ethith.uz",
@@ -17382,22 +17401,6 @@
           "id": "cls_urolov_azizbek_intermediate_std_6",
           "name": "tester_6",
           "email": "cls_urolov_azizbek_intermediate_std_6@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_7",
-          "name": "tester_7",
-          "email": "cls_urolov_azizbek_intermediate_std_7@ethith.uz",
           "role": "student",
           "phone": "",
           "parentPhone": "",
@@ -17602,6 +17605,13 @@
           "date": "To‘lanmagan"
         },
         "std_xonzoda_538_amirova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_nozima_834_norqulova": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20701,6 +20711,19 @@
       "role": "student",
       "login": "xonzoda_538_amirova",
       "password": "xonzoda538ami",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_intermediate",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793600902458
+    },
+    {
+      "id": "std_nozima_834_norqulova",
+      "name": "Nozima Norqulova",
+      "role": "student",
+      "login": "nozima_834_norqulova",
+      "password": "nozima834nor",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_intermediate",
@@ -139610,5 +139633,5 @@
       }
     }
   },
-  "updatedAt": 1793600894857
+  "updatedAt": 1793600915508
 }
