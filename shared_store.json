@@ -116097,7 +116097,7 @@
           "foggy, freezing, icy, snowy",
           "freezing, icy, snowy, foggy"
         ],
-        "top": 53.4,
+        "top": 33,
         "left": 12,
         "width": 35,
         "height": 2.2
@@ -116113,8 +116113,8 @@
           "dry, sunny, warm",
           "sunny, warm, dry"
         ],
-        "top": 72.1,
-        "left": 12.3,
+        "top": 36.5,
+        "left": 11,
         "width": 30,
         "height": 2.2
       },
@@ -116129,9 +116129,24 @@
           "cloudy, rainy, wet, windy",
           "rainy, wet, windy, cloudy"
         ],
-        "top": 91.1,
-        "left": 11.4,
+        "top": 40,
+        "left": 11,
         "width": 35,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex2_1",
+        "type": "fill",
+        "x": 13,
+        "y": 48,
+        "w": 10,
+        "h": 2.2,
+        "correct": [
+          "rained"
+        ],
+        "top": 48,
+        "left": 13,
+        "width": 10,
         "height": 2.2
       },
       {
@@ -116144,8 +116159,8 @@
         "correct": [
           "shone"
         ],
-        "top": 33.4,
-        "left": 65.9,
+        "top": 51.5,
+        "left": 13,
         "width": 10,
         "height": 2.2
       },
@@ -116159,8 +116174,8 @@
         "correct": [
           "froze"
         ],
-        "top": 36.2,
-        "left": 71.7,
+        "top": 55,
+        "left": 13,
         "width": 10,
         "height": 2.2
       },
@@ -116174,8 +116189,8 @@
         "correct": [
           "blew"
         ],
-        "top": 38.4,
-        "left": 83.5,
+        "top": 58.5,
+        "left": 13,
         "width": 10,
         "height": 2.2
       },
@@ -116189,8 +116204,25 @@
         "correct": [
           "snowed"
         ],
-        "top": 41.7,
-        "left": 67.2,
+        "top": 62,
+        "left": 13,
+        "width": 10,
+        "height": 2.2
+      },
+      {
+        "id": "p3066_ex3_1",
+        "type": "select",
+        "x": 67,
+        "y": 58.3,
+        "w": 10,
+        "h": 2.2,
+        "options": [
+          "fog",
+          "ice"
+        ],
+        "correct": "ice",
+        "top": 58.3,
+        "left": 67,
         "width": 10,
         "height": 2.2
       },
@@ -116206,8 +116238,8 @@
           "thunder"
         ],
         "correct": "snow",
-        "top": 61.4,
-        "left": 56.8,
+        "top": 62.5,
+        "left": 56,
         "width": 14,
         "height": 2.2
       },
@@ -116223,8 +116255,8 @@
           "fog"
         ],
         "correct": "clouds",
-        "top": 69.4,
-        "left": 59.5,
+        "top": 69.5,
+        "left": 56,
         "width": 14,
         "height": 2.2
       },
@@ -116240,8 +116272,8 @@
           "storm"
         ],
         "correct": "rain",
-        "top": 74.4,
-        "left": 67.9,
+        "top": 73,
+        "left": 56,
         "width": 14,
         "height": 2.2
       },
@@ -116257,8 +116289,8 @@
           "ice"
         ],
         "correct": "winds",
-        "top": 77.4,
-        "left": 62.8,
+        "top": 76.5,
+        "left": 56,
         "width": 14,
         "height": 2.2
       },
@@ -116274,8 +116306,8 @@
           "ice"
         ],
         "correct": "fog",
-        "top": 80.7,
-        "left": 79.8,
+        "top": 80,
+        "left": 56,
         "width": 14,
         "height": 2.2
       },
@@ -116291,8 +116323,8 @@
           "rain"
         ],
         "correct": "rain",
-        "top": 83,
-        "left": 66.2,
+        "top": 83.7,
+        "left": 64,
         "width": 14,
         "height": 2.2
       },
@@ -116308,8 +116340,8 @@
           "storm"
         ],
         "correct": "sun",
-        "top": 85.3,
-        "left": 81.5,
+        "top": 87.2,
+        "left": 56,
         "width": 14,
         "height": 2.2
       }
@@ -137254,7 +137286,7 @@
     "3062": 1793506681641,
     "3063": 1793506773020,
     "3065": 1793515698497,
-    "3066": 1793515895423,
+    "3066": 1793596652295,
     "3067": 1793515895423,
     "3068": 1793516155559,
     "3069": 1793516155560,
@@ -138396,5 +138428,5 @@
       }
     }
   },
-  "updatedAt": 1793596633213
+  "updatedAt": 1793596654408
 }
