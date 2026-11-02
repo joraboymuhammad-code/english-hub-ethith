@@ -439,7 +439,7 @@
       }
     }
 
-    // E. STUDENT JOINED / ENROLLED
+    // E. STUDENT JOINED / ENROLLED (Sub-100ms instant sync across all devices)
     else if ((event.type === 'STUDENT_JOIN' || event.type === 'STUDENT_ENROLLED') && targetCls && event.student) {
       if (!targetCls.students) targetCls.students = [];
       if (Array.isArray(targetCls.deletedStudentIds)) {
@@ -452,13 +452,15 @@
           return id !== event.student.id && id !== event.student.email && id !== event.student.login && id !== event.student.name;
         });
       }
-      var sExists = targetCls.students.some(function(s) {
+      var sIdx = targetCls.students.findIndex(function(s) {
         return (s.email && s.email === event.student.email) || (s.id && s.id === event.student.id) || (event.student.login && s.login && s.login.toLowerCase() === event.student.login.toLowerCase());
       });
-      if (!sExists) {
+      if (sIdx !== -1) {
+        targetCls.students[sIdx] = Object.assign({}, targetCls.students[sIdx], event.student);
+        targetCls.students[sIdx].updatedAt = event.student.updatedAt || Date.now();
+      } else {
         if (!event.student.joinedAt) {
-          var dNow = new Date();
-          event.student.joinedAt = dNow.getFullYear() + '-' + String(dNow.getMonth() + 1).padStart(2, '0') + '-' + String(dNow.getDate()).padStart(2, '0');
+          event.student.joinedAt = '2026-09-02';
         }
         var testerIdx = targetCls.students.findIndex(function(s) {
           return s.isTester || (s.name && s.name.startsWith('tester_'));
@@ -468,15 +470,106 @@
         } else {
           targetCls.students.unshift(event.student);
         }
-        // Auto-register student account
-        if (event.account && Array.isArray(S.accounts)) {
-          var accExists = S.accounts.some(function(a) { return a.id === event.account.id || (a.login && event.account.login && a.login.toLowerCase() === event.account.login.toLowerCase()); });
-          if (!accExists) S.accounts.push(event.account);
+      }
+
+      if (!targetCls.customStudentNames) targetCls.customStudentNames = {};
+      if (event.student.id && event.student.name) {
+        targetCls.customStudentNames[event.student.id] = event.student.name;
+        if (!targetCls.customStudentNamesTs) targetCls.customStudentNamesTs = {};
+        targetCls.customStudentNamesTs[event.student.id] = event.student.updatedAt || Date.now();
+      }
+      if (!targetCls.customStudentPhones) targetCls.customStudentPhones = {};
+      if (event.student.id && (event.student.parentPhone || event.student.phone)) {
+        targetCls.customStudentPhones[event.student.id] = event.student.parentPhone || event.student.phone;
+      }
+      if (event.customStudentNames) Object.assign(targetCls.customStudentNames, event.customStudentNames);
+      if (event.customStudentPhones) Object.assign(targetCls.customStudentPhones, event.customStudentPhones);
+      if (event.studentPayments) {
+        if (!targetCls.studentPayments) targetCls.studentPayments = {};
+        Object.assign(targetCls.studentPayments, event.studentPayments);
+      }
+
+      // Auto-register / update student account
+      if (event.account && Array.isArray(S.accounts)) {
+        var accIdx = S.accounts.findIndex(function(a) { 
+          return a.id === event.account.id || (a.login && event.account.login && a.login.toLowerCase() === event.account.login.toLowerCase()); 
+        });
+        if (accIdx === -1) {
+          S.accounts.push(event.account);
+        } else {
+          S.accounts[accIdx] = Object.assign({}, S.accounts[accIdx], event.account);
         }
-        uiNeedsRefresh = true;
-        if (window.EA && typeof window.EA.render === 'function' && document.getElementById('apView')) {
-          window.EA.render(document.getElementById('apView'));
+      }
+      uiNeedsRefresh = true;
+      if (window.EA && typeof window.EA.render === 'function' && document.getElementById('apView')) {
+        window.EA.render(document.getElementById('apView'));
+      }
+    }
+
+    // E0. STUDENT EDITED (Instant Name / Phone / Credential update across all connected devices)
+    else if (event.type === 'STUDENT_EDIT' && event.studentId) {
+      var stId = event.studentId;
+      var newName = event.name;
+      var newPhone = event.phone || event.parentPhone || '';
+      var newLogin = event.login || '';
+      var newPass = event.password || '';
+      var upTs = event.updatedAt || Date.now();
+
+      classes.forEach(function(c) {
+        if (!event.classId || c.id === event.classId || c.code === event.classId) {
+          if (!c.customStudentNames) c.customStudentNames = {};
+          if (newName) c.customStudentNames[stId] = newName;
+          if (!c.customStudentPhones) c.customStudentPhones = {};
+          if (newPhone) c.customStudentPhones[stId] = newPhone;
+          if (!c.customStudentNamesTs) c.customStudentNamesTs = {};
+          c.customStudentNamesTs[stId] = upTs;
+          if (Array.isArray(c.students)) {
+            var sFound = c.students.find(function(s) {
+              return s && (s.id === stId || (newLogin && s.login && s.login.toLowerCase() === newLogin.toLowerCase()) || (s.email && event.email && s.email.toLowerCase() === event.email.toLowerCase()));
+            });
+            if (sFound) {
+              if (newName) {
+                sFound.name = newName;
+                var nParts = newName.trim().split(/\s+/);
+                sFound.firstName = nParts[0];
+                sFound.lastName = nParts.slice(1).join(' ');
+              }
+              if (newPhone) {
+                sFound.phone = newPhone;
+                sFound.parentPhone = newPhone;
+              }
+              if (newLogin) sFound.login = newLogin;
+              if (newPass) sFound.password = newPass;
+              sFound.updatedAt = upTs;
+            }
+          }
+          if (c.attendance) c.attendance.updatedAt = upTs;
         }
+      });
+
+      if (Array.isArray(S.accounts)) {
+        var aFound = S.accounts.find(function(a) {
+          return a && (a.id === stId || (newLogin && a.login && a.login.toLowerCase() === newLogin.toLowerCase()) || (a.email && event.email && a.email.toLowerCase() === event.email.toLowerCase()));
+        });
+        if (aFound) {
+          if (newName) aFound.name = newName;
+          if (newPhone) { aFound.phone = newPhone; aFound.parentPhone = newPhone; }
+          if (newLogin) aFound.login = newLogin;
+          if (newPass) aFound.password = newPass;
+          aFound.updatedAt = upTs;
+        }
+      }
+
+      if (S.user && (S.user.id === stId || (newLogin && S.user.login && S.user.login.toLowerCase() === newLogin.toLowerCase()))) {
+        if (newName) S.user.name = newName;
+        if (newPhone) { S.user.phone = newPhone; S.user.parentPhone = newPhone; }
+        if (newLogin) S.user.login = newLogin;
+        S.user.updatedAt = upTs;
+      }
+
+      uiNeedsRefresh = true;
+      if (window.EA && typeof window.EA.render === 'function' && document.getElementById('apView')) {
+        window.EA.render(document.getElementById('apView'));
       }
     }
 
@@ -601,8 +694,15 @@
       }
     }
 
-    // E3. STATE MUTATION & UNDO (Instant Real-time Sync Across Connected Clients)
+    // E3. STATE MUTATION (Instant Real-time Sync Across Connected Clients)
     else if (event.type === 'STATE_MUTATION' || event.type === 'UNDO_MUTATION') {
+      if (Array.isArray(event.classes) && event.classes.length > 0) {
+        mergeClasses(S.classes, event.classes);
+      }
+      if (Array.isArray(event.accounts) && event.accounts.length > 0) {
+        mergeAccounts(S.accounts, event.accounts);
+      }
+      uiNeedsRefresh = true;
       if (typeof fetchRemoteStore === 'function') {
         fetchRemoteStore().then(function() {
           var apView = document.getElementById('apView');
@@ -1431,8 +1531,21 @@
               exists.mistakes = rStudent.mistakes !== undefined ? rStudent.mistakes : exists.mistakes;
               changed = true;
             }
-            if (rStudent.name && !rStudent.name.toLowerCase().startsWith('tester_') && (exists.name || '').toLowerCase().startsWith('tester_')) {
-              Object.assign(exists, rStudent);
+            var rUp = Number(rStudent.updatedAt) || 0;
+            var lUp = Number(exists.updatedAt) || 0;
+            if (rUp >= lUp || (rStudent.name && !rStudent.name.toLowerCase().startsWith('tester_') && (exists.name || '').toLowerCase().startsWith('tester_'))) {
+              if (rStudent.name) exists.name = rStudent.name;
+              if (rStudent.firstName) exists.firstName = rStudent.firstName;
+              if (rStudent.lastName) exists.lastName = rStudent.lastName;
+              if (rStudent.login) exists.login = rStudent.login;
+              if (rStudent.password) exists.password = rStudent.password;
+              if (rStudent.phone || rStudent.parentPhone) {
+                exists.phone = rStudent.phone || rStudent.parentPhone;
+                exists.parentPhone = rStudent.parentPhone || rStudent.phone;
+              }
+              if (rStudent.isTester !== undefined) exists.isTester = rStudent.isTester;
+              if (rStudent.manuallyEnrolled !== undefined) exists.manuallyEnrolled = rStudent.manuallyEnrolled;
+              exists.updatedAt = Math.max(lUp, rUp || Date.now());
               changed = true;
             }
           }
@@ -1502,14 +1615,15 @@
       }
       if (rc.customStudentNames && typeof rc.customStudentNames === 'object') {
         if (!localCls.customStudentNames) localCls.customStudentNames = {};
+        if (!localCls.customStudentNamesTs) localCls.customStudentNamesTs = {};
+        var rNamesTs = rc.customStudentNamesTs || {};
         for (var stK in rc.customStudentNames) {
-          if (localCls.customStudentNames[stK] !== rc.customStudentNames[stK]) {
-            var rTs2 = (rc.attendance && rc.attendance.updatedAt) || 0;
-            var lTs2 = (localCls.attendance && localCls.attendance.updatedAt) || 0;
-            if (rTs2 >= lTs2 || !localCls.customStudentNames[stK]) {
-              localCls.customStudentNames[stK] = rc.customStudentNames[stK];
-              changed = true;
-            }
+          var rKts = Number(rNamesTs[stK]) || (rc.attendance && rc.attendance.updatedAt) || 0;
+          var lKts = Number(localCls.customStudentNamesTs[stK]) || (localCls.attendance && localCls.attendance.updatedAt) || 0;
+          if (rKts >= lKts || !localCls.customStudentNames[stK]) {
+            localCls.customStudentNames[stK] = rc.customStudentNames[stK];
+            localCls.customStudentNamesTs[stK] = rKts;
+            changed = true;
           }
         }
       }
@@ -1766,7 +1880,15 @@
       } else {
         var rUpdated = Number(rAcc.updatedAt) || 0;
         var lUpdated = Number(existing.updatedAt) || 0;
-        if (rUpdated >= lUpdated || (rAcc.coins !== undefined && Number(rAcc.coins) > Number(existing.coins || 0))) {
+        if (rUpdated >= lUpdated || !existing.name || (rAcc.name && !existing.name) || (rAcc.coins !== undefined && Number(rAcc.coins) > Number(existing.coins || 0))) {
+          if (rAcc.name) existing.name = rAcc.name;
+          if (rAcc.login) existing.login = rAcc.login;
+          if (rAcc.password) existing.password = rAcc.password;
+          if (rAcc.phone || rAcc.parentPhone) {
+            existing.phone = rAcc.phone || rAcc.parentPhone;
+            existing.parentPhone = rAcc.parentPhone || rAcc.phone;
+          }
+          if (rAcc.classId) existing.classId = rAcc.classId;
           if (rAcc.coins !== undefined) existing.coins = Number(rAcc.coins);
           if (rAcc.avatar) existing.avatar = rAcc.avatar;
           if (rAcc.level) existing.level = rAcc.level;

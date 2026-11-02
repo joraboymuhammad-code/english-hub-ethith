@@ -1395,11 +1395,12 @@
       });
     } else if (isStudent) {
       userClasses = (S.classes || []).filter(function(c) {
-        if (S.user.classId && c.id === S.user.classId) return true;
+        if (S.user.classId && (c.id === S.user.classId || c.code === S.user.classId)) return true;
         return c.students && c.students.some(function(s) { 
           if (s.isTester) return false;
           return (s.login && S.user.login && s.login.toLowerCase() === S.user.login.toLowerCase()) ||
-                 (s.id && S.user.id && s.id === S.user.id);
+                 (s.id && S.user.id && s.id === S.user.id) ||
+                 (s.email && S.user.email && s.email.toLowerCase() === S.user.email.toLowerCase());
         });
       });
     }
@@ -1413,9 +1414,16 @@
 
     if (S.activeClassId) {
       var activeCls = S.classes.find(function(c) { return c.id === S.activeClassId; });
-      var isEnrolled = isTeacher || (activeCls && activeCls.students && activeCls.students.some(function(s) {
-        return s && (s.id === S.user.id || s.email === S.user.email || (S.user.phone && s.phone === S.user.phone));
-      }));
+      var isEnrolled = isTeacher || isAdmin || (activeCls && (
+        (S.user.classId && (activeCls.id === S.user.classId || activeCls.code === S.user.classId)) ||
+        (Array.isArray(activeCls.students) && activeCls.students.some(function(s) {
+          if (!s) return false;
+          return (s.id && S.user.id && s.id === S.user.id) ||
+                 (s.login && S.user.login && s.login.toLowerCase() === S.user.login.toLowerCase()) ||
+                 (s.email && S.user.email && s.email.toLowerCase() === S.user.email.toLowerCase()) ||
+                 (S.user.phone && (s.phone === S.user.phone || s.parentPhone === S.user.phone));
+        }))
+      ));
       if (activeCls && isEnrolled) {
         renderClassDetail(container, activeCls);
         return;

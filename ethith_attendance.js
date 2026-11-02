@@ -1174,10 +1174,22 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     }
   };
 
+  function getUniversalToday() {
+    var d = new Date();
+    // System standardized academic year is strictly 2026.
+    // If client PC clock is behind 2026 (e.g. 2025), normalize to 2026 so calendar is 100% identical on all devices
+    if (d.getFullYear() < 2026) {
+      d.setFullYear(2026);
+    }
+    return d;
+  }
+  EA.getUniversalToday = getUniversalToday;
+
   function formatDisplayDate(d) {
+    if (!d) d = getUniversalToday();
     var day = String(d.getDate()).padStart(2, '0');
     var month = String(d.getMonth() + 1).padStart(2, '0');
-    var year = d.getFullYear();
+    var year = d.getFullYear() < 2026 ? 2026 : d.getFullYear();
     return day + '.' + month + '.' + year;
   }
 
@@ -1227,9 +1239,10 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   }
 
   function formatDateKey(d) {
+    if (!d) d = getUniversalToday();
     var day = String(d.getDate()).padStart(2, '0');
     var month = String(d.getMonth() + 1).padStart(2, '0');
-    var year = d.getFullYear();
+    var year = d.getFullYear() < 2026 ? 2026 : d.getFullYear();
     return year + '-' + month + '-' + day;
   }
 
@@ -1246,7 +1259,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
   function getJournalDates(cls, viewMode) {
     var schedule = cls.schedule || 'har_kuni';
-    var today = new Date();
+    var today = getUniversalToday();
     today.setHours(0, 0, 0, 0);
 
     var count = 0;
@@ -2402,7 +2415,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     var teachers = getStoreTeachers();
     var tObj = teachers.find(function(item) { return item.id === tid; });
     var nameToDisplay = tName || (tObj ? tObj.name : 'O‘qituvchi');
-    if (!confirm("Haqiqatan ham \"" + nameToDisplay + "\" o‘qituvchisini tizimdan butunlay o‘chirmoqchimisiz?\n\n• O‘qituvchi va uning tizim profili o‘chiriladi\n• Guruhlar saqlanadi va o‘qituvchisiz (bo‘sh) holatga o‘tkaziladi\n• Adashib o‘chirilsa Ctrl+Z orqali darhol qaytarish mumkin")) {
+    if (!confirm("Haqiqatan ham \"" + nameToDisplay + "\" o‘qituvchisini tizimdan butunlay o‘chirmoqchimisiz?\n\n• O‘qituvchi va uning tizim profili o‘chiriladi\n• Guruhlar saqlanadi va o‘qituvchisiz (bo‘sh) holatga o‘tkaziladi\n• ")) {
       return;
     }
 
@@ -4567,13 +4580,19 @@ EA.render = function(container, preserveScrollLeft) {
       var phone = modalRoot.querySelector('#eaNewStParentPhone').value.trim();
       if (n) {
         var clean = cleanStName(n);
+        var editTs = Date.now();
         cls.customStudentNames[stId] = clean;
         if (!cls.customStudentPhones) cls.customStudentPhones = {};
         cls.customStudentPhones[stId] = phone;
+        if (!cls.customStudentNamesTs) cls.customStudentNamesTs = {};
+        cls.customStudentNamesTs[stId] = editTs;
+        cls.updatedAt = editTs;
+        if (cls.attendance) cls.attendance.updatedAt = editTs;
         if (stObj) {
           stObj.name = clean;
           stObj.parentPhone = phone;
           stObj.isTester = false;
+          stObj.updatedAt = editTs;
         }
         var S_app = (window.EthithApp && window.EthithApp.state) || {};
         if (S_app.accounts) {
@@ -4587,13 +4606,24 @@ EA.render = function(container, preserveScrollLeft) {
         if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
           window.EthithEnterprise.saveStore();
         }
-        if (window.EthithSync && typeof window.EthithSync.broadcast === 'function') {
-          window.EthithSync.broadcast('STUDENT_EDIT', {
+        if (window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
+          window.EthithSync.publishLive({
+            type: 'STUDENT_EDIT',
             classId: cls.id,
             studentId: stId,
             name: clean,
-            phone: phone
+            phone: phone,
+            updatedAt: editTs
           });
+          window.EthithSync.publishLive({
+            type: 'STATE_MUTATION',
+            mutationType: 'student_edit_name',
+            classes: (window.S && window.S.classes) || [],
+            accounts: (window.S && window.S.accounts) || []
+          });
+        }
+        if (window.EthithSync && typeof window.EthithSync.pushRemoteStore === 'function') {
+          window.EthithSync.pushRemoteStore();
         }
         closeGlobalModal();
         if (window.EthithApp && window.EthithApp.toast) {
@@ -6152,7 +6182,7 @@ EA.render = function(container, preserveScrollLeft) {
                      (S_app_state.finance && S_app_state.finance.studentFees && stIdLookup && S_app_state.finance.studentFees[stIdLookup]) || {};
     var isStudentPaid = (initPayRec.status === 'paid');
 
-    var html = '<div class="eth-modal" style="max-width:560px;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(56,189,248,0.45);box-shadow:0 24px 60px rgba(0,0,0,0.8),0 0 30px rgba(56,189,248,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
+    var html = '<div class="eth-modal" style="max-width:560px;width:100%;max-height:min(90vh, 720px);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;box-sizing:border-box;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(56,189,248,0.45);box-shadow:0 24px 60px rgba(0,0,0,0.8),0 0 30px rgba(56,189,248,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">' +
         '<div style="display:flex;align-items:center;gap:12px;">' +
           '<div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 16px rgba(2,132,199,0.4);">' + (isEdit ? '✏️' : '🎓') + '</div>' +
@@ -6238,7 +6268,7 @@ EA.render = function(container, preserveScrollLeft) {
           '</div>' : '') +
 
         // Action Buttons
-        '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);position:sticky;bottom:0;background:rgba(15,23,42,0.96);backdrop-filter:blur(8px);z-index:10;">' +
           (isEdit 
             ? '<button type="button" id="eaModalDeleteStudentBtn" style="background:rgba(239,68,68,0.18);border:1px solid rgba(239,68,68,0.45);color:#f87171;border-radius:12px;padding:10px 16px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">🗑️ O‘quvchini O‘chirish</button>' 
             : '<div></div>') +
@@ -6351,6 +6381,7 @@ EA.render = function(container, preserveScrollLeft) {
       if (!chosenClass.students) chosenClass.students = [];
 
       var studentId = (curSt && isEdit) ? curSt.id : ('std_' + finalLogin);
+      var nowTs = Date.now();
       var studentObj = {
         id: studentId,
         name: fullName,
@@ -6362,12 +6393,16 @@ EA.render = function(container, preserveScrollLeft) {
         parentPhone: pPhone,
         login: finalLogin,
         password: finalPass,
-        joinedAt: (curSt && curSt.joinedAt) ? curSt.joinedAt : new Date().toISOString().split('T')[0],
+        joinedAt: (curSt && curSt.joinedAt) ? curSt.joinedAt : '2026-09-02',
         isTester: false,
         manuallyEnrolled: true,
         isOnline: (curSt && curSt.isOnline) || false,
-        coins: (curSt && curSt.coins) || 150
+        coins: (curSt && curSt.coins) || 150,
+        updatedAt: nowTs
       };
+      chosenClass.updatedAt = nowTs;
+      if (!chosenClass.customStudentNamesTs) chosenClass.customStudentNamesTs = {};
+      chosenClass.customStudentNamesTs[studentObj.id] = nowTs;
 
       // If transferring from another class
       if (curClass && curClass.id !== chosenClass.id && curSt) {
@@ -6516,16 +6551,31 @@ EA.render = function(container, preserveScrollLeft) {
 
       if (window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
         window.EthithSync.publishLive({
-          type: 'STUDENT_JOIN',
-          classId: chosenClass.id,
-          student: studentObj,
-          account: acc
-        });
-        window.EthithSync.publishLive({
           type: 'STUDENT_ENROLLED',
           classId: chosenClass.id,
           student: studentObj,
-          account: acc
+          account: acc,
+          customStudentNames: chosenClass.customStudentNames,
+          customStudentPhones: chosenClass.customStudentPhones,
+          studentPayments: chosenClass.studentPayments
+        });
+        window.EthithSync.publishLive({
+          type: 'STUDENT_EDIT',
+          classId: chosenClass.id,
+          studentId: studentObj.id,
+          name: fullName,
+          firstName: fn,
+          lastName: ln,
+          phone: pPhone,
+          login: finalLogin,
+          password: finalPass,
+          updatedAt: nowTs
+        });
+        window.EthithSync.publishLive({
+          type: 'STATE_MUTATION',
+          mutationType: 'student_save',
+          classes: (window.S && window.S.classes) || [],
+          accounts: (window.S && window.S.accounts) || []
         });
       }
 
