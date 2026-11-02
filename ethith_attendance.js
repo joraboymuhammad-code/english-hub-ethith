@@ -3094,10 +3094,18 @@ EA.render = function(container, preserveScrollLeft) {
     var dates = getJournalDates(cls, EA.viewMode);
     seedDemoWindowIfNeeded(cls, dates);
 
-    // If a student is clicked, open QuantumEdu Student Daily Tasks & Growth/Decline Statistics!
+    // If a student stats link is explicitly clicked, open QuantumEdu Student Daily Tasks & Growth/Decline Statistics!
     if (EA.activeStudentId) {
-      EA.renderQuantumStudentAnalytics(container, cls);
-      return;
+      var foundSt = (cls.students || []).find(function(s) {
+        var sid = s.id || s.email;
+        return sid === EA.activeStudentId;
+      });
+      if (!foundSt) {
+        EA.activeStudentId = null;
+      } else {
+        EA.renderQuantumStudentAnalytics(container, cls);
+        return;
+      }
     }
 
     var isTeacher = isTeacherRole();
@@ -3500,22 +3508,22 @@ EA.render = function(container, preserveScrollLeft) {
           (sIdx + 1) +
         '</td>';
 
-        // Sticky Col 2: Student Name (Clickable -> Opens QuantumEdu Student Analytics! Collapsible to left!)
+        // Sticky Col 2: Student Name & Explicit Stats link (Collapsible to left!)
         h += '<td class="ea-sticky-cell ea-names-col-cell" style="position:sticky;left:' + numColW + 'px;z-index:20;background:' + stickyBg + ';backdrop-filter:blur(18px);width:' + nameColW + 'px;min-width:' + nameColW + 'px;max-width:' + nameColW + 'px;padding:' + (isCollapsed ? '6px 6px' : '7px 12px') + ';border-bottom:1px solid rgba(255,255,255,0.06);border-right:2px solid rgba(56,189,248,0.35);overflow:hidden;">' +
           (isCollapsed
-            ? '<div class="ea-student-name-link" data-stid="' + esc(stId) + '" title="' + esc(stName) + ' (Bosish: Tahlilni ochish)" style="display:flex;align-items:center;gap:6px;overflow:hidden;width:100%;">' +
+            ? '<div class="ea-student-name-box" style="display:flex;align-items:center;gap:6px;overflow:hidden;width:100%;">' +
                 '<span style="width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,rgba(56,189,248,0.22),rgba(129,140,248,0.22));border:1px solid rgba(56,189,248,0.45);color:#7dd3fc;font-size:10px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:-0.03em;">' + esc(shortInfo.initials) + '</span>' +
                 (isPaid ? '<span class="ea-st-paid-neon" style="font-size:11.5px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;">' + esc(shortInfo.shortStart) + '</span>' : '<span style="font-size:11.5px;font-weight:800;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;">' + esc(shortInfo.shortStart) + '</span>') +
               '</div>'
             : '<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;">' +
-                '<div class="ea-student-name-link" data-stid="' + esc(stId) + '" style="overflow:hidden;flex:1;" title="Bosish: O\'quvchining kunlik vazifalari va o\'sish/cho\'kish tahlilini ochish">' +
+                '<div class="ea-student-name-box" style="overflow:hidden;flex:1;">' +
                   '<div style="font-size:13px;font-weight:800;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:6px;">' +
                     payBadge +
                     studentNameDisplay +
                   '</div>' +
                   (EA.viewMode === 'all'
                     ? '<div style="font-size:10.5px;font-weight:700;color:#38bdf8;margin-top:2px;">📅 Qo\'shilgan: ' + esc(joinedDisp) + '</div>'
-                    : '<div style="font-size:10px;font-weight:600;color:#64748b;margin-top:1px;">📈 Statistika va tahlil &rarr;</div>') +
+                    : '<button type="button" class="ea-open-stats-btn" data-stid="' + esc(stId) + '" style="background:none;border:none;padding:0;font-size:10px;font-weight:600;color:#64748b;margin-top:1px;cursor:pointer;display:inline-flex;align-items:center;gap:3px;outline:none;" onmouseover="this.style.color=\'#38bdf8\'" onmouseout="this.style.color=\'#64748b\'">📈 Statistika va tahlil &rarr;</button>') +
                 '</div>' +
                 (isTeacher ?
                   '<div style="display:flex;align-items:center;">' +
@@ -3999,11 +4007,11 @@ EA.render = function(container, preserveScrollLeft) {
       };
     }
 
-    // Click on Student Name -> Open QuantumEdu Student Analytics!
-    container.querySelectorAll('.ea-student-name-link').forEach(function(link) {
-      link.onclick = function(e) {
+    // Explicit click on "Statistika va tahlil" -> Open QuantumEdu Student Analytics!
+    container.querySelectorAll('.ea-open-stats-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
         e.stopPropagation();
-        EA.activeStudentId = link.dataset.stid;
+        EA.activeStudentId = btn.dataset.stid;
         EA.render(container);
       };
     });

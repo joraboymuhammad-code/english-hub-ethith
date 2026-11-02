@@ -1388,10 +1388,23 @@
     } else if (isTeacher) {
       var tName = (S.user.name || '').toLowerCase().trim();
       var tId = (S.user.id || '').toLowerCase().trim();
+      var tEmail = (S.user.email || '').toLowerCase().trim();
+      var tLogin = (S.user.login || '').toLowerCase().trim();
       userClasses = (S.classes || []).filter(function(c) {
         var cTId = (c.teacherId || '').toLowerCase().trim();
         var cTName = (c.teacherName || c.teacher || '').toLowerCase().trim();
-        return (cTId && cTId === tId) || (cTName && cTName === tName);
+        var cTEmail = (c.teacherEmail || '').toLowerCase().trim();
+        if (cTId && (cTId === tId || (tId === 'admin_official_teacher' && cTId.startsWith('t_')))) {
+          if (cTId === tId && (!tName || !cTName || cTName === tName || cTName.includes(tName) || tName.includes(cTName))) return true;
+        }
+        if (cTName && tName && (cTName === tName || cTName.includes(tName) || tName.includes(cTName))) return true;
+        if (cTEmail && tEmail && cTEmail === tEmail) return true;
+        if (tName.includes('azizbek') || tLogin.includes('azizbek')) {
+          if (c.id && c.id.includes('urolov_azizbek')) return true;
+          if (cTId === 't_urolov_azizbek') return true;
+          if (cTName.includes('azizbek')) return true;
+        }
+        return false;
       });
     } else if (isStudent) {
       userClasses = (S.classes || []).filter(function(c) {
@@ -1400,7 +1413,8 @@
           if (s.isTester) return false;
           return (s.login && S.user.login && s.login.toLowerCase() === S.user.login.toLowerCase()) ||
                  (s.id && S.user.id && s.id === S.user.id) ||
-                 (s.email && S.user.email && s.email.toLowerCase() === S.user.email.toLowerCase());
+                 (s.email && S.user.email && s.email.toLowerCase() === S.user.email.toLowerCase()) ||
+                 (s.name && S.user.name && s.name.toLowerCase().trim() === S.user.name.toLowerCase().trim());
         });
       });
     }
@@ -1995,9 +2009,10 @@
       '  <div class="tg-chat-emoji-tray" id="tgChatEmojiTray">' +
       '    <span style="font-size:11.5px;color:var(--muted);font-weight:700;margin-right:2px">Emojis:</span>' +
       (function() {
+        var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.isTeacher === true);
         var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍','😊','❤️'];
         return (window.ETHITH_CHAT_EMOJIS || []).map(function(item) {
-          var isUnlocked = item.isDefault || (myUnlocked.indexOf(item.emoji) !== -1);
+          var isUnlocked = isTeacherUser || item.isDefault || (myUnlocked.indexOf(item.emoji) !== -1);
           if (isUnlocked) {
             return '<button type="button" class="tg-emoji-pill" data-insert-em="' + item.emoji + '" title="' + esc(item.name) + '">' + item.emoji + '</button>';
           } else {
@@ -2326,6 +2341,7 @@
     bar.style.left = posX + 'px';
     bar.style.top = posY + 'px';
 
+    var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.isTeacher === true);
     var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍', '😊', '❤️'];
     var quickEmojis = (S.quickReactions && S.quickReactions.length >= 6) ? S.quickReactions : EMOJIS_MASTER_LIST;
     var top6 = quickEmojis.slice(0, 6);
@@ -2334,7 +2350,7 @@
 
     var html = top6.map(function(em) {
       var isActive = msg.reactions && msg.reactions[em] && msg.reactions[em].indexOf(currentUserId) > -1;
-      var isUnlocked = (myUnlocked.indexOf(em) !== -1);
+      var isUnlocked = isTeacherUser || (myUnlocked.indexOf(em) !== -1);
       if (isUnlocked) {
         return '<button class="tg-quick-bar-em ' + (isActive ? 'active' : '') + '" data-quick-em="' + em + '">' + em + '</button>';
       } else {
@@ -2388,13 +2404,14 @@
     menu.style.left = posX + 'px';
     menu.style.top = posY + 'px';
 
+    var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.isTeacher === true);
     var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍', '😊', '❤️'];
     var quickEmojis = (S.quickReactions && S.quickReactions.length >= 7) ? S.quickReactions : EMOJIS_MASTER_LIST;
 
     var html = '' +
       '<div class="tg-context-reactions">' +
       quickEmojis.slice(0, 7).map(function(em) {
-        var isUnlocked = (myUnlocked.indexOf(em) !== -1);
+        var isUnlocked = isTeacherUser || (myUnlocked.indexOf(em) !== -1);
         if (isUnlocked) {
           return '<button class="tg-context-reaction-btn" data-em="' + em + '">' + em + '</button>';
         } else {
@@ -2558,16 +2575,17 @@
     picker.style.width = '295px';
     picker.style.maxWidth = '315px';
 
+    var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.isTeacher === true);
     var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍', '😊', '❤️'];
 
     picker.innerHTML = '' +
       '<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 8px 6px;border-bottom:1px solid var(--border)">' +
       '  <span style="font-size:12px;font-weight:700;color:var(--muted)">All Reactions (72)</span>' +
-      '  <span style="font-size:11px;color:#f59e0b;font-weight:800">3 ta ochiq · Qolgani 🔒</span>' +
+      '  <span style="font-size:11px;color:#f59e0b;font-weight:800">' + (isTeacherUser ? 'O‘qituvchi: Barchasi ochiq 🔓' : '3 ta ochiq · Qolgani 🔒') + '</span>' +
       '</div>' +
       '<div style="display:grid;grid-template-columns:repeat(8, 1fr);gap:2px;padding:8px 4px;max-height:220px;overflow-y:auto">' +
       EMOJIS_MASTER_LIST.map(function(em) {
-        var isUnlocked = (myUnlocked.indexOf(em) !== -1);
+        var isUnlocked = isTeacherUser || (myUnlocked.indexOf(em) !== -1);
         if (isUnlocked) {
           return '<button class="tg-context-reaction-btn" data-full-em="' + em + '" style="font-size:18px;padding:4px 0" title="Reaksiya bildirish">' + em + '</button>';
         } else {
