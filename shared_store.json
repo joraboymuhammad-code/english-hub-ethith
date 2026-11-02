@@ -65941,8 +65941,8 @@
         "page": 2012,
         "exercise": "1",
         "label": "2",
-        "top": 27.6,
-        "left": 34.2,
+        "top": 26.7,
+        "left": 36.2,
         "width": 14,
         "height": 2,
         "correct": "'d been carrying or had been carrying"
@@ -65953,8 +65953,8 @@
         "page": 2012,
         "exercise": "1",
         "label": "3",
-        "top": 29.4,
-        "left": 42.6,
+        "top": 28.5,
+        "left": 44.6,
         "width": 4.4,
         "height": 2,
         "correct": "'d been living or had been living"
@@ -65965,8 +65965,8 @@
         "page": 2012,
         "exercise": "1",
         "label": "4",
-        "top": 31.1,
-        "left": 41.4,
+        "top": 30.2,
+        "left": 43.4,
         "width": 5.6,
         "height": 2,
         "correct": "'d been hoping or had been hoping"
@@ -65977,8 +65977,8 @@
         "page": 2012,
         "exercise": "1",
         "label": "5",
-        "top": 32.8,
-        "left": 41.9,
+        "top": 31.9,
+        "left": 43.9,
         "width": 5.1,
         "height": 2,
         "correct": "'d been looking or had been looking"
@@ -65989,8 +65989,8 @@
         "page": 2012,
         "exercise": "1",
         "label": "6",
-        "top": 34.5,
-        "left": 22.2,
+        "top": 33.6,
+        "left": 24.2,
         "width": 14,
         "height": 2,
         "correct": "had been missing"
@@ -66001,8 +66001,8 @@
         "page": 2012,
         "exercise": "1",
         "label": "7",
-        "top": 36.2,
-        "left": 37.4,
+        "top": 35.3,
+        "left": 39.4,
         "width": 9.6,
         "height": 2,
         "correct": "'d been sitting or had been sitting"
@@ -66013,8 +66013,8 @@
         "page": 2012,
         "exercise": "1",
         "label": "8",
-        "top": 37.9,
-        "left": 31.1,
+        "top": 37,
+        "left": 33.1,
         "width": 14,
         "height": 2,
         "correct": "had been losing"
@@ -66025,8 +66025,8 @@
         "page": 2012,
         "exercise": "1",
         "label": "9",
-        "top": 39.6,
-        "left": 34.9,
+        "top": 38.7,
+        "left": 36.9,
         "width": 12,
         "height": 2,
         "correct": "had been snowing"
@@ -66037,8 +66037,8 @@
         "page": 2012,
         "exercise": "1",
         "label": "10",
-        "top": 41.3,
-        "left": 31,
+        "top": 40.4,
+        "left": 33,
         "width": 14,
         "height": 2,
         "correct": "'d been queuing or had been queuing"
@@ -66049,8 +66049,8 @@
         "page": 2012,
         "exercise": "2",
         "label": "2",
-        "top": 44.1,
-        "left": 19,
+        "top": 43.2,
+        "left": 21,
         "width": 15.4,
         "height": 2,
         "correct": "had been planning"
@@ -66061,8 +66061,8 @@
         "page": 2012,
         "exercise": "2",
         "label": "3",
-        "top": 29.4,
-        "left": 42.6,
+        "top": 28.5,
+        "left": 44.6,
         "width": 4.4,
         "height": 2,
         "correct": "hadn't realized or had not realized or hadn't realised or had not realised"
@@ -66085,8 +66085,8 @@
         "page": 2012,
         "exercise": "2",
         "label": "5",
-        "top": 32.8,
-        "left": 41.9,
+        "top": 31.9,
+        "left": 43.9,
         "width": 5.1,
         "height": 2,
         "correct": "had created"
@@ -138522,7 +138522,7 @@
     "2009": 1793606799816,
     "2010": 1793606946260,
     "2011": 1793563274072,
-    "2012": 1793563274072,
+    "2012": 1793607152330,
     "2013": 1793563274072,
     "2014": 1793563274072,
     "2015": 1793563274072,
@@ -139862,5 +139862,5 @@
       }
     }
   },
-  "updatedAt": 1793607127787
+  "updatedAt": 1793607155373
 }
