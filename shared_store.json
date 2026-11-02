@@ -15984,7 +15984,8 @@
         "std_rayhona_554_qoshqarova": "Rayhona Qo'shqarova",
         "std_jamshid_843_komilov": "Jamshid Komilov",
         "std_ozodbek_578_mamatqulov": "Ozodbek Mamatqulov",
-        "std_odina_419_zoirova": "Odina Zoirova"
+        "std_odina_419_zoirova": "Odina Zoirova",
+        "std_orozboyev_391_ollohberdi": "O'rozboyev Ollohberdi"
       },
       "customStudentPhones": {
         "std_orazaliyev_514_amirshox": "4",
@@ -15994,7 +15995,8 @@
         "std_rayhona_554_qoshqarova": "2542352",
         "std_jamshid_843_komilov": "941973993",
         "std_ozodbek_578_mamatqulov": "941973993",
-        "std_odina_419_zoirova": "941973993"
+        "std_odina_419_zoirova": "941973993",
+        "std_orozboyev_391_ollohberdi": "941973993"
       },
       "students": [
         {
@@ -16151,6 +16153,23 @@
           "coins": 150
         },
         {
+          "id": "std_orozboyev_391_ollohberdi",
+          "name": "O'rozboyev Ollohberdi",
+          "firstName": "O'rozboyev",
+          "lastName": "Ollohberdi",
+          "email": "orozboyev_391_ollohberdi@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "orozboyev_391_ollohberdi",
+          "password": "orozboyev391oll",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
           "id": "cls_urolov_azizbek_upper_std_1",
           "name": "tester_1",
           "email": "cls_urolov_azizbek_upper_std_1@ethith.uz",
@@ -16266,22 +16285,6 @@
           "id": "cls_urolov_azizbek_upper_std_8",
           "name": "tester_8",
           "email": "cls_urolov_azizbek_upper_std_8@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_9",
-          "name": "tester_9",
-          "email": "cls_urolov_azizbek_upper_std_9@ethith.uz",
           "role": "student",
           "phone": "",
           "parentPhone": "",
@@ -16472,6 +16475,13 @@
           "date": "To‘lanmagan"
         },
         "std_odina_419_zoirova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_orozboyev_391_ollohberdi": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -19916,6 +19926,18 @@
       "isOnline": false,
       "lastLogin": null,
       "updatedAt": 1762062716700
+    },
+    {
+      "id": "std_orozboyev_391_ollohberdi",
+      "name": "O'rozboyev Ollohberdi",
+      "role": "student",
+      "login": "orozboyev_391_ollohberdi",
+      "password": "orozboyev391oll",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_upper",
+      "isOnline": false,
+      "lastLogin": null
     }
   ],
   "p2pListings": [],
@@ -138813,5 +138835,5 @@
       }
     }
   },
-  "updatedAt": 1762062771304
+  "updatedAt": 1762062801946
 }
