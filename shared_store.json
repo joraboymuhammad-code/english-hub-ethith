@@ -88413,8 +88413,8 @@
         "exercise": "1",
         "label": "6",
         "group": "p2076_ex1_6",
-        "top": 33,
-        "left": 28.6,
+        "top": 31.2,
+        "left": 23.2,
         "width": 6.6,
         "height": 1.8,
         "text": "campaign",
@@ -88428,8 +88428,8 @@
         "exercise": "1",
         "label": "6",
         "group": "p2076_ex1_6",
-        "top": 33.3,
-        "left": 36.9,
+        "top": 31.2,
+        "left": 31.2,
         "width": 4.3,
         "height": 1.8,
         "text": "death",
@@ -88442,8 +88442,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "2",
-        "top": 40.7,
-        "left": 30.3,
+        "top": 39.5,
+        "left": 29.9,
         "width": 7.3,
         "height": 2,
         "correct": [
@@ -88459,8 +88459,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "3",
-        "top": 33.9,
-        "left": 57.3,
+        "top": 44,
+        "left": 33.3,
         "width": 7.3,
         "height": 2,
         "correct": [
@@ -88476,8 +88476,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "4a",
-        "top": 72.5,
-        "left": 20.5,
+        "top": 47.9,
+        "left": 22,
         "width": 8.5,
         "height": 1.6,
         "correct": [
@@ -88493,8 +88493,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "4b",
-        "top": 72.5,
-        "left": 31.9,
+        "top": 47.9,
+        "left": 33.5,
         "width": 8.5,
         "height": 1.6,
         "correct": [
@@ -88510,7 +88510,7 @@
         "type": "fill",
         "exercise": "2",
         "label": "5",
-        "top": 52,
+        "top": 51,
         "left": 24.4,
         "width": 7.3,
         "height": 2,
@@ -88629,8 +88629,8 @@
         "type": "fill",
         "exercise": "3",
         "label": "2",
-        "top": 42.4,
-        "left": 35.2,
+        "top": 43.5,
+        "left": 50,
         "width": 7.3,
         "height": 2,
         "correct": [
@@ -88663,8 +88663,8 @@
         "type": "fill",
         "exercise": "3",
         "label": "4",
-        "top": 48.8,
-        "left": 22.6,
+        "top": 48.5,
+        "left": 61.6,
         "width": 7.4,
         "height": 2,
         "correct": [
@@ -137301,7 +137301,7 @@
     "2073": 1793614910563,
     "2074": 1793626065608,
     "2075": 1793626065608,
-    "2076": 1793626256642,
+    "2076": 1793626315001,
     "2077": 1793626113897,
     "2078": 1793563274073,
     "2079": 1793563274073,
@@ -138625,5 +138625,5 @@
       }
     }
   },
-  "updatedAt": 1793626265979
+  "updatedAt": 1793626325711
 }
