@@ -17090,7 +17090,8 @@
         "std_oydinoy_472_ibragimova": "Oydinoy Ibragimova",
         "std_muxlisa_356_obloqulova": "Muxlisa Obloqulova",
         "std_nurmuhammad_852_nosurname": "Nurmuhammad No Surname",
-        "std_shabnam_737_ergasheva": "Shabnam Ergasheva"
+        "std_shabnam_737_ergasheva": "Shabnam Ergasheva",
+        "std_dilnoza_261_ergasheva": "Dilnoza Ergasheva"
       },
       "customStudentPhones": {
         "std_orazaliyev_261_amirshox": "564654654",
@@ -17098,7 +17099,8 @@
         "std_oydinoy_472_ibragimova": "941973993",
         "std_muxlisa_356_obloqulova": "941973993",
         "std_nurmuhammad_852_nosurname": "941973993",
-        "std_shabnam_737_ergasheva": "941973993"
+        "std_shabnam_737_ergasheva": "941973993",
+        "std_dilnoza_261_ergasheva": "941973993"
       },
       "students": [
         {
@@ -17197,6 +17199,23 @@
           "parentPhone": "941973993",
           "login": "shabnam_737_ergasheva",
           "password": "shabnam737erg",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
+          "id": "std_dilnoza_261_ergasheva",
+          "name": "Dilnoza Ergasheva",
+          "firstName": "Dilnoza",
+          "lastName": "Ergasheva",
+          "email": "dilnoza_261_ergasheva@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "dilnoza_261_ergasheva",
+          "password": "dilnoza261erg",
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
@@ -17378,22 +17397,6 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_12",
-          "name": "tester_12",
-          "email": "cls_urolov_azizbek_intermediate_std_12@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
         }
       ],
       "studentPayments": {
@@ -17552,6 +17555,13 @@
           "date": "To‘lanmagan"
         },
         "std_shabnam_737_ergasheva": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_dilnoza_261_ergasheva": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20586,6 +20596,19 @@
       "role": "student",
       "login": "shabnam_737_ergasheva",
       "password": "shabnam737erg",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_intermediate",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793600809243
+    },
+    {
+      "id": "std_dilnoza_261_ergasheva",
+      "name": "Dilnoza Ergasheva",
+      "role": "student",
+      "login": "dilnoza_261_ergasheva",
+      "password": "dilnoza261erg",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_intermediate",
@@ -139495,5 +139518,5 @@
       }
     }
   },
-  "updatedAt": 1793600790924
+  "updatedAt": 1793600809266
 }
