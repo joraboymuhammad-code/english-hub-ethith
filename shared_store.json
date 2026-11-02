@@ -15993,7 +15993,8 @@
         "std_azimjon_848_toirov": "Azimjon Toirov",
         "std_oktamova_798_zarina": "O'ktamova Zarina",
         "std_shohista_786_nosurname": "Shohista No Surname",
-        "std_diyor_772_suyundikov": "Diyor Suyundikov"
+        "std_diyor_772_suyundikov": "Diyor Suyundikov",
+        "std_behruz_942_oktamov": "Behruz O'ktamov"
       },
       "customStudentPhones": {
         "std_orazaliyev_514_amirshox": "4",
@@ -16012,9 +16013,27 @@
         "std_azimjon_848_toirov": "941973993",
         "std_oktamova_798_zarina": "941973993",
         "std_shohista_786_nosurname": "941973993",
-        "std_diyor_772_suyundikov": "941973993"
+        "std_diyor_772_suyundikov": "941973993",
+        "std_behruz_942_oktamov": "941973993"
       },
       "students": [
+        {
+          "id": "std_behruz_942_oktamov",
+          "name": "Behruz O'ktamov",
+          "firstName": "Behruz",
+          "lastName": "O'ktamov",
+          "email": "behruz_942_oktamov@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "behruz_942_oktamov",
+          "password": "behruz942okt",
+          "joinedAt": "2025-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
         {
           "id": "std_nurlan_856_tangatov",
           "name": "Nurlan Tangatov",
@@ -16562,6 +16581,13 @@
           "date": "To‘lanmagan"
         },
         "std_diyor_772_suyundikov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_behruz_942_oktamov": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20117,6 +20143,19 @@
       "role": "student",
       "login": "diyor_772_suyundikov",
       "password": "diyor772suy",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_upper",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1762063038886
+    },
+    {
+      "id": "std_behruz_942_oktamov",
+      "name": "Behruz O'ktamov",
+      "role": "student",
+      "login": "behruz_942_oktamov",
+      "password": "behruz942okt",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_upper",
@@ -139019,5 +139058,5 @@
       }
     }
   },
-  "updatedAt": 1762063032145
+  "updatedAt": 1762063121837
 }
