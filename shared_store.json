@@ -16774,7 +16774,8 @@
         "std_parizoda_786_xalikova": "Parizoda Xalikova",
         "std_sevinch_279_nosurname": "Sevinch No Surname",
         "std_lazizbek_393_nuriddinov": "Lazizbek Nuriddinov",
-        "std_jahongir_489_polatboyev": "Jahongir Po'latboyev"
+        "std_jahongir_489_polatboyev": "Jahongir Po'latboyev",
+        "std_orzumurod_789_bekmurodov": "Orzumurod Bekmurodov"
       },
       "customStudentPhones": {
         "std_ruxshona_493_amalikova": "941973993",
@@ -16783,7 +16784,8 @@
         "std_parizoda_786_xalikova": "941973993",
         "std_sevinch_279_nosurname": "941973993",
         "std_lazizbek_393_nuriddinov": "941973993",
-        "std_jahongir_489_polatboyev": "941973993"
+        "std_jahongir_489_polatboyev": "941973993",
+        "std_orzumurod_789_bekmurodov": "941973993"
       },
       "students": [
         {
@@ -16899,6 +16901,23 @@
           "parentPhone": "941973993",
           "login": "jahongir_489_polatboyev",
           "password": "jahongir489pol",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
+          "id": "std_orzumurod_789_bekmurodov",
+          "name": "Orzumurod Bekmurodov",
+          "firstName": "Orzumurod",
+          "lastName": "Bekmurodov",
+          "email": "orzumurod_789_bekmurodov@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "orzumurod_789_bekmurodov",
+          "password": "orzumurod789bek",
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
@@ -17053,22 +17072,6 @@
           "id": "cls_urolov_azizbek_standard_std_10",
           "name": "tester_10",
           "email": "cls_urolov_azizbek_standard_std_10@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_11",
-          "name": "tester_11",
-          "email": "cls_urolov_azizbek_standard_std_11@ethith.uz",
           "role": "student",
           "phone": "",
           "parentPhone": "",
@@ -17252,6 +17255,13 @@
           "date": "To‘lanmagan"
         },
         "std_jahongir_489_polatboyev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_orzumurod_789_bekmurodov": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -21220,6 +21230,19 @@
       "role": "student",
       "login": "jahongir_489_polatboyev",
       "password": "jahongir489pol",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_standard",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793601351833
+    },
+    {
+      "id": "std_orzumurod_789_bekmurodov",
+      "name": "Orzumurod Bekmurodov",
+      "role": "student",
+      "login": "orzumurod_789_bekmurodov",
+      "password": "orzumurod789bek",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_standard",
@@ -140129,5 +140152,5 @@
       }
     }
   },
-  "updatedAt": 1793601347053
+  "updatedAt": 1793601367456
 }
