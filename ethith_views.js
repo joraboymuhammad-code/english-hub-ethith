@@ -13918,7 +13918,10 @@
     overlay.querySelector('#btnSaveEditProfile').onclick = function() {
       var msgEl = overlay.querySelector('#editProfileMsg');
       var newName = (inpName.value || '').trim();
+      var inpLoginEl = overlay.querySelector('#inpEditLogin');
+      var newLogin = inpLoginEl ? (inpLoginEl.value || '').trim().toLowerCase() : (user.login || '');
       var newEmail = (inpEmail.value || '').trim().toLowerCase();
+      var oldLogin = (user.login || '').trim().toLowerCase();
 
       if (!newName) {
         msgEl.style.display = 'block';
@@ -13953,8 +13956,8 @@
       }
 
       user.name = newName;
+      if (newLogin) user.login = newLogin;
       user.email = newEmail;
-      user.id = newEmail;
       user.avatar = selectedAvatar;
       user.updatedAt = Date.now();
 
@@ -13969,8 +13972,8 @@
       });
       if (accIdx > -1) {
         S.accounts[accIdx].name = newName;
+        if (newLogin) S.accounts[accIdx].login = newLogin;
         S.accounts[accIdx].email = newEmail;
-        S.accounts[accIdx].id = newEmail;
         S.accounts[accIdx].avatar = selectedAvatar;
         S.accounts[accIdx].coins = Number(user.coins || 0);
         S.accounts[accIdx].updatedAt = Date.now();
@@ -14016,11 +14019,12 @@
           c.students.forEach(function(st) {
             var sEm = (st.email || '').toLowerCase().trim();
             var sNm = (st.name || '').toLowerCase().trim();
-            if ((oldEmail && sEm === oldEmail) || (oldName && sNm === oldName.toLowerCase())) {
+            if ((oldEmail && sEm === oldEmail) || (oldName && sNm === oldName.toLowerCase()) || (oldLogin && (st.login || '').toLowerCase() === oldLogin)) {
               st.name = newName;
+              if (newLogin) st.login = newLogin;
               st.email = newEmail;
-              st.id = newEmail;
               st.avatar = selectedAvatar;
+              st.updatedAt = Date.now();
             }
           });
         }

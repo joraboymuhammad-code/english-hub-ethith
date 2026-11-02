@@ -1174,16 +1174,49 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     }
   };
 
-  function getUniversalToday() {
-    var d = new Date();
-    // System standardized academic year is strictly 2026.
-    // If client PC clock is behind 2026 (e.g. 2025), normalize to 2026 so calendar is 100% identical on all devices
+    function getUniversalToday() {
+    var offset = window._internetTimeOffset;
+    if (typeof offset !== 'number') {
+      try {
+        var saved = localStorage.getItem('ethith_internet_time_offset');
+        if (saved) offset = parseInt(saved, 10);
+      } catch(e) {}
+    }
+    var nowMs = Date.now() + (offset || 0);
+    var d = new Date(nowMs);
+    // If client PC clock is behind 2026, synchronize year to 2026
     if (d.getFullYear() < 2026) {
       d.setFullYear(2026);
     }
     return d;
   }
   EA.getUniversalToday = getUniversalToday;
+
+  // Active Internet Date Synchronization from Network Headers
+  function syncInternetDate() {
+    var bust = Date.now();
+    fetch('https://raw.githubusercontent.com/joraboymuhammad-code/english-hub-ethith/main/version.json?_t=' + bust, { cache: 'no-store' })
+      .then(function(r) {
+        var dHeader = r.headers.get('date');
+        if (dHeader) {
+          var serverTime = new Date(dHeader).getTime();
+          if (!isNaN(serverTime) && serverTime > 0) {
+            window._internetTimeOffset = serverTime - Date.now();
+            try {
+              localStorage.setItem('ethith_internet_time_offset', window._internetTimeOffset.toString());
+            } catch(e) {}
+            if (window.EA && typeof window.EA.render === 'function' && document.getElementById('apView')) {
+              window.EA.render(document.getElementById('apView'));
+            }
+          }
+        }
+      }).catch(function() {});
+  }
+  EA.syncInternetDate = syncInternetDate;
+  if (typeof window !== 'undefined') {
+    setTimeout(syncInternetDate, 100);
+    setInterval(syncInternetDate, 60000);
+  }
 
   function formatDisplayDate(d) {
     if (!d) d = getUniversalToday();

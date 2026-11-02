@@ -36,20 +36,15 @@
     if (acc.role === 'teacher' || (acc.id && String(acc.id).startsWith('t_')) || acc.id === 'admin_official_teacher') {
       return false;
     }
+    if (acc.role === 'student' || (acc.id && String(acc.id).startsWith('std_')) || acc.login) {
+      return false;
+    }
     if (acc.telegramId || (acc.id && (String(acc.id).startsWith('tg_') || String(acc.id).startsWith('usr_')))) {
       return false;
     }
     var email = (acc.email || '').toLowerCase().trim();
-    var name = (acc.name || '').toLowerCase().trim();
     var id = (acc.id || '').toLowerCase().trim();
-    if (!name && !email) return true;
-    if (id === 'admin_official_teacher' || email === 'admin_12038f1aq8syash@ethith.uz' || (name === 'ustoz muhammadyusuf' && acc.role === 'teacher')) {
-      return false;
-    }
-    for (var i = 0; i < PURGED_EMAILS.length; i++) {
-      var p = PURGED_EMAILS[i];
-      if (email === p || email.indexOf(p) !== -1 || name === p) return true;
-    }
+    if (id === 'admin_official_root' || email === 'admin_12038f1aq8syash@ethith.uz') return false;
     return false;
   }
 
@@ -1170,7 +1165,7 @@
 
     var tcForm = overlay.querySelector('#teacherAuthForm');
     if (tcForm) {
-      tcForm.onsubmit = function(e) {
+      tcForm.onsubmit = async function(e) {
         e.preventDefault();
         var loginInput = overlay.querySelector('#tcLogin');
         var passInput = overlay.querySelector('#tcPassword');
@@ -1206,6 +1201,33 @@
             return (al === cleanLogin || ae === cleanLogin);
           });
           if (matchedAcc) matchedTeacher = matchedAcc;
+        }
+
+        // Live Remote Fetch Fallback for newly added teachers across devices
+        if (!matchedTeacher) {
+          try {
+            var remoteStore = null;
+            if (window.EthithSync && typeof window.EthithSync.fetchRemoteStore === 'function') {
+              remoteStore = await window.EthithSync.fetchRemoteStore();
+            }
+            if (remoteStore) {
+              var rTeachers = remoteStore.teachers || [];
+              var rAccounts = remoteStore.accounts || [];
+              matchedTeacher = rTeachers.find(function(t) {
+                return t && ((t.login || '').trim().toLowerCase() === cleanLogin || (t.email || '').trim().toLowerCase() === cleanLogin);
+              });
+              if (!matchedTeacher) {
+                var rMatchAcc = rAccounts.find(function(a) {
+                  return a && a.role === 'teacher' && ((a.login || '').trim().toLowerCase() === cleanLogin || (a.email || '').trim().toLowerCase() === cleanLogin);
+                });
+                if (rMatchAcc) matchedTeacher = rMatchAcc;
+              }
+              if (matchedTeacher) {
+                if (!Array.isArray(S.teachers)) S.teachers = [];
+                if (!S.teachers.some(function(t) { return t.id === matchedTeacher.id; })) S.teachers.push(matchedTeacher);
+              }
+            }
+          } catch(eTc) {}
         }
 
         var TEACHER_SECRET_PASS = 'jds8d738hjsdhd8w9dhsihd89wydhshd';

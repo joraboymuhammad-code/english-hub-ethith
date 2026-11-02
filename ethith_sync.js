@@ -1081,7 +1081,9 @@
           if (event.type === 'USER_COINS_UPDATE' || event.type === 'COIN_TRANSFER') {
             if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
           } else {
-            if (!isTeacherAcc && existingAcc.role !== 'teacher' && uName && (!existingAcc.name || !isPlaceholder(uName))) existingAcc.name = uName;
+            if (uName) existingAcc.name = uName;
+            if (u.login) existingAcc.login = u.login;
+            if (u.password) existingAcc.password = u.password;
             if (uEmail) existingAcc.email = uEmail;
             if (uId && existingAcc.role !== 'teacher') existingAcc.id = uId;
             if (u.coins !== undefined) existingAcc.coins = Number(u.coins);
@@ -1093,6 +1095,24 @@
             if (u.dailyMinutes !== undefined) existingAcc.dailyMinutes = u.dailyMinutes;
           }
           existingAcc.updatedAt = Date.now();
+
+          // Also update in classes
+          classes.forEach(function(c) {
+            if (Array.isArray(c.students)) {
+              c.students.forEach(function(st) {
+                var sEm = (st.email || '').toLowerCase().trim();
+                var sId = (st.id || '').trim();
+                var sLg = (st.login || '').toLowerCase().trim();
+                if ((uEmail && sEm === uEmail) || (uId && sId === uId) || (u.login && sLg === u.login.toLowerCase().trim())) {
+                  if (uName) st.name = uName;
+                  if (u.login) st.login = u.login;
+                  if (u.password) st.password = u.password;
+                  if (u.avatar !== undefined) st.avatar = u.avatar;
+                  st.updatedAt = Date.now();
+                }
+              });
+            }
+          });
         } else {
           S.accounts.push(u);
         }
@@ -1352,6 +1372,14 @@
         var data = await res.json();
         _lastKnownSha = data.sha;
         var b64 = data.content;
+        var dH = res.headers.get('date');
+        if (dH) {
+          var sTime = new Date(dH).getTime();
+          if (!isNaN(sTime) && sTime > 0) {
+            window._internetTimeOffset = sTime - Date.now();
+            try { localStorage.setItem('ethith_internet_time_offset', window._internetTimeOffset.toString()); } catch(e){}
+          }
+        }
         if (data.sha && (!b64 || data.encoding === 'none')) {
           try {
             var blobRes = await fetch('https://api.github.com/repos/joraboymuhammad-code/english-hub-ethith/git/blobs/' + data.sha, {
@@ -1799,41 +1827,11 @@
 
   function isPurgedAccount(acc) {
     if (!acc) return true;
+    if (acc.role === 'teacher' || (acc.id && String(acc.id).startsWith('t_')) || acc.id === 'admin_official_teacher') return false;
+    if (acc.role === 'student' || (acc.id && String(acc.id).startsWith('std_')) || acc.login) return false;
     var email = (acc.email || '').toLowerCase().trim();
-    var name = (acc.name || '').toLowerCase().trim();
     var id = (acc.id || '').toLowerCase().trim();
-    if (!name && !email) return true;
-    if (id === 'admin_official_root' || email === 'admin_12038f1aq8syash@ethith.uz') {
-      acc.name = 'Bosh Admin';
-      acc.id = 'admin_official_root';
-      acc.role = 'admin';
-      return false;
-    }
-    if (id === 'admin_official_teacher' || email === 'teacher@ethith.uz') {
-      acc.name = 'Ustoz';
-      acc.id = 'admin_official_teacher';
-      acc.role = 'teacher';
-      return false;
-    }
-    // Retain individual teachers
-    if (id.startsWith('t_') || acc.role === 'teacher') {
-      return false;
-    }
-    // Retain registered students
-    if (acc.role === 'student' || id.startsWith('std_')) {
-      return false;
-    }
-    var purgedList = [
-      'muhammedjoraboyev1@gmail.com', 'strikeruzb52@gmail.com', 'alisher@gmail.com',
-      'nasibaorazaliyev@gmail.com', 'joraboymuhammad@gmail.com', 'aleksandermike37@gmail.com',
-      'sarvartovboyev09@gmail.com', 'azizbekurolov24@gmail.com', 'shodiyorovinch030@gmail.com',
-      'nursulton@ethith.uz', 'john.doe@ethith.uz', 'yangi o\'quvchi', 'alisher oquvchi',
-      'shamshod', 'nursulton', 'azizbek', 'urolov', 'sarvar tovboyev', 'aleksander mike'
-    ];
-    for (var i = 0; i < purgedList.length; i++) {
-      var p = purgedList[i];
-      if (email === p || email.indexOf(p) !== -1 || name === p) return true;
-    }
+    if (id === 'admin_official_root' || email === 'admin_12038f1aq8syash@ethith.uz') return false;
     return false;
   }
 
