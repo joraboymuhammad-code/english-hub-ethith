@@ -116097,8 +116097,8 @@
           "foggy, freezing, icy, snowy",
           "freezing, icy, snowy, foggy"
         ],
-        "top": 33,
-        "left": 12,
+        "top": 33.2,
+        "left": 11.2,
         "width": 35,
         "height": 2.2
       },
@@ -137286,7 +137286,7 @@
     "3062": 1793506681641,
     "3063": 1793506773020,
     "3065": 1793515698497,
-    "3066": 1793596652295,
+    "3066": 1793596654879,
     "3067": 1793515895423,
     "3068": 1793516155559,
     "3069": 1793516155560,
@@ -137949,12 +137949,12 @@
       "password": "ustoz2026",
       "inviteCode": "USTOZ77",
       "subject": "Ingliz tili (IELTS Intensive)",
-      "monthlySalary": 6000000,
+      "monthlySalary": 0,
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "hourlyRate": 100000,
       "teachingHours": 72,
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_ethith_main",
         "cls_upper_intermediate"
@@ -137962,7 +137962,8 @@
       "classOrder": [
         "cls_ethith_main",
         "cls_upper_intermediate"
-      ]
+      ],
+      "unpaidMonths": 0
     },
     {
       "id": "tc_oprlehyw5",
@@ -137973,7 +137974,7 @@
       "inviteCode": "ZIZI24",
       "phone": "+998 93 987 65 43",
       "card": "9860 7788 9900 1122",
-      "monthlySalary": 5500000,
+      "monthlySalary": 0,
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "hourlyRate": 85000,
@@ -137985,7 +137986,8 @@
       ],
       "classOrder": [
         "cls_1792041880052"
-      ]
+      ],
+      "unpaidMonths": 0
     }
   ],
   "fileExplorer": {
@@ -138428,5 +138430,5 @@
       }
     }
   },
-  "updatedAt": 1793596654408
+  "updatedAt": 1793596665285
 }
