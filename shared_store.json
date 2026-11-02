@@ -108988,7 +108988,7 @@
           "drink eight glasses of water a day",
           "drink eight glasses of water"
         ],
-        "left": 58.8,
+        "left": 59.6,
         "top": 46.3
       },
       {
@@ -109001,7 +109001,7 @@
         "correct": [
           "go to the gym"
         ],
-        "left": 71.9,
+        "left": 72.7,
         "top": 51.3
       },
       {
@@ -109014,7 +109014,7 @@
         "correct": [
           "walk to work"
         ],
-        "left": 58.8,
+        "left": 59.6,
         "top": 57.9
       },
       {
@@ -109028,7 +109028,7 @@
           "take the stairs, not the lift",
           "take the stairs"
         ],
-        "left": 66.2,
+        "left": 67,
         "top": 60.9
       },
       {
@@ -109042,7 +109042,7 @@
           "do physical jobs around the house",
           "do physical jobs"
         ],
-        "left": 68.4,
+        "left": 69.2,
         "top": 68.2
       },
       {
@@ -109056,7 +109056,7 @@
           "sleep seven to eight hours a night",
           "sleep seven to eight hours"
         ],
-        "left": 58.5,
+        "left": 59.3,
         "top": 75.6
       }
     ],
@@ -137108,7 +137108,7 @@
     "3043": 1793433537379,
     "3044": 1793433620154,
     "3045": 1793433620155,
-    "3046": 1793596163790,
+    "3046": 1793596171294,
     "3047": 1793433722010,
     "3048": 1793433733067,
     "3049": 1793433871906,
@@ -138231,5 +138231,5 @@
       }
     }
   },
-  "updatedAt": 1793596164447
+  "updatedAt": 1793596174947
 }
