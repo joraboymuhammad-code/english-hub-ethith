@@ -334,10 +334,129 @@
     }
   }
 
+  
+  // ====================================================
+  // REAL-TIME USER PRESENCE (100,000+ Scale 3-Color Engine)
+  // 🟢 Yashil: Hozir Online (heartbeat/faoliyat < 75s)
+  // 🔵 Ko'k: Offline (avval kirgan, lekin hozir oflayn)
+  // 🔴 Qizil: Kirmagan (tizimga hali biror marta kirmagan)
+  // ====================================================
+  window._ethithPresenceMap = window._ethithPresenceMap || {};
+
+  function markUserActive(uKeys, ts) {
+    if (!window._ethithPresenceMap) window._ethithPresenceMap = {};
+    var nowTs = ts || Date.now();
+    (Array.isArray(uKeys) ? uKeys : [uKeys]).forEach(function(k) {
+      if (k) window._ethithPresenceMap[(k + '').toLowerCase().trim()] = nowTs;
+    });
+  }
+
+  window._ethithGetUserStatus = function(u) {
+    if (!u) return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
+    var now = Date.now();
+    var myU = (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) || {};
+    
+    // Current user on this browser is ALWAYS Online
+    var isMe = (u.id && myU.id && u.id === myU.id) || 
+               (u.login && myU.login && u.login.toLowerCase() === myU.login.toLowerCase()) ||
+               (u.email && myU.email && u.email.toLowerCase() === myU.email.toLowerCase());
+    if (isMe) {
+      return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢' };
+    }
+
+    var keys = [u.id, u.login, u.email, u.name].filter(Boolean).map(function(k){ return (k + '').toLowerCase().trim(); });
+    var presMap = window._ethithPresenceMap || {};
+    var lastSeen = 0;
+    keys.forEach(function(k) {
+      if (presMap[k] && presMap[k] > lastSeen) lastSeen = presMap[k];
+    });
+
+    var S = (window.EthithApp && window.EthithApp.state) || {};
+    var acc = (S.accounts || []).find(function(a) {
+      if (!a) return false;
+      return (u.id && a.id === u.id) ||
+             (u.login && a.login && a.login.toLowerCase() === u.login.toLowerCase()) ||
+             (u.email && a.email && a.email.toLowerCase() === u.email.toLowerCase());
+    });
+
+    if (acc && acc.lastSeen && acc.lastSeen > lastSeen) lastSeen = acc.lastSeen;
+
+    // Within 75 seconds window = 🟢 Online
+    if (lastSeen && (now - lastSeen) < 75000) {
+      return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢', lastSeen: lastSeen };
+    }
+
+    // Has user ever logged in previously?
+    var hasEverLoggedIn = (acc && (acc.lastLogin || acc.lastSeen || acc.loginCount > 0)) ||
+                          u.lastLogin || u.lastSeen || (u.coins && u.coins > 0) || u.hasLoggedIn ||
+                          (u.login && !u.isTester && u.login !== 'tester' && !u.login.startsWith('tester_'));
+
+    if (!hasEverLoggedIn && S.classes) {
+      hasEverLoggedIn = S.classes.some(function(c) {
+        return (c.messages || []).some(function(m) {
+          return (m.senderId && u.id && m.senderId === u.id) ||
+                 (m.senderName && u.name && m.senderName.toLowerCase() === u.name.toLowerCase());
+        });
+      });
+    }
+
+    if (hasEverLoggedIn) {
+      return { status: 'blue', label: "Offline", color: '#3b82f6', dot: '🔵', lastSeen: lastSeen };
+    }
+
+    return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
+  };
+
+  function sendPresenceHeartbeat() {
+    if (!window.EthithApp || !window.EthithApp.state || !window.EthithApp.state.user) return;
+    var u = window.EthithApp.state.user;
+    var S = window.EthithApp.state;
+    var now = Date.now();
+    markUserActive([u.id, u.login, u.email, u.name], now);
+
+    var payload = {
+      type: 'PRESENCE_HEARTBEAT',
+      from: myClientId,
+      userId: u.id || u.login || u.email,
+      login: u.login || '',
+      email: u.email || '',
+      name: u.name || '',
+      role: u.role || 'student',
+      classId: u.classId || S.activeClassId || null,
+      ts: now
+    };
+    if (typeof publishLive === 'function') {
+      publishLive(payload);
+    }
+    try {
+      if (typeof BroadcastChannel !== 'undefined') {
+        if (!window._eeChannel) window._eeChannel = new BroadcastChannel('ethith_cloud_channel');
+        window._eeChannel.postMessage(payload);
+      }
+    } catch(e) {}
+  }
+
+  if (typeof window !== 'undefined') {
+    setTimeout(sendPresenceHeartbeat, 1200);
+    setInterval(sendPresenceHeartbeat, 25000);
+  }
+
   // Dispatch incoming live events directly to local state and UI
   function handleIncomingLiveEvent(event) {
     if (!event || event.from === myClientId) return; // Don't echo self
     if (event.id && markEventSeen(event.id)) return; // Deduplicate across dual brokers
+
+    // Instant presence tracking for sender
+    if (event.from) {
+      markUserActive([event.userId, event.senderId, event.login, event.email, event.senderEmail, event.name, event.senderName], event.ts || Date.now());
+    }
+
+    if (event.type === 'PRESENCE_HEARTBEAT') {
+      if (window._ethithRefreshPresenceUI) {
+        try { window._ethithRefreshPresenceUI(); } catch(pe) {}
+      }
+      return;
+    }
 
     if (!window.EthithApp || !window.EthithApp.state) return;
 
@@ -2799,6 +2918,8 @@
     saveWorkbookCloudOverrides: saveWorkbookCloudOverrides,
     getWorkbookCloudOverrides: getWorkbookCloudOverrides,
     syncAllLocalWorkbookOverridesToCloud: syncAllLocalWorkbookOverridesToCloud,
+    getUserStatus: window._ethithGetUserStatus,
+    sendPresenceHeartbeat: sendPresenceHeartbeat,
     isMqttConnected: function() {
       return isMeshConnected;
     }

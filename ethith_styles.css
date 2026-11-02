@@ -206,10 +206,12 @@ html, body {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   z-index: 9999999 !important;
-  padding: 16px;
+  padding: 24px 16px 40px !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
   animation: ethFadeIn 0.25s ease-out;
 }
 
@@ -218,7 +220,8 @@ html, body {
   color: var(--text, #0f172a);
   width: 100%;
   max-width: 560px;
-  max-height: min(92vh, 760px) !important;
+  margin: auto 0 !important;
+  max-height: calc(100vh - 48px) !important;
   display: flex !important;
   flex-direction: column !important;
   border-radius: 20px;

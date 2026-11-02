@@ -1412,6 +1412,11 @@
       }
     };
 
+    // Auto-enter class for students on direct navigation
+    if (isStudent && userClasses.length > 0 && !S.activeClassId) {
+      S.activeClassId = userClasses[0].id;
+    }
+
     if (S.activeClassId) {
       var activeCls = S.classes.find(function(c) { return c.id === S.activeClassId; });
       var isEnrolled = isTeacher || isAdmin || (activeCls && (
@@ -1460,15 +1465,21 @@
     } else {
       html += '<div class="ap-grid g2">';
       userClasses.forEach(function(c) {
+        var stList = c.students || [];
+        var onCount = 0;
+        stList.forEach(function(s) {
+          var stObj = (window._ethithGetUserStatus ? window._ethithGetUserStatus(s) : { status: 'red' });
+          if (stObj.status === 'green') onCount++;
+        });
         html += '' +
-          '<div class="ap-card" style="cursor:pointer;transition:transform 0.2s" data-cls-id="' + c.id + '">' +
-          '  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">' +
-          '    <span class="ap-tag">' + (c.students ? c.students.length : 0) + ' o‘quvchi</span>' +
-          '    <span style="font-family:monospace;font-weight:700;color:#2563eb;background:rgba(37,99,235,0.08);padding:4px 8px;border-radius:6px">Kod: ' + c.code + '</span>' +
+          '<div class="ap-card" style="cursor:pointer;transition:transform 0.2s;background:linear-gradient(145deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1.5px solid rgba(56,189,248,0.3);border-radius:20px;padding:22px;box-shadow:0 12px 30px rgba(0,0,0,0.5);" data-cls-id="' + c.id + '">' +
+          '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">' +
+          '    <span class="ap-tag" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.35);color:#38bdf8;padding:4px 10px;border-radius:12px;font-weight:800;">' + stList.length + ' o‘quvchi · <b style="color:#22c55e;">🟢 ' + onCount + ' online</b></span>' +
+          '    <span style="font-family:monospace;font-weight:900;color:#38bdf8;background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.3);padding:4px 10px;border-radius:8px;">Kod: ' + c.code + '</span>' +
           '  </div>' +
-          '  <h3 style="font-size:18px;margin-bottom:6px">' + esc(c.name) + '</h3>' +
-          '  <p style="color:var(--muted);font-size:13px;margin:0 0 14px">Ustoz: ' + esc(c.teacherName || 'O‘qituvchi') + '</p>' +
-          '  <button class="ap-btn solid" style="width:100%">' + ic('msg') + ' Guruhga Kirish ' + ic('right') + '</button>' +
+          '  <h3 style="font-size:19px;font-weight:900;color:#fff;margin:0 0 6px;">💬 ' + esc(c.name) + '</h3>' +
+          '  <p style="color:#94a3b8;font-size:13px;margin:0 0 16px;">Ustoz: <b style="color:#e2e8f0;">' + esc(c.teacherName || 'O‘qituvchi') + '</b></p>' +
+          '  <button class="ap-btn solid" style="width:100%;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border-radius:12px;padding:10px 16px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:8px;">' + ic('msg') + ' Guruh Chatiga Kirish ' + ic('right') + '</button>' +
           '</div>';
       });
       html += '</div>';
@@ -1842,22 +1853,40 @@
       }
     }
 
+    var stList = (cls && cls.students) || [];
+    var totalMembers = stList.length;
+    var onlineCount = 0;
+    var offlineCount = 0;
+    var neverCount = 0;
+    stList.forEach(function(s) {
+      var stObj = (window._ethithGetUserStatus ? window._ethithGetUserStatus(s) : { status: 'red' });
+      if (stObj.status === 'green') onlineCount++;
+      else if (stObj.status === 'blue') offlineCount++;
+      else neverCount++;
+    });
+
     var html = '' +
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:8px;flex-wrap:wrap">' +
-      '  <button class="ap-back" id="backClassesListBtn" style="margin:0">' + ic('left') + ' Back to Classes</button>' +
+      '  <button class="ap-back" id="backClassesListBtn" style="margin:0">' + ic('left') + ' Guruhlar Ro‘yxatiga Qaytish</button>' +
       '  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">' +
       (isTeacher ? '    <button class="ap-btn solid" id="clsAssignHwTopBtn" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;font-weight:800">📚 Uy vazifasi belgilash</button>' : '') +
       '    <button class="ap-btn solid" id="clsOpenAttendanceBtn" style="background:#0284c7;color:#fff;font-weight:800">' + ic('calendar') + ' Davomat (Attendance)</button>' +
-      (isTeacher ? '    <button class="ap-btn out" id="clsMonitoringBtn">' + ic('user') + ' Student Roster (' + (cls.students ? cls.students.length : 0) + ')</button>' : '') +
+      '    <button class="ap-btn out" id="clsMonitoringBtn" style="border:1.5px solid rgba(56,189,248,0.45);background:rgba(56,189,248,0.12);color:#38bdf8;font-weight:800;display:inline-flex;align-items:center;gap:6px;">👥 Guruh A‘zolari & Online (' + totalMembers + ')</button>' +
       '  </div>' +
       '</div>' +
       '<div class="tg-chat-wrap">' +
       '  <div class="tg-header">' +
-      '    <div class="tg-header-info">' +
+      '    <div class="tg-header-info" id="tgHeaderTitleWrap" style="cursor:pointer;" title="Guruh a‘zolari va online holatini ko‘rish">' +
       '      <div class="tg-header-avatar">' + cls.name.charAt(0).toUpperCase() + '</div>' +
       '      <div class="tg-header-title">' +
-      '        <h3>' + esc(cls.name) + '</h3>' +
-      '        <span>' + (cls.students ? cls.students.length : 0) + ' members · Code: <b style="color:#2563eb;user-select:all">' + cls.code + '</b></span>' +
+      '        <h3 style="display:flex;align-items:center;gap:8px;">' + esc(cls.name) + ' <span style="font-size:12px;color:#38bdf8;font-weight:600;">(A‘zolar 👥)</span></h3>' +
+      '        <div style="font-size:12px;color:#94a3b8;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:2px;">' +
+      '          <span><b>' + totalMembers + '</b> a‘zo</span>' +
+      '          <span style="color:#22c55e;font-weight:800;">🟢 ' + onlineCount + ' online</span>' +
+      '          <span style="color:#38bdf8;font-weight:700;">🔵 ' + offlineCount + ' offline</span>' +
+      '          <span style="color:#ef4444;font-weight:700;">🔴 ' + neverCount + ' kirmagan</span>' +
+      '          <span style="color:#64748b;">· Kod: <b style="color:#38bdf8;user-select:all">' + cls.code + '</b></span>' +
+      '        </div>' +
       '      </div>' +
       '    </div>' +
       '  </div>' +
@@ -1935,7 +1964,10 @@
             '  <b>' + esc(m.replyTo.senderName) + '</b>' +
             '  <span>' + esc(m.replyTo.text.slice(0, 60)) + '</span>' +
             '</div>' : '') +
-          ((!isOwn ? '<div class="tg-msg-sender" style="display:flex;align-items:center;gap:6px">' + (window.ETHITH_RENDER_USER_AVATAR ? window.ETHITH_RENDER_USER_AVATAR({ name: m.senderName, avatar: m.senderAvatar }, 22) : '') + '<span>' + esc(m.senderName) + '</span></div>' : '')) +
+          ((!isOwn ? (function() {
+          var senderSt = (window._ethithGetUserStatus ? window._ethithGetUserStatus({ id: m.senderId, email: m.senderEmail, name: m.senderName }) : { color: '#38bdf8', label: 'User' });
+          return '<div class="tg-msg-sender" style="display:flex;align-items:center;gap:6px">' + (window.ETHITH_RENDER_USER_AVATAR ? window.ETHITH_RENDER_USER_AVATAR({ name: m.senderName, avatar: m.senderAvatar }, 22) : '') + '<span>' + esc(m.senderName) + '</span><span title="' + senderSt.label + '" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + senderSt.color + ';box-shadow:0 0 6px ' + senderSt.color + ';"></span></div>';
+        })() : '')) +
           '    <div class="tg-msg-text">' + esc(m.text) + '</div>' +
           '    <div class="tg-msg-meta">' + m.time + (isOwn ? ' ✓✓' : '') + '</div>' +
           (reactionsList.length > 0 ?
@@ -1990,6 +2022,12 @@
     var monitorBtn = document.getElementById('clsMonitoringBtn');
     if (monitorBtn) {
       monitorBtn.onclick = function() {
+        showClassMonitoringModal(cls);
+      };
+    }
+    var headerWrap = document.getElementById('tgHeaderTitleWrap');
+    if (headerWrap) {
+      headerWrap.onclick = function() {
         showClassMonitoringModal(cls);
       };
     }
@@ -2558,42 +2596,137 @@
     });
   }
 
-  // Teacher Class Monitoring Modal
+  // Telegram-Style Class Members & Live Presence Roster Modal
   function showClassMonitoringModal(cls) {
     var overlay = document.createElement('div');
     overlay.className = 'eth-modal-overlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(10,25,47,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:flex-start;justify-content:center;z-index:9999999;padding:24px 16px 40px;overflow-y:auto;-webkit-overflow-scrolling:touch;';
+    
     var students = cls.students || [];
+    var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.role === 'admin');
 
-    overlay.innerHTML = '' +
-      '<div class="eth-modal" style="max-width:600px">' +
-      '  <div class="eth-modal-header">' +
-      '    <h2>' + esc(cls.name) + ' · Student Performance Monitoring</h2>' +
-      '    <p>Real-time analytics: daily study time and mistake frequency per student</p>' +
-      '  </div>' +
-      '  <div class="eth-modal-body" style="max-height:60vh;overflow-y:auto">' +
-      (students.length === 0 ?
-        '<p style="color:var(--muted);text-align:center">No students have joined this class yet.</p>' :
-        '<table class="eth-leaderboard-table">' +
-        '  <thead><tr><th>Student</th><th>Daily Time</th><th>Mistakes</th></tr></thead>' +
-        '  <tbody>' +
-        students.map(function(s) {
-          return '<tr>' +
-            '  <td><b>' + esc(s.name) + '</b><br><small style="color:var(--muted)">' + esc(s.email) + '</small></td>' +
-            '  <td><b>' + (s.dailyMinutes || 0) + ' mins</b></td>' +
-            '  <td><span style="color:#ef4444;font-weight:700">' + (s.mistakes || 0) + ' mistakes</span></td>' +
-            '</tr>';
-        }).join('') +
-        '  </tbody>' +
-        '</table>'
+    var onlineCount = 0;
+    var offlineCount = 0;
+    var neverCount = 0;
+
+    var sortedStudents = students.slice().sort(function(a, b) {
+      var stA = window._ethithGetUserStatus ? window._ethithGetUserStatus(a) : { status: 'red' };
+      var stB = window._ethithGetUserStatus ? window._ethithGetUserStatus(b) : { status: 'red' };
+      var weight = { 'green': 1, 'blue': 2, 'red': 3 };
+      return (weight[stA.status] || 3) - (weight[stB.status] || 3);
+    });
+
+    students.forEach(function(s) {
+      var stObj = window._ethithGetUserStatus ? window._ethithGetUserStatus(s) : { status: 'red' };
+      if (stObj.status === 'green') onlineCount++;
+      else if (stObj.status === 'blue') offlineCount++;
+      else neverCount++;
+    });
+
+    var teacherObj = { name: cls.teacherName || 'Ustoz', role: 'teacher', id: cls.teacherId };
+    var teacherStatus = window._ethithGetUserStatus ? window._ethithGetUserStatus(teacherObj) : { status: 'green', color: '#22c55e', label: 'Online' };
+
+    var html = '<div class="eth-modal" style="max-width:620px;width:100%;margin:auto 0;max-height:calc(100vh - 48px);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;box-sizing:border-box;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(56,189,248,0.45);box-shadow:0 24px 60px rgba(0,0,0,0.8),0 0 30px rgba(56,189,248,0.25);border-radius:24px;padding:24px 28px 24px;color:#fff;">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">' +
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          '<div style="width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 18px rgba(2,132,199,0.4);">👥</div>' +
+          '<div>' +
+            '<h2 style="margin:0;font-size:18px;font-weight:900;color:#fff;">' + esc(cls.name) + ' — Guruh A‘zolari</h2>' +
+            '<div style="margin:3px 0 0;font-size:12px;color:#94a3b8;display:flex;gap:8px;flex-wrap:wrap;">' +
+              '<span>Jami: <b>' + students.length + ' ta o‘quvchi</b></span>' +
+              '<span style="color:#22c55e;font-weight:800;">🟢 ' + onlineCount + ' online</span>' +
+              '<span style="color:#38bdf8;font-weight:700;">🔵 ' + offlineCount + ' offline</span>' +
+              '<span style="color:#ef4444;font-weight:700;">🔴 ' + neverCount + ' kirmagan</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<button type="button" id="monCloseXBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:20px;cursor:pointer;border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">✕</button>' +
+      '</div>' +
+
+      // 3-Color Explanatory Legend
+      '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:8px 14px;margin-bottom:16px;font-size:11.5px;">' +
+        '<div style="display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;"></span> <b style="color:#4ade80;">Yashil:</b> Hozir Online</div>' +
+        '<div style="display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#3b82f6;"></span> <b style="color:#60a5fa;">Ko‘k:</b> Offline (avval kirgan)</div>' +
+        '<div style="display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#ef4444;"></span> <b style="color:#f87171;">Qizil:</b> Tizimga hali kirmagan</div>' +
+      '</div>' +
+
+      // Teacher Card
+      '<div style="background:linear-gradient(135deg,rgba(56,189,248,0.12),rgba(37,99,235,0.12));border:1.5px solid rgba(56,189,248,0.4);border-radius:16px;padding:12px 16px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;">' +
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          '<div style="width:38px;height:38px;border-radius:12px;background:#0284c7;display:flex;align-items:center;justify-content:center;font-size:20px;">👨‍🏫</div>' +
+          '<div>' +
+            '<div style="font-size:14.5px;font-weight:900;color:#fff;">' + esc(cls.teacherName || 'Ustoz') + ' <span style="font-size:11px;background:rgba(56,189,248,0.25);color:#7dd3fc;padding:2px 6px;border-radius:6px;font-weight:800;">Ustoz / Guruh Rahbari</span></div>' +
+            '<div style="font-size:11.5px;color:#94a3b8;margin-top:2px;">Guruh kodi: <b style="color:#38bdf8;font-family:monospace;">' + cls.code + '</b></div>' +
+          '</div>' +
+        '</div>' +
+        '<span style="background:rgba(34,197,94,0.18);border:1px solid #22c55e;color:#4ade80;padding:4px 10px;border-radius:20px;font-size:11.5px;font-weight:800;display:inline-flex;align-items:center;gap:5px;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;"></span> ' + teacherStatus.label + '</span>' +
+      '</div>' +
+
+      // Student Roster
+      '<div style="font-size:12.5px;font-weight:800;color:#cbd5e1;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">O‘quvchilar Ro‘yxati (' + students.length + ')</div>' +
+      '<div style="max-height:44vh;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;gap:8px;padding-right:4px;">' +
+      (sortedStudents.length === 0 ?
+        '<p style="color:#94a3b8;text-align:center;padding:24px 0;">Bu guruhda hali o‘quvchilar yo‘q.</p>' :
+        sortedStudents.map(function(s, idx) {
+          var stObj = window._ethithGetUserStatus ? window._ethithGetUserStatus(s) : { status: 'red', label: "Kirmagan", color: '#ef4444' };
+          var badgeStyle = '';
+          if (stObj.status === 'green') {
+            badgeStyle = 'background:rgba(34,197,94,0.18);border:1px solid #22c55e;color:#4ade80;box-shadow:0 0 10px rgba(34,197,94,0.2);';
+          } else if (stObj.status === 'blue') {
+            badgeStyle = 'background:rgba(59,130,246,0.18);border:1px solid #3b82f6;color:#60a5fa;';
+          } else {
+            badgeStyle = 'background:rgba(239,68,68,0.18);border:1px solid #ef4444;color:#f87171;';
+          }
+
+          return '<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">' +
+            '<div style="display:flex;align-items:center;gap:10px;min-width:180px;">' +
+              '<div style="width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#1e293b,#334155);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#38bdf8;border:1px solid rgba(56,189,248,0.3);">' +
+                (s.name ? s.name.charAt(0).toUpperCase() : (idx + 1)) +
+              '</div>' +
+              '<div>' +
+                '<div style="font-size:13.5px;font-weight:800;color:#fff;">' + esc(s.name) + '</div>' +
+                ((isTeacherUser && s.login) ? '<div style="font-size:11px;color:#94a3b8;font-family:monospace;">Login: <b style="color:#38bdf8;">' + esc(s.login) + '</b></div>' : '') +
+              '</div>' +
+            '</div>' +
+            '<div style="display:flex;align-items:center;gap:8px;">' +
+              '<span style="' + badgeStyle + 'padding:4px 10px;border-radius:20px;font-size:11.5px;font-weight:800;display:inline-flex;align-items:center;gap:5px;">' +
+                '<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:' + stObj.color + ';box-shadow:0 0 6px ' + stObj.color + ';"></span> ' +
+                stObj.label +
+              '</span>' +
+              (isTeacherUser ? '<button type="button" class="ea-roster-edit-btn" data-st-id="' + esc(s.id || s.login) + '" style="background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.4);color:#7dd3fc;border-radius:8px;padding:5px 9px;font-size:11px;font-weight:800;cursor:pointer;">✏️ Tahrirlash</button>' : '') +
+            '</div>' +
+          '</div>';
+        }).join('')
       ) +
-      '    <button class="eth-btn-primary" id="monCloseBtn" style="margin-top:20px">Close</button>' +
-      '  </div>' +
-      '</div>';
+      '</div>' +
 
+      '<div style="margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:flex-end;">' +
+        '<button type="button" id="monCloseBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:10px 24px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 18px rgba(2,132,199,0.4);">Yopish</button>' +
+      '</div>' +
+    '</div>';
+
+    overlay.innerHTML = html;
     document.body.appendChild(overlay);
-    overlay.querySelector('#monCloseBtn').onclick = function() {
-      overlay.remove();
-    };
+
+    function closeOverlay() {
+      if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    }
+
+    var cBtn = overlay.querySelector('#monCloseBtn');
+    if (cBtn) cBtn.onclick = closeOverlay;
+    var xBtn = overlay.querySelector('#monCloseXBtn');
+    if (xBtn) xBtn.onclick = closeOverlay;
+
+    // Connect Edit Student buttons for Teacher
+    overlay.querySelectorAll('.ea-roster-edit-btn').forEach(function(b) {
+      b.onclick = function() {
+        var sId = b.dataset.stId;
+        closeOverlay();
+        if (window.EA && typeof window.EA.openStudentEnrollModal === 'function') {
+          window.EA.openStudentEnrollModal(cls.id, sId);
+        }
+      };
+    });
   }
 
   // ==========================================

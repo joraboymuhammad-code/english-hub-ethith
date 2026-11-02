@@ -6120,7 +6120,7 @@ EA.render = function(container, preserveScrollLeft) {
     var overlay = document.createElement('div');
     overlay.className = 'eth-modal-overlay';
     overlay.id = 'eaEnrollStudentOverlay';
-    overlay.style.zIndex = '99999';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(10,25,47,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:flex-start;justify-content:center;z-index:9999999;padding:24px 16px 40px;overflow-y:auto;-webkit-overflow-scrolling:touch;';
 
     var classes = getAvailableClasses();
     var curClass = classes.find(function(c) { return c && c.id === targetClassId; });
@@ -6215,7 +6215,7 @@ EA.render = function(container, preserveScrollLeft) {
                      (S_app_state.finance && S_app_state.finance.studentFees && stIdLookup && S_app_state.finance.studentFees[stIdLookup]) || {};
     var isStudentPaid = (initPayRec.status === 'paid');
 
-    var html = '<div class="eth-modal" style="max-width:560px;width:100%;max-height:min(90vh, 720px);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;box-sizing:border-box;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(56,189,248,0.45);box-shadow:0 24px 60px rgba(0,0,0,0.8),0 0 30px rgba(56,189,248,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
+    var html = '<div class="eth-modal" style="max-width:560px;width:100%;margin:auto 0;max-height:calc(100vh - 48px);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;box-sizing:border-box;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(56,189,248,0.45);box-shadow:0 24px 60px rgba(0,0,0,0.8),0 0 30px rgba(56,189,248,0.25);border-radius:24px;padding:24px 28px 20px;color:#fff;">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">' +
         '<div style="display:flex;align-items:center;gap:12px;">' +
           '<div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 16px rgba(2,132,199,0.4);">' + (isEdit ? '✏️' : '🎓') + '</div>' +
