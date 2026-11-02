@@ -69028,30 +69028,6 @@
         "page": 2023
       },
       {
-        "id": "p2023_ex1_4",
-        "type": "fill",
-        "exercise": "1",
-        "label": "4",
-        "top": 36.5,
-        "left": 42.1,
-        "width": 4.9,
-        "height": 2,
-        "correct": "suppose it's possible that we'll",
-        "page": 2023
-      },
-      {
-        "id": "p2023_ex1_5",
-        "type": "fill",
-        "exercise": "1",
-        "label": "5",
-        "top": 39.9,
-        "left": 32,
-        "width": 12,
-        "height": 2,
-        "correct": "bound to be",
-        "page": 2023
-      },
-      {
         "id": "p2023_ex2a_2",
         "type": "fill",
         "exercise": "2a",
@@ -69080,8 +69056,8 @@
         "type": "fill",
         "exercise": "2a",
         "label": "4",
-        "top": 36.5,
-        "left": 42.1,
+        "top": 37,
+        "left": 19,
         "width": 4.9,
         "height": 2,
         "correct": "suppose",
@@ -69092,8 +69068,8 @@
         "type": "fill",
         "exercise": "2a",
         "label": "5",
-        "top": 39.9,
-        "left": 32,
+        "top": 42.6,
+        "left": 17.7,
         "width": 12,
         "height": 2,
         "correct": "chance",
@@ -138487,7 +138463,7 @@
     "2020": 1793608127433,
     "2021": 1793608127434,
     "2022": 1793608265459,
-    "2023": 1793608277718,
+    "2023": 1793608283867,
     "2024": 1793563274072,
     "2025": 1793563274072,
     "2026": 1793563274072,
@@ -139816,5 +139792,5 @@
       }
     }
   },
-  "updatedAt": 1793608278178
+  "updatedAt": 1793608284193
 }
