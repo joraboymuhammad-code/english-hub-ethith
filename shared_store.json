@@ -67547,42 +67547,14 @@
         "page": 2018
       },
       {
-        "id": "p2018_ex2a_1a",
-        "type": "choose",
-        "exercise": "2a",
-        "group": "b2_p18_2a_1",
-        "text": "will go",
-        "label": "1a",
-        "top": 61.5,
-        "left": 30.4,
-        "width": 5.4,
-        "height": 2.4,
-        "correct": false,
-        "page": 2018
-      },
-      {
-        "id": "p2018_ex2a_1b",
-        "type": "choose",
-        "exercise": "2a",
-        "group": "b2_p18_2a_1",
-        "text": "'m going",
-        "label": "1b",
-        "top": 62.5,
-        "left": 36.3,
-        "width": 5.5,
-        "height": 1.8,
-        "correct": true,
-        "page": 2018
-      },
-      {
         "id": "p2018_ex2a_2a",
         "type": "choose",
         "exercise": "2a",
         "group": "b2_p18_2a_2",
         "text": "I'm going to go",
         "label": "2a",
-        "top": 66.4,
-        "left": 14.1,
+        "top": 63.9,
+        "left": 14.4,
         "width": 9.8,
         "height": 1.8,
         "correct": true,
@@ -67595,8 +67567,8 @@
         "group": "b2_p18_2a_2",
         "text": "will go",
         "label": "2b",
-        "top": 63.9,
-        "left": 25.5,
+        "top": 63.8,
+        "left": 25.1,
         "width": 4.9,
         "height": 1.8,
         "correct": false,
@@ -67609,8 +67581,8 @@
         "group": "b2_p18_2a_3",
         "text": "we're going to",
         "label": "3a",
-        "top": 68.8,
-        "left": 25.9,
+        "top": 68.4,
+        "left": 26.3,
         "width": 9.5,
         "height": 1.8,
         "correct": false,
@@ -138510,7 +138482,7 @@
     "2015": 1793607771057,
     "2016": 1793607835180,
     "2017": 1793607835181,
-    "2018": 1793607913830,
+    "2018": 1793607922789,
     "2019": 1793563274072,
     "2020": 1793563274072,
     "2021": 1793563274072,
@@ -139844,5 +139816,5 @@
       }
     }
   },
-  "updatedAt": 1793607914615
+  "updatedAt": 1793607923000
 }
