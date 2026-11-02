@@ -15977,11 +15977,13 @@
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
         "std_orazaliyev_514_amirshox": "O'razaliyev Amirshox",
-        "std_kamron_187_raimberdiyev": "Kamron Raimberdiyev"
+        "std_kamron_187_raimberdiyev": "Kamron Raimberdiyev",
+        "std_ziyoda_799_regdfggyj": "Ziyoda regdfggyj"
       },
       "customStudentPhones": {
         "std_orazaliyev_514_amirshox": "4",
-        "std_kamron_187_raimberdiyev": "456345312"
+        "std_kamron_187_raimberdiyev": "456345312",
+        "std_ziyoda_799_regdfggyj": "234312354"
       },
       "students": [
         {
@@ -16029,6 +16031,23 @@
           "parentPhone": "456345312",
           "login": "kamron_187_raimberdiyev",
           "password": "kamron187rai",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
+          "id": "std_ziyoda_799_regdfggyj",
+          "name": "Ziyoda regdfggyj",
+          "firstName": "Ziyoda",
+          "lastName": "regdfggyj",
+          "email": "ziyoda_799_regdfggyj@student.ethith",
+          "role": "student",
+          "phone": "234312354",
+          "parentPhone": "234312354",
+          "login": "ziyoda_799_regdfggyj",
+          "password": "ziyoda799reg",
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
@@ -16258,22 +16277,6 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_15",
-          "name": "tester_15",
-          "email": "cls_urolov_azizbek_upper_std_15@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
         }
       ],
       "studentPayments": {
@@ -16411,6 +16414,13 @@
           "date": "To‘lanmagan"
         },
         "std_kamron_187_raimberdiyev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_ziyoda_799_regdfggyj": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -19777,6 +19787,18 @@
       "isOnline": false,
       "lastLogin": null,
       "updatedAt": 1793597805969
+    },
+    {
+      "id": "std_ziyoda_799_regdfggyj",
+      "name": "Ziyoda regdfggyj",
+      "role": "student",
+      "login": "ziyoda_799_regdfggyj",
+      "password": "ziyoda799reg",
+      "phone": "234312354",
+      "parentPhone": "234312354",
+      "classId": "cls_urolov_azizbek_upper",
+      "isOnline": false,
+      "lastLogin": null
     }
   ],
   "p2pListings": [],
@@ -138674,5 +138696,5 @@
       }
     }
   },
-  "updatedAt": 1793597805988
+  "updatedAt": 1793597849657
 }
