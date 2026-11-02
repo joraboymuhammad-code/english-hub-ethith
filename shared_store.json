@@ -15989,7 +15989,8 @@
         "std_yulduz_938_nosurname": "Yulduz No Surname",
         "std_xudoyberdiyeva_775_madina": "Xudoyberdiyeva Madina",
         "std_gulruh_365_tangirova": "Gulruh Tangirova",
-        "std_shohsasnam_517_bayrbekova": "Shohsasnam Bayrbekova"
+        "std_shohsasnam_517_bayrbekova": "Shohsasnam Bayrbekova",
+        "std_azimjon_848_toirov": "Azimjon Toirov"
       },
       "customStudentPhones": {
         "std_orazaliyev_514_amirshox": "4",
@@ -16004,7 +16005,8 @@
         "std_yulduz_938_nosurname": "941973993",
         "std_xudoyberdiyeva_775_madina": "941973993",
         "std_gulruh_365_tangirova": "941973993",
-        "std_shohsasnam_517_bayrbekova": "941973993"
+        "std_shohsasnam_517_bayrbekova": "941973993",
+        "std_azimjon_848_toirov": "941973993"
       },
       "students": [
         {
@@ -16246,6 +16248,23 @@
           "coins": 150
         },
         {
+          "id": "std_azimjon_848_toirov",
+          "name": "Azimjon Toirov",
+          "firstName": "Azimjon",
+          "lastName": "Toirov",
+          "email": "azimjon_848_toirov@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "azimjon_848_toirov",
+          "password": "azimjon848toi",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
           "id": "cls_urolov_azizbek_upper_std_1",
           "name": "tester_1",
           "email": "cls_urolov_azizbek_upper_std_1@ethith.uz",
@@ -16281,22 +16300,6 @@
           "id": "cls_urolov_azizbek_upper_std_3",
           "name": "tester_3",
           "email": "cls_urolov_azizbek_upper_std_3@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_4",
-          "name": "tester_4",
-          "email": "cls_urolov_azizbek_upper_std_4@ethith.uz",
           "role": "student",
           "phone": "",
           "parentPhone": "",
@@ -16522,6 +16525,13 @@
           "date": "To‘lanmagan"
         },
         "std_shohsasnam_517_bayrbekova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_azimjon_848_toirov": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20031,6 +20041,18 @@
       "isOnline": false,
       "lastLogin": null,
       "updatedAt": 1762062923538
+    },
+    {
+      "id": "std_azimjon_848_toirov",
+      "name": "Azimjon Toirov",
+      "role": "student",
+      "login": "azimjon_848_toirov",
+      "password": "azimjon848toi",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_upper",
+      "isOnline": false,
+      "lastLogin": null
     }
   ],
   "p2pListings": [],
@@ -138928,5 +138950,5 @@
       }
     }
   },
-  "updatedAt": 1762062930259
+  "updatedAt": 1762062950045
 }
