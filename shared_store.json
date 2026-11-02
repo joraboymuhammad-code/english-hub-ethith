@@ -15992,7 +15992,8 @@
         "std_shohsasnam_517_bayrbekova": "Shohsasnam Bayrbekova",
         "std_azimjon_848_toirov": "Azimjon Toirov",
         "std_oktamova_798_zarina": "O'ktamova Zarina",
-        "std_shohista_786_nosurname": "Shohista No Surname"
+        "std_shohista_786_nosurname": "Shohista No Surname",
+        "std_diyor_772_suyundikov": "Diyor Suyundikov"
       },
       "customStudentPhones": {
         "std_orazaliyev_514_amirshox": "4",
@@ -16010,7 +16011,8 @@
         "std_shohsasnam_517_bayrbekova": "941973993",
         "std_azimjon_848_toirov": "941973993",
         "std_oktamova_798_zarina": "941973993",
-        "std_shohista_786_nosurname": "941973993"
+        "std_shohista_786_nosurname": "941973993",
+        "std_diyor_772_suyundikov": "941973993"
       },
       "students": [
         {
@@ -16303,20 +16305,21 @@
           "coins": 150
         },
         {
-          "id": "cls_urolov_azizbek_upper_std_1",
-          "name": "tester_1",
-          "email": "cls_urolov_azizbek_upper_std_1@ethith.uz",
+          "id": "std_diyor_772_suyundikov",
+          "name": "Diyor Suyundikov",
+          "firstName": "Diyor",
+          "lastName": "Suyundikov",
+          "email": "diyor_772_suyundikov@student.ethith",
           "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "diyor_772_suyundikov",
+          "password": "diyor772suy",
           "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
+          "isTester": false,
+          "manuallyEnrolled": true,
           "isOnline": false,
-          "lastLogin": null
+          "coins": 150
         }
       ],
       "studentPayments": {
@@ -16552,6 +16555,13 @@
           "date": "To‘lanmagan"
         },
         "std_shohista_786_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_diyor_772_suyundikov": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20094,6 +20104,19 @@
       "role": "student",
       "login": "shohista_786_nosurname",
       "password": "shohista786nos",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_upper",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1762063000341
+    },
+    {
+      "id": "std_diyor_772_suyundikov",
+      "name": "Diyor Suyundikov",
+      "role": "student",
+      "login": "diyor_772_suyundikov",
+      "password": "diyor772suy",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_upper",
@@ -138996,5 +139019,5 @@
       }
     }
   },
-  "updatedAt": 1762062993606
+  "updatedAt": 1762063032145
 }
