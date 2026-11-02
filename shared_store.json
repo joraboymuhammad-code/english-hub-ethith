@@ -16043,15 +16043,15 @@
         },
         {
           "id": "std_ziyoda_799_regdfggyj",
-          "name": "Ziyoda regdfggyj",
+          "name": "Ziyoda No Surname",
           "firstName": "Ziyoda",
-          "lastName": "regdfggyj",
-          "email": "ziyoda_799_regdfggyj@student.ethith",
+          "lastName": "No Surname",
+          "email": "ziyoda_194_nosurname@student.ethith",
           "role": "student",
           "phone": "234312354",
           "parentPhone": "234312354",
-          "login": "ziyoda_799_regdfggyj",
-          "password": "ziyoda799reg",
+          "login": "ziyoda_194_nosurname",
+          "password": "ziyoda194nos",
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
@@ -19810,10 +19810,10 @@
     },
     {
       "id": "std_ziyoda_799_regdfggyj",
-      "name": "Ziyoda regdfggyj",
+      "name": "Ziyoda No Surname",
       "role": "student",
-      "login": "ziyoda_799_regdfggyj",
-      "password": "ziyoda799reg",
+      "login": "ziyoda_194_nosurname",
+      "password": "ziyoda194nos",
       "phone": "234312354",
       "parentPhone": "234312354",
       "classId": "cls_urolov_azizbek_upper",
@@ -138743,5 +138743,5 @@
       }
     }
   },
-  "updatedAt": 1762062391373
+  "updatedAt": 1762062536942
 }
