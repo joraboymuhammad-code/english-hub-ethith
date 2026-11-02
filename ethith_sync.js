@@ -386,16 +386,16 @@
       return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢', lastSeen: lastSeen };
     }
 
-    // Has user ever logged in previously?
-    var hasEverLoggedIn = (acc && (acc.lastLogin || acc.lastSeen || acc.loginCount > 0)) ||
-                          u.lastLogin || u.lastSeen || (u.coins && u.coins > 0) || u.hasLoggedIn ||
-                          (u.login && !u.isTester && u.login !== 'tester' && !u.login.startsWith('tester_'));
+    // Has user ever logged in previously using teacher-provided username & password?
+    var hasEverLoggedIn = (acc && (acc.lastLogin || acc.loginCount > 0 || acc.hasLoggedIn || acc.isOnline)) ||
+                          u.lastLogin || u.hasLoggedIn || u.isOnline;
 
     if (!hasEverLoggedIn && S.classes) {
       hasEverLoggedIn = S.classes.some(function(c) {
         return (c.messages || []).some(function(m) {
           return (m.senderId && u.id && m.senderId === u.id) ||
-                 (m.senderName && u.name && m.senderName.toLowerCase() === u.name.toLowerCase());
+                 (m.senderName && u.name && m.senderName.toLowerCase().trim() === u.name.toLowerCase().trim()) ||
+                 (m.senderEmail && u.login && m.senderEmail.toLowerCase().trim() === u.login.toLowerCase().trim());
         });
       });
     }
@@ -476,7 +476,7 @@
 
     var uiNeedsRefresh = false;
 
-    // A. CHAT MESSAGE
+    // A. CHAT MESSAGE (Sub-millisecond instant delivery & DOM append)
     if (event.type === 'CHAT_MSG' && event.message && targetCls) {
       if (!targetCls.messages) targetCls.messages = [];
       if (!targetCls.deletedMsgIds) targetCls.deletedMsgIds = [];
@@ -490,7 +490,13 @@
             var tb = b.timestamp || parseInt((b.id || '').replace(/\D/g, ''), 10) || 0;
             return ta - tb;
           });
-          uiNeedsRefresh = true;
+
+          // Ultra-fast path: If user has this chat open, append to DOM immediately in 0ms!
+          if (window._ethithAppendIncomingChatMsg && window._ethithAppendIncomingChatMsg(event.message, event.classId || targetCls.id || targetCls.code)) {
+            uiNeedsRefresh = false;
+          } else {
+            uiNeedsRefresh = true;
+          }
         }
       }
     }

@@ -6711,12 +6711,13 @@ EA.render = function(container, preserveScrollLeft) {
     }
 
     var allCls = getAvailableClasses();
-    if (isTeacher && !isAdmin) {
-      var tClasses = getClassesForTeacher(currentTeacherId || EA.activeTeacherId);
-      allCls = tClasses;
-    } else if (currentClassId) {
+    if (currentClassId) {
+      // Prioritize the specific active group so only students of this group appear!
       var matchC = allCls.filter(function(c) { return c.id === currentClassId; });
       if (matchC.length > 0) allCls = matchC;
+    } else if (isTeacher && !isAdmin) {
+      var tClasses = getClassesForTeacher(currentTeacherId || EA.activeTeacherId);
+      allCls = tClasses;
     }
 
     // Collect all student records across selected classes
@@ -6748,8 +6749,10 @@ EA.render = function(container, preserveScrollLeft) {
           st.password = pass;
         }
 
-        var isOnline = (st.isOnline === true) || (acc && acc.isOnline === true);
         var isPaid = (cls.studentPayments && cls.studentPayments[stId] && cls.studentPayments[stId].status === 'paid');
+
+        // Evaluate live status: 🟢 Online, 🔵 Offline, 🔴 Kirmagan
+        var stStatus = (window._ethithGetUserStatus ? window._ethithGetUserStatus(st) : (isOnline ? { status: 'green', label: 'Online', color: '#22c55e', dot: '🟢' } : { status: 'red', label: 'Kirmagan', color: '#ef4444', dot: '🔴' }));
 
         records.push({
           id: stId,
@@ -6757,7 +6760,11 @@ EA.render = function(container, preserveScrollLeft) {
           parentPhone: parentPhone,
           login: login,
           password: pass,
-          isOnline: isOnline,
+          status: stStatus.status,
+          statusLabel: stStatus.label,
+          statusColor: stStatus.color,
+          statusDot: stStatus.dot,
+          isOnline: stStatus.status === 'green',
           isPaid: isPaid,
           classId: cls.id,
           className: cls.name || cls.id,
@@ -6767,8 +6774,9 @@ EA.render = function(container, preserveScrollLeft) {
       });
     });
 
-    var onlineCount = records.filter(function(r) { return r.isOnline; }).length;
-    var offlineCount = records.length - onlineCount;
+    var onlineCount = records.filter(function(r) { return r.status === 'green'; }).length;
+    var offlineCount = records.filter(function(r) { return r.status === 'blue'; }).length;
+    var kirmaganCount = records.filter(function(r) { return r.status === 'red'; }).length;
 
     var h = '<div class="ea-system-logins-section" style="margin-top:40px;background:linear-gradient(135deg,rgba(15,23,42,0.96),rgba(30,41,59,0.92));border:1.5px solid rgba(56,189,248,0.35);border-radius:24px;padding:26px 28px;box-shadow:0 18px 50px rgba(0,0,0,0.6),0 0 30px rgba(56,189,248,0.15);backdrop-filter:blur(24px);">' +
       // Header & Controls Row
@@ -6785,13 +6793,16 @@ EA.render = function(container, preserveScrollLeft) {
           '</div>' +
         '</div>' +
 
-        // Stats Badges & Actions
+        // Stats Badges & Actions (🟢 Online, 🔵 Offline, 🔴 Kirmagan)
         '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
           '<span style="background:rgba(34,197,94,0.18);border:1px solid #22c55e;color:#4ade80;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:900;display:inline-flex;align-items:center;gap:6px;">' +
-            '<span class="ea-status-dot ea-status-online" style="margin:0;"></span>' + onlineCount + ' ta Online' +
+            '<span class="ea-status-dot" style="margin:0;background:#22c55e;box-shadow:0 0 6px #22c55e;"></span>' + onlineCount + ' ta Online' +
+          '</span>' +
+          '<span style="background:rgba(59,130,246,0.18);border:1px solid #3b82f6;color:#60a5fa;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:900;display:inline-flex;align-items:center;gap:6px;">' +
+            '<span class="ea-status-dot" style="margin:0;background:#3b82f6;box-shadow:0 0 6px #3b82f6;"></span>' + offlineCount + ' ta Offline' +
           '</span>' +
           '<span style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);color:#f87171;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:800;display:inline-flex;align-items:center;gap:6px;">' +
-            '<span class="ea-status-dot ea-status-offline" style="margin:0;"></span>' + offlineCount + ' ta Kirmagan' +
+            '<span class="ea-status-dot" style="margin:0;background:#ef4444;box-shadow:0 0 6px #ef4444;"></span>' + kirmaganCount + ' ta Kirmagan' +
           '</span>' +
           '<button type="button" id="eaBtnAddNewStudentLogins" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(16,185,129,0.35);transition:all 0.2s;">' +
             '➕ Yangi O‘quvchi Ro‘yxatga Olish' +
@@ -6835,13 +6846,22 @@ EA.render = function(container, preserveScrollLeft) {
     } else {
       records.forEach(function(r, idx) {
         var rowBg = idx % 2 === 0 ? 'rgba(15, 23, 42, 0.4)' : 'rgba(15, 23, 42, 0.65)';
-        var dotHtml = '<span class="ea-status-dot ' + (r.isOnline ? 'ea-status-online' : 'ea-status-offline') + '" title="' + (r.isOnline ? '🟢 Online (Tizimga kirgan)' : '🔴 Offline (Tizimga kirmagan)') + '"></span>';
+        var dotHtml = '<span class="ea-status-dot" style="margin:0;background:' + r.statusColor + ';box-shadow:0 0 6px ' + r.statusColor + ';" title="' + r.statusDot + ' ' + r.statusLabel + '"></span>';
 
         var nameHtml = r.isPaid
           ? ('<span class="ea-st-paid-neon" style="color:#4ade80 !important;font-weight:900;text-shadow:0 0 10px rgba(74,222,128,0.9),0 0 20px rgba(74,222,128,0.6);letter-spacing:0.2px;">' + esc(r.name) + '</span>')
           : ('<span style="color:#f8fafc;font-weight:800;">' + esc(r.name) + '</span>');
 
         var phoneDisp = r.parentPhone ? esc(r.parentPhone) : '<span style="color:#64748b;font-style:italic;">Kiritilmagan</span>';
+
+        var statusBadgeHtml = '';
+        if (r.status === 'green') {
+          statusBadgeHtml = '<span style="background:rgba(34,197,94,0.18);border:1px solid #22c55e;color:#4ade80;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:900;">🟢 Online</span>';
+        } else if (r.status === 'blue') {
+          statusBadgeHtml = '<span style="background:rgba(59,130,246,0.18);border:1px solid #3b82f6;color:#60a5fa;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:900;">🔵 Offline</span>';
+        } else {
+          statusBadgeHtml = '<span style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.35);color:#f87171;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:800;">🔴 Kirmagan</span>';
+        }
 
         h += '<tr class="ea-login-row" data-search="' + esc((r.name + ' ' + r.className + ' ' + r.login + ' ' + r.parentPhone).toLowerCase()) + '" style="background:' + rowBg + ';border-bottom:1px solid rgba(255,255,255,0.05);transition:background 0.15s;">' +
           '<td style="padding:10px 14px;text-align:center;color:#94a3b8;font-weight:900;">' + (idx + 1) + '</td>' +
@@ -6859,9 +6879,7 @@ EA.render = function(container, preserveScrollLeft) {
             '<button type="button" class="ea-copy-mini-btn ea-btn-copy-val" data-val="' + esc(r.password) + '" title="Parolni nusxalash">📋</button>' +
           '</td>' +
           '<td style="padding:10px 14px;text-align:center;">' +
-            (r.isOnline 
-              ? '<span style="background:rgba(34,197,94,0.18);border:1px solid #22c55e;color:#4ade80;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:900;">🟢 Online</span>' 
-              : '<span style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.35);color:#f87171;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:800;">🔴 Kirmagan</span>') +
+            statusBadgeHtml +
           '</td>' +
           '<td style="padding:10px 14px;text-align:center;">' +
             '<button type="button" class="ea-btn-edit-student-creds" data-cid="' + esc(r.classId) + '" data-stid="' + esc(r.id) + '" title="Ma’lumotlarni tahrirlash" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.35);color:#38bdf8;border-radius:8px;padding:4px 9px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;">✏️ Tahrirlash</button>' +

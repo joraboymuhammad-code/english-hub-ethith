@@ -1879,6 +1879,74 @@
       else neverCount++;
     });
 
+    function renderMsgBubbleHtml(m, activeCls, myUser) {
+      var isOwn = myUser && ((m.senderId && myUser.id && m.senderId === myUser.id) || (m.senderEmail && myUser.email && m.senderEmail === myUser.email));
+      var reactionsList = [];
+      if (m.reactions) {
+        for (var em in m.reactions) {
+          var uList = m.reactions[em] || [];
+          if (uList.length > 0) {
+            var myEmail = (myUser && myUser.email ? myUser.email : '').toLowerCase();
+            var myId = (myUser && myUser.id ? myUser.id : '').toLowerCase();
+            var myName = (myUser && myUser.name ? myUser.name : '').toLowerCase();
+
+            var userNames = uList.map(function(u) {
+              var uClean = (u + '').toLowerCase();
+              if ((myEmail && uClean === myEmail) || (myId && uClean === myId) || (myName && uClean === myName)) return 'You';
+              var st = activeCls.students ? activeCls.students.find(function(s) {
+                return (s.id && s.id.toLowerCase() === uClean) || (s.email && s.email.toLowerCase() === uClean);
+              }) : null;
+              if (st) return st.name;
+              var prior = activeCls.messages ? activeCls.messages.find(function(pm) {
+                return (pm.senderId && pm.senderId.toLowerCase() === uClean) || (pm.senderEmail && pm.senderEmail.toLowerCase() === uClean);
+              }) : null;
+              if (prior) return prior.senderName;
+              return u.indexOf('@') > -1 ? u.split('@')[0] : u;
+            });
+
+            var hasUserReacted = myUser && uList.some(function(u) {
+              var uClean = (u + '').toLowerCase();
+              return (myEmail && uClean === myEmail) || (myId && uClean === myId) || (myName && uClean === myName);
+            });
+
+            reactionsList.push({
+              emoji: em,
+              count: uList.length,
+              userNames: userNames,
+              hasUserReacted: hasUserReacted
+            });
+          }
+        }
+      }
+
+      return '' +
+        '<div class="tg-msg-row ' + (isOwn ? 'out' : 'in') + '" data-msg-id="' + m.id + '">' +
+        '  <div class="tg-bubble" data-msg-id="' + m.id + '">' +
+        (m.replyTo ?
+          '<div class="tg-reply-quote">' +
+          '  <b>' + esc(m.replyTo.senderName) + '</b>' +
+          '  <span>' + esc(m.replyTo.text.slice(0, 60)) + '</span>' +
+          '</div>' : '') +
+        ((!isOwn ? (function() {
+          var senderSt = (window._ethithGetUserStatus ? window._ethithGetUserStatus({ id: m.senderId, email: m.senderEmail, name: m.senderName }) : { color: '#38bdf8', label: 'User' });
+          return '<div class="tg-msg-sender" style="display:flex;align-items:center;gap:6px">' + (window.ETHITH_RENDER_USER_AVATAR ? window.ETHITH_RENDER_USER_AVATAR({ name: m.senderName, avatar: m.senderAvatar }, 22) : '') + '<span>' + esc(m.senderName) + '</span><span title="' + senderSt.label + '" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + senderSt.color + ';box-shadow:0 0 6px ' + senderSt.color + ';"></span></div>';
+        })() : '')) +
+        '    <div class="tg-msg-text">' + esc(m.text) + '</div>' +
+        '    <div class="tg-msg-meta">' + m.time + (isOwn ? ' ✓✓' : '') + '</div>' +
+        (reactionsList.length > 0 ?
+          '<div class="tg-reactions-badge">' +
+          reactionsList.map(function(r) {
+            var nameSnippet = r.userNames.slice(0, 2).join(', ') + (r.userNames.length > 2 ? ' +' + (r.userNames.length - 2) : '');
+            return '<span class="tg-reaction-pill ' + (r.hasUserReacted ? 'active' : '') + '" data-msg-id="' + m.id + '" data-em="' + r.emoji + '" title="Reacted by: ' + esc(r.userNames.join(', ')) + '">' +
+              r.emoji + ' ' + r.count + ' <span class="tg-reaction-names">' + esc(nameSnippet) + '</span>' +
+            '</span>';
+          }).join('') +
+          '</div>' : '') +
+        '  </div>' +
+        '  <button class="tg-hover-react-btn" data-msg-id="' + m.id + '" title="Add reaction">😄</button>' +
+        '</div>';
+    }
+
     var html = '' +
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:8px;flex-wrap:wrap">' +
       '  <button class="ap-back" id="backClassesListBtn" style="margin:0">' + ic('left') + ' Guruhlar Ro‘yxatiga Qaytish</button>' +
@@ -1902,6 +1970,25 @@
       '          <span style="color:#64748b;">· Kod: <b style="color:#38bdf8;user-select:all">' + cls.code + '</b></span>' +
       '        </div>' +
       '      </div>' +
+      '    </div>' +
+      '  </div>' +
+      '  <div class="tg-members-strip" style="background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.95));border-bottom:1.5px solid rgba(56,189,248,0.25);padding:10px 18px;display:flex;align-items:center;gap:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;">' +
+      '    <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:900;color:#94a3b8;flex-shrink:0;">' +
+      '      <span>👥 O‘quvchilar:</span>' +
+      '      <span style="background:rgba(34,197,94,0.18);border:1px solid #22c55e;color:#4ade80;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:800;">🟢 ' + onlineCount + '</span>' +
+      '      <span style="background:rgba(59,130,246,0.18);border:1px solid #3b82f6;color:#60a5fa;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:800;">🔵 ' + offlineCount + '</span>' +
+      '      <span style="background:rgba(239,68,68,0.18);border:1px solid #ef4444;color:#f87171;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:800;">🔴 ' + neverCount + '</span>' +
+      '    </div>' +
+      '    <div style="display:flex;align-items:center;gap:6px;flex-wrap:nowrap;">' +
+      stList.map(function(s) {
+        var sObj = (window._ethithGetUserStatus ? window._ethithGetUserStatus(s) : { status: 'red', label: 'Kirmagan', color: '#ef4444', dot: '🔴' });
+        var sName = s.name || 'O‘quvchi';
+        var borderC = sObj.status === 'green' ? 'rgba(34,197,94,0.45)' : (sObj.status === 'blue' ? 'rgba(59,130,246,0.45)' : 'rgba(239,68,68,0.35)');
+        return '<span class="tg-student-chip" style="display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:14px;background:rgba(2,6,23,0.7);border:1px solid ' + borderC + ';color:#f8fafc;font-size:11.5px;font-weight:700;white-space:nowrap;flex-shrink:0;" title="' + esc(sName) + ' (' + sObj.dot + ' ' + sObj.label + ')">' +
+          '<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:' + sObj.color + ';box-shadow:0 0 6px ' + sObj.color + ';"></span>' +
+          '<span>' + esc(sName) + '</span>' +
+        '</span>';
+      }).join('') +
       '    </div>' +
       '  </div>' +
       // HOMEWORK BAR AT TOP OF GROUP CHAT (Students see assigned task & open it; system auto-grades into Davomat)
@@ -1930,72 +2017,8 @@
         (isTeacher ? '  <button id="tgUnpinBtn" style="background:none;border:none;cursor:pointer;color:var(--muted)">✕</button>' : '') +
         '</div>' : '') +
       '  <div class="tg-messages-scroll" id="tgMsgBox">' +
-      cls.messages.map(function(m) {
-        var isOwn = (m.senderId === S.user.id || m.senderEmail === S.user.email);
-        var reactionsList = [];
-        if (m.reactions) {
-          for (var em in m.reactions) {
-            var uList = m.reactions[em] || [];
-            if (uList.length > 0) {
-              var myEmail = (S.user && S.user.email ? S.user.email : '').toLowerCase();
-              var myId = (S.user && S.user.id ? S.user.id : '').toLowerCase();
-              var myName = (S.user && S.user.name ? S.user.name : '').toLowerCase();
-
-              var userNames = uList.map(function(u) {
-                var uClean = (u + '').toLowerCase();
-                if ((myEmail && uClean === myEmail) || (myId && uClean === myId) || (myName && uClean === myName)) return 'You';
-                var st = cls.students ? cls.students.find(function(s) {
-                  return (s.id && s.id.toLowerCase() === uClean) || (s.email && s.email.toLowerCase() === uClean);
-                }) : null;
-                if (st) return st.name;
-                var prior = cls.messages.find(function(pm) {
-                  return (pm.senderId && pm.senderId.toLowerCase() === uClean) || (pm.senderEmail && pm.senderEmail.toLowerCase() === uClean);
-                });
-                if (prior) return prior.senderName;
-                return u.indexOf('@') > -1 ? u.split('@')[0] : u;
-              });
-
-              var hasUserReacted = S.user && uList.some(function(u) {
-                var uClean = (u + '').toLowerCase();
-                return (myEmail && uClean === myEmail) || (myId && uClean === myId) || (myName && uClean === myName);
-              });
-
-              reactionsList.push({
-                emoji: em,
-                count: uList.length,
-                userNames: userNames,
-                hasUserReacted: hasUserReacted
-              });
-            }
-          }
-        }
-
-        return '' +
-          '<div class="tg-msg-row ' + (isOwn ? 'out' : 'in') + '" data-msg-id="' + m.id + '">' +
-          '  <div class="tg-bubble" data-msg-id="' + m.id + '">' +
-          (m.replyTo ?
-            '<div class="tg-reply-quote">' +
-            '  <b>' + esc(m.replyTo.senderName) + '</b>' +
-            '  <span>' + esc(m.replyTo.text.slice(0, 60)) + '</span>' +
-            '</div>' : '') +
-          ((!isOwn ? (function() {
-          var senderSt = (window._ethithGetUserStatus ? window._ethithGetUserStatus({ id: m.senderId, email: m.senderEmail, name: m.senderName }) : { color: '#38bdf8', label: 'User' });
-          return '<div class="tg-msg-sender" style="display:flex;align-items:center;gap:6px">' + (window.ETHITH_RENDER_USER_AVATAR ? window.ETHITH_RENDER_USER_AVATAR({ name: m.senderName, avatar: m.senderAvatar }, 22) : '') + '<span>' + esc(m.senderName) + '</span><span title="' + senderSt.label + '" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + senderSt.color + ';box-shadow:0 0 6px ' + senderSt.color + ';"></span></div>';
-        })() : '')) +
-          '    <div class="tg-msg-text">' + esc(m.text) + '</div>' +
-          '    <div class="tg-msg-meta">' + m.time + (isOwn ? ' ✓✓' : '') + '</div>' +
-          (reactionsList.length > 0 ?
-            '<div class="tg-reactions-badge">' +
-            reactionsList.map(function(r) {
-              var nameSnippet = r.userNames.slice(0, 2).join(', ') + (r.userNames.length > 2 ? ' +' + (r.userNames.length - 2) : '');
-              return '<span class="tg-reaction-pill ' + (r.hasUserReacted ? 'active' : '') + '" data-msg-id="' + m.id + '" data-em="' + r.emoji + '" title="Reacted by: ' + esc(r.userNames.join(', ')) + '">' +
-                r.emoji + ' ' + r.count + ' <span class="tg-reaction-names">' + esc(nameSnippet) + '</span>' +
-              '</span>';
-            }).join('') +
-            '</div>' : '') +
-          '  </div>' +
-          '  <button class="tg-hover-react-btn" data-msg-id="' + m.id + '" title="Add reaction">😄</button>' +
-          '</div>';
+      (cls.messages || []).map(function(m) {
+        return renderMsgBubbleHtml(m, cls, S.user || {});
       }).join('') +
       '  </div>' +
       '  <div class="tg-reply-bar" id="tgReplyBar" style="display:none">' +
@@ -2132,69 +2155,105 @@
       };
     });
 
-    // Direct Click on Reaction Pills to toggle
-    container.querySelectorAll('.tg-reaction-pill').forEach(function(pill) {
-      pill.onclick = function(e) {
-        e.stopPropagation();
-        var msgId = pill.dataset.msgId;
-        var emoji = pill.dataset.em;
-        var targetMsg = cls.messages.find(function(m) { return m.id === msgId; });
-        if (targetMsg && emoji) {
-          applyReaction(emoji, targetMsg, cls, container);
-        }
-      };
-    });
-
-    // Hover Reaction Button click -> Show quick Telegram emoji capsule
-    container.querySelectorAll('.tg-hover-react-btn').forEach(function(btn) {
-      btn.onclick = function(e) {
-        e.stopPropagation();
-        var msgId = btn.dataset.msgId;
-        var rect = btn.getBoundingClientRect();
-        showQuickReactionPopup(rect.left, rect.top - 46, msgId, cls, container);
-      };
-    });
-
-    // Double-click to Reply
-    container.querySelectorAll('.tg-bubble').forEach(function(bubble) {
-      bubble.ondblclick = function(e) {
-        e.stopPropagation();
-        var msgId = bubble.dataset.msgId;
-        var msg = cls.messages.find(function(m) { return m.id === msgId; });
-        if (!msg) return;
-
-        currentReplyingMessage = msg;
-        var replyBar = document.getElementById('tgReplyBar');
-        var replyText = document.getElementById('tgReplyBarText');
-        replyBar.style.display = 'flex';
-        replyText.innerHTML = ic('reply') + ' <b>Replying to: ' + esc(msg.senderName) + '</b>: "' + esc(msg.text.slice(0, 45)) + '..."';
-        document.getElementById('tgInputText').focus();
-      };
-
-      // Long press (touch) & Right click (context menu)
-      var touchTimer = null;
-      bubble.addEventListener('touchstart', function(e) {
-        touchTimer = setTimeout(function() {
-          showContextMenu(e.touches[0].clientX, e.touches[0].clientY, bubble.dataset.msgId, cls, container);
-        }, 550);
-      }, { passive: true });
-
-      bubble.addEventListener('touchend', function() {
-        clearTimeout(touchTimer);
+    function bindBubbleRowEvents(rowEl, mItem, activeCls, cnt) {
+      if (!rowEl) return;
+      rowEl.querySelectorAll('.tg-reaction-pill').forEach(function(pill) {
+        pill.onclick = function(e) {
+          e.stopPropagation();
+          var msgId = pill.dataset.msgId;
+          var emoji = pill.dataset.em;
+          var targetMsg = (activeCls.messages || []).find(function(msg) { return msg.id === msgId; });
+          if (targetMsg && emoji) {
+            applyReaction(emoji, targetMsg, activeCls, cnt);
+          }
+        };
       });
 
-      bubble.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        showContextMenu(e.clientX, e.clientY, bubble.dataset.msgId, cls, container);
-      });
+      var reactBtn = rowEl.querySelector('.tg-hover-react-btn');
+      if (reactBtn) {
+        reactBtn.onclick = function(e) {
+          e.stopPropagation();
+          var msgId = reactBtn.dataset.msgId;
+          var rect = reactBtn.getBoundingClientRect();
+          showQuickReactionPopup(rect.left, rect.top - 46, msgId, activeCls, cnt);
+        };
+      }
+
+      var bubble = rowEl.querySelector('.tg-bubble');
+      if (bubble) {
+        bubble.ondblclick = function(e) {
+          e.stopPropagation();
+          var msgId = bubble.dataset.msgId;
+          var msg = (activeCls.messages || []).find(function(mItem2) { return mItem2.id === msgId; });
+          if (!msg) return;
+
+          currentReplyingMessage = msg;
+          var replyBar = document.getElementById('tgReplyBar');
+          var replyText = document.getElementById('tgReplyBarText');
+          if (replyBar && replyText) {
+            replyBar.style.display = 'flex';
+            replyText.innerHTML = ic('reply') + ' <b>Replying to: ' + esc(msg.senderName) + '</b>: "' + esc(msg.text.slice(0, 45)) + '..."';
+          }
+          var input = document.getElementById('tgInputText');
+          if (input) input.focus();
+        };
+
+        var touchTimer = null;
+        bubble.addEventListener('touchstart', function(e) {
+          touchTimer = setTimeout(function() {
+            showContextMenu(e.touches[0].clientX, e.touches[0].clientY, bubble.dataset.msgId, activeCls, cnt);
+          }, 550);
+        }, { passive: true });
+
+        bubble.addEventListener('touchend', function() {
+          clearTimeout(touchTimer);
+        });
+
+        bubble.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+          showContextMenu(e.clientX, e.clientY, bubble.dataset.msgId, activeCls, cnt);
+        });
+      }
+    }
+
+    container.querySelectorAll('.tg-msg-row').forEach(function(row) {
+      var mId = row.dataset.msgId;
+      var msg = (cls.messages || []).find(function(m) { return m.id === mId; });
+      bindBubbleRowEvents(row, msg, cls, container);
     });
+
+    function appendSingleMsgToDom(m, activeCls, cnt) {
+      var msgBox = document.getElementById('tgMsgBox');
+      if (!msgBox) return false;
+      if (msgBox.querySelector('[data-msg-id="' + m.id + '"]')) return true;
+
+      var tempDiv = document.createElement('div');
+      tempDiv.innerHTML = renderMsgBubbleHtml(m, activeCls, S.user || {});
+      var newRow = tempDiv.firstElementChild;
+      if (newRow) {
+        msgBox.appendChild(newRow);
+        bindBubbleRowEvents(newRow, m, activeCls, cnt);
+        msgBox.scrollTop = msgBox.scrollHeight;
+        return true;
+      }
+      return false;
+    }
+
+    window._ethithAppendIncomingChatMsg = function(msg, classId) {
+      var curCls = S.activeClassId || (cls && cls.id);
+      if (classId && curCls && classId !== curCls && (!cls || classId !== cls.code)) return false;
+      var liveCls = (S.classes && S.classes.find(function(c) {
+        return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+      })) || cls;
+      return appendSingleMsgToDom(msg, liveCls, container);
+    };
 
     document.getElementById('tgReplyCancelBtn').onclick = function() {
       currentReplyingMessage = null;
       document.getElementById('tgReplyBar').style.display = 'none';
     };
 
-    // Send Message
+    // Send Message - Super Instant (0ms DOM append & async broadcast)
     function sendMessage() {
       var input = document.getElementById('tgInputText');
       var text = input.value.trim();
@@ -2228,8 +2287,14 @@
       }
 
       currentReplyingMessage = null;
+      var replyBar = document.getElementById('tgReplyBar');
+      if (replyBar) replyBar.style.display = 'none';
       input.value = '';
-      App.saveState();
+
+      // Direct DOM append in 0ms!
+      appendSingleMsgToDom(newMsg, liveCls, container);
+
+      // Async instant publish (Dual-broker MQTT + BroadcastChannel)
       if (window.EthithSync) {
         window.EthithSync.publishLive({
           type: 'CHAT_MSG',
@@ -2237,9 +2302,10 @@
           message: newMsg
         });
         window.EthithSync.broadcastLocal(S.classes, S.exams);
-        window.EthithSync.pushRemoteStore(S.classes, S.exams);
       }
-      renderClassDetail(container, liveCls);
+      setTimeout(function() {
+        App.saveState();
+      }, 50);
     }
 
     window._ethithRefreshCurrentClass = function() {
