@@ -19165,8 +19165,8 @@
       "updatedAt": 1793185854362
     },
     {
-      "id": "t_urolov_azizbek",
-      "name": "Azizbek Urolov",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
       "role": "teacher",
@@ -137801,5 +137801,5 @@
       }
     }
   },
-  "updatedAt": 1793624460707
+  "updatedAt": 1793624526303
 }
