@@ -74428,8 +74428,8 @@
         "exercise": "4",
         "label": "2",
         "text": "He lives in",
-        "top": 20.1,
-        "left": 12.6,
+        "top": 19.9,
+        "left": 28.3,
         "width": 7.5,
         "height": 1.8,
         "isCorrect": false,
@@ -74480,8 +74480,8 @@
         "exercise": "4",
         "label": "4",
         "text": "He lives on the shore of",
-        "top": 31,
-        "left": 12.6,
+        "top": 32.6,
+        "left": 12.9,
         "width": 15.8,
         "height": 1.8,
         "isCorrect": true,
@@ -74682,8 +74682,8 @@
         "type": "fill",
         "exercise": "7",
         "label": "4",
-        "top": 32.9,
-        "left": 14,
+        "top": 41.7,
+        "left": 69.1,
         "width": 12,
         "height": 2,
         "correct": "the",
@@ -77251,111 +77251,6 @@
         ],
         "acceptedAnswers": [
           "must stop"
-        ],
-        "page": 2047
-      },
-      {
-        "id": "p2047_ex6_c1",
-        "type": "fill",
-        "exercise": "6",
-        "label": "c1",
-        "top": 55.8,
-        "left": 57.8,
-        "width": 3,
-        "height": 1.6,
-        "correct": [
-          "✓",
-          "tick",
-          "v"
-        ],
-        "acceptedAnswers": [
-          "✓",
-          "tick",
-          "v"
-        ],
-        "page": 2047
-      },
-      {
-        "id": "p2047_ex6_c2",
-        "type": "fill",
-        "exercise": "6",
-        "label": "c2",
-        "top": 60.8,
-        "left": 56.5,
-        "width": 3,
-        "height": 1.6,
-        "correct": [
-          "✗",
-          "cross",
-          "x"
-        ],
-        "acceptedAnswers": [
-          "✗",
-          "cross",
-          "x"
-        ],
-        "page": 2047
-      },
-      {
-        "id": "p2047_ex6_c3",
-        "type": "fill",
-        "exercise": "6",
-        "label": "c3",
-        "top": 62.1,
-        "left": 56.5,
-        "width": 3,
-        "height": 1.6,
-        "correct": [
-          "✗",
-          "cross",
-          "x"
-        ],
-        "acceptedAnswers": [
-          "✗",
-          "cross",
-          "x"
-        ],
-        "page": 2047
-      },
-      {
-        "id": "p2047_ex6_c4",
-        "type": "fill",
-        "exercise": "6",
-        "label": "c4",
-        "top": 63.4,
-        "left": 56.5,
-        "width": 3,
-        "height": 1.6,
-        "correct": [
-          "✓",
-          "tick",
-          "v"
-        ],
-        "acceptedAnswers": [
-          "✓",
-          "tick",
-          "v"
-        ],
-        "page": 2047
-      },
-      {
-        "id": "p2047_ex6_c5",
-        "type": "fill",
-        "exercise": "6",
-        "label": "c5",
-        "top": 64.7,
-        "left": 56.5,
-        "width": 3,
-        "height": 1.6,
-        "correct": [
-          "✗",
-          "cross",
-          "x"
-        ],
-        "acceptedAnswers": [
-          "✗",
-          "cross",
-          "x"
         ],
         "page": 2047
       }
@@ -138732,7 +138627,7 @@
     "2036": 1793611639372,
     "2037": 1793611688677,
     "2038": 1793611729817,
-    "2039": 1793611813713,
+    "2039": 1793611826860,
     "2040": 1793563274072,
     "2041": 1793563274072,
     "2042": 1793563274072,
@@ -138740,7 +138635,7 @@
     "2044": 1793563274072,
     "2045": 1793563274073,
     "2046": 1793611755429,
-    "2047": 1793611816151,
+    "2047": 1793611825409,
     "2048": 1793563274073,
     "2049": 1793563274073,
     "2050": 1793563274073,
@@ -140045,5 +139940,5 @@
       }
     }
   },
-  "updatedAt": 1793611818258
+  "updatedAt": 1793611827951
 }
