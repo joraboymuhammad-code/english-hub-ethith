@@ -15987,7 +15987,8 @@
         "std_odina_419_zoirova": "Odina Zoirova",
         "std_orozboyev_391_ollohberdi": "O'rozboyev Ollohberdi",
         "std_yulduz_938_nosurname": "Yulduz No Surname",
-        "std_xudoyberdiyeva_775_madina": "Xudoyberdiyeva Madina"
+        "std_xudoyberdiyeva_775_madina": "Xudoyberdiyeva Madina",
+        "std_gulruh_365_tangirova": "Gulruh Tangirova"
       },
       "customStudentPhones": {
         "std_orazaliyev_514_amirshox": "4",
@@ -16000,7 +16001,8 @@
         "std_odina_419_zoirova": "941973993",
         "std_orozboyev_391_ollohberdi": "941973993",
         "std_yulduz_938_nosurname": "941973993",
-        "std_xudoyberdiyeva_775_madina": "941973993"
+        "std_xudoyberdiyeva_775_madina": "941973993",
+        "std_gulruh_365_tangirova": "941973993"
       },
       "students": [
         {
@@ -16208,6 +16210,23 @@
           "coins": 150
         },
         {
+          "id": "std_gulruh_365_tangirova",
+          "name": "Gulruh Tangirova",
+          "firstName": "Gulruh",
+          "lastName": "Tangirova",
+          "email": "gulruh_365_tangirova@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "gulruh_365_tangirova",
+          "password": "gulruh365tan",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
           "id": "cls_urolov_azizbek_upper_std_1",
           "name": "tester_1",
           "email": "cls_urolov_azizbek_upper_std_1@ethith.uz",
@@ -16275,22 +16294,6 @@
           "id": "cls_urolov_azizbek_upper_std_5",
           "name": "tester_5",
           "email": "cls_urolov_azizbek_upper_std_5@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_6",
-          "name": "tester_6",
-          "email": "cls_urolov_azizbek_upper_std_6@ethith.uz",
           "role": "student",
           "phone": "",
           "parentPhone": "",
@@ -16502,6 +16505,13 @@
           "date": "To‘lanmagan"
         },
         "std_xudoyberdiyeva_775_madina": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_gulruh_365_tangirova": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -19979,6 +19989,19 @@
       "role": "student",
       "login": "xudoyberdiyeva_775_madina",
       "password": "xudoyberdiyeva775mad",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_upper",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1762062853354
+    },
+    {
+      "id": "std_gulruh_365_tangirova",
+      "name": "Gulruh Tangirova",
+      "role": "student",
+      "login": "gulruh_365_tangirova",
+      "password": "gulruh365tan",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_upper",
@@ -138881,5 +138904,5 @@
       }
     }
   },
-  "updatedAt": 1762062848171
+  "updatedAt": 1762062877176
 }
