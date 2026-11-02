@@ -63336,8 +63336,8 @@
         "page": 2005,
         "exercise": "4b",
         "label": "f",
-        "top": 39.1,
-        "left": 39.7,
+        "top": 38.3,
+        "left": 40,
         "width": 7.3,
         "height": 2,
         "correct": "2"
@@ -63348,8 +63348,8 @@
         "page": 2005,
         "exercise": "4b",
         "label": "g",
-        "top": 41.1,
-        "left": 45.8,
+        "top": 40,
+        "left": 45.9,
         "width": 3.2,
         "height": 2,
         "correct": "7"
@@ -63360,8 +63360,8 @@
         "page": 2005,
         "exercise": "6",
         "label": "6.2",
-        "top": 72.1,
-        "left": 19.8,
+        "top": 71.8,
+        "left": 20.6,
         "width": 22.8,
         "height": 1.8,
         "correct": "he'll come to the meeting? or he will come to the meeting? or if he'll come to the meeting?"
@@ -63372,8 +63372,8 @@
         "page": 2005,
         "exercise": "6",
         "label": "6.3",
-        "top": 75.5,
-        "left": 25.2,
+        "top": 75.2,
+        "left": 25.4,
         "width": 22.8,
         "height": 1.8,
         "correct": "what he's talking about? or what he is talking about?"
@@ -63384,8 +63384,8 @@
         "page": 2005,
         "exercise": "6",
         "label": "6.4",
-        "top": 79,
-        "left": 23.8,
+        "top": 78.6,
+        "left": 24.2,
         "width": 22.8,
         "height": 1.8,
         "correct": "where you put the keys?"
@@ -138672,7 +138672,7 @@
     "1082": 1793379496458,
     "1083": 1793379466776,
     "2004": 1793563274071,
-    "2005": 1793606419178,
+    "2005": 1793606427901,
     "2006": 1793563274072,
     "2007": 1793563274072,
     "2008": 1793563274072,
@@ -140019,5 +140019,5 @@
       }
     }
   },
-  "updatedAt": 1793606420212
+  "updatedAt": 1793606431507
 }
