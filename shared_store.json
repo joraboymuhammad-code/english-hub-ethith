@@ -15991,7 +15991,8 @@
         "std_gulruh_365_tangirova": "Gulruh Tangirova",
         "std_shohsasnam_517_bayrbekova": "Shohsasnam Bayrbekova",
         "std_azimjon_848_toirov": "Azimjon Toirov",
-        "std_oktamova_798_zarina": "O'ktamova Zarina"
+        "std_oktamova_798_zarina": "O'ktamova Zarina",
+        "std_shohista_786_nosurname": "Shohista No Surname"
       },
       "customStudentPhones": {
         "std_orazaliyev_514_amirshox": "4",
@@ -16008,7 +16009,8 @@
         "std_gulruh_365_tangirova": "941973993",
         "std_shohsasnam_517_bayrbekova": "941973993",
         "std_azimjon_848_toirov": "941973993",
-        "std_oktamova_798_zarina": "941973993"
+        "std_oktamova_798_zarina": "941973993",
+        "std_shohista_786_nosurname": "941973993"
       },
       "students": [
         {
@@ -16284,25 +16286,26 @@
           "coins": 150
         },
         {
+          "id": "std_shohista_786_nosurname",
+          "name": "Shohista No Surname",
+          "firstName": "Shohista",
+          "lastName": "No Surname",
+          "email": "shohista_786_nosurname@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "shohista_786_nosurname",
+          "password": "shohista786nos",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
+        },
+        {
           "id": "cls_urolov_azizbek_upper_std_1",
           "name": "tester_1",
           "email": "cls_urolov_azizbek_upper_std_1@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_2",
-          "name": "tester_2",
-          "email": "cls_urolov_azizbek_upper_std_2@ethith.uz",
           "role": "student",
           "phone": "",
           "parentPhone": "",
@@ -16542,6 +16545,13 @@
           "date": "To‘lanmagan"
         },
         "std_oktamova_798_zarina": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_shohista_786_nosurname": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -20071,6 +20081,19 @@
       "role": "student",
       "login": "oktamova_798_zarina",
       "password": "oktamova798zar",
+      "phone": "941973993",
+      "parentPhone": "941973993",
+      "classId": "cls_urolov_azizbek_upper",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1762062981316
+    },
+    {
+      "id": "std_shohista_786_nosurname",
+      "name": "Shohista No Surname",
+      "role": "student",
+      "login": "shohista_786_nosurname",
+      "password": "shohista786nos",
       "phone": "941973993",
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_upper",
@@ -138973,5 +138996,5 @@
       }
     }
   },
-  "updatedAt": 1762062972310
+  "updatedAt": 1762062993606
 }
