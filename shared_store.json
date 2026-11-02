@@ -17125,8 +17125,8 @@
         "records": {
           "2026-11-02": {
             "std_azamova_593_asila": {
-              "status": "Q",
-              "score": "2"
+              "status": "",
+              "score": ""
             }
           }
         },
@@ -17149,7 +17149,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793606272632
+        "updatedAt": 1793606286867
       },
       "customStudentNames": {
         "std_orazaliyev_261_amirshox": "O'razaliyev Amirshox",
@@ -139984,5 +139984,5 @@
       }
     }
   },
-  "updatedAt": 1793606280070
+  "updatedAt": 1793606291634
 }
