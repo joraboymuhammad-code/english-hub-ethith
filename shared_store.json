@@ -16646,6 +16646,41 @@
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
+        },
+        "std_charos_386_baxtiyorova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_diyor_772_suyundikov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_oktamova_798_zarina": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_sabina_672_ibodullayeva": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_shohista_786_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
         }
       },
       "learningMonths": 2,
@@ -63214,7 +63249,7 @@
         "text": "did come",
         "label": "6b",
         "top": 22.5,
-        "left": 18.6,
+        "left": 19.8,
         "width": 5.9,
         "height": 1.8,
         "correct": false
@@ -63227,8 +63262,8 @@
         "group": "b2_p5_4a_7",
         "text": "means Siri",
         "label": "7a",
-        "top": 24.2,
-        "left": 10.7,
+        "top": 24.5,
+        "left": 15.5,
         "width": 7.1,
         "height": 1.8,
         "correct": false
@@ -63241,8 +63276,8 @@
         "group": "b2_p5_4a_7",
         "text": "does Siri mean",
         "label": "7b",
-        "top": 24.2,
-        "left": 10.7,
+        "top": 24,
+        "left": 24.3,
         "width": 9.7,
         "height": 1.8,
         "correct": true
@@ -138637,7 +138672,7 @@
     "1082": 1793379496458,
     "1083": 1793379466776,
     "2004": 1793563274071,
-    "2005": 1793563274071,
+    "2005": 1793606410334,
     "2006": 1793563274072,
     "2007": 1793563274072,
     "2008": 1793563274072,
@@ -139984,5 +140019,5 @@
       }
     }
   },
-  "updatedAt": 1793606301904
+  "updatedAt": 1793606410502
 }
