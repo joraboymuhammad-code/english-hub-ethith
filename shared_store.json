@@ -15972,7 +15972,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1762062718510
       },
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
@@ -19913,7 +19914,8 @@
       "parentPhone": "941973993",
       "classId": "cls_urolov_azizbek_upper",
       "isOnline": false,
-      "lastLogin": null
+      "lastLogin": null,
+      "updatedAt": 1762062716700
     }
   ],
   "p2pListings": [],
@@ -138811,5 +138813,5 @@
       }
     }
   },
-  "updatedAt": 1762062709921
+  "updatedAt": 1762062720359
 }
