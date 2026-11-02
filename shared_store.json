@@ -15980,23 +15980,6 @@
       "customStudentPhones": {},
       "students": [
         {
-          "id": "std_nurlan_856_tangatov",
-          "name": "Nurlan Tangatov",
-          "firstName": "Nurlan",
-          "lastName": "Tangatov",
-          "email": "nurlan_856_tangatov@student.ethith",
-          "role": "student",
-          "phone": "941234567",
-          "parentPhone": "941234567",
-          "login": "nurlan_856_tangatov",
-          "password": "nurlan856tan",
-          "joinedAt": "2026-10-28",
-          "isTester": false,
-          "manuallyEnrolled": true,
-          "isOnline": false,
-          "coins": 150
-        },
-        {
           "id": "cls_urolov_azizbek_upper_std_1",
           "name": "tester_1",
           "email": "cls_urolov_azizbek_upper_std_1@ethith.uz",
@@ -16267,6 +16250,39 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null
+        },
+        {
+          "id": "cls_urolov_azizbek_upper_std_18",
+          "name": "tester_18",
+          "email": "cls_urolov_azizbek_upper_std_18@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "std_nurlan_856_tangatov",
+          "name": "Nurlan Tangatov",
+          "firstName": "Nurlan",
+          "lastName": "Tangatov",
+          "email": "nurlan_856_tangatov@student.ethith",
+          "role": "student",
+          "phone": "941234567",
+          "parentPhone": "941234567",
+          "login": "nurlan_856_tangatov",
+          "password": "nurlan856tan",
+          "joinedAt": "2026-10-28",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
         }
       ],
       "studentPayments": {},
@@ -16643,27 +16659,8 @@
       "customStudentNames": {
         "std_orazaliyev_261_amirshox": "O'razaliyev Amirshox"
       },
-      "customStudentPhones": {
-        "std_orazaliyev_261_amirshox": "564654654"
-      },
+      "customStudentPhones": {},
       "students": [
-        {
-          "id": "std_orazaliyev_261_amirshox",
-          "name": "O'razaliyev Amirshox",
-          "firstName": "O'razaliyev",
-          "lastName": "Amirshox",
-          "email": "orazaliyev_261_amirshox@student.ethith",
-          "role": "student",
-          "phone": "564654654",
-          "parentPhone": "564654654",
-          "login": "orazaliyev_261_amirshox",
-          "password": "orazaliyev261ami",
-          "joinedAt": "2026-11-02",
-          "isTester": false,
-          "manuallyEnrolled": true,
-          "isOnline": false,
-          "coins": 150
-        },
         {
           "id": "cls_urolov_azizbek_intermediate_std_1",
           "name": "tester_1",
@@ -16935,143 +16932,42 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null
+        },
+        {
+          "id": "cls_urolov_azizbek_intermediate_std_18",
+          "name": "tester_18",
+          "email": "cls_urolov_azizbek_intermediate_std_18@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "std_orazaliyev_261_amirshox",
+          "name": "O'razaliyev Amirshox",
+          "firstName": "O'razaliyev",
+          "lastName": "Amirshox",
+          "email": "orazaliyev_261_amirshox@student.ethith",
+          "role": "student",
+          "phone": "564654654",
+          "parentPhone": "564654654",
+          "login": "orazaliyev_261_amirshox",
+          "password": "orazaliyev261ami",
+          "joinedAt": "2026-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150
         }
       ],
-      "studentPayments": {
-        "cls_urolov_azizbek_intermediate_std_1": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_2": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_3": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_4": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_5": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_6": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_7": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_8": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_9": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_10": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_11": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_12": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_13": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_14": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_15": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_16": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_17": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_intermediate_std_18": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_orazaliyev_261_amirshox": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        }
-      },
+      "studentPayments": {},
       "learningMonths": 1,
       "learningDays": 21,
       "deletedMsgIds": [],
@@ -19292,7 +19188,8 @@
       ],
       "createdAt": 1793596771644,
       "level": "C2",
-      "updatedAt": 1793473052536
+      "updatedAt": 1793473052536,
+      "gifts": []
     },
     {
       "id": "admin_official_teacher",
@@ -19749,7 +19646,8 @@
       "parentPhone": "564654654",
       "classId": "cls_urolov_azizbek_intermediate",
       "isOnline": false,
-      "lastLogin": null
+      "lastLogin": null,
+      "updatedAt": 1793597497994
     }
   ],
   "p2pListings": [],
@@ -138647,5 +138545,5 @@
       }
     }
   },
-  "updatedAt": 1793597464081
+  "updatedAt": 1793597498009
 }
