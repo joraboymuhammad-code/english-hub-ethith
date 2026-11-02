@@ -15955,7 +15955,8 @@
       "attendance": {
         "records": {},
         "lessonTypes": {
-          "2026-10-30": "Vazifa: 1.1"
+          "2026-10-30": "Vazifa: 1.1",
+          "2025-11-03": "Oddiy"
         },
         "holidays": {},
         "homeworks": {
@@ -15973,7 +15974,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1762062718510
+        "updatedAt": 1762063377086
       },
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
@@ -139243,5 +139244,5 @@
       }
     }
   },
-  "updatedAt": 1762063367077
+  "updatedAt": 1762063386165
 }
