@@ -1734,19 +1734,52 @@
             localCls.students.push(rStudent);
             changed = true;
           } else {
-            if (rStudent.name) exists.name = rStudent.name;
-            if (rStudent.firstName) exists.firstName = rStudent.firstName;
-            if (rStudent.lastName) exists.lastName = rStudent.lastName;
-            if (rStudent.login) exists.login = rStudent.login;
-            if (rStudent.password) exists.password = rStudent.password;
-            if (rStudent.phone || rStudent.parentPhone) {
-              exists.phone = rStudent.phone || rStudent.parentPhone;
-              exists.parentPhone = rStudent.parentPhone || rStudent.phone;
+            var localUp = Number(exists.updatedAt) || 0;
+            var remoteUp = Number(rStudent.updatedAt) || 0;
+            var localIsTester = exists.isTester || (exists.name && exists.name.toLowerCase().startsWith('tester_'));
+            var remoteIsTester = rStudent.isTester || (rStudent.name && rStudent.name.toLowerCase().startsWith('tester_'));
+
+            // Safety: Never let an outdated remote tester slot overwrite a real student!
+            if (!localIsTester && remoteIsTester) {
+              rStudent.name = exists.name;
+              rStudent.firstName = exists.firstName;
+              rStudent.lastName = exists.lastName;
+              rStudent.login = exists.login;
+              rStudent.password = exists.password;
+              rStudent.phone = exists.phone;
+              rStudent.parentPhone = exists.parentPhone;
+              rStudent.isTester = false;
+              rStudent.updatedAt = localUp || Date.now();
+              return;
             }
-            if (rStudent.isTester !== undefined) exists.isTester = rStudent.isTester;
-            if (rStudent.manuallyEnrolled !== undefined) exists.manuallyEnrolled = rStudent.manuallyEnrolled;
-            exists.updatedAt = Math.max(Number(exists.updatedAt) || 0, Number(rStudent.updatedAt) || Date.now());
-            changed = true;
+
+            // Only overwrite local with remote if remote is strictly newer
+            if (remoteUp > localUp) {
+              if (rStudent.name) exists.name = rStudent.name;
+              if (rStudent.firstName) exists.firstName = rStudent.firstName;
+              if (rStudent.lastName) exists.lastName = rStudent.lastName;
+              if (rStudent.login) exists.login = rStudent.login;
+              if (rStudent.password) exists.password = rStudent.password;
+              if (rStudent.phone || rStudent.parentPhone) {
+                exists.phone = rStudent.phone || rStudent.parentPhone;
+                exists.parentPhone = rStudent.parentPhone || rStudent.phone;
+              }
+              if (rStudent.isTester !== undefined) exists.isTester = rStudent.isTester;
+              if (rStudent.manuallyEnrolled !== undefined) exists.manuallyEnrolled = rStudent.manuallyEnrolled;
+              exists.updatedAt = remoteUp;
+              changed = true;
+            } else if (localUp > remoteUp) {
+              // Local is newer: propagate local values to remote object for cloud persistence
+              rStudent.name = exists.name;
+              rStudent.firstName = exists.firstName;
+              rStudent.lastName = exists.lastName;
+              rStudent.login = exists.login;
+              rStudent.password = exists.password;
+              rStudent.phone = exists.phone;
+              rStudent.parentPhone = exists.parentPhone;
+              rStudent.isTester = exists.isTester;
+              rStudent.updatedAt = localUp;
+            }
           }
         });
       }
@@ -1817,12 +1850,21 @@
         if (!localCls.customStudentNamesTs) localCls.customStudentNamesTs = {};
         var rNamesTs = rc.customStudentNamesTs || {};
         for (var stK in rc.customStudentNames) {
-          var rKts = Number(rNamesTs[stK]) || (rc.attendance && rc.attendance.updatedAt) || 0;
-          var lKts = Number(localCls.customStudentNamesTs[stK]) || (localCls.attendance && localCls.attendance.updatedAt) || 0;
-          if (rKts >= lKts || !localCls.customStudentNames[stK]) {
+          var rKts = Number(rNamesTs[stK]) || 0;
+          var lKts = Number(localCls.customStudentNamesTs[stK]) || 0;
+          if (rKts > lKts || !localCls.customStudentNames[stK]) {
             localCls.customStudentNames[stK] = rc.customStudentNames[stK];
             localCls.customStudentNamesTs[stK] = rKts;
             changed = true;
+          }
+        }
+        for (var myK in localCls.customStudentNames) {
+          var myKts = Number(localCls.customStudentNamesTs[myK]) || 0;
+          var theirKts = Number(rNamesTs[myK]) || 0;
+          if (myKts > theirKts) {
+            rc.customStudentNames[myK] = localCls.customStudentNames[myK];
+            if (!rc.customStudentNamesTs) rc.customStudentNamesTs = {};
+            rc.customStudentNamesTs[myK] = myKts;
           }
         }
       }
@@ -2762,8 +2804,13 @@
             if (window._ethithRefreshMarket && window._ethithCurrentView === 'market') {
               window._ethithRefreshMarket();
             }
-            if (window._ethithRefreshAttendance && window._ethithCurrentView === 'attendance') {
+            if (window._ethithRefreshAttendance && (window._ethithCurrentView === 'attendance' || window._ethithCurrentView === 'timetable')) {
               window._ethithRefreshAttendance();
+            } else if (window.EA && typeof window.EA.render === 'function') {
+              var apView = document.getElementById('apView') || document.getElementById('viewContainer');
+              if (apView && (window._ethithCurrentView === 'attendance' || window._ethithCurrentView === 'timetable' || document.getElementById('eaAttendanceTable') || document.querySelector('.ea-teachers-grid') || document.querySelector('.ea-teacher-groups-wrap'))) {
+                window.EA.render(apView);
+              }
             }
             if (window._ethithRefreshTopNav) {
               window._ethithRefreshTopNav();

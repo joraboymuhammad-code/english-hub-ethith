@@ -1413,7 +1413,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   }
 
   window._ethithRefreshAttendance = function() {
-    if (window._ethithCurrentView !== 'attendance') return;
+    if (window._ethithCurrentView !== 'attendance' && window._ethithCurrentView !== 'timetable') return;
     if (EA.isModalOpen) return;
     var modalRoot = document.getElementById('eaGlobalModalRoot');
     if (modalRoot && modalRoot.innerHTML.trim() !== '') return;
@@ -2551,9 +2551,9 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
     // 7. Toast notification with undo prompt
     if (window.EthithApp && window.EthithApp.toast) {
-      window.EthithApp.toast("🗑️ " + nameToDisplay + " tizimdan o‘chirildi! (Bekor qilish: Ctrl+Z)");
+      window.EthithApp.toast("🗑️ " + nameToDisplay + " tizimdan o‘chirildi!");
     } else if (typeof window.showToast === 'function') {
-      window.showToast("🗑️ " + nameToDisplay + " tizimdan o‘chirildi! (Bekor qilish: Ctrl+Z)", 'info');
+      window.showToast("🗑️ " + nameToDisplay + " tizimdan o‘chirildi!", 'info');
     }
 
     // 8. Re-render UI
@@ -3097,8 +3097,8 @@ EA.render = function(container, preserveScrollLeft) {
     // If a student stats link is explicitly clicked, open QuantumEdu Student Daily Tasks & Growth/Decline Statistics!
     if (EA.activeStudentId) {
       var foundSt = (cls.students || []).find(function(s) {
-        var sid = s.id || s.email;
-        return sid === EA.activeStudentId;
+        var sid = s.id || s.login || s.email;
+        return sid === EA.activeStudentId || (s.login && (s.login === EA.activeStudentId || ("std_" + s.login) === EA.activeStudentId));
       });
       if (!foundSt) {
         EA.activeStudentId = null;
@@ -5220,7 +5220,7 @@ EA.render = function(container, preserveScrollLeft) {
     h += '<header class="qe-glass-panel" style="border-radius:24px;padding:14px 22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;">' +
       '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
         '<button type="button" id="qeBackToJournalBtn" class="qe-glass-pill" style="padding:9px 16px;border-radius:14px;color:#38bdf8;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;border-color:rgba(56,189,248,0.4);">' +
-          '← Davomat Jurnaliga Qaytish' +
+          (window._ethithCameFromChat ? '← Sinf Chatiga Qaytish' : '← Davomat Jurnaliga Qaytish') +
         '</button>' +
         '<div style="display:flex;align-items:center;gap:8px;background:rgba(2,6,23,0.55);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:8px 14px;">' +
           '<span style="color:#38bdf8;">👤</span>' +
@@ -5522,6 +5522,13 @@ EA.render = function(container, preserveScrollLeft) {
     if (backBtn) {
       backBtn.onclick = function() {
         EA.activeStudentId = null;
+        if (window._ethithCameFromChat) {
+          window._ethithCameFromChat = false;
+          if (typeof window.go === 'function') {
+            window.go('classes');
+            return;
+          }
+        }
         EA.render(container);
       };
     }
@@ -6234,8 +6241,8 @@ EA.render = function(container, preserveScrollLeft) {
                      (S_app_state.finance && S_app_state.finance.studentFees && stIdLookup && S_app_state.finance.studentFees[stIdLookup]) || {};
     var isStudentPaid = (initPayRec.status === 'paid');
 
-    var html = '<div class="eth-modal" style="max-width:560px;width:100%;margin:auto 0;max-height:calc(100vh - 48px);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;box-sizing:border-box;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(56,189,248,0.45);box-shadow:0 24px 60px rgba(0,0,0,0.8),0 0 30px rgba(56,189,248,0.25);border-radius:24px;padding:24px 28px 20px;color:#fff;">' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">' +
+    var html = '<div class="eth-modal" style="max-width:560px;width:100%;margin:auto;max-height:88vh;display:flex;flex-direction:column;overflow:hidden;box-sizing:border-box;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(56,189,248,0.45);box-shadow:0 24px 60px rgba(0,0,0,0.8),0 0 30px rgba(56,189,248,0.25);border-radius:24px;padding:20px 24px 16px;color:#fff;">' +
+      '<div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:12px;">' +
         '<div style="display:flex;align-items:center;gap:12px;">' +
           '<div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 16px rgba(2,132,199,0.4);">' + (isEdit ? '✏️' : '🎓') + '</div>' +
           '<div>' +
@@ -6248,7 +6255,8 @@ EA.render = function(container, preserveScrollLeft) {
         '<button type="button" id="eaCloseEnrollModalBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:20px;cursor:pointer;border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">✕</button>' +
       '</div>' +
 
-      '<form id="eaEnrollStudentForm">' +
+      '<form id="eaEnrollStudentForm" style="display:flex;flex-direction:column;flex:1 1 auto;min-height:0;overflow:hidden;">' +
+        '<div style="flex:1 1 auto;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding-right:6px;scrollbar-width:thin;">' +
         // Class selection
         '<div style="margin-bottom:14px;">' +
           '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">Biriktirilgan Guruh:</label>' +
@@ -6319,8 +6327,9 @@ EA.render = function(container, preserveScrollLeft) {
             '</div>' +
           '</div>' : '') +
 
-        // Action Buttons
-        '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);position:sticky;bottom:0;background:rgba(15,23,42,0.96);backdrop-filter:blur(8px);z-index:10;">' +
+        '</div>' + // End scrollable body
+        // Action Buttons (Pinned at Bottom - Never Cut Off!)
+        '<div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(15,23,42,0.98);z-index:10;">' +
           (isEdit 
             ? '<button type="button" id="eaModalDeleteStudentBtn" style="background:rgba(239,68,68,0.18);border:1px solid rgba(239,68,68,0.45);color:#f87171;border-radius:12px;padding:10px 16px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">🗑️ O‘quvchini O‘chirish</button>' 
             : '<div></div>') +
