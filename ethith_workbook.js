@@ -127895,14 +127895,7 @@
     legacyKeysToRemove.forEach(function(k) {
       try { localStorage.removeItem(k); } catch(e) {}
     });
-    for (var _bp = 1004; _bp <= 1083; _bp++) {
-      try {
-        localStorage.removeItem('ethith_wb_coords_v16_' + _bp);
-        localStorage.removeItem('ethith_wb_ts_' + _bp);
-        localStorage.removeItem('ethith_wb_coords_' + _bp);
-        localStorage.removeItem('ethith_wb_ts_' + _bp);
-      } catch(e) {}
-    }
+    // (Preserve user overrides for 1004..1083)
   } catch(e) {}
 
   // Helper to get human-readable book page number (e.g., 2004 -> 4)
@@ -159624,52 +159617,83 @@
 
   WB.getPageInputs = function(page) {
     page = parseInt(page, 10);
-    // Auto-clean stale localStorage overrides & state cache for Pre-Intermediate (4004..4087)
-    if (page >= 4004 && page <= 4087) {
-      try {
-        localStorage.removeItem('ethith_wb_coords_v28_' + page);
-        localStorage.removeItem('ethith_wb_coords_v25_' + page);
-        localStorage.removeItem('ethith_wb_coords_v16_' + page);
-        localStorage.removeItem('ethith_wb_coords_v15_' + page);
-        localStorage.removeItem('ethith_wb_coords_' + page);
-        if (window.EthithApp && window.EthithApp.state && window.EthithApp.state.workbookOverrides) {
-          delete window.EthithApp.state.workbookOverrides[page];
-        }
-      } catch(e) {}
+    if (!page) return [];
+
+    // 1. FIRST PRIORITY: Active in-memory / cloud overrides from teacher (persisted in sync store)
+    var S = (window.S || (window.EthithApp && window.EthithApp.state)) || {};
+    if (S.workbookOverrides && Array.isArray(S.workbookOverrides[page]) && S.workbookOverrides[page].length > 0) {
+      if (WB.defaultInputs) WB.defaultInputs[page] = S.workbookOverrides[page];
+      return S.workbookOverrides[page];
     }
-    // 1. Authoritative calibrated master inputs (ALWAYS FIRST!)
+
+    // 2. SECOND PRIORITY: Locally saved teacher overrides across key formats
+    try {
+      var saved = localStorage.getItem('ethith_wb_override_' + page) ||
+                  localStorage.getItem('ethith_wb_coords_v29_' + page) ||
+                  localStorage.getItem('ethith_wb_coords_v28_' + page) ||
+                  localStorage.getItem('ethith_wb_coords_v15_' + page);
+      if (saved) {
+        var parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          if (WB.defaultInputs) WB.defaultInputs[page] = parsed;
+          if (!S.workbookOverrides) S.workbookOverrides = {};
+          S.workbookOverrides[page] = parsed;
+          return parsed;
+        }
+      }
+    } catch(e) {}
+
+    // 3. THIRD PRIORITY: Cloud sync helper if available
+    if (window.EthithSync && typeof window.EthithSync.getWorkbookCloudOverrides === 'function') {
+      var cloudInps = window.EthithSync.getWorkbookCloudOverrides(page);
+      if (Array.isArray(cloudInps) && cloudInps.length > 0) {
+        if (WB.defaultInputs) WB.defaultInputs[page] = cloudInps;
+        if (!S.workbookOverrides) S.workbookOverrides = {};
+        S.workbookOverrides[page] = cloudInps;
+        return cloudInps;
+      }
+    }
+
+    // 4. FOURTH PRIORITY: Initial calibrated master inputs bundled in JS
     if (WB.defaultInputs && Array.isArray(WB.defaultInputs[page]) && WB.defaultInputs[page].length > 0) {
       return WB.defaultInputs[page];
     }
-    // 2. Check local saved teacher overrides (v29 priority)
-    try {
-      var saved = localStorage.getItem('ethith_wb_coords_v29_' + page);
-      if (saved) {
-        var parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-      }
-    } catch(e) {}
-    // 3. Fallback to cloud store overrides
-    if (window.EthithSync && typeof window.EthithSync.getWorkbookCloudOverrides === 'function') {
-      var cloudInps = window.EthithSync.getWorkbookCloudOverrides(page);
-      if (Array.isArray(cloudInps) && cloudInps.length > 0) return cloudInps;
-    }
+
     return [];
   };
 
   WB.savePageInputs = function(page, inputs, noBroadcast) {
     page = parseInt(page, 10);
-    window._lastTeacherEditTime = Date.now();
+    if (!page) return;
+    var nowTs = Date.now();
+    window._lastTeacherEditTime = nowTs;
+
+    // 1. Save to multiple localStorage keys for 100% backward/forward resilience
     try {
-      localStorage.setItem('ethith_wb_coords_v28_' + page, JSON.stringify(inputs));
-      localStorage.setItem('ethith_wb_ts_' + page, Date.now().toString());
+      var jsonStr = JSON.stringify(inputs);
+      localStorage.setItem('ethith_wb_override_' + page, jsonStr);
+      localStorage.setItem('ethith_wb_coords_v29_' + page, jsonStr);
+      localStorage.setItem('ethith_wb_coords_v28_' + page, jsonStr);
+      localStorage.setItem('ethith_wb_coords_v15_' + page, jsonStr);
+      localStorage.setItem('ethith_wb_ts_' + page, nowTs.toString());
     } catch(e) {}
 
+    // 2. Update memory state immediately
     if (WB.defaultInputs) {
       WB.defaultInputs[page] = inputs;
     }
 
-    // INSTANT MILLISECOND REAL-TIME BROADCAST + GITHUB CLOUD STORE PERSISTENCE
+    var S = (window.S || (window.EthithApp && window.EthithApp.state)) || {};
+    if (!S.workbookOverrides) S.workbookOverrides = {};
+    if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
+    S.workbookOverrides[page] = inputs;
+    S.workbookOverridesTs[page] = nowTs;
+
+    if (window.EthithApp && typeof window.EthithApp.saveState === 'function') {
+      window.EthithApp.saveState();
+    }
+
+    // 3. INSTANT ZERO-LATENCY REAL-TIME BROADCAST + GITHUB CLOUD STORE PERSISTENCE
     if (!noBroadcast && window.EthithSync) {
       if (typeof window.EthithSync.saveWorkbookCloudOverrides === 'function') {
         window.EthithSync.saveWorkbookCloudOverrides(page, inputs);
@@ -159679,7 +159703,7 @@
           page: page,
           inputs: inputs,
           version: '15.0',
-          ts: Date.now()
+          ts: nowTs
         });
       }
       console.log('[WB-Sync] Broadcasted & Saved page ' + page + ' to cloud & mesh in real time!');

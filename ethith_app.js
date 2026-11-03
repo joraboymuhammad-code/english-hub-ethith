@@ -82,7 +82,9 @@
     activeTopicQuiz: null,
     activePlacementQuiz: null,
     accounts: [],
-    p2pListings: []
+    p2pListings: [],
+    workbookOverrides: (typeof window !== 'undefined' && window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.workbookOverrides) ? Object.assign({}, window.ETHITH_INITIAL_STORE.workbookOverrides) : {},
+    workbookOverridesTs: (typeof window !== 'undefined' && window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.workbookOverridesTs) ? Object.assign({}, window.ETHITH_INITIAL_STORE.workbookOverridesTs) : {}
   };
 
   // Load state from localStorage
@@ -95,6 +97,18 @@
       }
     }
   } catch(e) {}
+
+  // Merge initial cloud store workbook overrides
+  if (typeof window !== 'undefined' && window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.workbookOverrides) {
+    if (!S.workbookOverrides) S.workbookOverrides = {};
+    if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
+    var initOverrides = window.ETHITH_INITIAL_STORE.workbookOverrides;
+    for (var opk in initOverrides) {
+      if (!S.workbookOverrides[opk] || !Array.isArray(S.workbookOverrides[opk]) || S.workbookOverrides[opk].length === 0) {
+        S.workbookOverrides[opk] = initOverrides[opk];
+      }
+    }
+  }
 
   if (Array.isArray(S.accounts)) {
     S.accounts = S.accounts.filter(function(a) { return !isPurgedAccount(a); });
