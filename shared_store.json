@@ -26545,7 +26545,99 @@
       "deletedMsgIds": [],
       "messages": [],
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "levelTestResults": {
+        "cls_1793728994224_std_1": {
+          "score": 100,
+          "passed": true,
+          "updatedAt": 1793729732897
+        },
+        "cls_1793728994224_std_2": {
+          "score": 100,
+          "passed": true,
+          "updatedAt": 1793729733663
+        },
+        "cls_1793728994224_std_3": {
+          "score": 100,
+          "passed": true,
+          "updatedAt": 1793729734167
+        },
+        "cls_1793728994224_std_4": {
+          "score": 100,
+          "passed": true,
+          "updatedAt": 1793729734882
+        },
+        "cls_1793728994224_std_5": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793729690288
+        },
+        "cls_1793728994224_std_6": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793729690288
+        },
+        "cls_1793728994224_std_7": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793729690288
+        },
+        "cls_1793728994224_std_8": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793729690288
+        },
+        "cls_1793728994224_std_9": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793729690288
+        },
+        "cls_1793728994224_std_10": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793729690288
+        },
+        "cls_1793728994224_std_11": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793729690288
+        },
+        "cls_1793728994224_std_12": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793729690288
+        },
+        "cls_1793728994224_std_13": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793729690288
+        },
+        "cls_1793728994224_std_14": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793729690288
+        },
+        "cls_1793728994224_std_15": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793729690288
+        },
+        "cls_1793728994224_std_16": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793729690288
+        },
+        "cls_1793728994224_std_17": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793729690288
+        },
+        "cls_1793728994224_std_18": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793729690288
+        }
+      }
     }
   ],
   "exams": [
@@ -27074,7 +27166,7 @@
     {
       "id": "admin_official_teacher",
       "role": "teacher",
-      "name": "muhammad",
+      "name": "Ustoz",
       "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
       "coins": 1000,
@@ -146353,7 +146445,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "AZIZBEK77",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "teacher_1793475825095",
@@ -146959,5 +147053,5 @@
       }
     }
   },
-  "updatedAt": 1793729471680
+  "updatedAt": 1793729736741
 }
