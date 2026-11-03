@@ -26415,10 +26415,10 @@
       "studentPayments": {
         "cls_1793728994224_std_1": {
           "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
+          "paid": 300000,
+          "status": "paid",
+          "method": "Click",
+          "date": "2026-11-03"
         },
         "cls_1793728994224_std_2": {
           "fee": 300000,
@@ -146344,7 +146344,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "AZIZBEK77",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "teacher_1793475825095",
@@ -146386,7 +146388,9 @@
       "classOrder": [],
       "paidThisMonth": false,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "livePaidStudents": 1,
+      "computedLiveSalary": 150000
     },
     {
       "id": "admin_official_teacher",
@@ -146948,5 +146952,5 @@
       }
     }
   },
-  "updatedAt": 1793728996020
+  "updatedAt": 1793729020346
 }
