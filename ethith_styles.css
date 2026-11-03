@@ -10244,3 +10244,28 @@ html, body {
 
 /* Cursor pointer on chat bubbles so users know left-click works */
 
+
+
+/* Hover action buttons and context menu visibility */
+.tg-msg-row {
+  position: relative !important;
+}
+
+.tg-msg-actions-hover {
+  display: none;
+  position: absolute;
+  top: -12px;
+  background: rgba(15, 23, 42, 0.95) !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  border-radius: 20px !important;
+  padding: 2px 6px !important;
+  gap: 4px !important;
+  align-items: center !important;
+  z-index: 50 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.tg-msg-row:hover .tg-msg-actions-hover {
+  display: inline-flex !important;
+}

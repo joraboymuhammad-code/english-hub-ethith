@@ -157,6 +157,9 @@
   // Dismiss context menu on click outside & Global Copy Code Handler
   document.addEventListener('click', function(e) {
     if (activeContextMenu && !activeContextMenu.contains(e.target)) {
+      if (activeContextMenu._openedAt && (Date.now() - activeContextMenu._openedAt < 250)) {
+        return;
+      }
       activeContextMenu.remove();
       activeContextMenu = null;
     }
@@ -2088,7 +2091,11 @@
           }).join('') +
           '</div>' : '') +
         '  </div>' +
-        '  <button class="tg-hover-react-btn" data-msg-id="' + m.id + '" title="Add reaction">😄</button>' +
+        '  <div class="tg-msg-actions-hover" style="' + (isOwn ? 'right:12px;' : 'left:12px;') + '">' +
+        '    <button type="button" class="tg-hover-react-btn" data-msg-id="' + m.id + '" title="Reaksiya bildirish" style="background:none;border:none;cursor:pointer;font-size:14px;padding:2px 4px;line-height:1;">😄</button>' +
+        '    <button type="button" class="tg-hover-reply-btn" data-msg-id="' + m.id + '" title="Javob berish" style="background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;line-height:1;color:#94a3b8;">↩️</button>' +
+        (canUserDeleteThisMsg(m, myUser) ? '    <button type="button" class="tg-hover-del-btn" data-msg-id="' + m.id + '" title="O\'chirish" style="background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;line-height:1;color:#ef4444;">🗑️</button>' : '') +
+        '  </div>' +
         '</div>';
     }
 
@@ -2358,20 +2365,40 @@
         };
       }
 
-      var bubble = rowEl.querySelector('.tg-bubble');
-      if (bubble) {
-        bubble.ondblclick = function(e) {
+      var hoverReplyBtn = rowEl.querySelector('.tg-hover-reply-btn');
+      if (hoverReplyBtn) {
+        hoverReplyBtn.onclick = function(e) {
           e.stopPropagation();
-          var msgId = bubble.dataset.msgId;
-          var msg = (activeCls.messages || []).find(function(mItem2) { return mItem2.id === msgId; });
-          if (!msg) return;
-
-          currentReplyingMessage = msg;
+          currentReplyingMessage = mItem;
           var replyBar = document.getElementById('tgReplyBar');
           var replyText = document.getElementById('tgReplyBarText');
           if (replyBar && replyText) {
             replyBar.style.display = 'flex';
-            replyText.innerHTML = ic('reply') + ' <b>Replying to: ' + esc(msg.senderName) + '</b>: "' + esc(msg.text.slice(0, 45)) + '..."';
+            replyText.innerHTML = ic('reply') + ' <b>Replying to: ' + esc(mItem.senderName) + '</b>: "' + esc(mItem.text.slice(0, 45)) + '..."';
+          }
+          var input = document.getElementById('tgInputText');
+          if (input) input.focus();
+        };
+      }
+
+      var hoverDelBtn = rowEl.querySelector('.tg-hover-del-btn');
+      if (hoverDelBtn) {
+        hoverDelBtn.onclick = function(e) {
+          e.stopPropagation();
+          triggerDeleteMessage(mItem.id, activeCls, cnt);
+        };
+      }
+
+      var bubble = rowEl.querySelector('.tg-bubble');
+      if (bubble) {
+        bubble.ondblclick = function(e) {
+          e.stopPropagation();
+          currentReplyingMessage = mItem;
+          var replyBar = document.getElementById('tgReplyBar');
+          var replyText = document.getElementById('tgReplyBarText');
+          if (replyBar && replyText) {
+            replyBar.style.display = 'flex';
+            replyText.innerHTML = ic('reply') + ' <b>Replying to: ' + esc(mItem.senderName) + '</b>: "' + esc(mItem.text.slice(0, 45)) + '..."';
           }
           var input = document.getElementById('tgInputText');
           if (input) input.focus();
@@ -2380,7 +2407,7 @@
         var touchTimer = null;
         bubble.addEventListener('touchstart', function(e) {
           touchTimer = setTimeout(function() {
-            showContextMenu(e.touches[0].clientX, e.touches[0].clientY, bubble.dataset.msgId, activeCls, cnt);
+            showContextMenu(e.touches[0].clientX, e.touches[0].clientY, mItem.id, activeCls, cnt);
           }, 450);
         }, { passive: true });
 
@@ -2396,9 +2423,15 @@
         bubble.addEventListener('contextmenu', function(e) {
           e.preventDefault();
           e.stopPropagation();
-          showContextMenu(e.clientX, e.clientY, bubble.dataset.msgId, activeCls, cnt);
+          showContextMenu(e.clientX, e.clientY, mItem.id, activeCls, cnt);
         });
       }
+
+      rowEl.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        showContextMenu(e.clientX, e.clientY, mItem.id, activeCls, cnt);
+      });
     }
 
     container.querySelectorAll('.tg-msg-row').forEach(function(row) {
@@ -2640,6 +2673,43 @@
     }
   }
 
+
+  // Reusable 0ms message deletion with Telegram sand/pixel disintegration
+  function triggerDeleteMessage(msgId, cls, mainContainer) {
+    if (!msgId) return;
+
+    // 1. Instant Telegram sand/pixel dissolution in 0ms!
+    var row = document.querySelector('.tg-msg-row[data-msg-id="' + msgId + '"]');
+    if (row) telegramDisintegrateBubble(row);
+
+    // 2. Remove from live state
+    var liveCls = (S.classes && S.classes.find(function(c) {
+      return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+    })) || cls;
+
+    liveCls.messages = (liveCls.messages || []).filter(function(m) { return m.id !== msgId; });
+    if (cls !== liveCls && cls.messages) {
+      cls.messages = (cls.messages || []).filter(function(m) { return m.id !== msgId; });
+    }
+    if (liveCls.pinnedId === msgId) liveCls.pinnedId = null;
+    if (!liveCls.deletedMsgIds) liveCls.deletedMsgIds = [];
+    if (liveCls.deletedMsgIds.indexOf(msgId) === -1) liveCls.deletedMsgIds.push(msgId);
+
+    // 3. Save state
+    App.saveState();
+
+    // 4. Instant Dual-broker MQTT broadcast for 0ms peer disintegration
+    if (window.EthithSync) {
+      window.EthithSync.publishLive({
+        type: 'DELETE_MSG',
+        classId: liveCls.code || liveCls.id || cls.code || cls.id,
+        msgId: msgId
+      });
+      window.EthithSync.broadcastLocal(S.classes, S.exams);
+      window.EthithSync.pushRemoteStore(S.classes, S.exams);
+    }
+  }
+
   // Telegram Context Menu: Compact Reactions Row, Reply, Pin, Delete (Left-click & Right-click)
   function showContextMenu(x, y, msgId, cls, mainContainer) {
     if (activeContextMenu) {
@@ -2670,6 +2740,7 @@
     posY = Math.max(10, Math.min(posY, window.innerHeight - 260));
     menu.style.left = posX + 'px';
     menu.style.top = posY + 'px';
+    menu._openedAt = Date.now();
 
     var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.isTeacher === true);
     var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍', '😊', '❤️'];
@@ -2764,41 +2835,12 @@
 
     var delBtn = menu.querySelector('#ctxDeleteBtn');
     if (delBtn) {
-      delBtn.onclick = function() {
-        var msgId = msg.id;
+      delBtn.onclick = function(e) {
+        if (e) e.stopPropagation();
+        var targetMsgId = msg.id;
         menu.remove();
         activeContextMenu = null;
-
-        // 1. Instant Telegram sand/pixel dissolution in 0ms!
-        var row = document.querySelector('.tg-msg-row[data-msg-id="' + msgId + '"]');
-        if (row) telegramDisintegrateBubble(row);
-
-        // 2. Remove from live state
-        var liveCls = (S.classes && S.classes.find(function(c) {
-          return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
-        })) || cls;
-
-        liveCls.messages = (liveCls.messages || []).filter(function(m) { return m.id !== msgId; });
-        if (cls !== liveCls && cls.messages) {
-          cls.messages = (cls.messages || []).filter(function(m) { return m.id !== msgId; });
-        }
-        if (liveCls.pinnedId === msgId) liveCls.pinnedId = null;
-        if (!liveCls.deletedMsgIds) liveCls.deletedMsgIds = [];
-        if (liveCls.deletedMsgIds.indexOf(msgId) === -1) liveCls.deletedMsgIds.push(msgId);
-
-        // 3. Save state
-        App.saveState();
-
-        // 4. Instant Dual-broker MQTT broadcast for 0ms peer disintegration
-        if (window.EthithSync) {
-          window.EthithSync.publishLive({
-            type: 'DELETE_MSG',
-            classId: liveCls.code || liveCls.id || cls.code || cls.id,
-            msgId: msgId
-          });
-          window.EthithSync.broadcastLocal(S.classes, S.exams);
-          window.EthithSync.pushRemoteStore(S.classes, S.exams);
-        }
+        triggerDeleteMessage(targetMsgId, cls, mainContainer);
       };
     }
   }
