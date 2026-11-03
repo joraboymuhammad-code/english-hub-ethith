@@ -2091,11 +2091,6 @@
           }).join('') +
           '</div>' : '') +
         '  </div>' +
-        '  <div class="tg-msg-actions-hover" style="' + (isOwn ? 'right:12px;' : 'left:12px;') + '">' +
-        '    <button type="button" class="tg-hover-react-btn" data-msg-id="' + m.id + '" title="Reaksiya bildirish" style="background:none;border:none;cursor:pointer;font-size:14px;padding:2px 4px;line-height:1;">😄</button>' +
-        '    <button type="button" class="tg-hover-reply-btn" data-msg-id="' + m.id + '" title="Javob berish" style="background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;line-height:1;color:#94a3b8;">↩️</button>' +
-        (canUserDeleteThisMsg(m, myUser) ? '    <button type="button" class="tg-hover-del-btn" data-msg-id="' + m.id + '" title="O\'chirish" style="background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;line-height:1;color:#ef4444;">🗑️</button>' : '') +
-        '  </div>' +
         '</div>';
     }
 
@@ -2391,24 +2386,25 @@
 
       var bubble = rowEl.querySelector('.tg-bubble');
       if (bubble) {
-        // Bosilganda (click) ham, o'ng tomon bosilganda (contextmenu) ham Telegram kabi menyu ochilishi:
+        // Sichqonchaning CHAP TUGMASI (Left Click) bosilganda Telegram Action Modal ("alohida joy") ochilishi:
         bubble.addEventListener('click', function(e) {
           if (e.target.closest('.tg-reaction-pill') || e.target.closest('a') || e.target.closest('button')) return;
           e.stopPropagation();
-          showContextMenu(e.clientX, e.clientY, mItem.id, activeCls, cnt);
+          openTelegramActionSheet(mItem.id, activeCls, cnt);
         });
 
+        // Sichqonchaning O'NG TUGMASI (Right Click) bosilganda ham shu modal ochilishi:
         bubble.addEventListener('contextmenu', function(e) {
           e.preventDefault();
           e.stopPropagation();
-          showContextMenu(e.clientX, e.clientY, mItem.id, activeCls, cnt);
+          openTelegramActionSheet(mItem.id, activeCls, cnt);
         });
 
         var touchTimer = null;
         bubble.addEventListener('touchstart', function(e) {
           touchTimer = setTimeout(function() {
-            showContextMenu(e.touches[0].clientX, e.touches[0].clientY, mItem.id, activeCls, cnt);
-          }, 400);
+            openTelegramActionSheet(mItem.id, activeCls, cnt);
+          }, 380);
         }, { passive: true });
 
         bubble.addEventListener('touchmove', function() {
@@ -2423,7 +2419,7 @@
       rowEl.addEventListener('contextmenu', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        showContextMenu(e.clientX, e.clientY, mItem.id, activeCls, cnt);
+        openTelegramActionSheet(mItem.id, activeCls, cnt);
       });
     }
 

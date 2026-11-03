@@ -2484,10 +2484,19 @@
           });
         }
         if (!S.quizzes) S.quizzes = [];
-        mergeQuizzes(S.quizzes, remoteData.quizzes || [], S.deletedQuizIds || []);
-
-        mergeClasses(S.classes, remoteData.classes || []);
-        mergeExams(S.exams, remoteData.exams || [], S.deletedExamIds || []);
+        // In push mode: Local state is the authority! Never overwrite local classes/exams with old remote data!
+        if (Array.isArray(remoteData.classes)) {
+          remoteData.classes.forEach(function(rc) {
+            var exists = S.classes.find(function(c) { return c.id === rc.id || c.code === rc.code; });
+            if (!exists) S.classes.push(rc);
+          });
+        }
+        if (Array.isArray(remoteData.exams)) {
+          remoteData.exams.forEach(function(re) {
+            var exists = S.exams.find(function(e) { return e.id === re.id || e.code === re.code; });
+            if (!exists) S.exams.push(re);
+          });
+        }
         if (remoteData.accounts && Array.isArray(remoteData.accounts)) {
           if (!S.accounts) S.accounts = [];
           mergeAccounts(S.accounts, remoteData.accounts);
