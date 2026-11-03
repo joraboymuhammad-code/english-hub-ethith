@@ -745,7 +745,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       if (t && Array.isArray(t.assignedClasses) && t.assignedClasses.includes(cls.id)) return true;
       // Default fallback associations for primary teachers so cards are never empty
       if (teacherId === 'admin_official_teacher') {
-        if (!cls.teacherId || cls.teacherId === 'admin_official_root' || cls.teacherId === 'joraboyevmuhammad85@gmail.com' || cls.id === 'cls_ethith_main' || cls.id === 'cls_1_guruh') {
+        if (!cls.teacherId || cls.teacherId === 'admin_official_root' || cls.teacherId === 'joraboyevmuhammad85@gmail.com'  || cls.id === 'cls_1_guruh') {
           return true;
         }
       }
@@ -755,10 +755,15 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     // Ensure Azizbek Urolov has his 4 distinct groups: Upper, Standard, Inter, Practice
     if (teacherId === 't_urolov_azizbek' || (tName && tName.toLowerCase().includes('azizbek'))) {
       matched = matched.filter(function(cls) {
+        if (!cls) return false;
+        var cTid = (cls.teacherId || '').toLowerCase();
+        var cTname = (cls.teacherName || cls.teacher || '').toLowerCase();
         return cls.id === 'cls_urolov_azizbek_upper' ||
                cls.id === 'cls_urolov_azizbek_standard' ||
                cls.id === 'cls_urolov_azizbek_intermediate' ||
-               cls.id === 'cls_urolov_azizbek_practice';
+               cls.id === 'cls_urolov_azizbek_practice' ||
+               cTid === 't_urolov_azizbek' ||
+               cTname.includes('azizbek');
       });
     }
 
@@ -1645,9 +1650,9 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           '<button class="ea-btn-open-teacher" data-tid="' + esc(t.id) + '" style="flex:1;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(2,132,199,0.3);">' +
             '📂 Guruhlar &amp; Davomat &rarr;' +
           '</button>' +
-          '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:800;cursor:pointer;" title="Shu o‘qituvchiga yangi guruh qo‘shish">' +
+          (isAdminRole() ? ('<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:800;cursor:pointer;" title="Shu o‘qituvchiga yangi guruh qo‘shish">' +
             '➕ Guruh' +
-          '</button>' +
+          '</button>') : '') +
         '</div>' +
 
       '</div>';
@@ -1755,11 +1760,13 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
             '<button type="button" class="ea-copy-code-btn" data-code="' + esc(t.inviteCode || t.login || '') + '" title="Ustoz kodini nusxalash" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:6px;padding:3px 9px;font-size:11px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;">📋 Nusxa olish</button>' +
           '</div>' +
           
-          '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(16,185,129,0.35);">' +
-            '➕ Shu Ustozga Yangi Guruh Qo‘shish' +
-          '</button>' +
-          '<button type="button" class="ea-btn-edit-current-teacher" data-tid="' + esc(t.id) + '" title="O‘qituvchi ma’lumotlarini tahrirlash" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">✏️ Tahrirlash</button>' +
-          '<button type="button" class="ea-btn-delete-current-teacher" data-tid="' + esc(t.id) + '" data-tname="' + esc(t.name) + '" title="O‘qituvchini tizimdan butunlay o‘chirish" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.35);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">🗑️ O‘qituvchini O‘chirish</button>' +
+          (isAdminRole() ? (
+            '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(16,185,129,0.35);">' +
+              '➕ Shu Ustozga Yangi Guruh Qo‘shish' +
+            '</button>' +
+            '<button type="button" class="ea-btn-edit-current-teacher" data-tid="' + esc(t.id) + '" title="O‘qituvchi ma’lumotlarini tahrirlash" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">✏️ Tahrirlash</button>' +
+            '<button type="button" class="ea-btn-delete-current-teacher" data-tid="' + esc(t.id) + '" data-tname="' + esc(t.name) + '" title="O‘qituvchini tizimdan butunlay o‘chirish" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.35);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">🗑️ O‘qituvchini O‘chirish</button>'
+          ) : '') +
         '</div>' +
       '</div>';
 
@@ -1768,8 +1775,12 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       h += '<div style="background:rgba(15,23,42,0.8);border:1px dashed rgba(255,255,255,0.15);border-radius:20px;padding:48px 24px;text-align:center;color:#94a3b8;">' +
         '<div style="font-size:42px;margin-bottom:12px;">🏫</div>' +
         '<h3 style="margin:0 0 8px;font-size:18px;font-weight:800;color:#fff;">Ushbu o‘qituvchiga hali guruh biriktirilmagan</h3>' +
-        '<p style="margin:0 0 20px;font-size:13px;color:#94a3b8;">Yuqoridagi <b>"+ Shu Ustozga Yangi Guruh Qo‘shish"</b> tugmasini bosib, yangi guruh oching!</p>' +
-        '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:10px 20px;font-size:13px;font-weight:800;cursor:pointer;">+ Birinchi Guruhni Qo‘shish</button>' +
+        (isAdminRole() ? (
+          '<p style="margin:0 0 20px;font-size:13px;color:#94a3b8;">Yuqoridagi <b>"+ Shu Ustozga Yangi Guruh Qo‘shish"</b> tugmasini bosib, yangi guruh oching!</p>' +
+          '<button class="ea-btn-add-group-for-t" data-tid="' + esc(t.id) + '" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:10px;padding:10px 20px;font-size:13px;font-weight:800;cursor:pointer;">+ Birinchi Guruhni Qo‘shish</button>'
+        ) : (
+          '<p style="margin:0;font-size:13px;color:#94a3b8;">Administrator sizga yangi guruh biriktirishi bilan u shu zahoti ushbu sahifada va chatlaringizda avtomatik paydo bo‘ladi.</p>'
+        )) +
       '</div>';
     } else {
       h += '<div style="font-size:12px;color:#38bdf8;font-weight:700;margin-bottom:16px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.25);border-radius:12px;padding:9px 16px;display:flex;align-items:center;gap:10px;">' +
@@ -2967,6 +2978,17 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       S.classes.push(newCls);
       if (window.EthithApp && typeof window.EthithApp.saveState === 'function') window.EthithApp.saveState();
       if (window.EthithSync && typeof window.EthithSync.pushStoreUpdate === 'function') window.EthithSync.pushStoreUpdate();
+
+      // INSTANT BROADCAST TO THE TEACHER (0ms delivery via MQTT & BroadcastChannel)
+      if (window.EthithSync) {
+        window.EthithSync.publishLive({
+          type: 'GROUP_ASSIGNED',
+          teacherId: teacher.id,
+          teacherName: teacher.name,
+          class: newCls
+        });
+        window.EthithSync.broadcastLocal(S.classes, S.exams);
+      }
 
       close();
       EA.activeTeacherId = teacher.id;

@@ -1386,6 +1386,16 @@
     var uName = (user.name || '').toLowerCase().trim();
     var uEmail = (user.email || '').toLowerCase().trim();
 
+    // Strict blacklist of dummy / fake demo classes
+    var badIds = ['cls_ethith_main', 'cls_upper_intermediate', 'cls_1793380468126', 'cls_1792041880052'];
+    classes = classes.filter(function(c) {
+      if (!c || !c.id) return false;
+      if (badIds.indexOf(c.id) !== -1) return false;
+      var cName = (c.name || '').toLowerCase();
+      if (cName.includes('ielts intensive') || cName === 'zsczxc' || cName === 'bizani gurux') return false;
+      return true;
+    });
+
     if (role === 'admin' || (uEmail && uEmail.includes('admin'))) {
       var targetTid = window._ethithAdminSelectedTeacherId || (window.EthithAttendance && window.EthithAttendance.activeTeacherId) || 't_urolov_azizbek';
       var filtered = classes.filter(function(c) {
@@ -1417,7 +1427,7 @@
       var cTName = (c.teacherName || c.teacher || '').toLowerCase().trim();
       var cTEmail = (c.teacherEmail || '').toLowerCase().trim();
 
-      if (uId && cTId && cTId === uId) return true;
+      if (uId && cTId && cTId === uId && uId !== 'admin_official_teacher') return true;
 
       // Specific known teachers isolation
       if (uId === 't_urolov_azizbek' || uLogin === 'azizbek77' || uName.includes('azizbek')) {
@@ -2056,7 +2066,7 @@
           '<span style="background:rgba(0,0,0,0.35);padding:2px 7px;border-radius:10px;font-size:11px;color:' + (isActive ? '#7dd3fc' : '#94a3b8') + ';font-weight:800;">' + stCount + '</span>' +
         '</button>';
       }).join('') +
-      (isTeacher ? '  <button type="button" id="tgAddGroupTabTopBtn" style="flex-shrink:0;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:7px 15px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:5px;box-shadow:0 4px 12px rgba(16,185,129,0.35);" title="Yangi guruh yaratish">➕ Yangi Guruh</button>' : '') +
+      ((S.user && (S.user.role === 'admin' || (S.user.email && S.user.email.includes('admin')))) ? '  <button type="button" id="tgAddGroupTabTopBtn" style="flex-shrink:0;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:7px 15px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:5px;box-shadow:0 4px 12px rgba(16,185,129,0.35);" title="Yangi guruh yaratish">➕ Yangi Guruh</button>' : '') +
       '</div>';
 
     var html = '' +

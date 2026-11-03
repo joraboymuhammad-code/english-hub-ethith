@@ -497,6 +497,38 @@
           } else {
             uiNeedsRefresh = true;
           }
+
+          // Real-time Telegram-style notification banner sliding down from top!
+          try {
+            var myU = (window.S && window.S.user) || {};
+            var myEmail = (myU.email || '').toLowerCase().trim();
+            var myId = (myU.id || '').toLowerCase().trim();
+            var myLogin = (myU.login || '').toLowerCase().trim();
+            var myName = (myU.name || '').toLowerCase().trim();
+
+            var sId = (event.message.senderId || '').toLowerCase().trim();
+            var sEmail = (event.message.senderEmail || '').toLowerCase().trim();
+            var sName = (event.message.senderName || '').toLowerCase().trim();
+
+            var isFromMe = false;
+            if (sId && myId && sId === myId) isFromMe = true;
+            if (sEmail && myEmail && sEmail === myEmail) isFromMe = true;
+            if (sName && myName && sName === myName) isFromMe = true;
+            if (myLogin && (sId.includes(myLogin) || sEmail.includes(myLogin))) isFromMe = true;
+
+            if (!isFromMe && window.EthithNotify && typeof window.EthithNotify.showChatMessage === 'function') {
+              var grpName = (targetCls && targetCls.name) || 'Sinf Chati';
+              window.EthithNotify.showChatMessage(event.message, grpName, function() {
+                if (targetCls) {
+                  window.S.activeClassId = targetCls.id;
+                  var tCont = document.getElementById('apView') || document.getElementById('viewContainer');
+                  if (window.EthithViews && typeof window.EthithViews.renderClassDetail === 'function' && tCont) {
+                    window.EthithViews.renderClassDetail(tCont, targetCls);
+                  }
+                }
+              });
+            }
+          } catch(e) {}
         }
       }
     }
@@ -894,15 +926,53 @@
       }
     }
 
-    // F. CLASS CREATED
-    else if (event.type === 'CLASS_CREATED' && event.classData) {
+    // F. CLASS CREATED & GROUP ASSIGNED (Instant sub-millisecond assignment & top alert)
+    else if ((event.type === 'CLASS_CREATED' || event.type === 'GROUP_ASSIGNED') && (event.classData || event.class)) {
+      var newClsData = event.classData || event.class;
       var cExists = classes.some(function(c) {
-        return (c.id && c.id === event.classData.id) || (c.code && c.code === event.classData.code);
+        return (c.id && c.id === newClsData.id) || (c.code && c.code === newClsData.code);
       });
       if (!cExists) {
-        classes.push(event.classData);
+        classes.push(newClsData);
         uiNeedsRefresh = true;
       }
+
+      // Check if this new group is assigned to currently logged in teacher
+      try {
+        var myU = (window.S && window.S.user) || {};
+        var myTid = (myU.id || '').toLowerCase().trim();
+        var myTlogin = (myU.login || '').toLowerCase().trim();
+        var myTname = (myU.name || '').toLowerCase().trim();
+        var clsTid = (newClsData.teacherId || event.teacherId || '').toLowerCase().trim();
+        var clsTname = (newClsData.teacherName || newClsData.teacher || event.teacherName || '').toLowerCase().trim();
+
+        var isForThisTeacher = false;
+        if (clsTid && myTid && clsTid === myTid) isForThisTeacher = true;
+        if (clsTid && myTlogin && (clsTid.includes(myTlogin) || myTlogin.includes(clsTid))) isForThisTeacher = true;
+        if (clsTname && myTname && (clsTname.includes(myTname) || myTname.includes(clsTname))) isForThisTeacher = true;
+
+        if (isForThisTeacher) {
+          if (window.EthithNotify && typeof window.EthithNotify.showSystemAlert === 'function') {
+            window.EthithNotify.showSystemAlert(
+              "🎉 Sizga yangi guruh biriktirildi!",
+              "Administrator sizga yangi «" + (newClsData.name || 'Guruh') + "» guruhini biriktirdi.",
+              "🏫",
+              function() {
+                window.S.activeClassId = newClsData.id;
+                var tCont = document.getElementById('apView') || document.getElementById('viewContainer');
+                if (window.EthithViews && typeof window.EthithViews.renderClassDetail === 'function' && tCont) {
+                  window.EthithViews.renderClassDetail(tCont, newClsData);
+                }
+              }
+            );
+          }
+          if (window.EthithAttendance && typeof window.EthithAttendance.renderTeacherGroupsView === 'function') {
+            var apV = document.getElementById('apView');
+            if (apV) window.EthithAttendance.render(apV);
+          }
+          if (window._ethithRefreshCurrentClass) window._ethithRefreshCurrentClass();
+        }
+      } catch(e) {}
     }
 
     // G. DELETE EXAM
@@ -1228,8 +1298,8 @@
           return s === 'yangi o\'quvchi' || s === 'yangi foydalanuvchi' || s === 'foydalanuvchi' || s === 'user' || s === 'student' || s === 'guest';
         };
 
-        var isTeacherAcc = (u.role === 'teacher' || uEmail === 'teacher@ethith.uz' || uId === 'admin_official_teacher');
-        if (isTeacherAcc) {
+        var isGenericUstoz = (uEmail === 'teacher@ethith.uz' || (!u.login && uId === 'admin_official_teacher' && (!u.name || u.name === 'Ustoz')));
+        if (isGenericUstoz) {
           u.name = 'Ustoz';
           uName = 'Ustoz';
           u.id = 'admin_official_teacher';
@@ -1249,7 +1319,7 @@
             existingAcc.name = 'Bosh Admin';
             existingAcc.id = 'admin_official_root';
             existingAcc.role = 'admin';
-          } else if (isTeacherAcc || existingAcc.role === 'teacher' || (existingAcc.email || '').toLowerCase().trim() === 'teacher@ethith.uz') {
+          } else if ((existingAcc.email || '').toLowerCase().trim() === 'teacher@ethith.uz' && !existingAcc.login) {
             existingAcc.name = 'Ustoz';
             existingAcc.id = 'admin_official_teacher';
             existingAcc.role = 'teacher';
@@ -1359,7 +1429,7 @@
           var myNm = (S.user.name || '').toLowerCase().trim();
           var isMe = (oldEmail && myEm === oldEmail) || (uEmail && myEm === uEmail) || (oldName && myNm === oldName);
           if (isMe) {
-            if (S.user.role === 'teacher' || isTeacherAcc) {
+            if (uEmail === 'teacher@ethith.uz' && !S.user.login) {
               S.user.name = 'Ustoz';
               S.user.id = 'admin_official_teacher';
             } else if (event.type !== 'USER_COINS_UPDATE' && event.type !== 'COIN_TRANSFER') {

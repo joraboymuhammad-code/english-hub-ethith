@@ -99,6 +99,16 @@
   if (Array.isArray(S.accounts)) {
     S.accounts = S.accounts.filter(function(a) { return !isPurgedAccount(a); });
   }
+  if (Array.isArray(S.classes)) {
+    var badClassIds = ['cls_ethith_main', 'cls_upper_intermediate', 'cls_1793380468126', 'cls_1792041880052'];
+    S.classes = S.classes.filter(function(c) {
+      if (!c || !c.id) return false;
+      if (badClassIds.indexOf(c.id) !== -1) return false;
+      var cn = (c.name || '').toLowerCase();
+      if (cn.includes('ielts intensive') || cn === 'zsczxc' || cn === 'bizani gurux') return false;
+      return true;
+    });
+  }
   if (S.user && isPurgedAccount(S.user)) {
     S.user = null;
   }
