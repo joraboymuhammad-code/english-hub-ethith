@@ -159730,74 +159730,156 @@
   // Live in-place refresh when teacher updates coordinates or exercises
   WB.liveRefreshPage = function(pageNum, newInputs) {
     pageNum = parseInt(pageNum, 10);
-    if (!WB._currentLesson || !WB._currentLesson.container) return;
-    if (WB._currentLesson.pages && WB._currentLesson.pages.indexOf(pageNum) !== -1) {
-      var container = WB._currentLesson.container;
-      var inputs = newInputs || WB.getPageInputs(pageNum);
+    if (!pageNum) return;
+    var inputs = newInputs || WB.getPageInputs(pageNum);
+    if (!Array.isArray(inputs)) return;
 
-      // Fast-path: In-place DOM update in 0ms without disrupting student view!
-      if (Array.isArray(inputs) && inputs.length > 0 && !window._ethithWbEditorMode) {
-        var patchedAll = true;
-        inputs.forEach(function(item) {
-          var wrap = container.querySelector('.eth-wb-item-wrap[data-id="' + item.id + '"]');
-          if (wrap) {
-            var rawC = item.correct;
-            var cAttr = Array.isArray(rawC) ? JSON.stringify(rawC) : String(rawC || '');
-            var cDisp = Array.isArray(rawC) ? rawC.join(' or ') : String(rawC || '');
-            var inp = wrap.querySelector('.wb-fill-input');
-            if (inp) {
-              inp.setAttribute('data-correct', cAttr);
-              if (inp.classList.contains('wb-teacher-box')) {
-                inp.value = cDisp;
-                inp.title = "✏️ To‘g‘ri javob: " + cDisp + " (Tahrirlash uchun bosing)";
-              }
-            }
-            var chip = wrap.querySelector('.wb-choose-chip');
-            if (chip) {
-              chip.setAttribute('data-correct', item.correct ? 'true' : 'false');
-            }
-          } else {
-            patchedAll = false;
+    if (WB.defaultInputs) WB.defaultInputs[pageNum] = inputs;
+    var S = (window.S || (window.EthithApp && window.EthithApp.state)) || {};
+    if (!S.workbookOverrides) S.workbookOverrides = {};
+    S.workbookOverrides[pageNum] = inputs;
+
+    if (!WB._currentLesson || !WB._currentLesson.container) return;
+    if (!WB._currentLesson.pages || WB._currentLesson.pages.indexOf(pageNum) === -1) return;
+
+    var container = WB._currentLesson.container;
+    var overlay = container.querySelector('.eth-wb-overlay-layer[data-page="' + pageNum + '"]');
+    if (!overlay) return;
+
+    var isEditor = !!window._ethithWbEditorMode;
+    var isTeacher = isTeacherRole();
+
+    // Map existing DOM elements by data-id
+    var existingDom = {};
+    overlay.querySelectorAll('.eth-wb-item-wrap').forEach(function(el) {
+      var id = el.getAttribute('data-id');
+      if (id) existingDom[id] = el;
+    });
+
+    var incomingIds = new Set();
+
+    inputs.forEach(function(item) {
+      incomingIds.add(item.id);
+      var wrap = existingDom[item.id];
+
+      var itemTop = (item.top !== undefined ? item.top : (item.y !== undefined ? item.y : 0));
+      var itemLeft = (item.left !== undefined ? item.left : (item.x !== undefined ? item.x : 0));
+      var itemWidth = (item.width !== undefined ? item.width : (item.w !== undefined ? item.w : 10));
+      var itemHeight = (item.height !== undefined ? item.height : (item.h !== undefined ? item.h : 2.2));
+
+      if (wrap) {
+        // SMOOTH IN-PLACE UPDATE WITHOUT RELOADING OR DISRUPTING FOCUS!
+        wrap.style.transition = 'left 0.15s ease-out, top 0.15s ease-out, width 0.15s ease-out, height 0.15s ease-out';
+        wrap.style.left = itemLeft + '%';
+        wrap.style.top = itemTop + '%';
+        wrap.style.width = itemWidth + '%';
+        wrap.style.height = itemHeight + '%';
+
+        var rawC = item.correct;
+        var cAttr = Array.isArray(rawC) ? JSON.stringify(rawC) : String(rawC || '');
+        var cDisp = Array.isArray(rawC) ? rawC.join(' or ') : String(rawC || '');
+
+        var inp = wrap.querySelector('.wb-fill-input');
+        if (inp) {
+          inp.setAttribute('data-correct', cAttr);
+          if (inp.classList.contains('wb-teacher-box') || isTeacher) {
+            inp.value = cDisp;
+            inp.title = "✏️ To‘g‘ri javob: " + cDisp + " (Tahrirlash uchun bosing)";
           }
-        });
-        if (patchedAll) {
-          console.log('[WB-Live] Real-time 0ms in-place patch applied for page ' + pageNum);
-          return;
+        }
+        var chip = wrap.querySelector('.wb-choose-chip');
+        if (chip) {
+          var isItemCorrect = (item.correct === true || item.correct === 'true' || item.isCorrect === true || item.isCorrect === 'true' || item.correct === 'To‘g‘ri' || item.correct === 'to\'g\'ri' || item.correct === 'ha' || item.correct === 'yes');
+          chip.setAttribute('data-correct', isItemCorrect ? 'true' : 'false');
+          if (isTeacher) {
+            if (isItemCorrect) {
+              chip.classList.add('selected', 'correct');
+              chip.style.border = '1.5px solid #10b981';
+              chip.style.background = 'rgba(16,185,129,0.22)';
+            } else {
+              chip.classList.remove('selected', 'correct');
+              chip.style.border = '';
+              chip.style.background = '';
+            }
+          }
+        }
+        var cross = wrap.querySelector('.wb-cross-chip');
+        if (cross) {
+          var isCrossed = (item.incorrect === true || item.incorrect === 'true');
+          cross.setAttribute('data-incorrect', isCrossed ? 'true' : 'false');
+          if (isTeacher) {
+            if (isCrossed) {
+              cross.classList.add('crossed', 'correct');
+              cross.style.border = '1.5px solid #10b981';
+              cross.style.background = 'rgba(16,185,129,0.18)';
+            } else {
+              cross.classList.remove('crossed', 'correct');
+              cross.style.border = '';
+              cross.style.background = '';
+            }
+          }
+        }
+        var sel = wrap.querySelector('.wb-select-input');
+        if (sel) {
+          sel.setAttribute('data-correct', cDisp);
+        }
+        var match = wrap.querySelector('.wb-match-slot');
+        if (match) {
+          match.setAttribute('data-correct', (item.correct || ''));
+          if (isTeacher) match.textContent = (item.correct || '').toUpperCase() || '?';
+        }
+        var handle = wrap.querySelector('.eth-wb-edit-handle');
+        if (handle) {
+          handle.textContent = item.label || item.id;
         }
       }
+    });
 
+    // Remove deleted items from DOM
+    Object.keys(existingDom).forEach(function(exId) {
+      if (!incomingIds.has(exId)) {
+        existingDom[exId].remove();
+      }
+    });
+
+    // If new items were added that weren't in existing DOM, do a safe non-flicker render or append
+    var hasNewItems = false;
+    incomingIds.forEach(function(id) {
+      if (!existingDom[id]) hasNewItems = true;
+    });
+
+    if (hasNewItems) {
       var curScroll = window.scrollY || window.pageYOffset || 0;
       var savedValues = {};
-      if (!window._ethithWbEditorMode) {
-        WB._currentLesson.container.querySelectorAll('.wb-fill-input').forEach(function(inp) {
+      if (!isEditor) {
+        container.querySelectorAll('.wb-fill-input').forEach(function(inp) {
           if (inp.value) savedValues[inp.getAttribute('data-id')] = inp.value;
         });
-        WB._currentLesson.container.querySelectorAll('.wb-choose-chip.selected, .wb-cross-chip.crossed').forEach(function(el) {
+        container.querySelectorAll('.wb-choose-chip.selected, .wb-cross-chip.crossed').forEach(function(el) {
           savedValues['state_' + el.getAttribute('data-id')] = el.className;
         });
       }
 
-      renderLesson(WB._currentLesson.container, WB._currentLesson.unitNum, WB._currentLesson.lessonCode, WB._currentLesson.bookLevel);
+      renderLesson(container, WB._currentLesson.unitNum, WB._currentLesson.lessonCode, WB._currentLesson.bookLevel);
 
-      if (!window._ethithWbEditorMode) {
+      if (!isEditor) {
         Object.keys(savedValues).forEach(function(k) {
           if (k.indexOf('state_') === 0) {
             var id = k.replace('state_', '');
-            var el = WB._currentLesson.container.querySelector('[data-id="' + id + '"]');
+            var el = container.querySelector('[data-id="' + id + '"]');
             if (el) el.className = savedValues[k];
           } else {
-            var inp = WB._currentLesson.container.querySelector('.wb-fill-input[data-id="' + k + '"]');
+            var inp = container.querySelector('.wb-fill-input[data-id="' + k + '"]');
             if (inp) inp.value = savedValues[k];
           }
         });
       }
-
       window.scrollTo({ top: curScroll, behavior: 'instant' });
-      console.log('[WB-Live] Page ' + pageNum + ' seamlessly updated in real time!');
     }
+
+    console.log('[WB-Live] Real-time 0ms in-place patch applied for page ' + pageNum);
   };
 
-  // Resolve authentic page image URL for both Intermediate (B1+) and Upper-Intermediate (B2)
   WB.getPageImage = function(pageNum) {
     pageNum = parseInt(pageNum, 10);
     var remoteHost = 'https://joraboymuhammad-code.github.io/english-hub-ethith/';
@@ -161566,6 +161648,7 @@
           '<span>➕ <b>Bo‘sh joyda tortish:</b> yangi katakcha chizadi.</span>' +
         '</div>' +
         '<div style="display:flex;gap:8px;align-items:center;">' +
+          '<button id="ethWbAddNewBoxBtn" style="background:linear-gradient(135deg,#38bdf8,#0284c7);color:#fff;border:none;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 12px rgba(2,132,199,0.4);" title="Yangi interaktiv katakcha qo‘shish"><span>➕</span> Yangi Katakcha</button>' +
           '<button id="ethWbExportBtn" style="background:#0284c7;color:#fff;border:none;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">📋 JSON Nusxa</button>' +
           '<button id="ethWbSaveAllBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:8px 16px;border-radius:8px;font-size:12px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(16,185,129,0.4);">☁️ O‘quvchilarga Tarqatish (Sync All)</button>' +
           '<button id="ethWbResetCoordsBtn" style="background:#64748b;color:#fff;border:none;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">↺ Asliga qaytarish</button>' +
@@ -161866,7 +161949,10 @@
       if (isEditor) {
         h += '<div class="eth-wb-edit-handle" data-id="' + item.id + '" title="Surish: bosib torting | O‘chirish: o‘ng tugmani bosing" style="position:absolute;inset:0;background:rgba(2,132,199,0.3);border:1.5px solid #0284c7;cursor:grab;display:flex;align-items:center;justify-content:center;color:#0284c7;font-size:10px;font-weight:900;user-select:none;">' +
           (item.label || item.id) +
-        '</div>';
+        '</div>' +
+        '<div class="eth-wb-resize-handle eth-wb-resize-se" data-id="' + item.id + '" data-type="se" style="position:absolute;right:-4px;bottom:-4px;width:12px;height:12px;background:#38bdf8;border:2px solid #ffffff;border-radius:3px;cursor:nwse-resize;z-index:70;box-shadow:0 0 6px rgba(0,0,0,0.6);" title="Kattalashtirish / Kichraytirish (Burchak)"></div>' +
+        '<div class="eth-wb-resize-handle eth-wb-resize-e" data-id="' + item.id + '" data-type="e" style="position:absolute;right:-3px;top:20%;height:60%;width:6px;background:rgba(56,189,248,0.7);border-radius:2px;cursor:ew-resize;z-index:69;" title="Kengligini o‘zgartirish (O‘ng qirra)"></div>' +
+        '<div class="eth-wb-resize-handle eth-wb-resize-s" data-id="' + item.id + '" data-type="s" style="position:absolute;bottom:-3px;left:20%;width:60%;height:6px;background:rgba(56,189,248,0.7);border-radius:2px;cursor:ns-resize;z-index:69;" title="Balandligini o‘zgartirish (Pastki qirra)"></div>';
       }
 
       h += '</div>';
@@ -162064,6 +162150,26 @@
         if (e) e.preventDefault();
         window._ethithWbEditorMode = !window._ethithWbEditorMode;
         renderLesson(container, unitNum, lessonCode, bookLevel);
+      });
+    }
+
+    // Add New Box Button handler
+    var addNewBoxBtn = container.querySelector('#ethWbAddNewBoxBtn');
+    if (addNewBoxBtn) {
+      addNewBoxBtn.addEventListener('click', function(e) {
+        if (e) e.preventDefault();
+        var p0 = pages[0] || 1;
+        var newItem = {
+          page: p0,
+          type: 'fill',
+          top: 25,
+          left: 25,
+          width: 14,
+          height: 2.4,
+          label: '',
+          correct: ''
+        };
+        openModal(true, p0, newItem, null);
       });
     }
 
@@ -162265,6 +162371,17 @@
           highlight.style.width = Math.round(Math.max(14, anchorRect.width)) + 'px';
           highlight.style.height = Math.round(Math.max(14, anchorRect.height)) + 'px';
         }
+      } else if (card) {
+        if (highlight) highlight.style.display = 'none';
+        var vwCenter = window.innerWidth || 800;
+        var vhCenter = window.innerHeight || 600;
+        var cardWCenter = Math.min(320, vwCenter - 32);
+        card.style.width = cardWCenter + 'px';
+        card.style.left = Math.round((vwCenter - cardWCenter) / 2) + 'px';
+        card.style.top = Math.round(Math.max(20, (vhCenter - 360) / 2)) + 'px';
+      }
+
+      if (anchorRect && typeof anchorRect.left === 'number') {
 
         if (card) {
           var vw = Math.min(window.innerWidth || 9999, document.documentElement.clientWidth || 9999, (window.visualViewport ? window.visualViewport.width : 9999));
@@ -162323,10 +162440,15 @@
     }
 
     if (modalSave) {
-      modalSave.addEventListener('click', function() {
+      modalSave.addEventListener('click', function(e) {
+        if (e) e.preventDefault();
         if (!currentTarget) return;
-        var page = currentTarget.page;
-        var inputs = WB.getPageInputs(page);
+
+        var origPage = parseInt(currentTarget.page, 10);
+        var modalPageEl = modal.querySelector('#ethWbModalPage');
+        var targetPage = modalPageEl ? parseInt(modalPageEl.value, 10) : origPage;
+        if (!targetPage) targetPage = origPage;
+
         var curType = modalType ? modalType.value : 'fill';
         var grpVal = modalLabel ? modalLabel.value.trim() : '';
         var rawCorr = modalCorrect ? modalCorrect.value.trim() : '';
@@ -162334,53 +162456,63 @@
         var rawOpts = modalOptions ? modalOptions.value.trim() : '';
         var opts = rawOpts ? rawOpts.split(',').map(function(s) { return s.trim(); }).filter(Boolean) : [];
 
+        var curScroll = window.scrollY || window.pageYOffset || 0;
+
         if (currentTarget.isNew) {
-          var newItem = currentTarget.item;
-          newItem.id = 'p' + page + '_custom_' + Date.now().toString().slice(-5);
-          newItem.type = curType;
-          newItem.label = grpVal || 'New';
+          // NEW BOX CREATION - 100% RELIABLE TO targetPage!
+          var targetInputs = WB.getPageInputs(targetPage);
+          var itemObj = currentTarget.item || {};
+
+          var newId = 'p' + targetPage + '_custom_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 4);
+          var newItem = {
+            id: newId,
+            page: targetPage,
+            type: curType,
+            label: grpVal || (targetInputs.length + 1).toString(),
+            top: itemObj.top !== undefined ? itemObj.top : 25,
+            left: itemObj.left !== undefined ? itemObj.left : 25,
+            width: itemObj.width !== undefined ? itemObj.width : (curType === 'choose' ? 6 : 14),
+            height: itemObj.height !== undefined ? itemObj.height : 2.4
+          };
+
           if (curType === 'choose') {
-            newItem.group = grpVal || ('p' + page + '_grp_' + Date.now().toString().slice(-4));
+            newItem.group = grpVal || ('p' + targetPage + '_grp_' + Date.now().toString().slice(-4));
             newItem.correct = isModalValueTrue();
             newItem.text = grpVal;
           } else if (curType === 'select') {
             newItem.group = grpVal;
-            newItem.options = opts;
-            newItem.correct = [rawCorr];
+            newItem.options = opts.length > 0 ? opts : ['Option 1', 'Option 2'];
+            newItem.correct = rawCorr ? [rawCorr] : [opts[0] || ''];
+          } else if (curType === 'cross') {
+            newItem.incorrect = (rawCorr.toLowerCase() === 'true' || rawCorr.toLowerCase() === 'to\'g\'ri' || rawCorr === '1');
+            newItem.text = grpVal;
+          } else if (curType === 'match') {
+            newItem.correct = rawCorr.toUpperCase();
           } else {
+            // Fill
             newItem.group = grpVal;
             newItem.correct = rawCorr;
-          }
-          inputs.push(newItem);
-        } else {
-          var exist = inputs.find(function(x) { return x.id === currentTarget.item.id; });
-          if (exist) {
-            exist.type = curType;
-            exist.label = grpVal || exist.label;
-            if (curType === 'choose') {
-              exist.group = grpVal || exist.group || ('p' + page + '_grp_' + Date.now().toString().slice(-4));
-              exist.correct = isModalValueTrue();
-              if (grpVal) exist.text = grpVal;
-            } else if (curType === 'select') {
-              exist.group = grpVal;
-              exist.options = opts;
-              exist.correct = [rawCorr];
-            } else {
-              exist.group = grpVal;
-              exist.correct = rawCorr;
+            if (rawCorr.includes(' or ') || rawCorr.includes(',')) {
+              var spl = rawCorr.split(/ or |,/).map(function(s){ return s.trim(); }).filter(Boolean);
+              if (spl.length > 1) newItem.correct = spl;
             }
           }
+
+          targetInputs.push(newItem);
+          WB.savePageInputs(targetPage, targetInputs);
+
+          closeModal();
+          renderLesson(container, unitNum, lessonCode, bookLevel);
+          window.scrollTo(0, curScroll);
+          if (window.toast) window.toast('✅ Yangi katakcha muvaffaqiyatli qo‘shildi!');
+          return;
         }
 
-        var curScroll = window.scrollY || window.pageYOffset || 0;
-        var modalPageEl = modal.querySelector('#ethWbModalPage');
-        var targetPage = modalPageEl ? parseInt(modalPageEl.value, 10) : page;
-        if (!targetPage) targetPage = page;
-
-        if (!currentTarget.isNew && targetPage !== page) {
-          // Transfer existing item to targetPage!
-          inputs = inputs.filter(function(x) { return x.id !== currentTarget.item.id; });
-          WB.savePageInputs(page, inputs);
+        // EXISTING BOX UPDATE
+        if (targetPage !== origPage) {
+          // Transfer to target page
+          var srcInputs = WB.getPageInputs(origPage).filter(function(x) { return x.id !== currentTarget.item.id; });
+          WB.savePageInputs(origPage, srcInputs);
 
           var targetInputs = WB.getPageInputs(targetPage);
           var movedItem = Object.assign({}, currentTarget.item);
@@ -162409,39 +162541,38 @@
           return;
         }
 
-        WB.savePageInputs(page, inputs);
-        closeModal();
-
-        if (!currentTarget.isNew) {
-          // Instant 0ms In-Place DOM Update without full page re-render lag!
-          var existItem = inputs.find(function(x) { return x.id === currentTarget.item.id; });
-          if (existItem) {
-            var rawC = existItem.correct;
-            var cAttr = Array.isArray(rawC) ? JSON.stringify(rawC) : String(rawC || '');
-            var cDisp = Array.isArray(rawC) ? rawC.join(' or ') : String(rawC || '');
-
-            var itemWrap = container.querySelector('.eth-wb-item-wrap[data-id="' + existItem.id + '"]');
-            if (itemWrap) {
-              var inputEl = itemWrap.querySelector('.wb-fill-input');
-              if (inputEl) {
-                inputEl.setAttribute('data-correct', cAttr);
-                if (inputEl.classList.contains('wb-teacher-box')) {
-                  inputEl.value = cDisp;
-                  inputEl.title = "✏️ To‘g‘ri javob: " + cDisp + " (Tahrirlash uchun bosing)";
-                }
-              }
-              var chipEl = itemWrap.querySelector('.wb-choose-chip');
-              if (chipEl) {
-                chipEl.setAttribute('data-correct', existItem.correct ? 'true' : 'false');
-              }
+        // Update on same page
+        var inputs = WB.getPageInputs(origPage);
+        var exist = inputs.find(function(x) { return x.id === currentTarget.item.id; });
+        if (exist) {
+          exist.type = curType;
+          exist.label = grpVal || exist.label;
+          if (curType === 'choose') {
+            exist.group = grpVal || exist.group || ('p' + origPage + '_grp_' + Date.now().toString().slice(-4));
+            exist.correct = isModalValueTrue();
+            if (grpVal) exist.text = grpVal;
+          } else if (curType === 'select') {
+            exist.group = grpVal;
+            exist.options = opts;
+            exist.correct = [rawCorr];
+          } else {
+            exist.group = grpVal;
+            exist.correct = rawCorr;
+            if (rawCorr.includes(' or ') || rawCorr.includes(',')) {
+              var spl = rawCorr.split(/ or |,/).map(function(s){ return s.trim(); }).filter(Boolean);
+              if (spl.length > 1) exist.correct = spl;
             }
           }
-          if (window.toast) window.toast('✅ Javob bir zumda saqlandi (0ms)!');
-        } else {
-          renderLesson(container, unitNum, lessonCode, bookLevel);
-          window.scrollTo(0, curScroll);
-          if (window.toast) window.toast('➕ Yangi katakcha qo‘shildi');
+          WB.savePageInputs(origPage, inputs);
         }
+
+        closeModal();
+
+        // Real-time update in DOM without full page refresh lag
+        if (WB.liveRefreshPage) {
+          WB.liveRefreshPage(origPage, inputs);
+        }
+        if (window.toast) window.toast('✅ Javob bir zumda saqlandi (0ms)!');
       });
     }
 
@@ -162614,6 +162745,26 @@
               di.el.style.top = nT.toFixed(1) + '%';
             });
 
+            // Real-time throttled broadcast while dragging so other screens see the box glide in 0ms!
+            var nowDrag = Date.now();
+            if (nowDrag - (draggedItems._lastSync || 0) > 120 && window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
+              draggedItems._lastSync = nowDrag;
+              var curLiveInps = WB.getPageInputs(page);
+              draggedItems.forEach(function(di) {
+                var curL = parseFloat(di.el.style.left);
+                var curT = parseFloat(di.el.style.top);
+                var matchItem = curLiveInps.find(function(x) { return x.id === di.id; });
+                if (matchItem) { matchItem.left = curL; matchItem.top = curT; }
+              });
+              window.EthithSync.publishLive({
+                type: 'WORKBOOK_PAGE_UPDATED',
+                page: page,
+                inputs: curLiveInps,
+                version: '15.0',
+                ts: nowDrag
+              });
+            }
+
             // Real-time hover indicator on target page
             var allPageWraps = Array.from(document.querySelectorAll('.eth-wb-page-wrap'));
             allPageWraps.forEach(function(pw) { pw.style.boxShadow = ''; });
@@ -162730,6 +162881,112 @@
 
         handle.addEventListener('mousedown', startDrag);
         handle.addEventListener('touchstart', startDrag, { passive: false });
+      });
+
+      // RESIZE HANDLERS: Real-time window-style resizing from corner and edges
+      container.querySelectorAll('.eth-wb-resize-handle').forEach(function(rHandle) {
+        function startResize(e) {
+          var isTouch = !!e.touches;
+          if (isTouch && e.touches.length > 1) return;
+          if (!isTouch && e.button !== 0) return; // Only left click for resize
+          if (e.cancelable) e.preventDefault();
+          e.stopPropagation();
+
+          var point = isTouch ? e.touches[0] : e;
+          var wrap = rHandle.closest('.eth-wb-item-wrap');
+          var layer = wrap.closest('.eth-wb-overlay-layer');
+          var page = parseInt(wrap.getAttribute('data-page'), 10);
+          var id = rHandle.getAttribute('data-id');
+          var rType = rHandle.getAttribute('data-type') || 'se';
+
+          var layerRect = layer.getBoundingClientRect();
+          var startX = point.clientX;
+          var startY = point.clientY;
+          var startWPct = parseFloat(wrap.style.width) || ((wrap.offsetWidth / layerRect.width) * 100);
+          var startHPct = parseFloat(wrap.style.height) || ((wrap.offsetHeight / layerRect.height) * 100);
+
+          wrap.style.transition = 'none';
+          wrap.style.zIndex = '999';
+
+          var curWPct = startWPct;
+          var curHPct = startHPct;
+          var hasResized = false;
+          var lastResizeSync = 0;
+
+          function onResizeMove(ev) {
+            if (ev.touches && ev.touches.length > 1) return;
+            if (ev.cancelable) ev.preventDefault();
+            var p = ev.touches ? ev.touches[0] : ev;
+            var dx = p.clientX - startX;
+            var dy = p.clientY - startY;
+
+            if (Math.abs(dx) > 2 || Math.abs(dy) > 2) hasResized = true;
+
+            var dxPct = (dx / layerRect.width) * 100;
+            var dyPct = (dy / layerRect.height) * 100;
+
+            if (rType === 'e' || rType === 'se') {
+              curWPct = Math.max(1.5, Math.min(95, startWPct + dxPct));
+              wrap.style.width = curWPct.toFixed(1) + '%';
+            }
+            if (rType === 's' || rType === 'se') {
+              curHPct = Math.max(1.0, Math.min(80, startHPct + dyPct));
+              wrap.style.height = curHPct.toFixed(1) + '%';
+            }
+
+            // Real-time throttled broadcast while resizing
+            var now = Date.now();
+            if (now - lastResizeSync > 150 && window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
+              lastResizeSync = now;
+              var curInps = WB.getPageInputs(page);
+              var f = curInps.find(function(x) { return x.id === id; });
+              if (f) {
+                f.width = parseFloat(curWPct.toFixed(1));
+                f.height = parseFloat(curHPct.toFixed(1));
+                window.EthithSync.publishLive({
+                  type: 'WORKBOOK_PAGE_UPDATED',
+                  page: page,
+                  inputs: curInps,
+                  version: '15.0',
+                  ts: now
+                });
+              }
+            }
+          }
+
+          function onResizeEnd(ev) {
+            window.removeEventListener('mousemove', onResizeMove);
+            window.removeEventListener('mouseup', onResizeEnd);
+            window.removeEventListener('touchmove', onResizeMove);
+            window.removeEventListener('touchend', onResizeEnd);
+            window.removeEventListener('touchcancel', onResizeEnd);
+
+            wrap.style.zIndex = '50';
+            wrap.style.transition = 'left 0.15s ease-out, top 0.15s ease-out, width 0.15s ease-out, height 0.15s ease-out';
+
+            if (hasResized) {
+              var inputs = WB.getPageInputs(page);
+              var found = inputs.find(function(x) { return x.id === id; });
+              if (found) {
+                found.width = parseFloat(curWPct.toFixed(1));
+                found.height = parseFloat(curHPct.toFixed(1));
+                WB.savePageInputs(page, inputs);
+                if (window.toast) {
+                  window.toast('📐 Katakcha o‘lchami saqlandi: ' + found.width + '% × ' + found.height + '%');
+                }
+              }
+            }
+          }
+
+          window.addEventListener('mousemove', onResizeMove);
+          window.addEventListener('mouseup', onResizeEnd);
+          window.addEventListener('touchmove', onResizeMove, { passive: false });
+          window.addEventListener('touchend', onResizeEnd);
+          window.addEventListener('touchcancel', onResizeEnd);
+        }
+
+        rHandle.addEventListener('mousedown', startResize);
+        rHandle.addEventListener('touchstart', startResize, { passive: false });
       });
 
       // Overlay layer: Handles Left-Click Drag (Draw New Box) AND Right-Click Drag (Marquee / Lasso Selection)
