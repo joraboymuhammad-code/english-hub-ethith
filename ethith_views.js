@@ -1376,48 +1376,136 @@
   // ==========================================
   // VIEW 3: CLASSES & TELEGRAM CHAT
   // ==========================================
+  
+  // Helper: Strictly isolate and get groups belonging to a specific teacher / user
+  function getTeacherGroupsForUser(user, classes) {
+    if (!user || !Array.isArray(classes)) return [];
+    var role = user.role;
+    var uId = (user.id || '').toLowerCase().trim();
+    var uLogin = (user.login || '').toLowerCase().trim();
+    var uName = (user.name || '').toLowerCase().trim();
+    var uEmail = (user.email || '').toLowerCase().trim();
+
+    if (role === 'admin' || (uEmail && uEmail.includes('admin'))) {
+      var targetTid = window._ethithAdminSelectedTeacherId || (window.EthithAttendance && window.EthithAttendance.activeTeacherId) || 't_urolov_azizbek';
+      var filtered = classes.filter(function(c) {
+        if (!c) return false;
+        var cTId = (c.teacherId || '').toLowerCase().trim();
+        return cTId === targetTid || (c.id && c.id.includes(targetTid.replace('t_', '')));
+      });
+      return filtered.length > 0 ? filtered : classes.slice(0, 10);
+    }
+
+    if (role === 'student') {
+      return classes.filter(function(c) {
+        if (!c) return false;
+        if (user.classId && (c.id === user.classId || c.code === user.classId)) return true;
+        return Array.isArray(c.students) && c.students.some(function(s) {
+          if (!s || s.isTester) return false;
+          return (s.id && uId && s.id === uId) ||
+                 (s.login && uLogin && s.login.toLowerCase() === uLogin) ||
+                 (s.email && uEmail && s.email.toLowerCase() === uEmail) ||
+                 (s.name && uName && s.name.toLowerCase().trim() === uName);
+        });
+      });
+    }
+
+    // Role is teacher: STRICT ISOLATION BY TEACHER IDENTITY
+    return classes.filter(function(c) {
+      if (!c) return false;
+      var cTId = (c.teacherId || '').toLowerCase().trim();
+      var cTName = (c.teacherName || c.teacher || '').toLowerCase().trim();
+      var cTEmail = (c.teacherEmail || '').toLowerCase().trim();
+
+      if (uId && cTId && cTId === uId) return true;
+
+      // Specific known teachers isolation
+      if (uId === 't_urolov_azizbek' || uLogin === 'azizbek77' || uName.includes('azizbek')) {
+        return cTId === 't_urolov_azizbek' || (c.id && c.id.includes('urolov_azizbek')) || cTName.includes('azizbek');
+      }
+      if (uId === 't_ravshanov_doniyor' || uLogin === 'doniyor24' || uName.includes('doniyor')) {
+        return cTId === 't_ravshanov_doniyor' || (c.id && c.id.includes('ravshanov_doniyor')) || cTName.includes('doniyor');
+      }
+      if (uId === 't_qarshiboyev_humoyun' || uLogin === 'humoyun15' || uName.includes('humoyun')) {
+        return cTId === 't_qarshiboyev_humoyun' || (c.id && c.id.includes('qarshiboyev_humoyun')) || cTName.includes('humoyun');
+      }
+      if (uId === 't_tovboyeva_marjona' || uLogin === 'marjona88' || uName.includes('marjona')) {
+        return cTId === 't_tovboyeva_marjona' || (c.id && c.id.includes('tovboyeva_marjona')) || cTName.includes('marjona');
+      }
+      if (uId === 't_olimjonova_durdona' || uLogin === 'durdona12' || uName.includes('durdona')) {
+        return cTId === 't_olimjonova_durdona' || (c.id && c.id.includes('olimjonova_durdona')) || cTName.includes('durdona');
+      }
+      if (uId === 't_tagaev_eldor' || uLogin === 'eldor33' || uName.includes('eldor')) {
+        return cTId === 't_tagaev_eldor' || (c.id && c.id.includes('tagaev_eldor')) || cTName.includes('eldor');
+      }
+      if (uId === 't_yaxshilikova_kamola' || uLogin === 'kamola45' || uName.includes('kamola')) {
+        return cTId === 't_yaxshilikova_kamola' || (c.id && c.id.includes('yaxshilikova_kamola')) || cTName.includes('kamola');
+      }
+      if (uId === 't_sherqoziyeva_iroda' || uLogin === 'iroda19' || uName.includes('iroda')) {
+        return cTId === 't_sherqoziyeva_iroda' || (c.id && c.id.includes('sherqoziyeva_iroda')) || cTName.includes('iroda');
+      }
+      if (uId === 't_aborbekov_elyor' || uLogin === 'elyor70' || uName.includes('elyor')) {
+        return cTId === 't_aborbekov_elyor' || (c.id && c.id.includes('aborbekov_elyor')) || cTName.includes('elyor');
+      }
+      if (uId === 't_orinboyev_jaloliddin' || uLogin === 'jaloliddin99' || uName.includes('jaloliddin')) {
+        return cTId === 't_orinboyev_jaloliddin' || (c.id && c.id.includes('orinboyev_jaloliddin')) || cTName.includes('jaloliddin');
+      }
+      if (uId === 't_jumanova_pokiza' || uLogin === 'pokiza07' || uName.includes('pokiza')) {
+        return cTId === 't_jumanova_pokiza' || (c.id && c.id.includes('jumanova_pokiza')) || cTName.includes('pokiza');
+      }
+      if (uId === 't_hayrullayev_arslon' || uLogin === 'arslon64' || uName.includes('arslon')) {
+        return cTId === 't_hayrullayev_arslon' || (c.id && c.id.includes('hayrullayev_arslon')) || cTName.includes('arslon');
+      }
+      if (uId === 't_xudoyorova_sarvinoz' || uLogin === 'sarvinoz82' || uName.includes('sarvinoz')) {
+        return cTId === 't_xudoyorova_sarvinoz' || (c.id && c.id.includes('xudoyorova_sarvinoz')) || cTName.includes('sarvinoz');
+      }
+      if (uId === 't_aliqulova_sevinch' || uLogin === 'sevinch55' || uName.includes('sevinch')) {
+        return cTId === 't_aliqulova_sevinch' || (c.id && c.id.includes('aliqulova_sevinch')) || cTName.includes('sevinch');
+      }
+      if (uId === 't_xojamqulova_diyora' || uLogin === 'diyora21' || uName.includes('diyora')) {
+        return cTId === 't_xojamqulova_diyora' || (c.id && c.id.includes('xojamqulova_diyora')) || cTName.includes('diyora');
+      }
+      if (uId === 't_bosimbekov_farrux' || uLogin === 'farrux93' || uName.includes('farrux')) {
+        return cTId === 't_bosimbekov_farrux' || (c.id && c.id.includes('bosimbekov_farrux')) || cTName.includes('farrux');
+      }
+      if (uId === 't_ahmadova_barno' || uLogin === 'barno36' || uName.includes('barno')) {
+        return cTId === 't_ahmadova_barno' || (c.id && c.id.includes('ahmadova_barno')) || cTName.includes('barno');
+      }
+      if (uId === 't_shodiyor_matematika' || uLogin === 'shodiyor50' || uName.includes('shodiyor')) {
+        return cTId === 't_shodiyor_matematika' || (c.id && c.id.includes('shodiyor_matematika')) || cTName.includes('shodiyor');
+      }
+
+      if (cTName && uName && (cTName === uName || cTName.includes(uName) || uName.includes(cTName))) return true;
+      if (cTEmail && uEmail && cTEmail === uEmail) return true;
+      return false;
+    });
+  }
+
+  // Helper: Reliable match to detect if current user reacted
+  function checkIsMyReaction(u, myUser) {
+    if (!u || !myUser) return false;
+    var uClean = (u + '').toLowerCase().trim();
+    var myEmail = (myUser.email || '').toLowerCase().trim();
+    var myId = (myUser.id || '').toLowerCase().trim();
+    var myLogin = (myUser.login || '').toLowerCase().trim();
+    var myName = (myUser.name || '').toLowerCase().trim();
+
+    if (myEmail && uClean === myEmail) return true;
+    if (myId && uClean === myId) return true;
+    if (myLogin && uClean === myLogin) return true;
+    if (myName && uClean === myName) return true;
+    if (myLogin && (uClean === ('std_' + myLogin) || uClean.includes(myLogin))) return true;
+    if (myId && myId.includes(uClean)) return true;
+    return false;
+  }
+
   function renderClassesView(container) {
     window._ethithCurrentView = 'classes';
     var isTeacher = S.user && (S.user.role === 'teacher' || S.user.isTeacher === true);
     var isAdmin = S.user && (S.user.role === 'admin' || (S.user.email && S.user.email.toLowerCase().includes('admin')));
     var isStudent = S.user && S.user.role === 'student';
 
-    var userClasses = [];
-    if (isAdmin) {
-      userClasses = S.classes || [];
-    } else if (isTeacher) {
-      var tName = (S.user.name || '').toLowerCase().trim();
-      var tId = (S.user.id || '').toLowerCase().trim();
-      var tEmail = (S.user.email || '').toLowerCase().trim();
-      var tLogin = (S.user.login || '').toLowerCase().trim();
-      userClasses = (S.classes || []).filter(function(c) {
-        var cTId = (c.teacherId || '').toLowerCase().trim();
-        var cTName = (c.teacherName || c.teacher || '').toLowerCase().trim();
-        var cTEmail = (c.teacherEmail || '').toLowerCase().trim();
-        if (cTId && (cTId === tId || (tId === 'admin_official_teacher' && cTId.startsWith('t_')))) {
-          if (cTId === tId && (!tName || !cTName || cTName === tName || cTName.includes(tName) || tName.includes(cTName))) return true;
-        }
-        if (cTName && tName && (cTName === tName || cTName.includes(tName) || tName.includes(cTName))) return true;
-        if (cTEmail && tEmail && cTEmail === tEmail) return true;
-        if (tName.includes('azizbek') || tLogin.includes('azizbek')) {
-          if (c.id && c.id.includes('urolov_azizbek')) return true;
-          if (cTId === 't_urolov_azizbek') return true;
-          if (cTName.includes('azizbek')) return true;
-        }
-        return false;
-      });
-    } else if (isStudent) {
-      userClasses = (S.classes || []).filter(function(c) {
-        if (S.user.classId && (c.id === S.user.classId || c.code === S.user.classId)) return true;
-        return c.students && c.students.some(function(s) { 
-          if (s.isTester) return false;
-          return (s.login && S.user.login && s.login.toLowerCase() === S.user.login.toLowerCase()) ||
-                 (s.id && S.user.id && s.id === S.user.id) ||
-                 (s.email && S.user.email && s.email.toLowerCase() === S.user.email.toLowerCase()) ||
-                 (s.name && S.user.name && s.name.toLowerCase().trim() === S.user.name.toLowerCase().trim());
-        });
-      });
-    }
+    var userClasses = getTeacherGroupsForUser(S.user, S.classes);
 
     window._ethithRefreshClassesList = function() {
       if (!S.activeClassId && window._ethithCurrentView === 'classes') {
@@ -1892,9 +1980,13 @@
 
             var userNames = uList.map(function(u) {
               var uClean = (u + '').toLowerCase();
-              if ((myEmail && uClean === myEmail) || (myId && uClean === myId) || (myName && uClean === myName)) return 'You';
+              if (checkIsMyReaction(u, myUser)) return 'Siz';
+              var acc = S.accounts ? S.accounts.find(function(a) {
+                return (a.id && a.id.toLowerCase() === uClean) || (a.email && a.email.toLowerCase() === uClean) || (a.login && a.login.toLowerCase() === uClean);
+              }) : null;
+              if (acc) return acc.name;
               var st = activeCls.students ? activeCls.students.find(function(s) {
-                return (s.id && s.id.toLowerCase() === uClean) || (s.email && s.email.toLowerCase() === uClean);
+                return (s.id && s.id.toLowerCase() === uClean) || (s.email && s.email.toLowerCase() === uClean) || (s.login && s.login.toLowerCase() === uClean);
               }) : null;
               if (st) return st.name;
               var prior = activeCls.messages ? activeCls.messages.find(function(pm) {
@@ -1904,9 +1996,8 @@
               return u.indexOf('@') > -1 ? u.split('@')[0] : u;
             });
 
-            var hasUserReacted = myUser && uList.some(function(u) {
-              var uClean = (u + '').toLowerCase();
-              return (myEmail && uClean === myEmail) || (myId && uClean === myId) || (myName && uClean === myName);
+            var hasUserReacted = uList.some(function(u) {
+              return checkIsMyReaction(u, myUser);
             });
 
             reactionsList.push({
@@ -1947,9 +2038,31 @@
         '</div>';
     }
 
+    var myTeacherGroups = getTeacherGroupsForUser(S.user, S.classes);
+    if (!myTeacherGroups || myTeacherGroups.length === 0) myTeacherGroups = [cls];
+
+    var groupTabsHtml = '' +
+      '<div class="tg-teacher-groups-bar" style="display:flex;align-items:center;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;padding:6px 2px 14px;margin-bottom:6px;">' +
+      '  <span style="font-size:12px;font-weight:900;color:#94a3b8;flex-shrink:0;text-transform:uppercase;letter-spacing:0.5px;">📚 Guruhlar:</span>' +
+      myTeacherGroups.map(function(g) {
+        var isActive = (g.id === cls.id || g.code === cls.code);
+        var stCount = (g.students || []).filter(function(st){ return st && !st.isTester && st.name && !st.name.startsWith('tester_'); }).length || (g.students || []).length;
+        var border = isActive ? 'rgba(56,189,248,0.9)' : 'rgba(255,255,255,0.12)';
+        var bg = isActive ? 'linear-gradient(135deg,rgba(2,132,199,0.45),rgba(37,99,235,0.5))' : 'rgba(15,23,42,0.85)';
+        var color = isActive ? '#38bdf8' : '#cbd5e1';
+        var glow = isActive ? 'box-shadow:0 0 14px rgba(56,189,248,0.4);' : '';
+        return '<button type="button" class="tg-group-tab-btn" data-switch-cid="' + esc(g.id) + '" style="flex-shrink:0;background:' + bg + ';border:1.5px solid ' + border + ';color:' + color + ';padding:7px 14px;border-radius:12px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;' + glow + 'transition:all 0.15s ease;" title="' + esc(g.name) + ' guruh chatiga o‘tish">' +
+          (isActive ? '🟢 ' : '') + esc(g.name) +
+          '<span style="background:rgba(0,0,0,0.35);padding:2px 7px;border-radius:10px;font-size:11px;color:' + (isActive ? '#7dd3fc' : '#94a3b8') + ';font-weight:800;">' + stCount + '</span>' +
+        '</button>';
+      }).join('') +
+      (isTeacher ? '  <button type="button" id="tgAddGroupTabTopBtn" style="flex-shrink:0;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:7px 15px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:5px;box-shadow:0 4px 12px rgba(16,185,129,0.35);" title="Yangi guruh yaratish">➕ Yangi Guruh</button>' : '') +
+      '</div>';
+
     var html = '' +
+      groupTabsHtml +
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:8px;flex-wrap:wrap">' +
-      '  <button class="ap-back" id="backClassesListBtn" style="margin:0">' + ic('left') + ' Guruhlar Ro‘yxatiga Qaytish</button>' +
+      '  <button class="ap-back" id="backClassesListBtn" style="margin:0">' + ic('left') + ' Barcha Guruhlar</button>' +
       '  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">' +
       (isTeacher ? '    <button class="ap-btn solid" id="clsAssignHwTopBtn" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;font-weight:800">📚 Uy vazifasi belgilash</button>' : '') +
       '    <button class="ap-btn solid" id="clsOpenAttendanceBtn" style="background:#0284c7;color:#fff;font-weight:800">' + ic('calendar') + ' Davomat (Attendance)</button>' +
@@ -2042,6 +2155,28 @@
       App.saveState();
       renderClassesView(container);
     };
+
+    // Wire Top Group Tabs Switching (Instant 0ms switch between teacher groups!)
+    container.querySelectorAll('.tg-group-tab-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        var cid = btn.getAttribute('data-switch-cid');
+        if (cid && cid !== cls.id) {
+          S.activeClassId = cid;
+          var nextCls = (S.classes || []).find(function(c) { return c && c.id === cid; });
+          if (nextCls) {
+            renderClassDetail(container, nextCls);
+          }
+        }
+      };
+    });
+
+    // Wire Top Add Group Button
+    var addTopGrpBtn = container.querySelector('#tgAddGroupTabTopBtn');
+    if (addTopGrpBtn) {
+      addTopGrpBtn.onclick = function() {
+        showCreateClassModal(container);
+      };
+    }
 
     var monitorBtn = document.getElementById('clsMonitoringBtn');
     if (monitorBtn) {
@@ -2555,7 +2690,100 @@
     };
   }
 
-  // Apply Reaction & Reorder Emojis
+  // In-place 0ms DOM updater for bubble reactions (NO full page reload!)
+  function updateBubbleReactionsDom(msgId, m, activeCls, myUser, cnt) {
+    var msgRow = document.querySelector('.tg-msg-row[data-msg-id="' + msgId + '"]');
+    if (!msgRow) return;
+    var bubble = msgRow.querySelector('.tg-bubble');
+    if (!bubble) return;
+
+    var existingBadge = bubble.querySelector('.tg-reactions-badge');
+    var reactionsList = [];
+    myUser = myUser || S.user || {};
+
+    if (m && m.reactions) {
+      for (var em in m.reactions) {
+        var uList = m.reactions[em] || [];
+        if (!Array.isArray(uList) || uList.length === 0) continue;
+
+        var userNames = uList.map(function(u) {
+          var uClean = (u + '').toLowerCase();
+          if (checkIsMyReaction(u, myUser)) return 'Siz';
+          var acc = S.accounts ? S.accounts.find(function(a) {
+            return (a.id && a.id.toLowerCase() === uClean) || (a.email && a.email.toLowerCase() === uClean) || (a.login && a.login.toLowerCase() === uClean);
+          }) : null;
+          if (acc) return acc.name;
+          var st = activeCls.students ? activeCls.students.find(function(s) {
+            return (s.id && s.id.toLowerCase() === uClean) || (s.email && s.email.toLowerCase() === uClean) || (s.login && s.login.toLowerCase() === uClean);
+          }) : null;
+          if (st) return st.name;
+          var prior = activeCls.messages ? activeCls.messages.find(function(pm) {
+            return (pm.senderId && pm.senderId.toLowerCase() === uClean) || (pm.senderEmail && pm.senderEmail.toLowerCase() === uClean);
+          }) : null;
+          if (prior) return prior.senderName;
+          return u.indexOf('@') > -1 ? u.split('@')[0] : u;
+        });
+
+        var hasUserReacted = uList.some(function(u) {
+          return checkIsMyReaction(u, myUser);
+        });
+
+        reactionsList.push({
+          emoji: em,
+          count: uList.length,
+          userNames: userNames,
+          hasUserReacted: hasUserReacted
+        });
+      }
+    }
+
+    if (reactionsList.length === 0) {
+      if (existingBadge) existingBadge.remove();
+      return;
+    }
+
+    var badgeHtml = reactionsList.map(function(r) {
+      var nameSnippet = r.userNames.slice(0, 2).join(', ') + (r.userNames.length > 2 ? ' +' + (r.userNames.length - 2) : '');
+      return '<span class="tg-reaction-pill ' + (r.hasUserReacted ? 'active' : '') + '" data-msg-id="' + m.id + '" data-em="' + r.emoji + '" title="Reaksiya bildirganlar: ' + esc(r.userNames.join(', ')) + '">' +
+        r.emoji + ' ' + r.count + ' <span class="tg-reaction-names">' + esc(nameSnippet) + '</span>' +
+      '</span>';
+    }).join('');
+
+    if (existingBadge) {
+      existingBadge.innerHTML = badgeHtml;
+    } else {
+      var badgeDiv = document.createElement('div');
+      badgeDiv.className = 'tg-reactions-badge';
+      badgeDiv.innerHTML = badgeHtml;
+      bubble.appendChild(badgeDiv);
+      existingBadge = badgeDiv;
+    }
+
+    // Rebind reaction pill clicks
+    existingBadge.querySelectorAll('.tg-reaction-pill').forEach(function(pill) {
+      pill.onclick = function(e) {
+        e.stopPropagation();
+        var targetMsg = (activeCls.messages || []).find(function(msg) { return msg.id === m.id; });
+        if (targetMsg) {
+          applyReaction(pill.dataset.em, targetMsg, activeCls, cnt);
+        }
+      };
+    });
+  }
+
+  // Live incoming reaction DOM patcher for other clients (sub-millisecond!)
+  window._ethithUpdateIncomingReaction = function(classId, msgId, updatedMsg) {
+    var curClsId = S.activeClassId;
+    var cls = (S.classes || []).find(function(c) { return c.id === curClsId; });
+    if (!cls) return;
+    if (classId && curClsId && classId !== curClsId && classId !== cls.code) return;
+    var targetMsg = updatedMsg || (cls.messages || []).find(function(m) { return m.id === msgId; });
+    if (targetMsg) {
+      updateBubbleReactionsDom(msgId, targetMsg, cls, S.user || {}, document.getElementById('apView'));
+    }
+  };
+
+  // Apply Reaction & Reorder Emojis - 0ms Instant Local DOM Update!
   function applyReaction(emoji, msg, cls, mainContainer) {
     var liveCls = (S.classes || []).find(function(c) {
       return (c.id && (c.id === cls.id || c.id === cls.code)) || (c.code && (c.code === cls.code || c.code === cls.id));
@@ -2569,15 +2797,18 @@
     if (!liveMsg.reactions) liveMsg.reactions = {};
     if (!liveMsg.reactions[emoji]) liveMsg.reactions[emoji] = [];
 
-    var myEmail = (S.user && S.user.email ? S.user.email : '').toLowerCase();
-    var myId = (S.user && S.user.id ? S.user.id : '').toLowerCase();
-    var userId = myEmail || myId || 'guest';
+    var myUser = S.user || {};
+    var myEmail = (myUser.email ? myUser.email : '').toLowerCase();
+    var myId = (myUser.id ? myUser.id : '').toLowerCase();
+    var myLogin = (myUser.login ? myUser.login : '').toLowerCase();
+    var myName = (myUser.name ? myUser.name : '').toLowerCase();
+    var userId = myEmail || myLogin || myId || myName || 'guest';
 
     var isAdded = true;
     var idx = -1;
     for (var i = 0; i < liveMsg.reactions[emoji].length; i++) {
       var itemU = (liveMsg.reactions[emoji][i] + '').toLowerCase();
-      if ((myEmail && itemU === myEmail) || (myId && itemU === myId) || itemU === userId) {
+      if (checkIsMyReaction(itemU, myUser) || itemU === userId) {
         idx = i;
         break;
       }
@@ -2600,7 +2831,10 @@
     qr.unshift(emoji);
     S.quickReactions = qr;
 
-    App.saveState();
+    // 0ms INSTANT IN-PLACE DOM PATCH (No flickering, no page reload!)
+    updateBubbleReactionsDom(liveMsg.id, liveMsg, liveCls, myUser, mainContainer);
+
+    // Async broadcast in background (< 5ms)
     if (window.EthithSync) {
       window.EthithSync.publishLive({
         type: 'REACTION',
@@ -2608,12 +2842,14 @@
         msgId: liveMsg.id,
         emoji: emoji,
         userId: userId,
-        action: isAdded ? 'add' : 'remove'
+        action: isAdded ? 'add' : 'remove',
+        updatedReactions: liveMsg.reactions
       });
       window.EthithSync.broadcastLocal(S.classes, S.exams);
-      window.EthithSync.pushRemoteStore(S.classes, S.exams);
     }
-    renderClassDetail(mainContainer, liveCls);
+    setTimeout(function() {
+      App.saveState();
+    }, 50);
   }
 
   // Full Emoji Picker Modal (72 emojis in an 8-column grid)

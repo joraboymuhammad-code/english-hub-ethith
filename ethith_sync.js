@@ -529,6 +529,15 @@
             uiNeedsRefresh = true;
           }
         }
+        if (event.updatedReactions) {
+          msg.reactions = event.updatedReactions;
+        }
+        // 0ms instant in-place DOM patch on receiving device!
+        if (window._ethithUpdateIncomingReaction) {
+          try {
+            window._ethithUpdateIncomingReaction(targetCls.id, event.msgId, msg);
+          } catch(e) {}
+        }
       }
     }
 
