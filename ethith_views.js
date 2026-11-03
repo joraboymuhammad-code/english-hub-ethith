@@ -2130,74 +2130,103 @@
       '    </button>' +
       '  </div>' +
       '</div>' +
-      '<div class="tg-chat-wrap">' +
-      '  <div class="tg-header">' +
-      '    <div class="tg-header-info" id="tgHeaderTitleWrap" style="cursor:pointer;" title="Guruh a‘zolari va online holatini ko‘rish">' +
-      '      <div class="tg-header-avatar">' + cls.name.charAt(0).toUpperCase() + '</div>' +
-      '      <div class="tg-header-title">' +
-      '        <h3 style="display:flex;align-items:center;gap:8px;">' + esc(cls.name) + ' <span style="font-size:12px;color:#38bdf8;font-weight:600;">(A‘zolar 👥)</span></h3>' +
-      '        <div style="font-size:12px;color:#94a3b8;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:2px;">' +
-      '          <span><b>' + totalMembers + '</b> a‘zo</span>' +
-      '          <span style="color:#22c55e;font-weight:800;">🟢 ' + onlineCount + ' online</span>' +
-      '          <span style="color:#38bdf8;font-weight:700;">🔵 ' + offlineCount + ' offline</span>' +
-      '          <span style="color:#ef4444;font-weight:700;">🔴 ' + neverCount + ' kirmagan</span>' +
-      '          <span style="color:#64748b;">· Kod: <b style="color:#38bdf8;user-select:all">' + cls.code + '</b></span>' +
+      '<div class="cls-workspace-wrap" style="margin-top:14px;display:flex;flex-direction:column;gap:18px;">' +
+      '  <div class="cls-overview-card" style="background:linear-gradient(135deg,rgba(15,23,42,0.96),rgba(30,41,59,0.94));border:1.5px solid rgba(56,189,248,0.35);border-radius:20px;padding:20px 24px;box-shadow:0 12px 36px rgba(0,0,0,0.45);">' +
+      '    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">' +
+      '      <div style="display:flex;align-items:center;gap:16px;">' +
+      '        <div style="width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;color:#ffffff;box-shadow:0 6px 20px rgba(2,132,199,0.45);">' + cls.name.charAt(0).toUpperCase() + '</div>' +
+      '        <div>' +
+      '          <h2 style="margin:0;font-size:22px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:10px;">' + esc(cls.name) + ' <span style="font-size:12px;background:rgba(56,189,248,0.2);color:#38bdf8;padding:3px 10px;border-radius:12px;font-weight:700;">' + (cls.level || 'Guruh') + '</span></h2>' +
+      '          <div style="margin-top:5px;font-size:13px;color:#94a3b8;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">' +
+      '            <span>👥 Jami: <b style="color:#f8fafc;">' + totalMembers + ' nafar o‘quvchi</b></span>' +
+      '            <span style="color:#22c55e;font-weight:800;">🟢 ' + onlineCount + ' online</span>' +
+      '            <span style="color:#38bdf8;font-weight:700;">🔵 ' + offlineCount + ' offline</span>' +
+      '            <span style="color:#ef4444;font-weight:700;">🔴 ' + neverCount + ' kirmagan</span>' +
+      '            <span>🔑 Kod: <b style="color:#38bdf8;user-select:all;font-family:monospace;font-size:14px;">' + cls.code + '</b></span>' +
+      '          </div>' +
       '        </div>' +
+      '      </div>' +
+      '      <div style="display:flex;gap:10px;flex-wrap:wrap;">' +
+      (isTeacher ? '        <button type="button" class="ap-btn solid" id="btnClsAddStudentDirect" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:800;border-radius:12px;padding:9px 18px;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(16,185,129,0.35);">➕ O‘quvchi qo‘shish</button>' : '') +
       '      </div>' +
       '    </div>' +
       '  </div>' +
-      // Bulky homework banner removed for clean chat view
-      (pinnedMsg ?
-        '<div class="tg-pinned-bar" id="tgPinnedBar" style="background:rgba(15,23,42,0.92);border-bottom:1.5px solid rgba(56,189,248,0.35);border-left:4px solid #38bdf8;padding:9px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#f8fafc;z-index:10;box-shadow:0 4px 15px rgba(0,0,0,0.3);">' +
-        '  <div style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;font-size:13px;" id="tgPinnedContent">' + ic('pin') + ' <b style="color:#38bdf8;">Pinned Message:</b> ' + esc(pinnedMsg.senderName) + ': "' + esc(pinnedMsg.text.slice(0, 50)) + '..."</div>' +
-        (isTeacher ? '  <button type="button" id="tgUnpinBtn" title="Pinni butunlay bekor qilish (Unpin)" style="background:rgba(239,68,68,0.22);border:1px solid rgba(239,68,68,0.6);border-radius:8px;cursor:pointer;color:#ffffff;font-weight:900;padding:5px 12px;font-size:12px;display:inline-flex;align-items:center;gap:6px;flex-shrink:0;transition:all 0.15s ease;">✕ Pinni bekor qilish</button>' : '') +
-        '</div>' : '') +
-      '  <div class="tg-messages-scroll" id="tgMsgBox">' +
-      (cls.messages || []).map(function(m) {
-        return renderMsgBubbleHtml(m, cls, S.user || {});
-      }).join('') +
-      '  </div>' +
-      '  <div class="tg-selection-bar" id="tgSelectionBar" style="display:none">' +
-      '    <div id="tgSelectionText" style="font-size:13px;font-weight:700;color:#f8fafc;">1 ta habar tanlandi</div>' +
-      '    <div style="display:flex;align-items:center;gap:8px;">' +
-      '      <button type="button" class="tg-sel-btn" id="tgSelCopyBtn">📋 Nusxalash</button>' +
-      '      <button type="button" class="tg-sel-btn danger" id="tgSelDeleteBtn">🗑️ O\'chirish</button>' +
-      '      <button type="button" class="tg-sel-btn" id="tgSelCancelBtn">✕ Bekor qilish</button>' +
+
+      // Active Homework Banner (if available)
+      (activeHw ? (
+        '  <div class="cls-hw-banner" style="background:rgba(30,41,59,0.85);border:1.5px solid rgba(139,92,246,0.45);border-radius:16px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 6px 20px rgba(0,0,0,0.3);">' +
+        '    <div style="display:flex;align-items:center;gap:12px;">' +
+        '      <span style="font-size:28px;">📚</span>' +
+        '      <div>' +
+        '        <div style="font-size:12px;color:#a78bfa;font-weight:800;text-transform:uppercase;">Belgilangan Uy Vazifasi (' + esc(activeHw.dateKey || '') + ')</div>' +
+        '        <div style="font-size:15px;font-weight:800;color:#f8fafc;margin-top:2px;">' + esc(activeHw.title || 'Workbook Mashqlari') + '</div>' +
+        '      </div>' +
+        '    </div>' +
+        '    <div style="display:flex;gap:8px;">' +
+        '      <button type="button" class="ap-btn solid" id="tgOpenHomeworkLessonBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:800;border-radius:10px;padding:8px 16px;">🚀 Vazifani Bajarish (Ochish) →</button>' +
+        (isTeacher ? '      <button type="button" class="ap-btn out" id="tgEditHomeworkBtn" style="border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;border-radius:10px;padding:8px 14px;">✏️ O‘zgartirish</button>' : '') +
+        '    </div>' +
+        '  </div>'
+      ) : '') +
+
+      // Students Roster Section
+      '  <div class="cls-students-card" style="background:rgba(15,23,42,0.92);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:20px 24px;box-shadow:0 10px 30px rgba(0,0,0,0.4);">' +
+      '    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;flex-wrap:wrap;gap:10px;">' +
+      '      <div>' +
+      '        <h3 style="margin:0;font-size:18px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:8px;">👥 Guruh A‘zolari Ro‘yxati <span style="font-size:13px;color:#38bdf8;font-weight:700;">(' + (cls.students || []).length + ' nafar)</span></h3>' +
+      '        <p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">O‘quvchilarning online holati, faolligi va monitoring ma‘lumotlari</p>' +
+      '      </div>' +
+      '      <button type="button" class="ap-btn out" id="btnRefreshRosterTop" style="border:1px solid rgba(56,189,248,0.4);color:#38bdf8;padding:6px 14px;border-radius:10px;font-size:12.5px;font-weight:700;cursor:pointer;">🔄 Yangilash</button>' +
       '    </div>' +
-      '  </div>' +
-      '  <div class="tg-reply-bar tg-edit-bar" id="tgEditBar" style="display:none;background:rgba(15,23,42,0.95);border-left:3px solid #38bdf8;padding:7px 14px;margin-bottom:6px;border-radius:6px;align-items:center;justify-content:space-between;">' +
-      '    <div id="tgEditBarText" style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#38bdf8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></div>' +
-      '    <button id="tgEditCancelBtn" type="button" style="background:none;border:none;cursor:pointer;color:#94a3b8;font-size:16px;">✕</button>' +
-      '  </div>' +
-      '  <div class="tg-reply-bar" id="tgReplyBar" style="display:none">' +
-      '    <div id="tgReplyBarText"></div>' +
-      '    <button id="tgReplyCancelBtn" style="background:none;border:none;cursor:pointer;color:red">✕</button>' +
-      '  </div>' +
-      '  <div class="tg-input-area">' +
-      '    <input type="text" id="tgInputText" placeholder="Write a message..." autocomplete="off">' +
-      '    <button class="eth-btn-primary" id="tgSendBtn" style="width:40px;height:40px;border-radius:50%;padding:0">' + ic('send') + '</button>' +
-      '  </div>' +
-      '  <div class="tg-chat-emoji-tray" id="tgChatEmojiTray">' +
-      '    <span style="font-size:11.5px;color:var(--muted);font-weight:700;margin-right:2px">Emojis:</span>' +
+      '    <div class="cls-students-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:12px;">' +
       (function() {
-        var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.isTeacher === true);
-        var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍','😊','❤️'];
-        return (window.ETHITH_CHAT_EMOJIS || []).map(function(item) {
-          var isUnlocked = isTeacherUser || item.isDefault || (myUnlocked.indexOf(item.emoji) !== -1);
-          if (isUnlocked) {
-            return '<button type="button" class="tg-emoji-pill" data-insert-em="' + item.emoji + '" title="' + esc(item.name) + '">' + item.emoji + '</button>';
-          } else {
-            return '<button type="button" class="tg-emoji-pill is-locked" data-locked-em="' + item.emoji + '" title="' + esc(item.name) + ' (Qulflangan: Marketdan oching)">' + item.emoji + '</button>';
-          }
+        var stList = (cls.students || []).slice();
+        // Strict sorting: 🟢 Online first, 🔵 Offline second, 🔴 Never third
+        stList.sort(function(a, b) {
+          var stA = window._ethithGetUserStatus ? window._ethithGetUserStatus(a) : { status: 'red' };
+          var stB = window._ethithGetUserStatus ? window._ethithGetUserStatus(b) : { status: 'red' };
+          var weight = { 'green': 1, 'blue': 2, 'red': 3 };
+          var wA = weight[stA.status] || 3;
+          var wB = weight[stB.status] || 3;
+          if (wA !== wB) return wA - wB;
+          return (a.name || '').localeCompare(b.name || '');
+        });
+
+        if (stList.length === 0) {
+          return '<div style="grid-column:1/-1;text-align:center;padding:36px;color:#94a3b8;font-size:14px;">Guruhda hozircha o‘quvchilar mavjud emas.</div>';
+        }
+
+        return stList.map(function(st, idx) {
+          var stObj = window._ethithGetUserStatus ? window._ethithGetUserStatus(st) : { status: 'red', color: '#ef4444', label: 'Kirmagan' };
+          var stColor = stObj.color || '#ef4444';
+          var stLabel = stObj.label || 'Kirmagan';
+
+          return '<div class="cls-student-card-item" style="background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:all 0.15s ease;">' +
+            '  <div style="display:flex;align-items:center;gap:12px;min-width:0;">' +
+            '    <div style="position:relative;flex-shrink:0;">' +
+            '      <div style="width:40px;height:40px;border-radius:12px;background:rgba(2,132,199,0.25);border:1.5px solid rgba(56,189,248,0.4);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#38bdf8;">' + (st.name || 'S').charAt(0).toUpperCase() + '</div>' +
+            '      <span style="position:absolute;bottom:-2px;right:-2px;width:11px;height:11px;border-radius:50%;background:' + stColor + ';border:2px solid #0f172a;box-shadow:0 0 6px ' + stColor + ';" title="' + stLabel + '"></span>' +
+            '    </div>' +
+            '    <div style="min-width:0;">' +
+            '      <div style="font-size:14px;font-weight:800;color:#f8fafc;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(st.name || 'Nomsiz') + '</div>' +
+            '      <div style="font-size:11.5px;color:#94a3b8;margin-top:2px;display:flex;align-items:center;gap:6px;">' +
+            '        <span style="font-family:monospace;color:#7dd3fc;">@' + esc(st.login || st.id || 'id') + '</span>' +
+            '        <span>·</span>' +
+            '        <span style="color:' + stColor + ';font-weight:700;">' + stLabel + '</span>' +
+            '      </div>' +
+            '    </div>' +
+            '  </div>' +
+            (isTeacher ? (
+              '  <button type="button" class="btn-st-row-edit" data-edit-st-login="' + esc(st.login || st.id) + '" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:8px;color:#cbd5e1;padding:6px 10px;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0;" title="O‘quvchini tahrirlash">✏️</button>'
+            ) : '') +
+            '</div>';
         }).join('');
       })() +
+      '    </div>' +
       '  </div>' +
       '</div>';
 
     container.innerHTML = html;
-
-    var msgBox = document.getElementById('tgMsgBox');
-    msgBox.scrollTop = msgBox.scrollHeight;
 
     document.getElementById('backClassesListBtn').onclick = function() {
       S.activeClassId = null;
@@ -2502,10 +2531,14 @@
       return appendSingleMsgToDom(msg, liveCls, container);
     };
 
-    document.getElementById('tgReplyCancelBtn').onclick = function() {
-      currentReplyingMessage = null;
-      document.getElementById('tgReplyBar').style.display = 'none';
-    };
+    var replyCancelBtn = document.getElementById('tgReplyCancelBtn');
+    if (replyCancelBtn) {
+      replyCancelBtn.onclick = function() {
+        currentReplyingMessage = null;
+        var rBar = document.getElementById('tgReplyBar');
+        if (rBar) rBar.style.display = 'none';
+      };
+    }
 
     var editCancelBtn = document.getElementById('tgEditCancelBtn');
     if (editCancelBtn) {
@@ -2692,12 +2725,37 @@
       }
     };
 
-    document.getElementById('tgSendBtn').onclick = sendMessage;
-    document.getElementById('tgInputText').onkeydown = function(e) {
-      if (e.key === 'Enter') {
-        sendMessage();
-      }
-    };
+    var tgSendBtn = document.getElementById('tgSendBtn');
+    if (tgSendBtn) tgSendBtn.onclick = sendMessage;
+    var tgInpText = document.getElementById('tgInputText');
+    if (tgInpText) {
+      tgInpText.onkeydown = function(e) {
+        if (e.key === 'Enter') {
+          sendMessage();
+        }
+      };
+    }
+
+    // Wire Roster Buttons
+    var btnRefreshRoster = document.getElementById('btnRefreshRosterTop');
+    if (btnRefreshRoster) {
+      btnRefreshRoster.onclick = function() {
+        renderClassDetail(container, cls);
+      };
+    }
+
+    var btnAddSt = document.getElementById('btnClsAddStudentDirect');
+    if (btnAddSt) {
+      btnAddSt.onclick = function() {
+        showClassMonitoringModal(cls);
+      };
+    }
+
+    container.querySelectorAll('.btn-st-row-edit').forEach(function(btn) {
+      btn.onclick = function() {
+        showClassMonitoringModal(cls);
+      };
+    });
   }
 
   var EMOJIS_MASTER_LIST = [
