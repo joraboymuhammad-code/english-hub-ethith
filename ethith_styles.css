@@ -10170,76 +10170,287 @@ html, body {
 }
 
 
-/* Telegram Message Context Menu on Left Click & Right Click */
-.tg-context-menu {
+/* ========================================================
+   TELEGRAM DESKTOP 1:1 CONTEXT MENU & REACTIONS
+   Matching media_1793724132736_4290f841.png Pixel-for-Pixel
+   ======================================================== */
+.tg-telegram-context-menu {
   position: fixed !important;
-  background: #0f172a !important;
-  background-color: #0f172a !important;
-  border-radius: 14px !important;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(56, 189, 248, 0.35) !important;
-  border: 1px solid rgba(56, 189, 248, 0.35) !important;
-  padding: 6px !important;
-  z-index: 100000 !important;
+  background: rgba(28, 30, 34, 0.97) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 10px !important;
+  padding: 5px !important;
+  z-index: 999999 !important;
   display: flex !important;
   flex-direction: column !important;
-  width: 220px !important;
-  max-width: 240px !important;
-  animation: ethPop 0.14s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  width: 184px !important;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.3) !important;
+  animation: tgMenuPop 0.12s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  user-select: none !important;
 }
 
-.tg-context-reactions {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 3px !important;
-  padding: 6px 4px 8px 4px !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
-  margin-bottom: 4px !important;
+@keyframes tgMenuPop {
+  0% { opacity: 0; transform: scale(0.92); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
-.tg-context-reaction-btn {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 8px !important;
-  padding: 3px 6px !important;
-  font-size: 18px !important;
-  cursor: pointer !important;
-  transition: transform 0.12s, background 0.12s !important;
-}
-
-.tg-context-reaction-btn:hover {
-  transform: scale(1.22) !important;
-  background: rgba(56, 189, 248, 0.25) !important;
-}
-
-.tg-context-item {
+.tg-tg-menu-item {
   display: flex !important;
   align-items: center !important;
-  gap: 10px !important;
-  padding: 9px 12px !important;
-  border-radius: 8px !important;
+  justify-content: space-between !important;
+  height: 34px !important;
+  padding: 0 10px !important;
+  border-radius: 6px !important;
   background: transparent !important;
   border: none !important;
-  color: #e2e8f0 !important;
+  color: #e5e7eb !important;
   font-size: 13.5px !important;
-  font-weight: 600 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-weight: 500 !important;
   cursor: pointer !important;
   text-align: left !important;
   width: 100% !important;
+  transition: background 0.08s ease, color 0.08s ease !important;
+}
+
+.tg-tg-menu-item:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+.tg-tg-menu-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.tg-tg-menu-icon {
+  width: 17px !important;
+  height: 17px !important;
+  color: #9ca3af !important;
+  flex-shrink: 0 !important;
+  transition: color 0.08s ease !important;
+}
+
+.tg-tg-menu-item:hover .tg-tg-menu-icon {
+  color: #ffffff !important;
+}
+
+.tg-tg-menu-chevron {
+  width: 14px !important;
+  height: 14px !important;
+  color: #6b7280 !important;
+  flex-shrink: 0 !important;
+}
+
+.tg-tg-menu-item.danger {
+  color: #ef5350 !important;
+}
+
+.tg-tg-menu-item.danger .tg-tg-menu-icon {
+  color: #ef5350 !important;
+}
+
+.tg-tg-menu-item.danger:hover {
+  background: rgba(239, 83, 80, 0.14) !important;
+  color: #ff6b6b !important;
+}
+
+.tg-tg-menu-item.danger:hover .tg-tg-menu-icon {
+  color: #ff6b6b !important;
+}
+
+/* Telegram Quick Reaction Bar Capsule (Single Left Click) */
+.tg-floating-reactions-bar {
+  position: fixed !important;
+  background: rgba(26, 28, 32, 0.96) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 28px !important;
+  padding: 5px 8px !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+  animation: tgMenuPop 0.14s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.tg-floating-react-btn {
+  background: transparent !important;
+  border: none !important;
+  font-size: 21px !important;
+  line-height: 1 !important;
+  padding: 5px 7px !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  transition: transform 0.12s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.1s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.tg-floating-react-btn:hover {
+  transform: scale(1.35) translateY(-2px) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.tg-floating-react-btn.is-active {
+  background: rgba(56, 189, 248, 0.25) !important;
+}
+
+.tg-floating-react-more {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  font-size: 15px !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+}
+
+/* Telegram Double-Tap Reaction Pop Animation */
+.tg-double-tap-pop {
+  position: fixed !important;
+  font-size: 54px !important;
+  pointer-events: none !important;
+  z-index: 1000000 !important;
+  transform: translate(-50%, -50%) scale(0.3);
+  animation: tgDoubleTapPopAnim 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes tgDoubleTapPopAnim {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+  }
+  30% {
+    transform: translate(-50%, -60%) scale(1.35);
+    opacity: 1;
+  }
+  70% {
+    transform: translate(-50%, -85%) scale(1.1);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(-50%, -115%) scale(0.7);
+    opacity: 0;
+  }
+}
+
+/* Selection Mode Styling */
+.tg-msg-row.is-selected .tg-bubble {
+  box-shadow: 0 0 0 2px #38bdf8, 0 8px 24px rgba(56, 189, 248, 0.25) !important;
+  background: rgba(2, 132, 199, 0.3) !important;
+}
+
+.tg-selection-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: rgba(15, 23, 42, 0.96) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  border-radius: 12px !important;
+  padding: 8px 16px !important;
+  margin-top: 8px !important;
+  margin-bottom: 6px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+  animation: tgMenuPop 0.15s ease !important;
+}
+
+.tg-sel-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #f8fafc !important;
+  border-radius: 8px !important;
+  padding: 6px 14px !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
   transition: all 0.12s ease !important;
 }
 
-.tg-context-item:hover {
-  background: rgba(56, 189, 248, 0.16) !important;
-  color: #38bdf8 !important;
+.tg-sel-btn:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
 }
 
-.tg-context-item.danger {
-  color: #f87171 !important;
-}
-
-.tg-context-item.danger:hover {
-  background: rgba(239, 68, 68, 0.22) !important;
+.tg-sel-btn.danger {
+  background: rgba(239, 68, 68, 0.2) !important;
+  border-color: rgba(239, 68, 68, 0.5) !important;
   color: #fca5a5 !important;
+}
+
+.tg-sel-btn.danger:hover {
+  background: rgba(239, 68, 68, 0.35) !important;
+}
+
+/* Telegram Forward Modal Overlay */
+.tg-forward-modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(0, 0, 0, 0.65) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  z-index: 1000001 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+  animation: tgFadeIn 0.14s ease !important;
+}
+
+@keyframes tgFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tg-forward-modal {
+  background: #111827 !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 16px !important;
+  width: 440px !important;
+  max-width: 95vw !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
+  overflow: hidden !important;
+  animation: tgMenuPop 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.tg-forward-group-item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 12px 16px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  transition: background 0.12s ease !important;
+  cursor: pointer !important;
+}
+
+.tg-forward-group-item:hover {
+  background: rgba(56, 189, 248, 0.1) !important;
+}
+
+.tg-forward-send-btn {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  padding: 6px 14px !important;
+  border-radius: 8px !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.12s ease !important;
+}
+
+.tg-forward-send-btn:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.5) !important;
 }
 
 /* Cursor pointer on chat bubbles so users know left-click works */

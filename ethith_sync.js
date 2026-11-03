@@ -650,6 +650,23 @@
       }
     }
 
+    // D1. EDIT MESSAGE (Realtime across all peers)
+    else if (event.type === 'EDIT_MSG' && targetCls && event.msgId && event.text) {
+      var foundMsg = (targetCls.messages || []).find(function(m) { return m.id === event.msgId; });
+      if (foundMsg) {
+        foundMsg.text = event.text;
+        foundMsg.isEdited = true;
+        foundMsg.editedAt = Date.now();
+        var row = document.querySelector('.tg-msg-row[data-msg-id="' + event.msgId + '"]');
+        if (row) {
+          var txtEl = row.querySelector('.tg-msg-text');
+          if (txtEl) {
+            txtEl.innerHTML = event.text + ' <span class="tg-edited-badge" style="font-size:10.5px;opacity:0.65;margin-left:4px;">(tahrirlangan)</span>';
+          }
+        }
+      }
+    }
+
     // D. PIN / UNPIN MESSAGE
     else if (event.type === 'PIN_MSG' && targetCls) {
       targetCls.pinnedId = event.msgId || null;

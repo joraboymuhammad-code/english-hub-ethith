@@ -2157,6 +2157,18 @@
         return renderMsgBubbleHtml(m, cls, S.user || {});
       }).join('') +
       '  </div>' +
+      '  <div class="tg-selection-bar" id="tgSelectionBar" style="display:none">' +
+      '    <div id="tgSelectionText" style="font-size:13px;font-weight:700;color:#f8fafc;">1 ta habar tanlandi</div>' +
+      '    <div style="display:flex;align-items:center;gap:8px;">' +
+      '      <button type="button" class="tg-sel-btn" id="tgSelCopyBtn">📋 Nusxalash</button>' +
+      '      <button type="button" class="tg-sel-btn danger" id="tgSelDeleteBtn">🗑️ O\'chirish</button>' +
+      '      <button type="button" class="tg-sel-btn" id="tgSelCancelBtn">✕ Bekor qilish</button>' +
+      '    </div>' +
+      '  </div>' +
+      '  <div class="tg-reply-bar tg-edit-bar" id="tgEditBar" style="display:none;background:rgba(15,23,42,0.95);border-left:3px solid #38bdf8;padding:7px 14px;margin-bottom:6px;border-radius:6px;align-items:center;justify-content:space-between;">' +
+      '    <div id="tgEditBarText" style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#38bdf8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></div>' +
+      '    <button id="tgEditCancelBtn" type="button" style="background:none;border:none;cursor:pointer;color:#94a3b8;font-size:16px;">✕</button>' +
+      '  </div>' +
       '  <div class="tg-reply-bar" id="tgReplyBar" style="display:none">' +
       '    <div id="tgReplyBarText"></div>' +
       '    <button id="tgReplyCancelBtn" style="background:none;border:none;cursor:pointer;color:red">✕</button>' +
@@ -2386,25 +2398,58 @@
 
       var bubble = rowEl.querySelector('.tg-bubble');
       if (bubble) {
-        // Sichqonchaning CHAP TUGMASI (Left Click) bosilganda Telegram Action Modal ("alohida joy") ochilishi:
+        var bubbleClickTimer = null;
+
+        // Sichqonchaning CHAP TUGMASI (Left Click) & KETMA-KET 2 MARTA (Double Click):
         bubble.addEventListener('click', function(e) {
           if (e.target.closest('.tg-reaction-pill') || e.target.closest('a') || e.target.closest('button')) return;
           e.stopPropagation();
-          openTelegramActionSheet(mItem.id, activeCls, cnt);
+
+          // Tanlash rejimi (Selection mode) faol bo'lsa:
+          if (window._ethithIsSelectionMode) {
+            toggleMessageSelection(mItem.id, rowEl, activeCls, cnt);
+            return;
+          }
+
+          if (bubbleClickTimer) {
+            // KETMA-KET 2 MARTA BOSILDI (Double Click):
+            clearTimeout(bubbleClickTimer);
+            bubbleClickTimer = null;
+            // Avtomatik reaksiya biriktiriladi (Telegram Double-tap kabi):
+            applyReaction('👍', mItem, activeCls, cnt);
+            showTelegramDoubleTapHeart(e.clientX, e.clientY, '👍');
+          } else {
+            // 1-marta chap tomon bilan bosildi -> 220ms kutiladi:
+            var cx = e.clientX;
+            var cy = e.clientY;
+            bubbleClickTimer = setTimeout(function() {
+              bubbleClickTimer = null;
+              // BIR MARTA CHAP TOMON BILAN BOSILGANDA -> REAKSIYALAR CHIQADI:
+              showTelegramReactionsBar(cx, cy, mItem, activeCls, cnt);
+            }, 220);
+          }
         });
 
-        // Sichqonchaning O'NG TUGMASI (Right Click) bosilganda ham shu modal ochilishi:
+        // Sichqonchaning O'NG TOMONI BILAN BOSILGANDA (Right Click) -> 1:1 TELEGRAM CONTEXT MENU:
         bubble.addEventListener('contextmenu', function(e) {
           e.preventDefault();
           e.stopPropagation();
-          openTelegramActionSheet(mItem.id, activeCls, cnt);
+          if (bubbleClickTimer) {
+            clearTimeout(bubbleClickTimer);
+            bubbleClickTimer = null;
+          }
+          showTelegramContextMenu(e.clientX, e.clientY, mItem, activeCls, cnt);
         });
 
+        // Sensorli (mobil) qurilmalar uchun bosib turish (Long press):
         var touchTimer = null;
         bubble.addEventListener('touchstart', function(e) {
+          var touch = e.touches[0];
+          var tx = touch ? touch.clientX : 50;
+          var ty = touch ? touch.clientY : 50;
           touchTimer = setTimeout(function() {
-            openTelegramActionSheet(mItem.id, activeCls, cnt);
-          }, 380);
+            showTelegramContextMenu(tx, ty, mItem, activeCls, cnt);
+          }, 420);
         }, { passive: true });
 
         bubble.addEventListener('touchmove', function() {
@@ -2416,10 +2461,12 @@
         });
       }
 
+      // Butun qatorda o'ng tugma bosilganda ham kontekst menyu ochiladi:
       rowEl.addEventListener('contextmenu', function(e) {
+        if (e.target.closest('a') || e.target.closest('button') || e.target.closest('input')) return;
         e.preventDefault();
         e.stopPropagation();
-        openTelegramActionSheet(mItem.id, activeCls, cnt);
+        showTelegramContextMenu(e.clientX, e.clientY, mItem, activeCls, cnt);
       });
     }
 
@@ -2460,11 +2507,106 @@
       document.getElementById('tgReplyBar').style.display = 'none';
     };
 
+    var editCancelBtn = document.getElementById('tgEditCancelBtn');
+    if (editCancelBtn) {
+      editCancelBtn.onclick = function() {
+        currentEditingMessage = null;
+        var editBar = document.getElementById('tgEditBar');
+        if (editBar) editBar.style.display = 'none';
+        var inp = document.getElementById('tgInputText');
+        if (inp) inp.value = '';
+      };
+    }
+
+    var selCancelBtn = document.getElementById('tgSelCancelBtn');
+    if (selCancelBtn) {
+      selCancelBtn.onclick = function() {
+        exitSelectionMode();
+      };
+    }
+
+    var selCopyBtn = document.getElementById('tgSelCopyBtn');
+    if (selCopyBtn) {
+      selCopyBtn.onclick = function() {
+        var liveCls = (S.classes && S.classes.find(function(c) {
+          return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+        })) || cls;
+        var texts = (window._ethithSelectedMsgIds || []).map(function(id) {
+          var m = (liveCls.messages || []).find(function(item) { return item.id === id; });
+          return m ? (m.senderName + ': ' + m.text) : '';
+        }).filter(Boolean);
+        if (texts.length && navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(texts.join('\n')).then(function() {
+            showToast(texts.length + ' ta habar nusxalandi!');
+            exitSelectionMode();
+          }).catch(function(){});
+        }
+      };
+    }
+
+    var selDeleteBtn = document.getElementById('tgSelDeleteBtn');
+    if (selDeleteBtn) {
+      selDeleteBtn.onclick = function() {
+        var ids = (window._ethithSelectedMsgIds || []).slice();
+        ids.forEach(function(mid) {
+          triggerDeleteMessage(mid, cls, container);
+        });
+        exitSelectionMode();
+      };
+    }
+
     // Send Message - Super Instant (0ms DOM append & async broadcast)
     function sendMessage() {
       var input = document.getElementById('tgInputText');
       var text = input.value.trim();
       if (!text) return;
+
+      // Agar tahrirlash (Edit) rejimi bo'lsa:
+      if (currentEditingMessage) {
+        var editTargetId = currentEditingMessage.id;
+        var liveCls = (S.classes && S.classes.find(function(c) {
+          return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+        })) || cls;
+
+        var msgToEdit = (liveCls.messages || []).find(function(m) { return m.id === editTargetId; });
+        if (msgToEdit) {
+          msgToEdit.text = text;
+          msgToEdit.isEdited = true;
+          msgToEdit.editedAt = Date.now();
+        }
+        if (cls !== liveCls && cls.messages) {
+          var clsMsg = cls.messages.find(function(m) { return m.id === editTargetId; });
+          if (clsMsg) { msgToEdit.text = text; clsMsg.isEdited = true; }
+        }
+
+        // DOM dagi xabarni shu zahoti yangilash (0ms):
+        var rowEl = document.querySelector('.tg-msg-row[data-msg-id="' + editTargetId + '"]');
+        if (rowEl) {
+          var textEl = rowEl.querySelector('.tg-msg-text');
+          if (textEl) {
+            textEl.innerHTML = esc(text) + ' <span class="tg-edited-badge" style="font-size:10.5px;opacity:0.65;margin-left:4px;">(tahrirlangan)</span>';
+          }
+        }
+
+        // Dual-broker MQTT orqali barcha qurilmalarga yuborish
+        if (window.EthithSync) {
+          window.EthithSync.publishLive({
+            type: 'EDIT_MSG',
+            classId: liveCls.code || liveCls.id || cls.code || cls.id,
+            msgId: editTargetId,
+            text: text
+          });
+          window.EthithSync.broadcastLocal(S.classes, S.exams);
+          window.EthithSync.pushRemoteStore(S.classes, S.exams);
+        }
+        App.saveState();
+
+        currentEditingMessage = null;
+        var editBar = document.getElementById('tgEditBar');
+        if (editBar) editBar.style.display = 'none';
+        input.value = '';
+        return;
+      }
 
       var newMsg = {
         id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
@@ -2596,51 +2738,82 @@
     };
   }
 
-  // Telegram Quick Reaction Bar Capsule (Floating bubble on hover)
-  function showQuickReactionPopup(x, y, msgId, cls, mainContainer) {
+  // Helper: Dissolve bubble smoothly
+  function telegramDisintegrateBubble(row) {
+    if (!row) return;
+    row.style.transition = 'all 0.15s ease';
+    row.style.opacity = '0';
+    row.style.transform = 'scale(0.88)';
+    setTimeout(function() {
+      if (row.parentNode) row.parentNode.removeChild(row);
+    }, 150);
+  }
+  window._ethithDisintegrateChatMessage = function(msgId) {
+    var row = document.querySelector('.tg-msg-row[data-msg-id="' + msgId + '"]');
+    if (row) telegramDisintegrateBubble(row);
+  };
+
+  // Telegram Double-Tap Floating Pop
+  function showTelegramDoubleTapHeart(x, y, emoji) {
+    var pop = document.createElement('div');
+    pop.className = 'tg-double-tap-pop';
+    pop.textContent = emoji || '👍';
+    pop.style.left = (x || (window.innerWidth / 2)) + 'px';
+    pop.style.top = (y || (window.innerHeight / 2)) + 'px';
+    document.body.appendChild(pop);
+    setTimeout(function() {
+      if (pop.parentNode) pop.parentNode.removeChild(pop);
+    }, 650);
+  }
+
+  // Telegram Quick Reaction Bar (Single Left Click)
+  function showTelegramReactionsBar(x, y, msg, cls, mainContainer) {
     if (activeContextMenu) {
       activeContextMenu.remove();
       activeContextMenu = null;
     }
 
-    var msg = cls.messages.find(function(m) { return m.id === msgId; });
-    if (!msg) return;
+    var liveCls = (S.classes && S.classes.find(function(c) {
+      return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+    })) || cls;
+    var liveMsg = (liveCls.messages || []).find(function(m) { return m.id === msg.id; }) || msg;
 
     var bar = document.createElement('div');
-    bar.className = 'tg-quick-reaction-bar';
+    bar.className = 'tg-floating-reactions-bar';
+    bar._openedAt = Date.now();
 
-    // Position capsule
-    var posX = Math.max(10, Math.min(x - 90, window.innerWidth - 280));
-    var posY = Math.max(10, Math.min(y, window.innerHeight - 60));
+    // Hisoblangan joylashuv
+    var posX = Math.max(12, Math.min(x - 110, window.innerWidth - 310));
+    var posY = Math.max(12, Math.min(y - 52, window.innerHeight - 70));
     bar.style.left = posX + 'px';
     bar.style.top = posY + 'px';
 
-    var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.isTeacher === true);
+    var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.role === 'admin' || S.user.isTeacher === true);
     var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍', '😊', '❤️'];
-    var quickEmojis = (S.quickReactions && S.quickReactions.length >= 6) ? S.quickReactions : EMOJIS_MASTER_LIST;
-    var top6 = quickEmojis.slice(0, 6);
+    var quickEmojis = (S.quickReactions && S.quickReactions.length >= 7) ? S.quickReactions.slice(0, 7) : ['👍', '❤️', '🔥', '👏', '🎉', '😊', '🎯'];
+    var myUserId = (S.user && (S.user.email || S.user.login || S.user.id || S.user.name)) || 'guest';
 
-    var currentUserId = (S.user && (S.user.email || S.user.id)) || 'guest';
-
-    var html = top6.map(function(em) {
-      var isActive = msg.reactions && msg.reactions[em] && msg.reactions[em].indexOf(currentUserId) > -1;
+    var html = quickEmojis.map(function(em) {
+      var isActive = liveMsg.reactions && liveMsg.reactions[em] && liveMsg.reactions[em].some(function(u) {
+        return checkIsMyReaction(u, S.user);
+      });
       var isUnlocked = isTeacherUser || (myUnlocked.indexOf(em) !== -1);
       if (isUnlocked) {
-        return '<button class="tg-quick-bar-em ' + (isActive ? 'active' : '') + '" data-quick-em="' + em + '">' + em + '</button>';
+        return '<button type="button" class="tg-floating-react-btn ' + (isActive ? 'is-active' : '') + '" data-fl-em="' + em + '">' + em + '</button>';
       } else {
-        return '<button class="tg-quick-bar-em is-locked" data-locked-em="' + em + '" title="🔒 Qulflangan (Marketdan oching)"><span style="filter:grayscale(0.7) opacity(0.35)">' + em + '</span><span class="eth-emoji-lock-badge">🔒</span></button>';
+        return '<button type="button" class="tg-floating-react-btn is-locked" data-locked-em="' + em + '" title="🔒 Qulflangan">' + em + '</button>';
       }
     }).join('') +
-    '<button class="tg-quick-bar-em tg-quick-bar-more" id="tgQuickMoreBtn" title="More emojis">➕</button>';
+    '<button type="button" class="tg-floating-react-btn tg-floating-react-more" id="tgFlMoreBtn" title="Barcha emojilar">➕</button>';
 
     bar.innerHTML = html;
     document.body.appendChild(bar);
     activeContextMenu = bar;
 
-    bar.querySelectorAll('[data-quick-em]').forEach(function(btn) {
+    bar.querySelectorAll('[data-fl-em]').forEach(function(btn) {
       btn.onclick = function(e) {
         e.stopPropagation();
-        applyReaction(btn.dataset.quickEm, msg, cls, mainContainer);
+        applyReaction(btn.dataset.flEm, liveMsg, liveCls, mainContainer);
         bar.remove();
         activeContextMenu = null;
       };
@@ -2653,15 +2826,383 @@
       };
     });
 
-    var moreBtn = bar.querySelector('#tgQuickMoreBtn');
+    var moreBtn = bar.querySelector('#tgFlMoreBtn');
     if (moreBtn) {
       moreBtn.onclick = function(e) {
         e.stopPropagation();
-        showAllEmojisPicker(posX, posY - 180, msg, cls, mainContainer);
+        bar.remove();
+        activeContextMenu = null;
+        showAllEmojisPicker(posX, posY - 180, liveMsg, liveCls, mainContainer);
       };
+    }
+
+    setTimeout(function() {
+      function dismissHandler(e) {
+        if (Date.now() - bar._openedAt < 180) return;
+        if (!bar.contains(e.target)) {
+          bar.remove();
+          if (activeContextMenu === bar) activeContextMenu = null;
+          document.removeEventListener('click', dismissHandler);
+        }
+      }
+      document.addEventListener('click', dismissHandler);
+    }, 20);
+  }
+
+  // Telegram 1:1 Context Menu (Right Click)
+  // Exact Replica of Screenshot media_1793724132736_4290f841.png
+  function showTelegramContextMenu(x, y, msg, cls, mainContainer) {
+    if (activeContextMenu) {
+      activeContextMenu.remove();
+      activeContextMenu = null;
+    }
+
+    var liveCls = (S.classes && S.classes.find(function(c) {
+      return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+    })) || cls;
+
+    var liveMsg = (liveCls.messages || []).find(function(m) { return m.id === msg.id; }) ||
+                  (cls.messages || []).find(function(m) { return m.id === msg.id; }) || msg;
+
+    var menu = document.createElement('div');
+    menu.className = 'tg-telegram-context-menu';
+    menu._openedAt = Date.now();
+
+    // Position context menu bounded to viewport
+    var row = document.querySelector('.tg-msg-row[data-msg-id="' + liveMsg.id + '"]');
+    var bRect = row ? (row.querySelector('.tg-bubble') || row).getBoundingClientRect() : null;
+    var posX = x;
+    var posY = y;
+    if ((!posX || posX < 5) && bRect) posX = bRect.left + 20;
+    if ((!posY || posY < 5) && bRect) posY = bRect.top + 20;
+
+    posX = Math.max(10, Math.min(posX, window.innerWidth - 200));
+    posY = Math.max(10, Math.min(posY, window.innerHeight - 240));
+    menu.style.left = posX + 'px';
+    menu.style.top = posY + 'px';
+
+    var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.role === 'admin' || S.user.isTeacher === true);
+    var isOwn = checkIsOwnMsg(liveMsg, S.user);
+    var canDelete = canUserDeleteThisMsg(liveMsg, S.user);
+    var isPinned = (liveCls.pinnedId === liveMsg.id);
+
+    // Exact Items Matching media_1793724132736_4290f841.png:
+    // 1. Reply
+    // 2. Edit (if own)
+    // 3. Pin (if teacher)
+    // 4. Forward (ONLY for teachers! Hidden for students!)
+    // 5. Delete (red icon & red text)
+    // 6. Select
+    var html = '' +
+      '<button type="button" class="tg-tg-menu-item" id="tgCtxReply">' +
+      '  <div class="tg-tg-menu-left">' +
+      '    <svg class="tg-tg-menu-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+      '      <polyline points="9 17 4 12 9 7"></polyline><path d="M20 18v-2a4 4 0 0 0-4-4H4"></path>' +
+      '    </svg>' +
+      '    <span>Reply</span>' +
+      '  </div>' +
+      '</button>' +
+      (isOwn ? (
+        '<button type="button" class="tg-tg-menu-item" id="tgCtxEdit">' +
+        '  <div class="tg-tg-menu-left">' +
+        '    <svg class="tg-tg-menu-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+        '      <path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>' +
+        '    </svg>' +
+        '    <span>Edit</span>' +
+        '  </div>' +
+        '</button>'
+      ) : '') +
+      (isTeacherUser ? (
+        '<button type="button" class="tg-tg-menu-item" id="tgCtxPin">' +
+        '  <div class="tg-tg-menu-left">' +
+        '    <svg class="tg-tg-menu-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+        '      <line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-2l-2-2V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v8l-2 2v2z"></path>' +
+        '    </svg>' +
+        '    <span>' + (isPinned ? 'Unpin' : 'Pin') + '</span>' +
+        '  </div>' +
+        '</button>'
+      ) : '') +
+      (isTeacherUser ? (
+        '<button type="button" class="tg-tg-menu-item" id="tgCtxForward">' +
+        '  <div class="tg-tg-menu-left">' +
+        '    <svg class="tg-tg-menu-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+        '      <polyline points="15 17 20 12 15 7"></polyline><path d="M4 18v-2a4 4 0 0 1 4-4h12"></path>' +
+        '    </svg>' +
+        '    <span>Forward</span>' +
+        '  </div>' +
+        '  <svg class="tg-tg-menu-chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+        '    <polyline points="9 18 15 12 9 6"></polyline>' +
+        '  </svg>' +
+        '</button>'
+      ) : '') +
+      (canDelete ? (
+        '<button type="button" class="tg-tg-menu-item danger" id="tgCtxDelete">' +
+        '  <div class="tg-tg-menu-left">' +
+        '    <svg class="tg-tg-menu-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ef5350" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+        '      <polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line>' +
+        '    </svg>' +
+        '    <span>Delete</span>' +
+        '  </div>' +
+        '</button>'
+      ) : '') +
+      '<button type="button" class="tg-tg-menu-item" id="tgCtxSelect">' +
+      '  <div class="tg-tg-menu-left">' +
+      '    <svg class="tg-tg-menu-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+      '      <circle cx="12" cy="12" r="10"></circle><polyline points="9 12 11 14 15 10"></polyline>' +
+      '    </svg>' +
+      '    <span>Select</span>' +
+      '  </div>' +
+      '</button>';
+
+    menu.innerHTML = html;
+    document.body.appendChild(menu);
+    activeContextMenu = menu;
+
+    // 1. Reply
+    var replyBtn = menu.querySelector('#tgCtxReply');
+    if (replyBtn) {
+      replyBtn.onclick = function(e) {
+        e.stopPropagation();
+        menu.remove();
+        activeContextMenu = null;
+        currentReplyingMessage = liveMsg;
+        var replyBar = document.getElementById('tgReplyBar');
+        var replyText = document.getElementById('tgReplyBarText');
+        if (replyBar && replyText) {
+          replyBar.style.display = 'flex';
+          replyText.innerHTML = ic('reply') + ' <b>Replying to: ' + esc(liveMsg.senderName) + '</b>: "' + esc(liveMsg.text.slice(0, 45)) + '..."';
+          var inp = document.getElementById('tgInputText');
+          if (inp) inp.focus();
+        }
+      };
+    }
+
+    // 2. Edit
+    var editBtn = menu.querySelector('#tgCtxEdit');
+    if (editBtn) {
+      editBtn.onclick = function(e) {
+        e.stopPropagation();
+        menu.remove();
+        activeContextMenu = null;
+        startEditingMessage(liveMsg, liveCls, mainContainer);
+      };
+    }
+
+    // 3. Pin / Unpin
+    var pinBtn = menu.querySelector('#tgCtxPin');
+    if (pinBtn) {
+      pinBtn.onclick = function(e) {
+        e.stopPropagation();
+        menu.remove();
+        activeContextMenu = null;
+        var newPinId = isPinned ? null : liveMsg.id;
+        liveCls.pinnedId = newPinId;
+        App.saveState();
+        if (window.EthithSync) {
+          window.EthithSync.publishLive({
+            type: 'PIN_MSG',
+            classId: liveCls.code || liveCls.id,
+            msgId: newPinId
+          });
+          window.EthithSync.broadcastLocal(S.classes, S.exams);
+          window.EthithSync.pushRemoteStore(S.classes, S.exams);
+        }
+        renderClassDetail(mainContainer, liveCls);
+      };
+    }
+
+    // 4. Forward (Teachers only!)
+    var forwardBtn = menu.querySelector('#tgCtxForward');
+    if (forwardBtn) {
+      forwardBtn.onclick = function(e) {
+        e.stopPropagation();
+        menu.remove();
+        activeContextMenu = null;
+        showTelegramForwardModal(liveMsg, liveCls, mainContainer);
+      };
+    }
+
+    // 5. Delete (0ms instant disintegration)
+    var delBtn = menu.querySelector('#tgCtxDelete');
+    if (delBtn) {
+      delBtn.onclick = function(e) {
+        e.stopPropagation();
+        var targetId = liveMsg.id;
+        menu.remove();
+        activeContextMenu = null;
+        triggerDeleteMessage(targetId, liveCls, mainContainer);
+      };
+    }
+
+    // 6. Select
+    var selectBtn = menu.querySelector('#tgCtxSelect');
+    if (selectBtn) {
+      selectBtn.onclick = function(e) {
+        e.stopPropagation();
+        menu.remove();
+        activeContextMenu = null;
+        toggleMessageSelection(liveMsg.id, row, liveCls, mainContainer);
+      };
+    }
+
+    setTimeout(function() {
+      function dismissCtx(e) {
+        if (Date.now() - menu._openedAt < 180) return;
+        if (!menu.contains(e.target)) {
+          menu.remove();
+          if (activeContextMenu === menu) activeContextMenu = null;
+          document.removeEventListener('click', dismissCtx);
+        }
+      }
+      document.addEventListener('click', dismissCtx);
+    }, 20);
+  }
+
+  // Telegram Forward Modal (Ustozlar uchun boshqa guruhlarga yuborish)
+  function showTelegramForwardModal(msg, currentCls, mainContainer) {
+    var overlay = document.createElement('div');
+    overlay.className = 'tg-forward-modal-overlay';
+
+    var curId = currentCls.id || currentCls.code;
+    var otherGroups = (S.classes || []).filter(function(c) {
+      return c && c.id !== curId && c.code !== curId;
+    });
+
+    var html = '' +
+      '<div class="tg-forward-modal">' +
+      '  <div style="padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;">' +
+      '    <div>' +
+      '      <h3 style="margin:0;font-size:16px;font-weight:800;color:#f8fafc;display:flex;align-items:center;gap:8px;">' +
+      '        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 17 20 12 15 7"></polyline><path d="M4 18v-2a4 4 0 0 1 4-4h12"></path></svg>' +
+      '        Habarni boshqa guruhga yuborish (Forward)' +
+      '      </h3>' +
+      '      <p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">Ushbu habarni qaysi guruh chatiga yo\'naltirmoqchisiz?</p>' +
+      '    </div>' +
+      '    <button type="button" id="btnCloseFwdModal" style="background:none;border:none;color:#94a3b8;font-size:18px;cursor:pointer;">✕</button>' +
+      '  </div>' +
+      '  <div style="padding:12px 20px;background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.06);font-size:12.5px;color:#cbd5e1;display:flex;align-items:center;gap:8px;">' +
+      '    <span style="opacity:0.7;">Habar:</span> <b style="color:#38bdf8;">' + esc(msg.senderName) + ':</b> "' + esc(msg.text.slice(0, 50)) + (msg.text.length > 50 ? '...' : '') + '"' +
+      '  </div>' +
+      '  <div style="max-height:320px;overflow-y:auto;padding:6px 0;">' +
+      (otherGroups.length === 0 ? (
+        '<div style="padding:32px 20px;text-align:center;color:#94a3b8;font-size:13px;">Boshqa sinf yoki guruhlar topilmadi.</div>'
+      ) : (
+        otherGroups.map(function(g) {
+          var stCount = (g.students || []).length;
+          return '<div class="tg-forward-group-item" data-target-group-id="' + esc(g.id || g.code) + '">' +
+            '  <div>' +
+            '    <div style="font-size:14px;font-weight:700;color:#f8fafc;">' + esc(g.name) + '</div>' +
+            '    <div style="font-size:12px;color:#94a3b8;">' + (g.level || 'Guruh') + ' · ' + stCount + ' nafar o\'quvchi</div>' +
+            '  </div>' +
+            '  <button type="button" class="tg-forward-send-btn">' +
+            '    <span>Yuborish</span> ➔' +
+            '  </button>' +
+            '</div>';
+        }).join('')
+      )) +
+      '  </div>' +
+      '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    overlay.onclick = function(e) {
+      if (e.target === overlay) overlay.remove();
+    };
+
+    var closeBtn = overlay.querySelector('#btnCloseFwdModal');
+    if (closeBtn) closeBtn.onclick = function() { overlay.remove(); };
+
+    overlay.querySelectorAll('.tg-forward-group-item').forEach(function(item) {
+      item.onclick = function(e) {
+        var targetGid = item.dataset.targetGroupId;
+        var targetCls = (S.classes || []).find(function(c) {
+          return (c.id && c.id === targetGid) || (c.code && c.code === targetGid);
+        });
+        if (!targetCls) return;
+
+        var fwdMsg = {
+          id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+          timestamp: Date.now(),
+          senderId: S.user.id,
+          senderName: S.user.name,
+          senderEmail: S.user.email,
+          text: msg.text,
+          forwardedFrom: msg.senderName,
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          reactions: {}
+        };
+
+        if (!targetCls.messages) targetCls.messages = [];
+        targetCls.messages.push(fwdMsg);
+        App.saveState();
+
+        if (window.EthithSync) {
+          window.EthithSync.publishLive({
+            type: 'CHAT_MSG',
+            classId: targetCls.code || targetCls.id,
+            message: fwdMsg
+          });
+          window.EthithSync.broadcastLocal(S.classes, S.exams);
+          window.EthithSync.pushRemoteStore(S.classes, S.exams);
+        }
+
+        overlay.remove();
+        showToast('Habar muvaffaqiyatli "' + targetCls.name + '" guruhiga yuborildi!');
+      };
+    });
+  }
+
+  // Tahrirlashni boshlash (Edit message)
+  function startEditingMessage(msg, cls, mainContainer) {
+    currentEditingMessage = msg;
+    var inp = document.getElementById('tgInputText');
+    if (inp) {
+      inp.value = msg.text || '';
+      inp.focus();
+    }
+    var editBar = document.getElementById('tgEditBar');
+    var editBarText = document.getElementById('tgEditBarText');
+    if (editBar && editBarText) {
+      editBar.style.display = 'flex';
+      editBarText.innerHTML = '✏️ <b>Tahrirlash:</b> "' + esc((msg.text || '').slice(0, 45)) + '..."';
     }
   }
 
+  // Tanlash rejimini boshqarish (Selection mode)
+  function toggleMessageSelection(msgId, rowEl, activeCls, cnt) {
+    if (!window._ethithSelectedMsgIds) window._ethithSelectedMsgIds = [];
+    var idx = window._ethithSelectedMsgIds.indexOf(msgId);
+    if (idx > -1) {
+      window._ethithSelectedMsgIds.splice(idx, 1);
+      if (rowEl) rowEl.classList.remove('is-selected');
+    } else {
+      window._ethithSelectedMsgIds.push(msgId);
+      if (rowEl) rowEl.classList.add('is-selected');
+    }
+
+    var selBar = document.getElementById('tgSelectionBar');
+    var selText = document.getElementById('tgSelectionText');
+    if (window._ethithSelectedMsgIds.length > 0) {
+      window._ethithIsSelectionMode = true;
+      if (selBar && selText) {
+        selBar.style.display = 'flex';
+        selText.textContent = window._ethithSelectedMsgIds.length + ' ta habar tanlandi';
+      }
+    } else {
+      exitSelectionMode();
+    }
+  }
+
+  function exitSelectionMode() {
+    window._ethithIsSelectionMode = false;
+    window._ethithSelectedMsgIds = [];
+    document.querySelectorAll('.tg-msg-row.is-selected').forEach(function(r) {
+      r.classList.remove('is-selected');
+    });
+    var selBar = document.getElementById('tgSelectionBar');
+    if (selBar) selBar.style.display = 'none';
+  }
 
   // Reusable 0ms message deletion with Telegram sand/pixel disintegration
   function triggerDeleteMessage(msgId, cls, mainContainer) {
@@ -2696,135 +3237,6 @@
       });
       window.EthithSync.broadcastLocal(S.classes, S.exams);
       window.EthithSync.pushRemoteStore(S.classes, S.exams);
-    }
-  }
-  // Telegram Context Menu: Reactions Row, Reply, Copy, Pin, Delete
-  function showContextMenu(x, y, msgId, cls, mainContainer) {
-    if (activeContextMenu) {
-      activeContextMenu.remove();
-      activeContextMenu = null;
-    }
-
-    var liveCls = (S.classes && S.classes.find(function(c) {
-      return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
-    })) || cls;
-
-    var msg = (liveCls.messages || []).find(function(m) { return m.id === msgId; }) ||
-              (cls.messages || []).find(function(m) { return m.id === msgId; });
-    if (!msg && S.classes) {
-      for (var ci = 0; ci < S.classes.length; ci++) {
-        var found = (S.classes[ci].messages || []).find(function(m) { return m.id === msgId; });
-        if (found) { msg = found; break; }
-      }
-    }
-    if (!msg) return;
-
-    var menu = document.createElement('div');
-    menu.className = 'tg-context-menu';
-
-    // Position menu exactly like Telegram
-    var row = document.querySelector('.tg-msg-row[data-msg-id="' + msgId + '"]');
-    var bRect = row ? (row.querySelector('.tg-bubble') || row).getBoundingClientRect() : null;
-    var posX = x;
-    var posY = y;
-    if ((!posX || posX < 5) && bRect) posX = bRect.left + 20;
-    if ((!posY || posY < 5) && bRect) posY = bRect.top + 20;
-
-    posX = Math.max(10, Math.min(posX, window.innerWidth - 230));
-    posY = Math.max(10, Math.min(posY, window.innerHeight - 270));
-    menu.style.left = posX + 'px';
-    menu.style.top = posY + 'px';
-    menu._openedAt = Date.now();
-
-    var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.role === 'admin' || S.user.isTeacher === true);
-    var canDel = canUserDeleteThisMsg(msg, S.user);
-    var quickEmojis = ['👍', '❤️', '🔥', '👏', '🎉', '😊', '🎯'];
-
-    var html = '' +
-      '<div class="tg-context-reactions">' +
-      quickEmojis.map(function(em) {
-        return '<button type="button" class="tg-context-reaction-btn" data-em="' + em + '">' + em + '</button>';
-      }).join('') +
-      '</div>' +
-      '<button type="button" class="tg-context-item" id="ctxReplyBtn">' + ic('reply') + ' Javob berish (Reply)</button>' +
-      '<button type="button" class="tg-context-item" id="ctxCopyBtn">📋 Matnni nusxalash (Copy)</button>' +
-      (isTeacherUser ? '<button type="button" class="tg-context-item" id="ctxPinBtn">' + ic('pin') + ' Qadash (Pin Message)</button>' : '') +
-      (canDel ? '<button type="button" class="tg-context-item danger" id="ctxDeleteBtn" style="color:#ef4444 !important;font-weight:700;">' + ic('trash') + ' O\'chirish (Delete)</button>' : '');
-
-    menu.innerHTML = html;
-    document.body.appendChild(menu);
-    activeContextMenu = menu;
-
-    // Apply Reaction
-    menu.querySelectorAll('[data-em]').forEach(function(btn) {
-      btn.onclick = function(e) {
-        e.stopPropagation();
-        applyReaction(btn.dataset.em, msg, cls, mainContainer);
-        menu.remove();
-        activeContextMenu = null;
-      };
-    });
-
-    var replyBtn = menu.querySelector('#ctxReplyBtn');
-    if (replyBtn) {
-      replyBtn.onclick = function(e) {
-        e.stopPropagation();
-        currentReplyingMessage = msg;
-        var replyBar = document.getElementById('tgReplyBar');
-        var replyText = document.getElementById('tgReplyBarText');
-        if (replyBar && replyText) {
-          replyBar.style.display = 'flex';
-          replyText.innerHTML = ic('reply') + ' <b>Replying to: ' + esc(msg.senderName) + '</b>: "' + esc(msg.text.slice(0, 45)) + '..."';
-          var inp = document.getElementById('tgInputText');
-          if (inp) inp.focus();
-        }
-        menu.remove();
-        activeContextMenu = null;
-      };
-    }
-
-    var copyBtn = menu.querySelector('#ctxCopyBtn');
-    if (copyBtn) {
-      copyBtn.onclick = function(e) {
-        e.stopPropagation();
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(msg.text || '').catch(function(){});
-        }
-        menu.remove();
-        activeContextMenu = null;
-      };
-    }
-
-    var pinBtn = menu.querySelector('#ctxPinBtn');
-    if (pinBtn) {
-      pinBtn.onclick = function(e) {
-        e.stopPropagation();
-        cls.pinnedId = msg.id;
-        App.saveState();
-        if (window.EthithSync) {
-          window.EthithSync.publishLive({
-            type: 'PIN_MSG',
-            classId: cls.code || cls.id,
-            msgId: msg.id
-          });
-          window.EthithSync.broadcastLocal(S.classes, S.exams);
-          window.EthithSync.pushRemoteStore(S.classes, S.exams);
-        }
-        menu.remove();
-        activeContextMenu = null;
-        renderClassDetail(mainContainer, cls);
-      };
-    }
-
-    var delBtn = menu.querySelector('#ctxDeleteBtn');
-    if (delBtn) {
-      delBtn.onclick = function(e) {
-        if (e) e.stopPropagation();
-        var targetMsgId = msg.id;
-        menu.remove();
-        activeContextMenu = null;
-        triggerDeleteMessage(targetMsgId, cls, mainContainer);
-      };
     }
   }
 
