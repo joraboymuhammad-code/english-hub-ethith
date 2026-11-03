@@ -23193,9 +23193,11 @@
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
-          "isOnline": false,
+          "isOnline": true,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "lastLogin": "2026-11-03T15:01:51.728Z",
+          "dailyMinutes": 119
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -23289,9 +23291,9 @@
         }
       ],
       "deletedMsgIds": [
+        "msg_1793718186438_xser5",
         "msg_1793718198750_ptftv",
-        "msg_1793718218122_3dwuk",
-        "msg_1793718186438_xser5"
+        "msg_1793718218122_3dwuk"
       ],
       "messages": [
         {
@@ -26808,7 +26810,7 @@
       "updatedAt": 1793431308524
     },
     {
-      "id": "t_urolov_azizbek",
+      "id": "admin_official_teacher",
       "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
@@ -26822,10 +26824,9 @@
         "cls_urolov_azizbek_intermediate_practice",
         "cls_urolov_azizbek_upper_intermediate_standard"
       ],
-      "createdAt": 1793718068808,
+      "createdAt": 1793202631415,
       "updatedAt": 1793473052536,
-      "level": "C2",
-      "gifts": []
+      "level": "C2"
     },
     {
       "id": "admin_official_teacher",
@@ -145986,5 +145987,5 @@
       }
     }
   },
-  "updatedAt": 1793725483449
+  "updatedAt": 1793725490214
 }
