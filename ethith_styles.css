@@ -10243,6 +10243,4 @@ html, body {
 }
 
 /* Cursor pointer on chat bubbles so users know left-click works */
-.tg-bubble {
-  cursor: pointer !important;
-}
+

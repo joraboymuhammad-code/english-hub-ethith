@@ -2077,7 +2077,7 @@
           return '<div class="tg-msg-sender" style="display:flex;align-items:center;gap:6px">' + (window.ETHITH_RENDER_USER_AVATAR ? window.ETHITH_RENDER_USER_AVATAR({ name: m.senderName, avatar: m.senderAvatar }, 22) : '') + '<span>' + esc(m.senderName) + '</span><span title="' + senderSt.label + '" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + senderSt.color + ';box-shadow:0 0 6px ' + senderSt.color + ';"></span></div>';
         })() : '')) +
         '    <div class="tg-msg-text">' + esc(m.text) + '</div>' +
-        '    <div class="tg-msg-meta" style="display:flex;align-items:center;justify-content:flex-end;gap:4px;">' + m.time + (isOwn ? ' ✓✓' : '') + '<button type="button" class="tg-msg-opt-btn" data-opt-mid="' + m.id + '" title="Amallar / O\'chirish" style="background:none;border:none;cursor:pointer;color:inherit;opacity:0.65;font-weight:900;font-size:13px;padding:0 3px;line-height:1;display:inline-flex;align-items:center;">⋮</button></div>' +
+        '    <div class="tg-msg-meta">' + m.time + (isOwn ? ' ✓✓' : '') + '</div>' +
         (reactionsList.length > 0 ?
           '<div class="tg-reactions-badge">' +
           reactionsList.map(function(r) {
@@ -2360,13 +2360,6 @@
 
       var bubble = rowEl.querySelector('.tg-bubble');
       if (bubble) {
-        // Sichqonchaning CHAP TOMONI (Left Click) bosilganda darhol menyu chiqishi!
-        bubble.addEventListener('click', function(e) {
-          if (e.target.closest('.tg-reaction-pill') || e.target.closest('a') || e.target.closest('button')) return;
-          e.stopPropagation();
-          showContextMenu(e.clientX, e.clientY, mItem.id || bubble.dataset.msgId, activeCls, cnt);
-        });
-
         bubble.ondblclick = function(e) {
           e.stopPropagation();
           var msgId = bubble.dataset.msgId;
@@ -2384,19 +2377,11 @@
           if (input) input.focus();
         };
 
-        var optBtn = rowEl.querySelector('[data-opt-mid]');
-        if (optBtn) {
-          optBtn.onclick = function(e) {
-            e.stopPropagation();
-            showContextMenu(e.clientX, e.clientY, mItem.id, activeCls, cnt);
-          };
-        }
-
         var touchTimer = null;
         bubble.addEventListener('touchstart', function(e) {
           touchTimer = setTimeout(function() {
             showContextMenu(e.touches[0].clientX, e.touches[0].clientY, bubble.dataset.msgId, activeCls, cnt);
-          }, 320);
+          }, 450);
         }, { passive: true });
 
         bubble.addEventListener('touchmove', function() {
@@ -2407,8 +2392,10 @@
           clearTimeout(touchTimer);
         });
 
+        // Sichqonchaning O'NG TOMONI (Right-click / Context Menu)
         bubble.addEventListener('contextmenu', function(e) {
           e.preventDefault();
+          e.stopPropagation();
           showContextMenu(e.clientX, e.clientY, bubble.dataset.msgId, activeCls, cnt);
         });
       }
@@ -2741,7 +2728,8 @@
       showAllEmojisPicker(posX, posY, msg, cls, mainContainer);
     };
 
-    menu.querySelector('#ctxReplyBtn').onclick = function() {
+    var replyBtn = menu.querySelector('#ctxReplyBtn');
+    if (replyBtn) replyBtn.onclick = function() {
       currentReplyingMessage = msg;
       var replyBar = document.getElementById('tgReplyBar');
       var replyText = document.getElementById('tgReplyBarText');
@@ -2754,22 +2742,25 @@
       activeContextMenu = null;
     };
 
-    menu.querySelector('#ctxPinBtn').onclick = function() {
-      cls.pinnedId = msg.id;
-      App.saveState();
-      if (window.EthithSync) {
-        window.EthithSync.publishLive({
-          type: 'PIN_MSG',
-          classId: cls.code || cls.id,
-          msgId: msg.id
-        });
-        window.EthithSync.broadcastLocal(S.classes, S.exams);
-        window.EthithSync.pushRemoteStore(S.classes, S.exams);
-      }
-      menu.remove();
-      activeContextMenu = null;
-      renderClassDetail(mainContainer, cls);
-    };
+    var pinBtn = menu.querySelector('#ctxPinBtn');
+    if (pinBtn) {
+      pinBtn.onclick = function() {
+        cls.pinnedId = msg.id;
+        App.saveState();
+        if (window.EthithSync) {
+          window.EthithSync.publishLive({
+            type: 'PIN_MSG',
+            classId: cls.code || cls.id,
+            msgId: msg.id
+          });
+          window.EthithSync.broadcastLocal(S.classes, S.exams);
+          window.EthithSync.pushRemoteStore(S.classes, S.exams);
+        }
+        menu.remove();
+        activeContextMenu = null;
+        renderClassDetail(mainContainer, cls);
+      };
+    }
 
     var delBtn = menu.querySelector('#ctxDeleteBtn');
     if (delBtn) {
