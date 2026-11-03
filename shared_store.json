@@ -26568,34 +26568,34 @@
           "updatedAt": 1793729734882
         },
         "cls_1793728994224_std_5": {
-          "score": null,
-          "passed": null,
-          "updatedAt": 1793729690288
+          "score": 5,
+          "passed": false,
+          "updatedAt": 1793729737753
         },
         "cls_1793728994224_std_6": {
-          "score": null,
-          "passed": null,
-          "updatedAt": 1793729690288
+          "score": 100,
+          "passed": true,
+          "updatedAt": 1793729739104
         },
         "cls_1793728994224_std_7": {
-          "score": null,
-          "passed": null,
-          "updatedAt": 1793729690288
+          "score": 32,
+          "passed": false,
+          "updatedAt": 1793729740756
         },
         "cls_1793728994224_std_8": {
-          "score": null,
-          "passed": null,
-          "updatedAt": 1793729690288
+          "score": 1,
+          "passed": false,
+          "updatedAt": 1793729741767
         },
         "cls_1793728994224_std_9": {
-          "score": null,
-          "passed": null,
-          "updatedAt": 1793729690288
+          "score": 23,
+          "passed": false,
+          "updatedAt": 1793729743682
         },
         "cls_1793728994224_std_10": {
           "score": null,
-          "passed": null,
-          "updatedAt": 1793729690288
+          "passed": true,
+          "updatedAt": 1793729743775
         },
         "cls_1793728994224_std_11": {
           "score": null,
@@ -146504,12 +146504,12 @@
       "password": "ustoz2026",
       "inviteCode": "USTOZ77",
       "subject": "Ingliz tili (IELTS Intensive)",
-      "monthlySalary": 6000000,
+      "monthlySalary": 0,
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "hourlyRate": 100000,
       "teachingHours": 72,
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_ethith_main",
         "cls_upper_intermediate"
@@ -146517,7 +146517,8 @@
       "classOrder": [
         "cls_ethith_main",
         "cls_upper_intermediate"
-      ]
+      ],
+      "unpaidMonths": 0
     },
     {
       "id": "tc_oprlehyw5",
@@ -146528,7 +146529,7 @@
       "inviteCode": "ZIZI24",
       "phone": "+998 93 987 65 43",
       "card": "9860 7788 9900 1122",
-      "monthlySalary": 5500000,
+      "monthlySalary": 0,
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "hourlyRate": 85000,
@@ -146540,7 +146541,8 @@
       ],
       "classOrder": [
         "cls_1792041880052"
-      ]
+      ],
+      "unpaidMonths": 0
     }
   ],
   "fileExplorer": {
@@ -147053,5 +147055,5 @@
       }
     }
   },
-  "updatedAt": 1793729736741
+  "updatedAt": 1793729744586
 }
