@@ -23418,132 +23418,6 @@
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_1": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_2": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_3": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_4": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_5": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_6": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_7": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_8": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_9": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_10": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_11": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_12": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_13": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_14": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_15": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_16": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_17": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "cls_urolov_azizbek_upper_std_18": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
         }
       },
       "activeHomework": {
@@ -26281,16 +26155,17 @@
       "updatedAt": 1793185854362
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_aborbekov_elyor",
       "name": "Elyor Aborbekov",
       "email": "elyor.aborbekov@ethith.uz",
       "login": "elyor70",
       "role": "teacher",
       "coins": 1000,
-      "updatedAt": 1793392014532
+      "updatedAt": 1793392014532,
+      "teacherId": "t_aborbekov_elyor"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_ravshanov_doniyor",
       "name": "Ravshanov Doniyor",
       "email": "doniyor.ravshanov@ethith.uz",
       "login": "doniyor24",
@@ -26307,10 +26182,11 @@
         "cls_ravshanov_doniyor_cefr_4"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532
+      "updatedAt": 1793392014532,
+      "teacherId": "t_ravshanov_doniyor"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_qarshiboyev_humoyun",
       "name": "Qarshiboyev Humoyun",
       "email": "humoyun.qarshiboyev@ethith.uz",
       "login": "humoyun15",
@@ -26324,10 +26200,11 @@
         "cls_qarshiboyev_humoyun_practice"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532
+      "updatedAt": 1793392014532,
+      "teacherId": "t_qarshiboyev_humoyun"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_tovboyeva_marjona",
       "name": "Marjona Tovboyeva",
       "email": "marjona.tovboyeva@ethith.uz",
       "login": "marjona88",
@@ -26341,10 +26218,11 @@
         "cls_tovboyeva_marjona_beginner"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532
+      "updatedAt": 1793392014532,
+      "teacherId": "t_tovboyeva_marjona"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_olimjonova_durdona",
       "name": "Durdona Olimjonova",
       "email": "durdona.olimjonova@ethith.uz",
       "login": "durdona12",
@@ -26361,10 +26239,11 @@
         "cls_olimjonova_durdona_intermediate_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532
+      "updatedAt": 1793392014532,
+      "teacherId": "t_olimjonova_durdona"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_tagaev_eldor",
       "name": "Eldor Tagaev",
       "email": "eldor.tagaev@ethith.uz",
       "login": "eldor33",
@@ -26381,10 +26260,11 @@
         "cls_tagaev_eldor_pre_intermediate_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532
+      "updatedAt": 1793392014532,
+      "teacherId": "t_tagaev_eldor"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_yaxshilikova_kamola",
       "name": "Kamola Yaxshilikova",
       "email": "kamola.yaxshilikova@ethith.uz",
       "login": "kamola45",
@@ -26399,10 +26279,11 @@
         "cls_yaxshilikova_kamola_elementary"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532
+      "updatedAt": 1793392014532,
+      "teacherId": "t_yaxshilikova_kamola"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_sherqoziyeva_iroda",
       "name": "Iroda Sherqoziyeva",
       "email": "iroda.sherqoziyeva@ethith.uz",
       "login": "iroda19",
@@ -26417,10 +26298,11 @@
         "cls_sherqoziyeva_iroda_beginner_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532
+      "updatedAt": 1793392014532,
+      "teacherId": "t_sherqoziyeva_iroda"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_orinboyev_jaloliddin",
       "name": "Jaloliddin O’rinboyev",
       "email": "jaloliddin.orinboyev@ethith.uz",
       "login": "jaloliddin99",
@@ -26437,10 +26319,11 @@
         "cls_orinboyev_jaloliddin_standard_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532
+      "updatedAt": 1793392014532,
+      "teacherId": "t_orinboyev_jaloliddin"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_jumanova_pokiza",
       "name": "Pokiza Jumanova",
       "email": "pokiza.jumanova@ethith.uz",
       "login": "pokiza07",
@@ -26454,10 +26337,11 @@
         "cls_jumanova_pokiza_beginner"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532
+      "updatedAt": 1793392014532,
+      "teacherId": "t_jumanova_pokiza"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_hayrullayev_arslon",
       "name": "Arslon Hayrullayev",
       "email": "arslon.hayrullayev@ethith.uz",
       "login": "arslon64",
@@ -26472,10 +26356,11 @@
         "cls_hayrullayev_arslon_beginner_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532
+      "updatedAt": 1793392014532,
+      "teacherId": "t_hayrullayev_arslon"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_xudoyorova_sarvinoz",
       "name": "Sarvinoz Xudoyorova",
       "email": "sarvinoz.xudoyorova@ethith.uz",
       "login": "sarvinoz82",
@@ -26490,10 +26375,11 @@
         "cls_xudoyorova_sarvinoz_standard"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532
+      "updatedAt": 1793392014532,
+      "teacherId": "t_xudoyorova_sarvinoz"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_aliqulova_sevinch",
       "name": "Sevinch Aliqulova",
       "email": "sevinch.aliqulova@ethith.uz",
       "login": "sevinch55",
@@ -26508,10 +26394,11 @@
         "cls_aliqulova_sevinch_beginner_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532
+      "updatedAt": 1793392014532,
+      "teacherId": "t_aliqulova_sevinch"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_xojamqulova_diyora",
       "name": "Diyora Xo’jamqulova",
       "email": "diyora.xojamqulova@ethith.uz",
       "login": "diyora21",
@@ -26528,10 +26415,11 @@
         "cls_xojamqulova_diyora_elementary_3"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533
+      "updatedAt": 1793392014533,
+      "teacherId": "t_xojamqulova_diyora"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_bosimbekov_farrux",
       "name": "Farrux Bosimbekov",
       "email": "farrux.bosimbekov@ethith.uz",
       "login": "farrux93",
@@ -26548,10 +26436,11 @@
         "cls_bosimbekov_farrux_intermediate_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533
+      "updatedAt": 1793392014533,
+      "teacherId": "t_bosimbekov_farrux"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_ahmadova_barno",
       "name": "Barno Ahmadova",
       "email": "barno.ahmadova@ethith.uz",
       "login": "barno36",
@@ -26568,10 +26457,11 @@
         "cls_ahmadova_barno_pre_intermediate"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533
+      "updatedAt": 1793392014533,
+      "teacherId": "t_ahmadova_barno"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_shodiyor_matematika",
       "name": "Shodiyor (matematika)",
       "email": "shodiyor.matematika@ethith.uz",
       "login": "shodiyor50",
@@ -26585,7 +26475,8 @@
         "cls_shodiyor_matematika_matematika"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533
+      "updatedAt": 1793392014533,
+      "teacherId": "t_shodiyor_matematika"
     },
     {
       "id": "st_998901239988",
@@ -26613,13 +26504,13 @@
       "title": "👑 IELTS Qiroli"
     },
     {
-      "id": "teacher_1793431051291",
+      "id": "t_muhammadyusuf",
       "name": "Muhammadyusuf",
       "login": "muhammadyusuf11",
       "password": "muhammadyusuf2026",
       "email": "muhammadyusuf11@ethith.uz",
       "role": "teacher",
-      "teacherId": "teacher_1793431051291",
+      "teacherId": "t_muhammadyusuf",
       "subject": "Ingliz tili",
       "salarySharePercent": 50,
       "createdAt": 1793431051291,
@@ -26642,7 +26533,8 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793473052536,
-      "level": "C2"
+      "level": "C2",
+      "teacherId": "t_urolov_azizbek"
     },
     {
       "id": "admin_official_teacher",
@@ -26664,8 +26556,7 @@
       "coins": 150,
       "gifts": [],
       "nameStyle": null,
-      "createdAt": 1793630351584,
-      "updatedAt": 1793715069455
+      "createdAt": 1793630351584
     },
     {
       "id": "std_mix_416_selix",
@@ -26679,19 +26570,6 @@
       "isOnline": false,
       "lastLogin": null,
       "updatedAt": 1793629984912
-    },
-    {
-      "id": "std_mixswdasd_804_selixasdasd",
-      "role": "student",
-      "name": "Mixswdasd Selixasdasd",
-      "email": "mixswdasd.selixasdasd@ethith.uz",
-      "coins": 150,
-      "gifts": [],
-      "avatar": null,
-      "title": null,
-      "nameStyle": null,
-      "createdAt": 1793387490277,
-      "updatedAt": 1793671426648
     }
   ],
   "p2pListings": [],
@@ -27395,779 +27273,6 @@
         "width": 5.4,
         "height": 1.6,
         "correct": true
-      }
-    ],
-    "6": [
-      {
-        "id": "p6_ex1_a",
-        "type": "fill",
-        "page": 6,
-        "exercise": "1",
-        "label": "...",
-        "top": 67.9,
-        "left": 20.5,
-        "width": 2.8,
-        "height": 1.8,
-        "correct": "2"
-      },
-      {
-        "id": "p6_ex1_b",
-        "type": "fill",
-        "page": 6,
-        "exercise": "1",
-        "label": "...",
-        "top": 69.6,
-        "left": 21.9,
-        "width": 2.8,
-        "height": 1.8,
-        "correct": "4"
-      },
-      {
-        "id": "p6_ex1_d",
-        "type": "fill",
-        "page": 6,
-        "exercise": "1",
-        "label": "...",
-        "top": 69.3,
-        "left": 41.9,
-        "width": 2.8,
-        "height": 1.8,
-        "correct": "3"
-      },
-      {
-        "id": "p6_ex2_2",
-        "type": "fill",
-        "page": 6,
-        "exercise": "2",
-        "label": "2",
-        "top": 76.2,
-        "left": 31.8,
-        "width": 17.5,
-        "height": 1.9,
-        "correct": "discount or DISCOUNT"
-      },
-      {
-        "id": "p6_ex2_3",
-        "type": "fill",
-        "page": 6,
-        "exercise": "2",
-        "label": "3",
-        "top": 78.6,
-        "left": 31.8,
-        "width": 21,
-        "height": 1.9,
-        "correct": "two for the price of one"
-      },
-      {
-        "id": "p6_ex2_4",
-        "type": "fill",
-        "page": 6,
-        "exercise": "2",
-        "label": "4",
-        "top": 81.9,
-        "left": 31.8,
-        "width": 17.5,
-        "height": 1.9,
-        "correct": "customer or CUSTOMER"
-      },
-      {
-        "id": "p6_ex2_5",
-        "type": "fill",
-        "page": 6,
-        "exercise": "2",
-        "label": "5",
-        "top": 85.2,
-        "left": 31.8,
-        "width": 17.5,
-        "height": 1.9,
-        "correct": "half-price or half price"
-      },
-      {
-        "id": "p6_ex2_6",
-        "type": "fill",
-        "page": 6,
-        "exercise": "2",
-        "label": "6",
-        "top": 88.4,
-        "left": 31.8,
-        "width": 17.5,
-        "height": 1.9,
-        "correct": "deals or DEALS or bargains"
-      },
-      {
-        "id": "p6_ex3_1_a",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.1",
-        "text": "discount",
-        "top": 20.6,
-        "left": 57,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p6_ex3_1_b",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.1",
-        "text": "shopping",
-        "top": 20.6,
-        "left": 68.8,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_1_c",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.1",
-        "text": "consumer",
-        "top": 20.6,
-        "left": 80.5,
-        "width": 10.2,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_2_a",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.2",
-        "text": "shopping",
-        "top": 22.3,
-        "left": 57,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p6_ex3_2_b",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.2",
-        "text": "offer",
-        "top": 22.3,
-        "left": 68.8,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_2_c",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.2",
-        "text": "shopper",
-        "top": 22.3,
-        "left": 80.5,
-        "width": 10.2,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_3_a",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.3",
-        "text": "special offer",
-        "top": 24,
-        "left": 57,
-        "width": 10.5,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_3_b",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.3",
-        "text": "deal",
-        "top": 24,
-        "left": 68.8,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p6_ex3_3_c",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.3",
-        "text": "item",
-        "top": 24,
-        "left": 80.5,
-        "width": 10.2,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_4_a",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.4",
-        "text": "purchases",
-        "top": 25.8,
-        "left": 57,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_4_b",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.4",
-        "text": "customers",
-        "top": 25.8,
-        "left": 68.8,
-        "width": 10.5,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p6_ex3_4_c",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.4",
-        "text": "discounts",
-        "top": 25.8,
-        "left": 80.5,
-        "width": 10.2,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_5_a",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.5",
-        "text": "half-price",
-        "top": 27.5,
-        "left": 57,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p6_ex3_5_b",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.5",
-        "text": "purchases",
-        "top": 27.5,
-        "left": 68.8,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_5_c",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.5",
-        "text": "special offers",
-        "top": 27.5,
-        "left": 80.5,
-        "width": 12,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_6_a",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.6",
-        "text": "half-price",
-        "top": 29.2,
-        "left": 57,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_6_b",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.6",
-        "text": "bargains",
-        "top": 29.2,
-        "left": 68.8,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p6_ex3_6_c",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.6",
-        "text": "consumers",
-        "top": 29.2,
-        "left": 80.5,
-        "width": 10.5,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_7_a",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.7",
-        "text": "Deals",
-        "top": 31,
-        "left": 57,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_7_b",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.7",
-        "text": "Items",
-        "top": 31,
-        "left": 68.8,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_7_c",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.7",
-        "text": "Shoppers",
-        "top": 31,
-        "left": 80.5,
-        "width": 10.2,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p6_ex3_8_a",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.8",
-        "text": "half-price",
-        "top": 32.7,
-        "left": 57,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p6_ex3_8_b",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.8",
-        "text": "bargain",
-        "top": 32.7,
-        "left": 68.8,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_8_c",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.8",
-        "text": "offer",
-        "top": 32.7,
-        "left": 80.5,
-        "width": 10.2,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_9_a",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.9",
-        "text": "offers",
-        "top": 34.4,
-        "left": 57,
-        "width": 9.8,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_9_b",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.9",
-        "text": "consumers",
-        "top": 34.4,
-        "left": 68.8,
-        "width": 10.5,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p6_ex3_9_c",
-        "type": "choose",
-        "page": 6,
-        "exercise": "3",
-        "group": "3.9",
-        "text": "purchases",
-        "top": 34.4,
-        "left": 80.5,
-        "width": 10.2,
-        "height": 1.6,
-        "correct": true
-      }
-    ],
-    "7": [
-      {
-        "id": "p7_ex4_2",
-        "type": "fill",
-        "page": 7,
-        "exercise": "4",
-        "label": "2",
-        "top": 18.8,
-        "left": 21.1,
-        "width": 14.5,
-        "height": 1.9,
-        "correct": "owned or OWNED"
-      },
-      {
-        "id": "p7_ex4_3",
-        "type": "fill",
-        "page": 7,
-        "exercise": "4",
-        "label": "3",
-        "top": 22.5,
-        "left": 19.2,
-        "width": 14,
-        "height": 1.9,
-        "correct": "tastes or TASTES"
-      },
-      {
-        "id": "p7_ex4_4",
-        "type": "fill",
-        "page": 7,
-        "exercise": "4",
-        "label": "4",
-        "top": 27.1,
-        "left": 11.7,
-        "width": 13,
-        "height": 1.9,
-        "correct": "seems or SEEMS"
-      },
-      {
-        "id": "p7_ex4_5",
-        "type": "fill",
-        "page": 7,
-        "exercise": "4",
-        "label": "5",
-        "top": 29.5,
-        "left": 19.7,
-        "width": 14.5,
-        "height": 1.9,
-        "correct": "understand or UNDERSTAND"
-      },
-      {
-        "id": "p7_ex5_2_a",
-        "type": "choose",
-        "page": 7,
-        "exercise": "5",
-        "group": "5.2",
-        "text": "know",
-        "top": 41.2,
-        "left": 8.3,
-        "width": 7,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p7_ex5_3_a",
-        "type": "choose",
-        "page": 7,
-        "exercise": "5",
-        "group": "5.3",
-        "text": "spend",
-        "top": 43.2,
-        "left": 8.3,
-        "width": 7.2,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p7_ex5_3_b",
-        "type": "choose",
-        "page": 7,
-        "exercise": "5",
-        "group": "5.3",
-        "text": "'m spending",
-        "top": 42.8,
-        "left": 16.6,
-        "width": 12.2,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p7_ex5_4_a",
-        "type": "choose",
-        "page": 7,
-        "exercise": "5",
-        "group": "5.4",
-        "text": "have",
-        "top": 47.8,
-        "left": 8.1,
-        "width": 6.5,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p7_ex5_4_b",
-        "type": "choose",
-        "page": 7,
-        "exercise": "5",
-        "group": "5.4",
-        "text": "'m having",
-        "top": 47.6,
-        "left": 16.1,
-        "width": 11,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p7_ex5_5_a",
-        "type": "choose",
-        "page": 7,
-        "exercise": "5",
-        "group": "5.5",
-        "text": "never buy",
-        "top": 51.2,
-        "left": 8.2,
-        "width": 10,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p7_ex5_5_b",
-        "type": "choose",
-        "page": 7,
-        "exercise": "5",
-        "group": "5.5",
-        "text": "'m never buying",
-        "top": 50.9,
-        "left": 19.6,
-        "width": 14.5,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p7_ex5_6_a",
-        "type": "choose",
-        "page": 7,
-        "exercise": "5",
-        "group": "5.6",
-        "text": "see",
-        "top": 54,
-        "left": 9.6,
-        "width": 5.5,
-        "height": 1.6,
-        "correct": true
-      },
-      {
-        "id": "p7_ex5_6_b",
-        "type": "choose",
-        "page": 7,
-        "exercise": "5",
-        "group": "5.6",
-        "text": "'m seeing",
-        "top": 54,
-        "left": 15.4,
-        "width": 10.5,
-        "height": 1.6,
-        "correct": false
-      },
-      {
-        "id": "p7_ex6_2a",
-        "type": "fill",
-        "page": 7,
-        "exercise": "6",
-        "label": "A/N",
-        "top": 62.8,
-        "left": 41.1,
-        "width": 3.2,
-        "height": 1.8,
-        "correct": "a or A"
-      },
-      {
-        "id": "p7_ex6_2b",
-        "type": "fill",
-        "page": 7,
-        "exercise": "6",
-        "label": "A/N",
-        "top": 64.5,
-        "left": 38.4,
-        "width": 3.2,
-        "height": 1.8,
-        "correct": "n or N"
-      },
-      {
-        "id": "p7_ex6_3a",
-        "type": "fill",
-        "page": 7,
-        "exercise": "6",
-        "label": "A/N",
-        "top": 65.8,
-        "left": 42.8,
-        "width": 3.2,
-        "height": 1.8,
-        "correct": "n or N"
-      },
-      {
-        "id": "p7_ex6_3b",
-        "type": "fill",
-        "page": 7,
-        "exercise": "6",
-        "label": "A/N",
-        "top": 67.9,
-        "left": 32.8,
-        "width": 3.2,
-        "height": 1.8,
-        "correct": "a or A"
-      },
-      {
-        "id": "p7_ex6_4a",
-        "type": "fill",
-        "page": 7,
-        "exercise": "6",
-        "label": "A/N",
-        "top": 69.2,
-        "left": 41.6,
-        "width": 3.2,
-        "height": 1.8,
-        "correct": "n or N"
-      },
-      {
-        "id": "p7_ex6_4b",
-        "type": "fill",
-        "page": 7,
-        "exercise": "6",
-        "label": "A/N",
-        "top": 71.2,
-        "left": 31.5,
-        "width": 3.2,
-        "height": 1.8,
-        "correct": "a or A"
-      },
-      {
-        "id": "p7_ex6_5a",
-        "type": "fill",
-        "page": 7,
-        "exercise": "6",
-        "label": "A/N",
-        "top": 72.9,
-        "left": 42.4,
-        "width": 3.2,
-        "height": 1.8,
-        "correct": "a or A"
-      },
-      {
-        "id": "p7_ex6_5b",
-        "type": "fill",
-        "page": 7,
-        "exercise": "6",
-        "label": "A/N",
-        "top": 74.5,
-        "left": 37.9,
-        "width": 3.2,
-        "height": 1.8,
-        "correct": "n or N"
-      },
-      {
-        "id": "p7_ex7_5",
-        "type": "fill",
-        "page": 7,
-        "exercise": "7",
-        "label": "L5",
-        "top": 34.5,
-        "left": 78.5,
-        "width": 14,
-        "height": 1.9,
-        "correct": "don't need or do not need"
-      },
-      {
-        "id": "p7_ex7_8",
-        "type": "fill",
-        "page": 7,
-        "exercise": "7",
-        "label": "L8",
-        "top": 42.1,
-        "left": 57,
-        "width": 14,
-        "height": 1.9,
-        "correct": "You want or you want"
-      },
-      {
-        "id": "p7_ex7_13",
-        "type": "fill",
-        "page": 7,
-        "exercise": "7",
-        "label": "L13",
-        "top": 55.3,
-        "left": 58.8,
-        "width": 14,
-        "height": 1.9,
-        "correct": "you know or You know"
-      },
-      {
-        "id": "p7_ex7_18",
-        "type": "fill",
-        "page": 7,
-        "exercise": "7",
-        "label": "L18",
-        "top": 69.9,
-        "left": 65.9,
-        "width": 12,
-        "height": 1.9,
-        "correct": "seem or SEEM"
-      },
-      {
-        "page": 7,
-        "type": "choose",
-        "top": 40.8,
-        "left": 16.6,
-        "width": 7.9,
-        "height": 1.9,
-        "label": "5.2",
-        "correct": false,
-        "id": "p7_custom_80056",
-        "group": "5.2",
-        "text": "5.2"
       }
     ],
     "9": [
@@ -96964,8 +96069,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "2",
-        "top": 69.5,
-        "left": 20.4,
+        "top": 63,
+        "left": 88,
         "width": 5,
         "height": 2,
         "correct": [
@@ -96983,8 +96088,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "3",
-        "top": 75.2,
-        "left": 36.2,
+        "top": 69.5,
+        "left": 74.5,
         "width": 12,
         "height": 2,
         "correct": [
@@ -97021,8 +96126,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "5",
-        "top": 82.1,
-        "left": 35.5,
+        "top": 82,
+        "left": 34.8,
         "width": 12,
         "height": 2,
         "correct": [
@@ -97040,8 +96145,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "6",
-        "top": 85,
-        "left": 38.9,
+        "top": 85.3,
+        "left": 60.1,
         "width": 9.9,
         "height": 2.1,
         "correct": [
@@ -97055,16 +96160,46 @@
         "page": 2079
       },
       {
-        "id": "p2079_ex3_1b",
-        "type": "choose",
+        "id": "p2079_ex3_1a",
+        "type": "choice",
         "exercise": "3",
-        "label": "2",
-        "group": "2",
-        "top": 63.2,
-        "left": 57.3,
+        "label": "1",
+        "group": "p2079_ex3_1",
+        "top": 70.6,
+        "left": 55,
+        "width": 22,
+        "height": 1.6,
+        "text": "There is no question that the majority of the daily news is bad news.",
+        "isCorrect": true,
+        "correct": true,
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex3_1b",
+        "type": "choice",
+        "exercise": "3",
+        "label": "1",
+        "group": "p2079_ex3_1",
+        "top": 61.2,
+        "left": 56.9,
         "width": 28.5,
         "height": 1.8,
-        "text": "2",
+        "text": "Definitely most news we hear is bad news.",
+        "isCorrect": false,
+        "correct": false,
+        "page": 2079
+      },
+      {
+        "id": "p2079_ex3_2a",
+        "type": "choice",
+        "exercise": "3",
+        "label": "2",
+        "group": "p2079_ex3_2",
+        "top": 75,
+        "left": 55,
+        "width": 22,
+        "height": 1.6,
+        "text": "I think because we hear so much bad news we usually think that the world is really bad.",
         "isCorrect": false,
         "correct": false,
         "page": 2079
@@ -97075,8 +96210,8 @@
         "exercise": "3",
         "label": "2",
         "group": "p2079_ex3_2",
-        "top": 66.7,
-        "left": 57.2,
+        "top": 77.6,
+        "left": 55,
         "width": 22,
         "height": 1.6,
         "text": "Without doubt, this daily diet of negativity has an effect on how we perceive the world.",
@@ -97090,8 +96225,8 @@
         "exercise": "3",
         "label": "3",
         "group": "p2079_ex3_3",
-        "top": 69.3,
-        "left": 57.5,
+        "top": 69.4,
+        "left": 56.9,
         "width": 17.6,
         "height": 1.8,
         "text": "Bad news sells, doesn't it?",
@@ -97105,8 +96240,8 @@
         "exercise": "3",
         "label": "3",
         "group": "p2079_ex3_3",
-        "top": 71,
-        "left": 57.2,
+        "top": 71.2,
+        "left": 56.9,
         "width": 25.3,
         "height": 1.8,
         "text": "The simple fact is that bad news sells.",
@@ -97120,8 +96255,8 @@
         "exercise": "3",
         "label": "4",
         "group": "p2079_ex3_4",
-        "top": 73.2,
-        "left": 57.6,
+        "top": 84.8,
+        "left": 55,
         "width": 22,
         "height": 1.6,
         "text": "Much of the bad news we hear does nothing other than to make us feel sad and anxious...",
@@ -97135,8 +96270,8 @@
         "exercise": "3",
         "label": "4",
         "group": "p2079_ex3_4",
-        "top": 76.3,
-        "left": 57.2,
+        "top": 87.9,
+        "left": 55,
         "width": 22,
         "height": 1.6,
         "text": "Hearing bad news mainly just makes us feel sad and anxious about the world.",
@@ -97150,8 +96285,8 @@
         "exercise": "3",
         "label": "5",
         "group": "p2079_ex3_5",
-        "top": 79.9,
-        "left": 57.1,
+        "top": 91,
+        "left": 55,
         "width": 22,
         "height": 1.6,
         "text": "I do think that the news providers should make more of an effort...",
@@ -97165,8 +96300,8 @@
         "exercise": "3",
         "label": "5",
         "group": "p2079_ex3_5",
-        "top": 82.9,
-        "left": 57.1,
+        "top": 94,
+        "left": 55,
         "width": 22,
         "height": 1.6,
         "text": "I do think that more of an effort should be made by the news providers...",
@@ -129345,8 +128480,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "2",
-        "top": 69.7,
-        "left": 14.1,
+        "top": 67.2,
+        "left": 14.5,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -129360,7 +128495,7 @@
         "page": 4004,
         "exercise": "2",
         "label": "3",
-        "top": 76,
+        "top": 73.5,
         "left": 14.5,
         "width": 8.5,
         "height": 2,
@@ -129375,8 +128510,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "4",
-        "top": 82.3,
-        "left": 14.8,
+        "top": 79.5,
+        "left": 14.5,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -129390,8 +128525,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "5",
-        "top": 86.7,
-        "left": 14,
+        "top": 85.5,
+        "left": 14.5,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -129405,8 +128540,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "6",
-        "top": 66.8,
-        "left": 31.4,
+        "top": 67.2,
+        "left": 32.5,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -129420,8 +128555,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "7",
-        "top": 69.9,
-        "left": 32,
+        "top": 73.5,
+        "left": 32.5,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -129435,8 +128570,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "8",
-        "top": 74.4,
-        "left": 32.2,
+        "top": 79.5,
+        "left": 32.5,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -129450,8 +128585,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "9",
-        "top": 80.3,
-        "left": 31.6,
+        "top": 85.5,
+        "left": 32.5,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -129465,8 +128600,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "10",
-        "top": 84.7,
-        "left": 32.2,
+        "top": 89.5,
+        "left": 32.5,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -129481,7 +128616,7 @@
         "exercise": "3",
         "label": "2",
         "top": 62.4,
-        "left": 57.8,
+        "left": 56.5,
         "width": 14.5,
         "height": 2,
         "correct": [
@@ -129513,7 +128648,7 @@
         "exercise": "3",
         "label": "4",
         "top": 71.3,
-        "left": 76.2,
+        "left": 63.5,
         "width": 13.5,
         "height": 2,
         "correct": [
@@ -129557,8 +128692,8 @@
         "page": 4004,
         "exercise": "3",
         "label": "7",
-        "top": 84.5,
-        "left": 54.1,
+        "top": 84.6,
+        "left": 56,
         "width": 18,
         "height": 2,
         "correct": [
@@ -129590,8 +128725,8 @@
         "page": 4005,
         "exercise": "4a",
         "label": "2",
-        "top": 22.5,
-        "left": 12.7,
+        "top": 23.5,
+        "left": 12.5,
         "width": 8,
         "height": 2,
         "correct": [
@@ -129605,7 +128740,7 @@
         "page": 4005,
         "exercise": "4a",
         "label": "3",
-        "top": 27.5,
+        "top": 28.5,
         "left": 12.5,
         "width": 8,
         "height": 2,
@@ -129620,8 +128755,8 @@
         "page": 4005,
         "exercise": "4a",
         "label": "4",
-        "top": 31.3,
-        "left": 12.2,
+        "top": 31.9,
+        "left": 12.5,
         "width": 8,
         "height": 2,
         "correct": [
@@ -129635,7 +128770,7 @@
         "page": 4005,
         "exercise": "4a",
         "label": "5",
-        "top": 34.6,
+        "top": 35.3,
         "left": 12.5,
         "width": 8,
         "height": 2,
@@ -129652,8 +128787,8 @@
         "page": 4005,
         "exercise": "4a",
         "label": "6",
-        "top": 38.4,
-        "left": 12.4,
+        "top": 38.8,
+        "left": 12.5,
         "width": 8,
         "height": 2,
         "correct": [
@@ -129667,7 +128802,7 @@
         "page": 4005,
         "exercise": "4a",
         "label": "7",
-        "top": 41.4,
+        "top": 42.2,
         "left": 12.5,
         "width": 8,
         "height": 2,
@@ -129682,8 +128817,8 @@
         "page": 4005,
         "exercise": "4a",
         "label": "8",
-        "top": 45.2,
-        "left": 12.4,
+        "top": 45.6,
+        "left": 12.5,
         "width": 8,
         "height": 2,
         "correct": [
@@ -129697,8 +128832,8 @@
         "page": 4005,
         "exercise": "5a",
         "label": "2",
-        "top": 62,
-        "left": 31.6,
+        "top": 62.4,
+        "left": 29,
         "width": 19,
         "height": 1.8,
         "correct": [
@@ -129713,8 +128848,8 @@
         "page": 4005,
         "exercise": "5a",
         "label": "3",
-        "top": 64,
-        "left": 32.9,
+        "top": 64.5,
+        "left": 29,
         "width": 19,
         "height": 1.8,
         "correct": [
@@ -129729,8 +128864,8 @@
         "page": 4005,
         "exercise": "5a",
         "label": "4",
-        "top": 65.5,
-        "left": 28.7,
+        "top": 66.5,
+        "left": 29,
         "width": 19,
         "height": 1.8,
         "correct": [
@@ -129745,8 +128880,8 @@
         "page": 4005,
         "exercise": "5a",
         "label": "5",
-        "top": 67.5,
-        "left": 36.7,
+        "top": 68.5,
+        "left": 29,
         "width": 19,
         "height": 1.8,
         "correct": [
@@ -129761,8 +128896,8 @@
         "page": 4005,
         "exercise": "5a",
         "label": "6",
-        "top": 69.2,
-        "left": 35,
+        "top": 70.5,
+        "left": 29,
         "width": 19,
         "height": 1.8,
         "correct": [
@@ -129777,8 +128912,8 @@
         "page": 4005,
         "exercise": "5a",
         "label": "7",
-        "top": 70.8,
-        "left": 26.4,
+        "top": 72.5,
+        "left": 29,
         "width": 19,
         "height": 1.8,
         "correct": [
@@ -129793,8 +128928,8 @@
         "page": 4005,
         "exercise": "5a",
         "label": "8",
-        "top": 72.5,
-        "left": 29.2,
+        "top": 74.5,
+        "left": 29,
         "width": 19,
         "height": 1.8,
         "correct": [
@@ -144261,8 +143396,6 @@
   "workbookOverridesTs": {
     "4": 1793629954889,
     "5": 1793629954889,
-    "6": 1793715159394,
-    "7": 1793715159394,
     "9": 1793629954889,
     "10": 1761463225569,
     "12": 1793629954889,
@@ -144575,8 +143708,8 @@
     "3085": 1793517649908,
     "3086": 1793517957036,
     "3087": 1793517957036,
-    "4004": 1793715261555,
-    "4005": 1793715136880,
+    "4004": 1793629954893,
+    "4005": 1793629954893,
     "4006": 1793629954893,
     "4007": 1793629954893,
     "4008": 1793629954893,
@@ -144668,485 +143801,12 @@
   },
   "teachers": [
     {
-      "id": "t_ravshanov_doniyor",
-      "name": "Ravshanov Doniyor",
-      "email": "doniyor.ravshanov@ethith.uz",
-      "subject": "Ingliz tili (CEFR Multi-Level)",
-      "hourlyRate": 110000,
-      "teachingHours": 68,
-      "card": "8600 1737 6773 7826",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_ravshanov_doniyor_cefr_1",
-        "cls_ravshanov_doniyor_cefr_2",
-        "cls_ravshanov_doniyor_cefr_3",
-        "cls_ravshanov_doniyor_cefr_4"
-      ],
-      "classOrder": [
-        "cls_ravshanov_doniyor_cefr_1",
-        "cls_ravshanov_doniyor_cefr_2",
-        "cls_ravshanov_doniyor_cefr_3",
-        "cls_ravshanov_doniyor_cefr_4"
-      ],
-      "inviteCode": "RAVSHANOV24",
-      "login": "doniyor24",
-      "password": "doniyor2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_qarshiboyev_humoyun",
-      "name": "Qarshiboyev Humoyun",
-      "email": "humoyun.qarshiboyev@ethith.uz",
-      "subject": "Ingliz tili (Practice English)",
-      "hourlyRate": 95000,
-      "teachingHours": 48,
-      "card": "8600 9180 1074 6310",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_qarshiboyev_humoyun_practice"
-      ],
-      "classOrder": [
-        "cls_qarshiboyev_humoyun_practice"
-      ],
-      "inviteCode": "QARSHIBOYEV15",
-      "login": "humoyun15",
-      "password": "humoyun2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_tovboyeva_marjona",
-      "name": "Marjona Tovboyeva",
-      "email": "marjona.tovboyeva@ethith.uz",
-      "subject": "Ingliz tili (Beginner)",
-      "hourlyRate": 90000,
-      "teachingHours": 48,
-      "card": "8600 7570 9747 6845",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_tovboyeva_marjona_beginner"
-      ],
-      "classOrder": [
-        "cls_tovboyeva_marjona_beginner"
-      ],
-      "inviteCode": "MARJONA88",
-      "login": "marjona88",
-      "password": "marjona2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "phone": "+998 90 ..."
-    },
-    {
-      "id": "t_olimjonova_durdona",
-      "name": "Durdona Olimjonova",
-      "email": "durdona.olimjonova@ethith.uz",
-      "subject": "Ingliz tili (Beginner / Inter)",
-      "hourlyRate": 100000,
-      "teachingHours": 64,
-      "card": "8600 5388 3997 7659",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_olimjonova_durdona_beginner",
-        "cls_olimjonova_durdona_pre_intermediate",
-        "cls_olimjonova_durdona_intermediate_1",
-        "cls_olimjonova_durdona_intermediate_2"
-      ],
-      "classOrder": [
-        "cls_olimjonova_durdona_beginner",
-        "cls_olimjonova_durdona_pre_intermediate",
-        "cls_olimjonova_durdona_intermediate_1",
-        "cls_olimjonova_durdona_intermediate_2"
-      ],
-      "inviteCode": "DURDONA12",
-      "login": "durdona12",
-      "password": "durdona2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_tagaev_eldor",
-      "name": "Eldor Tagaev",
-      "email": "eldor.tagaev@ethith.uz",
-      "subject": "Ingliz tili (General English)",
-      "hourlyRate": 100000,
-      "teachingHours": 64,
-      "card": "8600 9836 2231 3521",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_tagaev_eldor_beginner",
-        "cls_tagaev_eldor_elementary",
-        "cls_tagaev_eldor_pre_intermediate_1",
-        "cls_tagaev_eldor_pre_intermediate_2"
-      ],
-      "classOrder": [
-        "cls_tagaev_eldor_beginner",
-        "cls_tagaev_eldor_elementary",
-        "cls_tagaev_eldor_pre_intermediate_1",
-        "cls_tagaev_eldor_pre_intermediate_2"
-      ],
-      "inviteCode": "ELDOR33",
-      "login": "eldor33",
-      "password": "eldor2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_yaxshilikova_kamola",
-      "name": "Kamola Yaxshilikova",
-      "email": "kamola.yaxshilikova@ethith.uz",
-      "subject": "Ingliz tili (Beginner / Elementary)",
-      "hourlyRate": 95000,
-      "teachingHours": 54,
-      "card": "8600 3037 8661 9611",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_yaxshilikova_kamola_beginner",
-        "cls_yaxshilikova_kamola_elementary"
-      ],
-      "classOrder": [
-        "cls_yaxshilikova_kamola_beginner",
-        "cls_yaxshilikova_kamola_elementary"
-      ],
-      "inviteCode": "KAMOLA45",
-      "login": "kamola45",
-      "password": "kamola2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_sherqoziyeva_iroda",
-      "name": "Iroda Sherqoziyeva",
-      "email": "iroda.sherqoziyeva@ethith.uz",
-      "subject": "Ingliz tili (Beginner)",
-      "hourlyRate": 95000,
-      "teachingHours": 54,
-      "card": "8600 8200 8823 6053",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_sherqoziyeva_iroda_beginner_1",
-        "cls_sherqoziyeva_iroda_beginner_2"
-      ],
-      "classOrder": [
-        "cls_sherqoziyeva_iroda_beginner_1",
-        "cls_sherqoziyeva_iroda_beginner_2"
-      ],
-      "inviteCode": "IRODA19",
-      "login": "iroda19",
-      "password": "iroda2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_aborbekov_elyor",
-      "name": "Elyor Aborbekov",
-      "email": "elyor.aborbekov@ethith.uz",
-      "subject": "Ingliz tili (Pre / Inter / Upper)",
-      "hourlyRate": 110000,
-      "teachingHours": 72,
-      "card": "8600 4747 3927 9285",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_aborbekov_elyor_pre_intermediate_1",
-        "cls_aborbekov_elyor_pre_intermediate_2",
-        "cls_aborbekov_elyor_intermediate_1",
-        "cls_aborbekov_elyor_intermediate_2",
-        "cls_aborbekov_elyor_upper_intermediate"
-      ],
-      "classOrder": [
-        "cls_aborbekov_elyor_pre_intermediate_1",
-        "cls_aborbekov_elyor_pre_intermediate_2",
-        "cls_aborbekov_elyor_intermediate_1",
-        "cls_aborbekov_elyor_intermediate_2",
-        "cls_aborbekov_elyor_upper_intermediate"
-      ],
-      "inviteCode": "ELYOR70",
-      "login": "elyor70",
-      "password": "elyor2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_orinboyev_jaloliddin",
-      "name": "Jaloliddin O’rinboyev",
-      "email": "jaloliddin.orinboyev@ethith.uz",
-      "subject": "Ingliz tili (Pre / Inter / Standard)",
-      "hourlyRate": 105000,
-      "teachingHours": 64,
-      "card": "8600 3286 1441 8063",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_orinboyev_jaloliddin_pre_intermediate",
-        "cls_orinboyev_jaloliddin_intermediate",
-        "cls_orinboyev_jaloliddin_standard_1",
-        "cls_orinboyev_jaloliddin_standard_2"
-      ],
-      "classOrder": [
-        "cls_orinboyev_jaloliddin_pre_intermediate",
-        "cls_orinboyev_jaloliddin_intermediate",
-        "cls_orinboyev_jaloliddin_standard_1",
-        "cls_orinboyev_jaloliddin_standard_2"
-      ],
-      "inviteCode": "JALOLIDDIN99",
-      "login": "jaloliddin99",
-      "password": "jaloliddin2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_jumanova_pokiza",
-      "name": "Pokiza Jumanova",
-      "email": "pokiza.jumanova@ethith.uz",
-      "subject": "Ingliz tili (Beginner)",
-      "hourlyRate": 90000,
-      "teachingHours": 48,
-      "card": "8600 4814 2290 9478",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_jumanova_pokiza_beginner"
-      ],
-      "classOrder": [
-        "cls_jumanova_pokiza_beginner"
-      ],
-      "inviteCode": "POKIZA07",
-      "login": "pokiza07",
-      "password": "pokiza2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_hayrullayev_arslon",
-      "name": "Arslon Hayrullayev",
-      "email": "arslon.hayrullayev@ethith.uz",
-      "subject": "Ingliz tili (Beginner)",
-      "hourlyRate": 95000,
-      "teachingHours": 54,
-      "card": "8600 2983 6185 5341",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_hayrullayev_arslon_beginner_1",
-        "cls_hayrullayev_arslon_beginner_2"
-      ],
-      "classOrder": [
-        "cls_hayrullayev_arslon_beginner_1",
-        "cls_hayrullayev_arslon_beginner_2"
-      ],
-      "inviteCode": "ARSLON64",
-      "login": "arslon64",
-      "password": "arslon2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_xudoyorova_sarvinoz",
-      "name": "Sarvinoz Xudoyorova",
-      "email": "sarvinoz.xudoyorova@ethith.uz",
-      "subject": "Ingliz tili (Intermediate / Standard)",
-      "hourlyRate": 100000,
-      "teachingHours": 54,
-      "card": "8600 2510 8636 7287",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_xudoyorova_sarvinoz_intermediate",
-        "cls_xudoyorova_sarvinoz_standard"
-      ],
-      "classOrder": [
-        "cls_xudoyorova_sarvinoz_intermediate",
-        "cls_xudoyorova_sarvinoz_standard"
-      ],
-      "inviteCode": "SARVINOZ82",
-      "login": "sarvinoz82",
-      "password": "sarvinoz2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_aliqulova_sevinch",
-      "name": "Sevinch Aliqulova",
-      "email": "sevinch.aliqulova@ethith.uz",
-      "subject": "Ingliz tili (Beginner)",
-      "hourlyRate": 95000,
-      "teachingHours": 54,
-      "card": "8600 9373 3768 6749",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_aliqulova_sevinch_beginner_1",
-        "cls_aliqulova_sevinch_beginner_2"
-      ],
-      "classOrder": [
-        "cls_aliqulova_sevinch_beginner_1",
-        "cls_aliqulova_sevinch_beginner_2"
-      ],
-      "inviteCode": "SEVINCH55",
-      "login": "sevinch55",
-      "password": "sevinch2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "monthlyBonus": 1000000,
-      "monthlySalary": 0,
-      "unpaidMonths": 0
-    },
-    {
-      "id": "t_xojamqulova_diyora",
-      "name": "Diyora Xo’jamqulova",
-      "email": "diyora.xojamqulova@ethith.uz",
-      "subject": "Ingliz tili (Beginner / Elementary)",
-      "hourlyRate": 100000,
-      "teachingHours": 64,
-      "card": "8600 7019 8442 4863",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_xojamqulova_diyora_beginner",
-        "cls_xojamqulova_diyora_elementary_1",
-        "cls_xojamqulova_diyora_elementary_2",
-        "cls_xojamqulova_diyora_elementary_3"
-      ],
-      "classOrder": [
-        "cls_xojamqulova_diyora_beginner",
-        "cls_xojamqulova_diyora_elementary_1",
-        "cls_xojamqulova_diyora_elementary_2",
-        "cls_xojamqulova_diyora_elementary_3"
-      ],
-      "inviteCode": "DIYORA21",
-      "login": "diyora21",
-      "password": "diyora2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_bosimbekov_farrux",
-      "name": "Farrux Bosimbekov",
-      "email": "farrux.bosimbekov@ethith.uz",
-      "subject": "Ingliz tili (Pre-Inter / Inter)",
-      "hourlyRate": 105000,
-      "teachingHours": 64,
-      "card": "8600 7883 1652 5691",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_bosimbekov_farrux_pre_intermediate_1",
-        "cls_bosimbekov_farrux_pre_intermediate_2",
-        "cls_bosimbekov_farrux_intermediate_1",
-        "cls_bosimbekov_farrux_intermediate_2"
-      ],
-      "classOrder": [
-        "cls_bosimbekov_farrux_pre_intermediate_1",
-        "cls_bosimbekov_farrux_pre_intermediate_2",
-        "cls_bosimbekov_farrux_intermediate_1",
-        "cls_bosimbekov_farrux_intermediate_2"
-      ],
-      "inviteCode": "FARRUX93",
-      "login": "farrux93",
-      "password": "farrux2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_ahmadova_barno",
-      "name": "Barno Ahmadova",
-      "email": "barno.ahmadova@ethith.uz",
-      "subject": "Ingliz tili (Elementary / Pre-Inter)",
-      "hourlyRate": 100000,
-      "teachingHours": 64,
-      "card": "8600 2725 8055 2896",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_ahmadova_barno_elementary_1",
-        "cls_ahmadova_barno_elementary_2",
-        "cls_ahmadova_barno_elementary_3",
-        "cls_ahmadova_barno_pre_intermediate"
-      ],
-      "classOrder": [
-        "cls_ahmadova_barno_elementary_1",
-        "cls_ahmadova_barno_elementary_2",
-        "cls_ahmadova_barno_elementary_3",
-        "cls_ahmadova_barno_pre_intermediate"
-      ],
-      "inviteCode": "BARNO36",
-      "login": "barno36",
-      "password": "barno2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "phone": "+998 90 ...",
-      "unpaidMonths": 0
-    },
-    {
-      "id": "t_shodiyor_matematika",
-      "name": "Shodiyor (matematika)",
-      "email": "shodiyor.matematika@ethith.uz",
-      "subject": "Matematika",
-      "hourlyRate": 110000,
-      "teachingHours": 54,
-      "card": "8600 5419 8367 2781",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_shodiyor_matematika_matematika"
-      ],
-      "classOrder": [
-        "cls_shodiyor_matematika_matematika"
-      ],
-      "inviteCode": "SHODIYOR50",
-      "login": "shodiyor50",
-      "password": "shodiyor2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
       "id": "t_urolov_azizbek",
       "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
       "subject": "Ingliz tili (Upper / Inter)",
       "hourlyRate": 120000,
-      "teachingHours": 72,
+      "teachingHours": 0,
       "card": "8600 9184 5348 5520",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145165,10 +143825,461 @@
       ],
       "login": "azizbek77",
       "password": "azizbek2026",
-      "salarySharePercent": 55,
+      "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "AZIZBEK77",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_ravshanov_doniyor",
+      "name": "Ravshanov Doniyor",
+      "email": "doniyor.ravshanov@ethith.uz",
+      "subject": "Ingliz tili (CEFR Multi-Level)",
+      "hourlyRate": 110000,
+      "teachingHours": 0,
+      "card": "8600 1737 6773 7826",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_ravshanov_doniyor_cefr_1",
+        "cls_ravshanov_doniyor_cefr_2",
+        "cls_ravshanov_doniyor_cefr_3",
+        "cls_ravshanov_doniyor_cefr_4"
+      ],
+      "classOrder": [
+        "cls_ravshanov_doniyor_cefr_1",
+        "cls_ravshanov_doniyor_cefr_2",
+        "cls_ravshanov_doniyor_cefr_3",
+        "cls_ravshanov_doniyor_cefr_4"
+      ],
+      "login": "doniyor24",
+      "password": "doniyor2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "RAVSHANOV24",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_qarshiboyev_humoyun",
+      "name": "Qarshiboyev Humoyun",
+      "email": "humoyun.qarshiboyev@ethith.uz",
+      "subject": "Ingliz tili (Practice English)",
+      "hourlyRate": 95000,
+      "teachingHours": 0,
+      "card": "8600 9180 1074 6310",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_qarshiboyev_humoyun_practice"
+      ],
+      "classOrder": [
+        "cls_qarshiboyev_humoyun_practice"
+      ],
+      "login": "humoyun15",
+      "password": "humoyun2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "QARSHIBOYEV15",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_tovboyeva_marjona",
+      "name": "Marjona Tovboyeva",
+      "email": "marjona.tovboyeva@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 90000,
+      "teachingHours": 0,
+      "card": "8600 7570 9747 6845",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_tovboyeva_marjona_beginner"
+      ],
+      "classOrder": [
+        "cls_tovboyeva_marjona_beginner"
+      ],
+      "login": "marjona88",
+      "password": "marjona2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "MARJONA88",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_olimjonova_durdona",
+      "name": "Durdona Olimjonova",
+      "email": "durdona.olimjonova@ethith.uz",
+      "subject": "Ingliz tili (Beginner / Inter)",
+      "hourlyRate": 100000,
+      "teachingHours": 0,
+      "card": "8600 5388 3997 7659",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_olimjonova_durdona_beginner",
+        "cls_olimjonova_durdona_pre_intermediate",
+        "cls_olimjonova_durdona_intermediate_1",
+        "cls_olimjonova_durdona_intermediate_2"
+      ],
+      "classOrder": [
+        "cls_olimjonova_durdona_beginner",
+        "cls_olimjonova_durdona_pre_intermediate",
+        "cls_olimjonova_durdona_intermediate_1",
+        "cls_olimjonova_durdona_intermediate_2"
+      ],
+      "login": "durdona12",
+      "password": "durdona2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "DURDONA12",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_tagaev_eldor",
+      "name": "Eldor Tagaev",
+      "email": "eldor.tagaev@ethith.uz",
+      "subject": "Ingliz tili (General English)",
+      "hourlyRate": 100000,
+      "teachingHours": 0,
+      "card": "8600 9836 2231 3521",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_tagaev_eldor_beginner",
+        "cls_tagaev_eldor_elementary",
+        "cls_tagaev_eldor_pre_intermediate_1",
+        "cls_tagaev_eldor_pre_intermediate_2"
+      ],
+      "classOrder": [
+        "cls_tagaev_eldor_beginner",
+        "cls_tagaev_eldor_elementary",
+        "cls_tagaev_eldor_pre_intermediate_1",
+        "cls_tagaev_eldor_pre_intermediate_2"
+      ],
+      "login": "eldor33",
+      "password": "eldor2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "ELDOR33",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_yaxshilikova_kamola",
+      "name": "Kamola Yaxshilikova",
+      "email": "kamola.yaxshilikova@ethith.uz",
+      "subject": "Ingliz tili (Beginner / Elementary)",
+      "hourlyRate": 95000,
+      "teachingHours": 0,
+      "card": "8600 3037 8661 9611",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_yaxshilikova_kamola_beginner",
+        "cls_yaxshilikova_kamola_elementary"
+      ],
+      "classOrder": [
+        "cls_yaxshilikova_kamola_beginner",
+        "cls_yaxshilikova_kamola_elementary"
+      ],
+      "login": "kamola45",
+      "password": "kamola2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "KAMOLA45",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_sherqoziyeva_iroda",
+      "name": "Iroda Sherqoziyeva",
+      "email": "iroda.sherqoziyeva@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 95000,
+      "teachingHours": 0,
+      "card": "8600 8200 8823 6053",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_sherqoziyeva_iroda_beginner_1",
+        "cls_sherqoziyeva_iroda_beginner_2"
+      ],
+      "classOrder": [
+        "cls_sherqoziyeva_iroda_beginner_1",
+        "cls_sherqoziyeva_iroda_beginner_2"
+      ],
+      "login": "iroda19",
+      "password": "iroda2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "IRODA19",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_aborbekov_elyor",
+      "name": "Elyor Aborbekov",
+      "email": "elyor.aborbekov@ethith.uz",
+      "subject": "Ingliz tili (Pre / Inter / Upper)",
+      "hourlyRate": 110000,
+      "teachingHours": 0,
+      "card": "8600 4747 3927 9285",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_aborbekov_elyor_pre_intermediate_1",
+        "cls_aborbekov_elyor_pre_intermediate_2",
+        "cls_aborbekov_elyor_intermediate_1",
+        "cls_aborbekov_elyor_intermediate_2",
+        "cls_aborbekov_elyor_upper_intermediate"
+      ],
+      "classOrder": [
+        "cls_aborbekov_elyor_pre_intermediate_1",
+        "cls_aborbekov_elyor_pre_intermediate_2",
+        "cls_aborbekov_elyor_intermediate_1",
+        "cls_aborbekov_elyor_intermediate_2",
+        "cls_aborbekov_elyor_upper_intermediate"
+      ],
+      "login": "elyor70",
+      "password": "elyor2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "ELYOR70",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_orinboyev_jaloliddin",
+      "name": "Jaloliddin O’rinboyev",
+      "email": "jaloliddin.orinboyev@ethith.uz",
+      "subject": "Ingliz tili (Pre / Inter / Standard)",
+      "hourlyRate": 105000,
+      "teachingHours": 0,
+      "card": "8600 3286 1441 8063",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_orinboyev_jaloliddin_pre_intermediate",
+        "cls_orinboyev_jaloliddin_intermediate",
+        "cls_orinboyev_jaloliddin_standard_1",
+        "cls_orinboyev_jaloliddin_standard_2"
+      ],
+      "classOrder": [
+        "cls_orinboyev_jaloliddin_pre_intermediate",
+        "cls_orinboyev_jaloliddin_intermediate",
+        "cls_orinboyev_jaloliddin_standard_1",
+        "cls_orinboyev_jaloliddin_standard_2"
+      ],
+      "login": "jaloliddin99",
+      "password": "jaloliddin2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "JALOLIDDIN99",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_jumanova_pokiza",
+      "name": "Pokiza Jumanova",
+      "email": "pokiza.jumanova@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 90000,
+      "teachingHours": 0,
+      "card": "8600 4814 2290 9478",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_jumanova_pokiza_beginner"
+      ],
+      "classOrder": [
+        "cls_jumanova_pokiza_beginner"
+      ],
+      "login": "pokiza07",
+      "password": "pokiza2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "POKIZA07",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_hayrullayev_arslon",
+      "name": "Arslon Hayrullayev",
+      "email": "arslon.hayrullayev@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 95000,
+      "teachingHours": 0,
+      "card": "8600 2983 6185 5341",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_hayrullayev_arslon_beginner_1",
+        "cls_hayrullayev_arslon_beginner_2"
+      ],
+      "classOrder": [
+        "cls_hayrullayev_arslon_beginner_1",
+        "cls_hayrullayev_arslon_beginner_2"
+      ],
+      "login": "arslon64",
+      "password": "arslon2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "ARSLON64",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_xudoyorova_sarvinoz",
+      "name": "Sarvinoz Xudoyorova",
+      "email": "sarvinoz.xudoyorova@ethith.uz",
+      "subject": "Ingliz tili (Intermediate / Standard)",
+      "hourlyRate": 100000,
+      "teachingHours": 0,
+      "card": "8600 2510 8636 7287",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_xudoyorova_sarvinoz_intermediate",
+        "cls_xudoyorova_sarvinoz_standard"
+      ],
+      "classOrder": [
+        "cls_xudoyorova_sarvinoz_intermediate",
+        "cls_xudoyorova_sarvinoz_standard"
+      ],
+      "login": "sarvinoz82",
+      "password": "sarvinoz2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "SARVINOZ82",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_aliqulova_sevinch",
+      "name": "Sevinch Aliqulova",
+      "email": "sevinch.aliqulova@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 95000,
+      "teachingHours": 0,
+      "card": "8600 9373 3768 6749",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_aliqulova_sevinch_beginner_1",
+        "cls_aliqulova_sevinch_beginner_2"
+      ],
+      "classOrder": [
+        "cls_aliqulova_sevinch_beginner_1",
+        "cls_aliqulova_sevinch_beginner_2"
+      ],
+      "login": "sevinch55",
+      "password": "sevinch2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "SEVINCH55",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_xojamqulova_diyora",
+      "name": "Diyora Xo’jamqulova",
+      "email": "diyora.xojamqulova@ethith.uz",
+      "subject": "Ingliz tili (Beginner / Elementary)",
+      "hourlyRate": 100000,
+      "teachingHours": 0,
+      "card": "8600 7019 8442 4863",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_xojamqulova_diyora_beginner",
+        "cls_xojamqulova_diyora_elementary_1",
+        "cls_xojamqulova_diyora_elementary_2",
+        "cls_xojamqulova_diyora_elementary_3"
+      ],
+      "classOrder": [
+        "cls_xojamqulova_diyora_beginner",
+        "cls_xojamqulova_diyora_elementary_1",
+        "cls_xojamqulova_diyora_elementary_2",
+        "cls_xojamqulova_diyora_elementary_3"
+      ],
+      "login": "diyora21",
+      "password": "diyora2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "DIYORA21",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_bosimbekov_farrux",
+      "name": "Farrux Bosimbekov",
+      "email": "farrux.bosimbekov@ethith.uz",
+      "subject": "Ingliz tili (Pre-Inter / Inter)",
+      "hourlyRate": 105000,
+      "teachingHours": 0,
+      "card": "8600 7883 1652 5691",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_bosimbekov_farrux_pre_intermediate_1",
+        "cls_bosimbekov_farrux_pre_intermediate_2",
+        "cls_bosimbekov_farrux_intermediate_1",
+        "cls_bosimbekov_farrux_intermediate_2"
+      ],
+      "classOrder": [
+        "cls_bosimbekov_farrux_pre_intermediate_1",
+        "cls_bosimbekov_farrux_pre_intermediate_2",
+        "cls_bosimbekov_farrux_intermediate_1",
+        "cls_bosimbekov_farrux_intermediate_2"
+      ],
+      "login": "farrux93",
+      "password": "farrux2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "FARRUX93",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_ahmadova_barno",
+      "name": "Barno Ahmadova",
+      "email": "barno.ahmadova@ethith.uz",
+      "subject": "Ingliz tili (Elementary / Pre-Inter)",
+      "hourlyRate": 100000,
+      "teachingHours": 0,
+      "card": "8600 2725 8055 2896",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_ahmadova_barno_elementary_1",
+        "cls_ahmadova_barno_elementary_2",
+        "cls_ahmadova_barno_elementary_3",
+        "cls_ahmadova_barno_pre_intermediate"
+      ],
+      "classOrder": [
+        "cls_ahmadova_barno_elementary_1",
+        "cls_ahmadova_barno_elementary_2",
+        "cls_ahmadova_barno_elementary_3",
+        "cls_ahmadova_barno_pre_intermediate"
+      ],
+      "login": "barno36",
+      "password": "barno2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "BARNO36",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_shodiyor_matematika",
+      "name": "Shodiyor (matematika)",
+      "email": "shodiyor.matematika@ethith.uz",
+      "subject": "Matematika",
+      "hourlyRate": 110000,
+      "teachingHours": 0,
+      "card": "8600 5419 8367 2781",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_shodiyor_matematika_matematika"
+      ],
+      "classOrder": [
+        "cls_shodiyor_matematika_matematika"
+      ],
+      "login": "shodiyor50",
+      "password": "shodiyor2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "SHODIYOR50",
       "unpaidMonths": 0
     },
     {
@@ -145702,50 +144813,7 @@
       "room": "Room 102 (Blue Room)"
     }
   ],
-  "contests": [
-    {
-      "id": "cnt_kuzgi_2026",
-      "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
-      "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
-      "startDate": 1793004441449,
-      "endDate": 1793695641449,
-      "prizeCoins": 1000,
-      "testId": "TST-7K2M9",
-      "participants": {
-        "std_1": {
-          "name": "Ashurov Dilyorbek",
-          "score": 95,
-          "timeSec": 140,
-          "completedAt": 1793087241449
-        },
-        "std_2": {
-          "name": "Ergasheva Madina",
-          "score": 92,
-          "timeSec": 165,
-          "completedAt": 1793087341449
-        },
-        "std_4": {
-          "name": "JO‘RABOYEV MUXAMMADYUSUF",
-          "score": 98,
-          "timeSec": 110,
-          "completedAt": 1793087441449
-        },
-        "std_5": {
-          "name": "Jo'raboyev Javoxir",
-          "score": 88,
-          "timeSec": 180,
-          "completedAt": 1793087541449
-        },
-        "std_6": {
-          "name": "Mavlonova Ruxshona",
-          "score": 85,
-          "timeSec": 190,
-          "completedAt": 1793087641449
-        }
-      },
-      "status": "active"
-    }
-  ],
+  "contests": [],
   "payments": {
     "2026-10": {
       "std_1": {
@@ -145788,5 +144856,5 @@
       }
     }
   },
-  "updatedAt": 1793715271472
+  "updatedAt": 1793630396609
 }

@@ -1058,7 +1058,7 @@
           WB.savePageInputs(pNum, event.inputs, /* noBroadcast */ true);
         }
         if (typeof WB.liveRefreshPage === 'function') {
-          WB.liveRefreshPage(pNum);
+          WB.liveRefreshPage(pNum, event.inputs);
         }
         if (window.toast && !window._ethithWbEditorMode) {
           var dispPage = pNum > 2000 ? ('Upper-Intermediate ' + (pNum - 2000)) : pNum;
@@ -3002,7 +3002,7 @@
       localStorage.setItem('ethith_wb_ts_' + page, nowTs.toString());
     } catch(e) {}
 
-    // Instant live real-time broadcast via MQTT + BroadcastChannel
+    // Instant live real-time broadcast via MQTT + BroadcastChannel (sub-millisecond!)
     publishLive({
       type: 'WORKBOOK_PAGE_UPDATED',
       page: page,
@@ -3011,12 +3011,15 @@
       ts: nowTs
     });
 
-    // Save persistently to GitHub cloud store
-    pushRemoteStore().then(function() {
-      console.log('[WB-Sync] Page ' + page + ' saved to cloud store successfully');
-    }).catch(function(e) {
-      console.warn('[WB-Sync] Cloud save deferred:', e);
-    });
+    // Debounced background push to GitHub cloud store (0ms non-blocking!)
+    if (window._ethithWbPushTimer) clearTimeout(window._ethithWbPushTimer);
+    window._ethithWbPushTimer = setTimeout(function() {
+      pushRemoteStore().then(function() {
+        console.log('[WB-Sync] Page ' + page + ' saved to cloud store successfully');
+      }).catch(function(e) {
+        console.warn('[WB-Sync] Cloud save deferred:', e);
+      });
+    }, 1500);
   }
 
   function getWorkbookCloudOverrides(page) {

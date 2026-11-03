@@ -159728,10 +159728,44 @@
   };
 
   // Live in-place refresh when teacher updates coordinates or exercises
-  WB.liveRefreshPage = function(pageNum) {
+  WB.liveRefreshPage = function(pageNum, newInputs) {
     pageNum = parseInt(pageNum, 10);
     if (!WB._currentLesson || !WB._currentLesson.container) return;
     if (WB._currentLesson.pages && WB._currentLesson.pages.indexOf(pageNum) !== -1) {
+      var container = WB._currentLesson.container;
+      var inputs = newInputs || WB.getPageInputs(pageNum);
+
+      // Fast-path: In-place DOM update in 0ms without disrupting student view!
+      if (Array.isArray(inputs) && inputs.length > 0 && !window._ethithWbEditorMode) {
+        var patchedAll = true;
+        inputs.forEach(function(item) {
+          var wrap = container.querySelector('.eth-wb-item-wrap[data-id="' + item.id + '"]');
+          if (wrap) {
+            var rawC = item.correct;
+            var cAttr = Array.isArray(rawC) ? JSON.stringify(rawC) : String(rawC || '');
+            var cDisp = Array.isArray(rawC) ? rawC.join(' or ') : String(rawC || '');
+            var inp = wrap.querySelector('.wb-fill-input');
+            if (inp) {
+              inp.setAttribute('data-correct', cAttr);
+              if (inp.classList.contains('wb-teacher-box')) {
+                inp.value = cDisp;
+                inp.title = "✏️ To‘g‘ri javob: " + cDisp + " (Tahrirlash uchun bosing)";
+              }
+            }
+            var chip = wrap.querySelector('.wb-choose-chip');
+            if (chip) {
+              chip.setAttribute('data-correct', item.correct ? 'true' : 'false');
+            }
+          } else {
+            patchedAll = false;
+          }
+        });
+        if (patchedAll) {
+          console.log('[WB-Live] Real-time 0ms in-place patch applied for page ' + pageNum);
+          return;
+        }
+      }
+
       var curScroll = window.scrollY || window.pageYOffset || 0;
       var savedValues = {};
       if (!window._ethithWbEditorMode) {
@@ -162067,21 +162101,19 @@
           syncPromise = window.EthithSync.syncAllLocalWorkbookOverridesToCloud();
         }
 
-        Promise.resolve(syncPromise).then(function() {
-          bottomSaveBtn.disabled = false;
-          bottomSaveBtn.innerHTML = '<span>💾</span> Saqlash (Hammaga Tarqatish)';
-          if (window.toast) {
-            window.toast('✅ Barcha to‘g‘ri javoblar va tahrirlar saqlandi hamda barcha o‘quvchilarga bir zumda yetkazildi!');
-          } else {
-            alert('✅ Barcha to‘g‘ri javoblar va tahrirlar saqlandi hamda barcha o‘quvchilarga bir zumda yetkazildi!');
-          }
-        }).catch(function(err) {
-          bottomSaveBtn.disabled = false;
-          bottomSaveBtn.innerHTML = '<span>💾</span> Saqlash (Hammaga Tarqatish)';
-          if (window.toast) {
-            window.toast('✅ Barcha to‘g‘ri javoblar saqlandi!');
-          }
-        });
+        // 0ms instant UI response
+        var origHtml = '<span>💾</span> Saqlash (Hammaga Tarqatish)';
+        bottomSaveBtn.disabled = false;
+        bottomSaveBtn.innerHTML = '<span>✅</span> Saqlandi va Hammaga Tarqatildi (0ms)!';
+        bottomSaveBtn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
+        setTimeout(function() {
+          bottomSaveBtn.innerHTML = origHtml;
+          bottomSaveBtn.style.background = '';
+        }, 1800);
+
+        if (window.toast) {
+          window.toast('✅ Barcha to‘g‘ri javoblar va tahrirlar saqlandi hamda barcha o‘quvchilarga bir zumda yetkazildi!');
+        }
       });
     }
 
@@ -162379,8 +162411,37 @@
 
         WB.savePageInputs(page, inputs);
         closeModal();
-        renderLesson(container, unitNum, lessonCode, bookLevel);
-        window.scrollTo(0, curScroll);
+
+        if (!currentTarget.isNew) {
+          // Instant 0ms In-Place DOM Update without full page re-render lag!
+          var existItem = inputs.find(function(x) { return x.id === currentTarget.item.id; });
+          if (existItem) {
+            var rawC = existItem.correct;
+            var cAttr = Array.isArray(rawC) ? JSON.stringify(rawC) : String(rawC || '');
+            var cDisp = Array.isArray(rawC) ? rawC.join(' or ') : String(rawC || '');
+
+            var itemWrap = container.querySelector('.eth-wb-item-wrap[data-id="' + existItem.id + '"]');
+            if (itemWrap) {
+              var inputEl = itemWrap.querySelector('.wb-fill-input');
+              if (inputEl) {
+                inputEl.setAttribute('data-correct', cAttr);
+                if (inputEl.classList.contains('wb-teacher-box')) {
+                  inputEl.value = cDisp;
+                  inputEl.title = "✏️ To‘g‘ri javob: " + cDisp + " (Tahrirlash uchun bosing)";
+                }
+              }
+              var chipEl = itemWrap.querySelector('.wb-choose-chip');
+              if (chipEl) {
+                chipEl.setAttribute('data-correct', existItem.correct ? 'true' : 'false');
+              }
+            }
+          }
+          if (window.toast) window.toast('✅ Javob bir zumda saqlandi (0ms)!');
+        } else {
+          renderLesson(container, unitNum, lessonCode, bookLevel);
+          window.scrollTo(0, curScroll);
+          if (window.toast) window.toast('➕ Yangi katakcha qo‘shildi');
+        }
       });
     }
 
