@@ -6406,7 +6406,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
         '</div>' +
         '<div style="display:flex;gap:10px;flex-wrap:wrap;">' +
           (isTeacher ? '<button id="eeSendFailedSmsBtn" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(245,158,11,0.35);" title="Imtihondan yiqilgan o‘quvchilarning ota-onalariga smsapi.uz orqali avtomatik SMS yuborish">📱 Yiqilganlarga SMS Yuborish</button>' : '') +
-          (isTeacher ? '<button id="eeDropFailedStudentsBtn" style="background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(239,68,68,0.4);">⚠️ Yiqilgan o‘quvchilarni guruhdan chiqarish</button>' : '') +
+          (isTeacher ? '<button id="eeSaveLevelScoresBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:9px 20px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(16,185,129,0.4);display:inline-flex;align-items:center;gap:6px;" title="Barcha ballarni saqlash va platformaga jonli tezlikda joylash">💾 To‘plagan ballarni saqlash</button>' : '') +
         '</div>' +
       '</div>' +
 
@@ -6417,49 +6417,143 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
             '<tr style="background:rgba(15,23,42,0.85);color:#94a3b8;font-size:11.5px;font-weight:900;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid rgba(255,255,255,0.08);">' +
               '<th style="padding:12px 14px;width:40px;text-align:center;">#</th>' +
               '<th style="padding:12px 14px;">O‘quvchi</th>' +
-              '<th style="padding:12px 14px;width:150px;text-align:center;">Imtihon Bali</th>' +
+              '<th style="padding:12px 14px;width:160px;text-align:center;">Imtihon Bali</th>' +
               '<th style="padding:12px 14px;width:210px;text-align:center;">Qaror</th>' +
             '</tr>' +
           '</thead>' +
-          '<tbody>';
+          '<tbody id="eeLevelTestTbody"></tbody>' +
+        '</table>' +
+      '</div></div>';
 
-          students.forEach(function(st, idx) {
-            var stId = st.id || st.email;
-            var r = cls.levelTestResults[stId] || { score: null, passed: false };
-            var stName = (cls.customStudentNames && cls.customStudentNames[stId]) || st.name || stId;
-
-            mHtml += '<tr class="ee-level-row" data-stid="' + esc(stId) + '" style="border-top:1px solid rgba(255,255,255,0.05);background:' + (r.passed ? 'transparent' : 'rgba(239,68,68,0.04)') + ';">' +
-              '<td style="padding:11px 14px;color:#94a3b8;font-weight:800;text-align:center;">' + (idx + 1) + '</td>' +
-              '<td style="padding:11px 14px;font-weight:800;color:#fff;">' + esc(stName) + '</td>' +
-              '<td style="padding:11px 14px;text-align:center;">';
-                if (isTeacher) {
-                  mHtml += '<div style="display:inline-flex;align-items:center;gap:6px;">' +
-                    '<input type="number" min="0" max="100" class="ee-level-score-input" data-stid="' + esc(stId) + '" value="' + (r.score !== null && r.score !== undefined ? esc(r.score) : '') + '" placeholder="0-100" style="width:70px;padding:6px 8px;background:rgba(8,13,26,0.95);border:1.5px solid ' + (r.passed ? '#10b981' : (r.score !== null ? '#ef4444' : 'rgba(255,255,255,0.2)')) + ';border-radius:8px;color:#fff;font-weight:900;font-size:14px;text-align:center;outline:none;" />' +
-                    '<span style="font-weight:900;color:#94a3b8;font-size:13px;">%</span>' +
-                  '</div>';
-                } else {
-                  mHtml += '<span style="font-weight:900;font-size:14px;color:' + (r.passed ? '#34d399' : (r.score !== null ? '#f87171' : '#94a3b8')) + ';">' + (r.score !== null && r.score !== undefined ? (r.score + '%') : '—') + '</span>';
-                }
-              mHtml += '</td>' +
-              '<td style="padding:11px 14px;text-align:center;">';
-                if (isTeacher) {
-                  mHtml += '<button type="button" class="ee-level-toggle-decision-btn" data-stid="' + esc(stId) + '" style="background:' + (r.passed ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)') + ';border:1.5px solid ' + (r.passed ? '#10b981' : '#ef4444') + ';color:' + (r.passed ? '#4ade80' : '#fca5a5') + ';padding:5px 14px;border-radius:10px;font-weight:900;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all 0.15s;" title="Bosish: Qarorni o\'zgartirish">' +
-                    (r.passed ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi (Qoladi)') +
-                  '</button>';
-                } else {
-                  mHtml += '<span style="background:' + (r.passed ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)') + ';color:' + (r.passed ? '#34d399' : '#f87171') + ';padding:4px 10px;border-radius:8px;font-weight:800;font-size:11.5px;">' +
-                    (r.passed ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi') +
-                  '</span>';
-                }
-              mHtml += '</td>' +
-            '</tr>';
-          });
-
-    mHtml += '</tbody></table></div></div>';
     m.innerHTML = mHtml;
     modalRoot.appendChild(m);
 
     m.querySelector('#eeCloseLevelTestModal').onclick = function() { m.remove(); };
+
+    function getSortedStudents() {
+      return (cls.students || []).slice().sort(function(a, b) {
+        var idA = a.id || a.email;
+        var idB = b.id || b.email;
+        var rA = cls.levelTestResults[idA] || {};
+        var rB = cls.levelTestResults[idB] || {};
+        var sA = (rA.score !== null && rA.score !== undefined && rA.score !== '') ? Number(rA.score) : -1;
+        var sB = (rB.score !== null && rB.score !== undefined && rB.score !== '') ? Number(rB.score) : -1;
+        if (sA !== sB) return sB - sA; // Baland to'plaganlar tepaga, past to'plaganlar pastga
+        var nA = (cls.customStudentNames && cls.customStudentNames[idA]) || a.name || '';
+        var nB = (cls.customStudentNames && cls.customStudentNames[idB]) || b.name || '';
+        return nA.localeCompare(nB);
+      });
+    }
+
+    function renderTableRows() {
+      var tbody = m.querySelector('#eeLevelTestTbody');
+      if (!tbody) return;
+      var sorted = getSortedStudents();
+      var bHtml = '';
+
+      sorted.forEach(function(st, idx) {
+        var stId = st.id || st.email;
+        var r = cls.levelTestResults[stId] || { score: null, passed: false };
+        var stName = (cls.customStudentNames && cls.customStudentNames[stId]) || st.name || stId;
+
+        bHtml += '<tr class="ee-level-row" data-stid="' + esc(stId) + '" style="border-top:1px solid rgba(255,255,255,0.05);background:' + (r.passed ? 'rgba(16,185,129,0.04)' : (r.score !== null ? 'rgba(239,68,68,0.04)' : 'transparent')) + ';">' +
+          '<td style="padding:11px 14px;color:#94a3b8;font-weight:800;text-align:center;">' + (idx + 1) + '</td>' +
+          '<td style="padding:11px 14px;font-weight:800;color:#fff;">' + esc(stName) + '</td>' +
+          '<td style="padding:11px 14px;text-align:center;">' +
+            (isTeacher ? (
+              '<div style="display:inline-flex;align-items:center;gap:6px;">' +
+                '<input type="number" min="0" max="100" class="ee-level-score-input" data-stid="' + esc(stId) + '" value="' + (r.score !== null && r.score !== undefined ? esc(r.score) : '') + '" placeholder="0-100" style="width:75px;padding:6px 8px;background:rgba(8,13,26,0.95);border:1.5px solid ' + (r.passed ? '#10b981' : (r.score !== null ? '#ef4444' : 'rgba(255,255,255,0.2)')) + ';border-radius:8px;color:#fff;font-weight:900;font-size:14px;text-align:center;outline:none;" />' +
+                '<span style="font-weight:800;color:#38bdf8;font-size:12px;">ball</span>' +
+              '</div>'
+            ) : (
+              '<span style="font-weight:900;font-size:14px;color:' + (r.passed ? '#34d399' : (r.score !== null ? '#f87171' : '#94a3b8')) + ';">' + (r.score !== null && r.score !== undefined ? (r.score + ' ball') : '—') + '</span>'
+            )) +
+          '</td>' +
+          '<td style="padding:11px 14px;text-align:center;">' +
+            (isTeacher ? (
+              '<button type="button" class="ee-level-toggle-decision-btn" data-stid="' + esc(stId) + '" style="background:' + (r.passed ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)') + ';border:1.5px solid ' + (r.passed ? '#10b981' : '#ef4444') + ';color:' + (r.passed ? '#4ade80' : '#fca5a5') + ';padding:5px 14px;border-radius:10px;font-weight:900;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all 0.15s;" title="Bosish: Qarorni o‘zgartirish">' +
+                (r.passed ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi (Qoladi)') +
+              '</button>'
+            ) : (
+              '<span style="background:' + (r.passed ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)') + ';color:' + (r.passed ? '#34d399' : '#f87171') + ';padding:4px 10px;border-radius:8px;font-weight:800;font-size:11.5px;">' +
+                (r.passed ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi') +
+              '</span>'
+            )) +
+          '</td>' +
+        '</tr>';
+      });
+
+      tbody.innerHTML = bHtml;
+      attachTableListeners();
+    }
+
+    function attachTableListeners() {
+      m.querySelectorAll('.ee-level-score-input').forEach(function(inp) {
+        inp.oninput = function() {
+          var stId = inp.dataset.stid;
+          var val = inp.value.trim();
+          var num = val === '' ? null : Math.max(0, Math.min(100, parseInt(val, 10)));
+          if (!cls.levelTestResults[stId]) cls.levelTestResults[stId] = {};
+          cls.levelTestResults[stId].score = num;
+
+          if (num !== null) {
+            cls.levelTestResults[stId].passed = (num >= 70);
+          } else {
+            cls.levelTestResults[stId].passed = false;
+          }
+          cls.levelTestResults[stId].updatedAt = Date.now();
+
+          inp.style.borderColor = cls.levelTestResults[stId].passed ? '#10b981' : (num !== null ? '#ef4444' : 'rgba(255,255,255,0.2)');
+          var row = inp.closest('.ee-level-row');
+          if (row) {
+            row.style.background = cls.levelTestResults[stId].passed ? 'rgba(16,185,129,0.04)' : (num !== null ? 'rgba(239,68,68,0.04)' : 'transparent');
+            var btn = row.querySelector('.ee-level-toggle-decision-btn');
+            if (btn) {
+              var p = cls.levelTestResults[stId].passed;
+              btn.style.background = p ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)';
+              btn.style.borderColor = p ? '#10b981' : '#ef4444';
+              btn.style.color = p ? '#4ade80' : '#fca5a5';
+              btn.innerHTML = p ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi (Qoladi)';
+            }
+          }
+          refreshStatsUI();
+          persistLevelTestResults();
+        };
+
+        // On change/blur, re-sort table so higher scores move to top
+        inp.onchange = function() {
+          renderTableRows();
+        };
+      });
+
+      m.querySelectorAll('.ee-level-toggle-decision-btn').forEach(function(btn) {
+        btn.onclick = function() {
+          var stId = btn.dataset.stid;
+          if (!cls.levelTestResults[stId]) cls.levelTestResults[stId] = { score: null, passed: false };
+          cls.levelTestResults[stId].passed = !cls.levelTestResults[stId].passed;
+          cls.levelTestResults[stId].updatedAt = Date.now();
+
+          var p = cls.levelTestResults[stId].passed;
+          btn.style.background = p ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)';
+          btn.style.borderColor = p ? '#10b981' : '#ef4444';
+          btn.style.color = p ? '#4ade80' : '#fca5a5';
+          btn.innerHTML = p ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi (Qoladi)';
+
+          var row = btn.closest('.ee-level-row');
+          if (row) {
+            row.style.background = p ? 'rgba(16,185,129,0.04)' : 'rgba(239,68,68,0.04)';
+            var inp = row.querySelector('.ee-level-score-input');
+            if (inp) {
+              inp.style.borderColor = p ? '#10b981' : (inp.value ? '#ef4444' : 'rgba(255,255,255,0.2)');
+            }
+          }
+          refreshStatsUI();
+          persistLevelTestResults();
+        };
+      });
+    }
+
+    renderTableRows();
 
     function persistLevelTestResults() {
       if (typeof saveStore === 'function') saveStore();
@@ -6489,74 +6583,6 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       if (aEl) aEl.textContent = s.avgScore + '%';
     }
 
-    // Attach Score Input listeners
-    m.querySelectorAll('.ee-level-score-input').forEach(function(inp) {
-      function updateScore() {
-        var stId = inp.dataset.stid;
-        var val = inp.value.trim();
-        var num = val === '' ? null : Math.max(0, Math.min(100, parseInt(val, 10)));
-        if (!cls.levelTestResults[stId]) cls.levelTestResults[stId] = {};
-        cls.levelTestResults[stId].score = num;
-
-        // Auto determine pass if score entered
-        if (num !== null) {
-          cls.levelTestResults[stId].passed = (num >= 70);
-        } else {
-          cls.levelTestResults[stId].passed = false;
-        }
-        cls.levelTestResults[stId].updatedAt = Date.now();
-
-        // Update UI of matching row
-        inp.style.borderColor = cls.levelTestResults[stId].passed ? '#10b981' : (num !== null ? '#ef4444' : 'rgba(255,255,255,0.2)');
-        var row = inp.closest('.ee-level-row');
-        if (row) {
-          row.style.background = cls.levelTestResults[stId].passed ? 'transparent' : 'rgba(239,68,68,0.04)';
-          var btn = row.querySelector('.ee-level-toggle-decision-btn');
-          if (btn) {
-            var p = cls.levelTestResults[stId].passed;
-            btn.style.background = p ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)';
-            btn.style.borderColor = p ? '#10b981' : '#ef4444';
-            btn.style.color = p ? '#4ade80' : '#fca5a5';
-            btn.innerHTML = p ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi (Qoladi)';
-          }
-        }
-
-        refreshStatsUI();
-        persistLevelTestResults();
-      }
-
-      inp.oninput = updateScore;
-      inp.onchange = updateScore;
-    });
-
-    // Attach Decision Toggle listeners
-    m.querySelectorAll('.ee-level-toggle-decision-btn').forEach(function(btn) {
-      btn.onclick = function() {
-        var stId = btn.dataset.stid;
-        if (!cls.levelTestResults[stId]) cls.levelTestResults[stId] = { score: null, passed: false };
-        cls.levelTestResults[stId].passed = !cls.levelTestResults[stId].passed;
-        cls.levelTestResults[stId].updatedAt = Date.now();
-
-        var p = cls.levelTestResults[stId].passed;
-        btn.style.background = p ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)';
-        btn.style.borderColor = p ? '#10b981' : '#ef4444';
-        btn.style.color = p ? '#4ade80' : '#fca5a5';
-        btn.innerHTML = p ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi (Qoladi)';
-
-        var row = btn.closest('.ee-level-row');
-        if (row) {
-          row.style.background = p ? 'transparent' : 'rgba(239,68,68,0.04)';
-          var inp = row.querySelector('.ee-level-score-input');
-          if (inp) {
-            inp.style.borderColor = p ? '#10b981' : (inp.value ? '#ef4444' : 'rgba(255,255,255,0.2)');
-          }
-        }
-
-        refreshStatsUI();
-        persistLevelTestResults();
-      };
-    });
-
     // Automatic SMS to Failed Students via smsapi.uz API
     var sendFailedSmsBtn = m.querySelector('#eeSendFailedSmsBtn');
     if (sendFailedSmsBtn) {
@@ -6568,7 +6594,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
           if (r && !r.passed) {
             var phone = (cls.customStudentPhones && cls.customStudentPhones[stId]) || st.parentPhone || st.phone || '';
             var name = (cls.customStudentNames && cls.customStudentNames[stId]) || st.name || stId;
-            var sc = (r.score !== null && r.score !== undefined) ? (r.score + '%') : 'yetarli bo‘lmagan';
+            var sc = (r.score !== null && r.score !== undefined) ? (r.score + ' ball') : 'yetarli bo‘lmagan';
             if (phone) {
               failedList.push({ phone: phone, name: name, score: sc, id: stId });
             }
@@ -6614,41 +6640,144 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       };
     }
 
-    // Drop failed students
-    var dropBtn = m.querySelector('#eeDropFailedStudentsBtn');
-    if (dropBtn) {
-      dropBtn.onclick = function() {
-        var curStats = getStats();
-        if (confirm("Rostdan ham imtihondan o'ta olmagan " + curStats.failedCount + " ta o‘quvchini ushbu guruhdan chiqarib yubormoqchimisiz?")) {
-          cls.students = cls.students.filter(function(st) {
+    // Save Level Test Scores (To'plagan ballarni saqlash - NO STUDENT REMOVAL!)
+    var saveScoresBtn = m.querySelector('#eeSaveLevelScoresBtn');
+    if (saveScoresBtn) {
+      saveScoresBtn.onclick = function() {
+        saveScoresBtn.disabled = true;
+        saveScoresBtn.innerHTML = '⏳ Saqlanmoqda...';
+
+        persistLevelTestResults();
+
+        // Sync into attendance journal level test column
+        var targetDateKey = dateKey || (function() {
+          if (window.EA && typeof window.EA.getJournalDates === 'function') {
+            var jDates = window.EA.getJournalDates(cls, 'window');
+            if (jDates && jDates.length > 0) {
+              return window.EA.formatDateKey(jDates[jDates.length - 1]);
+            }
+          }
+          return null;
+        })();
+
+        if (targetDateKey) {
+          if (!cls.attendance) cls.attendance = {};
+          if (!cls.attendance.records) cls.attendance.records = {};
+          if (!cls.attendance.records[targetDateKey]) cls.attendance.records[targetDateKey] = {};
+
+          (cls.students || []).forEach(function(st) {
             var stId = st.id || st.email;
             var r = cls.levelTestResults[stId];
-            return r && r.passed;
+            if (r && r.score !== null && r.score !== undefined && r.score !== '') {
+              cls.attendance.records[targetDateKey][stId] = {
+                status: String(r.score),
+                score: String(r.score),
+                passed: r.passed,
+                isLevelTest: true
+              };
+            }
           });
-          persistLevelTestResults();
-          showToast("Yiqilgan o‘quvchilar guruhdan chiqarildi!");
-          m.remove();
-          if (window.EthithAttendance && typeof window.EthithAttendance.render === 'function') {
-            window.EthithAttendance.render();
+
+          if (window.EA && typeof window.EA.persistAttendance === 'function') {
+            window.EA.persistAttendance(cls);
           }
+        }
+
+        if (typeof saveStore === 'function') saveStore();
+        if (window.EthithApp && typeof window.EthithApp.saveState === 'function') window.EthithApp.saveState();
+        try {
+          localStorage.setItem('ethith_enterprise_store', JSON.stringify(getStore()));
+          localStorage.setItem('ethith_v2_state', JSON.stringify(window.EthithApp.state));
+        } catch(e) {}
+
+        if (window.EthithSync) {
+          if (typeof window.EthithSync.publishLive === 'function') {
+            window.EthithSync.publishLive({
+              type: 'LEVEL_TEST_UPDATE',
+              classId: cls.id,
+              results: cls.levelTestResults,
+              attendance: cls.attendance,
+              ts: Date.now()
+            });
+          }
+          if (typeof window.EthithSync.broadcastLocal === 'function' && window.S) {
+            window.EthithSync.broadcastLocal(window.S.classes, window.S.exams);
+          }
+          if (typeof window.EthithSync.pushRemoteStore === 'function') {
+            window.EthithSync.pushRemoteStore();
+          }
+        }
+
+        if (window.EthithApp && typeof window.EthithApp.toast === 'function') {
+          window.EthithApp.toast("✓ Level test ballari saqlandi va platformaga joylandi!");
+        } else {
+          alert("✓ Level test ballari saqlandi va platformaga joylandi!");
+        }
+
+        saveScoresBtn.disabled = false;
+        saveScoresBtn.innerHTML = '💾 To‘plagan ballarni saqlash';
+
+        if (window.EthithAttendance && typeof window.EthithAttendance.renderCurrentView === 'function') {
+          window.EthithAttendance.renderCurrentView();
         }
       };
     }
 
-    // Excel Export
+    // Excel Export with RED for Failed & GREEN for Passed
     m.querySelector('#eeExportLevelXlsx').onclick = function() {
-      if (!window.XLSX) return;
-      var data = [["#", "O'quvchi", "Level Test Bali", "Qaror"]];
-      students.forEach(function(st, idx) {
+      var sorted = getSortedStudents();
+      var stats = getStats();
+      var cleanName = (cls.name || 'Guruh').replace(/[^a-zA-Z0-9_\-]/g, '_');
+      var fileName = "ETHITH_Level_Test_" + cleanName + ".xls";
+
+      var rowsHtml = '';
+      sorted.forEach(function(st, idx) {
         var stId = st.id || st.email;
         var r = cls.levelTestResults[stId] || { score: null, passed: false };
         var stName = (cls.customStudentNames && cls.customStudentNames[stId]) || st.name || stId;
-        data.push([idx + 1, stName, (r.score !== null ? (r.score + "%") : "Kiritilmagan"), r.passed ? "Keyingi Levelga o'tdi" : "Yiqildi"]);
+        var scDisp = (r.score !== null && r.score !== undefined && r.score !== '') ? r.score : '—';
+        var isPassed = r.passed === true;
+
+        var rowBg = isPassed ? '#dcfce7' : '#fee2e2';
+        var textCol = isPassed ? '#15803d' : '#b91c1c';
+        var statusText = isPassed ? "✓ Keyingi Levelga O‘tdi" : "✕ Yiqildi (Qoladi)";
+        var badgeBg = isPassed ? '#10b981' : '#ef4444';
+
+        rowsHtml += '<tr style="background:' + rowBg + ';color:' + textCol + ';font-size:13px;height:30px;">' +
+          '<td style="text-align:center;font-weight:bold;border:1px solid #cbd5e1;">' + (idx + 1) + '</td>' +
+          '<td style="font-weight:bold;padding-left:8px;border:1px solid #cbd5e1;">' + esc(stName) + '</td>' +
+          '<td style="text-align:center;font-weight:bold;font-size:14px;border:1px solid #cbd5e1;">' + scDisp + '</td>' +
+          '<td style="text-align:center;font-weight:bold;border:1px solid #cbd5e1;background:' + badgeBg + ';color:#ffffff;">' + statusText + '</td>' +
+        '</tr>';
       });
-      var ws = window.XLSX.utils.aoa_to_sheet(data);
-      var wb = window.XLSX.utils.book_new();
-      window.XLSX.utils.book_append_sheet(wb, ws, "Level_Test");
-      window.XLSX.writeFile(wb, "ETHITH_Level_Test_" + (cls.name || 'Guruh') + ".xlsx");
+
+      var excelHtml = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">' +
+        '<head><meta charset="utf-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Level_Test</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]></head>' +
+        '<body style="font-family:Arial,sans-serif;">' +
+        '<h2 style="color:#0f172a;margin-bottom:4px;">ETHITH Learning Center — 3 Oylik Level Test Natijalari</h2>' +
+        '<p style="color:#64748b;font-size:13px;margin:2px 0 12px;"><b>Guruh:</b> ' + esc(cls.name) + ' | <b>O‘tish bali:</b> 70 ball | <b>O‘tganlar (Yashil):</b> ' + stats.passedCount + ' ta | <b>Yiqilganlar (Qizil):</b> ' + stats.failedCount + ' ta</p>' +
+        '<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;width:100%;font-family:Arial,sans-serif;">' +
+          '<thead>' +
+            '<tr style="background:#0f172a;color:#ffffff;font-size:13px;font-weight:bold;height:32px;">' +
+              '<th style="width:50px;text-align:center;">№</th>' +
+              '<th style="width:250px;text-align:left;padding-left:8px;">O‘quvchi F.I.SH</th>' +
+              '<th style="width:120px;text-align:center;">Imtihon Bali</th>' +
+              '<th style="width:180px;text-align:center;">Qaror / Natija</th>' +
+            '</tr>' +
+          '</thead>' +
+          '<tbody>' +
+            rowsHtml +
+          '</tbody>' +
+        '</table>' +
+        '</body></html>';
+
+      var blob = new Blob([excelHtml], { type: 'application/vnd.ms-excel;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      a.click();
+      URL.revokeObjectURL(url);
     };
 
     // Word Export (.doc)

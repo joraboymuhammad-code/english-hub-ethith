@@ -1152,6 +1152,22 @@
         if (event.schedule) attCls.schedule = event.schedule;
         if (event.customStudentNames) attCls.customStudentNames = event.customStudentNames;
         if (event.activeHomework !== undefined) attCls.activeHomework = event.activeHomework;
+        if (event.levelTestResults) attCls.levelTestResults = Object.assign({}, attCls.levelTestResults || {}, event.levelTestResults);
+        uiNeedsRefresh = true;
+        if (window._ethithRefreshAttendance && window._ethithCurrentView === 'attendance') {
+          try { window._ethithRefreshAttendance(); } catch(e) {}
+        }
+      }
+    }
+
+    // E2b. 3-OYLIK LEVEL TEST REAL-TIME UPDATE
+    else if (event.type === 'LEVEL_TEST_UPDATE') {
+      var ltCls = targetCls || classes.find(function(c) {
+        return (event.classId && c.id === event.classId) || (event.classCode && c.code === event.classCode);
+      });
+      if (ltCls) {
+        if (event.results) ltCls.levelTestResults = Object.assign({}, ltCls.levelTestResults || {}, event.results);
+        if (event.attendance) ltCls.attendance = event.attendance;
         uiNeedsRefresh = true;
         if (window._ethithRefreshAttendance && window._ethithCurrentView === 'attendance') {
           try { window._ethithRefreshAttendance(); } catch(e) {}

@@ -3461,34 +3461,47 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           ? 'rgba(56, 189, 248, 0.16)'
           : (isFuture ? 'rgba(52, 211, 153, 0.09)' : 'rgba(15, 23, 42, 0.62)'));
 
+      var lMonths = Number(cls.learningMonths) || 0;
+      var lDays = Number(cls.learningDays) || 0;
+      var totalDaysElapsed = (lMonths * 30) + lDays;
+      var remainingDays = Math.max(0, 90 - totalDaysElapsed);
+      var isSoonLevelTest = (remainingDays <= 7) || (cls.levelTestResults && Object.keys(cls.levelTestResults).length > 0);
+      var isLevelTestCol = (dIdx === dates.length - 1) && isSoonLevelTest;
+
       var cardBorder = isHoliday
         ? 'rgba(251, 113, 133, 0.5)'
-        : (isToday
-          ? 'rgba(56, 189, 248, 0.65)'
-          : (isFuture ? 'rgba(52, 211, 153, 0.35)' : 'rgba(255, 255, 255, 0.12)'));
+        : (isLevelTestCol
+          ? '#10b981'
+          : (isToday
+            ? 'rgba(56, 189, 248, 0.65)'
+            : (isFuture ? 'rgba(52, 211, 153, 0.35)' : 'rgba(255, 255, 255, 0.12)')));
 
       var cardShadow = isHoliday
         ? '0 0 18px rgba(244, 63, 94, 0.15), inset 0 1px 0 rgba(255,255,255,0.12)'
-        : (isToday
-          ? '0 0 22px rgba(56, 189, 248, 0.22), inset 0 1px 0 rgba(255,255,255,0.2)'
-          : 'inset 0 1px 0 rgba(255,255,255,0.08)');
+        : (isLevelTestCol
+          ? '0 0 20px rgba(16,185,129,0.4), inset 0 1px 0 rgba(255,255,255,0.15)'
+          : (isToday
+            ? '0 0 22px rgba(56, 189, 248, 0.22), inset 0 1px 0 rgba(255,255,255,0.2)'
+            : 'inset 0 1px 0 rgba(255,255,255,0.08)'));
 
       var typeColor = isHoliday
         ? '#fb7185'
-        : (lessonType.indexOf('Vazifa') !== -1 ? '#38bdf8' : (isFuture ? '#34d399' : '#cbd5e1'));
+        : (isLevelTestCol
+          ? '#34d399'
+          : (lessonType.indexOf('Vazifa') !== -1 ? '#38bdf8' : (isFuture ? '#34d399' : '#cbd5e1')));
 
       h += '<th style="width:136px;min-width:136px;padding:8px 6px;border-bottom:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.06);">' +
         '<div class="ea-date-header-card" data-date="' + dKey + '" data-sunday="' + (isSunday ? '1' : '0') + '" ' +
-          'title="' + (isSunday ? 'Yakshanba - Dam olish kuni' : (isTeacher ? '1 marta bosish: Qizil Dam olish kuni qilish / qaytarish' : dDisp)) + '" ' +
-          'style="height:115px;border-radius:12px;border:1.5px solid ' + (dIdx === dates.length - 1 ? '#10b981' : cardBorder) + ';background:' + (dIdx === dates.length - 1 ? 'linear-gradient(180deg,rgba(16,185,129,0.2),rgba(15,23,42,0.9))' : cardBg) + ';box-shadow:' + (dIdx === dates.length - 1 ? '0 0 20px rgba(16,185,129,0.4)' : cardShadow) + ';display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;cursor:' + (isTeacher && !isSunday ? 'pointer' : 'default') + ';transition:all 0.2s;">' +
-          (dIdx === dates.length - 1 ? '<div class="ea-level-test-pill" data-date="' + dKey + '" title="3 Oylik Level Test Imtihoni — Bosib natijalarni ko‘ring" style="position:absolute;top:0;left:0;right:0;background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;font-size:9.5px;font-weight:900;text-align:center;padding:2px 0;letter-spacing:0.5px;box-shadow:0 0 12px rgba(16,185,129,0.85);cursor:pointer;z-index:10;">🟢 LEVEL TEST</div>' : '') +
+          'title="' + (isSunday ? 'Yakshanba - Dam olish kuni' : (isLevelTestCol ? '3 Oylik Level Test Imtihoni — Bosib ochish' : (isTeacher ? '1 marta bosish: Qizil Dam olish kuni qilish / qaytarish' : dDisp))) + '" ' +
+          'style="height:115px;border-radius:12px;border:1.5px solid ' + (isLevelTestCol ? '#10b981' : cardBorder) + ';background:' + (isLevelTestCol ? 'linear-gradient(180deg,rgba(16,185,129,0.22),rgba(15,23,42,0.92))' : cardBg) + ';box-shadow:' + (isLevelTestCol ? '0 0 20px rgba(16,185,129,0.4)' : cardShadow) + ';display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;cursor:' + ((isTeacher || isLevelTestCol) && !isSunday ? 'pointer' : 'default') + ';transition:all 0.2s;">' +
+          (isLevelTestCol ? '<div class="ea-level-test-pill" data-date="' + dKey + '" title="3 Oylik Level Test Imtihoni — Bosib natijalarni ko‘ring" style="position:absolute;top:0;left:0;right:0;background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;font-size:9.5px;font-weight:900;text-align:center;padding:2px 0;letter-spacing:0.5px;box-shadow:0 0 12px rgba(16,185,129,0.85);cursor:pointer;z-index:10;">🟢 LEVEL TEST</div>' : '') +
           (isTeacher && !isSunday ?
             '<div class="ea-date-opts-btn" data-date="' + dKey + '" data-disp="' + dDisp + '" title="Sana sozlamasi va Uy vazifasi belgilash" style="position:absolute;top:4px;right:5px;cursor:pointer;color:#94a3b8;font-size:15px;font-weight:900;line-height:1;z-index:5;padding:2px 5px;border-radius:6px;background:rgba(255,255,255,0.06);">' +
               '⋮' +
             '</div>' : '') +
           '<div style="grid-column:span 2;padding:6px 8px 4px;border-bottom:1px solid ' + cardBorder + ';text-align:center;">' +
-            '<div style="font-size:11px;font-weight:900;color:' + typeColor + ';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="' + esc(lessonType) + '">' +
-              esc(lessonType) +
+            '<div style="font-size:11px;font-weight:900;color:' + typeColor + ';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="' + (isLevelTestCol ? '3 Oylik Level Test' : esc(lessonType)) + '">' +
+              (isLevelTestCol ? 'IMTIHON' : esc(lessonType)) +
             '</div>' +
             '<div style="border-top:1px dashed ' + cardBorder + ';margin:4px 0 3px;opacity:0.6;"></div>' +
             '<div style="font-size:11.5px;font-weight:800;color:' + (isHoliday ? '#fda4af' : (isToday ? '#38bdf8' : '#f8fafc')) + ';">' +
@@ -3581,20 +3594,45 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         '</td>';
 
         // Date Cells for this Student
-        dates.forEach(function(dt) {
+        dates.forEach(function(dt, dIdx) {
           var dKey = formatDateKey(dt);
           var isSunday = (dt.getDay() === 0);
           var isHoliday = isSunday || (cls.attendance.holidays && cls.attendance.holidays[dKey] === true);
+
+          var lMonths = Number(cls.learningMonths) || 0;
+          var lDays = Number(cls.learningDays) || 0;
+          var totalDaysElapsed = (lMonths * 30) + lDays;
+          var remainingDays = Math.max(0, 90 - totalDaysElapsed);
+          var isSoonLevelTest = (remainingDays <= 7) || (cls.levelTestResults && Object.keys(cls.levelTestResults).length > 0);
+          var isLevelTestCol = (dIdx === dates.length - 1) && isSoonLevelTest;
 
           var rec = (cls.attendance.records[dKey] && cls.attendance.records[dKey][stId]) || {};
           var status = rec.status || '';
           var score = (rec.score !== undefined && rec.score !== null) ? String(rec.score) : '';
 
+          var ltRes = cls.levelTestResults && cls.levelTestResults[stId];
+          var hasLtScore = ltRes && (ltRes.score !== null && ltRes.score !== undefined && ltRes.score !== '');
+          var isLtCell = isLevelTestCol || rec.isLevelTest;
+
           // Shaffof Dark-Mode Box Styles for D
           var dBoxStyle = 'height:38px;width:60px;min-width:60px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;transition:all 0.18s;user-select:none;';
           var dText = '';
 
-          if (isHoliday) {
+          if (isLtCell) {
+            if (hasLtScore || (rec.score && rec.isLevelTest)) {
+              var displayScore = hasLtScore ? String(ltRes.score) : String(rec.score);
+              var isPassed = hasLtScore ? (ltRes.passed === true) : (rec.passed === true);
+              dText = displayScore; // Raw score, NOT percentage!
+              if (isPassed) {
+                dBoxStyle += 'background:rgba(16,185,129,0.28);color:#34d399;border:1.5px solid #10b981;cursor:pointer;box-shadow:0 0 16px rgba(16,185,129,0.45);text-shadow:0 0 8px rgba(52,211,153,0.6);font-weight:900;';
+              } else {
+                dBoxStyle += 'background:rgba(239,68,68,0.28);color:#f87171;border:1.5px solid #ef4444;cursor:pointer;box-shadow:0 0 16px rgba(239,68,68,0.45);text-shadow:0 0 8px rgba(248,113,113,0.6);font-weight:900;';
+              }
+            } else {
+              dBoxStyle += 'background:rgba(16,185,129,0.12);color:#34d399;border:1px dashed rgba(16,185,129,0.5);cursor:pointer;';
+              dText = '';
+            }
+          } else if (isHoliday) {
             dBoxStyle += 'background:rgba(244,63,94,0.14);color:#fb7185;border:1px solid rgba(251,113,133,0.35);cursor:not-allowed;';
             dText = '🔒';
           } else if (status === 'K' || status === 'present') {
@@ -3611,55 +3649,80 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
             dText = '';
           }
 
-          // Automatic Daily Grade Box Styles for B (Baho / Score automatically set by system)
-          var hasScore = score.trim() !== '';
-          var scoreNum = parseInt(score, 10);
-          var scoreColor = '#f8fafc';
-          var scoreBg = 'rgba(15,23,42,0.55)';
-          var scoreBorder = 'rgba(255,255,255,0.1)';
+          // Automatic or Manual Daily Grade Box Styles for B (Baho / Score)
+          var bBoxStyle = 'height:38px;width:60px;min-width:60px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13.5px;transition:all 0.18s;user-select:none;';
+          var bText = '';
+          var bTitle = '';
 
-          if (isHoliday) {
-            scoreBg = 'rgba(244,63,94,0.14)';
-            scoreBorder = 'rgba(251,113,133,0.35)';
-            scoreColor = '#fb7185';
-          } else if (hasScore) {
-            if (scoreNum >= 5) {
-              scoreBg = 'rgba(56,189,248,0.18)';
-              scoreBorder = 'rgba(56,189,248,0.55)';
-              scoreColor = '#38bdf8';
-            } else if (scoreNum === 4) {
-              scoreBg = 'rgba(16,185,129,0.16)';
-              scoreBorder = 'rgba(52,211,153,0.45)';
-              scoreColor = '#34d399';
-            } else if (scoreNum === 3) {
-              scoreBg = 'rgba(245,158,11,0.18)';
-              scoreBorder = 'rgba(251,191,36,0.45)';
-              scoreColor = '#fbbf24';
+          if (isLtCell) {
+            var isPassed = hasLtScore ? (ltRes.passed === true) : (rec.passed === true);
+            if (hasLtScore || rec.score) {
+              bText = isPassed ? '✓ O‘tdi' : '✕ Qoladi';
+              var bColor = isPassed ? '#34d399' : '#f87171';
+              var bBg = isPassed ? 'rgba(16,185,129,0.2)' : 'rgba(239,68,68,0.2)';
+              var bBorder = isPassed ? '#10b981' : '#ef4444';
+              bBoxStyle += 'background:' + bBg + ';color:' + bColor + ';border:1px solid ' + bBorder + ';font-size:11px;cursor:pointer;';
+              bTitle = '3 Oylik Level Test: ' + (hasLtScore ? ltRes.score : rec.score) + ' ball (' + (isPassed ? "Keyingi levelga o'tdi" : "Yiqildi") + ')';
             } else {
-              scoreBg = 'rgba(244,63,94,0.18)';
-              scoreBorder = 'rgba(251,113,133,0.45)';
-              scoreColor = '#fb7185';
+              bBoxStyle += 'background:rgba(15,23,42,0.55);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);font-size:11px;cursor:pointer;';
+              bText = 'Test';
+              bTitle = "3 Oylik Level Test imtihoni — Bosib ballarni kiriting";
             }
+          } else if (isHoliday) {
+            bBoxStyle += 'background:rgba(244,63,94,0.14);border:1px solid rgba(251,113,133,0.35);color:#fb7185;';
+            bText = '🔒';
+            bTitle = 'Dam olish kuni';
+          } else {
+            var hasScore = score.trim() !== '';
+            var scoreNum = parseInt(score, 10);
+            var scoreColor = '#f8fafc';
+            var scoreBg = 'rgba(15,23,42,0.55)';
+            var scoreBorder = 'rgba(255,255,255,0.1)';
+
+            if (hasScore) {
+              if (scoreNum >= 5) {
+                scoreBg = 'rgba(56,189,248,0.18)';
+                scoreBorder = 'rgba(56,189,248,0.55)';
+                scoreColor = '#38bdf8';
+              } else if (scoreNum === 4) {
+                scoreBg = 'rgba(16,185,129,0.16)';
+                scoreBorder = 'rgba(52,211,153,0.45)';
+                scoreColor = '#34d399';
+              } else if (scoreNum === 3) {
+                scoreBg = 'rgba(245,158,11,0.18)';
+                scoreBorder = 'rgba(251,191,36,0.45)';
+                scoreColor = '#fbbf24';
+              } else {
+                scoreBg = 'rgba(244,63,94,0.18)';
+                scoreBorder = 'rgba(251,113,133,0.45)';
+                scoreColor = '#fb7185';
+              }
+            }
+
+            bBoxStyle += 'background:' + scoreBg + ';border:1px solid ' + scoreBorder + ';color:' + scoreColor + ';cursor:' + (isTeacher ? 'pointer' : 'default') + ';';
+            bText = esc(score);
+            bTitle = isTeacher
+              ? 'Baho: ' + (hasScore ? score : 'Qo‘yilmagan') + ' (Bosish: 5 -> 4 -> 3 -> 2 -> Bo‘sh | O‘ng tugma: Ixtiyoriy ball yozish)'
+              : (rec.hwDone ? ('Baho: ' + score + ' (Uy vazifasi bajarildi ✓)') : ('Baho: ' + (score || '—')));
           }
 
-          var bTitle = isHoliday
-            ? 'Dam olish kuni'
-            : (rec.hwDone
-              ? ('Avtomatik Baho: ' + score + ' (Uy vazifasi ' + (rec.hwLesson || '') + ' — ' + (rec.hwPct || 95) + '% bajarildi ✓)')
-              : (score === '2' ? 'Avtomatik Baho: 2 (Uy vazifasi bajarilmagan / Dars qoldirilgan)' : 'Avtomatik baho: O\'quvchi uy vazifasini bajarganda tizim o\'zi qo\'yadi'));
-
-          var bBoxStyle = 'height:38px;width:60px;min-width:60px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13.5px;border:1px solid ' + scoreBorder + ';background:' + scoreBg + ';color:' + scoreColor + ';user-select:none;';
+          var dTitle = isLtCell
+            ? '3 Oylik Level Test ballari (Bosib ochish)'
+            : (isHoliday ? 'Dam olish kuni' : (isTeacher ? 'Bosish: Yashil K (Kelgan) -> Qizil K (Kelmagan) -> Sariq S (Sababli) -> Bo\'sh' : 'Davomat holati'));
 
           h += '<td style="width:136px;min-width:136px;padding:6px;border-bottom:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.06);">' +
             '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;align-items:center;">' +
-              '<div class="ea-status-box' + (isTeacher && !isHoliday ? ' is-clickable' : '') + '" ' +
-                'data-date="' + dKey + '" data-stid="' + esc(stId) + '" data-cur="' + status + '" ' +
+              '<div class="ea-status-box' + ((isTeacher || isLtCell) && !isHoliday ? ' is-clickable' : '') + '" ' +
+                'data-date="' + dKey + '" data-stid="' + esc(stId) + '" data-cur="' + status + '" data-is-leveltest="' + (isLtCell ? '1' : '0') + '" ' +
                 'style="' + dBoxStyle + '" ' +
-                'title="' + (isHoliday ? 'Dam olish kuni' : (isTeacher ? 'Bosish: Yashil K (Kelgan) -> Qizil K (Kelmagan) -> Sariq S (Sababli) -> Bo\'sh' : 'Davomat holati')) + '">' +
+                'title="' + esc(dTitle) + '">' +
                 dText +
               '</div>' +
-              '<div style="' + bBoxStyle + '" title="' + esc(bTitle) + '">' +
-                (isHoliday ? '🔒' : esc(score)) +
+              '<div class="ea-score-box' + ((isTeacher || isLtCell) && !isHoliday ? ' is-clickable' : '') + '" ' +
+                'data-date="' + dKey + '" data-stid="' + esc(stId) + '" data-score="' + esc(score) + '" data-is-leveltest="' + (isLtCell ? '1' : '0') + '" ' +
+                'style="' + bBoxStyle + '" ' +
+                'title="' + esc(bTitle) + '">' +
+                bText +
               '</div>' +
             '</div>' +
           '</td>';
@@ -3960,6 +4023,14 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
         var dKey = box.getAttribute('data-date') || box.dataset.date;
         var stId = box.getAttribute('data-stid') || box.dataset.stid;
+        var isLt = box.getAttribute('data-is-leveltest') === '1';
+        if (isLt) {
+          if (window.EthithEnterprise && typeof window.EthithEnterprise.openLevelTestModal === 'function') {
+            window.EthithEnterprise.openLevelTestModal(cls, dKey);
+          }
+          return;
+        }
+
         var cur = box.getAttribute('data-cur') || box.dataset.cur || '';
 
         var next = '';
@@ -3978,6 +4049,86 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           cls.attendance.records[dKey][stId].score = '2';
         } else if (next === 'S' && !cls.attendance.records[dKey][stId].hwDone) {
           cls.attendance.records[dKey][stId].score = '';
+        }
+
+        persistAttendance(cls);
+        var sLeft = scrollWrap ? scrollWrap.scrollLeft : 0;
+        EA.render(container, sLeft);
+      };
+    });
+
+    // Baho Box (B ⚡) Click & Right-click - Cycle 5 -> 4 -> 3 -> 2 -> Bo'sh or Prompt for custom grade
+    container.querySelectorAll('.ea-score-box').forEach(function(box) {
+      box.onclick = function(e) {
+        if (e && e.stopPropagation) e.stopPropagation();
+        var curUser = getActiveUser();
+        var isStudent = curUser && curUser.role === 'student';
+        if (isStudent) return;
+
+        var dKey = box.getAttribute('data-date') || box.dataset.date;
+        var stId = box.getAttribute('data-stid') || box.dataset.stid;
+        var isLt = box.getAttribute('data-is-leveltest') === '1';
+
+        if (isLt) {
+          if (window.EthithEnterprise && typeof window.EthithEnterprise.openLevelTestModal === 'function') {
+            window.EthithEnterprise.openLevelTestModal(cls, dKey);
+          }
+          return;
+        }
+
+        var curScore = (box.getAttribute('data-score') || box.dataset.score || '').trim();
+        var nextScore = '';
+        if (curScore === '5') nextScore = '4';
+        else if (curScore === '4') nextScore = '3';
+        else if (curScore === '3') nextScore = '2';
+        else if (curScore === '2') nextScore = '';
+        else nextScore = '5';
+
+        if (!cls.attendance.records) cls.attendance.records = {};
+        if (!cls.attendance.records[dKey]) cls.attendance.records[dKey] = {};
+        if (!cls.attendance.records[dKey][stId]) cls.attendance.records[dKey][stId] = {};
+
+        cls.attendance.records[dKey][stId].score = nextScore;
+        // If teacher gives a grade, automatically ensure presence is marked 'K' if empty
+        if (nextScore && !cls.attendance.records[dKey][stId].status) {
+          cls.attendance.records[dKey][stId].status = 'K';
+        }
+
+        persistAttendance(cls);
+        var sLeft = scrollWrap ? scrollWrap.scrollLeft : 0;
+        EA.render(container, sLeft);
+      };
+
+      box.oncontextmenu = function(e) {
+        e.preventDefault();
+        if (e && e.stopPropagation) e.stopPropagation();
+        var curUser = getActiveUser();
+        var isStudent = curUser && curUser.role === 'student';
+        if (isStudent) return;
+
+        var dKey = box.getAttribute('data-date') || box.dataset.date;
+        var stId = box.getAttribute('data-stid') || box.dataset.stid;
+        var isLt = box.getAttribute('data-is-leveltest') === '1';
+
+        if (isLt) {
+          if (window.EthithEnterprise && typeof window.EthithEnterprise.openLevelTestModal === 'function') {
+            window.EthithEnterprise.openLevelTestModal(cls, dKey);
+          }
+          return;
+        }
+
+        var curScore = (box.getAttribute('data-score') || box.dataset.score || '').trim();
+        var entered = prompt("O‘quvchi bahosi yoki ballini kiriting (masalan: 5, 4, 3, 2, 85, 90 yoki bo‘sh qoldiring):", curScore);
+        if (entered === null) return;
+        var cleanEntered = entered.trim();
+
+        if (!cls.attendance.records) cls.attendance.records = {};
+        if (!cls.attendance.records[dKey]) cls.attendance.records[dKey] = {};
+        if (!cls.attendance.records[dKey][stId]) cls.attendance.records[dKey][stId] = {};
+
+        cls.attendance.records[dKey][stId].score = cleanEntered;
+        if (cleanEntered && !cls.attendance.records[dKey][stId].status) {
+          cls.attendance.records[dKey][stId].status = 'K';
         }
 
         persistAttendance(cls);
