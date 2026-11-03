@@ -650,10 +650,17 @@
       }
     }
 
-    // D. PIN MESSAGE
-    else if (event.type === 'PIN_MSG' && targetCls && event.msgId) {
-      if (targetCls.pinnedId !== event.msgId) {
-        targetCls.pinnedId = event.msgId;
+    // D. PIN / UNPIN MESSAGE
+    else if (event.type === 'PIN_MSG' && targetCls) {
+      targetCls.pinnedId = event.msgId || null;
+      var pBar = document.getElementById('tgPinnedBar');
+      if (!event.msgId) {
+        if (pBar) {
+          pBar.style.transition = 'all 0.25s ease';
+          pBar.style.opacity = '0';
+          setTimeout(function() { pBar.remove(); }, 250);
+        }
+      } else {
         uiNeedsRefresh = true;
       }
     }

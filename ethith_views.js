@@ -1977,8 +1977,52 @@
       else neverCount++;
     });
 
-    function renderMsgBubbleHtml(m, activeCls, myUser) {
-      var isOwn = myUser && ((m.senderId && myUser.id && m.senderId === myUser.id) || (m.senderEmail && myUser.email && m.senderEmail === myUser.email));
+  
+  function canUserDeleteThisMsg(msg, user) {
+    if (!user) return true;
+    if (user.role === 'teacher' || user.role === 'admin' || user.isTeacher === true || (user.email && user.email.toLowerCase().includes('admin'))) {
+      return true;
+    }
+    var uName = (user.name || '').toLowerCase().trim();
+    var uId = (user.id || '').toLowerCase().trim();
+    var uLogin = (user.login || '').toLowerCase().trim();
+    var uEmail = (user.email || '').toLowerCase().trim();
+
+    var sName = (msg.senderName || '').toLowerCase().trim();
+    var sId = (msg.senderId || '').toLowerCase().trim();
+    var sEmail = (msg.senderEmail || '').toLowerCase().trim();
+
+    if (uId && sId && uId === sId) return true;
+    if (uName && sName && (uName === sName || uName.includes(sName) || sName.includes(uName))) return true;
+    if (uEmail && sEmail && uEmail === sEmail) return true;
+    if (uLogin && sId && sId.includes(uLogin)) return true;
+    if (uLogin && sEmail && sEmail.includes(uLogin)) return true;
+    if (uLogin && sName && sName.includes(uLogin)) return true;
+    return false;
+  }
+
+  function checkIsOwnMsg(m, myUser) {
+    if (!myUser) return false;
+    var myName = (myUser.name || '').toLowerCase().trim();
+    var myId = (myUser.id || '').toLowerCase().trim();
+    var myLogin = (myUser.login || '').toLowerCase().trim();
+    var myEmail = (myUser.email || '').toLowerCase().trim();
+
+    var sName = (m.senderName || '').toLowerCase().trim();
+    var sId = (m.senderId || '').toLowerCase().trim();
+    var sEmail = (m.senderEmail || '').toLowerCase().trim();
+
+    if (myId && sId && myId === sId) return true;
+    if (myName && sName && (myName === sName || myName.includes(sName) || sName.includes(myName))) return true;
+    if (myEmail && sEmail && myEmail === sEmail) return true;
+    if (myLogin && sId && sId.includes(myLogin)) return true;
+    if (myLogin && sEmail && sEmail.includes(myLogin)) return true;
+    if (myLogin && sName && sName.includes(myLogin)) return true;
+    return false;
+  }
+
+  function renderMsgBubbleHtml(m, activeCls, myUser) {
+      var isOwn = checkIsOwnMsg(m, myUser);
       var reactionsList = [];
       if (m.reactions) {
         for (var em in m.reactions) {
@@ -2033,7 +2077,7 @@
           return '<div class="tg-msg-sender" style="display:flex;align-items:center;gap:6px">' + (window.ETHITH_RENDER_USER_AVATAR ? window.ETHITH_RENDER_USER_AVATAR({ name: m.senderName, avatar: m.senderAvatar }, 22) : '') + '<span>' + esc(m.senderName) + '</span><span title="' + senderSt.label + '" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + senderSt.color + ';box-shadow:0 0 6px ' + senderSt.color + ';"></span></div>';
         })() : '')) +
         '    <div class="tg-msg-text">' + esc(m.text) + '</div>' +
-        '    <div class="tg-msg-meta">' + m.time + (isOwn ? ' ✓✓' : '') + '</div>' +
+        '    <div class="tg-msg-meta" style="display:flex;align-items:center;justify-content:flex-end;gap:4px;">' + m.time + (isOwn ? ' ✓✓' : '') + '<button type="button" class="tg-msg-opt-btn" data-opt-mid="' + m.id + '" title="Amallar / O\'chirish" style="background:none;border:none;cursor:pointer;color:inherit;opacity:0.65;font-weight:900;font-size:13px;padding:0 3px;line-height:1;display:inline-flex;align-items:center;">⋮</button></div>' +
         (reactionsList.length > 0 ?
           '<div class="tg-reactions-badge">' +
           reactionsList.map(function(r) {
@@ -2102,9 +2146,9 @@
       '  </div>' +
       // Bulky homework banner removed for clean chat view
       (pinnedMsg ?
-        '<div class="tg-pinned-bar" id="tgPinnedBar">' +
-        '  <div>' + ic('pin') + ' <b>Pinned Message:</b> ' + esc(pinnedMsg.senderName) + ': "' + esc(pinnedMsg.text.slice(0, 50)) + '..."</div>' +
-        (isTeacher ? '  <button id="tgUnpinBtn" style="background:none;border:none;cursor:pointer;color:var(--muted)">✕</button>' : '') +
+        '<div class="tg-pinned-bar" id="tgPinnedBar" style="background:rgba(15,23,42,0.92);border-bottom:1.5px solid rgba(56,189,248,0.35);border-left:4px solid #38bdf8;padding:9px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#f8fafc;z-index:10;box-shadow:0 4px 15px rgba(0,0,0,0.3);">' +
+        '  <div style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;font-size:13px;" id="tgPinnedContent">' + ic('pin') + ' <b style="color:#38bdf8;">Pinned Message:</b> ' + esc(pinnedMsg.senderName) + ': "' + esc(pinnedMsg.text.slice(0, 50)) + '..."</div>' +
+        (isTeacher ? '  <button type="button" id="tgUnpinBtn" title="Pinni butunlay bekor qilish (Unpin)" style="background:rgba(239,68,68,0.22);border:1px solid rgba(239,68,68,0.6);border-radius:8px;cursor:pointer;color:#ffffff;font-weight:900;padding:5px 12px;font-size:12px;display:inline-flex;align-items:center;gap:6px;flex-shrink:0;transition:all 0.15s ease;">✕ Pinni bekor qilish</button>' : '') +
         '</div>' : '') +
       '  <div class="tg-messages-scroll" id="tgMsgBox">' +
       (cls.messages || []).map(function(m) {
@@ -2248,10 +2292,33 @@
     var unpinBtn = document.getElementById('tgUnpinBtn');
     if (unpinBtn) {
       unpinBtn.onclick = function(e) {
+        e.preventDefault();
         e.stopPropagation();
+        var liveCls = (S.classes && S.classes.find(function(c) {
+          return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+        })) || cls;
+
+        liveCls.pinnedId = null;
         cls.pinnedId = null;
         App.saveState();
-        renderClassDetail(container, cls);
+
+        if (window.EthithSync) {
+          window.EthithSync.publishLive({
+            type: 'PIN_MSG',
+            classId: liveCls.code || liveCls.id || cls.code || cls.id,
+            msgId: null
+          });
+          window.EthithSync.broadcastLocal(S.classes, S.exams);
+          window.EthithSync.pushRemoteStore(S.classes, S.exams);
+        }
+
+        var pBar = document.getElementById('tgPinnedBar');
+        if (pBar) {
+          pBar.style.transition = 'all 0.25s ease';
+          pBar.style.opacity = '0';
+          pBar.style.transform = 'translateY(-10px)';
+          setTimeout(function() { pBar.remove(); }, 250);
+        }
       };
     }
 
@@ -2310,12 +2377,24 @@
           if (input) input.focus();
         };
 
+        var optBtn = rowEl.querySelector('[data-opt-mid]');
+        if (optBtn) {
+          optBtn.onclick = function(e) {
+            e.stopPropagation();
+            showContextMenu(e.clientX, e.clientY, mItem.id, activeCls, cnt);
+          };
+        }
+
         var touchTimer = null;
         bubble.addEventListener('touchstart', function(e) {
           touchTimer = setTimeout(function() {
             showContextMenu(e.touches[0].clientX, e.touches[0].clientY, bubble.dataset.msgId, activeCls, cnt);
-          }, 550);
+          }, 320);
         }, { passive: true });
+
+        bubble.addEventListener('touchmove', function() {
+          clearTimeout(touchTimer);
+        });
 
         bubble.addEventListener('touchend', function() {
           clearTimeout(touchTimer);
@@ -2608,9 +2687,10 @@
         ));
         var canDelete = isTeacherUser || isMyMsg;
 
+        var canDel = canUserDeleteThisMsg(msg, S.user);
         return '<button class="tg-context-item" id="ctxReplyBtn">' + ic('reply') + ' Reply</button>' +
           (isTeacherUser ? '<button class="tg-context-item" id="ctxPinBtn">' + ic('pin') + ' Pin Message</button>' : '') +
-          (canDelete ? '<button class="tg-context-item danger" id="ctxDeleteBtn">' + ic('trash') + ' O\'chirish (Delete)</button>' : '');
+          (canDel ? '<button class="tg-context-item danger" id="ctxDeleteBtn" style="color:#ef4444 !important;font-weight:700;">🗑️ O\'chirish (Delete)</button>' : '');
       })();
 
     menu.innerHTML = html;
@@ -2676,9 +2756,9 @@
         menu.remove();
         activeContextMenu = null;
 
-        // 1. Instant 0ms particle disintegration locally!
+        // 1. Instant Telegram sand/pixel dissolution in 0ms!
         var row = document.querySelector('.tg-msg-row[data-msg-id="' + msgId + '"]');
-        if (row) disintegrateMsgRow(row);
+        if (row) telegramDisintegrateBubble(row);
 
         // 2. Remove from live state
         var liveCls = (S.classes && S.classes.find(function(c) {

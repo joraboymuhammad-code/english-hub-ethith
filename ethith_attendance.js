@@ -4953,7 +4953,7 @@ EA.render = function(container, preserveScrollLeft) {
         mHtml += '<div style="margin-bottom:20px;background:rgba(2,6,23,0.5);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:12px 14px;">' +
           '<label style="display:block;font-size:12px;font-weight:800;color:#94a3b8;margin-bottom:6px;">✉️ SMS Xabar Matni (namuna):</label>' +
           '<div style="font-size:12.5px;color:#cbd5e1;line-height:1.5;background:rgba(15,23,42,0.8);padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);">' +
-            'Assalomu alaykum, hurmatli ota-ona! Farzandingiz <b>[O\'quvchi ismi]</b> bugun (' + dispDate + ') darsga qatnashmadi. Sababini ma\'lum qilishingizni so\'raymiz. <br><span style="color:#f59e0b;font-weight:700;">ETHITH O\'quv Markazi</span>' +
+            'Hurmatli ota-ona! Farzandingiz <b>[O\'quvchi ismi]</b> bugun darsga qatnashmadi. Sababini bilishimiz uchun guruh ustozi bilan telegram orqali bog\'laning. English House o\'quv markazi.' +
           '</div>' +
         '</div>';
 
@@ -7102,7 +7102,7 @@ EA.render = function(container, preserveScrollLeft) {
 
     // Templates click
     var templates = {
-      absent: "Hurmatli ota-ona! Farzandingiz bugun darsga qatnashmadi. Sababini bilish uchun ustoz bilan bog'laning. English House o'quv markazi.",
+      absent: "Hurmatli ota-ona! Farzandingiz bugun darsga qatnashmadi. Sababini bilishimiz uchun guruh ustozi bilan telegram orqali bog'laning. English House o'quv markazi.",
       payment: "Hurmatli ota-ona! Farzandingiz " + stNameForTemplate + "ning joriy oy uchun ingliz tili kursi to‘lovini amalga oshirishingizni so‘raymiz. English House.",
       level_test: "Hurmatli ota-ona! Farzandingiz " + stNameForTemplate + " guruhida yaqin kunlarda muhim Level Test imtihoni o‘tkaziladi. Farzandingiz darslarga qatnashishini nazorat qilishingizni so‘raymiz. English House.",
       praise: "Hurmatli ota-ona! Farzandingiz " + stNameForTemplate + " bugungi darsda juda faol qatnashdi va a’lo natija ko‘rsatdi. Farzandingiz muvaffaqiyati bilan tabriklaymiz! English House."
@@ -7248,7 +7248,7 @@ EA.render = function(container, preserveScrollLeft) {
     }
 
     // Permanent text persistence from localStorage (strictly <= 160 chars)
-    var EXACT_SMSAPI_TEMPLATE = "Hurmatli ota-ona! Farzandingiz bugun darsga qatnashmadi. Sababini bilish uchun ustoz bilan bog'laning. English House o'quv markazi.";
+    var EXACT_SMSAPI_TEMPLATE = "Hurmatli ota-ona! Farzandingiz bugun darsga qatnashmadi. Sababini bilishimiz uchun guruh ustozi bilan telegram orqali bog'laning. English House o'quv markazi.";
     var savedText = '';
     try {
       savedText = localStorage.getItem('ethith_saved_absent_sms_template');
