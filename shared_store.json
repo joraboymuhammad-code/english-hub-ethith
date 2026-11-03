@@ -23205,7 +23205,7 @@
           "isLoggedOut": false,
           "hasLoggedIn": true,
           "loggedOutAt": 1793738222002,
-          "lastSeen": 1793738246928
+          "lastSeen": 1793738320202
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -23574,167 +23574,6 @@
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
-        },
-        "std_azimjon_848_toirov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_behruz_942_oktamov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_charos_386_baxtiyorova": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_diyor_772_suyundikov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_gulruh_365_tangirova": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_jamshid_843_komilov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_kamron_187_raimberdiyev": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_navroz_651_shavkatov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_niyatullo_582_asatullayev": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_nurlan_856_tangatov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_oktamova_798_zarina": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_orazaliyev_514_amirshox": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_orozboyev_391_ollohberdi": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_otkir_903_tursunmatov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_odina_419_zoirova": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_ozodbek_578_mamatqulov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_rayhona_554_qoshqarova": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_sabina_672_ibodullayeva": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_shohista_786_nosurname": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_shohsasnam_517_bayrbekova": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_xudoyberdiyeva_775_madina": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_yulduz_938_nosurname": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_ziyoda_799_regdfggyj": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
         }
       },
       "activeHomework": {
@@ -23756,6 +23595,7 @@
         "rayxona_271_qoshqarova@student.ethith",
         "rayxona_271_qoshqarova"
       ],
+      "pinnedId": null,
       "customStudentNamesTs": {
         "std_nurlan_856_tangatov": 1793625077010,
         "std_orazaliyev_514_amirshox": 1793625077010,
@@ -23781,8 +23621,7 @@
         "std_niyatullo_582_asatullayev": 1793625077010,
         "std_navroz_651_shavkatov": 1793625077010,
         "std_otkir_903_tursunmatov": 1793625077010
-      },
-      "pinnedId": null
+      }
     },
     {
       "id": "cls_urolov_azizbek_standard",
@@ -26480,12 +26319,12 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "login": "muhammad19",
-      "password": "zizi2026",
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206,
+      "login": "muhammad19",
+      "password": "zizi2026"
     },
     {
       "id": "admin_official_root",
@@ -26502,7 +26341,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738247016
+      "lastSeen": 1793738319224
     },
     {
       "id": "tg_98124765",
@@ -26534,7 +26373,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -26696,7 +26535,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "std_13",
@@ -26833,7 +26672,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Elyor Aborbekov",
+      "name": "Ustoz",
       "email": "elyor.aborbekov@ethith.uz",
       "login": "elyor70",
       "role": "teacher",
@@ -26842,11 +26681,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ravshanov Doniyor",
+      "name": "Ustoz",
       "email": "doniyor.ravshanov@ethith.uz",
       "login": "doniyor24",
       "password": "doniyor2026",
@@ -26866,11 +26705,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Qarshiboyev Humoyun",
+      "name": "Ustoz",
       "email": "humoyun.qarshiboyev@ethith.uz",
       "login": "humoyun15",
       "password": "humoyun2026",
@@ -26887,11 +26726,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Marjona Tovboyeva",
+      "name": "Ustoz",
       "email": "marjona.tovboyeva@ethith.uz",
       "login": "marjona88",
       "password": "marjona2026",
@@ -26908,11 +26747,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Durdona Olimjonova",
+      "name": "Ustoz",
       "email": "durdona.olimjonova@ethith.uz",
       "login": "durdona12",
       "password": "durdona2026",
@@ -26932,11 +26771,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Eldor Tagaev",
+      "name": "Ustoz",
       "email": "eldor.tagaev@ethith.uz",
       "login": "eldor33",
       "password": "eldor2026",
@@ -26956,11 +26795,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Kamola Yaxshilikova",
+      "name": "Ustoz",
       "email": "kamola.yaxshilikova@ethith.uz",
       "login": "kamola45",
       "password": "kamola2026",
@@ -26978,11 +26817,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Iroda Sherqoziyeva",
+      "name": "Ustoz",
       "email": "iroda.sherqoziyeva@ethith.uz",
       "login": "iroda19",
       "password": "iroda2026",
@@ -27000,11 +26839,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Jaloliddin O’rinboyev",
+      "name": "Ustoz",
       "email": "jaloliddin.orinboyev@ethith.uz",
       "login": "jaloliddin99",
       "password": "jaloliddin2026",
@@ -27024,11 +26863,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Pokiza Jumanova",
+      "name": "Ustoz",
       "email": "pokiza.jumanova@ethith.uz",
       "login": "pokiza07",
       "password": "pokiza2026",
@@ -27045,11 +26884,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Arslon Hayrullayev",
+      "name": "Ustoz",
       "email": "arslon.hayrullayev@ethith.uz",
       "login": "arslon64",
       "password": "arslon2026",
@@ -27067,11 +26906,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Sarvinoz Xudoyorova",
+      "name": "Ustoz",
       "email": "sarvinoz.xudoyorova@ethith.uz",
       "login": "sarvinoz82",
       "password": "sarvinoz2026",
@@ -27089,11 +26928,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Sevinch Aliqulova",
+      "name": "Ustoz",
       "email": "sevinch.aliqulova@ethith.uz",
       "login": "sevinch55",
       "password": "sevinch2026",
@@ -27111,11 +26950,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Diyora Xo’jamqulova",
+      "name": "Ustoz",
       "email": "diyora.xojamqulova@ethith.uz",
       "login": "diyora21",
       "password": "diyora2026",
@@ -27135,11 +26974,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Farrux Bosimbekov",
+      "name": "Ustoz",
       "email": "farrux.bosimbekov@ethith.uz",
       "login": "farrux93",
       "password": "farrux2026",
@@ -27159,11 +26998,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Barno Ahmadova",
+      "name": "Ustoz",
       "email": "barno.ahmadova@ethith.uz",
       "login": "barno36",
       "password": "barno2026",
@@ -27183,11 +27022,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Shodiyor (matematika)",
+      "name": "Ustoz",
       "email": "shodiyor.matematika@ethith.uz",
       "login": "shodiyor50",
       "password": "shodiyor2026",
@@ -27204,7 +27043,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "st_998901239988",
@@ -27232,7 +27071,7 @@
       "title": "👑 IELTS Qiroli"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "teacher_1793431051291",
       "name": "Muhammadyusuf",
       "login": "muhammadyusuf11",
       "password": "muhammadyusuf2026",
@@ -27242,14 +27081,10 @@
       "subject": "Ingliz tili",
       "salarySharePercent": 50,
       "createdAt": 1793431051291,
-      "updatedAt": 1793431308524,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793738248205
+      "updatedAt": 1793431308524
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_urolov_azizbek",
       "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
@@ -27269,11 +27104,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "admin_official_teacher",
-      "name": "Zizi Ustoz",
+      "name": "Ustoz",
       "login": "zizi24",
       "password": "zizi2026",
       "email": "strikeruzb52@gmail.com",
@@ -27281,11 +27116,11 @@
       "teacherId": "tc_oprlehyw5",
       "subject": "Ingliz tili (Intermediate)",
       "salarySharePercent": 50,
-      "updatedAt": 1793627171338,
+      "updatedAt": 1793475000326,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "shamshodbekibrohimov@telegram.org",
@@ -27315,7 +27150,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793738248205
+      "lastSeen": 1793738320206
     },
     {
       "id": "std_mixswdasd_804_selixasdasd",
@@ -27346,15 +27181,19 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "loggedOutAt": 1793738222002,
-      "lastSeen": 1793738246928
+      "lastSeen": 1793738320202
     },
     {
-      "id": "teacher_1793728925723",
+      "id": "admin_official_teacher",
       "name": "muhammad",
       "email": "muhammad19@ethith.uz",
       "login": "muhammad19",
       "role": "teacher",
-      "updatedAt": 1793734029026
+      "updatedAt": 1793734029026,
+      "isLoggedOut": false,
+      "hasLoggedIn": true,
+      "isOnline": true,
+      "lastSeen": 1793738320206
     },
     {
       "id": "std_mix_416_selix",
@@ -97640,8 +97479,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "2",
-        "top": 63,
-        "left": 88,
+        "top": 69.5,
+        "left": 20.4,
         "width": 5,
         "height": 2,
         "correct": [
@@ -97659,8 +97498,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "3",
-        "top": 69.5,
-        "left": 74.5,
+        "top": 75.2,
+        "left": 36.2,
         "width": 12,
         "height": 2,
         "correct": [
@@ -97697,8 +97536,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "5",
-        "top": 82,
-        "left": 34.8,
+        "top": 82.1,
+        "left": 35.5,
         "width": 12,
         "height": 2,
         "correct": [
@@ -97716,8 +97555,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "6",
-        "top": 85.3,
-        "left": 60.1,
+        "top": 85,
+        "left": 38.9,
         "width": 9.9,
         "height": 2.1,
         "correct": [
@@ -97731,46 +97570,16 @@
         "page": 2079
       },
       {
-        "id": "p2079_ex3_1a",
-        "type": "choice",
-        "exercise": "3",
-        "label": "1",
-        "group": "p2079_ex3_1",
-        "top": 70.6,
-        "left": 55,
-        "width": 22,
-        "height": 1.6,
-        "text": "There is no question that the majority of the daily news is bad news.",
-        "isCorrect": true,
-        "correct": true,
-        "page": 2079
-      },
-      {
         "id": "p2079_ex3_1b",
-        "type": "choice",
-        "exercise": "3",
-        "label": "1",
-        "group": "p2079_ex3_1",
-        "top": 61.2,
-        "left": 56.9,
-        "width": 28.5,
-        "height": 1.8,
-        "text": "Definitely most news we hear is bad news.",
-        "isCorrect": false,
-        "correct": false,
-        "page": 2079
-      },
-      {
-        "id": "p2079_ex3_2a",
-        "type": "choice",
+        "type": "choose",
         "exercise": "3",
         "label": "2",
-        "group": "p2079_ex3_2",
-        "top": 75,
-        "left": 55,
-        "width": 22,
-        "height": 1.6,
-        "text": "I think because we hear so much bad news we usually think that the world is really bad.",
+        "group": "2",
+        "top": 63.2,
+        "left": 57.3,
+        "width": 28.5,
+        "height": 1.8,
+        "text": "2",
         "isCorrect": false,
         "correct": false,
         "page": 2079
@@ -97781,8 +97590,8 @@
         "exercise": "3",
         "label": "2",
         "group": "p2079_ex3_2",
-        "top": 77.6,
-        "left": 55,
+        "top": 66.7,
+        "left": 57.2,
         "width": 22,
         "height": 1.6,
         "text": "Without doubt, this daily diet of negativity has an effect on how we perceive the world.",
@@ -97796,8 +97605,8 @@
         "exercise": "3",
         "label": "3",
         "group": "p2079_ex3_3",
-        "top": 69.4,
-        "left": 56.9,
+        "top": 69.3,
+        "left": 57.5,
         "width": 17.6,
         "height": 1.8,
         "text": "Bad news sells, doesn't it?",
@@ -97811,8 +97620,8 @@
         "exercise": "3",
         "label": "3",
         "group": "p2079_ex3_3",
-        "top": 71.2,
-        "left": 56.9,
+        "top": 71,
+        "left": 57.2,
         "width": 25.3,
         "height": 1.8,
         "text": "The simple fact is that bad news sells.",
@@ -97826,8 +97635,8 @@
         "exercise": "3",
         "label": "4",
         "group": "p2079_ex3_4",
-        "top": 84.8,
-        "left": 55,
+        "top": 73.2,
+        "left": 57.6,
         "width": 22,
         "height": 1.6,
         "text": "Much of the bad news we hear does nothing other than to make us feel sad and anxious...",
@@ -97841,8 +97650,8 @@
         "exercise": "3",
         "label": "4",
         "group": "p2079_ex3_4",
-        "top": 87.9,
-        "left": 55,
+        "top": 76.3,
+        "left": 57.2,
         "width": 22,
         "height": 1.6,
         "text": "Hearing bad news mainly just makes us feel sad and anxious about the world.",
@@ -97856,8 +97665,8 @@
         "exercise": "3",
         "label": "5",
         "group": "p2079_ex3_5",
-        "top": 91,
-        "left": 55,
+        "top": 79.9,
+        "left": 57.1,
         "width": 22,
         "height": 1.6,
         "text": "I do think that the news providers should make more of an effort...",
@@ -97871,8 +97680,8 @@
         "exercise": "3",
         "label": "5",
         "group": "p2079_ex3_5",
-        "top": 94,
-        "left": 55,
+        "top": 82.9,
+        "left": 57.1,
         "width": 22,
         "height": 1.6,
         "text": "I do think that more of an effort should be made by the news providers...",
@@ -146516,5 +146325,5 @@
       }
     }
   },
-  "updatedAt": 1793738248978
+  "updatedAt": 1793738320992
 }
