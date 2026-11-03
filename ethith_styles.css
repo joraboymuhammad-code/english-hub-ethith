@@ -10168,3 +10168,81 @@ html, body {
     opacity: 0;
   }
 }
+
+
+/* Telegram Message Context Menu on Left Click & Right Click */
+.tg-context-menu {
+  position: fixed !important;
+  background: #0f172a !important;
+  background-color: #0f172a !important;
+  border-radius: 14px !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(56, 189, 248, 0.35) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  padding: 6px !important;
+  z-index: 100000 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 220px !important;
+  max-width: 240px !important;
+  animation: ethPop 0.14s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.tg-context-reactions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 3px !important;
+  padding: 6px 4px 8px 4px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  margin-bottom: 4px !important;
+}
+
+.tg-context-reaction-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px !important;
+  padding: 3px 6px !important;
+  font-size: 18px !important;
+  cursor: pointer !important;
+  transition: transform 0.12s, background 0.12s !important;
+}
+
+.tg-context-reaction-btn:hover {
+  transform: scale(1.22) !important;
+  background: rgba(56, 189, 248, 0.25) !important;
+}
+
+.tg-context-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 9px 12px !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+  border: none !important;
+  color: #e2e8f0 !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  width: 100% !important;
+  transition: all 0.12s ease !important;
+}
+
+.tg-context-item:hover {
+  background: rgba(56, 189, 248, 0.16) !important;
+  color: #38bdf8 !important;
+}
+
+.tg-context-item.danger {
+  color: #f87171 !important;
+}
+
+.tg-context-item.danger:hover {
+  background: rgba(239, 68, 68, 0.22) !important;
+  color: #fca5a5 !important;
+}
+
+/* Cursor pointer on chat bubbles so users know left-click works */
+.tg-bubble {
+  cursor: pointer !important;
+}

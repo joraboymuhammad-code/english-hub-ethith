@@ -2360,6 +2360,13 @@
 
       var bubble = rowEl.querySelector('.tg-bubble');
       if (bubble) {
+        // Sichqonchaning CHAP TOMONI (Left Click) bosilganda darhol menyu chiqishi!
+        bubble.addEventListener('click', function(e) {
+          if (e.target.closest('.tg-reaction-pill') || e.target.closest('a') || e.target.closest('button')) return;
+          e.stopPropagation();
+          showContextMenu(e.clientX, e.clientY, mItem.id || bubble.dataset.msgId, activeCls, cnt);
+        });
+
         bubble.ondblclick = function(e) {
           e.stopPropagation();
           var msgId = bubble.dataset.msgId;
@@ -2646,19 +2653,34 @@
     }
   }
 
-  // Telegram Context Menu: Compact Reactions Row, Reply, Pin, Delete
+  // Telegram Context Menu: Compact Reactions Row, Reply, Pin, Delete (Left-click & Right-click)
   function showContextMenu(x, y, msgId, cls, mainContainer) {
-    if (activeContextMenu) activeContextMenu.remove();
+    if (activeContextMenu) {
+      activeContextMenu.remove();
+      activeContextMenu = null;
+    }
 
-    var msg = cls.messages.find(function(m) { return m.id === msgId; });
+    var liveCls = (S.classes && S.classes.find(function(c) {
+      return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+    })) || cls;
+
+    var msg = (liveCls.messages || []).find(function(m) { return m.id === msgId; }) ||
+              (cls.messages || []).find(function(m) { return m.id === msgId; });
     if (!msg) return;
 
     var menu = document.createElement('div');
     menu.className = 'tg-context-menu';
 
     // Position menu within viewport
-    var posX = Math.max(10, Math.min(x, window.innerWidth - 225));
-    var posY = Math.max(10, Math.min(y, window.innerHeight - 240));
+    var row = document.querySelector('.tg-msg-row[data-msg-id="' + msgId + '"]');
+    var bRect = row ? (row.querySelector('.tg-bubble') || row).getBoundingClientRect() : null;
+    var posX = x;
+    var posY = y;
+    if ((!posX || posX < 5) && bRect) posX = bRect.left + 20;
+    if ((!posY || posY < 5) && bRect) posY = bRect.top + 20;
+
+    posX = Math.max(10, Math.min(posX, window.innerWidth - 230));
+    posY = Math.max(10, Math.min(posY, window.innerHeight - 260));
     menu.style.left = posX + 'px';
     menu.style.top = posY + 'px';
 
