@@ -23293,7 +23293,23 @@
         "msg_1793718218122_3dwuk",
         "msg_1793718186438_xser5"
       ],
-      "messages": [],
+      "messages": [
+        {
+          "id": "msg_1793719719874_t87j7",
+          "timestamp": 1793719719874,
+          "senderId": "admin_official_teacher",
+          "senderName": "Azizbek Urolov",
+          "senderEmail": "azizbek.urolov@ethith.uz",
+          "text": "salom",
+          "time": "20:28",
+          "replyTo": null,
+          "reactions": {
+            "👏": [
+              "azimjon_848_toirov"
+            ]
+          }
+        }
+      ],
       "learningMonths": 2,
       "learningDays": 11,
       "studentPayments": {
@@ -145969,5 +145985,5 @@
       }
     }
   },
-  "updatedAt": 1793718605162
+  "updatedAt": 1793719754894
 }
