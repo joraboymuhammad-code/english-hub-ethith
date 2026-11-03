@@ -23193,9 +23193,11 @@
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
-          "isOnline": false,
+          "isOnline": true,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "lastLogin": "2026-11-03T15:01:51.728Z",
+          "dailyMinutes": 56
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -23289,9 +23291,9 @@
         }
       ],
       "deletedMsgIds": [
+        "msg_1793718186438_xser5",
         "msg_1793718198750_ptftv",
-        "msg_1793718218122_3dwuk",
-        "msg_1793718186438_xser5"
+        "msg_1793718218122_3dwuk"
       ],
       "messages": [
         {
@@ -26808,7 +26810,7 @@
       "updatedAt": 1793431308524
     },
     {
-      "id": "t_urolov_azizbek",
+      "id": "admin_official_teacher",
       "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
@@ -26822,10 +26824,9 @@
         "cls_urolov_azizbek_intermediate_practice",
         "cls_urolov_azizbek_upper_intermediate_standard"
       ],
-      "createdAt": 1793718068808,
+      "createdAt": 1793202631415,
       "updatedAt": 1793473052536,
-      "level": "C2",
-      "gifts": []
+      "level": "C2"
     },
     {
       "id": "admin_official_teacher",
@@ -145943,7 +145944,50 @@
       "room": "Room 102 (Blue Room)"
     }
   ],
-  "contests": [],
+  "contests": [
+    {
+      "id": "cnt_kuzgi_2026",
+      "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
+      "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
+      "startDate": 1793004441449,
+      "endDate": 1793695641449,
+      "prizeCoins": 1000,
+      "testId": "TST-7K2M9",
+      "participants": {
+        "std_1": {
+          "name": "Ashurov Dilyorbek",
+          "score": 95,
+          "timeSec": 140,
+          "completedAt": 1793087241449
+        },
+        "std_2": {
+          "name": "Ergasheva Madina",
+          "score": 92,
+          "timeSec": 165,
+          "completedAt": 1793087341449
+        },
+        "std_4": {
+          "name": "JO‘RABOYEV MUXAMMADYUSUF",
+          "score": 98,
+          "timeSec": 110,
+          "completedAt": 1793087441449
+        },
+        "std_5": {
+          "name": "Jo'raboyev Javoxir",
+          "score": 88,
+          "timeSec": 180,
+          "completedAt": 1793087541449
+        },
+        "std_6": {
+          "name": "Mavlonova Ruxshona",
+          "score": 85,
+          "timeSec": 190,
+          "completedAt": 1793087641449
+        }
+      },
+      "status": "active"
+    }
+  ],
   "payments": {
     "2026-10": {
       "std_1": {
@@ -145986,5 +146030,5 @@
       }
     }
   },
-  "updatedAt": 1793721509127
+  "updatedAt": 1793721516959
 }
