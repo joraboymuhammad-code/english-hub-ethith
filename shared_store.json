@@ -23193,11 +23193,9 @@
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
-          "isOnline": true,
+          "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "lastLogin": "2026-11-03T15:01:51.728Z",
-          "dailyMinutes": 64
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -23291,9 +23289,9 @@
         }
       ],
       "deletedMsgIds": [
-        "msg_1793718186438_xser5",
         "msg_1793718198750_ptftv",
-        "msg_1793718218122_3dwuk"
+        "msg_1793718218122_3dwuk",
+        "msg_1793718186438_xser5"
       ],
       "messages": [
         {
@@ -26810,7 +26808,7 @@
       "updatedAt": 1793431308524
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_urolov_azizbek",
       "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
@@ -26824,9 +26822,10 @@
         "cls_urolov_azizbek_intermediate_practice",
         "cls_urolov_azizbek_upper_intermediate_standard"
       ],
-      "createdAt": 1793202631415,
+      "createdAt": 1793718068808,
       "updatedAt": 1793473052536,
-      "level": "C2"
+      "level": "C2",
+      "gifts": []
     },
     {
       "id": "admin_official_teacher",
@@ -144915,7 +144914,7 @@
       "email": "doniyor.ravshanov@ethith.uz",
       "subject": "Ingliz tili (CEFR Multi-Level)",
       "hourlyRate": 110000,
-      "teachingHours": 0,
+      "teachingHours": 68,
       "card": "8600 1737 6773 7826",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -144945,7 +144944,7 @@
       "email": "humoyun.qarshiboyev@ethith.uz",
       "subject": "Ingliz tili (Practice English)",
       "hourlyRate": 95000,
-      "teachingHours": 0,
+      "teachingHours": 48,
       "card": "8600 9180 1074 6310",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -144969,7 +144968,7 @@
       "email": "marjona.tovboyeva@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 90000,
-      "teachingHours": 0,
+      "teachingHours": 48,
       "card": "8600 7570 9747 6845",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -144995,7 +144994,7 @@
       "email": "durdona.olimjonova@ethith.uz",
       "subject": "Ingliz tili (Beginner / Inter)",
       "hourlyRate": 100000,
-      "teachingHours": 0,
+      "teachingHours": 64,
       "card": "8600 5388 3997 7659",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145025,7 +145024,7 @@
       "email": "eldor.tagaev@ethith.uz",
       "subject": "Ingliz tili (General English)",
       "hourlyRate": 100000,
-      "teachingHours": 0,
+      "teachingHours": 64,
       "card": "8600 9836 2231 3521",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145055,7 +145054,7 @@
       "email": "kamola.yaxshilikova@ethith.uz",
       "subject": "Ingliz tili (Beginner / Elementary)",
       "hourlyRate": 95000,
-      "teachingHours": 0,
+      "teachingHours": 54,
       "card": "8600 3037 8661 9611",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145081,7 +145080,7 @@
       "email": "iroda.sherqoziyeva@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 95000,
-      "teachingHours": 0,
+      "teachingHours": 54,
       "card": "8600 8200 8823 6053",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145107,7 +145106,7 @@
       "email": "elyor.aborbekov@ethith.uz",
       "subject": "Ingliz tili (Pre / Inter / Upper)",
       "hourlyRate": 110000,
-      "teachingHours": 0,
+      "teachingHours": 72,
       "card": "8600 4747 3927 9285",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145139,7 +145138,7 @@
       "email": "jaloliddin.orinboyev@ethith.uz",
       "subject": "Ingliz tili (Pre / Inter / Standard)",
       "hourlyRate": 105000,
-      "teachingHours": 0,
+      "teachingHours": 64,
       "card": "8600 3286 1441 8063",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145169,7 +145168,7 @@
       "email": "pokiza.jumanova@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 90000,
-      "teachingHours": 0,
+      "teachingHours": 48,
       "card": "8600 4814 2290 9478",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145193,7 +145192,7 @@
       "email": "arslon.hayrullayev@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 95000,
-      "teachingHours": 0,
+      "teachingHours": 54,
       "card": "8600 2983 6185 5341",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145219,7 +145218,7 @@
       "email": "sarvinoz.xudoyorova@ethith.uz",
       "subject": "Ingliz tili (Intermediate / Standard)",
       "hourlyRate": 100000,
-      "teachingHours": 0,
+      "teachingHours": 54,
       "card": "8600 2510 8636 7287",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145245,7 +145244,7 @@
       "email": "sevinch.aliqulova@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 95000,
-      "teachingHours": 0,
+      "teachingHours": 54,
       "card": "8600 9373 3768 6749",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145272,7 +145271,7 @@
       "email": "diyora.xojamqulova@ethith.uz",
       "subject": "Ingliz tili (Beginner / Elementary)",
       "hourlyRate": 100000,
-      "teachingHours": 0,
+      "teachingHours": 64,
       "card": "8600 7019 8442 4863",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145302,7 +145301,7 @@
       "email": "farrux.bosimbekov@ethith.uz",
       "subject": "Ingliz tili (Pre-Inter / Inter)",
       "hourlyRate": 105000,
-      "teachingHours": 0,
+      "teachingHours": 64,
       "card": "8600 7883 1652 5691",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145332,7 +145331,7 @@
       "email": "barno.ahmadova@ethith.uz",
       "subject": "Ingliz tili (Elementary / Pre-Inter)",
       "hourlyRate": 100000,
-      "teachingHours": 0,
+      "teachingHours": 64,
       "card": "8600 2725 8055 2896",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145364,7 +145363,7 @@
       "email": "shodiyor.matematika@ethith.uz",
       "subject": "Matematika",
       "hourlyRate": 110000,
-      "teachingHours": 0,
+      "teachingHours": 54,
       "card": "8600 5419 8367 2781",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145388,7 +145387,7 @@
       "email": "azizbek.urolov@ethith.uz",
       "subject": "Ingliz tili (Upper / Inter)",
       "hourlyRate": 120000,
-      "teachingHours": 0,
+      "teachingHours": 72,
       "card": "8600 9184 5348 5520",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -145446,12 +145445,12 @@
       "password": "ustoz2026",
       "inviteCode": "USTOZ77",
       "subject": "Ingliz tili (IELTS Intensive)",
-      "monthlySalary": 0,
+      "monthlySalary": 6000000,
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "hourlyRate": 100000,
       "teachingHours": 72,
-      "paidThisMonth": false,
+      "paidThisMonth": true,
       "assignedClasses": [
         "cls_ethith_main",
         "cls_upper_intermediate"
@@ -145459,8 +145458,7 @@
       "classOrder": [
         "cls_ethith_main",
         "cls_upper_intermediate"
-      ],
-      "unpaidMonths": 0
+      ]
     },
     {
       "id": "tc_oprlehyw5",
@@ -145471,7 +145469,7 @@
       "inviteCode": "ZIZI24",
       "phone": "+998 93 987 65 43",
       "card": "9860 7788 9900 1122",
-      "monthlySalary": 0,
+      "monthlySalary": 5500000,
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "hourlyRate": 85000,
@@ -145483,8 +145481,7 @@
       ],
       "classOrder": [
         "cls_1792041880052"
-      ],
-      "unpaidMonths": 0
+      ]
     }
   ],
   "fileExplorer": {
@@ -145989,5 +145986,5 @@
       }
     }
   },
-  "updatedAt": 1793722006406
+  "updatedAt": 1793722022332
 }
