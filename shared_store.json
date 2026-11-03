@@ -1,392 +1,6 @@
 {
   "classes": [
     {
-      "id": "cls_1792041880052",
-      "name": "Bizani gurux",
-      "code": "ETH-QOY2Z8",
-      "teacherId": "tc_oprlehyw5",
-      "teacherName": "Name",
-      "teacherEmail": "strikeruzb52@gmail.com",
-      "students": [
-        {
-          "id": "cls_1792041880052_std_1",
-          "name": "tester_1",
-          "email": "cls_1792041880052_std_1@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_2",
-          "name": "tester_2",
-          "email": "cls_1792041880052_std_2@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_3",
-          "name": "tester_3",
-          "email": "cls_1792041880052_std_3@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_4",
-          "name": "tester_4",
-          "email": "cls_1792041880052_std_4@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_5",
-          "name": "tester_5",
-          "email": "cls_1792041880052_std_5@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_6",
-          "name": "tester_6",
-          "email": "cls_1792041880052_std_6@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_7",
-          "name": "tester_7",
-          "email": "cls_1792041880052_std_7@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_8",
-          "name": "tester_8",
-          "email": "cls_1792041880052_std_8@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_9",
-          "name": "tester_9",
-          "email": "cls_1792041880052_std_9@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_10",
-          "name": "tester_10",
-          "email": "cls_1792041880052_std_10@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_11",
-          "name": "tester_11",
-          "email": "cls_1792041880052_std_11@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_12",
-          "name": "tester_12",
-          "email": "cls_1792041880052_std_12@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_13",
-          "name": "tester_13",
-          "email": "cls_1792041880052_std_13@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_14",
-          "name": "tester_14",
-          "email": "cls_1792041880052_std_14@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_15",
-          "name": "tester_15",
-          "email": "cls_1792041880052_std_15@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_16",
-          "name": "tester_16",
-          "email": "cls_1792041880052_std_16@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_17",
-          "name": "tester_17",
-          "email": "cls_1792041880052_std_17@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1792041880052_std_18",
-          "name": "tester_18",
-          "email": "cls_1792041880052_std_18@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        }
-      ],
-      "messages": [],
-      "pinnedId": null,
-      "deletedMsgIds": [
-        "msg_1792042347995_z52xw",
-        "msg_1792042342788_9894b",
-        "msg_1792042367569_7htzs",
-        "msg_1792042036562_fkm5k",
-        "msg_1792042358929_8iaq2",
-        "msg_1792041984917_cd4i9"
-      ],
-      "schedule": "har_kuni",
-      "attendance": {
-        "records": {
-          "2026-09-29": {
-            "std_1": {
-              "status": "K"
-            },
-            "std_2": {
-              "status": "K"
-            },
-            "std_3": {
-              "status": "K"
-            }
-          },
-          "2026-10-28": {
-            "u1": {
-              "status": "K",
-              "score": "5",
-              "hwDone": true,
-              "hwPct": 100,
-              "hwLesson": "10.4",
-              "hwCorrect": 38,
-              "hwTotal": 38,
-              "hwCompletedAt": 1793129842154
-            }
-          },
-          "2026-10-21": {
-            "tg_6772427596": {
-              "status": "K",
-              "score": "2",
-              "hwDone": true,
-              "hwPct": 0,
-              "hwLesson": "1.1",
-              "hwCorrect": 0,
-              "hwTotal": 36,
-              "hwCompletedAt": 1792999901066
-            }
-          }
-        },
-        "lessonTypes": {
-          "2026-10-21": "Vazifa: 1.1",
-          "2026-10-19": "Oddiy",
-          "2026-10-28": "Vazifa: 2.1"
-        },
-        "holidays": {},
-        "homeworks": {
-          "2026-10-21": {
-            "dateKey": "2026-10-21",
-            "dateDisp": "21.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 1792608458469
-          }
-        },
-        "updatedAt": 1793129842154
-      },
-      "customStudentNames": {},
-      "activeHomework": {
-        "dateKey": "2026-10-21",
-        "dateDisp": "21.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1792608458469
-      },
-      "maxCapacity": 18,
-      "studentPayments": {}
-    },
-    {
       "id": "cls_ravshanov_doniyor_cefr_1",
       "name": "CEFR_1",
       "code": "ETH-05MQMO",
@@ -857,7 +471,9 @@
         }
       },
       "learningMonths": 2,
-      "learningDays": 24
+      "learningDays": 24,
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_2",
@@ -1189,7 +805,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 15,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_3",
@@ -1803,7 +1421,9 @@
         }
       },
       "learningMonths": 0,
-      "learningDays": 20
+      "learningDays": 20,
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_4",
@@ -2135,7 +1755,9 @@
       "extraHomework": [],
       "learningMonths": 0,
       "learningDays": 15,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_qarshiboyev_humoyun_practice",
@@ -2467,7 +2089,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 20,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_tovboyeva_marjona_beginner",
@@ -2799,7 +2423,9 @@
       "extraHomework": [],
       "learningMonths": 2,
       "learningDays": 25,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_olimjonova_durdona_beginner",
@@ -3160,7 +2786,9 @@
       },
       "learningMonths": 0,
       "learningDays": 2,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_olimjonova_durdona_pre_intermediate",
@@ -3492,7 +3120,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 7,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_olimjonova_durdona_intermediate_1",
@@ -3856,7 +3486,9 @@
       },
       "learningMonths": 2,
       "learningDays": 12,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_olimjonova_durdona_intermediate_2",
@@ -4188,7 +3820,9 @@
       "extraHomework": [],
       "learningMonths": 0,
       "learningDays": 17,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_tagaev_eldor_beginner",
@@ -4520,7 +4154,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 22,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_tagaev_eldor_elementary",
@@ -4852,7 +4488,9 @@
       "extraHomework": [],
       "learningMonths": 2,
       "learningDays": 27,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_1",
@@ -5184,7 +4822,9 @@
       "extraHomework": [],
       "learningMonths": 0,
       "learningDays": 4,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_2",
@@ -5516,7 +5156,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 9,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_yaxshilikova_kamola_beginner",
@@ -5848,7 +5490,9 @@
       "extraHomework": [],
       "learningMonths": 2,
       "learningDays": 14,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_yaxshilikova_kamola_elementary",
@@ -6180,7 +5824,9 @@
       "extraHomework": [],
       "learningMonths": 0,
       "learningDays": 19,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_sherqoziyeva_iroda_beginner_1",
@@ -6512,7 +6158,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 24,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_sherqoziyeva_iroda_beginner_2",
@@ -6844,7 +6492,9 @@
       "extraHomework": [],
       "learningMonths": 2,
       "learningDays": 1,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_aborbekov_elyor_pre_intermediate_1",
@@ -7176,7 +6826,9 @@
       "extraHomework": [],
       "learningMonths": 0,
       "learningDays": 6,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_aborbekov_elyor_pre_intermediate_2",
@@ -7508,7 +7160,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 11,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_aborbekov_elyor_intermediate_1",
@@ -7840,7 +7494,9 @@
       "extraHomework": [],
       "learningMonths": 2,
       "learningDays": 16,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_aborbekov_elyor_intermediate_2",
@@ -8172,7 +7828,9 @@
       "extraHomework": [],
       "learningMonths": 0,
       "learningDays": 21,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_aborbekov_elyor_upper_intermediate",
@@ -8504,7 +8162,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 26,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_orinboyev_jaloliddin_pre_intermediate",
@@ -8836,7 +8496,9 @@
       "extraHomework": [],
       "learningMonths": 2,
       "learningDays": 3,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_orinboyev_jaloliddin_intermediate",
@@ -9168,7 +8830,9 @@
       "extraHomework": [],
       "learningMonths": 0,
       "learningDays": 8,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_orinboyev_jaloliddin_standard_1",
@@ -9500,7 +9164,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 13,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_orinboyev_jaloliddin_standard_2",
@@ -9832,7 +9498,9 @@
       "extraHomework": [],
       "learningMonths": 2,
       "learningDays": 18,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_jumanova_pokiza_beginner",
@@ -10164,7 +9832,9 @@
       "extraHomework": [],
       "learningMonths": 0,
       "learningDays": 23,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_hayrullayev_arslon_beginner_1",
@@ -10496,7 +10166,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 0,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_hayrullayev_arslon_beginner_2",
@@ -10828,7 +10500,9 @@
       "extraHomework": [],
       "learningMonths": 2,
       "learningDays": 5,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_xudoyorova_sarvinoz_intermediate",
@@ -11189,7 +10863,9 @@
       },
       "learningMonths": 0,
       "learningDays": 10,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_xudoyorova_sarvinoz_standard",
@@ -11521,7 +11197,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 15,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_aliqulova_sevinch_beginner_1",
@@ -11853,7 +11531,9 @@
       "extraHomework": [],
       "learningMonths": 2,
       "learningDays": 20,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_aliqulova_sevinch_beginner_2",
@@ -12185,7 +11865,9 @@
       "extraHomework": [],
       "learningMonths": 0,
       "learningDays": 25,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_xojamqulova_diyora_beginner",
@@ -12517,7 +12199,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 2,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_1",
@@ -12849,7 +12533,9 @@
       "extraHomework": [],
       "learningMonths": 2,
       "learningDays": 7,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_2",
@@ -13181,7 +12867,9 @@
       "extraHomework": [],
       "learningMonths": 0,
       "learningDays": 12,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_3",
@@ -13513,7 +13201,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 17,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_bosimbekov_farrux_pre_intermediate_1",
@@ -13874,7 +13564,9 @@
       },
       "learningMonths": 2,
       "learningDays": 22,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_bosimbekov_farrux_pre_intermediate_2",
@@ -14206,7 +13898,9 @@
       "extraHomework": [],
       "learningMonths": 0,
       "learningDays": 27,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_bosimbekov_farrux_intermediate_1",
@@ -14538,7 +14232,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 4,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_bosimbekov_farrux_intermediate_2",
@@ -14870,7 +14566,9 @@
       "extraHomework": [],
       "learningMonths": 2,
       "learningDays": 9,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_ahmadova_barno_elementary_1",
@@ -15202,7 +14900,9 @@
       "extraHomework": [],
       "learningMonths": 0,
       "learningDays": 14,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_ahmadova_barno_elementary_2",
@@ -15534,7 +15234,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 19,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_ahmadova_barno_elementary_3",
@@ -15866,7 +15568,9 @@
       "extraHomework": [],
       "learningMonths": 2,
       "learningDays": 24,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_ahmadova_barno_pre_intermediate",
@@ -16198,7 +15902,9 @@
       "extraHomework": [],
       "learningMonths": 0,
       "learningDays": 1,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_shodiyor_matematika_matematika",
@@ -16530,7 +16236,9 @@
       "extraHomework": [],
       "learningMonths": 1,
       "learningDays": 6,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_urolov_azizbek_upper",
@@ -16602,294 +16310,6 @@
       },
       "customStudentPhones": {},
       "students": [
-        {
-          "id": "cls_urolov_azizbek_upper_std_1",
-          "name": "tester_1",
-          "email": "cls_urolov_azizbek_upper_std_1@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_2",
-          "name": "tester_2",
-          "email": "cls_urolov_azizbek_upper_std_2@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_3",
-          "name": "tester_3",
-          "email": "cls_urolov_azizbek_upper_std_3@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_4",
-          "name": "tester_4",
-          "email": "cls_urolov_azizbek_upper_std_4@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_5",
-          "name": "tester_5",
-          "email": "cls_urolov_azizbek_upper_std_5@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_6",
-          "name": "tester_6",
-          "email": "cls_urolov_azizbek_upper_std_6@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_7",
-          "name": "tester_7",
-          "email": "cls_urolov_azizbek_upper_std_7@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_8",
-          "name": "tester_8",
-          "email": "cls_urolov_azizbek_upper_std_8@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_9",
-          "name": "tester_9",
-          "email": "cls_urolov_azizbek_upper_std_9@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_10",
-          "name": "tester_10",
-          "email": "cls_urolov_azizbek_upper_std_10@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_11",
-          "name": "tester_11",
-          "email": "cls_urolov_azizbek_upper_std_11@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_12",
-          "name": "tester_12",
-          "email": "cls_urolov_azizbek_upper_std_12@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_13",
-          "name": "tester_13",
-          "email": "cls_urolov_azizbek_upper_std_13@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_14",
-          "name": "tester_14",
-          "email": "cls_urolov_azizbek_upper_std_14@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_15",
-          "name": "tester_15",
-          "email": "cls_urolov_azizbek_upper_std_15@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_16",
-          "name": "tester_16",
-          "email": "cls_urolov_azizbek_upper_std_16@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_17",
-          "name": "tester_17",
-          "email": "cls_urolov_azizbek_upper_std_17@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_upper_std_18",
-          "name": "tester_18",
-          "email": "cls_urolov_azizbek_upper_std_18@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
         {
           "id": "std_nurlan_856_tangatov",
           "name": "Nurlan Tangatov",
@@ -17345,7 +16765,9 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "pinnedId": null
+      "pinnedId": null,
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_urolov_azizbek_standard",
@@ -17406,294 +16828,6 @@
       },
       "customStudentPhones": {},
       "students": [
-        {
-          "id": "cls_urolov_azizbek_standard_std_1",
-          "name": "tester_1",
-          "email": "cls_urolov_azizbek_standard_std_1@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_2",
-          "name": "tester_2",
-          "email": "cls_urolov_azizbek_standard_std_2@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_3",
-          "name": "tester_3",
-          "email": "cls_urolov_azizbek_standard_std_3@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_4",
-          "name": "tester_4",
-          "email": "cls_urolov_azizbek_standard_std_4@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_5",
-          "name": "tester_5",
-          "email": "cls_urolov_azizbek_standard_std_5@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_6",
-          "name": "tester_6",
-          "email": "cls_urolov_azizbek_standard_std_6@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_7",
-          "name": "tester_7",
-          "email": "cls_urolov_azizbek_standard_std_7@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_8",
-          "name": "tester_8",
-          "email": "cls_urolov_azizbek_standard_std_8@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_9",
-          "name": "tester_9",
-          "email": "cls_urolov_azizbek_standard_std_9@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_10",
-          "name": "tester_10",
-          "email": "cls_urolov_azizbek_standard_std_10@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_11",
-          "name": "tester_11",
-          "email": "cls_urolov_azizbek_standard_std_11@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_12",
-          "name": "tester_12",
-          "email": "cls_urolov_azizbek_standard_std_12@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_13",
-          "name": "tester_13",
-          "email": "cls_urolov_azizbek_standard_std_13@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_14",
-          "name": "tester_14",
-          "email": "cls_urolov_azizbek_standard_std_14@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_15",
-          "name": "tester_15",
-          "email": "cls_urolov_azizbek_standard_std_15@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_16",
-          "name": "tester_16",
-          "email": "cls_urolov_azizbek_standard_std_16@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_17",
-          "name": "tester_17",
-          "email": "cls_urolov_azizbek_standard_std_17@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_standard_std_18",
-          "name": "tester_18",
-          "email": "cls_urolov_azizbek_standard_std_18@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
         {
           "id": "std_bahora_901_nosurname",
           "name": "Bahora No Surname",
@@ -18090,7 +17224,9 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_urolov_azizbek_intermediate",
@@ -18157,294 +17293,6 @@
       },
       "customStudentPhones": {},
       "students": [
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_1",
-          "name": "tester_1",
-          "email": "cls_urolov_azizbek_intermediate_std_1@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_2",
-          "name": "tester_2",
-          "email": "cls_urolov_azizbek_intermediate_std_2@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_3",
-          "name": "tester_3",
-          "email": "cls_urolov_azizbek_intermediate_std_3@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_4",
-          "name": "tester_4",
-          "email": "cls_urolov_azizbek_intermediate_std_4@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_5",
-          "name": "tester_5",
-          "email": "cls_urolov_azizbek_intermediate_std_5@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_6",
-          "name": "tester_6",
-          "email": "cls_urolov_azizbek_intermediate_std_6@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_7",
-          "name": "tester_7",
-          "email": "cls_urolov_azizbek_intermediate_std_7@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_8",
-          "name": "tester_8",
-          "email": "cls_urolov_azizbek_intermediate_std_8@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_9",
-          "name": "tester_9",
-          "email": "cls_urolov_azizbek_intermediate_std_9@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_10",
-          "name": "tester_10",
-          "email": "cls_urolov_azizbek_intermediate_std_10@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_11",
-          "name": "tester_11",
-          "email": "cls_urolov_azizbek_intermediate_std_11@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_12",
-          "name": "tester_12",
-          "email": "cls_urolov_azizbek_intermediate_std_12@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_13",
-          "name": "tester_13",
-          "email": "cls_urolov_azizbek_intermediate_std_13@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_14",
-          "name": "tester_14",
-          "email": "cls_urolov_azizbek_intermediate_std_14@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_15",
-          "name": "tester_15",
-          "email": "cls_urolov_azizbek_intermediate_std_15@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_16",
-          "name": "tester_16",
-          "email": "cls_urolov_azizbek_intermediate_std_16@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_17",
-          "name": "tester_17",
-          "email": "cls_urolov_azizbek_intermediate_std_17@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_urolov_azizbek_intermediate_std_18",
-          "name": "tester_18",
-          "email": "cls_urolov_azizbek_intermediate_std_18@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
         {
           "id": "std_orazaliyev_261_amirshox",
           "name": "O'razaliyev Amirshox",
@@ -18805,7 +17653,9 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_urolov_azizbek_practice",
@@ -19164,7 +18014,736 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      }
+      },
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
+    },
+    {
+      "id": "cls_1793728994224",
+      "code": "ETH-AUW99R",
+      "name": "asdasdasdasd",
+      "teacher": "muhammad",
+      "teacherId": "teacher_1793728925723",
+      "teacherName": "muhammad",
+      "room": "302-xona",
+      "schedule": "har_kuni",
+      "maxCapacity": 16,
+      "students": [
+        {
+          "id": "cls_1793728994224_std_1",
+          "name": "tester_1",
+          "email": "cls_1793728994224_std_1@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_2",
+          "name": "tester_2",
+          "email": "cls_1793728994224_std_2@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_3",
+          "name": "tester_3",
+          "email": "cls_1793728994224_std_3@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_4",
+          "name": "tester_4",
+          "email": "cls_1793728994224_std_4@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_5",
+          "name": "tester_5",
+          "email": "cls_1793728994224_std_5@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_6",
+          "name": "tester_6",
+          "email": "cls_1793728994224_std_6@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_7",
+          "name": "tester_7",
+          "email": "cls_1793728994224_std_7@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_8",
+          "name": "tester_8",
+          "email": "cls_1793728994224_std_8@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_9",
+          "name": "tester_9",
+          "email": "cls_1793728994224_std_9@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_10",
+          "name": "tester_10",
+          "email": "cls_1793728994224_std_10@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_11",
+          "name": "tester_11",
+          "email": "cls_1793728994224_std_11@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_12",
+          "name": "tester_12",
+          "email": "cls_1793728994224_std_12@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_13",
+          "name": "tester_13",
+          "email": "cls_1793728994224_std_13@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_14",
+          "name": "tester_14",
+          "email": "cls_1793728994224_std_14@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_15",
+          "name": "tester_15",
+          "email": "cls_1793728994224_std_15@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_16",
+          "name": "tester_16",
+          "email": "cls_1793728994224_std_16@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_17",
+          "name": "tester_17",
+          "email": "cls_1793728994224_std_17@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1793728994224_std_18",
+          "name": "tester_18",
+          "email": "cls_1793728994224_std_18@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        }
+      ],
+      "customStudentNames": {},
+      "attendance": {
+        "records": {},
+        "lessonTypes": {
+          "2026-11-03": "Vazifa: 1.1"
+        },
+        "holidays": {},
+        "homeworks": {
+          "2026-11-03": {
+            "dateKey": "2026-11-03",
+            "dateDisp": "03.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        }
+      },
+      "deletedMsgIds": [],
+      "messages": [],
+      "deletedStudentIds": [],
+      "activeHomework": {
+        "dateKey": "2026-11-03",
+        "dateDisp": "03.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
+      "customStudentNamesTs": {}
+    },
+    {
+      "id": "cls_1792041880052",
+      "name": "Bizani gurux",
+      "code": "ETH-QOY2Z8",
+      "teacherId": "tc_oprlehyw5",
+      "teacherName": "Name",
+      "teacherEmail": "strikeruzb52@gmail.com",
+      "students": [
+        {
+          "id": "cls_1792041880052_std_1",
+          "name": "tester_1",
+          "email": "cls_1792041880052_std_1@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_2",
+          "name": "tester_2",
+          "email": "cls_1792041880052_std_2@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_3",
+          "name": "tester_3",
+          "email": "cls_1792041880052_std_3@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_4",
+          "name": "tester_4",
+          "email": "cls_1792041880052_std_4@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_5",
+          "name": "tester_5",
+          "email": "cls_1792041880052_std_5@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_6",
+          "name": "tester_6",
+          "email": "cls_1792041880052_std_6@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_7",
+          "name": "tester_7",
+          "email": "cls_1792041880052_std_7@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_8",
+          "name": "tester_8",
+          "email": "cls_1792041880052_std_8@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_9",
+          "name": "tester_9",
+          "email": "cls_1792041880052_std_9@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_10",
+          "name": "tester_10",
+          "email": "cls_1792041880052_std_10@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_11",
+          "name": "tester_11",
+          "email": "cls_1792041880052_std_11@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_12",
+          "name": "tester_12",
+          "email": "cls_1792041880052_std_12@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_13",
+          "name": "tester_13",
+          "email": "cls_1792041880052_std_13@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_14",
+          "name": "tester_14",
+          "email": "cls_1792041880052_std_14@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_15",
+          "name": "tester_15",
+          "email": "cls_1792041880052_std_15@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_16",
+          "name": "tester_16",
+          "email": "cls_1792041880052_std_16@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_17",
+          "name": "tester_17",
+          "email": "cls_1792041880052_std_17@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        },
+        {
+          "id": "cls_1792041880052_std_18",
+          "name": "tester_18",
+          "email": "cls_1792041880052_std_18@ethith.uz",
+          "role": "student",
+          "phone": "",
+          "parentPhone": "",
+          "login": "",
+          "password": "",
+          "joinedAt": "2026-10-28",
+          "dailyMinutes": 0,
+          "coins": 0,
+          "isTester": true,
+          "isOnline": false,
+          "lastLogin": null
+        }
+      ],
+      "messages": [],
+      "pinnedId": null,
+      "deletedMsgIds": [
+        "msg_1792042347995_z52xw",
+        "msg_1792042342788_9894b",
+        "msg_1792042367569_7htzs",
+        "msg_1792042036562_fkm5k",
+        "msg_1792042358929_8iaq2",
+        "msg_1792041984917_cd4i9"
+      ],
+      "schedule": "har_kuni",
+      "attendance": {
+        "records": {
+          "2026-09-29": {
+            "std_1": {
+              "status": "K"
+            },
+            "std_2": {
+              "status": "K"
+            },
+            "std_3": {
+              "status": "K"
+            }
+          },
+          "2026-10-28": {
+            "u1": {
+              "status": "K",
+              "score": "5",
+              "hwDone": true,
+              "hwPct": 100,
+              "hwLesson": "10.4",
+              "hwCorrect": 38,
+              "hwTotal": 38,
+              "hwCompletedAt": 1793129842154
+            }
+          },
+          "2026-10-21": {
+            "tg_6772427596": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "1.1",
+              "hwCorrect": 0,
+              "hwTotal": 36,
+              "hwCompletedAt": 1792999901066
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-10-21": "Vazifa: 1.1",
+          "2026-10-19": "Oddiy",
+          "2026-10-28": "Vazifa: 2.1"
+        },
+        "holidays": {},
+        "homeworks": {
+          "2026-10-21": {
+            "dateKey": "2026-10-21",
+            "dateDisp": "21.10.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 1792608458469
+          }
+        },
+        "updatedAt": 1793129842154
+      },
+      "customStudentNames": {},
+      "activeHomework": {
+        "dateKey": "2026-10-21",
+        "dateDisp": "21.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 1792608458469
+      },
+      "maxCapacity": 18,
+      "studentPayments": {}
     },
     {
       "id": "cls_1793380468126",
@@ -19674,347 +19253,6 @@
       },
       "deletedMsgIds": [],
       "messages": []
-    },
-    {
-      "id": "cls_1793728994224",
-      "code": "ETH-AUW99R",
-      "name": "asdasdasdasd",
-      "teacher": "muhammad",
-      "teacherId": "teacher_1793728925723",
-      "teacherName": "muhammad",
-      "room": "302-xona",
-      "schedule": "har_kuni",
-      "maxCapacity": 16,
-      "students": [
-        {
-          "id": "cls_1793728994224_std_1",
-          "name": "tester_1",
-          "email": "cls_1793728994224_std_1@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_2",
-          "name": "tester_2",
-          "email": "cls_1793728994224_std_2@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_3",
-          "name": "tester_3",
-          "email": "cls_1793728994224_std_3@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_4",
-          "name": "tester_4",
-          "email": "cls_1793728994224_std_4@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_5",
-          "name": "tester_5",
-          "email": "cls_1793728994224_std_5@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_6",
-          "name": "tester_6",
-          "email": "cls_1793728994224_std_6@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_7",
-          "name": "tester_7",
-          "email": "cls_1793728994224_std_7@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_8",
-          "name": "tester_8",
-          "email": "cls_1793728994224_std_8@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_9",
-          "name": "tester_9",
-          "email": "cls_1793728994224_std_9@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_10",
-          "name": "tester_10",
-          "email": "cls_1793728994224_std_10@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_11",
-          "name": "tester_11",
-          "email": "cls_1793728994224_std_11@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_12",
-          "name": "tester_12",
-          "email": "cls_1793728994224_std_12@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_13",
-          "name": "tester_13",
-          "email": "cls_1793728994224_std_13@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_14",
-          "name": "tester_14",
-          "email": "cls_1793728994224_std_14@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_15",
-          "name": "tester_15",
-          "email": "cls_1793728994224_std_15@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_16",
-          "name": "tester_16",
-          "email": "cls_1793728994224_std_16@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_17",
-          "name": "tester_17",
-          "email": "cls_1793728994224_std_17@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        },
-        {
-          "id": "cls_1793728994224_std_18",
-          "name": "tester_18",
-          "email": "cls_1793728994224_std_18@ethith.uz",
-          "role": "student",
-          "phone": "",
-          "parentPhone": "",
-          "login": "",
-          "password": "",
-          "joinedAt": "2026-10-28",
-          "dailyMinutes": 0,
-          "coins": 0,
-          "isTester": true,
-          "isOnline": false,
-          "lastLogin": null
-        }
-      ],
-      "customStudentNames": {},
-      "attendance": {
-        "records": {},
-        "lessonTypes": {
-          "2026-11-03": "Vazifa: 1.1"
-        },
-        "holidays": {},
-        "homeworks": {
-          "2026-11-03": {
-            "dateKey": "2026-11-03",
-            "dateDisp": "03.11.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 0
-          }
-        }
-      },
-      "deletedMsgIds": [],
-      "messages": [],
-      "deletedStudentIds": [],
-      "activeHomework": {
-        "dateKey": "2026-11-03",
-        "dateDisp": "03.11.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
-      },
-      "customStudentNamesTs": {}
     }
   ],
   "exams": [
@@ -20529,6 +19767,7 @@
     "teacher_1793380078590",
     "teacher_1793431051291"
   ],
+  "deletedStudentIds": [],
   "deletedListingIds": [
     "p2p_1792322748592_nls2",
     "p2p_1792322765334_1cj0",
@@ -20565,14 +19804,16 @@
       "name": "Ustoz",
       "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
-      "coins": 100000,
+      "coins": 1000,
       "level": "C2",
       "dailyMinutes": 0,
-      "updatedAt": 1793385143115,
+      "updatedAt": 1793734027684,
       "avatar": null,
       "nameStyle": null,
       "title": null,
-      "victorySound": null
+      "victorySound": null,
+      "login": "muhammad19",
+      "password": "zizi2026"
     },
     {
       "id": "admin_official_teacher",
@@ -20734,7 +19975,9 @@
       "nameStyle": "flame",
       "title": "👑 IELTS Qiroli",
       "dailyMinutes": 0,
-      "updatedAt": 1793215171236
+      "updatedAt": 1793215171236,
+      "phone": "+998 95 007 96 21",
+      "parentPhone": "+998 95 007 96 21"
     },
     {
       "id": "admin_official_teacher",
@@ -21228,7 +20471,8 @@
       "avatar": null,
       "level": "A1",
       "joinedAt": 1793214970956,
-      "updatedAt": 1793215269858
+      "updatedAt": 1793215269858,
+      "parentPhone": "+998901239988"
     },
     {
       "id": "st_998950079621",
@@ -21274,7 +20518,8 @@
       "avatar": null,
       "title": null,
       "nameStyle": null,
-      "createdAt": 1793387490277
+      "createdAt": 1793387490277,
+      "updatedAt": 1793734159327
     },
     {
       "id": "admin_official_teacher",
@@ -140145,5 +139390,5 @@
       }
     }
   },
-  "updatedAt": 1793734141038
+  "updatedAt": 1793734159343
 }
