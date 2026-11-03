@@ -26626,7 +26626,7 @@
       "updatedAt": 1793431308524
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_urolov_azizbek",
       "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
@@ -26640,7 +26640,7 @@
         "cls_urolov_azizbek_intermediate_practice",
         "cls_urolov_azizbek_upper_intermediate_standard"
       ],
-      "createdAt": 1793202631415,
+      "createdAt": 1793718068808,
       "updatedAt": 1793473052536,
       "level": "C2"
     },
@@ -145803,5 +145803,5 @@
       }
     }
   },
-  "updatedAt": 1793718001450
+  "updatedAt": 1793718071928
 }
