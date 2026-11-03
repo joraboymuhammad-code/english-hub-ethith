@@ -23193,11 +23193,9 @@
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
-          "isOnline": true,
+          "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "lastLogin": "2026-11-03T15:01:51.728Z",
-          "dailyMinutes": 56
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -23291,9 +23289,9 @@
         }
       ],
       "deletedMsgIds": [
-        "msg_1793718186438_xser5",
         "msg_1793718198750_ptftv",
-        "msg_1793718218122_3dwuk"
+        "msg_1793718218122_3dwuk",
+        "msg_1793718186438_xser5"
       ],
       "messages": [
         {
@@ -23561,167 +23559,6 @@
           "date": "To‘lanmagan"
         },
         "cls_urolov_azizbek_upper_std_18": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_azimjon_848_toirov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_behruz_942_oktamov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_charos_386_baxtiyorova": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_diyor_772_suyundikov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_gulruh_365_tangirova": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_jamshid_843_komilov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_kamron_187_raimberdiyev": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_navroz_651_shavkatov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_niyatullo_582_asatullayev": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_nurlan_856_tangatov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_oktamova_798_zarina": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_orazaliyev_514_amirshox": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_orozboyev_391_ollohberdi": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_otkir_903_tursunmatov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_odina_419_zoirova": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_ozodbek_578_mamatqulov": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_rayhona_554_qoshqarova": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_sabina_672_ibodullayeva": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_shohista_786_nosurname": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_shohsasnam_517_bayrbekova": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_xudoyberdiyeva_775_madina": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_yulduz_938_nosurname": {
-          "fee": 300000,
-          "paid": 0,
-          "status": "unpaid",
-          "method": "—",
-          "date": "To‘lanmagan"
-        },
-        "std_ziyoda_799_regdfggyj": {
           "fee": 300000,
           "paid": 0,
           "status": "unpaid",
@@ -26797,7 +26634,7 @@
       "title": "👑 IELTS Qiroli"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "teacher_1793431051291",
       "name": "Muhammadyusuf",
       "login": "muhammadyusuf11",
       "password": "muhammadyusuf2026",
@@ -26810,7 +26647,7 @@
       "updatedAt": 1793431308524
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_urolov_azizbek",
       "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
@@ -26849,22 +26686,20 @@
       "gifts": [],
       "nameStyle": null,
       "createdAt": 1793630351584,
-      "updatedAt": 1793715069455
+      "updatedAt": 1793721501439
     },
     {
-      "id": "admin_official_teacher",
-      "name": "Ustoz",
-      "login": "muhammadyusuf11",
-      "password": "muhammadyusuf2026",
-      "email": "muhammadyusuf38@ethith.uz",
-      "role": "teacher",
-      "teacherId": "teacher_1793380078590",
-      "subject": "Ingliz tili",
-      "salarySharePercent": 55,
-      "createdAt": 1793380453528,
-      "coins": 1000,
-      "gifts": [],
-      "updatedAt": 1793431308524
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793629984912
     },
     {
       "id": "std_mixswdasd_804_selixasdasd",
@@ -26891,19 +26726,6 @@
       "nameStyle": null,
       "createdAt": 1793720576586,
       "updatedAt": 1793720839120
-    },
-    {
-      "id": "std_mix_416_selix",
-      "name": "Mix Selix",
-      "role": "student",
-      "login": "mix_416_selix",
-      "password": "mix416sel",
-      "phone": "91`23891738213",
-      "parentPhone": "91`23891738213",
-      "classId": "cls_1793380468126",
-      "isOnline": false,
-      "lastLogin": null,
-      "updatedAt": 1793629984912
     }
   ],
   "p2pListings": [],
@@ -97176,8 +96998,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "2",
-        "top": 63,
-        "left": 88,
+        "top": 69.5,
+        "left": 20.4,
         "width": 5,
         "height": 2,
         "correct": [
@@ -97195,8 +97017,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "3",
-        "top": 69.5,
-        "left": 74.5,
+        "top": 75.2,
+        "left": 36.2,
         "width": 12,
         "height": 2,
         "correct": [
@@ -97233,8 +97055,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "5",
-        "top": 82,
-        "left": 34.8,
+        "top": 82.1,
+        "left": 35.5,
         "width": 12,
         "height": 2,
         "correct": [
@@ -97252,8 +97074,8 @@
         "type": "fill",
         "exercise": "2",
         "label": "6",
-        "top": 85.3,
-        "left": 60.1,
+        "top": 85,
+        "left": 38.9,
         "width": 9.9,
         "height": 2.1,
         "correct": [
@@ -97267,46 +97089,16 @@
         "page": 2079
       },
       {
-        "id": "p2079_ex3_1a",
-        "type": "choice",
-        "exercise": "3",
-        "label": "1",
-        "group": "p2079_ex3_1",
-        "top": 70.6,
-        "left": 55,
-        "width": 22,
-        "height": 1.6,
-        "text": "There is no question that the majority of the daily news is bad news.",
-        "isCorrect": true,
-        "correct": true,
-        "page": 2079
-      },
-      {
         "id": "p2079_ex3_1b",
-        "type": "choice",
-        "exercise": "3",
-        "label": "1",
-        "group": "p2079_ex3_1",
-        "top": 61.2,
-        "left": 56.9,
-        "width": 28.5,
-        "height": 1.8,
-        "text": "Definitely most news we hear is bad news.",
-        "isCorrect": false,
-        "correct": false,
-        "page": 2079
-      },
-      {
-        "id": "p2079_ex3_2a",
-        "type": "choice",
+        "type": "choose",
         "exercise": "3",
         "label": "2",
-        "group": "p2079_ex3_2",
-        "top": 75,
-        "left": 55,
-        "width": 22,
-        "height": 1.6,
-        "text": "I think because we hear so much bad news we usually think that the world is really bad.",
+        "group": "2",
+        "top": 63.2,
+        "left": 57.3,
+        "width": 28.5,
+        "height": 1.8,
+        "text": "2",
         "isCorrect": false,
         "correct": false,
         "page": 2079
@@ -97317,8 +97109,8 @@
         "exercise": "3",
         "label": "2",
         "group": "p2079_ex3_2",
-        "top": 77.6,
-        "left": 55,
+        "top": 66.7,
+        "left": 57.2,
         "width": 22,
         "height": 1.6,
         "text": "Without doubt, this daily diet of negativity has an effect on how we perceive the world.",
@@ -97332,8 +97124,8 @@
         "exercise": "3",
         "label": "3",
         "group": "p2079_ex3_3",
-        "top": 69.4,
-        "left": 56.9,
+        "top": 69.3,
+        "left": 57.5,
         "width": 17.6,
         "height": 1.8,
         "text": "Bad news sells, doesn't it?",
@@ -97347,8 +97139,8 @@
         "exercise": "3",
         "label": "3",
         "group": "p2079_ex3_3",
-        "top": 71.2,
-        "left": 56.9,
+        "top": 71,
+        "left": 57.2,
         "width": 25.3,
         "height": 1.8,
         "text": "The simple fact is that bad news sells.",
@@ -97362,8 +97154,8 @@
         "exercise": "3",
         "label": "4",
         "group": "p2079_ex3_4",
-        "top": 84.8,
-        "left": 55,
+        "top": 73.2,
+        "left": 57.6,
         "width": 22,
         "height": 1.6,
         "text": "Much of the bad news we hear does nothing other than to make us feel sad and anxious...",
@@ -97377,8 +97169,8 @@
         "exercise": "3",
         "label": "4",
         "group": "p2079_ex3_4",
-        "top": 87.9,
-        "left": 55,
+        "top": 76.3,
+        "left": 57.2,
         "width": 22,
         "height": 1.6,
         "text": "Hearing bad news mainly just makes us feel sad and anxious about the world.",
@@ -97392,8 +97184,8 @@
         "exercise": "3",
         "label": "5",
         "group": "p2079_ex3_5",
-        "top": 91,
-        "left": 55,
+        "top": 79.9,
+        "left": 57.1,
         "width": 22,
         "height": 1.6,
         "text": "I do think that the news providers should make more of an effort...",
@@ -97407,8 +97199,8 @@
         "exercise": "3",
         "label": "5",
         "group": "p2079_ex3_5",
-        "top": 94,
-        "left": 55,
+        "top": 82.9,
+        "left": 57.1,
         "width": 22,
         "height": 1.6,
         "text": "I do think that more of an effort should be made by the news providers...",
@@ -146030,5 +145822,5 @@
       }
     }
   },
-  "updatedAt": 1793721516959
+  "updatedAt": 1793721525391
 }
