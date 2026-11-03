@@ -22821,6 +22821,10 @@
             "cls_urolov_azizbek_upper_std_5": {
               "status": "",
               "score": ""
+            },
+            "std_navroz_651_shavkatov": {
+              "status": "",
+              "score": ""
             }
           }
         },
@@ -22843,7 +22847,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793625077010
+        "updatedAt": 1793734631041
       },
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
@@ -23193,11 +23197,9 @@
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
-          "isOnline": true,
+          "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "lastLogin": "2026-11-03T15:01:51.728Z",
-          "dailyMinutes": 189
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -23291,9 +23293,9 @@
         }
       ],
       "deletedMsgIds": [
-        "msg_1793718186438_xser5",
         "msg_1793718198750_ptftv",
-        "msg_1793718218122_3dwuk"
+        "msg_1793718218122_3dwuk",
+        "msg_1793718186438_xser5"
       ],
       "messages": [
         {
@@ -23566,6 +23568,167 @@
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
+        },
+        "std_azimjon_848_toirov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_behruz_942_oktamov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_charos_386_baxtiyorova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_diyor_772_suyundikov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_gulruh_365_tangirova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_jamshid_843_komilov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_kamron_187_raimberdiyev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_navroz_651_shavkatov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_niyatullo_582_asatullayev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_nurlan_856_tangatov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_oktamova_798_zarina": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_orazaliyev_514_amirshox": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_orozboyev_391_ollohberdi": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_otkir_903_tursunmatov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_odina_419_zoirova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_ozodbek_578_mamatqulov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_rayhona_554_qoshqarova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_sabina_672_ibodullayeva": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_shohista_786_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_shohsasnam_517_bayrbekova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_xudoyberdiyeva_775_madina": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_yulduz_938_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_ziyoda_799_regdfggyj": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
         }
       },
       "activeHomework": {
@@ -23587,7 +23750,6 @@
         "rayxona_271_qoshqarova@student.ethith",
         "rayxona_271_qoshqarova"
       ],
-      "pinnedId": null,
       "customStudentNamesTs": {
         "std_nurlan_856_tangatov": 1793625077010,
         "std_orazaliyev_514_amirshox": 1793625077010,
@@ -23613,6 +23775,124 @@
         "std_niyatullo_582_asatullayev": 1793625077010,
         "std_navroz_651_shavkatov": 1793625077010,
         "std_otkir_903_tursunmatov": 1793625077010
+      },
+      "pinnedId": null,
+      "levelTestResults": {
+        "std_nurlan_856_tangatov": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_orazaliyev_514_amirshox": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_kamron_187_raimberdiyev": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_ziyoda_799_regdfggyj": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_otkir_903_tursunmatov": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_navroz_651_shavkatov": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_niyatullo_582_asatullayev": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_behruz_942_oktamov": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_rayhona_554_qoshqarova": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_jamshid_843_komilov": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_ozodbek_578_mamatqulov": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_odina_419_zoirova": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_orozboyev_391_ollohberdi": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_yulduz_938_nosurname": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_xudoyberdiyeva_775_madina": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_gulruh_365_tangirova": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_shohsasnam_517_bayrbekova": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_azimjon_848_toirov": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_oktamova_798_zarina": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_shohista_786_nosurname": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_diyor_772_suyundikov": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_sabina_672_ibodullayeva": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        },
+        "std_charos_386_baxtiyorova": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793734196451
+        }
       }
     },
     {
@@ -25440,7 +25720,7 @@
       "teacherName": "muhammad",
       "room": "302-xona",
       "schedule": "har_kuni",
-      "maxCapacity": 16,
+      "maxCapacity": 18,
       "students": [
         {
           "id": "cls_1793728994224_std_1",
@@ -27291,7 +27571,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Elyor Aborbekov",
       "email": "elyor.aborbekov@ethith.uz",
       "login": "elyor70",
       "role": "teacher",
@@ -27300,7 +27580,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Ravshanov Doniyor",
       "email": "doniyor.ravshanov@ethith.uz",
       "login": "doniyor24",
       "password": "doniyor2026",
@@ -27320,7 +27600,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Qarshiboyev Humoyun",
       "email": "humoyun.qarshiboyev@ethith.uz",
       "login": "humoyun15",
       "password": "humoyun2026",
@@ -27337,7 +27617,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Marjona Tovboyeva",
       "email": "marjona.tovboyeva@ethith.uz",
       "login": "marjona88",
       "password": "marjona2026",
@@ -27354,7 +27634,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Durdona Olimjonova",
       "email": "durdona.olimjonova@ethith.uz",
       "login": "durdona12",
       "password": "durdona2026",
@@ -27374,7 +27654,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Eldor Tagaev",
       "email": "eldor.tagaev@ethith.uz",
       "login": "eldor33",
       "password": "eldor2026",
@@ -27394,7 +27674,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Kamola Yaxshilikova",
       "email": "kamola.yaxshilikova@ethith.uz",
       "login": "kamola45",
       "password": "kamola2026",
@@ -27412,7 +27692,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Iroda Sherqoziyeva",
       "email": "iroda.sherqoziyeva@ethith.uz",
       "login": "iroda19",
       "password": "iroda2026",
@@ -27430,7 +27710,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Jaloliddin O’rinboyev",
       "email": "jaloliddin.orinboyev@ethith.uz",
       "login": "jaloliddin99",
       "password": "jaloliddin2026",
@@ -27450,7 +27730,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Pokiza Jumanova",
       "email": "pokiza.jumanova@ethith.uz",
       "login": "pokiza07",
       "password": "pokiza2026",
@@ -27467,7 +27747,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Arslon Hayrullayev",
       "email": "arslon.hayrullayev@ethith.uz",
       "login": "arslon64",
       "password": "arslon2026",
@@ -27485,7 +27765,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Sarvinoz Xudoyorova",
       "email": "sarvinoz.xudoyorova@ethith.uz",
       "login": "sarvinoz82",
       "password": "sarvinoz2026",
@@ -27503,7 +27783,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Sevinch Aliqulova",
       "email": "sevinch.aliqulova@ethith.uz",
       "login": "sevinch55",
       "password": "sevinch2026",
@@ -27521,7 +27801,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Diyora Xo’jamqulova",
       "email": "diyora.xojamqulova@ethith.uz",
       "login": "diyora21",
       "password": "diyora2026",
@@ -27541,7 +27821,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Farrux Bosimbekov",
       "email": "farrux.bosimbekov@ethith.uz",
       "login": "farrux93",
       "password": "farrux2026",
@@ -27561,7 +27841,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Barno Ahmadova",
       "email": "barno.ahmadova@ethith.uz",
       "login": "barno36",
       "password": "barno2026",
@@ -27581,7 +27861,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
+      "name": "Shodiyor (matematika)",
       "email": "shodiyor.matematika@ethith.uz",
       "login": "shodiyor50",
       "password": "shodiyor2026",
@@ -27622,7 +27902,7 @@
       "title": "👑 IELTS Qiroli"
     },
     {
-      "id": "teacher_1793431051291",
+      "id": "admin_official_teacher",
       "name": "Muhammadyusuf",
       "login": "muhammadyusuf11",
       "password": "muhammadyusuf2026",
@@ -27649,9 +27929,10 @@
         "cls_urolov_azizbek_intermediate_practice",
         "cls_urolov_azizbek_upper_intermediate_standard"
       ],
-      "createdAt": 1793202631415,
+      "createdAt": 1793718068808,
       "updatedAt": 1793473052536,
-      "level": "C2"
+      "level": "C2",
+      "gifts": []
     },
     {
       "id": "admin_official_teacher",
@@ -27666,12 +27947,30 @@
       "updatedAt": 1793627171338
     },
     {
+      "id": "shamshodbekibrohimov@telegram.org",
+      "role": "student",
+      "name": "𝙎𝙃𝘼𝙈𝙎𝙃𝙊𝘿𝘽𝙀𝙆",
+      "email": "shamshodbekibrohimov@telegram.org",
+      "coins": 150,
+      "gifts": [],
+      "nameStyle": null,
+      "createdAt": 1793630351584,
+      "updatedAt": 1793733889380
+    },
+    {
       "id": "admin_official_teacher",
       "name": "Ustoz",
+      "login": "muhammadyusuf11",
+      "password": "muhammadyusuf2026",
       "email": "muhammadyusuf38@ethith.uz",
-      "login": "muhammadyusuf38",
       "role": "teacher",
-      "coins": 1000
+      "teacherId": "teacher_1793380078590",
+      "subject": "Ingliz tili",
+      "salarySharePercent": 55,
+      "createdAt": 1793380453528,
+      "coins": 1000,
+      "gifts": [],
+      "updatedAt": 1793431308524
     },
     {
       "id": "std_mixswdasd_804_selixasdasd",
@@ -27685,17 +27984,6 @@
       "nameStyle": null,
       "createdAt": 1793387490277,
       "updatedAt": 1793734159327
-    },
-    {
-      "id": "shamshodbekibrohimov@telegram.org",
-      "role": "student",
-      "name": "𝙎𝙃𝘼𝙈𝙎𝙃𝙊𝘿𝘽𝙀𝙆",
-      "email": "shamshodbekibrohimov@telegram.org",
-      "coins": 150,
-      "gifts": [],
-      "nameStyle": null,
-      "createdAt": 1793630351584,
-      "updatedAt": 1793733889380
     },
     {
       "id": "std_azimjon_848_toirov",
@@ -146179,8 +146467,8 @@
         "cls_urolov_azizbek_standard",
         "cls_urolov_azizbek_intermediate",
         "cls_urolov_azizbek_practice",
-        "cls_urolov_azizbek_intermediate_practice",
-        "cls_urolov_azizbek_upper_intermediate_standard"
+        "cls_urolov_azizbek_upper_intermediate_standard",
+        "cls_urolov_azizbek_intermediate_practice"
       ],
       "classOrder": [
         "cls_urolov_azizbek_upper",
@@ -146475,7 +146763,7 @@
         "name": "Ustoz (Shaxsiy Papka)",
         "ownerId": "admin_official_teacher",
         "parentId": null,
-        "createdAt": 1793379976562
+        "createdAt": 1793468183930
       },
       {
         "id": "f_1793596846702",
@@ -146835,5 +147123,5 @@
       }
     }
   },
-  "updatedAt": 1793734277966
+  "updatedAt": 1793734631525
 }
