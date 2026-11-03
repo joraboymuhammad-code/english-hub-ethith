@@ -146445,9 +146445,7 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "AZIZBEK77",
-      "unpaidMonths": 0,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "unpaidMonths": 0
     },
     {
       "id": "teacher_1793475825095",
@@ -147055,5 +147053,5 @@
       }
     }
   },
-  "updatedAt": 1793729775985
+  "updatedAt": 1793729786116
 }
