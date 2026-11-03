@@ -345,9 +345,39 @@
 
   function markUserActive(uKeys, ts) {
     if (!window._ethithPresenceMap) window._ethithPresenceMap = {};
+    if (!window._ethithLoggedOutMap) window._ethithLoggedOutMap = {};
     var nowTs = ts || Date.now();
-    (Array.isArray(uKeys) ? uKeys : [uKeys]).forEach(function(k) {
-      if (k) window._ethithPresenceMap[(k + '').toLowerCase().trim()] = nowTs;
+    var list = (Array.isArray(uKeys) ? uKeys : [uKeys]).filter(Boolean);
+    list.forEach(function(k) {
+      var lk = (k + '').toLowerCase().trim();
+      window._ethithPresenceMap[lk] = nowTs;
+      delete window._ethithLoggedOutMap[lk];
+    });
+
+    var S = (window.EthithApp && window.EthithApp.state) || window.S || {};
+    (S.classes || []).forEach(function(cls) {
+      (cls.students || []).forEach(function(st) {
+        if (!st) return;
+        var stKeys = [st.id, st.login, st.email, st.name].filter(Boolean).map(function(x){ return (x + '').toLowerCase().trim(); });
+        var match = list.some(function(k) { return stKeys.indexOf((k + '').toLowerCase().trim()) !== -1; });
+        if (match) {
+          st.isLoggedOut = false;
+          st.hasLoggedIn = true;
+          st.isOnline = true;
+          st.lastSeen = nowTs;
+        }
+      });
+    });
+    (S.accounts || []).forEach(function(acc) {
+      if (!acc) return;
+      var accKeys = [acc.id, acc.login, acc.email, acc.name].filter(Boolean).map(function(x){ return (x + '').toLowerCase().trim(); });
+      var match = list.some(function(k) { return accKeys.indexOf((k + '').toLowerCase().trim()) !== -1; });
+      if (match) {
+        acc.isLoggedOut = false;
+        acc.hasLoggedIn = true;
+        acc.isOnline = true;
+        acc.lastSeen = nowTs;
+      }
     });
   }
 
@@ -418,30 +448,72 @@
 
     // 3. Update student cards in class dashboard (like Image 2)
     document.querySelectorAll('.cls-student-card-item').forEach(function(item) {
-      var editBtn = item.querySelector('.btn-st-row-edit');
-      var sLogin = editBtn ? editBtn.getAttribute('data-edit-st-login') : '';
-      if (!sLogin) return;
-      var sKey = sLogin.toLowerCase().trim();
+      var sKey = (item.getAttribute('data-st-login') || '').toLowerCase().trim();
+      if (!sKey) {
+        var editBtn = item.querySelector('.btn-st-row-edit');
+        var sLogin = editBtn ? editBtn.getAttribute('data-edit-st-login') : '';
+        if (sLogin) sKey = sLogin.toLowerCase().trim();
+      }
+      if (!sKey) return;
       var st = allStudents.find(function(s) {
         return (s.login && s.login.toLowerCase() === sKey) ||
-               (s.id && (s.id + '').toLowerCase() === sKey);
+               (s.id && (s.id + '').toLowerCase() === sKey) ||
+               (s.name && s.name.toLowerCase().trim() === sKey);
       });
       if (st) {
         var stStatus = window._ethithGetUserStatus(st);
-        var dotSpan = item.querySelector('span[title]');
+        var dotSpan = item.querySelector('.cls-student-status-dot') || item.querySelector('span[title]');
         if (dotSpan) {
           dotSpan.style.background = stStatus.color;
           dotSpan.style.boxShadow = '0 0 8px ' + stStatus.color;
           dotSpan.title = stStatus.label;
         }
-        var spans = item.querySelectorAll('span');
-        spans.forEach(function(sp) {
-          var txt = (sp.textContent || '').trim();
-          if (txt === 'Online' || txt === 'Offline' || txt === 'Kirmagan') {
-            sp.textContent = stStatus.label;
-            sp.style.color = stStatus.color;
+        var labelSpan = item.querySelector('.cls-student-status-label');
+        if (labelSpan) {
+          labelSpan.textContent = stStatus.label;
+          labelSpan.style.color = stStatus.color;
+        } else {
+          var spans = item.querySelectorAll('span');
+          spans.forEach(function(sp) {
+            var txt = (sp.textContent || '').trim();
+            if (txt === 'Online' || txt === 'Offline' || txt === 'Kirmagan') {
+              sp.textContent = stStatus.label;
+              sp.style.color = stStatus.color;
+            }
+          });
+        }
+      }
+    });
+
+    // 4. Update rows in Tizim Loginlari table
+    document.querySelectorAll('.ea-login-row').forEach(function(row) {
+      var sId = (row.getAttribute('data-login-stid') || '').toLowerCase().trim();
+      if (!sId) return;
+      var st = allStudents.find(function(s) {
+        return (s.id && (s.id + '').toLowerCase() === sId) ||
+               (s.login && s.login.toLowerCase() === sId) ||
+               (s.name && s.name.toLowerCase().trim() === sId);
+      });
+      if (st) {
+        var stStatus = window._ethithGetUserStatus(st);
+        var dot = row.querySelector('.ea-status-dot');
+        if (dot) {
+          dot.style.background = stStatus.color;
+          dot.style.boxShadow = '0 0 6px ' + stStatus.color;
+          dot.title = stStatus.dot + ' ' + stStatus.label;
+        }
+        var badgeCell = row.querySelector('.ea-login-status-cell');
+        if (badgeCell) {
+          var bHtml = '';
+          if (stStatus.status === 'green') {
+            bHtml = '<span style="background:rgba(34,197,94,0.18);border:1px solid #22c55e;color:#4ade80;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:900;">🟢 Online</span>';
+          } else if (stStatus.status === 'blue') {
+            bHtml = '<span style="background:rgba(59,130,246,0.18);border:1px solid #3b82f6;color:#60a5fa;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:900;">🔵 Offline</span>';
+          } else {
+            bHtml = '<span style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.35);color:#f87171;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:800;">🔴 Kirmagan</span>';
           }
-        });
+          badgeCell.innerHTML = bHtml;
+        }
       }
     });
   };
@@ -452,12 +524,24 @@
     var myU = (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) || {};
     var keys = [u.id, u.login, u.email, u.name].filter(Boolean).map(function(k){ return (k + '').toLowerCase().trim(); });
 
-    // 1. FAQAT TIZIMDAN LOGOUT BOSILGANDA -> QIZIL (🔴 Kirmagan)
-    var loggedOutMap = window._ethithLoggedOutMap || {};
-    var isExplicitlyLoggedOut = keys.some(function(k) { return loggedOutMap[k] === true; });
-    if (isExplicitlyLoggedOut || u.isLoggedOut) {
-      return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
+    // 1. Brauzerdagi ayni damdagi joriy foydalanuvchi (agar tizimga kirgan bo'lsa) -> 🟢 Online
+    var isMe = myU && myU.id && ((u.id && u.id === myU.id) || 
+               (u.login && myU.login && u.login.toLowerCase() === myU.login.toLowerCase()) ||
+               (u.email && myU.email && u.email.toLowerCase() === myU.email.toLowerCase()));
+    if (isMe) {
+      keys.forEach(function(k) {
+        if (window._ethithLoggedOutMap) delete window._ethithLoggedOutMap[k];
+      });
+      u.isLoggedOut = false;
+      return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢' };
     }
+
+    // 2. Oxirgi faollik vaqti (lastSeen)
+    var presMap = window._ethithPresenceMap || {};
+    var lastSeen = 0;
+    keys.forEach(function(k) {
+      if (presMap[k] && presMap[k] > lastSeen) lastSeen = presMap[k];
+    });
 
     var S = (window.EthithApp && window.EthithApp.state) || {};
     var acc = (S.accounts || []).find(function(a) {
@@ -467,25 +551,6 @@
              (u.email && a.email && a.email.toLowerCase() === u.email.toLowerCase());
     });
 
-    if (acc && acc.isLoggedOut) {
-      return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
-    }
-
-    // 2. Brauzerdagi ayni damdagi joriy foydalanuvchi (logout qilmagan bo'lsa) -> 🟢 Online
-    var isMe = myU && myU.id && ((u.id && u.id === myU.id) || 
-               (u.login && myU.login && u.login.toLowerCase() === myU.login.toLowerCase()) ||
-               (u.email && myU.email && u.email.toLowerCase() === myU.email.toLowerCase()));
-    if (isMe) {
-      return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢' };
-    }
-
-    // 3. Oxirgi faollik vaqti (lastSeen)
-    var presMap = window._ethithPresenceMap || {};
-    var lastSeen = 0;
-    keys.forEach(function(k) {
-      if (presMap[k] && presMap[k] > lastSeen) lastSeen = presMap[k];
-    });
-
     if (acc && acc.lastSeen && acc.lastSeen > lastSeen && !acc.isLoggedOut) {
       lastSeen = acc.lastSeen;
     }
@@ -493,12 +558,26 @@
       lastSeen = u.lastSeen;
     }
 
-    // A. Ayni damda faol (Oxirgi 10 soniyada signal kelgan) -> 🟢 Online
-    if (lastSeen && (now - lastSeen) < 10000) {
+    // 3. Ayni damda faol (Oxirgi 15 soniyada signal/heartbeat kelgan bo'lsa) -> 🟢 Online
+    // Agar o'quvchi/o'qituvchi avval log out qilgan bo'lsa-yu, hozir qayta login qilgan bo'lsa,
+    // yangi faollik signali (lastSeen < 15s) uni darhol 🟢 Online qiladi va barcha eski logout belgilarini tozalaydi!
+    if (lastSeen && (now - lastSeen) < 15000) {
+      keys.forEach(function(k) {
+        if (window._ethithLoggedOutMap) delete window._ethithLoggedOutMap[k];
+      });
+      u.isLoggedOut = false;
+      if (acc) acc.isLoggedOut = false;
       return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢', lastSeen: lastSeen };
     }
 
-    // B. Shunchaki chiqib ketgan / telefonni o'chirgan / tabni yopgan (Logout bosmagan, lekin avval kirgan) -> 🔵 Offline (KO'K!)
+    // 4. FAQAT TIZIMDAN LOGOUT BOSILGANDA -> QIZIL (🔴 Kirmagan)
+    var loggedOutMap = window._ethithLoggedOutMap || {};
+    var isExplicitlyLoggedOut = keys.some(function(k) { return loggedOutMap[k] === true; });
+    if (isExplicitlyLoggedOut || u.isLoggedOut || (acc && acc.isLoggedOut)) {
+      return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
+    }
+
+    // 5. Shunchaki chiqib ketgan / telefonni o'chirgan / tabni yopgan (Logout bosmagan, lekin avval kirgan) -> 🔵 Offline (KO'K!)
     var hasEverLoggedIn = (acc && (acc.lastLogin || acc.loginCount > 0 || acc.hasLoggedIn || acc.lastSeen)) ||
                           u.lastLogin || u.hasLoggedIn || u.lastSeen || (lastSeen > 0);
 
@@ -506,7 +585,7 @@
       return { status: 'blue', label: "Offline", color: '#3b82f6', dot: '🔵', lastSeen: lastSeen };
     }
 
-    // C. Hali umuman tizimga kirmagan bo'lsa -> 🔴 Kirmagan
+    // 6. Hali umuman tizimga kirmagan bo'lsa -> 🔴 Kirmagan
     return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
   };
 
@@ -571,6 +650,14 @@
     // Instant presence tracking for sender
     if (event.from) {
       markUserActive([event.userId, event.senderId, event.login, event.email, event.senderEmail, event.name, event.senderName], event.ts || Date.now());
+    }
+
+    if (event.type === 'USER_LOGIN' || event.type === 'USER_REGISTERED') {
+      var inKeys = [event.userId, event.senderId, event.login, event.email, event.name].filter(Boolean).map(function(k){ return (k + '').toLowerCase().trim(); });
+      var nowTs = event.ts || Date.now();
+      markUserActive(inKeys, nowTs);
+      if (window._ethithRefreshPresenceUI) window._ethithRefreshPresenceUI();
+      return;
     }
 
     if (event.type === 'USER_LOGOUT' && (event.userId || event.login)) {

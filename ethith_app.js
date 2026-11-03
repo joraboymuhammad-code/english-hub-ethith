@@ -538,8 +538,18 @@
       }
       try {
         localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
+        localStorage.removeItem('ethith_explicit_logout');
+        sessionStorage.removeItem('ethith_explicit_logout');
+        if (window._ethithLoggedOutMap) {
+          [S.user.id, S.user.login, S.user.email, S.user.name].forEach(function(k) {
+            if (k) delete window._ethithLoggedOutMap[(k + '').toLowerCase().trim()];
+          });
+        }
       } catch(e) {}
       saveState();
+      if (window.EthithSync && typeof window.EthithSync.sendPresenceHeartbeat === 'function') {
+        setTimeout(window.EthithSync.sendPresenceHeartbeat, 300);
+      }
       return true;
     }
 
@@ -587,8 +597,18 @@
 
       try {
         localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
+        localStorage.removeItem('ethith_explicit_logout');
+        sessionStorage.removeItem('ethith_explicit_logout');
+        if (window._ethithLoggedOutMap) {
+          [S.user.id, S.user.login, S.user.email, S.user.name].forEach(function(k) {
+            if (k) delete window._ethithLoggedOutMap[(k + '').toLowerCase().trim()];
+          });
+        }
       } catch(e) {}
       saveState();
+      if (window.EthithSync && typeof window.EthithSync.sendPresenceHeartbeat === 'function') {
+        setTimeout(window.EthithSync.sendPresenceHeartbeat, 300);
+      }
       return true;
     }
 
@@ -1251,14 +1271,26 @@
         } catch(err) {}
         saveState();
 
-        if (window.EthithSync && window.EthithSync.broadcastState) {
-          window.EthithSync.broadcastState('student_online');
+        if (window.EthithSync) {
+          if (typeof window.EthithSync.publishLive === 'function') {
+            window.EthithSync.publishLive({
+              type: 'USER_LOGIN',
+              userId: stId,
+              login: login,
+              name: stName,
+              role: 'student',
+              ts: Date.now()
+            });
+          }
+          if (typeof window.EthithSync.sendPresenceHeartbeat === 'function') {
+            window.EthithSync.sendPresenceHeartbeat();
+          }
+          if (typeof window.EthithSync.pushRemoteStore === 'function') {
+            window.EthithSync.pushRemoteStore();
+          }
         }
+        if (window._ethithRefreshPresenceUI) window._ethithRefreshPresenceUI();
 
-        // SYNC_AFTER_LOGIN_TRIGGER
-        if (window.EthithSync && typeof window.EthithSync.syncInitialData === 'function') {
-          window.EthithSync.syncInitialData(S);
-        }
         if (overlay) overlay.remove();
         if (window.ethithOpenApp) window.ethithOpenApp('dash');
         if (window.EthithApp && window.EthithApp.toast) {
@@ -1374,11 +1406,25 @@
           email: matchedTeacher.email || (matchedTeacher.login + '@ethith.uz'),
           login: matchedTeacher.login || enteredLogin,
           coins: matchedTeacher.coins || 1000,
-          dailyMinutes: 0
+          dailyMinutes: 0,
+          isOnline: true,
+          hasLoggedIn: true,
+          isLoggedOut: false
         };
+
+        if (matchedTeacher) {
+          matchedTeacher.isOnline = true;
+          matchedTeacher.hasLoggedIn = true;
+          matchedTeacher.isLoggedOut = false;
+        }
 
         try {
           localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
+          if (window._ethithLoggedOutMap) {
+            [S.user.id, S.user.login, S.user.email, S.user.name].forEach(function(k) {
+              if (k) delete window._ethithLoggedOutMap[(k + '').toLowerCase().trim()];
+            });
+          }
         } catch(err) {}
 
         if (!Array.isArray(S.accounts)) S.accounts = [];
@@ -1393,6 +1439,9 @@
           login: S.user.login,
           password: matchedTeacher.password || enteredPass,
           coins: S.user.coins,
+          isOnline: true,
+          hasLoggedIn: true,
+          isLoggedOut: false,
           createdAt: matchedTeacher.createdAt || Date.now()
         };
         if (existIdx === -1) S.accounts.push(accObj);
@@ -1406,18 +1455,26 @@
           localStorage.setItem('ethith_all_registered_users', JSON.stringify(allRegTc));
         } catch(e) {}
 
-        if (window.EthithSync && window.EthithSync.publishLive) {
-          window.EthithSync.publishLive({
-            type: 'USER_REGISTERED',
-            user: {
-              id: S.user.id,
+        if (window.EthithSync) {
+          if (typeof window.EthithSync.publishLive === 'function') {
+            window.EthithSync.publishLive({
+              type: 'USER_LOGIN',
+              userId: S.user.id,
               name: S.user.name,
               email: S.user.email,
               login: S.user.login,
-              role: 'teacher'
-            }
-          });
+              role: 'teacher',
+              ts: Date.now()
+            });
+          }
+          if (typeof window.EthithSync.sendPresenceHeartbeat === 'function') {
+            window.EthithSync.sendPresenceHeartbeat();
+          }
+          if (typeof window.EthithSync.pushRemoteStore === 'function') {
+            window.EthithSync.pushRemoteStore();
+          }
         }
+        if (window._ethithRefreshPresenceUI) window._ethithRefreshPresenceUI();
 
         saveState();
         if (window.EthithSync && window.EthithSync.pushRemoteStore) {
@@ -1467,17 +1524,40 @@
           name: 'Bosh Admin',
           email: 'ADMIN_12038F1aq8syash@ethith.uz',
           coins: 50000,
-          dailyMinutes: 0
+          dailyMinutes: 0,
+          isOnline: true,
+          hasLoggedIn: true,
+          isLoggedOut: false
         };
 
         try {
           localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
+          if (window._ethithLoggedOutMap) {
+            delete window._ethithLoggedOutMap['admin_official_root'];
+            delete window._ethithLoggedOutMap['admin_12038f1aq8syash@ethith.uz'];
+          }
         } catch(err) {}
 
         saveState();
-        if (window.EthithSync && window.EthithSync.pushRemoteStore) {
-          window.EthithSync.pushRemoteStore();
+        if (window.EthithSync) {
+          if (typeof window.EthithSync.publishLive === 'function') {
+            window.EthithSync.publishLive({
+              type: 'USER_LOGIN',
+              userId: S.user.id,
+              name: S.user.name,
+              email: S.user.email,
+              role: 'admin',
+              ts: Date.now()
+            });
+          }
+          if (typeof window.EthithSync.sendPresenceHeartbeat === 'function') {
+            window.EthithSync.sendPresenceHeartbeat();
+          }
+          if (window.EthithSync.pushRemoteStore) {
+            window.EthithSync.pushRemoteStore();
+          }
         }
+        if (window._ethithRefreshPresenceUI) window._ethithRefreshPresenceUI();
         overlay.remove();
         window.ethithOpenApp('dash');
       };

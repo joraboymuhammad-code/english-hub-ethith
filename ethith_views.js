@@ -2201,18 +2201,18 @@
           var stColor = stObj.color || '#ef4444';
           var stLabel = stObj.label || 'Kirmagan';
 
-          return '<div class="cls-student-card-item" style="background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:all 0.15s ease;">' +
+          return '<div class="cls-student-card-item" data-st-login="' + esc(st.login || st.id || '') + '" style="background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:all 0.15s ease;">' +
             '  <div style="display:flex;align-items:center;gap:12px;min-width:0;">' +
             '    <div style="position:relative;flex-shrink:0;">' +
             '      <div style="width:40px;height:40px;border-radius:12px;background:rgba(2,132,199,0.25);border:1.5px solid rgba(56,189,248,0.4);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#38bdf8;">' + (st.name || 'S').charAt(0).toUpperCase() + '</div>' +
-            '      <span style="position:absolute;bottom:-2px;right:-2px;width:11px;height:11px;border-radius:50%;background:' + stColor + ';border:2px solid #0f172a;box-shadow:0 0 6px ' + stColor + ';" title="' + stLabel + '"></span>' +
+            '      <span class="cls-student-status-dot" style="position:absolute;bottom:-2px;right:-2px;width:11px;height:11px;border-radius:50%;background:' + stColor + ';border:2px solid #0f172a;box-shadow:0 0 6px ' + stColor + ';" title="' + stLabel + '"></span>' +
             '    </div>' +
             '    <div style="min-width:0;">' +
             '      <div style="font-size:14px;font-weight:800;color:#f8fafc;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(st.name || 'Nomsiz') + '</div>' +
             '      <div style="font-size:11.5px;color:#94a3b8;margin-top:2px;display:flex;align-items:center;gap:6px;">' +
             '        <span style="font-family:monospace;color:#7dd3fc;">@' + esc(st.login || st.id || 'id') + '</span>' +
             '        <span>·</span>' +
-            '        <span style="color:' + stColor + ';font-weight:700;">' + stLabel + '</span>' +
+            '        <span class="cls-student-status-label" style="color:' + stColor + ';font-weight:700;">' + stLabel + '</span>' +
             '      </div>' +
             '    </div>' +
             '  </div>' +

@@ -7139,7 +7139,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
             '<span class="ea-password-code-tag">' + esc(r.password) + '</span>' +
             '<button type="button" class="ea-copy-mini-btn ea-btn-copy-val" data-val="' + esc(r.password) + '" title="Parolni nusxalash">📋</button>' +
           '</td>' +
-          '<td style="padding:10px 14px;text-align:center;">' +
+          '<td style="padding:10px 14px;text-align:center;" class="ea-login-status-cell">' +
             statusBadgeHtml +
           '</td>' +
           '<td style="padding:10px 14px;text-align:center;">' +
