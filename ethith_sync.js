@@ -627,6 +627,75 @@
     var S = window.EthithApp.state;
     var classes = S.classes || [];
 
+    // Instant 0ms Payment Neon Sync
+    if (event.type === 'PAYMENT_UPDATE' && event.classId && event.stId) {
+      var pCid = (event.classId + '').toLowerCase();
+      var pClass = (classes || []).find(function(c) {
+        return (c.id && c.id.toLowerCase() === pCid) || (c.code && c.code.toLowerCase() === pCid);
+      });
+      if (pClass) {
+        if (!pClass.studentPayments) pClass.studentPayments = {};
+        pClass.studentPayments[event.stId] = event.payment;
+      }
+      if (S.finance) {
+        if (!S.finance.studentFees) S.finance.studentFees = {};
+        S.finance.studentFees[event.stId] = event.payment;
+      }
+      if (window.EthithEnterprise && window.EthithEnterprise.getStore) {
+        var eStore = window.EthithEnterprise.getStore();
+        if (eStore && eStore.classes) {
+          var ec = eStore.classes.find(function(c) { return c && (c.id === event.classId || (c.id && c.id.toLowerCase() === pCid)); });
+          if (ec) {
+            if (!ec.studentPayments) ec.studentPayments = {};
+            ec.studentPayments[event.stId] = event.payment;
+          }
+        }
+      }
+      try {
+        localStorage.setItem('ethith_v2_state', JSON.stringify(S));
+      } catch(e) {}
+
+      // Instant 0ms Neon Green Toggle in DOM
+      var isPaid = event.payment && event.payment.status === 'paid';
+      
+      // 1. Attendance Journal student names
+      document.querySelectorAll('[data-stid="' + event.stId + '"], [data-st-id="' + event.stId + '"]').forEach(function(el) {
+        var nameSpan = el.querySelector('.ea-st-paid-neon') || el.querySelector('.ea-logins-st-name') || el;
+        if (isPaid) {
+          nameSpan.classList.add('ea-st-paid-neon');
+          nameSpan.style.color = '#4ade80';
+          nameSpan.style.textShadow = '0 0 10px rgba(74,222,128,0.95), 0 0 20px rgba(74,222,128,0.7), 0 0 30px rgba(74,222,128,0.4)';
+        } else {
+          nameSpan.classList.remove('ea-st-paid-neon');
+          nameSpan.style.color = '';
+          nameSpan.style.textShadow = '';
+        }
+      });
+
+      // 2. Tizim Loginlari table rows
+      var loginRow = document.querySelector('tr[data-login-stid="' + event.stId + '"]');
+      if (loginRow) {
+        var stNameEl = loginRow.querySelector('.ea-logins-st-name');
+        if (stNameEl) {
+          if (isPaid) {
+            stNameEl.classList.add('ea-st-paid-neon');
+            stNameEl.style.color = '#4ade80';
+            stNameEl.style.textShadow = '0 0 10px rgba(74,222,128,0.95), 0 0 20px rgba(74,222,128,0.7)';
+          } else {
+            stNameEl.classList.remove('ea-st-paid-neon');
+            stNameEl.style.color = '';
+            stNameEl.style.textShadow = '';
+          }
+        }
+      }
+
+      // 3. Re-render attendance view if open
+      if (window._ethithCurrentView === 'attendance' && window.EthithAttendance && typeof window.EthithAttendance.renderCurrentView === 'function') {
+        window.EthithAttendance.renderCurrentView();
+      }
+      return;
+    }
+
     // Case-insensitive class matching
     var targetCls = classes.find(function(c) {
       if (!event.classId) return true;

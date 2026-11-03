@@ -313,6 +313,10 @@
 
   function saveState() {
     try {
+      if (S.user) {
+        localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
+        localStorage.setItem('ethith_user', JSON.stringify(S.user));
+      }
       localStorage.setItem('ethith_v2_state', JSON.stringify(S));
       // Notify other tabs via BroadcastChannel if available
       if (window.BroadcastChannel) {
@@ -483,13 +487,13 @@
       }
     } catch(e) {}
 
-    // Check if user is saved in localStorage first (respects teacher login even inside Telegram)
+    // Check if user is saved in localStorage first (respects teacher/student login even inside Telegram)
     if (!S.user) {
       try {
-        var savedAct = localStorage.getItem('ethith_active_user');
+        var savedAct = localStorage.getItem('ethith_active_user') || localStorage.getItem('ethith_user');
         if (savedAct) {
           var parsedAct = JSON.parse(savedAct);
-          if (parsedAct && (parsedAct.id || parsedAct.email)) {
+          if (parsedAct && (parsedAct.id || parsedAct.login || parsedAct.email)) {
             S.user = parsedAct;
           }
         }
@@ -1209,10 +1213,14 @@
         // Set Online status
         if (matchedAccount) {
           matchedAccount.isOnline = true;
+          matchedAccount.hasLoggedIn = true;
+          matchedAccount.isLoggedOut = false;
           matchedAccount.lastLogin = new Date().toISOString();
         }
         if (matchedStudentObj) {
           matchedStudentObj.isOnline = true;
+          matchedStudentObj.hasLoggedIn = true;
+          matchedStudentObj.isLoggedOut = false;
           matchedStudentObj.lastLogin = new Date().toISOString();
         }
 
@@ -1225,10 +1233,22 @@
           parentPhone: pPhone,
           classId: matchedClass ? matchedClass.id : (matchedAccount ? matchedAccount.classId : null),
           isOnline: true,
+          hasLoggedIn: true,
           coins: (matchedAccount && matchedAccount.coins) || 150
         };
 
         S.user = studentUser;
+        try {
+          localStorage.removeItem('ethith_explicit_logout');
+          sessionStorage.removeItem('ethith_explicit_logout');
+          localStorage.setItem('ethith_active_user', JSON.stringify(studentUser));
+          localStorage.setItem('ethith_user', JSON.stringify(studentUser));
+          if (window._ethithLoggedOutMap) {
+            [stId, login, stName].forEach(function(k) {
+              if (k) delete window._ethithLoggedOutMap[(k + '').toLowerCase().trim()];
+            });
+          }
+        } catch(err) {}
         saveState();
 
         if (window.EthithSync && window.EthithSync.broadcastState) {

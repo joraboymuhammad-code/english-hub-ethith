@@ -1471,6 +1471,24 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       window.EthithApp.saveState();
     }
 
+    if (window.EthithSync) {
+      if (typeof window.EthithSync.publishLive === 'function') {
+        window.EthithSync.publishLive({
+          type: 'PAYMENT_UPDATE',
+          classId: cls.id,
+          stId: stId,
+          payment: upd,
+          ts: Date.now()
+        });
+      }
+      if (typeof window.EthithSync.broadcastLocal === 'function') {
+        window.EthithSync.broadcastLocal(S_app.classes, S_app.exams);
+      }
+      if (typeof window.EthithSync.pushRemoteStore === 'function') {
+        window.EthithSync.pushRemoteStore(S_app.classes, S_app.exams);
+      }
+    }
+
     var lbl = nextStatus === 'paid' 
       ? 'TO‘LANDI (✓ Yashil Neon yonadi)' 
       : 'TO‘LANMAGAN (✗ Oddiy holat)';
@@ -1874,7 +1892,8 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     }
 
     h += '</div>';
-    var loginsSec = (!isStudent && (isAdmin || isTeacher)) ? EA.renderSystemLoginsSection(t.id, null) : null;
+    var activeGrpId = EA._activeTeacherGroupTabId !== undefined ? EA._activeTeacherGroupTabId : (tClasses && tClasses[0] ? tClasses[0].id : null);
+    var loginsSec = (!isStudent && (isAdmin || isTeacher)) ? EA.renderSystemLoginsSection(t.id, activeGrpId) : null;
     if (loginsSec) h += loginsSec.html;
     container.innerHTML = h;
     EA.attachTeacherGroupsListeners(container, t);
@@ -3010,8 +3029,12 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     return allClasses[0] || {};
   }
   EA.getActiveOrFirstClass = getActiveOrFirstClass;
+  EA.renderCurrentView = function() {
+    var apView = document.getElementById('apView');
+    if (apView && typeof EA.render === 'function') EA.render(apView);
+  };
 
-EA.render = function(container, preserveScrollLeft) {
+  EA.render = function(container, preserveScrollLeft) {
     if (!container) container = document.getElementById('apView');
     if (!container) return;
 
@@ -4066,6 +4089,23 @@ EA.render = function(container, preserveScrollLeft) {
         cls.studentPayments[stId] = upd;
         S_app.finance.studentFees[stId] = upd;
         if (window.EthithEnterprise && window.EthithEnterprise.saveStore) window.EthithEnterprise.saveStore();
+        if (window.EthithSync) {
+          if (typeof window.EthithSync.publishLive === 'function') {
+            window.EthithSync.publishLive({
+              type: 'PAYMENT_UPDATE',
+              classId: cls.id,
+              stId: stId,
+              payment: upd,
+              ts: Date.now()
+            });
+          }
+          if (typeof window.EthithSync.broadcastLocal === 'function') {
+            window.EthithSync.broadcastLocal(S_app.classes, S_app.exams);
+          }
+          if (typeof window.EthithSync.pushRemoteStore === 'function') {
+            window.EthithSync.pushRemoteStore(S_app.classes, S_app.exams);
+          }
+        }
         if (window.EthithApp && window.EthithApp.toast) window.EthithApp.toast(stName + " to‘lovi: " + amt.toLocaleString() + " so‘m saqlandi!");
         EA.render(container);
       };
@@ -6742,14 +6782,32 @@ EA.render = function(container, preserveScrollLeft) {
       return { html: '', attachHandlers: function(){} };
     }
 
-    var allCls = getAvailableClasses();
+    var allCls = [];
+    var avail = getAvailableClasses();
+    var filterLabel = '';
+    var teacherGroups = currentTeacherId ? getClassesForTeacher(currentTeacherId) : (currentClassId ? avail.filter(function(c){ return c.teacherId === (avail.find(function(x){ return x.id === currentClassId; }) || {}).teacherId; }) : []);
+
     if (currentClassId) {
-      // Prioritize the specific active group so only students of this group appear!
-      var matchC = allCls.filter(function(c) { return c.id === currentClassId; });
-      if (matchC.length > 0) allCls = matchC;
-    } else if (isTeacher && !isAdmin) {
-      var tClasses = getClassesForTeacher(currentTeacherId || EA.activeTeacherId);
-      allCls = tClasses;
+      // Prioritize the specific active group so strictly ONLY students of this group appear!
+      var matchC = avail.filter(function(c) { 
+        return c && ((c.id && c.id === currentClassId) || (c.code && c.code === currentClassId)); 
+      });
+      allCls = matchC;
+      if (matchC[0] && matchC[0].name) {
+        filterLabel = '«' + matchC[0].name + '» Guruhi';
+      }
+    } else if (currentTeacherId) {
+      // Strictly ONLY classes of this teacher!
+      allCls = getClassesForTeacher(currentTeacherId);
+      var allT = (window.EA && window.EA.getStoreTeachers) ? window.EA.getStoreTeachers() : [];
+      var curT = allT.find(function(t) { return t && t.id === currentTeacherId; });
+      if (curT && curT.name) {
+        filterLabel = curT.name + ' Guruhlari';
+      }
+    } else if (isTeacher) {
+      allCls = getClassesForTeacher(EA.activeTeacherId);
+    } else {
+      allCls = avail;
     }
 
     // Collect all student records across selected classes
@@ -6810,6 +6868,25 @@ EA.render = function(container, preserveScrollLeft) {
     var offlineCount = records.filter(function(r) { return r.status === 'blue'; }).length;
     var kirmaganCount = records.filter(function(r) { return r.status === 'red'; }).length;
 
+    var groupTabsHtml = '';
+    if (teacherGroups.length > 1) {
+      groupTabsHtml = '<div class="ea-logins-group-tabs" style="display:flex;align-items:center;gap:8px;overflow-x:auto;padding-bottom:12px;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.06);">' +
+        '<span style="font-size:11.5px;color:#94a3b8;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;margin-right:4px;">Guruhni tanlang:</span>' +
+        teacherGroups.map(function(g) {
+          var isSel = (currentClassId === g.id);
+          var gRealSt = (g.students || []).filter(function(st){ return st && !st.isTester && st.parentPhone; }).length;
+          var btnBg = isSel ? 'linear-gradient(135deg,#0284c7,#2563eb)' : 'rgba(255,255,255,0.06)';
+          var btnBorder = isSel ? '#38bdf8' : 'rgba(255,255,255,0.12)';
+          var btnColor = isSel ? '#fff' : '#cbd5e1';
+          var glow = isSel ? 'box-shadow:0 0 12px rgba(56,189,248,0.4);' : '';
+          return '<button type="button" class="ea-logins-grp-filter-btn" data-filter-cid="' + esc(g.id) + '" style="background:' + btnBg + ';border:1px solid ' + btnBorder + ';color:' + btnColor + ';' + glow + 'border-radius:10px;padding:6px 14px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;transition:all 0.15s ease;">' +
+            (isSel ? '🟢 ' : '') + esc(g.name) + ' (' + gRealSt + ' ta)' +
+          '</button>';
+        }).join('') +
+        '<button type="button" class="ea-logins-grp-filter-btn" data-filter-cid="" style="background:' + (!currentClassId ? 'linear-gradient(135deg,#6366f1,#8b5cf6)' : 'rgba(255,255,255,0.06)') + ';border:1px solid ' + (!currentClassId ? '#a855f7' : 'rgba(255,255,255,0.12)') + ';color:' + (!currentClassId ? '#fff' : '#cbd5e1') + ';border-radius:10px;padding:6px 14px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap;">Barcha guruhlar</button>' +
+      '</div>';
+    }
+
     var h = '<div class="ea-system-logins-section" style="margin-top:40px;background:linear-gradient(135deg,rgba(15,23,42,0.96),rgba(30,41,59,0.92));border:1.5px solid rgba(56,189,248,0.35);border-radius:24px;padding:26px 28px;box-shadow:0 18px 50px rgba(0,0,0,0.6),0 0 30px rgba(56,189,248,0.15);backdrop-filter:blur(24px);">' +
       // Header & Controls Row
       '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:18px;">' +
@@ -6817,7 +6894,7 @@ EA.render = function(container, preserveScrollLeft) {
           '<div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 6px 18px rgba(99,102,241,0.35);">🔐</div>' +
           '<div>' +
             '<h2 style="margin:0;font-size:20px;font-weight:900;color:#fff;display:flex;align-items:center;gap:10px;">' +
-              'Tizim Loginlari (O‘quvchilar Ro‘yxati va Kirish Ma’lumotlari)' +
+              'Tizim Loginlari (O‘quvchilar Ro‘yxati va Kirish Ma’lumotlari)' + (filterLabel ? (' <span style="font-size:14px;color:#38bdf8;font-weight:800;">— ' + esc(filterLabel) + '</span>') : '') +
             '</h2>' +
             '<p style="margin:4px 0 0;font-size:12.5px;color:#94a3b8;font-weight:600;">' +
               'O‘quvchilar mustaqil ro‘yxatdan o‘tmaydi — ular faqat ushbu login va parollar orqali tizimga kiradilar.' +
@@ -6844,6 +6921,7 @@ EA.render = function(container, preserveScrollLeft) {
           '</button>' +
         '</div>' +
       '</div>' +
+      groupTabsHtml +
 
       // Filter & Search bar
       '<div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:16px;">' +
@@ -6881,8 +6959,8 @@ EA.render = function(container, preserveScrollLeft) {
         var dotHtml = '<span class="ea-status-dot" data-stid="' + esc(r.id || r.login || r.name || '') + '" style="margin:0;background:' + r.statusColor + ';box-shadow:0 0 6px ' + r.statusColor + ';" title="' + r.statusDot + ' ' + r.statusLabel + '"></span>';
 
         var nameHtml = r.isPaid
-          ? ('<span class="ea-st-paid-neon" style="color:#4ade80 !important;font-weight:900;text-shadow:0 0 10px rgba(74,222,128,0.9),0 0 20px rgba(74,222,128,0.6);letter-spacing:0.2px;">' + esc(r.name) + '</span>')
-          : ('<span style="color:#f8fafc;font-weight:800;">' + esc(r.name) + '</span>');
+          ? ('<span class="ea-logins-st-name ea-st-paid-neon" style="color:#4ade80 !important;font-weight:900;text-shadow:0 0 10px rgba(74,222,128,0.9),0 0 20px rgba(74,222,128,0.6);letter-spacing:0.2px;">' + esc(r.name) + '</span>')
+          : ('<span class="ea-logins-st-name" style="color:#f8fafc;font-weight:800;">' + esc(r.name) + '</span>');
 
         var phoneDisp = r.parentPhone ? esc(r.parentPhone) : '<span style="color:#64748b;font-style:italic;">Kiritilmagan</span>';
 
@@ -6895,7 +6973,7 @@ EA.render = function(container, preserveScrollLeft) {
           statusBadgeHtml = '<span style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.35);color:#f87171;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:800;">🔴 Kirmagan</span>';
         }
 
-        h += '<tr class="ea-login-row" data-search="' + esc((r.name + ' ' + r.className + ' ' + r.login + ' ' + r.parentPhone).toLowerCase()) + '" style="background:' + rowBg + ';border-bottom:1px solid rgba(255,255,255,0.05);transition:background 0.15s;">' +
+        h += '<tr class="ea-login-row" data-login-stid="' + esc(r.id) + '" data-search="' + esc((r.name + ' ' + r.className + ' ' + r.login + ' ' + r.parentPhone).toLowerCase()) + '" style="background:' + rowBg + ';border-bottom:1px solid rgba(255,255,255,0.05);transition:background 0.15s;">' +
           '<td style="padding:10px 14px;text-align:center;color:#94a3b8;font-weight:900;">' + (idx + 1) + '</td>' +
           '<td style="padding:10px 14px;display:flex;align-items:center;gap:6px;">' +
             dotHtml + nameHtml +
@@ -6928,6 +7006,18 @@ EA.render = function(container, preserveScrollLeft) {
       html: h,
       records: records,
       attachHandlers: function(container) {
+        // Group filter tabs
+        container.querySelectorAll('.ea-logins-grp-filter-btn').forEach(function(btn) {
+          btn.onclick = function() {
+            var cid = btn.getAttribute('data-filter-cid') || null;
+            EA._activeTeacherGroupTabId = cid;
+            if (typeof EA.render === 'function') {
+              var apView = document.getElementById('apView') || container;
+              EA.render(apView);
+            }
+          };
+        });
+
         // Excel export
         var expBtn = container.querySelector('#eaBtnExportLoginsExcel');
         if (expBtn) {
