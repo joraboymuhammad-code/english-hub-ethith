@@ -1067,6 +1067,50 @@
       }
     }
 
+    // J1. CUSTOM TEST UPDATED (TEACHER MODIFIED CUSTOM/CURRICULUM TEST IN REAL-TIME)
+    else if ((event.type === 'TEST_SAVED' || event.type === 'TEST_UPDATED') && event.test) {
+      var tObj = event.test;
+      if (!S.fileExplorer) S.fileExplorer = { folders: [], tests: [] };
+      if (!S.fileExplorer.tests) S.fileExplorer.tests = [];
+      var tIdx = S.fileExplorer.tests.findIndex(function(x) { return x.id === tObj.id; });
+      if (tIdx > -1) {
+        S.fileExplorer.tests[tIdx] = tObj;
+      } else {
+        S.fileExplorer.tests.push(tObj);
+      }
+      if (tObj.isCurriculum && tObj.testKey) {
+        if (!S.customCurriculumTests) S.customCurriculumTests = {};
+        S.customCurriculumTests[tObj.testKey] = tObj;
+        S.customCurriculumTests[tObj.id] = tObj;
+      }
+      // If student is currently taking this test, live patch pins in 0ms!
+      var takeModal = document.getElementById('eeTakeVisualOverlay');
+      if (takeModal) {
+        var takePagesWrap = takeModal.querySelector('#eeTakePagesWrap');
+        if (takePagesWrap && tObj.pages) {
+          tObj.pages.forEach(function(pg) {
+            (pg.elements || []).forEach(function(el) {
+              var inputOrChip = takePagesWrap.querySelector('[data-id="' + el.id + '"]');
+              if (inputOrChip) {
+                var pWrap = inputOrChip.parentElement;
+                if (pWrap) {
+                  pWrap.style.transition = 'left 0.15s ease-out, top 0.15s ease-out, width 0.15s ease-out, height 0.15s ease-out';
+                  pWrap.style.left = el.left + '%';
+                  pWrap.style.top = el.top + '%';
+                  pWrap.style.width = el.width + '%';
+                  pWrap.style.height = el.height + '%';
+                  inputOrChip.setAttribute('data-correct', el.correct || '');
+                }
+              }
+            });
+          });
+        }
+      }
+      if (window.toast && !window._ethithWbEditorMode) {
+        window.toast('⚡ Ustoz "' + (tObj.title || 'test') + '"ni yangiladi');
+      }
+    }
+
     // J1. EXAM UPDATED (TEACHER MODIFIED EXAM IN REAL-TIME)
     else if (event.type === 'EXAM_UPDATED' && event.exam) {
       var exId = event.exam.id;

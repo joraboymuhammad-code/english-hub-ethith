@@ -1208,6 +1208,7 @@
           '<label style="background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(37,99,235,0.2));color:#38bdf8;border:1.5px solid #38bdf8;padding:6px 12px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">' +
             '📁 PDF / Rasm Yuklash <input type="file" id="eeVisualFileInput" accept="image/*,application/pdf,.pdf" style="display:none;" />' +
           '</label>' +
+          '<button id="eeAddNewPinBtn" style="background:linear-gradient(135deg,#38bdf8,#0284c7);color:#fff;border:none;padding:6px 14px;border-radius:10px;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(2,132,199,0.4);" title="Yangi katakcha qo‘shish"><span>➕</span> Yangi Katakcha</button>' +
 
           // Zoom Controls
           '<div style="display:flex;align-items:center;gap:3px;background:#1e293b;padding:3px 6px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);">' +
@@ -1264,6 +1265,26 @@
         toolDrawBtn.style.color = '#94a3b8';
       }
     }
+    var addNewPinBtn = m.querySelector('#eeAddNewPinBtn');
+    if (addNewPinBtn) {
+      addNewPinBtn.onclick = function() {
+        var pIdx = 0;
+        var p = pagesData[pIdx] || pagesData[0];
+        var ov = streamWrap.querySelector('.ee-page-overlay[data-page-idx="' + pIdx + '"]');
+        var newEl = {
+          id: 'inp_' + Date.now() + '_' + Math.floor(Math.random() * 999),
+          type: 'fill',
+          top: 25,
+          left: 25,
+          width: 14,
+          height: 3.5,
+          correct: '',
+          label: '' + ((p.elements || []).length + 1)
+        };
+        openKatakchaModal(true, newEl, null, p, ov, pIdx);
+      };
+    }
+
     toolDrawBtn.onclick = function() { setTool('draw'); };
     toolLassoBtn.onclick = function() { setTool('lasso'); };
 
@@ -1440,14 +1461,19 @@
 
         var badgeLabel = (el.label ? el.label : (idx + 1)) + ': ' + esc(el.correct || (el.options ? (Array.isArray(el.options) ? el.options.join('/') : el.options) : el.type));
         pin.innerHTML = '<span style="background:rgba(2,132,199,0.92);color:#fff;font-size:11px;font-weight:900;padding:2px 7px;border-radius:4px;pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:92%;">' + badgeLabel + '</span>' +
-          '<button class="ee-quick-del-pin" data-idx="' + idx + '" style="position:absolute;top:-8px;right:-8px;background:#ef4444;color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:11px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.5);">✕</button>';
+          '<button class="ee-quick-del-pin" data-idx="' + idx + '" style="position:absolute;top:-8px;right:-8px;background:#ef4444;color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:11px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.5);" title="O‘chirish">✕</button>' +
+          // RESIZE HANDLES: Corner (SE), Right Edge (E), Bottom Edge (S)
+          '<div class="ee-pin-resize-handle ee-pin-resize-se" data-type="se" data-idx="' + idx + '" style="position:absolute;right:-4px;bottom:-4px;width:12px;height:12px;background:#38bdf8;border:2px solid #ffffff;border-radius:3px;cursor:nwse-resize;z-index:70;box-shadow:0 0 6px rgba(0,0,0,0.6);" title="Kattalashtirish / Kichraytirish (Burchak)"></div>' +
+          '<div class="ee-pin-resize-handle ee-pin-resize-e" data-type="e" data-idx="' + idx + '" style="position:absolute;right:-3px;top:20%;height:60%;width:6px;background:rgba(56,189,248,0.75);border-radius:2px;cursor:ew-resize;z-index:69;" title="Kengligini o‘zgartirish (O‘ng qirra)"></div>' +
+          '<div class="ee-pin-resize-handle ee-pin-resize-s" data-type="s" data-idx="' + idx + '" style="position:absolute;bottom:-3px;left:20%;width:60%;height:6px;background:rgba(56,189,248,0.75);border-radius:2px;cursor:ns-resize;z-index:69;" title="Balandligini o‘zgartirish (Pastki qirra)"></div>';
 
         // Dragging & Moving Pins (Individual OR Multi-Drag if part of selected pins!)
         attachPinDrag(pin, el, idx, p, pIdx, overlay);
+        attachPinResize(pin, el, idx, p, overlay);
 
         // Click to edit (if not dragged)
         pin.onclick = function(e) {
-          if (e.target.closest('.ee-quick-del-pin')) return;
+          if (e.target.closest('.ee-quick-del-pin') || e.target.closest('.ee-pin-resize-handle')) return;
           if (pin._wasDragged) { pin._wasDragged = false; return; }
           e.stopPropagation();
           if (e.shiftKey || activeTool === 'lasso') {
@@ -1456,7 +1482,7 @@
             updateSelectionVisuals();
             return;
           }
-          openKatakchaModal(false, el, idx, p, overlay);
+          openKatakchaModal(false, el, idx, p, overlay, pIdx);
         };
 
         overlay.appendChild(pin);
@@ -1477,14 +1503,81 @@
       });
     }
 
+    // Window-style resize handler (Corner SE, Right E, Bottom S)
+    function attachPinResize(pin, el, idx, p, overlay) {
+      pin.querySelectorAll('.ee-pin-resize-handle').forEach(function(handle) {
+        function startResize(e) {
+          var isTouch = !!e.touches;
+          if (isTouch && e.touches.length > 1) return;
+          if (!isTouch && e.button !== 0) return;
+          if (e.cancelable) e.preventDefault();
+          e.stopPropagation();
+
+          var pt = isTouch ? e.touches[0] : e;
+          var rType = handle.getAttribute('data-type') || 'se';
+          var rect = overlay.getBoundingClientRect();
+          var startX = pt.clientX;
+          var startY = pt.clientY;
+          var startW = parseFloat(pin.style.width) || el.width;
+          var startH = parseFloat(pin.style.height) || el.height;
+
+          pin.style.transition = 'none';
+          pin.style.zIndex = '999';
+
+          var curW = startW;
+          var curH = startH;
+
+          function onResizeMove(ev) {
+            if (ev.touches && ev.touches.length > 1) return;
+            if (ev.cancelable) ev.preventDefault();
+            var pPt = ev.touches ? ev.touches[0] : ev;
+            var dx = pPt.clientX - startX;
+            var dy = pPt.clientY - startY;
+            var dxPct = (dx / rect.width) * 100;
+            var dyPct = (dy / rect.height) * 100;
+
+            if (rType === 'e' || rType === 'se') {
+              curW = Math.max(1.5, Math.min(95, startW + dxPct));
+              pin.style.width = curW.toFixed(2) + '%';
+            }
+            if (rType === 's' || rType === 'se') {
+              curH = Math.max(1.0, Math.min(80, startH + dyPct));
+              pin.style.height = curH.toFixed(2) + '%';
+            }
+          }
+
+          function onResizeEnd() {
+            window.removeEventListener('mousemove', onResizeMove);
+            window.removeEventListener('mouseup', onResizeEnd);
+            window.removeEventListener('touchmove', onResizeMove);
+            window.removeEventListener('touchend', onResizeEnd);
+
+            pin.style.zIndex = '20';
+            el.width = parseFloat(curW.toFixed(2));
+            el.height = parseFloat(curH.toFixed(2));
+          }
+
+          window.addEventListener('mousemove', onResizeMove);
+          window.addEventListener('mouseup', onResizeEnd);
+          window.addEventListener('touchmove', onResizeMove, { passive: false });
+          window.addEventListener('touchend', onResizeEnd);
+        }
+
+        handle.addEventListener('mousedown', startResize);
+        handle.addEventListener('touchstart', startResize, { passive: false });
+      });
+    }
+
     // Drag pin handler supporting UNISON GROUP DRAG of all selected pins
     function attachPinDrag(pin, el, idx, p, pIdx, overlay) {
       var pinKey = pIdx + '_' + idx;
 
-      pin.addEventListener('mousedown', function(e) {
-        if (e.target.closest('.ee-quick-del-pin')) return;
-        if (e.button === 2) return; // Right click reserved
+      function onPinStart(e) {
+        if (e.target.closest('.ee-quick-del-pin') || e.target.closest('.ee-pin-resize-handle')) return;
         var isTouch = !!e.touches;
+        if (!isTouch && e.button !== 0) return; // Only left click for drag
+        if (isTouch && e.touches.length > 1) return;
+        if (e.cancelable) e.preventDefault();
         var pt = isTouch ? e.touches[0] : e;
         e.stopPropagation();
 
@@ -1520,6 +1613,8 @@
         });
 
         function onPinMove(ev) {
+          if (ev.touches && ev.touches.length > 1) return;
+          if (ev.cancelable) ev.preventDefault();
           var pPt = ev.touches ? ev.touches[0] : ev;
           var dx = pPt.clientX - startX;
           var dy = pPt.clientY - startY;
@@ -1546,7 +1641,7 @@
           window.removeEventListener('touchend', onPinUp);
 
           if (moved) {
-            var pPt = (ev.changedTouches && ev.changedTouches[0]) ? ev.changedTouches[0] : ev;
+            var pPt = (ev.changedTouches && ev.changedTouches[0]) ? ev.changedTouches[0] : (ev.touches ? ev.touches[0] : ev);
             var dx = pPt.clientX - startX;
             var dy = pPt.clientY - startY;
             var dxPct = (dx / rect.width) * 100;
@@ -1562,9 +1657,12 @@
 
         window.addEventListener('mousemove', onPinMove);
         window.addEventListener('mouseup', onPinUp);
-        window.addEventListener('touchmove', onPinMove);
+        window.addEventListener('touchmove', onPinMove, { passive: false });
         window.addEventListener('touchend', onPinUp);
-      });
+      }
+
+      pin.addEventListener('mousedown', onPinStart);
+      pin.addEventListener('touchstart', onPinStart, { passive: false });
     }
 
     // Overlay Drawing & Lasso Marquee Handlers
@@ -1722,6 +1820,16 @@
         '</div>' +
 
         '<div style="display:flex;flex-direction:column;gap:14px;">' +
+          (pagesData.length > 1 ? (
+            '<div>' +
+              '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Qaysi sahifaga joylashtirilsin:</label>' +
+              '<select id="eeKatakchaPageSelect" style="width:100%;padding:10px;background:#1e293b;border:1px solid rgba(56,189,248,0.3);border-radius:10px;color:#38bdf8;font-weight:800;outline:none;">' +
+                pagesData.map(function(pg, pi) {
+                  return '<option value="' + pi + '" ' + (pi === pIdx ? 'selected' : '') + '>📄 Sahifa ' + (pg.pageNum || (pi + 1)) + '</option>';
+                }).join('') +
+              '</select>' +
+            '</div>'
+          ) : '') +
           '<div>' +
             '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Topshiriq Turi:</label>' +
             '<select id="eeKatakchaType" style="width:100%;padding:10px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:800;outline:none;">' +
@@ -1781,15 +1889,28 @@
         elData.label = labelVal;
         if (opts.length > 0) elData.options = opts;
 
+        var targetPIdx = (pIdx !== undefined && pIdx !== null) ? pIdx : 0;
+        var pageSel = om.querySelector('#eeKatakchaPageSelect');
+        if (pageSel) targetPIdx = parseInt(pageSel.value, 10);
+        var targetPage = pagesData[targetPIdx] || p;
+        var targetOverlay = streamWrap.querySelector('.ee-page-overlay[data-page-idx="' + targetPIdx + '"]') || overlay;
+
         if (isNew) {
-          p.elements.push(elData);
+          targetPage.elements = targetPage.elements || [];
+          targetPage.elements.push(elData);
+        } else if (targetPIdx !== pIdx) {
+          p.elements.splice(editIdx, 1);
+          targetPage.elements = targetPage.elements || [];
+          targetPage.elements.push(elData);
+          renderPagePins(overlay, p, pIdx);
         } else {
           p.elements[editIdx] = elData;
         }
 
         om.remove();
-        renderPagePins(overlay, p, pIdx);
+        renderPagePins(targetOverlay, targetPage, targetPIdx);
         updateCounter();
+        showToast("✓ Katakcha saqlandi!");
       };
     }
 
@@ -1958,8 +2079,20 @@
         })
       };
 
-      S.fileExplorer.tests.push(newTest);
+      var exTIndex = S.fileExplorer.tests.findIndex(function(x) { return x.id === randCode; });
+      if (exTIndex !== -1) {
+        S.fileExplorer.tests[exTIndex] = newTest;
+      } else {
+        S.fileExplorer.tests.push(newTest);
+      }
       saveStore();
+      if (window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
+        window.EthithSync.publishLive({
+          type: 'TEST_SAVED',
+          test: newTest,
+          ts: Date.now()
+        });
+      }
       closeAll();
       showToast("✓ Interaktiv listening test saqlandi! Test ID: " + randCode);
       if (container) EE.renderExplorerView(container);
