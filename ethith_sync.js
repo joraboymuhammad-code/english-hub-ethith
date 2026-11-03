@@ -363,7 +363,7 @@
       });
     });
 
-    // 1. Update all status dots in attendance journal & tables
+    // 1. Update status dots in attendance journal & tables (like Image 1)
     document.querySelectorAll('.ea-status-dot[data-stid]').forEach(function(dot) {
       var sKey = (dot.getAttribute('data-stid') || '').toLowerCase().trim();
       if (!sKey) return;
@@ -380,7 +380,23 @@
       }
     });
 
-    // 2. Update student status pills at top of chat/attendance
+    // Also update any table row dots
+    document.querySelectorAll('[data-st-name-dot]').forEach(function(dot) {
+      var sKey = (dot.getAttribute('data-st-name-dot') || '').toLowerCase().trim();
+      if (!sKey) return;
+      var st = allStudents.find(function(s) {
+        return (s.name && s.name.toLowerCase().trim() === sKey) ||
+               (s.login && s.login.toLowerCase() === sKey) ||
+               (s.id && (s.id + '').toLowerCase() === sKey);
+      });
+      if (st) {
+        var stStatus = window._ethithGetUserStatus(st);
+        dot.style.background = stStatus.color;
+        dot.style.boxShadow = '0 0 8px ' + stStatus.color;
+      }
+    });
+
+    // 2. Update student status pills
     document.querySelectorAll('.tg-online-pill[data-stid], .ea-student-pill[data-stid]').forEach(function(pill) {
       var sKey = (pill.getAttribute('data-stid') || '').toLowerCase().trim();
       if (!sKey) return;
@@ -399,22 +415,58 @@
         pill.style.borderColor = stStatus.status === 'green' ? 'rgba(34,197,94,0.5)' : (stStatus.status === 'blue' ? 'rgba(59,130,246,0.5)' : 'rgba(239,68,68,0.3)');
       }
     });
+
+    // 3. Update student cards in class dashboard (like Image 2)
+    document.querySelectorAll('.cls-student-card-item').forEach(function(item) {
+      var editBtn = item.querySelector('.btn-st-row-edit');
+      var sLogin = editBtn ? editBtn.getAttribute('data-edit-st-login') : '';
+      if (!sLogin) return;
+      var sKey = sLogin.toLowerCase().trim();
+      var st = allStudents.find(function(s) {
+        return (s.login && s.login.toLowerCase() === sKey) ||
+               (s.id && (s.id + '').toLowerCase() === sKey);
+      });
+      if (st) {
+        var stStatus = window._ethithGetUserStatus(st);
+        var dotSpan = item.querySelector('span[title]');
+        if (dotSpan) {
+          dotSpan.style.background = stStatus.color;
+          dotSpan.style.boxShadow = '0 0 8px ' + stStatus.color;
+          dotSpan.title = stStatus.label;
+        }
+        var spans = item.querySelectorAll('span');
+        spans.forEach(function(sp) {
+          var txt = (sp.textContent || '').trim();
+          if (txt === 'Online' || txt === 'Offline' || txt === 'Kirmagan') {
+            sp.textContent = stStatus.label;
+            sp.style.color = stStatus.color;
+          }
+        });
+      }
+    });
   };
 
   window._ethithGetUserStatus = function(u) {
     if (!u) return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
     var now = Date.now();
     var myU = (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) || {};
-    
-    // Current user on this browser is ALWAYS Online
-    var isMe = (u.id && myU.id && u.id === myU.id) || 
+    var keys = [u.id, u.login, u.email, u.name].filter(Boolean).map(function(k){ return (k + '').toLowerCase().trim(); });
+
+    // Agar foydalanuvchi tizimdan logout qilgan bo'lsa -> 🔴 Kirmagan
+    var loggedOutMap = window._ethithLoggedOutMap || {};
+    var isLoggedOut = keys.some(function(k) { return loggedOutMap[k] === true; });
+    if (isLoggedOut || u.isLoggedOut) {
+      return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
+    }
+
+    // Brauzerdagi ayni damdagi foydalanuvchi (logout qilmagan bo'lsa) -> 🟢 Online
+    var isMe = myU && myU.id && ((u.id && u.id === myU.id) || 
                (u.login && myU.login && u.login.toLowerCase() === myU.login.toLowerCase()) ||
-               (u.email && myU.email && u.email.toLowerCase() === myU.email.toLowerCase());
+               (u.email && myU.email && u.email.toLowerCase() === myU.email.toLowerCase()));
     if (isMe) {
       return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢' };
     }
 
-    var keys = [u.id, u.login, u.email, u.name].filter(Boolean).map(function(k){ return (k + '').toLowerCase().trim(); });
     var presMap = window._ethithPresenceMap || {};
     var lastSeen = 0;
     keys.forEach(function(k) {
@@ -429,28 +481,24 @@
              (u.email && a.email && a.email.toLowerCase() === u.email.toLowerCase());
     });
 
-    if (acc && acc.lastSeen && acc.lastSeen > lastSeen) lastSeen = acc.lastSeen;
+    if (acc && acc.isLoggedOut) {
+      return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
+    }
 
-    // Within 75 seconds window = 🟢 Online
-    if (lastSeen && (now - lastSeen) < 75000) {
+    if (acc && acc.lastSeen && acc.lastSeen > lastSeen && !acc.isLoggedOut) {
+      lastSeen = acc.lastSeen;
+    }
+
+    // TEZKOR ONLINE OYNASI: Oxirgi 10 soniyada faol bo'lsa -> 🟢 Online
+    if (lastSeen && (now - lastSeen) < 10000) {
       return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢', lastSeen: lastSeen };
     }
 
-    // Has user ever logged in previously using teacher-provided username & password?
-    var hasEverLoggedIn = (acc && (acc.lastLogin || acc.loginCount > 0 || acc.hasLoggedIn || acc.isOnline)) ||
-                          u.lastLogin || u.hasLoggedIn || u.isOnline;
+    // Chiqib ketgan (avval kirgan, lekin hozir 10 soniyadan ortiq vaqt faol emas) -> 🔵 Offline
+    var hasEverLoggedIn = (acc && (acc.lastLogin || acc.loginCount > 0 || acc.hasLoggedIn)) ||
+                          u.lastLogin || u.hasLoggedIn;
 
-    if (!hasEverLoggedIn && S.classes) {
-      hasEverLoggedIn = S.classes.some(function(c) {
-        return (c.messages || []).some(function(m) {
-          return (m.senderId && u.id && m.senderId === u.id) ||
-                 (m.senderName && u.name && m.senderName.toLowerCase().trim() === u.name.toLowerCase().trim()) ||
-                 (m.senderEmail && u.login && m.senderEmail.toLowerCase().trim() === u.login.toLowerCase().trim());
-        });
-      });
-    }
-
-    if (hasEverLoggedIn) {
+    if (hasEverLoggedIn && lastSeen && (now - lastSeen) >= 10000) {
       return { status: 'blue', label: "Offline", color: '#3b82f6', dot: '🔵', lastSeen: lastSeen };
     }
 
@@ -487,8 +535,27 @@
   }
 
   if (typeof window !== 'undefined') {
-    setTimeout(sendPresenceHeartbeat, 1200);
-    setInterval(sendPresenceHeartbeat, 25000);
+    setTimeout(sendPresenceHeartbeat, 600);
+    setInterval(sendPresenceHeartbeat, 3500); // Har 3.5 soniyada yangilanadi (Super Fast)
+
+    // Statuslar doimiy 2 soniyada real vaqtda tekshirib yangilanadi
+    setInterval(function() {
+      if (window._ethithRefreshPresenceUI) window._ethithRefreshPresenceUI();
+    }, 2000);
+
+    // Brauzer yopilganda shu zahoti OFFLINE yuboriladi
+    window.addEventListener('beforeunload', function() {
+      var u = (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user);
+      if (u && typeof publishLive === 'function') {
+        publishLive({
+          type: 'PRESENCE_OFFLINE',
+          userId: u.id || u.login || u.email,
+          login: u.login || '',
+          email: u.email || '',
+          ts: Date.now()
+        });
+      }
+    });
   }
 
   // Dispatch incoming live events directly to local state and UI
@@ -499,6 +566,35 @@
     // Instant presence tracking for sender
     if (event.from) {
       markUserActive([event.userId, event.senderId, event.login, event.email, event.senderEmail, event.name, event.senderName], event.ts || Date.now());
+    }
+
+    if (event.type === 'USER_LOGOUT' && (event.userId || event.login)) {
+      var logKeys = [event.userId, event.login, event.email, event.name].filter(Boolean).map(function(k){ return (k + '').toLowerCase().trim(); });
+      if (!window._ethithLoggedOutMap) window._ethithLoggedOutMap = {};
+      logKeys.forEach(function(k) {
+        window._ethithLoggedOutMap[k] = true;
+        if (window._ethithPresenceMap) delete window._ethithPresenceMap[k];
+      });
+      (classes || []).forEach(function(cls) {
+        (cls.students || []).forEach(function(st) {
+          if (st && logKeys.some(function(k){ return (st.login && st.login.toLowerCase() === k) || (st.id && (st.id+'').toLowerCase() === k); })) {
+            st.isOnline = false;
+            st.isLoggedOut = true;
+            delete st.lastSeen;
+          }
+        });
+      });
+      if (window._ethithRefreshPresenceUI) window._ethithRefreshPresenceUI();
+      return;
+    }
+
+    if (event.type === 'PRESENCE_OFFLINE' && (event.userId || event.login)) {
+      var offKeys = [event.userId, event.login, event.email].filter(Boolean).map(function(k){ return (k + '').toLowerCase().trim(); });
+      offKeys.forEach(function(k) {
+        if (window._ethithPresenceMap) delete window._ethithPresenceMap[k];
+      });
+      if (window._ethithRefreshPresenceUI) window._ethithRefreshPresenceUI();
+      return;
     }
 
     if (event.type === 'PRESENCE_HEARTBEAT') {

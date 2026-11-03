@@ -593,19 +593,49 @@
 
   // Universal Instant Logout Function
   function logoutUser() {
-    if (S.user && S.user.role === 'student') {
-      var curLog = (S.user.login || '').toLowerCase();
+    var curUser = S.user;
+    if (curUser) {
+      var curLog = (curUser.login || '').toLowerCase();
+      var curId = (curUser.id || '').toLowerCase();
+      var curEmail = (curUser.email || '').toLowerCase();
+      var curName = (curUser.name || '').toLowerCase().trim();
+      var uKeys = [curLog, curId, curEmail, curName].filter(Boolean);
+
+      if (!window._ethithLoggedOutMap) window._ethithLoggedOutMap = {};
+      uKeys.forEach(function(k) {
+        window._ethithLoggedOutMap[k] = true;
+        if (window._ethithPresenceMap) delete window._ethithPresenceMap[k];
+      });
+
       if (Array.isArray(S.accounts)) {
-        var acc = S.accounts.find(function(a) { return (a.login || '').toLowerCase() === curLog; });
-        if (acc) acc.isOnline = false;
+        var acc = S.accounts.find(function(a) { return (a.login || '').toLowerCase() === curLog || (a.id && a.id === curId); });
+        if (acc) {
+          acc.isOnline = false;
+          acc.isLoggedOut = true;
+          delete acc.lastSeen;
+        }
       }
       (S.classes || []).forEach(function(cls) {
         (cls.students || []).forEach(function(st) {
-          if ((st.login || '').toLowerCase() === curLog) st.isOnline = false;
+          if ((st.login && st.login.toLowerCase() === curLog) || (st.id && st.id === curId) || (st.name && st.name.toLowerCase().trim() === curName)) {
+            st.isOnline = false;
+            st.isLoggedOut = true;
+            delete st.lastSeen;
+          }
         });
       });
-      if (window.EthithSync && window.EthithSync.broadcastState) {
-        window.EthithSync.broadcastState('student_offline');
+
+      if (window.EthithSync && window.EthithSync.publishLive) {
+        window.EthithSync.publishLive({
+          type: 'USER_LOGOUT',
+          userId: curUser.id || curUser.login,
+          login: curUser.login || '',
+          email: curUser.email || '',
+          name: curUser.name || '',
+          ts: Date.now()
+        });
+        window.EthithSync.broadcastLocal(S.classes, S.exams);
+        window.EthithSync.pushRemoteStore(S.classes, S.exams);
       }
     }
     S.user = null;
@@ -616,6 +646,7 @@
       sessionStorage.setItem('ethith_explicit_logout', '1');
     } catch(e) {}
     saveState();
+    if (window._ethithRefreshPresenceUI) window._ethithRefreshPresenceUI();
     document.documentElement.classList.remove('eth-logged-in');
     var ap = document.getElementById('app');
     if (ap) ap.style.display = 'none';
@@ -1382,7 +1413,7 @@
           window.EthithAttendance.activeTeacherId = S.user.id;
           window.EthithAttendance.activeClassId = null;
         }
-        window.ethithOpenApp('classes');
+        window.ethithOpenApp('attendance');
       };
     }
 
