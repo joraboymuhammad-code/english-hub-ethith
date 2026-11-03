@@ -452,26 +452,12 @@
     var myU = (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) || {};
     var keys = [u.id, u.login, u.email, u.name].filter(Boolean).map(function(k){ return (k + '').toLowerCase().trim(); });
 
-    // Agar foydalanuvchi tizimdan logout qilgan bo'lsa -> 🔴 Kirmagan
+    // 1. FAQAT TIZIMDAN LOGOUT BOSILGANDA -> QIZIL (🔴 Kirmagan)
     var loggedOutMap = window._ethithLoggedOutMap || {};
-    var isLoggedOut = keys.some(function(k) { return loggedOutMap[k] === true; });
-    if (isLoggedOut || u.isLoggedOut) {
+    var isExplicitlyLoggedOut = keys.some(function(k) { return loggedOutMap[k] === true; });
+    if (isExplicitlyLoggedOut || u.isLoggedOut) {
       return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
     }
-
-    // Brauzerdagi ayni damdagi foydalanuvchi (logout qilmagan bo'lsa) -> 🟢 Online
-    var isMe = myU && myU.id && ((u.id && u.id === myU.id) || 
-               (u.login && myU.login && u.login.toLowerCase() === myU.login.toLowerCase()) ||
-               (u.email && myU.email && u.email.toLowerCase() === myU.email.toLowerCase()));
-    if (isMe) {
-      return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢' };
-    }
-
-    var presMap = window._ethithPresenceMap || {};
-    var lastSeen = 0;
-    keys.forEach(function(k) {
-      if (presMap[k] && presMap[k] > lastSeen) lastSeen = presMap[k];
-    });
 
     var S = (window.EthithApp && window.EthithApp.state) || {};
     var acc = (S.accounts || []).find(function(a) {
@@ -485,27 +471,46 @@
       return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
     }
 
+    // 2. Brauzerdagi ayni damdagi joriy foydalanuvchi (logout qilmagan bo'lsa) -> 🟢 Online
+    var isMe = myU && myU.id && ((u.id && u.id === myU.id) || 
+               (u.login && myU.login && u.login.toLowerCase() === myU.login.toLowerCase()) ||
+               (u.email && myU.email && u.email.toLowerCase() === myU.email.toLowerCase()));
+    if (isMe) {
+      return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢' };
+    }
+
+    // 3. Oxirgi faollik vaqti (lastSeen)
+    var presMap = window._ethithPresenceMap || {};
+    var lastSeen = 0;
+    keys.forEach(function(k) {
+      if (presMap[k] && presMap[k] > lastSeen) lastSeen = presMap[k];
+    });
+
     if (acc && acc.lastSeen && acc.lastSeen > lastSeen && !acc.isLoggedOut) {
       lastSeen = acc.lastSeen;
     }
+    if (u.lastSeen && u.lastSeen > lastSeen && !u.isLoggedOut) {
+      lastSeen = u.lastSeen;
+    }
 
-    // TEZKOR ONLINE OYNASI: Oxirgi 10 soniyada faol bo'lsa -> 🟢 Online
+    // A. Ayni damda faol (Oxirgi 10 soniyada signal kelgan) -> 🟢 Online
     if (lastSeen && (now - lastSeen) < 10000) {
       return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢', lastSeen: lastSeen };
     }
 
-    // Chiqib ketgan (avval kirgan, lekin hozir 10 soniyadan ortiq vaqt faol emas) -> 🔵 Offline
-    var hasEverLoggedIn = (acc && (acc.lastLogin || acc.loginCount > 0 || acc.hasLoggedIn)) ||
-                          u.lastLogin || u.hasLoggedIn;
+    // B. Shunchaki chiqib ketgan / telefonni o'chirgan / tabni yopgan (Logout bosmagan, lekin avval kirgan) -> 🔵 Offline (KO'K!)
+    var hasEverLoggedIn = (acc && (acc.lastLogin || acc.loginCount > 0 || acc.hasLoggedIn || acc.lastSeen)) ||
+                          u.lastLogin || u.hasLoggedIn || u.lastSeen || (lastSeen > 0);
 
-    if (hasEverLoggedIn && lastSeen && (now - lastSeen) >= 10000) {
+    if (hasEverLoggedIn) {
       return { status: 'blue', label: "Offline", color: '#3b82f6', dot: '🔵', lastSeen: lastSeen };
     }
 
+    // C. Hali umuman tizimga kirmagan bo'lsa -> 🔴 Kirmagan
     return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
   };
 
-  function sendPresenceHeartbeat() {
+    function sendPresenceHeartbeat() {
     if (!window.EthithApp || !window.EthithApp.state || !window.EthithApp.state.user) return;
     var u = window.EthithApp.state.user;
     var S = window.EthithApp.state;
@@ -589,9 +594,22 @@
     }
 
     if (event.type === 'PRESENCE_OFFLINE' && (event.userId || event.login)) {
-      var offKeys = [event.userId, event.login, event.email].filter(Boolean).map(function(k){ return (k + '').toLowerCase().trim(); });
+      var offKeys = [event.userId, event.login, event.email, event.name].filter(Boolean).map(function(k){ return (k + '').toLowerCase().trim(); });
+      // Shunchaki chiqib ketgan / telefonini o'chirgan -> 🔵 Offline (KO'K bo'ladi, qizil emas!)
+      var pastTime = Date.now() - 15000;
+      if (!window._ethithPresenceMap) window._ethithPresenceMap = {};
       offKeys.forEach(function(k) {
-        if (window._ethithPresenceMap) delete window._ethithPresenceMap[k];
+        window._ethithPresenceMap[k] = pastTime;
+      });
+      (classes || []).forEach(function(cls) {
+        (cls.students || []).forEach(function(st) {
+          if (st && offKeys.some(function(k){ return (st.login && st.login.toLowerCase() === k) || (st.id && (st.id+'').toLowerCase() === k); })) {
+            st.isOnline = false;
+            st.hasLoggedIn = true;
+            st.isLoggedOut = false;
+            st.lastSeen = pastTime;
+          }
+        });
       });
       if (window._ethithRefreshPresenceUI) window._ethithRefreshPresenceUI();
       return;
