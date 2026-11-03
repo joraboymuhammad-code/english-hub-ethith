@@ -131,9 +131,23 @@
 
   function getStore() {
     var appState = (window.EthithApp && window.EthithApp.state) || {};
+    var deletedTeacherIds = appState.deletedTeacherIds || [];
+    try {
+      var lsDel = JSON.parse(localStorage.getItem('ethith_deleted_teacher_ids') || '[]');
+      if (Array.isArray(lsDel)) {
+        lsDel.forEach(function(did) { if (deletedTeacherIds.indexOf(did) === -1) deletedTeacherIds.push(did); });
+      }
+    } catch(e) {}
+    deletedTeacherIds = deletedTeacherIds.filter(function(id) {
+      return id !== 'admin_official_teacher' && id !== 't_urolov_azizbek' && id !== 'ustoz77' && id !== 'azizbek77';
+    });
+    appState.deletedTeacherIds = deletedTeacherIds;
+
     if (window.ETHITH_INITIAL_STORE) {
       if ((!appState.teachers || appState.teachers.length === 0) && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
-        appState.teachers = JSON.parse(JSON.stringify(window.ETHITH_INITIAL_STORE.teachers));
+        appState.teachers = JSON.parse(JSON.stringify(window.ETHITH_INITIAL_STORE.teachers)).filter(function(t) {
+          return t && deletedTeacherIds.indexOf(t.id) === -1 && (!t.login || deletedTeacherIds.indexOf(t.login) === -1);
+        });
       }
       if ((!appState.classes || appState.classes.length === 0) && Array.isArray(window.ETHITH_INITIAL_STORE.classes)) {
         appState.classes = JSON.parse(JSON.stringify(window.ETHITH_INITIAL_STORE.classes));
@@ -144,6 +158,11 @@
     }
     if (!appState.teachers || appState.teachers.length === 0) {
       appState.teachers = (window.EA && window.EA.getStoreTeachers ? window.EA.getStoreTeachers() : []);
+    }
+    if (Array.isArray(appState.teachers)) {
+      appState.teachers = appState.teachers.filter(function(t) {
+        return t && deletedTeacherIds.indexOf(t.id) === -1 && (!t.login || deletedTeacherIds.indexOf(t.login) === -1);
+      });
     }
     // Overlay permanent teacher settings (salarySharePercent, unpaidMonths, paidThisMonth)
     try {
@@ -4840,23 +4859,38 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       });
     }
 
+    var tObj = (S.teachers || []).find(function(item) { return item && item.id === tid; });
+    var tLogin = tObj ? tObj.login : null;
+
     if (!Array.isArray(S.deletedTeacherIds)) S.deletedTeacherIds = [];
     if (S.deletedTeacherIds.indexOf(tid) === -1) S.deletedTeacherIds.push(tid);
+    if (tLogin && S.deletedTeacherIds.indexOf(tLogin) === -1) S.deletedTeacherIds.push(tLogin);
 
-    // 1. Remove from teachers strictly by ID
-    S.teachers = (S.teachers || []).filter(function(x) { return x.id !== tid; });
+    try {
+      var lsDel = JSON.parse(localStorage.getItem('ethith_deleted_teacher_ids') || '[]');
+      if (!Array.isArray(lsDel)) lsDel = [];
+      if (lsDel.indexOf(tid) === -1) lsDel.push(tid);
+      if (tLogin && lsDel.indexOf(tLogin) === -1) lsDel.push(tLogin);
+      localStorage.setItem('ethith_deleted_teacher_ids', JSON.stringify(lsDel));
+    } catch(e) {}
 
-    // 2. Remove teacher login from accounts strictly by teacher ID
+    // 1. Remove from teachers strictly by ID and login
+    S.teachers = (S.teachers || []).filter(function(x) { return x && x.id !== tid && (!tLogin || x.login !== tLogin); });
+    if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
+      window.ETHITH_INITIAL_STORE.teachers = window.ETHITH_INITIAL_STORE.teachers.filter(function(x) { return x && x.id !== tid && (!tLogin || x.login !== tLogin); });
+    }
+
+    // 2. Remove teacher login from accounts strictly by teacher ID and login
     if (Array.isArray(S.accounts)) {
       S.accounts = S.accounts.filter(function(a) {
-        return a.id !== tid && a.teacherId !== tid;
+        return a && a.id !== tid && a.teacherId !== tid && (!tLogin || a.login !== tLogin);
       });
     }
 
     // 3. Unbind classes strictly by ID (never loose name matching!)
     if (Array.isArray(S.classes)) {
       S.classes.forEach(function(cls) {
-        if (cls.teacherId === tid) {
+        if (cls.teacherId === tid || (tLogin && cls.teacherId === tLogin)) {
           cls.teacherId = '';
           cls.teacherName = 'Biriktirilmagan';
         }
@@ -4865,12 +4899,28 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
 
     // 4. Save and broadcast
     saveStore();
-    if (window.EthithSync && window.EthithSync.broadcastState) {
-      window.EthithSync.broadcastState('teacher_deleted', { tid: tid });
+    if (window.EthithSync) {
+      if (typeof window.EthithSync.publishLive === 'function') {
+        window.EthithSync.publishLive({
+          type: 'TEACHER_DELETED',
+          teacherId: tid,
+          teacherLogin: tLogin
+        });
+      }
+      if (typeof window.EthithSync.broadcastState === 'function') {
+        window.EthithSync.broadcastState('teacher_deleted', { tid: tid, tLogin: tLogin });
+      }
+      if (typeof window.EthithSync.pushRemoteStore === 'function') {
+        window.EthithSync.pushRemoteStore();
+      }
     }
 
-    showToast("🗑️ " + nameToDisplay + " tizimdan o‘chirildi! (Bekor qilish: Ctrl+Z)");
-    EE.renderFinanceUnifiedView(container, 'teachers');
+    showToast("🗑️ " + nameToDisplay + " tizimdan butunlay o‘chirildi! (Bekor qilish: Ctrl+Z)");
+    if (window._ethithRefreshTeachersList) {
+      window._ethithRefreshTeachersList();
+    } else {
+      EE.renderFinanceUnifiedView(container, 'teachers');
+    }
   };
 
   // --------------------------------------------------------------------------

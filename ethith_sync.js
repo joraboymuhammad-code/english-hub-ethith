@@ -1325,6 +1325,96 @@
       }
     }
 
+    // E3_B. TEACHER CREATED (0ms Realtime Sync Across Admin & Attendance Views)
+    else if ((event.type === 'TEACHER_CREATED' || event.type === 'teacher_added') && (event.teacher || event.teacherData)) {
+      var newT = event.teacher || event.teacherData;
+      if (!Array.isArray(S.teachers)) S.teachers = [];
+      var tIdx = S.teachers.findIndex(function(t) { return t && (t.id === newT.id || (t.login && newT.login && t.login.toLowerCase() === newT.login.toLowerCase())); });
+      if (tIdx === -1) {
+        S.teachers.push(newT);
+      } else {
+        S.teachers[tIdx] = Object.assign({}, S.teachers[tIdx], newT);
+      }
+      if (event.account) {
+        if (!Array.isArray(S.accounts)) S.accounts = [];
+        var aIdx = S.accounts.findIndex(function(a) { return a && (a.id === event.account.id || (a.login && event.account.login && a.login.toLowerCase() === event.account.login.toLowerCase())); });
+        if (aIdx === -1) S.accounts.push(event.account);
+        else S.accounts[aIdx] = Object.assign({}, S.accounts[aIdx], event.account);
+      }
+      if (Array.isArray(S.deletedTeacherIds)) {
+        S.deletedTeacherIds = S.deletedTeacherIds.filter(function(id) { return id !== newT.id && id !== newT.login; });
+      }
+      try {
+        var lsDel = JSON.parse(localStorage.getItem('ethith_deleted_teacher_ids') || '[]');
+        if (Array.isArray(lsDel)) {
+          lsDel = lsDel.filter(function(id) { return id !== newT.id && id !== newT.login; });
+          localStorage.setItem('ethith_deleted_teacher_ids', JSON.stringify(lsDel));
+        }
+      } catch(e) {}
+      if (window._ethithRefreshTeachersList) {
+        try { window._ethithRefreshTeachersList(); } catch(e) {}
+      } else if (window._ethithRefreshCurrentView) {
+        try { window._ethithRefreshCurrentView(); } catch(e) {}
+      }
+      return;
+    }
+
+    // E3_C. TEACHER DELETED (0ms Instant Purge & Permanent Server-side Sync)
+    else if ((event.type === 'TEACHER_DELETED' || event.type === 'teacher_deleted') && (event.teacherId || event.tid || event.teacherLogin || event.tLogin)) {
+      var delTid = event.teacherId || event.tid;
+      var delTlg = event.teacherLogin || event.tLogin;
+      if (!Array.isArray(S.deletedTeacherIds)) S.deletedTeacherIds = [];
+      if (delTid && S.deletedTeacherIds.indexOf(delTid) === -1) S.deletedTeacherIds.push(delTid);
+      if (delTlg && S.deletedTeacherIds.indexOf(delTlg) === -1) S.deletedTeacherIds.push(delTlg);
+      try {
+        var lsDel = JSON.parse(localStorage.getItem('ethith_deleted_teacher_ids') || '[]');
+        if (!Array.isArray(lsDel)) lsDel = [];
+        if (delTid && lsDel.indexOf(delTid) === -1) lsDel.push(delTid);
+        if (delTlg && lsDel.indexOf(delTlg) === -1) lsDel.push(delTlg);
+        localStorage.setItem('ethith_deleted_teacher_ids', JSON.stringify(lsDel));
+      } catch(e) {}
+
+      if (Array.isArray(S.teachers)) {
+        S.teachers = S.teachers.filter(function(t) {
+          if (!t) return false;
+          return t.id !== delTid && (!delTlg || t.login !== delTlg);
+        });
+      }
+      if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
+        window.ETHITH_INITIAL_STORE.teachers = window.ETHITH_INITIAL_STORE.teachers.filter(function(t) {
+          if (!t) return false;
+          return t.id !== delTid && (!delTlg || t.login !== delTlg);
+        });
+      }
+      if (Array.isArray(S.accounts)) {
+        S.accounts = S.accounts.filter(function(a) {
+          if (!a) return false;
+          return a.id !== delTid && a.teacherId !== delTid && (!delTlg || a.login !== delTlg);
+        });
+      }
+      if (Array.isArray(S.classes)) {
+        S.classes.forEach(function(cls) {
+          if (cls.teacherId === delTid || (delTlg && cls.teacherId === delTlg)) {
+            cls.teacherId = '';
+            cls.teacherName = 'Biriktirilmagan';
+          }
+        });
+      }
+      if (window.EthithEnterprise && window.EthithEnterprise.getStore) {
+        var entStore = window.EthithEnterprise.getStore();
+        if (entStore) {
+          if (Array.isArray(entStore.teachers)) entStore.teachers = entStore.teachers.filter(function(t) { return t && t.id !== delTid && (!delTlg || t.login !== delTlg); });
+          if (Array.isArray(entStore.accounts)) entStore.accounts = entStore.accounts.filter(function(a) { return a && a.id !== delTid && a.teacherId !== delTid && (!delTlg || a.login !== delTlg); });
+        }
+      }
+      if (window._ethithRefreshTeachersList) {
+        try { window._ethithRefreshTeachersList(); } catch(e) {}
+      } else if (window._ethithRefreshCurrentView) {
+        try { window._ethithRefreshCurrentView(); } catch(e) {}
+      }
+      return;
+    }
+
     // F. CLASS CREATED & GROUP ASSIGNED (Instant sub-millisecond assignment & top alert)
     else if ((event.type === 'CLASS_CREATED' || event.type === 'GROUP_ASSIGNED') && (event.classData || event.class)) {
       var newClsData = event.classData || event.class;
@@ -2100,7 +2190,13 @@
 
   function mergeTeachers(localTeachers, remoteTeachers, deletedTeacherIds) {
     var changed = false;
-    var dIds = deletedTeacherIds || (window.S && window.S.deletedTeacherIds) || [];
+    var dIds = (deletedTeacherIds || (window.S && window.S.deletedTeacherIds) || []).slice();
+    try {
+      var lsDel = JSON.parse(localStorage.getItem('ethith_deleted_teacher_ids') || '[]');
+      if (Array.isArray(lsDel)) {
+        lsDel.forEach(function(did) { if (dIds.indexOf(did) === -1) dIds.push(did); });
+      }
+    } catch(e) {}
     if (!Array.isArray(remoteTeachers)) return changed;
     if (!Array.isArray(localTeachers)) return changed;
 
@@ -2110,15 +2206,17 @@
     });
 
     for (var i = localTeachers.length - 1; i >= 0; i--) {
-      if (localTeachers[i] && dIds.indexOf(localTeachers[i].id) !== -1) {
+      var ltCheck = localTeachers[i];
+      if (ltCheck && (dIds.indexOf(ltCheck.id) !== -1 || (ltCheck.login && dIds.indexOf(ltCheck.login) !== -1))) {
         localTeachers.splice(i, 1);
         changed = true;
       }
     }
 
     remoteTeachers.forEach(function(rt) {
-      if (!rt || !rt.id || dIds.indexOf(rt.id) !== -1) return;
-      var lt = localTeachers.find(function(t) { return t.id === rt.id; });
+      if (!rt || !rt.id) return;
+      if (dIds.indexOf(rt.id) !== -1 || (rt.login && dIds.indexOf(rt.login) !== -1)) return;
+      var lt = localTeachers.find(function(t) { return t.id === rt.id || (t.login && rt.login && t.login.toLowerCase() === rt.login.toLowerCase()); });
       if (!lt) {
         localTeachers.push(rt);
         changed = true;
@@ -2859,12 +2957,36 @@
           }
         }
         if (remoteData.centerSettings && !S.centerSettings) S.centerSettings = remoteData.centerSettings;
+        var allDtIds = (S.deletedTeacherIds || []).slice();
         if (remoteData.deletedTeacherIds && Array.isArray(remoteData.deletedTeacherIds)) {
-          if (!S.deletedTeacherIds) S.deletedTeacherIds = [];
-          remoteData.deletedTeacherIds.forEach(function(id) { if (S.deletedTeacherIds.indexOf(id) === -1) S.deletedTeacherIds.push(id); });
+          remoteData.deletedTeacherIds.forEach(function(id) { if (allDtIds.indexOf(id) === -1) allDtIds.push(id); });
+        }
+        try {
+          var lsDel = JSON.parse(localStorage.getItem('ethith_deleted_teacher_ids') || '[]');
+          if (Array.isArray(lsDel)) {
+            lsDel.forEach(function(id) { if (allDtIds.indexOf(id) === -1) allDtIds.push(id); });
+          }
+        } catch(e) {}
+        allDtIds = allDtIds.filter(function(id) {
+          return id !== 'admin_official_teacher' && id !== 't_urolov_azizbek' && id !== 'ustoz77' && id !== 'azizbek77';
+        });
+        S.deletedTeacherIds = allDtIds;
+        remoteData.deletedTeacherIds = allDtIds;
+        try { localStorage.setItem('ethith_deleted_teacher_ids', JSON.stringify(allDtIds)); } catch(e) {}
+
+        if (Array.isArray(remoteData.teachers)) {
+          remoteData.teachers = remoteData.teachers.filter(function(t) {
+            return t && allDtIds.indexOf(t.id) === -1 && (!t.login || allDtIds.indexOf(t.login) === -1);
+          });
         }
         if (!S.teachers) S.teachers = [];
-        if (remoteData.teachers) mergeTeachers(S.teachers, remoteData.teachers, S.deletedTeacherIds || []);
+        S.teachers = S.teachers.filter(function(t) {
+          return t && allDtIds.indexOf(t.id) === -1 && (!t.login || allDtIds.indexOf(t.login) === -1);
+        });
+        mergeTeachers(S.teachers, remoteData.teachers || [], allDtIds);
+        S.teachers = S.teachers.filter(function(t) {
+          return t && allDtIds.indexOf(t.id) === -1 && (!t.login || allDtIds.indexOf(t.login) === -1);
+        });
         if (remoteData.timetable && (!S.timetable || S.timetable.length === 0)) S.timetable = remoteData.timetable;
         if (remoteData.contests && (!S.contests || S.contests.length === 0)) S.contests = remoteData.contests;
         if (remoteData.payments && (!S.payments || Object.keys(S.payments).length === 0)) S.payments = remoteData.payments;
@@ -2941,19 +3063,25 @@
         });
         S.quizzes = cleanQuizzes;
 
-        var cleanAccounts = (S.accounts || []).filter(function(a) {
-          return !isPurgedAccount(a);
-        });
-        S.accounts = cleanAccounts;
-
         var dtIds = (S.deletedTeacherIds || []).filter(function(id) {
           return id !== 'admin_official_teacher' && id !== 't_urolov_azizbek' && id !== 'ustoz77' && id !== 'azizbek77';
         });
         S.deletedTeacherIds = dtIds;
         var cleanTeachers = (S.teachers || []).filter(function(t) {
-          return dtIds.indexOf(t.id) === -1;
+          return t && dtIds.indexOf(t.id) === -1 && (!t.login || dtIds.indexOf(t.login) === -1);
         });
         S.teachers = cleanTeachers;
+
+        var cleanAccounts = (S.accounts || []).filter(function(a) {
+          if (isPurgedAccount(a)) return false;
+          if (a.role === 'teacher' || a.teacherId) {
+            if (a.id && dtIds.indexOf(a.id) !== -1) return false;
+            if (a.teacherId && dtIds.indexOf(a.teacherId) !== -1) return false;
+            if (a.login && dtIds.indexOf(a.login) !== -1) return false;
+          }
+          return true;
+        });
+        S.accounts = cleanAccounts;
 
         var contentObj = {
           classes: cleanClasses,
@@ -3220,6 +3348,11 @@
         if (window._ethithRefreshAttendance && window._ethithCurrentView === 'attendance') {
           try { window._ethithRefreshAttendance(); } catch(e) {}
         }
+        if (window._ethithRefreshTeachersList) {
+          try { window._ethithRefreshTeachersList(); } catch(e) {}
+        } else if (window._ethithRefreshCurrentView && window._ethithCurrentView === 'dash') {
+          try { window._ethithRefreshCurrentView(); } catch(e) {}
+        }
         if (window._ethithRefreshLeaderboard && window._ethithCurrentView === 'leaderboard') {
           try { window._ethithRefreshLeaderboard(); } catch(e) {}
         }
@@ -3356,6 +3489,13 @@
               var apView = document.getElementById('apView') || document.getElementById('viewContainer');
               if (apView && (window._ethithCurrentView === 'attendance' || window._ethithCurrentView === 'timetable' || document.getElementById('eaAttendanceTable') || document.querySelector('.ea-teachers-grid') || document.querySelector('.ea-teacher-groups-wrap'))) {
                 window.EA.render(apView);
+              }
+            }
+            if (cTeachers) {
+              if (window._ethithRefreshTeachersList) {
+                try { window._ethithRefreshTeachersList(); } catch(e) {}
+              } else if (window._ethithRefreshCurrentView && window._ethithCurrentView === 'dash') {
+                try { window._ethithRefreshCurrentView(); } catch(e) {}
               }
             }
             if (window._ethithRefreshTopNav) {

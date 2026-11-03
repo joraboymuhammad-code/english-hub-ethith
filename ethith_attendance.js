@@ -673,13 +673,16 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     }
     S.deletedTeacherIds = deletedTeacherIds;
 
-    // Filter out deleted teachers from S.teachers
-    S.teachers = S.teachers.filter(function(t) { return t && deletedTeacherIds.indexOf(t.id) === -1; });
+    // Filter out deleted teachers from S.teachers by both ID and login
+    S.teachers = S.teachers.filter(function(t) {
+      if (!t) return false;
+      return deletedTeacherIds.indexOf(t.id) === -1 && (!t.login || deletedTeacherIds.indexOf(t.login) === -1);
+    });
 
     if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
       window.ETHITH_INITIAL_STORE.teachers.forEach(function(initT) {
-        if (!initT || deletedTeacherIds.indexOf(initT.id) !== -1) return;
-        var existing = S.teachers.find(function(t) { return t.id === initT.id; });
+        if (!initT || deletedTeacherIds.indexOf(initT.id) !== -1 || (initT.login && deletedTeacherIds.indexOf(initT.login) !== -1)) return;
+        var existing = S.teachers.find(function(t) { return t.id === initT.id || (t.login && initT.login && t.login.toLowerCase() === initT.login.toLowerCase()); });
         if (!existing) {
           S.teachers.push(JSON.parse(JSON.stringify(initT)));
         } else {
@@ -2484,7 +2487,8 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     var teachers = getStoreTeachers();
     var tObj = teachers.find(function(item) { return item.id === tid; });
     var nameToDisplay = tName || (tObj ? tObj.name : 'O‘qituvchi');
-    if (!confirm("Haqiqatan ham \"" + nameToDisplay + "\" o‘qituvchisini tizimdan butunlay o‘chirmoqchimisiz?\n\n• O‘qituvchi va uning tizim profili o‘chiriladi\n• Guruhlar saqlanadi va o‘qituvchisiz (bo‘sh) holatga o‘tkaziladi\n• ")) {
+    var tLogin = tObj ? tObj.login : null;
+    if (!confirm("Haqiqatan ham \"" + nameToDisplay + "\" o‘qituvchisini tizimdan butunlay o‘chirmoqchimisiz?\n\n• O‘qituvchi va uning tizim profili butunlay o‘chiriladi\n• Guruhlar saqlanadi va o‘qituvchisiz holatga o‘tkaziladi")) {
       return;
     }
 
@@ -2496,7 +2500,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       var affectedClasses = [];
       if (Array.isArray(S.classes)) {
         S.classes.forEach(function(cls) {
-          if (cls.teacherId === tid) {
+          if (cls.teacherId === tid || (tLogin && cls.teacherId === tLogin)) {
             affectedClasses.push({ id: cls.id, name: cls.name });
           }
         });
@@ -2504,7 +2508,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       var affectedAccounts = [];
       if (Array.isArray(S.accounts)) {
         S.accounts.forEach(function(acc) {
-          if (acc.id === tid || acc.teacherId === tid) {
+          if (acc.id === tid || acc.teacherId === tid || (tLogin && acc.login === tLogin)) {
             affectedAccounts.push(JSON.parse(JSON.stringify(acc)));
           }
         });
@@ -2519,30 +2523,40 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
     if (!Array.isArray(S.deletedTeacherIds)) S.deletedTeacherIds = [];
     if (S.deletedTeacherIds.indexOf(tid) === -1) S.deletedTeacherIds.push(tid);
+    if (tLogin && S.deletedTeacherIds.indexOf(tLogin) === -1) S.deletedTeacherIds.push(tLogin);
 
     try {
       var lsDel = JSON.parse(localStorage.getItem('ethith_deleted_teacher_ids') || '[]');
-      if (Array.isArray(lsDel) && lsDel.indexOf(tid) === -1) lsDel.push(tid);
+      if (!Array.isArray(lsDel)) lsDel = [];
+      if (lsDel.indexOf(tid) === -1) lsDel.push(tid);
+      if (tLogin && lsDel.indexOf(tLogin) === -1) lsDel.push(tLogin);
       localStorage.setItem('ethith_deleted_teacher_ids', JSON.stringify(lsDel));
     } catch(e) {}
 
-    // 1. Remove from teachers strictly by ID
+    // 1. Remove from teachers strictly by ID and login
     if (Array.isArray(S.teachers)) {
-      S.teachers = S.teachers.filter(function(t) { return t.id !== tid; });
-    }
-    if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
-      window.ETHITH_INITIAL_STORE.teachers = window.ETHITH_INITIAL_STORE.teachers.filter(function(t) { return t.id !== tid; });
-    }
-    // 2. Remove teacher login account from accounts strictly by teacher ID
-    if (Array.isArray(S.accounts)) {
-      S.accounts = S.accounts.filter(function(a) {
-        return a.id !== tid && a.teacherId !== tid;
+      S.teachers = S.teachers.filter(function(t) {
+        if (!t) return false;
+        return t.id !== tid && (!tLogin || t.login !== tLogin);
       });
     }
-    // 3. Unbind classes from this teacher strictly by ID (never loose name matching!)
+    if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.teachers)) {
+      window.ETHITH_INITIAL_STORE.teachers = window.ETHITH_INITIAL_STORE.teachers.filter(function(t) {
+        if (!t) return false;
+        return t.id !== tid && (!tLogin || t.login !== tLogin);
+      });
+    }
+    // 2. Remove teacher login account from accounts strictly by teacher ID and login
+    if (Array.isArray(S.accounts)) {
+      S.accounts = S.accounts.filter(function(a) {
+        if (!a) return false;
+        return a.id !== tid && a.teacherId !== tid && (!tLogin || a.login !== tLogin);
+      });
+    }
+    // 3. Unbind classes from this teacher
     if (Array.isArray(S.classes)) {
       S.classes.forEach(function(cls) {
-        if (cls.teacherId === tid) {
+        if (cls.teacherId === tid || (tLogin && cls.teacherId === tLogin)) {
           cls.teacherId = '';
           cls.teacherName = 'Biriktirilmagan';
         }
@@ -2555,10 +2569,13 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       if (entStore) {
         if (!Array.isArray(entStore.deletedTeacherIds)) entStore.deletedTeacherIds = [];
         if (entStore.deletedTeacherIds.indexOf(tid) === -1) entStore.deletedTeacherIds.push(tid);
-        if (Array.isArray(entStore.teachers)) entStore.teachers = entStore.teachers.filter(function(t) { return t.id !== tid; });
+        if (tLogin && entStore.deletedTeacherIds.indexOf(tLogin) === -1) entStore.deletedTeacherIds.push(tLogin);
+        if (Array.isArray(entStore.teachers)) {
+          entStore.teachers = entStore.teachers.filter(function(t) { return t && t.id !== tid && (!tLogin || t.login !== tLogin); });
+        }
         if (Array.isArray(entStore.accounts)) {
           entStore.accounts = entStore.accounts.filter(function(a) {
-            return a.id !== tid && a.teacherId !== tid;
+            return a && a.id !== tid && a.teacherId !== tid && (!tLogin || a.login !== tLogin);
           });
         }
       }
@@ -2572,26 +2589,37 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     }
 
     // 6. Broadcast sync event in real-time & push to GitHub server
-    if (window.EthithSync && window.EthithSync.broadcastState) {
-      window.EthithSync.broadcastState('teacher_deleted', { tid: tid });
-    }
-    if (window.EthithSync && typeof window.EthithSync.pushRemoteStore === 'function') {
-      window.EthithSync.pushRemoteStore();
+    if (window.EthithSync) {
+      if (typeof window.EthithSync.publishLive === 'function') {
+        window.EthithSync.publishLive({
+          type: 'TEACHER_DELETED',
+          teacherId: tid,
+          teacherLogin: tLogin
+        });
+      }
+      if (typeof window.EthithSync.broadcastState === 'function') {
+        window.EthithSync.broadcastState('teacher_deleted', { tid: tid, tLogin: tLogin });
+      }
+      if (typeof window.EthithSync.pushRemoteStore === 'function') {
+        window.EthithSync.pushRemoteStore();
+      }
     }
 
     // 7. Toast notification with undo prompt
     if (window.EthithApp && window.EthithApp.toast) {
-      window.EthithApp.toast("🗑️ " + nameToDisplay + " tizimdan o‘chirildi!");
+      window.EthithApp.toast("🗑️ " + nameToDisplay + " tizimdan butunlay o‘chirildi!");
     } else if (typeof window.showToast === 'function') {
-      window.showToast("🗑️ " + nameToDisplay + " tizimdan o‘chirildi!", 'info');
+      window.showToast("🗑️ " + nameToDisplay + " tizimdan butunlay o‘chirildi!", 'info');
     }
 
-    // 8. Re-render UI
-    var targetContainer = container || document.getElementById('apView');
-    if (targetContainer) {
-      EA.activeTeacherId = null;
-      EA.activeClassId = null;
-      EA.render(targetContainer);
+    // 8. Re-render UI immediately
+    EA.activeTeacherId = null;
+    EA.activeClassId = null;
+    if (window._ethithRefreshTeachersList) {
+      window._ethithRefreshTeachersList();
+    } else {
+      var targetContainer = container || document.getElementById('apView');
+      if (targetContainer) EA.render(targetContainer);
     }
   };
 
@@ -2810,23 +2838,40 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       } catch(e) {}
 
       if (window.EthithApp && typeof window.EthithApp.saveState === 'function') window.EthithApp.saveState();
-      if (window.EthithSync && typeof window.EthithSync.pushStoreUpdate === 'function') window.EthithSync.pushStoreUpdate();
-      if (window.EthithSync && typeof window.EthithSync.pushRemoteStore === 'function') window.EthithSync.pushRemoteStore();
-      if (window.EthithSync && typeof window.EthithSync.broadcastState === 'function') window.EthithSync.broadcastState('teacher_added');
+      if (window.EthithEnterprise && typeof window.EthithEnterprise.saveStore === 'function') window.EthithEnterprise.saveStore();
+
+      // 0ms Live Real-time Broadcast across all open browsers & server push
+      if (window.EthithSync) {
+        if (typeof window.EthithSync.publishLive === 'function') {
+          window.EthithSync.publishLive({
+            type: 'TEACHER_CREATED',
+            teacher: newT,
+            account: accObj
+          });
+        }
+        if (typeof window.EthithSync.broadcastState === 'function') {
+          window.EthithSync.broadcastState('teacher_added', { teacher: newT });
+        }
+        if (typeof window.EthithSync.pushRemoteStore === 'function') {
+          window.EthithSync.pushRemoteStore();
+        }
+      }
 
       close();
 
-      alert(
-        "✅ Yangi o‘qituvchi muvaffaqiyatli qo‘shildi!\n\n" +
-        "👤 Ism: " + name + "\n" +
-        "🔑 Login: " + login + "\n" +
-        "🔒 Parol: " + password + "\n" +
-        "🏷️ Taklif Kodi: " + inviteCode + "\n" +
-        "💰 Ulush foizi: " + sharePercent + "%\n\n" +
-        "O‘qituvchi ushbu login va parol bilan tizimga kiradi."
-      );
+      if (window.EthithApp && window.EthithApp.toast) {
+        window.EthithApp.toast("✅ " + name + " qo‘shildi! (Login: " + login + ", Parol: " + password + ")");
+      } else if (typeof window.showToast === 'function') {
+        window.showToast("✅ " + name + " muvaffaqiyatli qo‘shildi! (Login: " + login + ")", 'success');
+      }
 
-      EA.render(document.getElementById('apView'));
+      // Immediately refresh Dashboard, Attendance, and Staff views without delay!
+      if (window._ethithRefreshTeachersList) {
+        window._ethithRefreshTeachersList();
+      } else {
+        var apV = document.getElementById('apView');
+        if (apV) EA.render(apV);
+      }
     };
   };
 

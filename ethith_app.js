@@ -1865,4 +1865,17 @@
     window.addEventListener('online', function() { checkVersion(true); });
   })();
 
+  if (!window._ethithRefreshTeachersList) {
+    window._ethithRefreshTeachersList = function() {
+      if (typeof window._ethithRefreshCurrentView === 'function') {
+        try { window._ethithRefreshCurrentView(); } catch(e) {}
+      } else if (window.go) {
+        try { window.go(window._ethithCurrentView || 'dash', { keepState: true }); } catch(e) {}
+      }
+      if (window._ethithRefreshAttendance) {
+        try { window._ethithRefreshAttendance(); } catch(e) {}
+      }
+    };
+  }
+
 })(window);
