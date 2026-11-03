@@ -1967,10 +1967,18 @@
         });
       }
 
-      // Sync Messages & Emoji Reactions
+      // Sync Messages & Emoji Reactions (NEVER resurrect deleted messages!)
+      var globalDelMsgIds = (window.S && Array.isArray(window.S.deletedMsgIds)) ? window.S.deletedMsgIds : [];
+      try {
+        var stDel = JSON.parse(localStorage.getItem('ethith_deleted_msg_ids') || '[]');
+        if (Array.isArray(stDel)) globalDelMsgIds = globalDelMsgIds.concat(stDel);
+      } catch(e) {}
+
       if (rc.messages && Array.isArray(rc.messages)) {
         rc.messages.forEach(function(rMsg) {
+          if (!rMsg || !rMsg.id) return;
           if (localCls.deletedMsgIds.indexOf(rMsg.id) !== -1) return;
+          if (globalDelMsgIds.indexOf(rMsg.id) !== -1) return;
 
           var localMsg = localCls.messages.find(function(m) { return m.id === rMsg.id; });
           if (!localMsg) {
@@ -2447,6 +2455,13 @@
             }
           } catch(e) {}
         }
+
+        if (!S.deletedMsgIds) S.deletedMsgIds = [];
+        try {
+          var sDel = JSON.parse(localStorage.getItem('ethith_deleted_msg_ids') || '[]');
+          if (Array.isArray(sDel)) S.deletedMsgIds = Array.from(new Set(S.deletedMsgIds.concat(sDel)));
+        } catch(e) {}
+        remoteData.deletedMsgIds = Array.from(new Set((remoteData.deletedMsgIds || []).concat(S.deletedMsgIds || [])));
 
         if (remoteData.deletedExamIds && Array.isArray(remoteData.deletedExamIds)) {
           if (!S.deletedExamIds) S.deletedExamIds = [];
@@ -3007,7 +3022,7 @@
     isPolling = false;
   }
 
-  setInterval(checkLiveUpdates, 3500);
+  setInterval(checkLiveUpdates, 45000);
 
   // Initialize Real-Time Mesh on Load
   if (typeof window !== 'undefined') {
