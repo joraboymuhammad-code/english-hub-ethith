@@ -23200,8 +23200,10 @@
           "isOnline": true,
           "coins": 150,
           "updatedAt": 1793627425284,
-          "lastLogin": "2026-11-03T15:01:51.728Z",
-          "dailyMinutes": 225
+          "lastLogin": "2026-11-03T20:06:30.476Z",
+          "dailyMinutes": 225,
+          "isLoggedOut": false,
+          "hasLoggedIn": true
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -27237,7 +27239,9 @@
       "title": null,
       "nameStyle": null,
       "createdAt": 1793720576586,
-      "updatedAt": 1793720839120
+      "updatedAt": 1793720839120,
+      "isOnline": false,
+      "isLoggedOut": true
     },
     {
       "id": "teacher_1793728925723",
@@ -146407,5 +146411,5 @@
       }
     }
   },
-  "updatedAt": 1793736385080
+  "updatedAt": 1793736390672
 }
