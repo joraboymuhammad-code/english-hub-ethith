@@ -524,31 +524,30 @@
     var myU = (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) || {};
     var keys = [u.id, u.login, u.email, u.name].filter(Boolean).map(function(k){ return (k + '').toLowerCase().trim(); });
 
-    // 1. Brauzerdagi ayni damdagi joriy foydalanuvchi (agar tizimga kirgan bo'lsa) -> 🟢 Online
-    var isMe = myU && myU.id && ((u.id && u.id === myU.id) || 
-               (u.login && myU.login && u.login.toLowerCase() === myU.login.toLowerCase()) ||
-               (u.email && myU.email && u.email.toLowerCase() === myU.email.toLowerCase()));
-    if (isMe) {
-      keys.forEach(function(k) {
-        if (window._ethithLoggedOutMap) delete window._ethithLoggedOutMap[k];
-      });
-      u.isLoggedOut = false;
-      return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢' };
-    }
-
-    // 2. Oxirgi faollik vaqti (lastSeen)
-    var presMap = window._ethithPresenceMap || {};
-    var lastSeen = 0;
+    // 1. Log Out holatini tekshirish
+    // Agar foydalanuvchi tizimdan LOG OUT tugmasini bosgan bo'lsa -> qat'iy QIZIL (🔴 Kirmagan)!
+    var loggedOutMap = window._ethithLoggedOutMap || {};
+    var logoutTs = 0;
     keys.forEach(function(k) {
-      if (presMap[k] && presMap[k] > lastSeen) lastSeen = presMap[k];
+      if (loggedOutMap[k] === true) logoutTs = Math.max(logoutTs, 1);
+      else if (typeof loggedOutMap[k] === 'number' && loggedOutMap[k] > logoutTs) logoutTs = loggedOutMap[k];
     });
-
+    if (u.loggedOutAt && u.loggedOutAt > logoutTs) logoutTs = u.loggedOutAt;
     var S = (window.EthithApp && window.EthithApp.state) || {};
     var acc = (S.accounts || []).find(function(a) {
       if (!a) return false;
       return (u.id && a.id === u.id) ||
              (u.login && a.login && a.login.toLowerCase() === u.login.toLowerCase()) ||
              (u.email && a.email && a.email.toLowerCase() === u.email.toLowerCase());
+    });
+    if (acc && acc.loggedOutAt && acc.loggedOutAt > logoutTs) logoutTs = acc.loggedOutAt;
+    if (u.isLoggedOut || (acc && acc.isLoggedOut)) logoutTs = Math.max(logoutTs, 1);
+
+    // 2. Oxirgi faollik vaqti (lastSeen)
+    var presMap = window._ethithPresenceMap || {};
+    var lastSeen = 0;
+    keys.forEach(function(k) {
+      if (presMap[k] && presMap[k] > lastSeen) lastSeen = presMap[k];
     });
 
     if (acc && acc.lastSeen && acc.lastSeen > lastSeen && !acc.isLoggedOut) {
@@ -558,23 +557,23 @@
       lastSeen = u.lastSeen;
     }
 
-    // 3. Ayni damda faol (Oxirgi 15 soniyada signal/heartbeat kelgan bo'lsa) -> 🟢 Online
-    // Agar o'quvchi/o'qituvchi avval log out qilgan bo'lsa-yu, hozir qayta login qilgan bo'lsa,
-    // yangi faollik signali (lastSeen < 15s) uni darhol 🟢 Online qiladi va barcha eski logout belgilarini tozalaydi!
-    if (lastSeen && (now - lastSeen) < 15000) {
-      keys.forEach(function(k) {
-        if (window._ethithLoggedOutMap) delete window._ethithLoggedOutMap[k];
-      });
-      u.isLoggedOut = false;
-      if (acc) acc.isLoggedOut = false;
-      return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢', lastSeen: lastSeen };
+    // AGAR FOYDALANUVCHI LOGOUT QILGAN BO'LSA VA UNDAN KEYIN QAYTA LOGIN QILMAGAN BO'LSA:
+    // Bu foydalanuvchi qat'iy QIZIL (🔴 Kirmagan)!
+    if (logoutTs > 0 && logoutTs >= lastSeen) {
+      return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
     }
 
-    // 4. FAQAT TIZIMDAN LOGOUT BOSILGANDA -> QIZIL (🔴 Kirmagan)
-    var loggedOutMap = window._ethithLoggedOutMap || {};
-    var isExplicitlyLoggedOut = keys.some(function(k) { return loggedOutMap[k] === true; });
-    if (isExplicitlyLoggedOut || u.isLoggedOut || (acc && acc.isLoggedOut)) {
-      return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
+    // 3. Brauzerdagi ayni damdagi joriy foydalanuvchi (logout qilmagan bo'lsa) -> 🟢 Online
+    var isMe = myU && myU.id && ((u.id && u.id === myU.id) || 
+               (u.login && myU.login && u.login.toLowerCase() === myU.login.toLowerCase()) ||
+               (u.email && myU.email && u.email.toLowerCase() === myU.email.toLowerCase()));
+    if (isMe && !myU.isLoggedOut) {
+      return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢' };
+    }
+
+    // 4. Ayni damda faol (Heartbeat oxirgi 5.5 soniyada kelgan bo'lsa) -> 🟢 Online (Ultra-Fast 5.5s)
+    if (lastSeen && (now - lastSeen) < 5500) {
+      return { status: 'green', label: "Online", color: '#22c55e', dot: '🟢', lastSeen: lastSeen };
     }
 
     // 5. Shunchaki chiqib ketgan / telefonni o'chirgan / tabni yopgan (Logout bosmagan, lekin avval kirgan) -> 🔵 Offline (KO'K!)
@@ -589,7 +588,7 @@
     return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
   };
 
-    function sendPresenceHeartbeat() {
+  function sendPresenceHeartbeat() {
     if (!window.EthithApp || !window.EthithApp.state || !window.EthithApp.state.user) return;
     var u = window.EthithApp.state.user;
     var S = window.EthithApp.state;
@@ -619,27 +618,36 @@
   }
 
   if (typeof window !== 'undefined') {
-    setTimeout(sendPresenceHeartbeat, 600);
-    setInterval(sendPresenceHeartbeat, 3500); // Har 3.5 soniyada yangilanadi (Super Fast)
+    setTimeout(sendPresenceHeartbeat, 500);
+    setInterval(sendPresenceHeartbeat, 2200); // Har 2.2 soniyada yangilanadi (Super Fast Heartbeat)
 
-    // Statuslar doimiy 2 soniyada real vaqtda tekshirib yangilanadi
+    // Statuslar doimiy 1 soniyada real vaqtda tekshirib yangilanadi
     setInterval(function() {
       if (window._ethithRefreshPresenceUI) window._ethithRefreshPresenceUI();
-    }, 2000);
+    }, 1000);
 
-    // Brauzer yopilganda shu zahoti OFFLINE yuboriladi
-    window.addEventListener('beforeunload', function() {
+    function sendInstantOfflineSignal() {
       var u = (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user);
       if (u && typeof publishLive === 'function') {
-        publishLive({
+        var payload = {
           type: 'PRESENCE_OFFLINE',
+          from: myClientId,
           userId: u.id || u.login || u.email,
           login: u.login || '',
           email: u.email || '',
+          name: u.name || '',
           ts: Date.now()
-        });
+        };
+        publishLive(payload);
+        try {
+          if (window._eeChannel) window._eeChannel.postMessage(payload);
+        } catch(e) {}
       }
-    });
+    }
+
+    // Brauzer yopilganda yoki fon rejimiga o'tganda shu zahoti OFFLINE yuboriladi
+    window.addEventListener('beforeunload', sendInstantOfflineSignal);
+    window.addEventListener('pagehide', sendInstantOfflineSignal);
   }
 
   // Dispatch incoming live events directly to local state and UI
@@ -647,8 +655,8 @@
     if (!event || event.from === myClientId) return; // Don't echo self
     if (event.id && markEventSeen(event.id)) return; // Deduplicate across dual brokers
 
-    // Instant presence tracking for sender
-    if (event.from) {
+    // Instant presence tracking for sender ONLY if NOT logout or offline event!
+    if (event.from && event.type !== 'USER_LOGOUT' && event.type !== 'PRESENCE_OFFLINE') {
       markUserActive([event.userId, event.senderId, event.login, event.email, event.senderEmail, event.name, event.senderName], event.ts || Date.now());
     }
 
@@ -660,43 +668,71 @@
       return;
     }
 
-    if (event.type === 'USER_LOGOUT' && (event.userId || event.login)) {
+    if (event.type === 'USER_LOGOUT' && (event.userId || event.login || event.name || event.email)) {
       var logKeys = [event.userId, event.login, event.email, event.name].filter(Boolean).map(function(k){ return (k + '').toLowerCase().trim(); });
+      var logoutTs = event.ts || Date.now();
       if (!window._ethithLoggedOutMap) window._ethithLoggedOutMap = {};
       logKeys.forEach(function(k) {
-        window._ethithLoggedOutMap[k] = true;
+        window._ethithLoggedOutMap[k] = logoutTs;
         if (window._ethithPresenceMap) delete window._ethithPresenceMap[k];
       });
+      var S = (window.EthithApp && window.EthithApp.state) || window.S || {};
       (classes || []).forEach(function(cls) {
         (cls.students || []).forEach(function(st) {
-          if (st && logKeys.some(function(k){ return (st.login && st.login.toLowerCase() === k) || (st.id && (st.id+'').toLowerCase() === k); })) {
+          if (!st) return;
+          var stKeys = [st.id, st.login, st.email, st.name].filter(Boolean).map(function(x){ return (x + '').toLowerCase().trim(); });
+          if (logKeys.some(function(k){ return stKeys.indexOf(k) !== -1; })) {
             st.isOnline = false;
             st.isLoggedOut = true;
+            st.loggedOutAt = logoutTs;
             delete st.lastSeen;
           }
         });
+      });
+      (S.accounts || []).forEach(function(acc) {
+        if (!acc) return;
+        var accKeys = [acc.id, acc.login, acc.email, acc.name].filter(Boolean).map(function(x){ return (x + '').toLowerCase().trim(); });
+        if (logKeys.some(function(k){ return accKeys.indexOf(k) !== -1; })) {
+          acc.isOnline = false;
+          acc.isLoggedOut = true;
+          acc.loggedOutAt = logoutTs;
+          delete acc.lastSeen;
+        }
       });
       if (window._ethithRefreshPresenceUI) window._ethithRefreshPresenceUI();
       return;
     }
 
-    if (event.type === 'PRESENCE_OFFLINE' && (event.userId || event.login)) {
+    if (event.type === 'PRESENCE_OFFLINE' && (event.userId || event.login || event.name || event.email)) {
       var offKeys = [event.userId, event.login, event.email, event.name].filter(Boolean).map(function(k){ return (k + '').toLowerCase().trim(); });
       // Shunchaki chiqib ketgan / telefonini o'chirgan -> 🔵 Offline (KO'K bo'ladi, qizil emas!)
-      var pastTime = Date.now() - 15000;
+      var pastTime = Date.now() - 10000;
       if (!window._ethithPresenceMap) window._ethithPresenceMap = {};
       offKeys.forEach(function(k) {
         window._ethithPresenceMap[k] = pastTime;
       });
+      var S = (window.EthithApp && window.EthithApp.state) || window.S || {};
       (classes || []).forEach(function(cls) {
         (cls.students || []).forEach(function(st) {
-          if (st && offKeys.some(function(k){ return (st.login && st.login.toLowerCase() === k) || (st.id && (st.id+'').toLowerCase() === k); })) {
+          if (!st) return;
+          var stKeys = [st.id, st.login, st.email, st.name].filter(Boolean).map(function(x){ return (x + '').toLowerCase().trim(); });
+          if (offKeys.some(function(k){ return stKeys.indexOf(k) !== -1; })) {
             st.isOnline = false;
             st.hasLoggedIn = true;
             st.isLoggedOut = false;
             st.lastSeen = pastTime;
           }
         });
+      });
+      (S.accounts || []).forEach(function(acc) {
+        if (!acc) return;
+        var accKeys = [acc.id, acc.login, acc.email, acc.name].filter(Boolean).map(function(x){ return (x + '').toLowerCase().trim(); });
+        if (offKeys.some(function(k){ return accKeys.indexOf(k) !== -1; })) {
+          acc.isOnline = false;
+          acc.hasLoggedIn = true;
+          acc.isLoggedOut = false;
+          acc.lastSeen = pastTime;
+        }
       });
       if (window._ethithRefreshPresenceUI) window._ethithRefreshPresenceUI();
       return;

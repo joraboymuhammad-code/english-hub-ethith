@@ -625,9 +625,10 @@
       var curName = (curUser.name || '').toLowerCase().trim();
       var uKeys = [curLog, curId, curEmail, curName].filter(Boolean);
 
+      var logoutTs = Date.now();
       if (!window._ethithLoggedOutMap) window._ethithLoggedOutMap = {};
       uKeys.forEach(function(k) {
-        window._ethithLoggedOutMap[k] = true;
+        window._ethithLoggedOutMap[k] = logoutTs;
         if (window._ethithPresenceMap) delete window._ethithPresenceMap[k];
       });
 
@@ -636,6 +637,7 @@
         if (acc) {
           acc.isOnline = false;
           acc.isLoggedOut = true;
+          acc.loggedOutAt = logoutTs;
           delete acc.lastSeen;
         }
       }
@@ -644,6 +646,7 @@
           if ((st.login && st.login.toLowerCase() === curLog) || (st.id && st.id === curId) || (st.name && st.name.toLowerCase().trim() === curName)) {
             st.isOnline = false;
             st.isLoggedOut = true;
+            st.loggedOutAt = logoutTs;
             delete st.lastSeen;
           }
         });
@@ -656,7 +659,7 @@
           login: curUser.login || '',
           email: curUser.email || '',
           name: curUser.name || '',
-          ts: Date.now()
+          ts: logoutTs
         });
         window.EthithSync.broadcastLocal(S.classes, S.exams);
         window.EthithSync.pushRemoteStore(S.classes, S.exams);
