@@ -330,7 +330,36 @@
         try {
           var updated = JSON.parse(localStorage.getItem('ethith_v2_state'));
           if (updated) {
-            S.classes = updated.classes || S.classes;
+            // Merge classes cleanly without wiping local student messages
+            if (updated.classes && Array.isArray(updated.classes)) {
+              if (!S.classes) S.classes = [];
+              updated.classes.forEach(function(uCls) {
+                var localCls = S.classes.find(function(c) {
+                  return (c.id && c.id === uCls.id) || (c.code && c.code === uCls.code);
+                });
+                if (!localCls) {
+                  S.classes.push(uCls);
+                } else {
+                  // Merge messages preserving all IDs and honoring deletedMsgIds
+                  var msgMap = {};
+                  (localCls.messages || []).forEach(function(m) { if (m && m.id) msgMap[m.id] = m; });
+                  (uCls.messages || []).forEach(function(m) { if (m && m.id) msgMap[m.id] = m; });
+                  var delIds = (localCls.deletedMsgIds || []).concat(uCls.deletedMsgIds || []);
+                  localCls.deletedMsgIds = Array.from(new Set(delIds));
+                  localCls.messages = Object.values(msgMap).filter(function(m) {
+                    return localCls.deletedMsgIds.indexOf(m.id) === -1;
+                  }).sort(function(a, b) {
+                    var ta = a.timestamp || parseInt((a.id || '').replace(/\D/g, ''), 10) || 0;
+                    var tb = b.timestamp || parseInt((b.id || '').replace(/\D/g, ''), 10) || 0;
+                    return ta - tb;
+                  });
+                  // Update other fields
+                  Object.keys(uCls).forEach(function(k) {
+                    if (k !== 'messages' && k !== 'deletedMsgIds') localCls[k] = uCls[k];
+                  });
+                }
+              });
+            }
             S.exams = updated.exams || S.exams;
             S.quizzes = updated.quizzes || S.quizzes;
             if (Array.isArray(updated.accounts)) S.accounts = updated.accounts;

@@ -3516,8 +3516,9 @@ EA.render = function(container, preserveScrollLeft) {
         var isPaid = (pInfo.status === 'paid');
         var payBadge = ''; // Clean view: No bulky badge in front of name! Only pure neon name glow!
 
-        var isOnline = (st.isOnline === true);
-        var onlineDot = '<span class="ea-status-dot ' + (isOnline ? 'ea-status-online' : 'ea-status-offline') + '" title="' + (isOnline ? '🟢 Tizimga kirgan (Online)' : '🔴 Tizimga kirmagan (Offline)') + '"></span>';
+        var stStatus = (window._ethithGetUserStatus ? window._ethithGetUserStatus(st) : (st.isOnline ? { status: 'green', label: 'Online', color: '#22c55e', dot: '🟢' } : { status: 'red', label: 'Kirmagan', color: '#ef4444', dot: '🔴' }));
+        var stKey = esc(st.id || st.login || st.name || '');
+        var onlineDot = '<span class="ea-status-dot ea-status-' + stStatus.status + '" data-stid="' + stKey + '" style="margin:0 6px 0 0;background:' + stStatus.color + ';box-shadow:0 0 7px ' + stStatus.color + ';" title="' + stStatus.dot + ' ' + esc(stStatus.label) + '"></span>';
 
         var studentNameDisplay = isPaid
           ? (onlineDot + '<span class="ea-st-paid-neon" title="Oylik to‘lov to‘langan (✓ Yashil Neon)" style="color:#4ade80 !important;font-size:13.5px;font-weight:900;text-shadow:0 0 10px rgba(74,222,128,0.95),0 0 20px rgba(74,222,128,0.7),0 0 30px rgba(74,222,128,0.4);letter-spacing:0.3px;white-space:nowrap;">' + esc(stName) + '</span>')
@@ -6877,7 +6878,7 @@ EA.render = function(container, preserveScrollLeft) {
     } else {
       records.forEach(function(r, idx) {
         var rowBg = idx % 2 === 0 ? 'rgba(15, 23, 42, 0.4)' : 'rgba(15, 23, 42, 0.65)';
-        var dotHtml = '<span class="ea-status-dot" style="margin:0;background:' + r.statusColor + ';box-shadow:0 0 6px ' + r.statusColor + ';" title="' + r.statusDot + ' ' + r.statusLabel + '"></span>';
+        var dotHtml = '<span class="ea-status-dot" data-stid="' + esc(r.id || r.login || r.name || '') + '" style="margin:0;background:' + r.statusColor + ';box-shadow:0 0 6px ' + r.statusColor + ';" title="' + r.statusDot + ' ' + r.statusLabel + '"></span>';
 
         var nameHtml = r.isPaid
           ? ('<span class="ea-st-paid-neon" style="color:#4ade80 !important;font-weight:900;text-shadow:0 0 10px rgba(74,222,128,0.9),0 0 20px rgba(74,222,128,0.6);letter-spacing:0.2px;">' + esc(r.name) + '</span>')

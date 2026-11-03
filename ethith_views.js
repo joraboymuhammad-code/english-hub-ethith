@@ -2100,26 +2100,7 @@
       '      </div>' +
       '    </div>' +
       '  </div>' +
-      // HOMEWORK BAR AT TOP OF GROUP CHAT (Students see assigned task & open it; system auto-grades into Davomat)
-      '  <div id="tgHomeworkBar" style="background:linear-gradient(135deg,rgba(15,23,42,0.92),rgba(30,58,138,0.85));border-bottom:1.5px solid rgba(56,189,248,0.4);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#f8fafc;">' +
-      '    <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:240px;">' +
-      '      <div style="width:40px;height:40px;border-radius:12px;background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.45);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📚</div>' +
-      '      <div>' +
-      '        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
-      '          <span style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;padding:2px 8px;border-radius:6px;background:rgba(56,189,248,0.22);color:#7dd3fc;border:1px solid rgba(56,189,248,0.4);">UY VAZIFASI (' + esc(activeHw.dateDisp || activeHw.dateKey) + ')</span>' +
-      (myStRecord && myStRecord.hwDone
-        ? '<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:rgba(16,185,129,0.22);color:#6ee7b7;border:1px solid rgba(52,211,153,0.45);">✅ Bajarildi (' + (myStRecord.hwPct || 100) + '% • Avtomatik baho: ' + (myStRecord.score || 5) + ')</span>'
-        : '<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:rgba(245,158,11,0.2);color:#fde68a;border:1px solid rgba(251,191,36,0.4);">⚡ Avtomatik tekshirish va baholash faol</span>') +
-      '        </div>' +
-      '        <div style="font-size:14px;font-weight:800;color:#ffffff;margin-top:3px;">' + (activeHw.bookLevel === 'B2' || (activeHw.pages && activeHw.pages[0] > 2000) ? 'Upper-Intermediate (B2)' : 'Intermediate (B1+)') + ' · Unit ' + esc(activeHw.unit) + ' — ' + esc(activeHw.lessonTitle || activeHw.lessonCode) + (activeHw.pages ? ' <span style="color:#7dd3fc;font-size:12.5px;">(Workbook ' + activeHw.pages.map(function(p) { return p > 2000 ? (p - 2000) : p; }).join('–') + '-betlar)</span>' : '') + '</div>' +
-      (activeHw.note ? '<div style="font-size:12px;color:#cbd5e1;margin-top:1px;">' + esc(activeHw.note) + '</div>' : '') +
-      '      </div>' +
-      '    </div>' +
-      '    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
-      (isTeacher ? '<button type="button" id="tgEditHomeworkBtn" style="background:rgba(255,255,255,0.1);color:#e2e8f0;border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;">✏️ Vazifani O\'zgartirish</button>' : '') +
-      '      <button type="button" id="tgOpenHomeworkLessonBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;border:none;border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(16,185,129,0.4);display:inline-flex;align-items:center;gap:6px;">🚀 Vazifani Bajarish (Ochish) &rarr;</button>' +
-      '    </div>' +
-      '  </div>' +
+      // Bulky homework banner removed for clean chat view
       (pinnedMsg ?
         '<div class="tg-pinned-bar" id="tgPinnedBar">' +
         '  <div>' + ic('pin') + ' <b>Pinned Message:</b> ' + esc(pinnedMsg.senderName) + ': "' + esc(pinnedMsg.text.slice(0, 50)) + '..."</div>' +
@@ -2433,6 +2414,7 @@
           message: newMsg
         });
         window.EthithSync.broadcastLocal(S.classes, S.exams);
+        window.EthithSync.pushRemoteStore(S.classes, S.exams);
       }
       setTimeout(function() {
         App.saveState();
@@ -2617,9 +2599,19 @@
       }).join('') +
       '  <button class="tg-context-reaction-btn" id="tgMoreEmojisBtn" title="All Emojis">➕</button>' +
       '</div>' +
-      '<button class="tg-context-item" id="ctxReplyBtn">' + ic('reply') + ' Reply</button>' +
-      '<button class="tg-context-item" id="ctxPinBtn">' + ic('pin') + ' Pin Message</button>' +
-      '<button class="tg-context-item danger" id="ctxDeleteBtn">' + ic('trash') + ' Delete Forever</button>';
+      (function() {
+        var isTeacherUser = (S.user && (S.user.role === 'teacher' || S.user.role === 'admin' || S.user.isTeacher === true));
+        var isMyMsg = (S.user && (
+          (msg.senderId && S.user.id && msg.senderId === S.user.id) ||
+          (msg.senderEmail && S.user.email && msg.senderEmail.toLowerCase() === S.user.email.toLowerCase()) ||
+          (msg.senderName && S.user.name && msg.senderName.toLowerCase().trim() === S.user.name.toLowerCase().trim())
+        ));
+        var canDelete = isTeacherUser || isMyMsg;
+
+        return '<button class="tg-context-item" id="ctxReplyBtn">' + ic('reply') + ' Reply</button>' +
+          (isTeacherUser ? '<button class="tg-context-item" id="ctxPinBtn">' + ic('pin') + ' Pin Message</button>' : '') +
+          (canDelete ? '<button class="tg-context-item danger" id="ctxDeleteBtn">' + ic('trash') + ' O\'chirish (Delete)</button>' : '');
+      })();
 
     menu.innerHTML = html;
     document.body.appendChild(menu);
@@ -2677,27 +2669,45 @@
       renderClassDetail(mainContainer, cls);
     };
 
-    menu.querySelector('#ctxDeleteBtn').onclick = function() {
-      if (confirm("Are you sure you want to permanently delete this message?")) {
-        cls.messages = cls.messages.filter(function(m) { return m.id !== msg.id; });
-        if (cls.pinnedId === msg.id) cls.pinnedId = null;
-        if (!cls.deletedMsgIds) cls.deletedMsgIds = [];
-        if (cls.deletedMsgIds.indexOf(msg.id) === -1) cls.deletedMsgIds.push(msg.id);
+    var delBtn = menu.querySelector('#ctxDeleteBtn');
+    if (delBtn) {
+      delBtn.onclick = function() {
+        var msgId = msg.id;
+        menu.remove();
+        activeContextMenu = null;
+
+        // 1. Instant 0ms particle disintegration locally!
+        var row = document.querySelector('.tg-msg-row[data-msg-id="' + msgId + '"]');
+        if (row) disintegrateMsgRow(row);
+
+        // 2. Remove from live state
+        var liveCls = (S.classes && S.classes.find(function(c) {
+          return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+        })) || cls;
+
+        liveCls.messages = (liveCls.messages || []).filter(function(m) { return m.id !== msgId; });
+        if (cls !== liveCls && cls.messages) {
+          cls.messages = (cls.messages || []).filter(function(m) { return m.id !== msgId; });
+        }
+        if (liveCls.pinnedId === msgId) liveCls.pinnedId = null;
+        if (!liveCls.deletedMsgIds) liveCls.deletedMsgIds = [];
+        if (liveCls.deletedMsgIds.indexOf(msgId) === -1) liveCls.deletedMsgIds.push(msgId);
+
+        // 3. Save state
         App.saveState();
+
+        // 4. Instant Dual-broker MQTT broadcast for 0ms peer disintegration
         if (window.EthithSync) {
           window.EthithSync.publishLive({
             type: 'DELETE_MSG',
-            classId: cls.code || cls.id,
-            msgId: msg.id
+            classId: liveCls.code || liveCls.id || cls.code || cls.id,
+            msgId: msgId
           });
           window.EthithSync.broadcastLocal(S.classes, S.exams);
           window.EthithSync.pushRemoteStore(S.classes, S.exams);
         }
-        menu.remove();
-        activeContextMenu = null;
-        renderClassDetail(mainContainer, cls);
-      }
-    };
+      };
+    }
   }
 
   // In-place 0ms DOM updater for bubble reactions (NO full page reload!)

@@ -351,6 +351,56 @@
     });
   }
 
+
+  // 0ms Real-Time UI Presence Refresher (All dots turn 🟢/🔵/🔴 instantly without reload)
+  window._ethithRefreshPresenceUI = function() {
+    if (!window._ethithGetUserStatus) return;
+    var S = (window.EthithApp && window.EthithApp.state) || window.S || {};
+    var allStudents = [];
+    (S.classes || []).forEach(function(c) {
+      (c.students || []).forEach(function(st) {
+        if (st) allStudents.push(st);
+      });
+    });
+
+    // 1. Update all status dots in attendance journal & tables
+    document.querySelectorAll('.ea-status-dot[data-stid]').forEach(function(dot) {
+      var sKey = (dot.getAttribute('data-stid') || '').toLowerCase().trim();
+      if (!sKey) return;
+      var st = allStudents.find(function(s) {
+        return (s.id && (s.id + '').toLowerCase() === sKey) ||
+               (s.login && s.login.toLowerCase() === sKey) ||
+               (s.name && s.name.toLowerCase().trim() === sKey);
+      });
+      if (st) {
+        var stStatus = window._ethithGetUserStatus(st);
+        dot.style.background = stStatus.color;
+        dot.style.boxShadow = '0 0 8px ' + stStatus.color;
+        dot.title = stStatus.dot + ' ' + stStatus.label;
+      }
+    });
+
+    // 2. Update student status pills at top of chat/attendance
+    document.querySelectorAll('.tg-online-pill[data-stid], .ea-student-pill[data-stid]').forEach(function(pill) {
+      var sKey = (pill.getAttribute('data-stid') || '').toLowerCase().trim();
+      if (!sKey) return;
+      var st = allStudents.find(function(s) {
+        return (s.id && (s.id + '').toLowerCase() === sKey) ||
+               (s.login && s.login.toLowerCase() === sKey) ||
+               (s.name && s.name.toLowerCase().trim() === sKey);
+      });
+      if (st) {
+        var stStatus = window._ethithGetUserStatus(st);
+        var dot = pill.querySelector('.ea-status-dot') || pill.querySelector('.tg-st-dot');
+        if (dot) {
+          dot.style.background = stStatus.color;
+          dot.style.boxShadow = '0 0 8px ' + stStatus.color;
+        }
+        pill.style.borderColor = stStatus.status === 'green' ? 'rgba(34,197,94,0.5)' : (stStatus.status === 'blue' ? 'rgba(59,130,246,0.5)' : 'rgba(239,68,68,0.3)');
+      }
+    });
+  };
+
   window._ethithGetUserStatus = function(u) {
     if (!u) return { status: 'red', label: "Kirmagan", color: '#ef4444', dot: '🔴' };
     var now = Date.now();
@@ -592,8 +642,11 @@
       var lenBefore = (foundInCls.messages || []).length;
       foundInCls.messages = (foundInCls.messages || []).filter(function(m) { return m.id !== event.msgId; });
       if (foundInCls.pinnedId === event.msgId) foundInCls.pinnedId = null;
+      if (window._ethithDisintegrateChatMessage) {
+        window._ethithDisintegrateChatMessage(event.msgId);
+      }
       if (foundInCls.messages.length !== lenBefore) {
-        uiNeedsRefresh = true;
+        uiNeedsRefresh = false; // already disintegrated smoothly!
       }
     }
 
