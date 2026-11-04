@@ -896,41 +896,48 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   var DEFAULT_REAL_STUDENT_NAMES = []; // Purged: strictly pure tester slots
 
     // Ensure every single class has exactly 18 slots strictly named tester_1..tester_18 by default
+    // Azimjon Toirov is strictly and exclusively in cls_urolov_azizbek_upper only!
     sClasses.forEach(function(cls) {
-      cls.maxCapacity = 18;
+      if (!cls) return;
       if (!Array.isArray(cls.students)) cls.students = [];
 
-      // Retain all real students and purge tester slots if real students exist
-      var realSt = (cls.students || []).filter(function(st) {
-        return st && !st.isTester && st.name && !st.name.toLowerCase().startsWith('tester_');
-      });
-      if (realSt.length > 0) {
-        cls.students = realSt;
+      if (cls.id === 'cls_urolov_azizbek_upper') {
+        cls.maxCapacity = Math.max(cls.students.length, 23);
+        var realSt = (cls.students || []).filter(function(st) {
+          return st && !st.isTester && st.name && !st.name.toLowerCase().startsWith('tester_');
+        });
+        if (realSt.length > 0) {
+          cls.students = realSt;
+        }
       } else {
-        var curIdx = 1;
-        while (cls.students.length < 18) {
-          var sName = 'tester_' + curIdx;
-          while (cls.students.some(function(s) { return s.name === sName; })) {
-            curIdx++;
-            sName = 'tester_' + curIdx;
+        cls.maxCapacity = 18;
+        // Strip Azimjon and force exactly 18 tester students: tester_1 .. tester_18
+        var hasNonTester = cls.students.some(function(s) {
+          if (!s || !s.name) return true;
+          var nl = s.name.toLowerCase();
+          return nl.includes('azimjon') || nl.includes('toirov') || (!s.isTester && !nl.startsWith('tester_'));
+        });
+        if (hasNonTester || cls.students.length !== 18) {
+          var testers = [];
+          for (var curIdx = 1; curIdx <= 18; curIdx++) {
+            testers.push({
+              id: cls.id + '_std_' + curIdx,
+              name: 'tester_' + curIdx,
+              email: cls.id + '_std_' + curIdx + '@ethith.uz',
+              role: 'student',
+              phone: '',
+              parentPhone: '',
+              login: '',
+              password: '',
+              joinedAt: '2026-10-28',
+              dailyMinutes: 0,
+              coins: 0,
+              isTester: true,
+              isOnline: false,
+              lastLogin: null
+            });
           }
-          cls.students.push({
-            id: cls.id + '_std_' + curIdx,
-            name: sName,
-            email: cls.id + '_std_' + curIdx + '@ethith.uz',
-            role: 'student',
-            phone: '',
-            parentPhone: '',
-            login: '',
-            password: '',
-            joinedAt: '2026-10-28',
-            dailyMinutes: 0,
-            coins: 0,
-            isTester: true,
-            isOnline: false,
-            lastLogin: null
-          });
-          curIdx++;
+          cls.students = testers;
         }
       }
     });
@@ -952,37 +959,43 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     if (!cls.schedule) cls.schedule = 'har_kuni';
     if (!cls.students) cls.students = [];
 
-    // Retain all real students and purge tester slots if real students exist
-    var realStEnsure = (cls.students || []).filter(function(st) {
-      return st && !st.isTester && st.name && !st.name.toLowerCase().startsWith('tester_');
-    });
-    if (realStEnsure.length > 0) {
-      cls.students = realStEnsure;
+    // Special: cls_urolov_azizbek_upper is Azizbek Urolov's Upper group and keeps its real students and Azimjon Toirov!
+    if (cls.id === 'cls_urolov_azizbek_upper') {
+      var realStEnsure = (cls.students || []).filter(function(st) {
+        return st && !st.isTester && st.name && !st.name.toLowerCase().startsWith('tester_');
+      });
+      if (realStEnsure.length > 0) {
+        cls.students = realStEnsure;
+      }
     } else {
-      var curIdx = 1;
-      while (cls.students.length < 18) {
-        var sName = 'tester_' + curIdx;
-        while (cls.students.some(function(s) { return s.name === sName; })) {
-          curIdx++;
-          sName = 'tester_' + curIdx;
+      // ALL OTHER GROUPS OF ALL TEACHERS: strictly 18 tester students (tester_1 .. tester_18)
+      // Azimjon Toirov is strictly banned from any other group!
+      var hasInvalid = cls.students.some(function(s) {
+        if (!s || !s.name) return true;
+        var nl = s.name.toLowerCase();
+        return nl.includes('azimjon') || nl.includes('toirov') || (!s.isTester && !nl.startsWith('tester_'));
+      });
+      if (hasInvalid || cls.students.length !== 18) {
+        var testersList = [];
+        for (var cIdx = 1; cIdx <= 18; cIdx++) {
+          testersList.push({
+            id: cls.id + '_std_' + cIdx,
+            name: 'tester_' + cIdx,
+            email: cls.id + '_std_' + cIdx + '@ethith.uz',
+            role: 'student',
+            phone: '',
+            parentPhone: '',
+            login: '',
+            password: '',
+            joinedAt: '2026-10-28',
+            dailyMinutes: 0,
+            coins: 0,
+            isTester: true,
+            isOnline: false,
+            lastLogin: null
+          });
         }
-        cls.students.push({
-          id: cls.id + '_std_' + curIdx,
-          name: sName,
-          email: cls.id + '_std_' + curIdx + '@ethith.uz',
-          role: 'student',
-          phone: '',
-          parentPhone: '',
-          login: '',
-          password: '',
-          joinedAt: '2026-10-28',
-          dailyMinutes: 0,
-          coins: 0,
-          isTester: true,
-          isOnline: false,
-          lastLogin: null
-        });
-        curIdx++;
+        cls.students = testersList;
       }
     }
 
@@ -3158,20 +3171,19 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     }
     ensureClassAttendance(cls);
 
-    // Make sure student user is present in cls.students
-    if (isStudent && curUser) {
+    // Student isolation: students only see their own class, never cross-pollinated into other classes
+    if (isStudent && curUser && cls.id === 'cls_urolov_azizbek_upper') {
       if (!Array.isArray(cls.students)) cls.students = [];
       var alreadyIn = cls.students.some(function(s) {
         return (curUser.id && s.id === curUser.id) || (curUser.login && s.login && s.login.toLowerCase() === curUser.login.toLowerCase());
       });
-      if (!alreadyIn) {
-        cls.students.unshift({
-          id: curUser.id || ('std_' + (curUser.login || 'me')),
-          name: curUser.name || 'O‘quvchi',
+      if (!alreadyIn && curUser.name && curUser.name.toLowerCase().includes('azimjon')) {
+        cls.students.push({
+          id: curUser.id || 'std_azimjon_848_toirov',
+          name: curUser.name || 'Azimjon Toirov',
           login: curUser.login || '',
           email: curUser.email || '',
           role: 'student',
-          manuallyEnrolled: true,
           coins: curUser.coins || 150
         });
       }
@@ -3801,15 +3813,30 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     }
     h += '</div></div>';
 
+    var prevScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+    var apMain = document.getElementById('apMain') || document.querySelector('.ap-main');
+    var prevMainY = apMain ? apMain.scrollTop : 0;
+    var existingWrap = container.querySelector('.ea-table-scroll-wrap');
+    var existingScrollLeft = existingWrap ? existingWrap.scrollLeft : null;
+
     container.innerHTML = h;
 
     var scrollWrap = container.querySelector('.ea-table-scroll-wrap');
     if (scrollWrap) {
       if (typeof preserveScrollLeft === 'number') {
         scrollWrap.scrollLeft = preserveScrollLeft;
+      } else if (typeof existingScrollLeft === 'number' && existingScrollLeft > 0) {
+        scrollWrap.scrollLeft = existingScrollLeft;
       } else {
         scrollWrap.scrollLeft = scrollWrap.scrollWidth;
       }
+    }
+
+    if (prevScrollY > 0) {
+      window.scrollTo(0, prevScrollY);
+    }
+    if (apMain && prevMainY > 0) {
+      apMain.scrollTop = prevMainY;
     }
 
     EA.attachEvents(container, cls);

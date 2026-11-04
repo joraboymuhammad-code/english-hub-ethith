@@ -1698,7 +1698,7 @@
   // ====================================================
   // ETHITH CLIENT BUILD VERSION & CACHE MANAGEMENT
   // ====================================================
-  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "v2026.11.04.0106";
+  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "v2026.11.04.0107";
 
   (function ensureFreshBuildOnStartup() {
     function purgeCachesAndReload(newVer) {
@@ -1862,17 +1862,23 @@
     setInterval(function() { checkVersion(false); }, 30 * 60 * 1000);
   })();
 
-  if (!window._ethithRefreshTeachersList) {
-    window._ethithRefreshTeachersList = function() {
-      if (typeof window._ethithRefreshCurrentView === 'function') {
-        try { window._ethithRefreshCurrentView(); } catch(e) {}
-      } else if (window.go) {
-        try { window.go(window._ethithCurrentView || 'dash', { keepState: true }); } catch(e) {}
+  window._ethithRefreshCurrentView = function() {
+    var v = document.getElementById('apView');
+    if (!v) return;
+    var curV = window._ethithCurrentView || 'dash';
+    if (curV === 'attendance' && window.EA && typeof window.EA.render === 'function') {
+      try { window.EA.render(v, true); } catch(e) {}
+    }
+  };
+
+  window._ethithRefreshTeachersList = function() {
+    var curV = window._ethithCurrentView || 'dash';
+    if (curV === 'attendance' && window.EA && typeof window.EA.render === 'function') {
+      var v = document.getElementById('apView');
+      if (v) {
+        try { window.EA.render(v, true); } catch(e) {}
       }
-      if (window._ethithRefreshAttendance) {
-        try { window._ethithRefreshAttendance(); } catch(e) {}
-      }
-    };
-  }
+    }
+  };
 
 })(window);

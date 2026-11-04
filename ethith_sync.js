@@ -1309,14 +1309,14 @@
       uiNeedsRefresh = true;
       var apView = document.getElementById('apView');
       if (apView && window.EA && typeof window.EA.render === 'function' && window._ethithCurrentView === 'attendance') {
-        window.EA.render(apView);
+        window.EA.render(apView, true);
       }
       if (typeof fetchRemoteStore === 'function') {
         fetchRemoteStore().then(function(remote) {
           if (remote && remote.classes) mergeClasses(S.classes, remote.classes);
           var apView2 = document.getElementById('apView');
           if (apView2 && window.EA && typeof window.EA.render === 'function' && window._ethithCurrentView === 'attendance') {
-            window.EA.render(apView2);
+            window.EA.render(apView2, true);
           }
           if (window._ethithRefreshCurrentView) {
             try { window._ethithRefreshCurrentView(); } catch(e) {}
@@ -3488,7 +3488,7 @@
             } else if (window.EA && typeof window.EA.render === 'function') {
               var apView = document.getElementById('apView') || document.getElementById('viewContainer');
               if (apView && (window._ethithCurrentView === 'attendance' || window._ethithCurrentView === 'timetable' || document.getElementById('eaAttendanceTable') || document.querySelector('.ea-teachers-grid') || document.querySelector('.ea-teacher-groups-wrap'))) {
-                window.EA.render(apView);
+                window.EA.render(apView, true);
               }
             }
             if (cTeachers) {
