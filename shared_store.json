@@ -25076,8 +25076,8 @@
           "isTester": false,
           "manuallyEnrolled": true,
           "isOnline": true,
-          "coins": 660,
-          "updatedAt": 1793810584027,
+          "coins": 670,
+          "updatedAt": 1793810587141,
           "lastLogin": "2026-11-04T14:59:52.209Z",
           "dailyMinutes": 96,
           "isLoggedOut": false,
@@ -29278,13 +29278,13 @@
       "role": "student",
       "name": "Azimjon Toirov",
       "email": "azimjon.toirov@ethith.uz",
-      "coins": 660,
+      "coins": 670,
       "gifts": [],
       "avatar": null,
       "title": null,
       "nameStyle": null,
       "createdAt": 1793720576586,
-      "updatedAt": 1793810584027,
+      "updatedAt": 1793810587141,
       "isOnline": true,
       "isLoggedOut": false,
       "hasLoggedIn": true,
@@ -149486,7 +149486,7 @@
       }
     }
   },
-  "updatedAt": 1793810584027,
+  "updatedAt": 1793810587141,
   "authorizedAdminChatIds": [
     6772427596,
     98124765
