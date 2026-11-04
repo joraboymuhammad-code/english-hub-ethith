@@ -193,8 +193,33 @@
   // ==========================================
   // VIEW 1: ASK AI TEACHER (ChatGPT-like UI)
   // ==========================================
+  function getStudentAiKey() {
+    var u = (window.S && window.S.user) || null;
+    return 'ethith_ai_conversations_' + (u ? String(u.id || u.login || u.email || 'guest').toLowerCase().trim() : 'guest');
+  }
+
+  function syncStudentAiStorage() {
+    try {
+      var k = getStudentAiKey();
+      if (window.S && Array.isArray(window.S.aiConversations)) {
+        localStorage.setItem(k, JSON.stringify(window.S.aiConversations));
+      }
+    } catch(e) {}
+    if (window.App && window.App.saveState) {
+      window.App.saveState();
+    }
+  }
+
   function renderAskAITeacher(container) {
     window._ethithCurrentView = 'ask_ai';
+    var stKey = getStudentAiKey();
+    try {
+      var saved = JSON.parse(localStorage.getItem(stKey) || 'null');
+      if (Array.isArray(saved) && saved.length > 0) {
+        S.aiConversations = saved;
+      }
+    } catch(e) {}
+
     if (!S.aiConversations || S.aiConversations.length === 0) {
       var initConv = {
         id: 'conv_' + Date.now(),
@@ -204,6 +229,7 @@
       };
       S.aiConversations = [initConv];
       S.currentAiChatId = initConv.id;
+      syncStudentAiStorage();
     }
 
     var activeConv = S.aiConversations.find(function(c) { return c.id === S.currentAiChatId; });
@@ -387,7 +413,7 @@
         };
         S.aiConversations.unshift(newC);
         S.currentAiChatId = newC.id;
-        App.saveState();
+        syncStudentAiStorage();
         renderAskAITeacher(container);
       };
     }
@@ -396,7 +422,7 @@
       item.onclick = function(e) {
         if (e.target.closest('[data-del-chat]')) return;
         S.currentAiChatId = item.dataset.chatId;
-        App.saveState();
+        syncStudentAiStorage();
         closeMobileDrawer();
         renderAskAITeacher(container);
       };
@@ -415,7 +441,7 @@
           } else if (S.currentAiChatId === idToDel) {
             S.currentAiChatId = S.aiConversations[0].id;
           }
-          App.saveState();
+          syncStudentAiStorage();
           renderAskAITeacher(container);
         }
       };
@@ -455,7 +481,7 @@
           newChatBtn.style.cursor = 'pointer';
           newChatBtn.title = 'Yangi suhbat ochish';
         }
-        App.saveState();
+        syncStudentAiStorage();
 
         input.value = '';
         var sentAttach = currentAttachment;
@@ -519,7 +545,7 @@
                 text: replyText
               });
               activeConv.updatedAt = Date.now();
-              App.saveState();
+              syncStudentAiStorage();
               renderAskAITeacher(container);
             }
           }, 18);

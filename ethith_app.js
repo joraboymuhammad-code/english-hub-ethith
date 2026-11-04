@@ -260,39 +260,31 @@
     S.classes = [];
   }
 
-  // Ensure aiConversations exists
+  // Ensure aiConversations exists and persist student conversation history
+  var studentAiKey = 'ethith_ai_conversations_' + (S.user ? String(S.user.id || S.user.login || S.user.email || 'guest').toLowerCase().trim() : 'guest');
+  try {
+    var storedStudentConvs = JSON.parse(localStorage.getItem(studentAiKey) || 'null');
+    if (Array.isArray(storedStudentConvs) && storedStudentConvs.length > 0) {
+      S.aiConversations = storedStudentConvs;
+    }
+  } catch(e) {}
+
   if (!Array.isArray(S.aiConversations)) {
     S.aiConversations = [];
   }
   // AI Conversations Management:
-  // 1. Filter out duplicate empty conversations
+  // Keep all conversations with messages intact; never wipe or hide them on page reload
   var nonEmptyConversations = S.aiConversations.filter(function(c) {
     return c && Array.isArray(c.messages) && c.messages.length > 0;
   });
 
-  // 2. Check if there is already an existing empty conversation
-  var existingEmpty = S.aiConversations.find(function(c) {
-    return c && (!c.messages || c.messages.length === 0);
-  });
-
-  if (existingEmpty) {
-    // Reuse existing empty chat - do NOT create duplicate empty chats on refresh
-    S.currentAiChatId = existingEmpty.id;
-    S.aiConversations = [existingEmpty].concat(nonEmptyConversations.filter(function(c) {
-      return c.id !== existingEmpty.id;
-    }));
-  } else if (nonEmptyConversations.length > 0) {
-    // Previous conversation had messages, prepare a fresh conversation
-    var freshChatId = 'conv_' + Date.now();
-    var freshChat = {
-      id: freshChatId,
-      title: 'Yangi Suhbat',
-      messages: [],
-      updatedAt: Date.now()
-    };
-    S.aiConversations = [freshChat].concat(nonEmptyConversations);
-    S.currentAiChatId = freshChatId;
-  } else {
+  if (nonEmptyConversations.length > 0) {
+    // Preserve student conversations! If currentAiChatId is already set to one of them, keep it; otherwise point to latest
+    var matchActive = S.aiConversations.find(function(c) { return c && c.id === S.currentAiChatId; });
+    if (!matchActive) {
+      S.currentAiChatId = nonEmptyConversations[0].id;
+    }
+  } else if (S.aiConversations.length === 0) {
     // Initial empty state
     var initChatId = 'conv_' + Date.now();
     var initChat = {
@@ -316,6 +308,10 @@
       if (S.user) {
         localStorage.setItem('ethith_active_user', JSON.stringify(S.user));
         localStorage.setItem('ethith_user', JSON.stringify(S.user));
+        if (Array.isArray(S.aiConversations)) {
+          var stKey = 'ethith_ai_conversations_' + String(S.user.id || S.user.login || S.user.email || 'guest').toLowerCase().trim();
+          localStorage.setItem(stKey, JSON.stringify(S.aiConversations));
+        }
       }
       localStorage.setItem('ethith_v2_state', JSON.stringify(S));
       // Notify other tabs via BroadcastChannel if available
@@ -1698,7 +1694,7 @@
   // ====================================================
   // ETHITH CLIENT BUILD VERSION & CACHE MANAGEMENT
   // ====================================================
-  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "v2026.11.04.0108";
+  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "v2026.11.04.0109";
 
   (function ensureFreshBuildOnStartup() {
     function purgeCachesAndReload(newVer) {
