@@ -343,7 +343,14 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "levelTestResults": {
+        "std_azimjon_848_toirov": {
+          "score": null,
+          "passed": null,
+          "updatedAt": 1793794690920
+        }
+      }
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_2",
@@ -14245,7 +14252,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793794259168
+      "lastSeen": 1793794736565
     },
     {
       "id": "tg_98124765",
@@ -133747,7 +133754,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "AZIZBEK77",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "admin_official_teacher",
@@ -134321,5 +134330,5 @@
       }
     }
   },
-  "updatedAt": 1793794260786
+  "updatedAt": 1793794737468
 }
