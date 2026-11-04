@@ -24854,7 +24854,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793783309053
+        "updatedAt": 1793797840337
       },
       "customStudentNames": {
         "std_ruxshona_493_amalikova": "Ruxshona Amalikova",
@@ -25173,7 +25173,7 @@
       "deletedMsgIds": [],
       "messages": [],
       "learningMonths": 0,
-      "learningDays": 16,
+      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_standard_tester_1": {
           "fee": 300000,
@@ -27427,7 +27427,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793797836357
+      "lastSeen": 1793797840757
     },
     {
       "id": "tg_98124765",
@@ -147594,5 +147594,5 @@
       }
     }
   },
-  "updatedAt": 1793797838347
+  "updatedAt": 1793797842820
 }
