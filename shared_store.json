@@ -25393,7 +25393,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793783309111
+        "updatedAt": 1793797844685
       },
       "customStudentNames": {
         "std_orazaliyev_261_amirshox": "O'razaliyev Amirshox",
@@ -25709,8 +25709,8 @@
       ],
       "deletedMsgIds": [],
       "messages": [],
-      "learningMonths": 1,
-      "learningDays": 21,
+      "learningMonths": 0,
+      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_intermediate_tester_1": {
           "fee": 300000,
@@ -27427,7 +27427,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793797840757
+      "lastSeen": 1793797847356
     },
     {
       "id": "tg_98124765",
@@ -147594,5 +147594,5 @@
       }
     }
   },
-  "updatedAt": 1793797842820
+  "updatedAt": 1793797848103
 }
