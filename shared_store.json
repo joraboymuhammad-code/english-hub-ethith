@@ -23829,8 +23829,8 @@
               "score": ""
             },
             "std_azimjon_848_toirov": {
-              "status": "",
-              "score": ""
+              "status": "Q",
+              "score": "2"
             },
             "std_navroz_651_shavkatov": {
               "status": "",
@@ -23871,7 +23871,7 @@
             "teacherName": "Azizbek Urolov"
           }
         },
-        "updatedAt": 1793797836681
+        "updatedAt": 1793797981556
       },
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
@@ -27427,7 +27427,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793797979356
+      "lastSeen": 1793797985960
     },
     {
       "id": "tg_98124765",
@@ -147594,5 +147594,5 @@
       }
     }
   },
-  "updatedAt": 1793797980518
+  "updatedAt": 1793797986707
 }
