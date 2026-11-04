@@ -160075,18 +160075,43 @@
     var matchedHw = matchObj.hw;
     var matchedCls = matchObj.cls;
     var isCompleted = false;
-    var submissionKey = 'ethith_hw_completed_' + (curUser.id || curUser.email || curUser.phone) + '_' + thisLessonCode;
-    if (localStorage.getItem(submissionKey)) isCompleted = true;
-    if (matchedHw.dateKey) {
-      var submissionKeyDate = 'ethith_hw_completed_' + (curUser.id || curUser.email || curUser.phone) + '_' + matchedHw.dateKey + '_' + thisLessonCode;
-      if (localStorage.getItem(submissionKeyDate)) isCompleted = true;
+
+    var studentAliases = [
+      curUser.id,
+      curUser.login,
+      curUser.id ? 'std_' + curUser.id.replace(/^std_/, '') : null,
+      curUser.id ? curUser.id.replace(/^std_/, '') : null,
+      curUser.login ? 'std_' + curUser.login.replace(/^std_/, '') : null,
+      curUser.login ? curUser.login.replace(/^std_/, '') : null,
+      curUser.email,
+      curUser.phone
+    ].filter(Boolean);
+
+    for (var ai = 0; ai < studentAliases.length; ai++) {
+      var sAlias = studentAliases[ai];
+      if (localStorage.getItem('ethith_hw_completed_' + sAlias + '_' + thisLessonCode)) {
+        isCompleted = true;
+        break;
+      }
+      if (matchedHw.dateKey && localStorage.getItem('ethith_hw_completed_' + sAlias + '_' + matchedHw.dateKey + '_' + thisLessonCode)) {
+        isCompleted = true;
+        break;
+      }
     }
-    if (matchedCls && matchedCls.attendance && matchedCls.attendance.records) {
+
+    if (!isCompleted && matchedCls && matchedCls.attendance && matchedCls.attendance.records) {
       var recs = matchedCls.attendance.records;
       for (var dK in recs) {
-        var rec = recs[dK] && (recs[dK][curUser.id] || recs[dK][curUser.email]);
-        if (rec && (rec.score || rec.hwDone)) {
-          if (rec.hwLesson === thisLessonCode || (!rec.hwLesson && dK === matchedHw.dateKey)) {
+        var dayRecs = recs[dK] || {};
+        var rec = null;
+        for (var bi = 0; bi < studentAliases.length; bi++) {
+          if (dayRecs[studentAliases[bi]]) {
+            rec = dayRecs[studentAliases[bi]];
+            break;
+          }
+        }
+        if (rec && ((rec.score !== undefined && rec.score !== null && String(rec.score).trim() !== '') || rec.hwDone)) {
+          if (rec.hwLesson === thisLessonCode || (!rec.hwLesson && (!matchedHw.dateKey || dK === matchedHw.dateKey))) {
             isCompleted = true;
             break;
           }
@@ -163797,12 +163822,25 @@
         var isStudent = curUser && curUser.role === 'student';
         if (isStudent) {
           try {
-            var compKey = 'ethith_hw_completed_' + (curUser.id || curUser.email) + '_' + lessonCode;
-            localStorage.setItem(compKey, JSON.stringify({ done: true, grade: autoDailyGrade, pct: pct, timestamp: Date.now() }));
-            if (window._ethithActiveHwContext && window._ethithActiveHwContext.dateKey) {
-              var compKeyDate = 'ethith_hw_completed_' + (curUser.id || curUser.email) + '_' + window._ethithActiveHwContext.dateKey + '_' + lessonCode;
-              localStorage.setItem(compKeyDate, JSON.stringify({ done: true, grade: autoDailyGrade, pct: pct, timestamp: Date.now() }));
-            }
+            var saveAliases = [
+              curUser.id,
+              curUser.login,
+              curUser.id ? 'std_' + curUser.id.replace(/^std_/, '') : null,
+              curUser.id ? curUser.id.replace(/^std_/, '') : null,
+              curUser.login ? 'std_' + curUser.login.replace(/^std_/, '') : null,
+              curUser.login ? curUser.login.replace(/^std_/, '') : null,
+              curUser.email,
+              curUser.phone
+            ].filter(Boolean);
+
+            saveAliases.forEach(function(al) {
+              var compKey = 'ethith_hw_completed_' + al + '_' + lessonCode;
+              localStorage.setItem(compKey, JSON.stringify({ done: true, grade: autoDailyGrade, pct: pct, timestamp: Date.now() }));
+              if (window._ethithActiveHwContext && window._ethithActiveHwContext.dateKey) {
+                var compKeyDate = 'ethith_hw_completed_' + al + '_' + window._ethithActiveHwContext.dateKey + '_' + lessonCode;
+                localStorage.setItem(compKeyDate, JSON.stringify({ done: true, grade: autoDailyGrade, pct: pct, timestamp: Date.now() }));
+              }
+            });
           } catch(e) {}
         }
 

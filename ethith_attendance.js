@@ -6447,6 +6447,27 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         localStorage.setItem('ethith_class_duration_' + cls.id, JSON.stringify({ learningMonths: m, learningDays: d }));
       } catch(e) {}
 
+      // Update EthithEnterprise store classes
+      if (window.EthithEnterprise && typeof window.EthithEnterprise.getStore === 'function') {
+        var eeSt = window.EthithEnterprise.getStore();
+        if (eeSt && Array.isArray(eeSt.classes)) {
+          var eeCls = eeSt.classes.find(function(it) { return it && it.id === cls.id; });
+          if (eeCls) {
+            eeCls.learningMonths = m;
+            eeCls.learningDays = d;
+          }
+        }
+      }
+
+      // Update ETHITH_INITIAL_STORE classes
+      if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.classes)) {
+        var initCls = window.ETHITH_INITIAL_STORE.classes.find(function(it) { return it && it.id === cls.id; });
+        if (initCls) {
+          initCls.learningMonths = m;
+          initCls.learningDays = d;
+        }
+      }
+
       persistAttendance(cls);
 
       if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
@@ -6537,6 +6558,186 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       login: login,
       password: password,
       num: num
+    };
+  };
+
+  // ============================================================================
+  // STUDENT TRANSFER MODAL (Move student between teachers & groups in real time)
+  // ============================================================================
+  EA.openTransferStudentModal = function(curClass, curSt, onComplete) {
+    if (!curSt) return;
+    var overlay = document.createElement('div');
+    overlay.className = 'eth-modal-overlay animate-fade-in';
+    overlay.id = 'eaTransferStudentOverlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;z-index:99999999;padding:16px;';
+
+    var teachers = (typeof EA.getStoreTeachers === 'function') ? EA.getStoreTeachers() : [];
+    if (teachers.length === 0) {
+      teachers = [{ id: 't_urolov_azizbek', name: 'Azizbek Urolov' }, { id: 't_ravshanov_doniyor', name: 'Ravshanov Doniyor' }];
+    }
+
+    var curTeacher = teachers.find(function(t) {
+      return (curClass && ((t.id === curClass.teacherId) || (t.name && curClass.teacherName && t.name.toLowerCase() === curClass.teacherName.toLowerCase())));
+    }) || teachers[0];
+
+    function getClassesForT(tId) {
+      if (typeof EA.getClassesForTeacher === 'function') {
+        return EA.getClassesForTeacher(tId);
+      }
+      var allClasses = getAvailableClasses();
+      return allClasses.filter(function(c) {
+        return c.teacherId === tId || (curTeacher && c.teacherName && c.teacherName.toLowerCase() === curTeacher.name.toLowerCase());
+      });
+    }
+
+    var selectedTId = curTeacher.id;
+    var tClasses = getClassesForT(selectedTId);
+
+    var html = '<div style="background:linear-gradient(145deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:2px solid #8b5cf6;border-radius:24px;max-width:480px;width:100%;box-shadow:0 24px 60px rgba(0,0,0,0.85),0 0 30px rgba(139,92,246,0.3);padding:24px 26px;color:#f8fafc;box-sizing:border-box;position:relative;">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:12px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#8b5cf6,#6366f1);display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 14px rgba(139,92,246,0.4);">🔄</div>' +
+          '<div>' +
+            '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">O‘quvchini Boshqa Guruhga Ko‘chirish</h3>' +
+            '<p style="margin:2px 0 0;font-size:12px;color:#c084fc;">Real-vaqt rejimida guruh va chat almashadi</p>' +
+          '</div>' +
+        '</div>' +
+        '<button type="button" id="btnCloseTransferModal" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
+      '</div>' +
+
+      '<div style="background:rgba(255,255,255,0.04);border-radius:14px;padding:12px 14px;margin-bottom:16px;border:1px solid rgba(255,255,255,0.06);">' +
+        '<div style="font-size:13.5px;font-weight:900;color:#f8fafc;margin-bottom:4px;">👤 ' + esc(curSt.name) + '</div>' +
+        '<div style="font-size:12px;color:#94a3b8;">Hozirgi guruh: <b style="color:#38bdf8;">' + esc(curClass ? curClass.name : 'Noma‘lum') + '</b> (' + esc(curClass ? curClass.teacherName : 'Ustoz') + ') • ID: <code>' + esc(curSt.login || curSt.id) + '</code></div>' +
+      '</div>' +
+
+      '<div style="display:flex;flex-direction:column;gap:14px;margin-bottom:20px;">' +
+        '<div>' +
+          '<label style="display:block;font-size:12.5px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">1. Yangi Ustozni Tanlang: <span style="color:#8b5cf6;">*</span></label>' +
+          '<select id="eaTransferTeacherSelect" style="width:100%;box-sizing:border-box;background:#0f172a;border:1.5px solid rgba(139,92,246,0.4);border-radius:12px;padding:11px 14px;color:#fff;font-size:13.5px;font-weight:700;outline:none;">';
+          teachers.forEach(function(t) {
+            var sel = (t.id === selectedTId) ? 'selected' : '';
+            html += '<option value="' + esc(t.id) + '" ' + sel + '>👨‍🏫 ' + esc(t.name) + '</option>';
+          });
+          html += '</select>' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:12.5px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">2. Ushbu Ustozning Guruhini Tanlang: <span style="color:#8b5cf6;">*</span></label>' +
+          '<select id="eaTransferGroupSelect" style="width:100%;box-sizing:border-box;background:#0f172a;border:1.5px solid rgba(139,92,246,0.4);border-radius:12px;padding:11px 14px;color:#fff;font-size:13.5px;font-weight:700;outline:none;">';
+          tClasses.forEach(function(c) {
+            var isCurrent = curClass && (c.id === curClass.id);
+            html += '<option value="' + esc(c.id) + '" ' + (isCurrent ? 'disabled style="color:#64748b;"' : '') + '>' + esc(c.name) + (isCurrent ? ' (Hozirgi guruhi)' : '') + '</option>';
+          });
+          html += '</select>' +
+        '</div>' +
+      '</div>' +
+
+      '<div style="display:flex;justify-content:flex-end;gap:10px;">' +
+        '<button type="button" id="btnCancelTransfer" style="padding:10px 18px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
+        '<button type="button" id="btnConfirmTransfer" style="padding:10px 22px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;border:none;border-radius:12px;font-size:13.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(139,92,246,0.45);display:inline-flex;align-items:center;gap:6px;">🚀 Ko‘chirish (Real-vaqtda)</button>' +
+      '</div>' +
+    '</div>';
+
+    overlay.innerHTML = html;
+    document.body.appendChild(overlay);
+
+    var tSelect = overlay.querySelector('#eaTransferTeacherSelect');
+    var gSelect = overlay.querySelector('#eaTransferGroupSelect');
+
+    tSelect.onchange = function() {
+      var nTId = tSelect.value;
+      var nClasses = getClassesForT(nTId);
+      var gHtml = '';
+      nClasses.forEach(function(c) {
+        var isCurrent = curClass && (c.id === curClass.id);
+        gHtml += '<option value="' + esc(c.id) + '" ' + (isCurrent ? 'disabled style="color:#64748b;"' : '') + '>' + esc(c.name) + (isCurrent ? ' (Hozirgi guruhi)' : '') + '</option>';
+      });
+      gSelect.innerHTML = gHtml;
+    };
+
+    overlay.querySelector('#btnCloseTransferModal').onclick = function() { overlay.remove(); };
+    overlay.querySelector('#btnCancelTransfer').onclick = function() { overlay.remove(); };
+
+    overlay.querySelector('#btnConfirmTransfer').onclick = function() {
+      var targetClassId = gSelect.value;
+      if (!targetClassId) {
+        alert("Iltimos, o‘quvchini ko‘chirmoqchi bo‘lgan guruhni tanlang!");
+        return;
+      }
+      if (curClass && targetClassId === curClass.id) {
+        alert("O‘quvchi allaqachon ushbu guruhda turibdi! Iltimos, boshqa guruhni tanlang.");
+        return;
+      }
+
+      var allClasses = getAvailableClasses();
+      var targetClass = allClasses.find(function(c) { return c && c.id === targetClassId; });
+      if (!targetClass) {
+        alert("Guruh topilmadi!");
+        return;
+      }
+
+      // Execute atomic transfer
+      var selectedTeacher = teachers.find(function(t) { return t.id === tSelect.value; }) || { name: targetClass.teacherName || 'Ustoz' };
+
+      // 1. Remove from source class
+      if (curClass && Array.isArray(curClass.students)) {
+        curClass.students = curClass.students.filter(function(s) {
+          if (!s) return false;
+          return (s.id !== curSt.id && s.login !== curSt.login && s.email !== curSt.email);
+        });
+      }
+
+      // 2. Add into target class
+      if (!Array.isArray(targetClass.students)) targetClass.students = [];
+      curSt.classId = targetClass.id;
+      targetClass.students.push(curSt);
+
+      // 3. Update in S.accounts
+      var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
+      if (Array.isArray(S_app.accounts)) {
+        var mAcc = S_app.accounts.find(function(a) {
+          return a && (a.id === curSt.id || a.login === curSt.login || a.email === curSt.email || (curSt.name && a.name && a.name.toLowerCase() === curSt.name.toLowerCase()));
+        });
+        if (mAcc) {
+          mAcc.classId = targetClass.id;
+          mAcc.updatedAt = Date.now();
+        }
+      }
+
+      // 4. Save locally
+      if (typeof EA.saveClasses === 'function') EA.saveClasses(allClasses);
+      if (window.EthithApp && typeof window.EthithApp.saveState === 'function') window.EthithApp.saveState();
+
+      // 5. Broadcast in real time via MQTT
+      if (window.EthithSync && typeof window.EthithSync.publishMqtt === 'function') {
+        window.EthithSync.publishMqtt('ethith/v3/global', {
+          type: 'STUDENT_TRANSFER',
+          studentId: curSt.id,
+          studentLogin: curSt.login,
+          studentName: curSt.name,
+          fromClassId: curClass ? curClass.id : null,
+          toClassId: targetClass.id,
+          toTeacherName: selectedTeacher.name,
+          toClassName: targetClass.name,
+          student: curSt,
+          timestamp: Date.now()
+        });
+      }
+      if (window.EthithSync && typeof window.EthithSync.pushStore === 'function') {
+        window.EthithSync.pushStore();
+      }
+
+      if (window.showToast) {
+        window.showToast("✓ " + curSt.name + " " + selectedTeacher.name + " ning " + targetClass.name + " guruhiga ko‘chirildi!");
+      }
+
+      overlay.remove();
+      if (typeof onComplete === 'function') onComplete();
+
+      var apView = document.getElementById('apView') || document.getElementById('viewContainer');
+      if (apView && typeof EA.render === 'function') {
+        EA.render(apView);
+      }
     };
   };
 
@@ -6732,7 +6933,10 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         // Action Buttons (Pinned at Bottom - Never Cut Off!)
         '<div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(15,23,42,0.98);z-index:10;">' +
           (isEdit 
-            ? '<button type="button" id="eaModalDeleteStudentBtn" style="background:rgba(239,68,68,0.18);border:1px solid rgba(239,68,68,0.45);color:#f87171;border-radius:12px;padding:10px 16px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">🗑️ O‘quvchini O‘chirish</button>' 
+            ? '<div style="display:flex;align-items:center;gap:8px;">' +
+                '<button type="button" id="eaTransferStudentBtn" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);border:none;color:#fff;border-radius:12px;padding:10px 15px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(139,92,246,0.35);">🔄 Guruhga Ko‘chirish</button>' +
+                '<button type="button" id="eaModalDeleteStudentBtn" style="background:rgba(239,68,68,0.18);border:1px solid rgba(239,68,68,0.45);color:#f87171;border-radius:12px;padding:10px 14px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">🗑️ O‘chirish</button>' +
+              '</div>' 
             : '<div></div>') +
           '<div style="display:flex;align-items:center;gap:10px;">' +
             '<button type="button" id="eaCancelEnrollBtn" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
@@ -6776,6 +6980,15 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
     overlay.querySelector('#eaCloseEnrollModalBtn').onclick = function() { overlay.remove(); };
     overlay.querySelector('#eaCancelEnrollBtn').onclick = function() { overlay.remove(); };
+
+    var mTransferBtn = overlay.querySelector('#eaTransferStudentBtn');
+    if (mTransferBtn && curSt) {
+      mTransferBtn.onclick = function() {
+        EA.openTransferStudentModal(curClass, curSt, function() {
+          overlay.remove();
+        });
+      };
+    }
 
     var mDelBtn = overlay.querySelector('#eaModalDeleteStudentBtn');
     if (mDelBtn && curSt) {

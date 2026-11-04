@@ -14985,9 +14985,9 @@
       '      <input type="text" id="inpEditName" value="' + esc(user.name || '') + '" style="width:100%;padding:11px 14px;background:#1e293b;border:1.5px solid #475569;border-radius:12px;color:#ffffff !important;font-size:14.5px;font-weight:700;box-sizing:border-box" placeholder="Ismingizni kiriting">' +
       '    </div>' +
       '    <div>' +
-      '      <label style="display:block;font-size:13px;font-weight:800;color:#f1f5f9;margin-bottom:6px">📧 Gmail Pochta Manzilingiz (Akkaunt ID):</label>' +
-      '      <input type="email" id="inpEditEmail" value="' + esc(user.email || '') + '" style="width:100%;padding:11px 14px;background:#1e293b;border:1.5px solid #475569;border-radius:12px;color:#ffffff !important;font-size:14.5px;font-weight:700;box-sizing:border-box" placeholder="misol@gmail.com">' +
-      '      <small style="color:#fbbf24;font-size:12px;font-weight:600;margin-top:5px;display:block">⚠️ Gmail orqali boshqa qurilmalarda akkauntingizga kirishingiz va coinlarni qabul qilishingiz mumkin.</small>' +
+      '      <label style="display:block;font-size:13px;font-weight:800;color:#f1f5f9;margin-bottom:6px">🔑 Hisob ID (Login):</label>' +
+      '      <input type="text" id="inpEditEmail" value="' + esc(user.login || user.id || '') + '" style="width:100%;padding:11px 14px;background:#1e293b;border:1.5px solid #475569;border-radius:12px;color:#ffffff !important;font-size:14.5px;font-weight:700;box-sizing:border-box" placeholder="Login (ID)">' +
+      '      <small style="color:#38bdf8;font-size:12px;font-weight:600;margin-top:5px;display:block">🔑 Ushbu ID orqali akkauntingizga kirishingiz, guruhda aniqlanishingiz va coinlarni qabul qilishingiz mumkin.</small>' +
       '    </div>' +
       '  </div>' +
       '  <div style="margin-bottom:20px">' +
@@ -15057,10 +15057,10 @@
     overlay.querySelector('#btnSaveEditProfile').onclick = function() {
       var msgEl = overlay.querySelector('#editProfileMsg');
       var newName = (inpName.value || '').trim();
-      var inpLoginEl = overlay.querySelector('#inpEditLogin');
-      var newLogin = inpLoginEl ? (inpLoginEl.value || '').trim().toLowerCase() : (user.login || '');
-      var newEmail = (inpEmail.value || '').trim().toLowerCase();
-      var oldLogin = (user.login || '').trim().toLowerCase();
+      var rawLoginInput = (inpEmail.value || '').trim().toLowerCase();
+      var newLogin = rawLoginInput.replace(/[^a-z0-9_]/g, '_');
+      var oldLogin = (user.login || user.id || '').trim().toLowerCase();
+      var newEmail = rawLoginInput.includes('@') ? rawLoginInput : (newLogin + '@student.ethith');
 
       if (!newName) {
         msgEl.style.display = 'block';
@@ -15069,27 +15069,27 @@
         msgEl.textContent = "Iltimos, ismingizni kiriting!";
         return;
       }
-      if (!newEmail || !newEmail.includes('@')) {
+      if (!newLogin) {
         msgEl.style.display = 'block';
         msgEl.style.background = 'rgba(239,68,68,0.2)';
         msgEl.style.color = '#fca5a5';
-        msgEl.textContent = "Iltimos, to'g'ri Gmail manzilingizni kiriting!";
+        msgEl.textContent = "Iltimos, shaxsiy Hisob ID (Login) ingizni kiriting!";
         return;
       }
 
       var oldEmail = (user.email || '').trim().toLowerCase();
       var oldName = (user.name || '').trim();
 
-      if (newEmail !== oldEmail) {
+      if (newLogin !== oldLogin) {
         var existingOther = (S.accounts || []).find(function(a) {
-          return a && a.email && a.email.toLowerCase().trim() === newEmail &&
-                 a.id !== user.id && a.email.toLowerCase().trim() !== oldEmail;
+          return a && ((a.login && a.login.toLowerCase().trim() === newLogin) || (a.id && a.id.toLowerCase().trim() === newLogin)) &&
+                 a.id !== user.id && (a.login || '').toLowerCase().trim() !== oldLogin;
         });
         if (existingOther) {
           msgEl.style.display = 'block';
           msgEl.style.background = 'rgba(239,68,68,0.2)';
           msgEl.style.color = '#fca5a5';
-          msgEl.textContent = "Ushbu Gmail bilan boshqa akkaunt mavjud! Iltimos, o'zingizning emailingizni kiriting.";
+          msgEl.textContent = "Ushbu ID (Login) allaqachon boshqa foydalanuvchiga biriktirilgan, boshqa ID tanlang!";
           return;
         }
       }
@@ -15209,7 +15209,14 @@
     overlay.className = 'eth-pack-modal-overlay animate-fade-in';
     overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:999999;padding:12px;overflow-y:auto;-webkit-overflow-scrolling:touch;';
 
-    var myLogin = (S.user && (S.user.login || S.user.id || S.user.email)) ? (S.user.login || S.user.id) : 'Hisobga kirilmagan';
+    var curUser = S.user || (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) || {};
+    try {
+      if (!curUser.login && !curUser.id) {
+        var localU = JSON.parse(localStorage.getItem('ethith_current_user') || '{}');
+        if (localU.login || localU.id) curUser = localU;
+      }
+    } catch(e) {}
+    var myLogin = curUser.login || curUser.id || (curUser.email ? curUser.email.split('@')[0] : '') || curUser.name || 'Hisobga kirilmagan';
     var coinSvg = '<svg width="20" height="20" viewBox="0 0 24 24" style="vertical-align:middle;display:inline-block"><circle cx="12" cy="12" r="10" fill="#f59e0b"/><circle cx="12" cy="12" r="7.5" stroke="#fbbf24" stroke-width="1.5"/><text x="12" y="15.5" font-size="11" font-weight="900" fill="#78350f" text-anchor="middle">¢</text></svg>';
     var bigCoinSvg = '<svg width="28" height="28" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#f59e0b"/><circle cx="12" cy="12" r="7.5" stroke="#fbbf24" stroke-width="1.5"/><text x="12" y="15.5" font-size="11" font-weight="900" fill="#78350f" text-anchor="middle">¢</text></svg>';
 
@@ -15262,10 +15269,10 @@
       '    </div>' +
       '  </div>' +
       '  <div style="font-size:12.5px;color:#cbd5e1 !important;margin-bottom:18px;text-align:center;line-height:1.5;font-weight:600">' +
-      '    Sizning tizim ID (Login): <b style="color:#fbbf24;font-size:13.5px;background:rgba(245,158,11,0.2);padding:3px 10px;border-radius:8px;border:1px solid rgba(245,158,11,0.4);letter-spacing:0.5px">' + esc(myLogin) + '</b><br>' +
-      '    Adminga ushbu Loginingizni (ID) yozsangiz, bot orqali darhol hisobingizga coinlar o\'tkaziladi.' +
+      '    Sizning Hisob ID (Login) ingiz: <b style="color:#fbbf24;font-size:13.5px;background:rgba(245,158,11,0.2);padding:3px 10px;border-radius:8px;border:1px solid rgba(245,158,11,0.4);letter-spacing:0.5px">' + esc(myLogin) + '</b><br>' +
+      '    Adminga ushbu ID (Login) ingizni yozsangiz, bot orqali darhol hisobingizga coinlar o\'tkaziladi.' +
       '  </div>' +
-      '  <a href="https://t.me/Mu_striker?text=' + encodeURIComponent("Assalomu alaykum, ETHITH Coin sotib olmoqchiman. Mening tizim ID (Login): " + myLogin) + '" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 20px;background:linear-gradient(135deg,#0284c7,#0369a1);color:#ffffff !important;border-radius:16px;font-size:15px;font-weight:900;text-decoration:none;box-shadow:0 10px 25px rgba(2,132,199,0.4);box-sizing:border-box;text-align:center">' +
+      '  <a href="https://t.me/Mu_striker?text=' + encodeURIComponent("Assalomu alaykum, ETHITH Coin sotib olmoqchiman. Mening Hisob ID (Login) im: " + myLogin) + '" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 20px;background:linear-gradient(135deg,#0284c7,#0369a1);color:#ffffff !important;border-radius:16px;font-size:15px;font-weight:900;text-decoration:none;box-shadow:0 10px 25px rgba(2,132,199,0.4);box-sizing:border-box;text-align:center">' +
       '    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>' +
       '    Coin olish uchun adminga murojaat qiling' +
       '  </a>' +

@@ -655,6 +655,13 @@
     if (!event || event.from === myClientId) return; // Don't echo self
     if (event.id && markEventSeen(event.id)) return; // Deduplicate across dual brokers
 
+    // Forward to ETHITH Chat Engine (Matrix Protocol & Centrifugo WebSocket pub-sub)
+    if (window.EthithChat && typeof window.EthithChat.onCentrifugoEvent === 'function') {
+      if (event.type === 'CHAT_MSG' || event.type === 'CHAT_TYPING' || event.type === 'CHAT_REACTION' || event.method === 'publish') {
+        window.EthithChat.onCentrifugoEvent(event);
+      }
+    }
+
     // Instant presence tracking for sender ONLY if NOT logout or offline event!
     if (event.from && event.type !== 'USER_LOGOUT' && event.type !== 'PRESENCE_OFFLINE') {
       markUserActive([event.userId, event.senderId, event.login, event.email, event.senderEmail, event.name, event.senderName], event.ts || Date.now());
@@ -1736,6 +1743,19 @@
       }
     }
     else if (event.type === 'CONTEST_FINISHED') {
+      // If any student is actively taking the contest right now, immediately terminate test and show banner!
+      try {
+        var activeTestModals = document.querySelectorAll('#eeTakeVisualOverlay, #eeTakeTestOverlay, .ee-take-test-modal, #eaGlobalModalRoot > div');
+        activeTestModals.forEach(function(m) {
+          if (m && (m.id.includes('Take') || m.innerHTML.includes('Musobaqa') || m.innerHTML.includes('Test topshirish'))) {
+            m.remove();
+          }
+        });
+        if (window.showToast) {
+          window.showToast("🏁 Turnir ustoz tomonidan yakunlandi va natijalar e‘lon qilindi!");
+        }
+      } catch(te) {}
+
       if (!S.contests) S.contests = [];
       var fC = S.contests.find(function(x) { return x.id === event.contestId; });
       if (fC) {
@@ -2075,7 +2095,20 @@
         if (S.user) {
           var myEm = (S.user.email || '').toLowerCase().trim();
           var myNm = (S.user.name || '').toLowerCase().trim();
-          var isMe = (oldEmail && myEm === oldEmail) || (uEmail && myEm === uEmail) || (oldName && myNm === oldName);
+          var myLg = (S.user.login || '').toLowerCase().trim();
+          var myId = (S.user.id || '').toLowerCase().trim();
+
+          var tLg = (event.targetLogin || (event.user && event.user.login) || '').toLowerCase().trim();
+          var tEm = (event.targetEmail || (event.user && event.user.email) || '').toLowerCase().trim();
+          var tId = (event.targetId || (event.user && event.user.id) || '').toLowerCase().trim();
+
+          var isMe = (tLg && myLg && tLg === myLg) ||
+                     (tId && myId && tId === myId) ||
+                     (tLg && myId && tLg === myId) ||
+                     (tId && myLg && tId === myLg) ||
+                     (tEm && myEm && tEm === myEm) ||
+                     (uEmail && myEm === uEmail) ||
+                     (uName && myNm && uName.toLowerCase() === myNm);
           if (isMe) {
             if (uEmail === 'teacher@ethith.uz' && !S.user.login) {
               S.user.name = 'Ustoz';
@@ -2088,7 +2121,17 @@
               if (u.nameStyle !== undefined) S.user.nameStyle = u.nameStyle;
               if (u.title !== undefined) S.user.title = u.title;
             }
-            if (u.coins !== undefined) S.user.coins = Number(u.coins);
+            var newCoins = (event.newBalance !== undefined && event.newBalance !== null) ? Number(event.newBalance) : (u.coins !== undefined ? Number(u.coins) : S.user.coins);
+            S.user.coins = newCoins;
+
+            // Direct 0ms DOM mutation across the entire interface:
+            try {
+              var topBadge = document.getElementById('topCoinCount') || document.querySelector('.eth-coin-val') || document.getElementById('coinBalance');
+              if (topBadge) topBadge.textContent = Number(newCoins).toLocaleString();
+              var allCoinSpans = document.querySelectorAll('.user-coin-badge, .eth-top-coin-pill span, [data-user-coins], #topUserCoins');
+              allCoinSpans.forEach(function(sp) { if (sp) sp.textContent = Number(newCoins).toLocaleString(); });
+            } catch(e) {}
+
             if (window._ethithUpdateTopCoins) window._ethithUpdateTopCoins();
             if (window._ethithRefreshTopNav) window._ethithRefreshTopNav();
 
@@ -3214,6 +3257,8 @@
           centerSettings: S.centerSettings || null,
           teachers: cleanTeachers,
           fileExplorer: S.fileExplorer || { folders: [], tests: [] },
+          customCurriculumTests: S.customCurriculumTests || {},
+          allCurriculumTests: S.allCurriculumTests || [],
           timetable: S.timetable || [],
           contests: S.contests || [],
           payments: S.payments || {},
@@ -3482,6 +3527,27 @@
           localStorage.setItem('ethith_enterprise_store', JSON.stringify(entStore));
         } catch(e) {}
       }
+
+      // Synchronize custom curriculum tests and personal tests permanently
+      if (remote.customCurriculumTests && typeof remote.customCurriculumTests === 'object') {
+        if (!S.customCurriculumTests) S.customCurriculumTests = {};
+        Object.assign(S.customCurriculumTests, remote.customCurriculumTests);
+        try {
+          localStorage.setItem('ethith_custom_curriculum_tests', JSON.stringify(S.customCurriculumTests));
+        } catch(e) {}
+      }
+      if (remote.allCurriculumTests && Array.isArray(remote.allCurriculumTests)) {
+        if (!Array.isArray(S.allCurriculumTests)) S.allCurriculumTests = [];
+        remote.allCurriculumTests.forEach(function(rt) {
+          if (!rt || !rt.id) return;
+          var exIdx = S.allCurriculumTests.findIndex(function(x) { return x.id === rt.id; });
+          if (exIdx !== -1) S.allCurriculumTests[exIdx] = rt;
+          else S.allCurriculumTests.push(rt);
+        });
+        try {
+          localStorage.setItem('ethith_all_curriculum_tests', JSON.stringify(S.allCurriculumTests));
+        } catch(e) {}
+      }
       var c1 = mergeClasses(S.classes, remote.classes || []);
       if (remote.deletedStudentIds && Array.isArray(remote.deletedStudentIds)) {
         if (!S.deletedStudentIds) S.deletedStudentIds = [];
@@ -3636,6 +3702,27 @@
           var entStore = JSON.parse(localStorage.getItem('ethith_enterprise_store') || '{}');
           entStore.contests = S.contests;
           localStorage.setItem('ethith_enterprise_store', JSON.stringify(entStore));
+        } catch(e) {}
+      }
+
+      // Synchronize custom curriculum tests and personal tests permanently
+      if (remote.customCurriculumTests && typeof remote.customCurriculumTests === 'object') {
+        if (!S.customCurriculumTests) S.customCurriculumTests = {};
+        Object.assign(S.customCurriculumTests, remote.customCurriculumTests);
+        try {
+          localStorage.setItem('ethith_custom_curriculum_tests', JSON.stringify(S.customCurriculumTests));
+        } catch(e) {}
+      }
+      if (remote.allCurriculumTests && Array.isArray(remote.allCurriculumTests)) {
+        if (!Array.isArray(S.allCurriculumTests)) S.allCurriculumTests = [];
+        remote.allCurriculumTests.forEach(function(rt) {
+          if (!rt || !rt.id) return;
+          var exIdx = S.allCurriculumTests.findIndex(function(x) { return x.id === rt.id; });
+          if (exIdx !== -1) S.allCurriculumTests[exIdx] = rt;
+          else S.allCurriculumTests.push(rt);
+        });
+        try {
+          localStorage.setItem('ethith_all_curriculum_tests', JSON.stringify(S.allCurriculumTests));
         } catch(e) {}
       }
       var c1 = mergeClasses(S.classes, remote.classes || []);
@@ -3839,8 +3926,8 @@
     try {
       for (var i = 0; i < localStorage.length; i++) {
         var k = localStorage.key(i);
-        if (k && (k.indexOf('ethith_wb_coords_v15_') === 0 || k.indexOf('ethith_wb_coords_v14_') === 0)) {
-          var match = k.match(/ethith_wb_coords_v1[45]_(\d+)$/);
+        if (k && (k.indexOf('ethith_wb_coords_v15_') === 0 || k.indexOf('ethith_wb_override_') === 0 || k.indexOf('ethith_wb_coords_v14_') === 0)) {
+          var match = k.match(/(?:ethith_wb_coords_v1[45]_|ethith_wb_override_)(\d+)$/);
           if (match && match[1]) {
             var pNum = parseInt(match[1], 10);
             try {

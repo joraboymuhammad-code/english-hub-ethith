@@ -10467,3 +10467,635 @@ html, body {
 .tg-msg-row:hover .tg-msg-actions-hover {
   display: inline-flex !important;
 }
+
+
+/* ========================================================================= */
+/* ETHITH UNIVERSAL CHAT SYSTEM (v2026) - TELEGRAM GRADE GLASSMORPHISM & REALTIME */
+/* ========================================================================= */
+.ec-chat-root {
+  display: flex;
+  height: calc(100vh - 76px);
+  min-height: 560px;
+  background: radial-gradient(ellipse at 50% 20%, #0d1527 0%, #060913 100%);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(56, 189, 248, 0.08);
+  font-family: inherit;
+  color: #f8fafc;
+  margin: 8px 12px;
+}
+
+@media (max-width: 768px) {
+  .ec-chat-root {
+    margin: 4px;
+    height: calc(100vh - 65px);
+    border-radius: 16px;
+    flex-direction: column;
+  }
+}
+
+.ec-sidebar {
+  width: 360px;
+  flex-shrink: 0;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .ec-sidebar {
+    width: 100%;
+    max-height: 40vh;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+.ec-sidebar-header {
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.ec-protocol-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  padding: 3px 9px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
+  display: inline-flex;
+  align-items: center;
+}
+
+.ec-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+}
+
+.ec-search-box:focus-within {
+  border-color: #38bdf8;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+  background: rgba(30, 41, 59, 0.95);
+}
+
+.ec-search-icon {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+#ecSearchUserInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f8fafc;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+#ecSearchUserInput::placeholder {
+  color: #64748b;
+  font-size: 12.5px;
+}
+
+.ec-clear-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.ec-clear-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ec-filter-tabs {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.ec-tab-btn {
+  flex: 1;
+  padding: 7px 10px;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.ec-tab-btn:hover {
+  color: #fff;
+  background: rgba(56, 189, 248, 0.12);
+}
+
+.ec-tab-btn.active {
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  color: #ffffff;
+  border-color: #38bdf8;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+}
+
+.ec-rooms-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ec-rooms-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.ec-rooms-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+}
+
+.ec-section-title {
+  font-size: 11px;
+  font-weight: 900;
+  color: #64748b;
+  letter-spacing: 0.8px;
+  padding: 8px 10px 4px;
+  text-transform: uppercase;
+}
+
+.ec-room-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  position: relative;
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.ec-room-item:hover {
+  background: rgba(30, 41, 59, 0.6);
+}
+
+.ec-room-item.active {
+  background: rgba(30, 41, 59, 0.95);
+  border: 1.5px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+.ec-room-avatar {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ec-avatar-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 16px;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.ec-status-dot.online {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #22c55e;
+  border: 2px solid #0f172a;
+  box-shadow: 0 0 6px #22c55e;
+}
+
+.ec-room-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ec-room-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.ec-room-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: #f1f5f9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ec-role-tag {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.ec-role-tag.teacher {
+  background: rgba(139, 92, 246, 0.25);
+  color: #c084fc;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+}
+
+.ec-role-tag.student {
+  background: rgba(2, 132, 199, 0.25);
+  color: #38bdf8;
+  border: 1px solid rgba(2, 132, 199, 0.4);
+}
+
+.ec-time-badge {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.ec-room-snippet {
+  font-size: 12.5px;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 3px;
+}
+
+.ec-locked-pill {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 8px;
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  flex-shrink: 0;
+}
+
+.ec-empty-state {
+  padding: 28px 16px;
+  text-align: center;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.ec-main-chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: rgba(11, 17, 32, 0.95);
+  position: relative;
+  min-width: 0;
+}
+
+.ec-chat-header {
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(15px);
+  z-index: 10;
+}
+
+.ec-header-title {
+  font-size: 16px;
+  font-weight: 900;
+  color: #f8fafc;
+  letter-spacing: 0.2px;
+}
+
+.ec-header-subtitle {
+  font-size: 12px;
+  color: #38bdf8;
+  margin-top: 2px;
+  font-weight: 600;
+}
+
+.ec-action-icon-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 8px 12px;
+  color: #cbd5e1;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.15s ease;
+}
+
+.ec-action-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.ec-messages-thread {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: radial-gradient(ellipse at 50% 100%, #111827 0%, #090d16 100%);
+}
+
+.ec-messages-thread::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ec-messages-thread::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+}
+
+.ec-date-separator {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.ec-date-separator span {
+  font-size: 10.5px;
+  font-weight: 900;
+  letter-spacing: 0.8px;
+  color: #94a3b8;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+
+.ec-msg-row {
+  display: flex;
+  gap: 10px;
+  max-width: 78%;
+  position: relative;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.ec-msg-row.mine {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.ec-msg-row.theirs {
+  align-self: flex-start;
+}
+
+.ec-msg-avatar {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+}
+
+.ec-msg-avatar .ec-avatar-circle {
+  width: 34px;
+  height: 34px;
+  font-size: 13px;
+}
+
+.ec-msg-bubble {
+  padding: 10px 14px;
+  border-radius: 18px;
+  position: relative;
+  word-break: break-word;
+}
+
+.ec-msg-row.mine .ec-msg-bubble {
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+}
+
+.ec-msg-row.theirs .ec-msg-bubble {
+  background: #1e293b;
+  color: #f1f5f9;
+  border-bottom-left-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.ec-msg-sender {
+  font-size: 12px;
+  font-weight: 900;
+  color: #38bdf8;
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ec-msg-sender-login {
+  font-size: 10.5px;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.ec-msg-text {
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+.ec-msg-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.ec-msg-time {
+  font-size: 10.5px;
+  opacity: 0.75;
+}
+
+.ec-msg-status {
+  font-size: 11px;
+  color: #67e8f9;
+  font-weight: 900;
+}
+
+.ec-msg-quick-react {
+  display: none;
+  gap: 4px;
+  position: absolute;
+  top: -14px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 2px 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 20;
+}
+
+.ec-msg-row.mine .ec-msg-quick-react {
+  left: 0;
+}
+
+.ec-msg-row.theirs .ec-msg-quick-react {
+  right: 0;
+}
+
+.ec-msg-row:hover .ec-msg-quick-react {
+  display: flex;
+}
+
+.ec-msg-quick-react button {
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 2px 4px;
+  transition: transform 0.1s;
+}
+
+.ec-msg-quick-react button:hover {
+  transform: scale(1.3);
+}
+
+.ec-msg-reactions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 5px;
+}
+
+.ec-reaction-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.ec-reaction-pill:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.ec-input-bar {
+  padding: 12px 20px;
+  background: rgba(15, 23, 42, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+}
+
+.ec-quick-emojis {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.ec-emoji-quick {
+  background: transparent;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+  transition: transform 0.12s;
+  padding: 0 4px;
+}
+
+.ec-emoji-quick:hover {
+  transform: scale(1.25);
+}
+
+.ec-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 6px 10px 6px 14px;
+  transition: all 0.2s;
+}
+
+.ec-input-row:focus-within {
+  border-color: #38bdf8;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+  background: rgba(30, 41, 59, 0.95);
+}
+
+#ecChatInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f8fafc;
+  font-size: 14.5px;
+  font-weight: 600;
+  resize: none;
+  max-height: 100px;
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+#ecChatInput::placeholder {
+  color: #64748b;
+  font-size: 13.5px;
+}
+
+.ec-send-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.ec-send-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.55);
+}
+
+.ec-send-btn:active {
+  transform: scale(0.96);
+}

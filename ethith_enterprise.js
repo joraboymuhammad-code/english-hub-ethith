@@ -264,8 +264,13 @@
         { id: "tt_4", time: "16:00 - 17:30", days: "Se-Pay-Shan", teacherId: "t_ravshanov_doniyor", teacherName: "Ravshanov Doniyor", classId: "cls_ravshanov_doniyor_cefr_2", className: "CEFR_2", room: "Room 102 (Blue Room)" }
       ];
     }
-    if (!appState.contests) {
-      appState.contests = [];
+    if (!appState.contests || appState.contests.length === 0) {
+      var globalContests = (window.S && window.S.contests) || (window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.contests) || [];
+      if (globalContests.length > 0) {
+        appState.contests = JSON.parse(JSON.stringify(globalContests));
+      } else {
+        appState.contests = [];
+      }
     }
     // Clean any legacy mock contests
     appState.contests = (appState.contests || []).filter(function(c) {
@@ -285,6 +290,21 @@
       if (window.EthithAttendance && window.EthithAttendance.classes && window.EthithAttendance.classes.length > 0) {
         appState.classes = window.EthithAttendance.classes;
       }
+    }
+    if (Array.isArray(appState.classes)) {
+      appState.classes.forEach(function(c) {
+        if (!c) return;
+        try {
+          var durStr = localStorage.getItem('ethith_class_duration_' + c.id);
+          if (durStr) {
+            var durObj = JSON.parse(durStr);
+            if (durObj) {
+              if (durObj.learningMonths !== undefined) c.learningMonths = Number(durObj.learningMonths) || 0;
+              if (durObj.learningDays !== undefined) c.learningDays = Number(durObj.learningDays) || 0;
+            }
+          }
+        } catch(e) {}
+      });
     }
     if (!appState.customCurriculumTests) {
       appState.customCurriculumTests = {};
