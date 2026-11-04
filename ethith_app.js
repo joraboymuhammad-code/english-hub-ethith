@@ -1654,8 +1654,11 @@
     window.scrollTo(0, 0);
   };
 
+  var _ethithAutoEnteredDone = false;
   function autoEnterIfLoggedIn() {
+    if (_ethithAutoEnteredDone) return true;
     if (initTelegramOrSavedUser()) {
+      _ethithAutoEnteredDone = true;
       var landing = document.getElementById('landing');
       var ap = document.getElementById('app');
       if (landing) landing.style.display = 'none';
@@ -1695,7 +1698,7 @@
   // ====================================================
   // ETHITH CLIENT BUILD VERSION & CACHE MANAGEMENT
   // ====================================================
-  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "v2026.11.01.0065";
+  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "v2026.11.04.0106";
 
   (function ensureFreshBuildOnStartup() {
     function purgeCachesAndReload(newVer) {
@@ -1853,16 +1856,10 @@
       }
     } catch (e) {}
 
-    // Polling triggers: immediate on startup, on focus, on resume, and every 8 seconds
-    setTimeout(function() { checkVersion(true); }, 800);
-    setTimeout(function() { checkVersion(); }, 3000);
-    setInterval(function() { checkVersion(); }, 8 * 1000);
-
-    window.addEventListener('focus', function() { checkVersion(true); });
-    document.addEventListener('visibilitychange', function() {
-      if (document.visibilityState === 'visible') checkVersion(true);
-    });
-    window.addEventListener('online', function() { checkVersion(true); });
+    // Check version once politely after startup (never aggressively reload in loop)
+    setTimeout(function() { checkVersion(false); }, 5000);
+    // Poll politely once every 30 minutes without interrupting user or spamming network
+    setInterval(function() { checkVersion(false); }, 30 * 60 * 1000);
   })();
 
   if (!window._ethithRefreshTeachersList) {
