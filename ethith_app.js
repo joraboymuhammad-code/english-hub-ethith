@@ -83,6 +83,7 @@
     activePlacementQuiz: null,
     accounts: [],
     p2pListings: [],
+    fileExplorer: (typeof window !== 'undefined' && window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.fileExplorer) ? JSON.parse(JSON.stringify(window.ETHITH_INITIAL_STORE.fileExplorer)) : { folders: [], tests: [] },
     workbookOverrides: (typeof window !== 'undefined' && window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.workbookOverrides) ? Object.assign({}, window.ETHITH_INITIAL_STORE.workbookOverrides) : {},
     workbookOverridesTs: (typeof window !== 'undefined' && window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.workbookOverridesTs) ? Object.assign({}, window.ETHITH_INITIAL_STORE.workbookOverridesTs) : {}
   };
@@ -98,6 +99,30 @@
     }
   } catch(e) {}
 
+  // Explicitly load fileExplorer from localStorage to never lose custom tests
+  try {
+    var feRaw = localStorage.getItem('ethith_file_explorer') || localStorage.getItem('ethith_enterprise_store');
+    if (feRaw) {
+      var feParsed = JSON.parse(feRaw);
+      var feObj = feParsed.fileExplorer || (Array.isArray(feParsed.tests) ? feParsed : null);
+      if (feObj) {
+        if (!S.fileExplorer) S.fileExplorer = { folders: [], tests: [] };
+        if (Array.isArray(feObj.folders)) {
+          feObj.folders.forEach(function(f) {
+            if (!S.fileExplorer.folders.some(function(x) { return x.id === f.id; })) S.fileExplorer.folders.push(f);
+          });
+        }
+        if (Array.isArray(feObj.tests)) {
+          feObj.tests.forEach(function(t) {
+            var existIdx = S.fileExplorer.tests.findIndex(function(x) { return x.id === t.id; });
+            if (existIdx !== -1) S.fileExplorer.tests[existIdx] = t;
+            else S.fileExplorer.tests.push(t);
+          });
+        }
+      }
+    }
+  } catch(e) {}
+
   // Merge initial cloud store workbook overrides
   if (typeof window !== 'undefined' && window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.workbookOverrides) {
     if (!S.workbookOverrides) S.workbookOverrides = {};
@@ -109,6 +134,28 @@
       }
     }
   }
+
+  // Harvest ALL teacher local workbook overrides from localStorage (Local Teacher Edits are King!)
+  try {
+    for (var lsI = 0; lsI < localStorage.length; lsI++) {
+      var lsK = localStorage.key(lsI);
+      if (!lsK) continue;
+      var matchP = lsK.match(/^(?:ethith_wb_override_|ethith_wb_coords_v(?:15|28|29)_|ethith_wb_coords_)(\d+)$/);
+      if (matchP && matchP[1]) {
+        var pageNumber = parseInt(matchP[1], 10);
+        try {
+          var savedVal = JSON.parse(localStorage.getItem(lsK));
+          if (Array.isArray(savedVal) && savedVal.length > 0) {
+            var localTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pageNumber) || '0', 10);
+            if (!S.workbookOverrides) S.workbookOverrides = {};
+            if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
+            S.workbookOverrides[pageNumber] = savedVal;
+            S.workbookOverridesTs[pageNumber] = localTs || Date.now();
+          }
+        } catch(e) {}
+      }
+    }
+  } catch(e) {}
 
   if (Array.isArray(S.accounts)) {
     S.accounts = S.accounts.filter(function(a) { return !isPurgedAccount(a); });
@@ -312,6 +359,9 @@
           var stKey = 'ethith_ai_conversations_' + String(S.user.id || S.user.login || S.user.email || 'guest').toLowerCase().trim();
           localStorage.setItem(stKey, JSON.stringify(S.aiConversations));
         }
+      }
+      if (S.fileExplorer) {
+        localStorage.setItem('ethith_file_explorer', JSON.stringify(S.fileExplorer));
       }
       localStorage.setItem('ethith_v2_state', JSON.stringify(S));
       // Notify other tabs via BroadcastChannel if available
@@ -1694,7 +1744,7 @@
   // ====================================================
   // ETHITH CLIENT BUILD VERSION & CACHE MANAGEMENT
   // ====================================================
-  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "v2026.11.04.0111";
+  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "v2026.11.04.0112";
 
   (function ensureFreshBuildOnStartup() {
     function purgeCachesAndReload(newVer) {

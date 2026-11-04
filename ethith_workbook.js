@@ -159619,29 +159619,30 @@
     page = parseInt(page, 10);
     if (!page) return [];
 
-    // 1. FIRST PRIORITY: Active in-memory / cloud overrides from teacher (persisted in sync store)
+    // 1. FIRST PRIORITY: Teacher's local edits in localStorage (always authoritative!)
+    try {
+      var saved = localStorage.getItem('ethith_wb_override_' + page) ||
+                  localStorage.getItem('ethith_wb_coords_v15_' + page) ||
+                  localStorage.getItem('ethith_wb_coords_v29_' + page) ||
+                  localStorage.getItem('ethith_wb_coords_v28_' + page);
+      if (saved) {
+        var parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          if (WB.defaultInputs) WB.defaultInputs[page] = parsed;
+          var S_loc = (window.S || (window.EthithApp && window.EthithApp.state)) || {};
+          if (!S_loc.workbookOverrides) S_loc.workbookOverrides = {};
+          S_loc.workbookOverrides[page] = parsed;
+          return parsed;
+        }
+      }
+    } catch(e) {}
+
+    // 2. SECOND PRIORITY: Active in-memory / cloud overrides from teacher (persisted in sync store)
     var S = (window.S || (window.EthithApp && window.EthithApp.state)) || {};
     if (S.workbookOverrides && Array.isArray(S.workbookOverrides[page]) && S.workbookOverrides[page].length > 0) {
       if (WB.defaultInputs) WB.defaultInputs[page] = S.workbookOverrides[page];
       return S.workbookOverrides[page];
     }
-
-    // 2. SECOND PRIORITY: Locally saved teacher overrides across key formats
-    try {
-      var saved = localStorage.getItem('ethith_wb_override_' + page) ||
-                  localStorage.getItem('ethith_wb_coords_v29_' + page) ||
-                  localStorage.getItem('ethith_wb_coords_v28_' + page) ||
-                  localStorage.getItem('ethith_wb_coords_v15_' + page);
-      if (saved) {
-        var parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          if (WB.defaultInputs) WB.defaultInputs[page] = parsed;
-          if (!S.workbookOverrides) S.workbookOverrides = {};
-          S.workbookOverrides[page] = parsed;
-          return parsed;
-        }
-      }
-    } catch(e) {}
 
     // 3. THIRD PRIORITY: Cloud sync helper if available
     if (window.EthithSync && typeof window.EthithSync.getWorkbookCloudOverrides === 'function') {

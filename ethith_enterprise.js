@@ -186,6 +186,35 @@
         });
       }
     } catch(e) {}
+    // Load fileExplorer from localStorage or existing appState
+    if (!appState.fileExplorer) {
+      appState.fileExplorer = { folders: [], tests: [] };
+    }
+    try {
+      var feLocal = localStorage.getItem('ethith_file_explorer') || localStorage.getItem('ethith_enterprise_store');
+      if (feLocal) {
+        var parsedFe = JSON.parse(feLocal);
+        var sourceFe = parsedFe.fileExplorer || (Array.isArray(parsedFe.tests) ? parsedFe : null);
+        if (sourceFe) {
+          if (Array.isArray(sourceFe.folders)) {
+            sourceFe.folders.forEach(function(f) {
+              if (!appState.fileExplorer.folders.some(function(x) { return x.id === f.id; })) {
+                appState.fileExplorer.folders.push(f);
+              }
+            });
+          }
+          if (Array.isArray(sourceFe.tests)) {
+            if (!Array.isArray(appState.fileExplorer.tests)) appState.fileExplorer.tests = [];
+            sourceFe.tests.forEach(function(t) {
+              var tIdx = appState.fileExplorer.tests.findIndex(function(x) { return x.id === t.id; });
+              if (tIdx !== -1) appState.fileExplorer.tests[tIdx] = t;
+              else appState.fileExplorer.tests.push(t);
+            });
+          }
+        }
+      }
+    } catch(e) {}
+
     if (!appState.fileExplorer || !appState.fileExplorer.folders || appState.fileExplorer.folders.length === 0) {
       appState.fileExplorer = {
         folders: [
@@ -264,7 +293,7 @@
         if (localC) appState.customCurriculumTests = JSON.parse(localC);
       } catch(e) {}
       if (window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.customCurriculumTests) {
-        Object.assign(appState.customCurriculumTests, window.ETHITH_INITIAL_STORE.customCurriculumTests);
+        appState.customCurriculumTests = Object.assign({}, window.ETHITH_INITIAL_STORE.customCurriculumTests, appState.customCurriculumTests);
       }
     }
     if (!appState.allCurriculumTests) {
@@ -281,6 +310,9 @@
     var st = getStore();
     try {
       localStorage.setItem('ethith_enterprise_store', JSON.stringify(st));
+      if (st.fileExplorer) {
+        localStorage.setItem('ethith_file_explorer', JSON.stringify(st.fileExplorer));
+      }
       if (st.customCurriculumTests) {
         localStorage.setItem('ethith_custom_curriculum_tests', JSON.stringify(st.customCurriculumTests));
       }
@@ -294,6 +326,7 @@
       if (st.finance) window.EthithApp.state.finance = st.finance;
       if (st.teachers) window.EthithApp.state.teachers = st.teachers;
       if (st.classes) window.EthithApp.state.classes = st.classes;
+      if (st.fileExplorer) window.EthithApp.state.fileExplorer = st.fileExplorer;
       if (st.customCurriculumTests) window.EthithApp.state.customCurriculumTests = st.customCurriculumTests;
       if (typeof window.EthithApp.saveState === 'function') {
         window.EthithApp.saveState();

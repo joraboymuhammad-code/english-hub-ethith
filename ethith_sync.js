@@ -3286,7 +3286,7 @@
           if (Array.isArray(inps) && inps.length > 0) {
             var remotePageTs = parseInt((remoteTsMapInit && remoteTsMapInit[pKey]) || '0', 10);
             var localPageTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pNum) || '0', 10);
-            var localSavedInit = localStorage.getItem('ethith_wb_coords_v15_' + pNum);
+            var localSavedInit = localStorage.getItem('ethith_wb_override_' + pNum) || localStorage.getItem('ethith_wb_coords_v15_' + pNum);
             if (localSavedInit && (localPageTs >= remotePageTs || remotePageTs === 0)) {
               try {
                 var parsedLocal = JSON.parse(localSavedInit);
@@ -3319,6 +3319,28 @@
             }
           }
         });
+      }
+      if (remote.fileExplorer && remote.fileExplorer.tests && Array.isArray(remote.fileExplorer.tests)) {
+        if (!S.fileExplorer) S.fileExplorer = { currentFolder: 'root', folders: [], tests: [] };
+        if (!Array.isArray(S.fileExplorer.tests)) S.fileExplorer.tests = [];
+        var localTestIds = new Set(S.fileExplorer.tests.map(function(t) { return t.id; }));
+        remote.fileExplorer.tests.forEach(function(rt) {
+          if (!localTestIds.has(rt.id)) {
+            S.fileExplorer.tests.push(rt);
+          }
+        });
+        if (remote.fileExplorer.folders && Array.isArray(remote.fileExplorer.folders)) {
+          if (!Array.isArray(S.fileExplorer.folders)) S.fileExplorer.folders = [];
+          var localFolderIds = new Set(S.fileExplorer.folders.map(function(f) { return f.id; }));
+          remote.fileExplorer.folders.forEach(function(rf) {
+            if (!localFolderIds.has(rf.id)) {
+              S.fileExplorer.folders.push(rf);
+            }
+          });
+        }
+        try {
+          localStorage.setItem('ethith_file_explorer', JSON.stringify(S.fileExplorer));
+        } catch(e) {}
       }
       var c1 = mergeClasses(S.classes, remote.classes || []);
       if (remote.deletedStudentIds && Array.isArray(remote.deletedStudentIds)) {
@@ -3414,7 +3436,7 @@
             if (Array.isArray(inps) && inps.length > 0) {
               var remotePageTs = parseInt((remoteTsMap && remoteTsMap[pKey]) || '0', 10);
               var localTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pNum) || '0', 10);
-              var localSaved = localStorage.getItem('ethith_wb_coords_v15_' + pNum);
+              var localSaved = localStorage.getItem('ethith_wb_override_' + pNum) || localStorage.getItem('ethith_wb_coords_v15_' + pNum);
 
               // If local edits exist and local is newer or remote has no timestamp, NEVER overwrite teacher's edits!
               if (localSaved && (localTs >= remotePageTs || remotePageTs === 0 || editWindowActive)) {
