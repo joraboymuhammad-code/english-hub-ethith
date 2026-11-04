@@ -25072,7 +25072,7 @@
           "updatedAt": 1793806798406,
           "isLoggedOut": false,
           "hasLoggedIn": true,
-          "lastSeen": 1793808406208
+          "lastSeen": 1793808410210
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -28345,7 +28345,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793808406424,
+      "lastSeen": 1793808428424,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -29183,7 +29183,7 @@
       "classId": "cls_urolov_azizbek_upper",
       "lastLogin": null,
       "loggedOutAt": 1793783047463,
-      "lastSeen": 1793808406208
+      "lastSeen": 1793808410210
     },
     {
       "id": "std_mix_416_selix",
@@ -149253,5 +149253,5 @@
       }
     }
   },
-  "updatedAt": 1793808407543
+  "updatedAt": 1793808428946
 }
