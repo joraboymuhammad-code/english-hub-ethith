@@ -6053,7 +6053,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
   };
 
   // ============================================================================
-  // 6. ONLINE CONTESTS & TOURNAMENTS (Top-10 Coin Rewards)
+  // 6. ONLINE CONTESTS & TOURNAMENTS (Top-5 Coin Rewards)
   // ============================================================================
   EE.distributeContestPrizes = function(c) {
     if (!c) return;
@@ -6070,21 +6070,52 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
 
     var coinTiers = [1000, 900, 800, 700, 600];
     var awarded = 0;
+    var winners = [];
     for (var i = 0; i < Math.min(parts.length, 5); i++) {
       var p = parts[i];
       var amount = coinTiers[i] || 600;
       var acc = (S.accounts || []).find(function(a) {
-        return a.id === p.id || a.email === p.id || (p.name && a.name && a.name.toLowerCase() === p.name.toLowerCase());
+        return (p.id && a.id === p.id) || (p.login && a.login === p.login) || (p.email && a.email === p.email) || (p.name && a.name && a.name.toLowerCase() === p.name.toLowerCase());
       });
       if (acc) {
-        acc.coins = (acc.coins || 0) + amount;
+        acc.coins = (Number(acc.coins) || 0) + amount;
         awarded++;
+        winners.push({ rank: i + 1, name: acc.name, login: acc.login || acc.id, coins: amount });
+      }
+      // Also update student inside classes
+      if (Array.isArray(S.classes)) {
+        S.classes.forEach(function(cls) {
+          if (Array.isArray(cls.students)) {
+            cls.students.forEach(function(st) {
+              if ((p.id && st.id === p.id) || (p.login && st.login === p.login) || (p.email && st.email === p.email) || (p.name && st.name && st.name.toLowerCase() === p.name.toLowerCase())) {
+                st.coins = (Number(st.coins) || 0) + amount;
+              }
+            });
+          }
+        });
       }
     }
 
+    c.status = 'finished';
     c.coinsDistributed = true;
+    c.endDate = Date.now();
     saveStore();
-    showToast("🎉 Top-5 g‘olibga jami sovrin Coinlari taqsimlandi! (1: 1000, 2: 900, 3: 800, 4: 700, 5: 600)");
+
+    // Broadcast instant real-time finish event via MQTT to all students
+    if (window.EthithSync && typeof window.EthithSync.publishMqtt === 'function') {
+      window.EthithSync.publishMqtt('ethith/v3/global', {
+        type: 'CONTEST_FINISHED',
+        contestId: c.id,
+        contestTitle: c.title,
+        winners: winners,
+        timestamp: Date.now()
+      });
+    }
+    if (window.EthithSync && typeof window.EthithSync.pushStore === 'function') {
+      window.EthithSync.pushStore();
+    }
+
+    showToast("🎉 Turnir yakunlandi! Top-5 g‘olibga jami sovrin Coinlari taqsimlandi! (1: 1000, 2: 900, 3: 800, 4: 700, 5: 600)");
   };
 
   EE.openNewContestModal = function(container) {
@@ -6160,9 +6191,23 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
             coinsDistributed: false
           };
 
-          S_cur.contests.push(newC);
+          S_cur.contests.unshift(newC);
           saveStore();
-          showToast("🎉 Yangi musobaqa va uning savollari muvaffaqiyatli saqlandi!");
+
+          // INSTANT REAL-TIME BROADCAST TO ALL STUDENTS AND TEACHERS WORLDWIDE
+          if (window.EthithSync && typeof window.EthithSync.publishMqtt === 'function') {
+            window.EthithSync.publishMqtt('ethith/v3/global', {
+              type: 'NEW_CONTEST_ANNOUNCED',
+              contest: newC,
+              test: newTest,
+              timestamp: Date.now()
+            });
+          }
+          if (window.EthithSync && typeof window.EthithSync.pushStore === 'function') {
+            window.EthithSync.pushStore();
+          }
+
+          showToast("🎉 Yangi musobaqa va uning savollari muvaffaqiyatli saqlandi va hammaga e'lon qilindi!");
           if (container && typeof EE.renderContestsView === 'function') {
             EE.renderContestsView(container);
           }
@@ -6265,7 +6310,22 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
 
           '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">' +
             '<div style="font-size:14px;font-weight:800;color:#fff;">🥇 Top-50 Reyting Jadvali (' + parts.length + ' nafar topshirdi):</div>' +
-            '<button class="ee-participate-btn" data-cid="' + c.id + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:9px 20px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(16,185,129,0.4);display:inline-flex;align-items:center;gap:6px;">🚀 Musobaqada Qatnashish</button>' +
+            (function() {
+              var isFinished = (c.status === 'finished') || (c.coinsDistributed === true);
+              if (isTeacher || isAdmin) {
+                if (isFinished) {
+                  return '<button disabled style="background:rgba(100,116,139,0.3);border:1px solid #64748b;color:#94a3b8;border-radius:10px;padding:9px 18px;font-size:13px;font-weight:900;cursor:not-allowed;display:inline-flex;align-items:center;gap:6px;">🏁 Turnir Tugatilgan (Top-5 ga Coin berildi)</button>';
+                } else {
+                  return '<button class="ee-finish-contest-btn" data-cid="' + c.id + '" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:10px;padding:9px 20px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(239,68,68,0.45);display:inline-flex;align-items:center;gap:6px;">🏁 Turnirni Tugatish</button>';
+                }
+              } else {
+                if (isFinished) {
+                  return '<button disabled style="background:rgba(100,116,139,0.3);border:1px solid #64748b;color:#94a3b8;border-radius:10px;padding:9px 18px;font-size:13px;font-weight:900;cursor:not-allowed;display:inline-flex;align-items:center;gap:6px;">🏁 Turnir Tugatilgan</button>';
+                } else {
+                  return '<button class="ee-participate-btn" data-cid="' + c.id + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:9px 20px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(16,185,129,0.4);display:inline-flex;align-items:center;gap:6px;">🚀 Musobaqada Qatnashish</button>';
+                }
+              }
+            })() +
           '</div>' +
 
           '<div style="background:rgba(30,41,59,0.5);border-radius:14px;overflow-x:auto;">' +
@@ -6308,12 +6368,16 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     h += '</div>';
     container.innerHTML = h;
 
-    // Distribute coins button (Admin only)
-    container.querySelectorAll('.ee-distribute-coins-btn').forEach(function(b) {
+    // Distribute coins button / Finish Contest button (Teachers & Admins)
+    container.querySelectorAll('.ee-finish-contest-btn, .ee-distribute-coins-btn').forEach(function(b) {
       b.onclick = function() {
         var cid = b.getAttribute('data-cid');
         var c = contests.find(function(x) { return x.id === cid; });
         if (!c) return;
+        var pCount = Object.keys(c.participants || {}).length;
+        if (!confirm("Haqiqatan ham turnirni tugatib, TOP-5 o‘quvchilarga sovrin Coinlarini (1: 1,000 | 2: 900 | 3: 800 | 4: 700 | 5: 600 Coin) bermoqchimisiz?\n\n(Qatnashuvchilar: " + pCount + " nafar)")) {
+          return;
+        }
         EE.distributeContestPrizes(c);
         EE.renderContestsView(container);
       };

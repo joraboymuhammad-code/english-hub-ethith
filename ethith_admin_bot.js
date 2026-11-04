@@ -70,7 +70,7 @@ async function tgCall(method, body = {}) {
   }
 }
 
-// Ensure all students from classes are also represented in store.accounts
+// Ensure all students from classes are also represented in store.accounts with 100% unique logins
 function unifyAccountsAndStudents(store) {
   if (!store || typeof store !== 'object') store = { accounts: [], classes: [] };
   if (!Array.isArray(store.accounts)) store.accounts = [];
@@ -83,33 +83,57 @@ function unifyAccountsAndStudents(store) {
     });
   }
 
+  const usedLogins = new Set();
+  store.accounts.forEach(a => {
+    if (a && a.login) usedLogins.add(a.login.toLowerCase().trim());
+  });
+
   store.classes.forEach(cls => {
     if (!cls || !Array.isArray(cls.students)) return;
     cls.students.forEach(st => {
       if (!st) return;
+      const stLogin = (st.login || st.id || '').toLowerCase().trim();
       const stEmail = (st.email || (st.id && String(st.id).includes('@') ? st.id : '')).toLowerCase().trim();
       const stName = (cls.customStudentNames && cls.customStudentNames[st.id]) || st.name || '';
-      if (!stEmail && !stName) return;
+      if (!stLogin && !stEmail && !stName) return;
 
       const existing = store.accounts.find(a => {
         if (!a) return false;
+        const aLog = (a.login || a.id || '').toLowerCase().trim();
         const aEm = (a.email || '').toLowerCase().trim();
         const aNm = (a.name || '').toLowerCase().trim();
-        return (stEmail && aEm === stEmail) || (stName && aNm === stName.toLowerCase().trim());
+        return (stLogin && aLog === stLogin) || (stEmail && aEm === stEmail) || (stName && aNm === stName.toLowerCase().trim());
       });
 
       if (!existing) {
+        let finalLogin = stLogin;
+        if (!finalLogin || usedLogins.has(finalLogin)) {
+          let base = stName ? stName.toLowerCase().replace(/[^a-z0-9]/g, '_') : 'student';
+          let num = Math.floor(100 + Math.random() * 900);
+          finalLogin = `${base}_${num}`;
+          while (usedLogins.has(finalLogin)) {
+            finalLogin = `${base}_${Math.floor(100 + Math.random() * 9000)}`;
+          }
+        }
+        usedLogins.add(finalLogin);
+        st.login = finalLogin;
+
         store.accounts.push({
-          id: st.id || stEmail || ('st_' + Date.now()),
+          id: finalLogin,
+          login: finalLogin,
           role: 'student',
-          name: stName || (stEmail ? stEmail.split('@')[0] : "O'quvchi"),
-          email: stEmail || (stName.toLowerCase().replace(/[^a-z0-9]/g, '') + '@ethith.uz'),
+          name: stName || (stEmail ? stEmail.split('@')[0] : finalLogin),
+          email: stEmail || (finalLogin + '@student.ethith'),
           coins: st.coins !== undefined ? Number(st.coins) : 150,
           level: st.level || 'B1+',
           dailyMinutes: st.dailyMinutes || 0,
           updatedAt: st.updatedAt || Date.now()
         });
       } else {
+        if (!existing.login) {
+          existing.login = st.login || existing.id || (existing.email ? existing.email.split('@')[0] : ('user_' + Math.floor(100 + Math.random()*900)));
+          usedLogins.add(existing.login.toLowerCase());
+        }
         if (stName && (!existing.name || existing.name === "Yangi O'quvchi" || existing.name === "O'quvchi")) {
           existing.name = stName;
         }
@@ -118,6 +142,25 @@ function unifyAccountsAndStudents(store) {
         }
       }
     });
+  });
+
+  // Ensure every account has a unique login
+  store.accounts.forEach(a => {
+    if (!a) return;
+    if (!a.login) {
+      let base = (a.name || a.id || 'user').toLowerCase().replace(/[^a-z0-9]/g, '_');
+      if (a.email && a.email.includes('@')) {
+        base = a.email.split('@')[0].toLowerCase().replace(/[^a-z0-9]/g, '_');
+      }
+      let log = base;
+      let counter = 1;
+      while (usedLogins.has(log)) {
+        log = `${base}_${counter}`;
+        counter++;
+      }
+      a.login = log;
+      usedLogins.add(log);
+    }
   });
 
   return store;
@@ -581,7 +624,7 @@ async function handleMessage(msg) {
     await tgCall('sendMessage', {
       chat_id: chatId,
       text: '👑 <b>ETHITH Admin Coin Boshqaruvi (GitHub Online)</b>\n\n' +
-            '💡 <i>Maslahat: Tugmalardan foydalanishingiz yoki istalgan vaqtda to\'g\'ridan-to\'g\'ri o\'quvchining Gmail manzilini (masalan: <code>user@gmail.com</code>) yozib yuborishingiz mumkin!</i>',
+            '💡 <i>Maslahat: Quyidagi tugmalardan foydalanishingiz yoki istalgan vaqtda to\'g\'ridan-to\'g\'ri o\'quvchining <b>Login (ID)</b> sini yozib yuborishingiz mumkin (masalan: <code>azimjon_848_toirov</code> yoki <code>tester_1</code>)!</i>',
       parse_mode: 'HTML',
       reply_markup: getMainMenuKeyboard()
     });
@@ -603,10 +646,10 @@ async function handleMessage(msg) {
     await tgCall('sendMessage', {
       chat_id: chatId,
       text: 'ℹ️ <b>Admin Qo\'llanmasi (Online GitHub Baza):</b>\n\n' +
-            '1️⃣ <b>Tezkor usul:</b> Chatga shunchaki o\'quvchining Gmail manzilini yozing (masalan: <code>sarvartovboyev09@gmail.com</code>) — bot darhol tanga miqdorini so\'raydi!\n' +
-            '2️⃣ <b>Super tezkor usul:</b> Gmail va miqdorni bitta xabarda yozing (masalan: <code>sarvartovboyev09@gmail.com 10000</code>).\n' +
-            '3️⃣ <b>🔍 O\'quvchini Qidirish:</b> Ism yoki Gmail orqali GitHub bazasidan qidirish.\n' +
-            '4️⃣ <b>👥 O\'quvchilar Ro\'yxati:</b> Barcha guruh va ro\'yxatdagi o\'quvchilar.\n' +
+            '1️⃣ <b>Tezkor usul:</b> Chatga shunchaki o\'quvchining <b>Login (ID)</b> sini yozing (masalan: <code>azimjon_848_toirov</code> yoki <code>tester_1</code>) — bot darhol tanga miqdorini so\'raydi!\n' +
+            '2️⃣ <b>Super tezkor usul:</b> Login (ID) va miqdorni bitta xabarda yozing (masalan: <code>azimjon_848_toirov 10000</code>).\n' +
+            '3️⃣ <b>🔍 O\'quvchini Qidirish:</b> Login (ID) yoki ism orqali GitHub bazasidan qidirish.\n' +
+            '4️⃣ <b>👥 O\'quvchilar Ro\'yxati:</b> Barcha ro\'yxatdagi o\'quvchilar va ularning Login (ID) lari.\n' +
             '5️⃣ <b>🏆 Top Balanslar:</b> Eng ko\'p tangaga ega o\'quvchilar.',
       parse_mode: 'HTML',
       reply_markup: getMainMenuKeyboard()

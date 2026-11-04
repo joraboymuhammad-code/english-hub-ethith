@@ -2,12 +2,20 @@ name: ETHITH Coin Bot 24/7 Cloud Service
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'ethith_admin_bot.js'
+      - '.github/workflows/ethith_coin_bot.yml'
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/10 * * * *'
+
+permissions:
+  contents: write
+  actions: write
 
 concurrency:
   group: ethith-coin-bot-cloud
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   run-coin-bot:

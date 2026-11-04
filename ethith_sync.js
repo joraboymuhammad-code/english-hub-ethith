@@ -1696,6 +1696,118 @@
         try { window._ethithOnQuizEvent(event); } catch(qe) {}
       }
     }
+    else if (event.type === 'NEW_CONTEST_ANNOUNCED' || event.type === 'CONTEST_CREATED') {
+      if (!S.contests) S.contests = [];
+      var cObj = event.contest;
+      if (cObj) {
+        var existingIdx = S.contests.findIndex(function(x) { return x.id === cObj.id; });
+        if (existingIdx > -1) {
+          S.contests[existingIdx] = cObj;
+        } else {
+          S.contests.unshift(cObj);
+        }
+        if (event.test && S.fileExplorer && Array.isArray(S.fileExplorer.tests)) {
+          var tIdx = S.fileExplorer.tests.findIndex(function(t) { return t.id === event.test.id; });
+          if (tIdx > -1) S.fileExplorer.tests[tIdx] = event.test;
+          else S.fileExplorer.tests.push(event.test);
+        }
+        try {
+          var entStore = JSON.parse(localStorage.getItem('ethith_enterprise_store') || '{}');
+          entStore.contests = S.contests;
+          if (event.test) {
+            if (!entStore.fileExplorer) entStore.fileExplorer = { tests: [], folders: [] };
+            if (!Array.isArray(entStore.fileExplorer.tests)) entStore.fileExplorer.tests = [];
+            var etIdx = entStore.fileExplorer.tests.findIndex(function(t) { return t.id === event.test.id; });
+            if (etIdx > -1) entStore.fileExplorer.tests[etIdx] = event.test;
+            else entStore.fileExplorer.tests.push(event.test);
+          }
+          localStorage.setItem('ethith_enterprise_store', JSON.stringify(entStore));
+        } catch(e) {}
+        uiNeedsRefresh = true;
+        if (window.EthithEnterprise && typeof window.EthithEnterprise.renderContestsView === 'function') {
+          var cWrap = document.querySelector('.ee-contests-wrap');
+          if (cWrap && cWrap.parentElement) {
+            window.EthithEnterprise.renderContestsView(cWrap.parentElement);
+          }
+        }
+        if (window.showToast) {
+          window.showToast("🏆 Yangi Onlayn Musobaqa e‘lon qilindi: " + (cObj.title || 'Musobaqa'));
+        }
+      }
+    }
+    else if (event.type === 'CONTEST_FINISHED') {
+      if (!S.contests) S.contests = [];
+      var fC = S.contests.find(function(x) { return x.id === event.contestId; });
+      if (fC) {
+        fC.status = 'finished';
+        fC.coinsDistributed = true;
+        fC.endDate = Date.now();
+      }
+      if (Array.isArray(event.winners)) {
+        event.winners.forEach(function(w) {
+          var acc = (S.accounts || []).find(function(a) {
+            return (w.login && a.login === w.login) || (w.login && a.id === w.login) || (w.name && a.name && a.name.toLowerCase() === w.name.toLowerCase());
+          });
+          if (acc) {
+            acc.coins = (Number(acc.coins) || 0) + (w.coins || 0);
+          }
+          if (S.user && ((w.login && S.user.login === w.login) || (w.login && S.user.id === w.login) || (w.name && S.user.name && S.user.name.toLowerCase() === w.name.toLowerCase()))) {
+            S.user.coins = (Number(S.user.coins) || 0) + (w.coins || 0);
+            if (window.showToast) {
+              window.showToast("🎉 TABRIKLAYMIZ! Turnirda " + w.rank + "-o‘rinni egalladingiz va +" + w.coins + " Coin yutib oldingiz!");
+            }
+          }
+        });
+      }
+      try {
+        var entStore2 = JSON.parse(localStorage.getItem('ethith_enterprise_store') || '{}');
+        entStore2.contests = S.contests;
+        localStorage.setItem('ethith_enterprise_store', JSON.stringify(entStore2));
+      } catch(e) {}
+      uiNeedsRefresh = true;
+      if (window.EthithEnterprise && typeof window.EthithEnterprise.renderContestsView === 'function') {
+        var cWrap2 = document.querySelector('.ee-contests-wrap');
+        if (cWrap2 && cWrap2.parentElement) {
+          window.EthithEnterprise.renderContestsView(cWrap2.parentElement);
+        }
+      }
+    }
+    else if (event.type === 'CONTEST_DELETED') {
+      if (!S.contests) S.contests = [];
+      S.contests = S.contests.filter(function(x) { return x.id !== event.contestId; });
+      try {
+        var entStore3 = JSON.parse(localStorage.getItem('ethith_enterprise_store') || '{}');
+        entStore3.contests = S.contests;
+        localStorage.setItem('ethith_enterprise_store', JSON.stringify(entStore3));
+      } catch(e) {}
+      uiNeedsRefresh = true;
+      if (window.EthithEnterprise && typeof window.EthithEnterprise.renderContestsView === 'function') {
+        var cWrap3 = document.querySelector('.ee-contests-wrap');
+        if (cWrap3 && cWrap3.parentElement) {
+          window.EthithEnterprise.renderContestsView(cWrap3.parentElement);
+        }
+      }
+    }
+    else if (event.type === 'CONTEST_PARTICIPATION' && event.contestId && event.participant) {
+      if (!S.contests) S.contests = [];
+      var pc = S.contests.find(function(x) { return x.id === event.contestId; });
+      if (pc) {
+        if (!pc.participants) pc.participants = {};
+        pc.participants[event.participant.id || event.participant.login] = event.participant;
+        try {
+          var entStore4 = JSON.parse(localStorage.getItem('ethith_enterprise_store') || '{}');
+          entStore4.contests = S.contests;
+          localStorage.setItem('ethith_enterprise_store', JSON.stringify(entStore4));
+        } catch(e) {}
+        uiNeedsRefresh = true;
+        if (window.EthithEnterprise && typeof window.EthithEnterprise.renderContestsView === 'function') {
+          var cWrap4 = document.querySelector('.ee-contests-wrap');
+          if (cWrap4 && cWrap4.parentElement) {
+            window.EthithEnterprise.renderContestsView(cWrap4.parentElement);
+          }
+        }
+      }
+    }
     else if ((event.type && event.type.indexOf('QUIZ_') === 0) || event.type === 'GIFT_SENT' || event.type === 'USER_REGISTERED') {
       if (event.type === 'USER_REGISTERED' && event.user && (event.user.email || event.user.name)) {
         if (!Array.isArray(S.accounts)) S.accounts = [];
@@ -3342,6 +3454,34 @@
           localStorage.setItem('ethith_file_explorer', JSON.stringify(S.fileExplorer));
         } catch(e) {}
       }
+      if (remote.contests && Array.isArray(remote.contests)) {
+        if (!S.contests) S.contests = [];
+        var localCMap = {};
+        S.contests.forEach(function(c) { if (c && c.id) localCMap[c.id] = c; });
+        remote.contests.forEach(function(rc) {
+          if (!rc || !rc.id) return;
+          var lc = localCMap[rc.id];
+          if (!lc) {
+            S.contests.push(rc);
+          } else {
+            if (rc.participants && typeof rc.participants === 'object') {
+              if (!lc.participants) lc.participants = {};
+              Object.keys(rc.participants).forEach(function(pk) {
+                if (!lc.participants[pk] || (rc.participants[pk].score > (lc.participants[pk].score || 0))) {
+                  lc.participants[pk] = rc.participants[pk];
+                }
+              });
+            }
+            if (rc.status === 'finished') lc.status = 'finished';
+            if (rc.coinsDistributed) lc.coinsDistributed = true;
+          }
+        });
+        try {
+          var entStore = JSON.parse(localStorage.getItem('ethith_enterprise_store') || '{}');
+          entStore.contests = S.contests;
+          localStorage.setItem('ethith_enterprise_store', JSON.stringify(entStore));
+        } catch(e) {}
+      }
       var c1 = mergeClasses(S.classes, remote.classes || []);
       if (remote.deletedStudentIds && Array.isArray(remote.deletedStudentIds)) {
         if (!S.deletedStudentIds) S.deletedStudentIds = [];
@@ -3470,7 +3610,35 @@
         }
         if (!S.quizzes) S.quizzes = [];
         var c0 = mergeQuizzes(S.quizzes, remote.quizzes || [], S.deletedQuizIds || []);
-        var c1 = mergeClasses(S.classes, remote.classes || []);
+        if (remote.contests && Array.isArray(remote.contests)) {
+        if (!S.contests) S.contests = [];
+        var localCMap = {};
+        S.contests.forEach(function(c) { if (c && c.id) localCMap[c.id] = c; });
+        remote.contests.forEach(function(rc) {
+          if (!rc || !rc.id) return;
+          var lc = localCMap[rc.id];
+          if (!lc) {
+            S.contests.push(rc);
+          } else {
+            if (rc.participants && typeof rc.participants === 'object') {
+              if (!lc.participants) lc.participants = {};
+              Object.keys(rc.participants).forEach(function(pk) {
+                if (!lc.participants[pk] || (rc.participants[pk].score > (lc.participants[pk].score || 0))) {
+                  lc.participants[pk] = rc.participants[pk];
+                }
+              });
+            }
+            if (rc.status === 'finished') lc.status = 'finished';
+            if (rc.coinsDistributed) lc.coinsDistributed = true;
+          }
+        });
+        try {
+          var entStore = JSON.parse(localStorage.getItem('ethith_enterprise_store') || '{}');
+          entStore.contests = S.contests;
+          localStorage.setItem('ethith_enterprise_store', JSON.stringify(entStore));
+        } catch(e) {}
+      }
+      var c1 = mergeClasses(S.classes, remote.classes || []);
         if (remote.deletedStudentIds && Array.isArray(remote.deletedStudentIds)) {
           if (!S.deletedStudentIds) S.deletedStudentIds = [];
           remote.deletedStudentIds.forEach(function(id) { if (S.deletedStudentIds.indexOf(id) === -1) S.deletedStudentIds.push(id); });
