@@ -271,7 +271,7 @@ async function updateStudentCoinsOnGitHub(targetIdentifier, targetName, amountTo
       const now = Date.now();
 
       if (acc) {
-        acc.coins = isAbsoluteSet ? amountToAdd : ((Number(acc.coins) || 0) + amountToAdd);
+        acc.coins = isAbsoluteSet ? Math.max(0, amountToAdd) : Math.max(0, ((Number(acc.coins) || 0) + amountToAdd));
         if (targetName && !targetName.includes("Yangi") && (!acc.name || acc.name.includes("Yangi"))) {
           acc.name = targetName;
         }
@@ -285,7 +285,7 @@ async function updateStudentCoinsOnGitHub(targetIdentifier, targetName, amountTo
           name: safeName,
           email: isEmail ? cleanId : (cleanId + '@ethith.uz'),
           role: 'student',
-          coins: amountToAdd,
+          coins: isAbsoluteSet ? Math.max(0, amountToAdd) : Math.max(0, amountToAdd),
           level: 'B1+',
           dailyMinutes: 0,
           createdAt: now,
@@ -321,12 +321,16 @@ async function updateStudentCoinsOnGitHub(targetIdentifier, targetName, amountTo
       } catch (e) {}
 
       // Push to GitHub
+      const sign = amountToAdd >= 0 ? `+${amountToAdd}` : `${amountToAdd}`;
+      const commitMsg = isAbsoluteSet
+        ? `Admin Coin Bot: Set ${acc.login || cleanId} balance to ${acc.coins}`
+        : `Admin Coin Bot: ${sign} Coin to ${acc.login || cleanId} (Total: ${acc.coins})`;
       const contentBase64 = Buffer.from(JSON.stringify(store, null, 2), 'utf8').toString('base64');
       const putRes = await fetch(url, {
         method: 'PUT',
         headers,
         body: JSON.stringify({
-          message: `Admin Coin Bot: +${amountToAdd} Coin to ${acc.login || cleanId} (Total: ${acc.coins})`,
+          message: commitMsg,
           content: contentBase64,
           sha: sha || undefined
         })
@@ -334,7 +338,7 @@ async function updateStudentCoinsOnGitHub(targetIdentifier, targetName, amountTo
 
       if (putRes.ok) {
         const putData = await putRes.json();
-        console.log(`[ADMIN BOT] GitHub store updated for ${cleanEmail}: ${acc.coins} Coin (commit ${putData.commit ? putData.commit.sha.slice(0, 7) : 'OK'})`);
+        console.log(`[ADMIN BOT] GitHub store updated for ${cleanId}: ${acc.coins} Coin (commit ${putData.commit ? putData.commit.sha.slice(0, 7) : 'OK'})`);
         return { ok: true, account: finalAccount };
       } else if (putRes.status === 409) {
         console.warn(`[ADMIN BOT] 409 Conflict on attempt ${attempt}, retrying...`);
@@ -427,22 +431,29 @@ function getMainMenuKeyboard() {
   };
 }
 
-// Helper: Show confirmation prompt for coin transfer
-async function promptCoinConfirmation(chatId, targetIdentifier, targetName, currentCoins, amount, existingMsgId = null) {
-  const newTotal = (Number(currentCoins) || 0) + amount;
+// Helper: Show confirmation prompt for coin transfer (Add or Deduct)
+async function promptCoinConfirmation(chatId, targetIdentifier, targetName, currentCoins, amount, existingMsgId = null, isAbsoluteSet = false) {
+  const curNum = Number(currentCoins) || 0;
+  const newTotal = isAbsoluteSet ? Math.max(0, amount) : Math.max(0, curNum + amount);
   adminStates[chatId] = {
     step: 'confirm',
     targetIdentifier: targetIdentifier,
     targetEmail: targetIdentifier,
     targetName: targetName,
     amount: amount,
-    newTotal: newTotal
+    newTotal: newTotal,
+    isAbsoluteSet: isAbsoluteSet
   };
+
+  const isDeduct = amount < 0;
+  const btnText = isAbsoluteSet
+    ? `🎯 Ha, Balansni ${amount.toLocaleString()} Coin ga o'rnatish!`
+    : (isDeduct ? `⚠️ Ha, -${Math.abs(amount).toLocaleString()} Coin Olib Tashlansin!` : `✅ Ha, +${amount.toLocaleString()} Coin O'tkazilsin!`);
 
   const confirmButtons = {
     inline_keyboard: [
       [
-        { text: `✅ Ha, +${amount.toLocaleString()} Coin O'tkazilsin!`, callback_data: `confirm_send:${amount}` }
+        { text: btnText, callback_data: `confirm_send:${amount}` }
       ],
       [
         { text: '❌ Bekor qilish', callback_data: 'cancel_send' }
@@ -450,11 +461,19 @@ async function promptCoinConfirmation(chatId, targetIdentifier, targetName, curr
     ]
   };
 
-  const text = `❓ <b>O'tkazmani tasdiqlaysizmi?</b>\n\n` +
+  const actionLine = isAbsoluteSet
+    ? `🎯 O'rnatilayotgan Balans: <b>${amount.toLocaleString()} Coin</b>`
+    : (isDeduct ? `➖ Olib tashlanayotgan: <b>-${Math.abs(amount).toLocaleString()} Coin</b>` : `➕ Qo'shilayotgan Coin: <b>+${amount.toLocaleString()} Coin</b>`);
+
+  const header = isDeduct
+    ? `⚠️ <b>Coinni hisobdan AYIRISHni tasdiqlaysizmi?</b>`
+    : (isAbsoluteSet ? `🎯 <b>Balansni o'rnatishni tasdiqlaysizmi?</b>` : `❓ <b>Coin o'tkazmasini tasdiqlaysizmi?</b>`);
+
+  const text = `${header}\n\n` +
                `👤 Qabul qiluvchi: <b>${targetName}</b>\n` +
                `🔑 Login (ID): <code>${targetIdentifier}</code>\n` +
-               `💰 Hozirgi Balans: <b>${(Number(currentCoins) || 0).toLocaleString()} Coin</b>\n` +
-               `➕ Qo'shilayotgan Coin: <b>+${amount.toLocaleString()} Coin</b>\n` +
+               `💰 Hozirgi Balans: <b>${curNum.toLocaleString()} Coin</b>\n` +
+               `${actionLine}\n` +
                `🚀 Yangi Balans: <b>${newTotal.toLocaleString()} Coin</b>\n\n` +
                `Tasdiqlash uchun quyidagi tugmani bosing:`;
 
@@ -476,7 +495,7 @@ async function promptCoinConfirmation(chatId, targetIdentifier, targetName, curr
   }
 }
 
-// Helper: Send preset coin buttons for a selected user
+// Helper: Send preset coin buttons for a selected user (Both Add & Deduct)
 async function sendPresetAmountMenu(chatId, targetIdentifier, targetName, currentCoins) {
   adminStates[chatId] = {
     step: 'waiting_amount',
@@ -489,17 +508,32 @@ async function sendPresetAmountMenu(chatId, targetIdentifier, targetName, curren
   const presetKeyboard = {
     inline_keyboard: [
       [
-        { text: '🪙 +500', callback_data: `preset_amt:500` },
-        { text: '🪙 +1,000', callback_data: `preset_amt:1000` },
-        { text: '🪙 +5,000', callback_data: `preset_amt:5000` }
+        { text: '➕ 10', callback_data: `preset_amt:10` },
+        { text: '➕ 50', callback_data: `preset_amt:50` },
+        { text: '➕ 100', callback_data: `preset_amt:100` },
+        { text: '➕ 500', callback_data: `preset_amt:500` }
       ],
       [
-        { text: '🪙 +10,000', callback_data: `preset_amt:10000` },
-        { text: '🪙 +50,000', callback_data: `preset_amt:50000` },
-        { text: '🪙 +100,000', callback_data: `preset_amt:100000` }
+        { text: '➕ 1,000', callback_data: `preset_amt:1000` },
+        { text: '➕ 5,000', callback_data: `preset_amt:5000` },
+        { text: '➕ 10,000', callback_data: `preset_amt:10000` },
+        { text: '➕ 50,000', callback_data: `preset_amt:50000` }
       ],
       [
-        { text: '✏️ Boshqa miqdor (Qo\'lda yozish)', callback_data: 'type_custom_amt' }
+        { text: '➖ 10', callback_data: `preset_amt:-10` },
+        { text: '➖ 50', callback_data: `preset_amt:-50` },
+        { text: '➖ 100', callback_data: `preset_amt:-100` },
+        { text: '➖ 500', callback_data: `preset_amt:-500` }
+      ],
+      [
+        { text: '➖ 1,000', callback_data: `preset_amt:-1000` },
+        { text: '➖ 5,000', callback_data: `preset_amt:-5000` },
+        { text: '➖ 10,000', callback_data: `preset_amt:-10000` },
+        { text: '➖ 50,000', callback_data: `preset_amt:-50000` }
+      ],
+      [
+        { text: '✏️ Boshqa miqdor qo\'shish (+)', callback_data: 'type_custom_add' },
+        { text: '✏️ Boshqa miqdor ayirish (-)', callback_data: 'type_custom_deduct' }
       ],
       [
         { text: '❌ Bekor qilish', callback_data: 'cancel_send' }
@@ -512,7 +546,7 @@ async function sendPresetAmountMenu(chatId, targetIdentifier, targetName, curren
     text: `👤 <b>O'quvchi:</b> <b>${targetName}</b>\n` +
           `🔑 Login (ID): <code>${targetIdentifier}</code>\n` +
           `💰 GitHub'dagi Joriy Balans: <b>${(Number(currentCoins) || 0).toLocaleString()} Coin</b>\n\n` +
-          `Quyidagi tezkor tugmalardan birini bosing yoki xabarda istalgan miqdorni son bilan yozing (masalan: <code>2500</code>):`,
+          `Qo'shish (➕) yoki Ayirish (➖) tugmalaridan birini bosing, yoki xabarda miqdorni yozing (masalan: <code>+100</code> yoki <code>-50</code>):`,
     parse_mode: 'HTML',
     reply_markup: presetKeyboard
   });
@@ -563,14 +597,17 @@ async function performStudentSearch(chatId, queryText) {
     const quickButtons = {
       inline_keyboard: [
         [
-          { text: '🪙 +500', callback_data: `quick_send:${loginId}:500` },
-          { text: '🪙 +1,000', callback_data: `quick_send:${loginId}:1000` },
-          { text: '🪙 +5,000', callback_data: `quick_send:${loginId}:5000` }
+          { text: '➕ 100', callback_data: `quick_send:${loginId}:100` },
+          { text: '➕ 500', callback_data: `quick_send:${loginId}:500` },
+          { text: '➕ 1,000', callback_data: `quick_send:${loginId}:1000` }
         ],
         [
-          { text: '🪙 +10,000', callback_data: `quick_send:${loginId}:10000` },
-          { text: '🪙 +50,000', callback_data: `quick_send:${loginId}:50000` },
-          { text: '✏️ Boshqa miqdor', callback_data: `send_to:${loginId}` }
+          { text: '➖ 100', callback_data: `quick_send:${loginId}:-100` },
+          { text: '➖ 500', callback_data: `quick_send:${loginId}:-500` },
+          { text: '➖ 1,000', callback_data: `quick_send:${loginId}:-1000` }
+        ],
+        [
+          { text: '⚙️ Barcha amallar (Menyu)', callback_data: `send_to:${loginId}` }
         ]
       ]
     };
@@ -778,29 +815,71 @@ async function handleMessage(msg) {
     return;
   }
 
-  // 3. SMART DIRECT INPUT: Check if user typed "login 5000" or direct login/email
-  const tokens = text.split(/\s+/);
-  const potentialAmount = tokens.length > 1 ? parseInt(tokens[tokens.length - 1], 10) : NaN;
-  const potentialQuery = !isNaN(potentialAmount) && potentialAmount > 0 ? tokens.slice(0, -1).join(' ') : text;
+  // 3. SMART DIRECT COMMANDS:
+  // e.g. "/set azimjon_848_toirov 160"
+  if (text.startsWith('/set ') || text.startsWith('set ')) {
+    const parts = text.split(/\s+/);
+    if (parts.length >= 3) {
+      const qClean = parts[1].toLowerCase().trim().replace(/^@/, '');
+      const val = parseInt(parts[2], 10);
+      if (!isNaN(val) && val >= 0) {
+        const store = await fetchLiveStoreFromGitHub();
+        const matchedAcc = (store.accounts || []).find(a => {
+          if (!a) return false;
+          const aLog = (a.login || a.id || '').toLowerCase().trim();
+          const aEm = (a.email || '').toLowerCase().trim();
+          const aNm = (a.name || '').toLowerCase().trim();
+          return aLog === qClean || aEm === qClean || aNm === qClean;
+        });
+        if (matchedAcc) {
+          const loginId = matchedAcc.login || matchedAcc.id || matchedAcc.email;
+          await promptCoinConfirmation(chatId, loginId, matchedAcc.name, Number(matchedAcc.coins) || 0, val, null, true);
+          return;
+        }
+      }
+    }
+  }
 
+  // e.g. "azimjon_848_toirov +10" or "azimjon_848_toirov -50" or "azimjon_848_toirov 10"
+  const tokens = text.split(/\s+/);
+  if (tokens.length >= 2) {
+    const lastToken = tokens[tokens.length - 1];
+    const isMinus = lastToken.startsWith('-');
+    const parsedAmt = parseInt(lastToken.replace(/[^0-9]/g, ''), 10);
+    if (!isNaN(parsedAmt) && parsedAmt > 0) {
+      const finalAmt = isMinus ? -parsedAmt : parsedAmt;
+      const potentialQuery = tokens.slice(0, -1).join(' ').toLowerCase().trim().replace(/^@/, '');
+      const store = await fetchLiveStoreFromGitHub();
+      const matchedAcc = (store.accounts || []).find(a => {
+        if (!a) return false;
+        const aLog = (a.login || a.id || '').toLowerCase().trim();
+        const aEm = (a.email || '').toLowerCase().trim();
+        const aNm = (a.name || '').toLowerCase().trim();
+        return aLog === potentialQuery || aEm === potentialQuery || aNm === potentialQuery;
+      });
+      if (matchedAcc) {
+        const loginId = matchedAcc.login || matchedAcc.id || matchedAcc.email;
+        await promptCoinConfirmation(chatId, loginId, matchedAcc.name, Number(matchedAcc.coins) || 0, finalAmt);
+        return;
+      }
+    }
+  }
+
+  // Single query for login or student name
+  const cleanQ = text.toLowerCase().trim().replace(/^@/, '');
   const store = await fetchLiveStoreFromGitHub();
   const matchedAcc = (store.accounts || []).find(a => {
     if (!a) return false;
     const aLog = (a.login || a.id || '').toLowerCase().trim();
     const aEm = (a.email || '').toLowerCase().trim();
-    const qClean = potentialQuery.toLowerCase().trim();
-    return aLog === qClean || aEm === qClean;
+    const aNm = (a.name || '').toLowerCase().trim();
+    return aLog === cleanQ || aEm === cleanQ || aNm === cleanQ;
   });
 
   if (matchedAcc) {
     const loginId = matchedAcc.login || matchedAcc.id || matchedAcc.email;
     const userName = matchedAcc.name || loginId;
     const curCoins = Number(matchedAcc.coins) || 0;
-
-    if (!isNaN(potentialAmount) && potentialAmount > 0) {
-      await promptCoinConfirmation(chatId, loginId, userName, curCoins, potentialAmount);
-      return;
-    }
     await sendPresetAmountMenu(chatId, loginId, userName, curCoins);
     return;
   }
@@ -809,9 +888,11 @@ async function handleMessage(msg) {
   const state = adminStates[chatId] || { step: 'idle' };
 
   if (state.step === 'waiting_amount') {
+    const isMinus = text.startsWith('-') || text.includes('minus') || text.includes('ayirish') || state.customMode === 'deduct';
     const num = parseInt(text.replace(/[^0-9]/g, ''), 10);
     if (!isNaN(num) && num > 0) {
-      await promptCoinConfirmation(chatId, state.targetIdentifier || state.targetEmail, state.targetName, state.currentCoins || 0, num);
+      const finalAmt = isMinus ? -num : num;
+      await promptCoinConfirmation(chatId, state.targetIdentifier || state.targetEmail, state.targetName, state.currentCoins || 0, finalAmt);
       return;
     }
   }
@@ -901,11 +982,43 @@ async function handleCallbackQuery(cb) {
     return;
   }
 
-  if (data === 'type_custom_amt') {
+  if (data === 'type_custom_add') {
+    const state = adminStates[chatId] || {};
+    state.step = 'waiting_amount';
+    state.customMode = 'add';
+    adminStates[chatId] = state;
     await tgCall('answerCallbackQuery', { callback_query_id: cb.id });
     await tgCall('sendMessage', {
       chat_id: chatId,
-      text: '✏️ O\'tkazmoqchi bo\'lgan coin miqdorini son bilan yozing (masalan: <code>2500</code>):',
+      text: '➕ <b>Qo\'shmoqchi bo\'lgan coin miqdorini yozing:</b>\n(Masalan: <code>100</code> yoki <code>2500</code>):',
+      parse_mode: 'HTML'
+    });
+    return;
+  }
+
+  if (data === 'type_custom_deduct') {
+    const state = adminStates[chatId] || {};
+    state.step = 'waiting_amount';
+    state.customMode = 'deduct';
+    adminStates[chatId] = state;
+    await tgCall('answerCallbackQuery', { callback_query_id: cb.id });
+    await tgCall('sendMessage', {
+      chat_id: chatId,
+      text: '➖ <b>Hisobdan AYIRMOQCHI (olib tashlamoqchi) bo\'lgan coin miqdorini yozing:</b>\n(Masalan: <code>50</code> yoki <code>500</code>):',
+      parse_mode: 'HTML'
+    });
+    return;
+  }
+
+  if (data === 'type_custom_amt') {
+    const state = adminStates[chatId] || {};
+    state.step = 'waiting_amount';
+    state.customMode = 'add';
+    adminStates[chatId] = state;
+    await tgCall('answerCallbackQuery', { callback_query_id: cb.id });
+    await tgCall('sendMessage', {
+      chat_id: chatId,
+      text: '✏️ O\'tkazmoqchi yoki ayirmoqchi bo\'lgan coin miqdorini yozing (masalan: <code>+100</code> yoki <code>-50</code>):',
       parse_mode: 'HTML'
     });
     return;
@@ -933,13 +1046,22 @@ async function handleCallbackQuery(cb) {
     const targetId = state.targetIdentifier || state.targetEmail;
     const targetName = state.targetName;
     const amount = state.amount;
+    const isAbsoluteSet = !!state.isAbsoluteSet;
 
-    // Prevent double-tap duplicate transfers
+    // Prevent double-tap duplicate transfers immediately
     adminStates[chatId] = { step: 'idle' };
     await tgCall('answerCallbackQuery', { callback_query_id: cb.id, text: 'GitHub bazasiga yozilmoqda...' });
 
+    // Instantly disable button to prevent repeated clicks
+    await tgCall('editMessageText', {
+      chat_id: chatId,
+      message_id: cb.message.message_id,
+      text: '⏳ <b>GitHub bazasiga yozilmoqda... Iltimos kuting.</b>',
+      parse_mode: 'HTML'
+    });
+
     // 1. Atomically update GitHub shared_store.json + local store
-    const res = await updateStudentCoinsOnGitHub(targetId, targetName, amount, false);
+    const res = await updateStudentCoinsOnGitHub(targetId, targetName, amount, isAbsoluteSet);
     const acc = res.account || { name: targetName, login: targetId, email: targetId, coins: state.newTotal };
 
     // 2. Broadcast via Dual MQTT Brokers (HiveMQ + EMQX) to web & Mini App clients
@@ -961,13 +1083,21 @@ async function handleCallbackQuery(cb) {
     };
     await publishMqtt('ethith/v3/global', mqttPayload);
 
+    const isDeduct = amount < 0;
+    const title = isAbsoluteSet
+      ? '🎯 <b>Balans Muvaffaqiyatli O\'rnatildi!</b>'
+      : (isDeduct ? '✅ <b>Coin Muvaffaqiyatli Olib Tashlandi!</b>' : '🎉 <b>Coin Muvaffaqiyatli O\'tkazildi (GitHub + Live Sync)!</b>');
+    const changeLine = isAbsoluteSet
+      ? `🎯 Yangi Balans: <b>${Number(acc.coins).toLocaleString()} Coin</b>`
+      : (isDeduct ? `➖ Olib tashlangan: <b>-${Math.abs(amount).toLocaleString()} Coin</b>` : `➕ O'tkazilgan: <b>+${amount.toLocaleString()} Coin</b>`);
+
     await tgCall('editMessageText', {
       chat_id: chatId,
       message_id: cb.message.message_id,
-      text: `🎉 <b>Coin Muvaffaqiyatli O'tkazildi (GitHub + Live Sync)!</b>\n\n` +
+      text: `${title}\n\n` +
             `👤 O'quvchi: <b>${acc.name}</b>\n` +
             `🔑 Login (ID): <code>${acc.login || targetId}</code>\n` +
-            `➕ O'tkazilgan: <b>+${amount.toLocaleString()} Coin</b>\n` +
+            `${changeLine}\n` +
             `💰 Yangi Balans: <b>${Number(acc.coins).toLocaleString()} Coin</b>\n` +
             `☁️ GitHub Baza: <b>${res.ok ? 'Saqlandi ✅' : 'Sinxronlandi ⚡'}</b>\n\n` +
             `⚡ <i>Tangalar o'quvchining GitHub bulut hisobiga yozildi va ekranida darhol yangilandi!</i>`,
@@ -979,6 +1109,7 @@ async function handleCallbackQuery(cb) {
       text: 'Yana boshqa amal bajarish uchun quyidagi menyudan foydalaning yoki Login (ID) yozing:',
       reply_markup: getMainMenuKeyboard()
     });
+    return;
   }
 }
 
