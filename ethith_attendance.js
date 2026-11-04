@@ -396,6 +396,21 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
   EA.activeClassId = null;
   EA.activeTeacherId = null;
+  EA._lastRenderedLevel = null;
+  EA.scrollToTop = function() {
+    try { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); } catch(e) { window.scrollTo(0, 0); }
+    if (document.documentElement) document.documentElement.scrollTop = 0;
+    if (document.body) document.body.scrollTop = 0;
+    var apMain = document.getElementById('apMain') || document.querySelector('.ap-main');
+    if (apMain) apMain.scrollTop = 0;
+    var apView = document.getElementById('apView') || document.querySelector('.ap-view');
+    if (apView) apView.scrollTop = 0;
+    var appEl = document.getElementById('app');
+    if (appEl) appEl.scrollTop = 0;
+    if (window.ethithScrollToTop) {
+      try { window.ethithScrollToTop(); } catch(e) {}
+    }
+  };
   EA.viewMode = 'window'; // 'window' (10 past + 2 future) or 'all' (Umumiy davomat)
   EA.isModalOpen = false; // Prevents background sync from closing open modals
   EA.activeStudentId = null; // When set, renders QuantumEdu Student Analytics view
@@ -1930,6 +1945,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         if (tid) {
           EA.activeTeacherId = tid;
           EA.activeClassId = null;
+          EA.scrollToTop();
           EA.render(container);
         }
       };
@@ -1944,6 +1960,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         var tid = btn.getAttribute('data-tid');
         EA.activeTeacherId = tid;
         EA.activeClassId = null;
+        EA.scrollToTop();
         EA.render(container);
       };
     });
@@ -2036,6 +2053,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       backBtn.onclick = function() {
         EA.activeTeacherId = null;
         EA.activeClassId = null;
+        EA.scrollToTop();
         EA.render(container);
       };
     }
@@ -2088,6 +2106,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         var cid = btn.getAttribute('data-cid');
         EA.activeTeacherId = teacher.id;
         EA.activeClassId = cid;
+        EA.scrollToTop();
         var targetContainer = document.getElementById('apView') || container;
         EA.render(targetContainer);
       };
@@ -3107,6 +3126,16 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     var isAdmin = isAdminRole() && !isStudent;
     var isTeacher = isTeacherRole() && !isStudent;
 
+    var currentLevel = (isAdmin && !EA.activeTeacherId && !EA.activeClassId) ? 'dir'
+                     : ((isAdmin || isTeacher) && EA.activeTeacherId && !EA.activeClassId) ? ('groups_' + EA.activeTeacherId)
+                     : EA.activeStudentId ? ('student_' + EA.activeStudentId)
+                     : ('journal_' + (EA.activeClassId || 'active'));
+
+    if (preserveScrollLeft === undefined && EA._lastRenderedLevel !== currentLevel) {
+      EA.scrollToTop();
+    }
+    EA._lastRenderedLevel = currentLevel;
+
     // Teacher Isolation ("alohida alohida uy kabi boshqa boshqa bo'lsin"):
     // Non-admin teachers are strictly locked to their own teacherId and their own groups
     if (isTeacher && !isAdmin) {
@@ -3816,9 +3845,9 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     }
     h += '</div></div>';
 
-    var prevScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+    var prevScrollY = (preserveScrollLeft !== undefined) ? (window.scrollY || window.pageYOffset || document.documentElement.scrollTop) : 0;
     var apMain = document.getElementById('apMain') || document.querySelector('.ap-main');
-    var prevMainY = apMain ? apMain.scrollTop : 0;
+    var prevMainY = (preserveScrollLeft !== undefined && apMain) ? apMain.scrollTop : 0;
     var existingWrap = container.querySelector('.ea-table-scroll-wrap');
     var existingScrollLeft = existingWrap ? existingWrap.scrollLeft : null;
 
@@ -3835,11 +3864,15 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       }
     }
 
-    if (prevScrollY > 0) {
-      window.scrollTo(0, prevScrollY);
-    }
-    if (apMain && prevMainY > 0) {
-      apMain.scrollTop = prevMainY;
+    if (preserveScrollLeft !== undefined) {
+      if (prevScrollY > 0) {
+        window.scrollTo(0, prevScrollY);
+      }
+      if (apMain && prevMainY > 0) {
+        apMain.scrollTop = prevMainY;
+      }
+    } else {
+      EA.scrollToTop();
     }
 
     EA.attachEvents(container, cls);
@@ -3891,6 +3924,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           EA.activeTeacherId = cls.teacherId;
         }
         EA.activeClassId = null;
+        EA.scrollToTop();
         EA.render(container);
       };
     }
@@ -3899,6 +3933,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       backToAllTBtn.onclick = function() {
         EA.activeTeacherId = null;
         EA.activeClassId = null;
+        EA.scrollToTop();
         EA.render(container);
       };
     }
@@ -4284,6 +4319,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       btn.onclick = function(e) {
         e.stopPropagation();
         EA.activeStudentId = btn.dataset.stid;
+        EA.scrollToTop();
         EA.render(container);
       };
     });
@@ -5855,6 +5891,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     if (backBtn) {
       backBtn.onclick = function() {
         EA.activeStudentId = null;
+        EA.scrollToTop();
         if (window._ethithCameFromChat) {
           window._ethithCameFromChat = false;
           if (typeof window.go === 'function') {
