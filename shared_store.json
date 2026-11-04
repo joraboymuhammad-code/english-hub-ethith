@@ -24226,7 +24226,7 @@
           "updatedAt": 1793774149575,
           "hasLoggedIn": true,
           "isLoggedOut": false,
-          "lastSeen": 1793797824207
+          "lastSeen": 1793797852110
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -26062,7 +26062,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793783309170
+        "updatedAt": 1793797849013
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -26358,8 +26358,8 @@
       ],
       "deletedMsgIds": [],
       "messages": [],
-      "learningMonths": 2,
-      "learningDays": 26,
+      "learningMonths": 0,
+      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_practice_tester_1": {
           "fee": 300000,
@@ -27427,7 +27427,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793797847356
+      "lastSeen": 1793797851758
     },
     {
       "id": "tg_98124765",
@@ -28218,7 +28218,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793797824207,
+      "lastSeen": 1793797852110,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "password": "azimjon848toi",
@@ -147594,5 +147594,5 @@
       }
     }
   },
-  "updatedAt": 1793797848103
+  "updatedAt": 1793797852699
 }
