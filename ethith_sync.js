@@ -3384,6 +3384,9 @@
 
     isPolling = true;
     try {
+      if (typeof window.checkEthithVersionNow === 'function') {
+        try { window.checkEthithVersionNow(); } catch(e) {}
+      }
       var remote = await fetchRemoteStore();
       if (remote) {
         if (remote.deletedExamIds && Array.isArray(remote.deletedExamIds)) {

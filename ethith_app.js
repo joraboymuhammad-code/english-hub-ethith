@@ -1694,7 +1694,7 @@
   // ====================================================
   // ETHITH CLIENT BUILD VERSION & CACHE MANAGEMENT
   // ====================================================
-  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "v2026.11.04.0109";
+  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "v2026.11.04.0110";
 
   (function ensureFreshBuildOnStartup() {
     function purgeCachesAndReload(newVer) {
@@ -1735,9 +1735,11 @@
     // Check version politely and reliably
     function checkVersion(force) {
       try {
-        var base = (window.location.origin && window.location.origin !== 'null') ? window.location.origin : '';
-        var path = window.location.pathname ? window.location.pathname.replace(/\/[^\/]*$/, '/') : '/';
-        var verUrl = base + path + 'version.json?_t=' + Date.now();
+        var verUrl = 'version.json?_t=' + Date.now();
+        if (window.location && window.location.origin && window.location.origin !== 'null' && window.location.origin.startsWith('http')) {
+          var path = window.location.pathname ? window.location.pathname.replace(/\/[^\/]*$/, '/') : '/';
+          verUrl = window.location.origin + path + 'version.json?_t=' + Date.now();
+        }
 
         fetch(verUrl, {
           cache: 'no-store',
@@ -1755,13 +1757,12 @@
 
             // If current page version matches latest, mark as synced and hide any banner
             if (remoteVer === currentVer) {
-              sessionStorage.setItem('ethith_dismissed_ver', remoteVer);
               var b = document.getElementById('eeAutoUpdateBanner');
               if (b) b.remove();
               return;
             }
 
-            // If user already dismissed this specific update version and not forced, do not nag them
+            // If user already dismissed this specific update version, do not nag them in this session
             if (!force && sessionStorage.getItem('ethith_dismissed_ver') === remoteVer) {
               return;
             }
@@ -1852,10 +1853,16 @@
       }
     } catch (e) {}
 
-    // Check version once politely after startup (never aggressively reload in loop)
-    setTimeout(function() { checkVersion(false); }, 5000);
-    // Poll politely once every 30 minutes without interrupting user or spamming network
-    setInterval(function() { checkVersion(false); }, 30 * 60 * 1000);
+    // Check version promptly on startup, when switching back to tab, and every 10 seconds
+    setTimeout(function() { checkVersion(); }, 1200);
+    setTimeout(function() { checkVersion(); }, 4000);
+    setInterval(function() { checkVersion(); }, 10 * 1000);
+
+    window.addEventListener('focus', function() { checkVersion(); });
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'visible') checkVersion();
+    });
+    window.addEventListener('online', function() { checkVersion(); });
   })();
 
   window._ethithRefreshCurrentView = function() {
