@@ -25069,14 +25069,15 @@
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
-          "isOnline": false,
+          "isOnline": true,
           "coins": 150,
           "updatedAt": 1793798133108,
-          "lastLogin": "2026-11-04T09:04:11.426Z",
+          "lastLogin": "2026-11-04T14:59:52.209Z",
           "dailyMinutes": 12,
-          "isLoggedOut": true,
+          "isLoggedOut": false,
           "hasLoggedIn": true,
-          "loggedOutAt": 1793798152254
+          "loggedOutAt": 1793798152254,
+          "lastSeen": 1793804393116
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -28446,7 +28447,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793804303585
+      "lastSeen": 1793804393782
     },
     {
       "id": "tg_98124765",
@@ -28469,7 +28470,7 @@
       "email": "teacher@ethith.uz",
       "coins": 100000,
       "avatar": null,
-      "level": "A1",
+      "level": "B1+",
       "dailyMinutes": 0,
       "nameStyle": null,
       "title": null,
@@ -29238,8 +29239,8 @@
       "nameStyle": null,
       "createdAt": 1793720576586,
       "updatedAt": 1793774149575,
-      "isOnline": false,
-      "isLoggedOut": true,
+      "isOnline": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
       "loggedOutAt": 1793798152254,
       "login": "azimjon_848_toirov",
@@ -29247,7 +29248,8 @@
       "phone": "950079621",
       "parentPhone": "950079621",
       "classId": "cls_urolov_azizbek_upper",
-      "lastLogin": "2026-11-04T09:04:11.426Z"
+      "lastLogin": "2026-11-04T14:59:52.209Z",
+      "lastSeen": 1793804393116
     },
     {
       "id": "t_muhammadyusuf",
@@ -148636,5 +148638,5 @@
       }
     }
   },
-  "updatedAt": 1793804304225
+  "updatedAt": 1793804394729
 }
