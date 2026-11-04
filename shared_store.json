@@ -22813,7 +22813,7 @@
       "teacherName": "Azizbek Urolov",
       "teacherEmail": "azizbek.urolov@ethith.uz",
       "room": "302-xona",
-      "maxCapacity": 18,
+      "maxCapacity": 23,
       "schedule": "toq",
       "attendance": {
         "records": {
@@ -23592,6 +23592,7 @@
         "rayxona_271_qoshqarova@student.ethith",
         "rayxona_271_qoshqarova"
       ],
+      "pinnedId": null,
       "customStudentNamesTs": {
         "std_nurlan_856_tangatov": 1793625077010,
         "std_orazaliyev_514_amirshox": 1793625077010,
@@ -23617,8 +23618,7 @@
         "std_niyatullo_582_asatullayev": 1793625077010,
         "std_navroz_651_shavkatov": 1793625077010,
         "std_otkir_903_tursunmatov": 1793625077010
-      },
-      "pinnedId": null
+      }
     },
     {
       "id": "cls_urolov_azizbek_standard",
@@ -26218,6 +26218,22 @@
   ],
   "accounts": [
     {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "admin@ethith.uz",
+      "createdAt": 1792429101989,
+      "coins": 100000,
+      "gifts": [],
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793739654663,
+      "avatar": null,
+      "nameStyle": null,
+      "title": null,
+      "victorySound": null
+    },
+    {
       "id": "admin_official_root",
       "role": "admin",
       "name": "Bosh Admin",
@@ -26232,7 +26248,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739652977
+      "lastSeen": 1793797607196
     },
     {
       "id": "tg_98124765",
@@ -26247,6 +26263,20 @@
       "title": null,
       "victorySound": null,
       "updatedAt": 1793260926584
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "teacher@ethith.uz",
+      "coins": 5000,
+      "avatar": null,
+      "level": "A1",
+      "dailyMinutes": 0,
+      "nameStyle": null,
+      "title": null,
+      "victorySound": null,
+      "updatedAt": 1792606425762
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -26404,12 +26434,7 @@
       "email": "muhammedjoraboyev1@gmail.com",
       "role": "teacher",
       "coins": 100000,
-      "level": "B1+",
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929,
-      "updatedAt": 1793739654663
+      "level": "B1+"
     },
     {
       "id": "std_13",
@@ -26546,20 +26571,16 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Elyor Aborbekov",
+      "name": "Ustoz",
       "email": "elyor.aborbekov@ethith.uz",
       "login": "elyor70",
       "role": "teacher",
       "coins": 1000,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ravshanov Doniyor",
+      "name": "Ustoz",
       "email": "doniyor.ravshanov@ethith.uz",
       "login": "doniyor24",
       "password": "doniyor2026",
@@ -26575,15 +26596,11 @@
         "cls_ravshanov_doniyor_cefr_4"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
-      "name": "Qarshiboyev Humoyun",
+      "name": "Ustoz",
       "email": "humoyun.qarshiboyev@ethith.uz",
       "login": "humoyun15",
       "password": "humoyun2026",
@@ -26596,15 +26613,11 @@
         "cls_qarshiboyev_humoyun_practice"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
-      "name": "Marjona Tovboyeva",
+      "name": "Ustoz",
       "email": "marjona.tovboyeva@ethith.uz",
       "login": "marjona88",
       "password": "marjona2026",
@@ -26617,15 +26630,11 @@
         "cls_tovboyeva_marjona_beginner"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
-      "name": "Durdona Olimjonova",
+      "name": "Ustoz",
       "email": "durdona.olimjonova@ethith.uz",
       "login": "durdona12",
       "password": "durdona2026",
@@ -26641,15 +26650,11 @@
         "cls_olimjonova_durdona_intermediate_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
-      "name": "Eldor Tagaev",
+      "name": "Ustoz",
       "email": "eldor.tagaev@ethith.uz",
       "login": "eldor33",
       "password": "eldor2026",
@@ -26665,15 +26670,11 @@
         "cls_tagaev_eldor_pre_intermediate_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
-      "name": "Kamola Yaxshilikova",
+      "name": "Ustoz",
       "email": "kamola.yaxshilikova@ethith.uz",
       "login": "kamola45",
       "password": "kamola2026",
@@ -26687,15 +26688,11 @@
         "cls_yaxshilikova_kamola_elementary"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
-      "name": "Iroda Sherqoziyeva",
+      "name": "Ustoz",
       "email": "iroda.sherqoziyeva@ethith.uz",
       "login": "iroda19",
       "password": "iroda2026",
@@ -26709,15 +26706,11 @@
         "cls_sherqoziyeva_iroda_beginner_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
-      "name": "Jaloliddin O’rinboyev",
+      "name": "Ustoz",
       "email": "jaloliddin.orinboyev@ethith.uz",
       "login": "jaloliddin99",
       "password": "jaloliddin2026",
@@ -26733,15 +26726,11 @@
         "cls_orinboyev_jaloliddin_standard_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
-      "name": "Pokiza Jumanova",
+      "name": "Ustoz",
       "email": "pokiza.jumanova@ethith.uz",
       "login": "pokiza07",
       "password": "pokiza2026",
@@ -26754,15 +26743,11 @@
         "cls_jumanova_pokiza_beginner"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
-      "name": "Arslon Hayrullayev",
+      "name": "Ustoz",
       "email": "arslon.hayrullayev@ethith.uz",
       "login": "arslon64",
       "password": "arslon2026",
@@ -26776,15 +26761,11 @@
         "cls_hayrullayev_arslon_beginner_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
-      "name": "Sarvinoz Xudoyorova",
+      "name": "Ustoz",
       "email": "sarvinoz.xudoyorova@ethith.uz",
       "login": "sarvinoz82",
       "password": "sarvinoz2026",
@@ -26798,15 +26779,11 @@
         "cls_xudoyorova_sarvinoz_standard"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
-      "name": "Sevinch Aliqulova",
+      "name": "Ustoz",
       "email": "sevinch.aliqulova@ethith.uz",
       "login": "sevinch55",
       "password": "sevinch2026",
@@ -26820,15 +26797,11 @@
         "cls_aliqulova_sevinch_beginner_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
-      "name": "Diyora Xo’jamqulova",
+      "name": "Ustoz",
       "email": "diyora.xojamqulova@ethith.uz",
       "login": "diyora21",
       "password": "diyora2026",
@@ -26844,15 +26817,11 @@
         "cls_xojamqulova_diyora_elementary_3"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014533
     },
     {
       "id": "admin_official_teacher",
-      "name": "Farrux Bosimbekov",
+      "name": "Ustoz",
       "email": "farrux.bosimbekov@ethith.uz",
       "login": "farrux93",
       "password": "farrux2026",
@@ -26868,15 +26837,11 @@
         "cls_bosimbekov_farrux_intermediate_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014533
     },
     {
       "id": "admin_official_teacher",
-      "name": "Barno Ahmadova",
+      "name": "Ustoz",
       "email": "barno.ahmadova@ethith.uz",
       "login": "barno36",
       "password": "barno2026",
@@ -26892,15 +26857,11 @@
         "cls_ahmadova_barno_pre_intermediate"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014533
     },
     {
       "id": "admin_official_teacher",
-      "name": "Shodiyor (matematika)",
+      "name": "Ustoz",
       "email": "shodiyor.matematika@ethith.uz",
       "login": "shodiyor50",
       "password": "shodiyor2026",
@@ -26913,11 +26874,7 @@
         "cls_shodiyor_matematika_matematika"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "updatedAt": 1793392014533
     },
     {
       "id": "st_998901239988",
@@ -26961,11 +26918,7 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793473052536,
-      "level": "C2",
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793739653929
+      "level": "C2"
     },
     {
       "id": "shamshodbekibrohimov@telegram.org",
@@ -26977,19 +26930,6 @@
       "nameStyle": null,
       "createdAt": 1793630351584,
       "updatedAt": 1793739506865
-    },
-    {
-      "id": "std_mix_416_selix",
-      "name": "Mix Selix",
-      "role": "student",
-      "login": "mix_416_selix",
-      "password": "mix416sel",
-      "phone": "91`23891738213",
-      "parentPhone": "91`23891738213",
-      "classId": "cls_1793380468126",
-      "isOnline": false,
-      "lastLogin": null,
-      "updatedAt": 1793629984912
     },
     {
       "id": "std_mixswdasd_804_selixasdasd",
@@ -27021,6 +26961,19 @@
       "isOnline": true,
       "lastSeen": 1793739652731,
       "classId": "cls_urolov_azizbek_upper"
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793629984912
     }
   ],
   "p2pListings": [],
@@ -28497,6 +28450,296 @@
         "id": "p7_custom_80056",
         "group": "5.2",
         "text": "5.2"
+      }
+    ],
+    "8": [
+      {
+        "id": "p8_ex1_1",
+        "type": "fill",
+        "page": 8,
+        "exercise": "1",
+        "label": "-ity",
+        "top": 27.3,
+        "left": 22,
+        "width": 14,
+        "height": 1.9,
+        "correct": "security or SECURITY"
+      },
+      {
+        "id": "p8_ex1_2a",
+        "type": "fill",
+        "page": 8,
+        "exercise": "1",
+        "label": "-tion(1)",
+        "top": 29.1,
+        "left": 18,
+        "width": 14,
+        "height": 1.9,
+        "correct": "communication or information"
+      },
+      {
+        "id": "p8_ex1_2b",
+        "type": "fill",
+        "page": 8,
+        "exercise": "1",
+        "label": "-tion(2)",
+        "top": 29.1,
+        "left": 33,
+        "width": 14,
+        "height": 1.9,
+        "correct": "information or communication"
+      },
+      {
+        "id": "p8_ex1_3a",
+        "type": "fill",
+        "page": 8,
+        "exercise": "1",
+        "label": "-ment(1)",
+        "top": 30.9,
+        "left": 18,
+        "width": 14,
+        "height": 1.9,
+        "correct": "achievement or government"
+      },
+      {
+        "id": "p8_ex1_3b",
+        "type": "fill",
+        "page": 8,
+        "exercise": "1",
+        "label": "-ment(2)",
+        "top": 30.9,
+        "left": 33,
+        "width": 14,
+        "height": 1.9,
+        "correct": "government or achievement"
+      },
+      {
+        "id": "p8_ex1_4a",
+        "type": "fill",
+        "page": 8,
+        "exercise": "1",
+        "label": "-ship(1)",
+        "top": 32.7,
+        "left": 18,
+        "width": 14,
+        "height": 1.9,
+        "correct": "friendship or membership"
+      },
+      {
+        "id": "p8_ex1_4b",
+        "type": "fill",
+        "page": 8,
+        "exercise": "1",
+        "label": "-ship(2)",
+        "top": 32.7,
+        "left": 33,
+        "width": 14,
+        "height": 1.9,
+        "correct": "membership or friendship"
+      },
+      {
+        "id": "p8_ex2_2",
+        "type": "fill",
+        "page": 8,
+        "exercise": "2",
+        "label": "2",
+        "top": 42.1,
+        "left": 40.5,
+        "width": 12,
+        "height": 1.9,
+        "correct": "security or SECURITY"
+      },
+      {
+        "id": "p8_ex2_3",
+        "type": "fill",
+        "page": 8,
+        "exercise": "2",
+        "label": "3",
+        "top": 46.8,
+        "left": 26.5,
+        "width": 14,
+        "height": 1.9,
+        "correct": "information or INFORMATION"
+      },
+      {
+        "id": "p8_ex2_4",
+        "type": "fill",
+        "page": 8,
+        "exercise": "2",
+        "label": "4",
+        "top": 48.5,
+        "left": 27,
+        "width": 9,
+        "height": 1.9,
+        "correct": "ability or ABILITY"
+      },
+      {
+        "id": "p8_ex2_5",
+        "type": "fill",
+        "page": 8,
+        "exercise": "2",
+        "label": "5",
+        "top": 51.8,
+        "left": 35,
+        "width": 9,
+        "height": 1.9,
+        "correct": "friendship or FRIENDSHIP"
+      },
+      {
+        "id": "p8_ex3_2",
+        "type": "fill",
+        "page": 8,
+        "exercise": "3",
+        "label": "2",
+        "top": 71.8,
+        "left": 19.7,
+        "width": 9.2,
+        "height": 2.2,
+        "correct": "improvements or improvement"
+      },
+      {
+        "id": "p8_ex3_3",
+        "type": "fill",
+        "page": 8,
+        "exercise": "3",
+        "label": "3",
+        "top": 74.7,
+        "left": 29.7,
+        "width": 8.5,
+        "height": 1.9,
+        "correct": "ability or abilities"
+      },
+      {
+        "id": "p8_ex3_4",
+        "type": "fill",
+        "page": 8,
+        "exercise": "3",
+        "label": "4",
+        "top": 79.7,
+        "left": 12.2,
+        "width": 9,
+        "height": 1.9,
+        "correct": "development or DEVELOPMENT"
+      },
+      {
+        "id": "p8_ex3_5",
+        "type": "fill",
+        "page": 8,
+        "exercise": "3",
+        "label": "5",
+        "top": 83.9,
+        "left": 12.2,
+        "width": 9,
+        "height": 1.9,
+        "correct": "imagination or imaginations"
+      },
+      {
+        "id": "p8_ex3_6",
+        "type": "fill",
+        "page": 8,
+        "exercise": "3",
+        "label": "6",
+        "top": 87.4,
+        "left": 12.2,
+        "width": 9,
+        "height": 1.9,
+        "correct": "relationships or relationship"
+      },
+      {
+        "id": "p8_ex3_7",
+        "type": "fill",
+        "page": 8,
+        "exercise": "3",
+        "label": "7",
+        "top": 88.9,
+        "left": 23.2,
+        "width": 9,
+        "height": 1.9,
+        "correct": "friendships or friendship"
+      },
+      {
+        "id": "p8_ex5_2",
+        "type": "fill",
+        "page": 8,
+        "exercise": "5a",
+        "label": "2",
+        "top": 55.6,
+        "left": 60.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "touch or TOUCH"
+      },
+      {
+        "id": "p8_ex5_3",
+        "type": "fill",
+        "page": 8,
+        "exercise": "5a",
+        "label": "3",
+        "top": 57.4,
+        "left": 59,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "on or ON"
+      },
+      {
+        "id": "p8_ex5_5",
+        "type": "fill",
+        "page": 8,
+        "exercise": "5a",
+        "label": "5",
+        "top": 61.4,
+        "left": 57,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "have or HAVE"
+      },
+      {
+        "id": "p8_ex5_6",
+        "type": "fill",
+        "page": 8,
+        "exercise": "5a",
+        "label": "6",
+        "top": 63,
+        "left": 57,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "help or HELP"
+      },
+      {
+        "id": "p8_ex5_7",
+        "type": "fill",
+        "page": 8,
+        "exercise": "5a",
+        "label": "7",
+        "top": 64.6,
+        "left": 57,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "keep or KEEP"
+      },
+      {
+        "id": "p8_ex5_8",
+        "type": "fill",
+        "page": 8,
+        "exercise": "5a",
+        "label": "8",
+        "top": 66.1,
+        "left": 57,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "make or MAKE"
+      },
+      {
+        "id": "p8_ex5_9",
+        "type": "fill",
+        "page": 8,
+        "exercise": "5a",
+        "label": "9",
+        "top": 67.7,
+        "left": 60.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "up or UP"
       }
     ],
     "9": [
@@ -145498,9 +145741,7 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "AZIZBEK77",
-      "unpaidMonths": 0,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "unpaidMonths": 0
     },
     {
       "id": "admin_official_teacher",
@@ -146031,5 +146272,5 @@
       }
     }
   },
-  "updatedAt": 1793739654673
+  "updatedAt": 1793797608378
 }
