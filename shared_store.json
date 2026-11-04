@@ -23900,7 +23900,7 @@
         "std_otkir_903_tursunmatov": "O'tkir Tursunmatov"
       },
       "customStudentPhones": {
-        "std_azimjon_848_toirov": "950079621"
+        "std_azimjon_848_toirov": "463123"
       },
       "students": [
         {
@@ -24216,8 +24216,8 @@
           "lastName": "Toirov",
           "email": "azimjon_848_toirov@student.ethith",
           "role": "student",
-          "phone": "950079621",
-          "parentPhone": "950079621",
+          "phone": "463123",
+          "parentPhone": "463123",
           "login": "azimjon_848_toirov",
           "password": "azimjon848toi",
           "joinedAt": "2026-10-28",
@@ -24225,7 +24225,7 @@
           "manuallyEnrolled": true,
           "isOnline": true,
           "coins": 150,
-          "updatedAt": 1793797977281
+          "updatedAt": 1793798128506
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -24794,7 +24794,7 @@
         "std_xudoyberdiyeva_775_madina": 1793625077010,
         "std_gulruh_365_tangirova": 1793625077010,
         "std_shohsasnam_517_bayrbekova": 1793625077010,
-        "std_azimjon_848_toirov": 1793797977281,
+        "std_azimjon_848_toirov": 1793798128506,
         "std_oktamova_798_zarina": 1793625077010,
         "std_shohista_786_nosurname": 1793625077010,
         "std_diyor_772_suyundikov": 1793625077010,
@@ -24805,7 +24805,7 @@
         "std_navroz_651_shavkatov": 1793625077010,
         "std_otkir_903_tursunmatov": 1793625077010
       },
-      "updatedAt": 1793797977281
+      "updatedAt": 1793798128506
     },
     {
       "id": "cls_urolov_azizbek_standard",
@@ -27427,7 +27427,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793797985960
+      "lastSeen": 1793798131157
     },
     {
       "id": "tg_98124765",
@@ -147594,5 +147594,5 @@
       }
     }
   },
-  "updatedAt": 1793797986707
+  "updatedAt": 1793798131326
 }
