@@ -1273,8 +1273,11 @@
       if (attCls) {
         if (event.attendance) attCls.attendance = event.attendance;
         if (event.schedule) attCls.schedule = event.schedule;
+        if (event.learningMonths !== undefined) attCls.learningMonths = event.learningMonths;
+        if (event.learningDays !== undefined) attCls.learningDays = event.learningDays;
         if (event.customStudentNames) attCls.customStudentNames = event.customStudentNames;
         if (event.activeHomework !== undefined) attCls.activeHomework = event.activeHomework;
+        if (event.activeHomeworks !== undefined) attCls.activeHomeworks = event.activeHomeworks;
         if (event.levelTestResults) attCls.levelTestResults = Object.assign({}, attCls.levelTestResults || {}, event.levelTestResults);
         uiNeedsRefresh = true;
         if (window._ethithRefreshAttendance && window._ethithCurrentView === 'attendance') {

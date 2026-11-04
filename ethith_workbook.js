@@ -159999,83 +159999,122 @@
     }
 
     var myClasses = (S.classes || []).filter(function(cls) {
+      if (!cls) return false;
+      if (curUser.classId && cls.id === curUser.classId) return true;
       return (cls.students || []).some(function(st) {
-        return st.id === curUser.id || st.email === curUser.email || (curUser.phone && st.phone === curUser.phone);
+        if (!st) return false;
+        return (st.id && curUser.id && st.id === curUser.id) ||
+               (curUser.email && st.email && curUser.email.toLowerCase() === st.email.toLowerCase()) ||
+               (curUser.login && st.login && curUser.login.toLowerCase() === st.login.toLowerCase()) ||
+               (curUser.phone && st.phone && curUser.phone === st.phone);
       });
     });
 
-    var activeHw = null;
-    var activeCls = null;
+    var activeHws = [];
     myClasses.forEach(function(cls) {
-      if (cls.activeHomework && cls.activeHomework.lessonCode) {
-        activeHw = cls.activeHomework;
-        activeCls = cls;
+      if (Array.isArray(cls.activeHomeworks) && cls.activeHomeworks.length > 0) {
+        cls.activeHomeworks.forEach(function(hw) {
+          if (hw && hw.lessonCode) activeHws.push({ hw: hw, cls: cls });
+        });
+      } else if (cls.activeHomework && cls.activeHomework.lessonCode) {
+        activeHws.push({ hw: cls.activeHomework, cls: cls });
+      }
+      if (cls.attendance && cls.attendance.homeworks) {
+        for (var dk in cls.attendance.homeworks) {
+          var item = cls.attendance.homeworks[dk];
+          if (Array.isArray(item)) {
+            item.forEach(function(hw) {
+              if (hw && hw.lessonCode && !activeHws.some(function(x) { return x.hw.lessonCode === hw.lessonCode; })) {
+                activeHws.push({ hw: hw, cls: cls });
+              }
+            });
+          } else if (item && item.lessonCode && !activeHws.some(function(x) { return x.hw.lessonCode === item.lessonCode; })) {
+            activeHws.push({ hw: item, cls: cls });
+          }
+        }
       }
     });
 
-    if (!activeHw) {
-      return { isStudent: true, hasActiveHw: false, isLocked: false, isCompleted: false, isAssigned: false };
+    // If NO homework has been assigned by teacher, ALL lessons are strictly locked for students!
+    if (activeHws.length === 0) {
+      return {
+        isStudent: true,
+        hasActiveHw: false,
+        isLocked: true,
+        isCompleted: false,
+        isAssigned: false,
+        message: "Hozirda ustozingiz tomonidan hech qanday uy vazifasi belgilanmagan. Darslar va topshiriqlar faqat ustozingiz belgilaganda ochiladi."
+      };
     }
 
-    var assignedUnit = parseInt(activeHw.unit, 10);
-    var assignedLessonCode = String(activeHw.lessonCode || '').trim();
     var thisUnit = parseInt(unitNum, 10);
     var thisLessonCode = String(lessonCode || '').trim();
 
-    var isThisLessonAssigned = (assignedUnit === thisUnit && assignedLessonCode === thisLessonCode);
+    var matchObj = activeHws.find(function(x) {
+      var aUnit = parseInt(x.hw.unit, 10);
+      var aCode = String(x.hw.lessonCode || '').trim();
+      return (aUnit === thisUnit || isNaN(thisUnit)) && (aCode === thisLessonCode);
+    });
 
-    // Check if student completed this homework
-    var isCompleted = false;
-    var submissionKey = 'ethith_hw_completed_' + (curUser.id || curUser.email || curUser.phone) + '_' + assignedLessonCode;
-    if (localStorage.getItem(submissionKey)) {
-      isCompleted = true;
-    }
-    if (activeCls && activeCls.attendance && activeCls.attendance.records) {
-      var recs = activeCls.attendance.records;
-      for (var dateKey in recs) {
-        var dObj = recs[dateKey];
-        if (dObj && dObj[curUser.id] && dObj[curUser.id].hwLesson === assignedLessonCode) {
-          isCompleted = true;
-          break;
-        }
-      }
-    }
-
-    if (isThisLessonAssigned) {
-      if (isCompleted) {
-        return {
-          isStudent: true,
-          hasActiveHw: true,
-          isLocked: true,
-          isCompleted: true,
-          isAssigned: true,
-          assignedTitle: activeHw.lessonTitle || assignedLessonCode,
-          assignedUnit: assignedUnit,
-          message: "Siz ushbu vazifani muvaffaqiyatli topshirgansiz! Natijangiz jurnalga yozilgan, qayta ishlash mumkin emas."
-        };
-      } else {
-        return {
-          isStudent: true,
-          hasActiveHw: true,
-          isLocked: false,
-          isCompleted: false,
-          isAssigned: true,
-          assignedTitle: activeHw.lessonTitle || assignedLessonCode,
-          assignedUnit: assignedUnit
-        };
-      }
-    } else {
+    if (!matchObj) {
+      var assignedTitles = activeHws.map(function(x) { return 'Unit ' + (x.hw.unit || '') + ' (' + (x.hw.lessonCode || '') + ')'; }).join(', ');
       return {
         isStudent: true,
         hasActiveHw: true,
         isLocked: true,
         isCompleted: false,
         isAssigned: false,
-        assignedTitle: activeHw.lessonTitle || assignedLessonCode,
-        assignedUnit: assignedUnit,
-        message: "Ushbu dars qulflangan! Ustozingiz faqat Unit " + assignedUnit + " — " + (activeHw.lessonTitle || assignedLessonCode) + " darsini uy vazifasi qilib belgilagan."
+        assignedTitle: activeHws[0].hw.lessonTitle || activeHws[0].hw.lessonCode,
+        assignedUnit: activeHws[0].hw.unit,
+        allAssigned: activeHws,
+        message: "Ushbu dars qulflangan! Ustozingiz faqat belgilangan darslarni ochgan: " + assignedTitles
       };
     }
+
+    var matchedHw = matchObj.hw;
+    var matchedCls = matchObj.cls;
+    var isCompleted = false;
+    var submissionKey = 'ethith_hw_completed_' + (curUser.id || curUser.email || curUser.phone) + '_' + thisLessonCode;
+    if (localStorage.getItem(submissionKey)) isCompleted = true;
+    if (matchedHw.dateKey) {
+      var submissionKeyDate = 'ethith_hw_completed_' + (curUser.id || curUser.email || curUser.phone) + '_' + matchedHw.dateKey + '_' + thisLessonCode;
+      if (localStorage.getItem(submissionKeyDate)) isCompleted = true;
+    }
+    if (matchedCls && matchedCls.attendance && matchedCls.attendance.records) {
+      var recs = matchedCls.attendance.records;
+      for (var dK in recs) {
+        var rec = recs[dK] && (recs[dK][curUser.id] || recs[dK][curUser.email]);
+        if (rec && (rec.score || rec.hwDone)) {
+          if (rec.hwLesson === thisLessonCode || (!rec.hwLesson && dK === matchedHw.dateKey)) {
+            isCompleted = true;
+            break;
+          }
+        }
+      }
+    }
+
+    if (isCompleted) {
+      return {
+        isStudent: true,
+        hasActiveHw: true,
+        isLocked: true,
+        isCompleted: true,
+        isAssigned: true,
+        assignedTitle: matchedHw.lessonTitle || thisLessonCode,
+        assignedUnit: thisUnit,
+        message: "Siz ushbu vazifani muvaffaqiyatli topshirgansiz! Natijangiz jurnalga yozilgan, qayta ishlash mumkin emas."
+      };
+    }
+
+    return {
+      isStudent: true,
+      hasActiveHw: true,
+      isLocked: false,
+      isCompleted: false,
+      isAssigned: true,
+      assignedTitle: matchedHw.lessonTitle || thisLessonCode,
+      assignedUnit: thisUnit
+    };
   };
 
   WB.renderCatalogHomeworkBannerHtml = function() {
@@ -160127,10 +160166,39 @@
       shadowColor = 'rgba(139,92,246,0.35)';
     }
 
-    // 1. If active homework is set and this lesson is LOCKED
-    if (lock.hasActiveHw && !lock.isAssigned) {
+    if (lock.isStudent) {
+      // 1. If assigned and completed
+      if (lock.isAssigned && lock.isCompleted) {
+        return '<div class="eth-wb-lesson-row" data-unit="' + unitNum + '" data-lesson="' + les.code + '" ' +
+          'onclick="if(window.EthithApp&&window.EthithApp.showToast){window.EthithApp.showToast(\'Siz ushbu vazifani topshirgansiz! Natijangiz saqlangan.\',\'info\');}else{alert(\'Siz ushbu vazifani topshirgansiz!\');}" ' +
+          'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-radius:12px;background:rgba(16,185,129,0.12);border:1.5px solid #10b981;cursor:default;box-shadow:0 0 15px rgba(16,185,129,0.2);">' +
+          '<div style="min-width:0;flex:1;">' +
+            '<div style="font-size:13.5px;font-weight:800;color:#34d399;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
+            '<div style="font-size:11.5px;color:#a7f3d0;font-weight:700;">✅ Topshirildi (Natijangiz jurnalga yozildi)</div>' +
+          '</div>' +
+          '<button type="button" style="flex:none;background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:12px;font-weight:900;cursor:default;">✅ Topshirilgan</button>' +
+        '</div>';
+      }
+
+      // 2. If assigned and ready to do
+      if (lock.isAssigned && !lock.isCompleted) {
+        return '<div class="eth-wb-lesson-row" data-unit="' + unitNum + '" data-lesson="' + les.code + '" ' +
+          'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.' + openFnName + '(' + unitNum + ', \'' + les.code + '\');" ' +
+          'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 14px;border-radius:12px;background:rgba(245,158,11,0.18);border:2px solid #f59e0b;cursor:pointer;box-shadow:0 0 25px rgba(245,158,11,0.45);">' +
+          '<div style="min-width:0;flex:1;">' +
+            '<div style="font-size:14px;font-weight:900;color:#fde047;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">⚡ ' + les.title + ' <span style="font-size:11px;background:#f59e0b;color:#000;padding:2px 6px;border-radius:6px;margin-left:4px;">VAZIFA</span></div>' +
+            '<div style="font-size:11.5px;color:#fef08a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
+          '</div>' +
+          '<button type="button" onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.' + openFnName + '(' + unitNum + ', \'' + les.code + '\');" ' +
+            'style="flex:none;background:linear-gradient(135deg, #f59e0b, #d97706);color:#000;border:none;border-radius:10px;padding:8px 18px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 0 15px rgba(245,158,11,0.6);">' +
+            '⚡ Boshlash ➔' +
+          '</button>' +
+        '</div>';
+      }
+
+      // 3. Not assigned -> Strictly LOCKED for student!
       return '<div class="eth-wb-lesson-row" data-unit="' + unitNum + '" data-lesson="' + les.code + '" ' +
-        'onclick="if(window.EthithApp&&window.EthithApp.showToast){window.EthithApp.showToast(\'Ushbu dars qulflangan! Faqat belgilangan uy vazifasini ishlashingiz mumkin.\',\'warning\');}else{alert(\'Ushbu dars qulflangan!\');}" ' +
+        'onclick="if(window.EthithApp&&window.EthithApp.showToast){window.EthithApp.showToast(\'Ushbu dars qulflangan! Faqat ustozingiz belgilagan darslarni ishlashingiz mumkin.\',\'warning\');}else{alert(\'Ushbu dars qulflangan!\');}" ' +
         'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.1);opacity:0.45;filter:grayscale(0.7);cursor:not-allowed;">' +
         '<div style="min-width:0;flex:1;">' +
           '<div style="font-size:13.5px;font-weight:700;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
@@ -160140,36 +160208,7 @@
       '</div>';
     }
 
-    // 2. If this lesson is the assigned homework and is ALREADY COMPLETED
-    if (lock.hasActiveHw && lock.isAssigned && lock.isCompleted) {
-      return '<div class="eth-wb-lesson-row" data-unit="' + unitNum + '" data-lesson="' + les.code + '" ' +
-        'onclick="if(window.EthithApp&&window.EthithApp.showToast){window.EthithApp.showToast(\'Siz ushbu vazifani topshirgansiz! Natijangiz saqlangan, qayta ishlash mumkin emas.\',\'info\');}else{alert(\'Siz ushbu vazifani topshirgansiz!\');}" ' +
-        'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-radius:12px;background:rgba(16,185,129,0.12);border:1.5px solid #10b981;cursor:default;box-shadow:0 0 15px rgba(16,185,129,0.2);">' +
-        '<div style="min-width:0;flex:1;">' +
-          '<div style="font-size:13.5px;font-weight:800;color:#34d399;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.title + '</div>' +
-          '<div style="font-size:11.5px;color:#a7f3d0;font-weight:700;">✅ Topshirildi (Natijangiz jurnalga yozildi)</div>' +
-        '</div>' +
-        '<button type="button" style="flex:none;background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:10px;padding:7px 16px;font-size:12px;font-weight:900;cursor:default;">✅ Topshirilgan</button>' +
-      '</div>';
-    }
-
-    // 3. If this lesson is the assigned homework and NEEDS COMPLETION
-    if (lock.hasActiveHw && lock.isAssigned && !lock.isCompleted) {
-      return '<div class="eth-wb-lesson-row" data-unit="' + unitNum + '" data-lesson="' + les.code + '" ' +
-        'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.' + openFnName + '(' + unitNum + ', \'' + les.code + '\');" ' +
-        'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 14px;border-radius:12px;background:rgba(245,158,11,0.18);border:2px solid #f59e0b;cursor:pointer;box-shadow:0 0 25px rgba(245,158,11,0.45);">' +
-        '<div style="min-width:0;flex:1;">' +
-          '<div style="font-size:14px;font-weight:900;color:#fde047;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">⚡ ' + les.title + ' <span style="font-size:11px;background:#f59e0b;color:#000;padding:2px 6px;border-radius:6px;margin-left:4px;">VAZIFA</span></div>' +
-          '<div style="font-size:11.5px;color:#fef08a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + les.desc + '</div>' +
-        '</div>' +
-        '<button type="button" onclick="event.stopPropagation(); if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.' + openFnName + '(' + unitNum + ', \'' + les.code + '\');" ' +
-          'style="flex:none;background:linear-gradient(135deg, #f59e0b, #d97706);color:#000;border:none;border-radius:10px;padding:8px 18px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 0 15px rgba(245,158,11,0.6);">' +
-          '⚡ Boshlash ➔' +
-        '</button>' +
-      '</div>';
-    }
-
-    // 4. Default normal lesson
+    // Default for Teacher and Admin:
     return '<div class="eth-wb-lesson-row" data-unit="' + unitNum + '" data-lesson="' + les.code + '" ' +
       'onclick="if(window.ETHITH_WORKBOOK_B1) window.ETHITH_WORKBOOK_B1.' + openFnName + '(' + unitNum + ', \'' + les.code + '\');" ' +
       'style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,0.03);border:1.5px solid rgba(255,255,255,0.08);cursor:pointer;transition:all 0.2s;">' +
@@ -161517,66 +161556,29 @@
     var isStudent = curUser && curUser.role === 'student';
 
     if (isStudent) {
-      var myClasses = (S.classes || []).filter(function(cls) {
-        return (cls.students || []).some(function(st) {
-          return st.id === curUser.id || st.email === curUser.email || (curUser.phone && st.phone === curUser.phone);
-        });
-      });
-
-      var activeHwFound = null;
-      var activeClsFound = null;
-      myClasses.forEach(function(cls) {
-        if (cls.activeHomework && cls.activeHomework.lessonCode) {
-          activeHwFound = cls.activeHomework;
-          activeClsFound = cls;
-        }
-      });
-
-      if (activeHwFound) {
-        var assignedLessonCode = String(activeHwFound.lessonCode || '').trim();
-        var currentLessonCode = String(lessonCode || '').trim();
-        var assignedUnit = parseInt(activeHwFound.unit, 10);
-        var currentUnit = parseInt(unitNum, 10);
-
-        // Check if student is trying to open an unassigned unit/lesson
-        if (assignedLessonCode !== currentLessonCode || assignedUnit !== currentUnit) {
-          container.innerHTML = '<div style="max-width:540px;margin:50px auto;text-align:center;background:linear-gradient(145deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1.5px solid rgba(239,68,68,0.45);border-radius:24px;padding:36px 24px;box-shadow:0 20px 60px rgba(0,0,0,0.7);color:#fff;">' +
-            '<div style="font-size:52px;margin-bottom:12px;">🔒</div>' +
-            '<h2 style="font-size:22px;font-weight:900;margin:0 0 10px;color:#f87171;">Ushbu Dars Qulflangan!</h2>' +
-            '<p style="font-size:14px;color:#cbd5e1;line-height:1.5;margin:0 0 24px;">' +
-              'Ustozingiz hozirda faqat <b style="color:#38bdf8;">Unit ' + assignedUnit + ' — ' + (activeHwFound.lessonTitle || assignedLessonCode) + '</b> darsini uy vazifasi qilib belgilagan.<br>Barcha boshqa unitlar qulflangan.' +
+      var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode);
+      if (lockState.isLocked) {
+        if (lockState.isCompleted) {
+          container.innerHTML = '<div style="max-width:540px;margin:50px auto;text-align:center;background:linear-gradient(145deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1.5px solid rgba(16,185,129,0.45);border-radius:24px;padding:36px 24px;box-shadow:0 20px 60px rgba(0,0,0,0.7);color:#fff;">' +
+            '<div style="font-size:52px;margin-bottom:12px;">✅</div>' +
+            '<h2 style="font-size:22px;font-weight:900;margin:0 0 10px;color:#34d399;">Siz Ushbu Vazifani Topshirgansiz!</h2>' +
+            '<div style="display:inline-block;background:rgba(16,185,129,0.18);border:1px solid rgba(52,211,153,0.4);border-radius:12px;padding:8px 20px;font-size:18px;font-weight:900;color:#34d399;margin-bottom:14px;">' +
+              'Baho: 5 (100%)' +
+            '</div>' +
+            '<p style="font-size:13.5px;color:#94a3b8;line-height:1.5;margin:0 0 24px;">' +
+              'Sizning javoblaringiz muvaffaqiyatli qabul qilingan va ustozingiz davomat jurnaliga kiritilgan. Tizim qoidasiga ko‘ra vazifani qayta ishlashga ruxsat berilmaydi.' +
             '</p>' +
             '<button onclick="window.ethithOpenApp(\'dash\')" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:12px 28px;font-size:14px;font-weight:800;cursor:pointer;">' +
               '← Bosh sahifaga qaytish' +
             '</button>' +
           '</div>';
           return;
-        }
-
-        // Check if student already submitted this homework (One-time submission only!)
-        var pastRecord = null;
-        if (activeClsFound && activeClsFound.attendance && activeClsFound.attendance.records) {
-          var recDate = activeClsFound.attendance.records[activeHwFound.dateKey];
-          if (recDate) {
-            pastRecord = recDate[curUser.id] || recDate[curUser.email];
-          }
-        }
-        var localKey = 'ethith_hw_completed_' + (curUser.id || curUser.email) + '_' + (activeHwFound.dateKey || '') + '_' + currentLessonCode;
-        var localDone = false;
-        try { localDone = !!JSON.parse(localStorage.getItem(localKey) || 'null'); } catch(e) {}
-
-        if ((pastRecord && (pastRecord.score || pastRecord.hwDone)) || localDone) {
-          var displayScore = (pastRecord && pastRecord.score) || '5';
-          var displayPct = (pastRecord && pastRecord.hwPct) || 100;
-
-          container.innerHTML = '<div style="max-width:540px;margin:50px auto;text-align:center;background:linear-gradient(145deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1.5px solid rgba(16,185,129,0.45);border-radius:24px;padding:36px 24px;box-shadow:0 20px 60px rgba(0,0,0,0.7);color:#fff;">' +
-            '<div style="font-size:52px;margin-bottom:12px;">✅</div>' +
-            '<h2 style="font-size:22px;font-weight:900;margin:0 0 10px;color:#34d399;">Siz Ushbu Vazifani Topshirgansiz!</h2>' +
-            '<div style="display:inline-block;background:rgba(16,185,129,0.18);border:1px solid rgba(52,211,153,0.4);border-radius:12px;padding:8px 20px;font-size:18px;font-weight:900;color:#34d399;margin-bottom:14px;">' +
-              'Baho: ' + displayScore + ' (' + displayPct + '%)' +
-            '</div>' +
-            '<p style="font-size:13.5px;color:#94a3b8;line-height:1.5;margin:0 0 24px;">' +
-              'Sizning javoblaringiz muvaffaqiyatli qabul qilingan va ustozingiz davomat jurnaliga kiritilgan. Tizim qoidasiga ko‘ra vazifani qayta ishlashga ruxsat berilmaydi.' +
+        } else {
+          container.innerHTML = '<div style="max-width:540px;margin:50px auto;text-align:center;background:linear-gradient(145deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1.5px solid rgba(239,68,68,0.45);border-radius:24px;padding:36px 24px;box-shadow:0 20px 60px rgba(0,0,0,0.7);color:#fff;">' +
+            '<div style="font-size:52px;margin-bottom:12px;">🔒</div>' +
+            '<h2 style="font-size:22px;font-weight:900;margin:0 0 10px;color:#f87171;">Ushbu Dars Qulflangan!</h2>' +
+            '<p style="font-size:14px;color:#cbd5e1;line-height:1.5;margin:0 0 24px;">' +
+              (lockState.message || "Ustozingiz faqat belgilangan uy vazifalarini bajarishga ruxsat bergan.<br>Barcha boshqa unitlar va darslar qulflangan.") +
             '</p>' +
             '<button onclick="window.ethithOpenApp(\'dash\')" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:12px 28px;font-size:14px;font-weight:800;cursor:pointer;">' +
               '← Bosh sahifaga qaytish' +

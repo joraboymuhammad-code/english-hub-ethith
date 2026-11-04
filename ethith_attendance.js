@@ -881,8 +881,16 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           if (initC.name) existing.name = initC.name;
           if (initC.level) existing.level = initC.level;
           if (initC.teacherName) existing.teacherName = initC.teacherName;
-          if (initC.learningMonths !== undefined) existing.learningMonths = initC.learningMonths;
-          if (initC.learningDays !== undefined) existing.learningDays = initC.learningDays;
+          if (existing.learningMonths === undefined && initC.learningMonths !== undefined) existing.learningMonths = initC.learningMonths;
+          if (existing.learningDays === undefined && initC.learningDays !== undefined) existing.learningDays = initC.learningDays;
+          try {
+            var durStr = localStorage.getItem('ethith_class_duration_' + existing.id);
+            if (durStr) {
+              var durObj = JSON.parse(durStr);
+              if (durObj && durObj.learningMonths !== undefined) existing.learningMonths = durObj.learningMonths;
+              if (durObj && durObj.learningDays !== undefined) existing.learningDays = durObj.learningDays;
+            }
+          } catch(e) {}
           if (initC.studentPayments) {
             existing.studentPayments = Object.assign({}, initC.studentPayments, existing.studentPayments || {});
           }
@@ -996,27 +1004,6 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           });
         }
         cls.students = testersList;
-      }
-    }
-
-    // Ensure default activeHomework exists
-    if (!cls.activeHomework) {
-      var todayObj = new Date();
-      var tKey = formatDateKey(todayObj);
-      var tDisp = formatDisplayDate(todayObj);
-      cls.activeHomework = {
-        dateKey: tKey,
-        dateDisp: tDisp,
-        unit: 1,
-        lessonCode: '1.1',
-        lessonTitle: "1.1 Are you really my friend?",
-        pages: [4, 5],
-        note: "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        assignedAt: 0
-      };
-      cls.attendance.homeworks[tKey] = cls.activeHomework;
-      if (!cls.attendance.lessonTypes[tKey] || cls.attendance.lessonTypes[tKey] === 'Oddiy') {
-        cls.attendance.lessonTypes[tKey] = 'Vazifa: 1.1';
       }
     }
 
@@ -1403,8 +1390,11 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           classCode: cls.code,
           attendance: cls.attendance,
           schedule: cls.schedule,
+          learningMonths: cls.learningMonths,
+          learningDays: cls.learningDays,
           customStudentNames: cls.customStudentNames,
           activeHomework: cls.activeHomework,
+          activeHomeworks: cls.activeHomeworks,
           ts: cls.attendance.updatedAt
         });
       }
@@ -1833,6 +1823,18 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         // Group Duration & 90-Day Level Test Countdown
         var lMonths = Number(cls.learningMonths) || 0;
         var lDays = Number(cls.learningDays) || 0;
+        if (!lMonths && !lDays) {
+          try {
+            var durStr = localStorage.getItem('ethith_class_duration_' + cls.id);
+            if (durStr) {
+              var durObj = JSON.parse(durStr);
+              if (durObj) {
+                lMonths = Number(durObj.learningMonths) || 0;
+                lDays = Number(durObj.learningDays) || 0;
+              }
+            }
+          } catch(e) {}
+        }
         var totalDaysElapsed = (lMonths * 30) + lDays;
         var remainingDays = Math.max(0, 90 - totalDaysElapsed);
         var testsCompleted = Math.min(24, Math.max(0, Math.round((totalDaysElapsed / 90) * 24)));
@@ -2677,43 +2679,40 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       '</div>' +
       '<div style="display:flex;flex-direction:column;gap:14px;">' +
         '<div>' +
-          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">O‘qituvchi Ism va Familiyasi</label>' +
-          '<input type="text" id="eaNewTName" placeholder="Masalan: Zafar Umarov" style="width:100%;padding:12px 14px;background:#1e293b;border:1px solid rgba(56,189,248,0.3);border-radius:12px;color:#fff;font-weight:700;font-size:14px;outline:none;box-sizing:border-box;" />' +
+          '<label style="display:block;font-size:12px;font-weight:900;color:#38bdf8;text-transform:uppercase;margin-bottom:8px;letter-spacing:0.5px;">O‘qituvchi Ism va Familiyasi</label>' +
+          '<input type="text" id="eaNewTName" placeholder="Masalan: Zafar Umarov" autofocus style="width:100%;padding:14px 16px;background:#1e293b;border:2px solid rgba(56,189,248,0.5);border-radius:14px;color:#fff;font-weight:800;font-size:15px;outline:none;box-sizing:border-box;box-shadow:0 0 20px rgba(56,189,248,0.2);" />' +
+          '<small style="font-size:11px;color:#94a3b8;margin-top:6px;display:block;">Faqat o‘qituvchi ism va familiyasini kiriting. Login, parol va taklif kodlari avtomatik yaratiladi.</small>' +
         '</div>' +
 
-        // Auto Generated Credentials Preview Box
-        '<div style="background:rgba(15,23,42,0.8);border:1px dashed rgba(56,189,248,0.4);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px;">' +
+        // Auto Generated Credentials Preview Box (Readonly)
+        '<div style="background:rgba(15,23,42,0.85);border:1px dashed rgba(56,189,248,0.45);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;">' +
             '<span style="font-size:11.5px;font-weight:900;color:#38bdf8;text-transform:uppercase;letter-spacing:0.5px;">🔐 Avtomatik Yaratilgan Kirish Ma‘lumotlari:</span>' +
-            '<button type="button" id="eaBtnRegenCreds" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);border-radius:6px;padding:2px 8px;font-size:11px;font-weight:800;cursor:pointer;">🔄 Yangilash</button>' +
+            '<button type="button" id="eaBtnRegenCreds" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:800;cursor:pointer;">🔄 Yangilash</button>' +
           '</div>' +
           '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">' +
             '<div>' +
-              '<label style="display:block;font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:4px;">Login:</label>' +
-              '<input type="text" id="eaNewTLogin" style="width:100%;padding:9px 12px;background:#0b101b;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#38bdf8;font-family:monospace;font-weight:900;font-size:13px;outline:none;box-sizing:border-box;" />' +
+              '<label style="display:block;font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:4px;">Login (Avtomatik):</label>' +
+              '<input type="text" id="eaNewTLogin" readonly style="width:100%;padding:10px 12px;background:#0b101b;border:1px solid rgba(56,189,248,0.25);border-radius:10px;color:#38bdf8;font-family:monospace;font-weight:900;font-size:13.5px;outline:none;box-sizing:border-box;cursor:default;" />' +
             '</div>' +
             '<div>' +
-              '<label style="display:block;font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:4px;">Maxfiy Parol:</label>' +
-              '<input type="text" id="eaNewTPassword" style="width:100%;padding:9px 12px;background:#0b101b;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#34d399;font-family:monospace;font-weight:900;font-size:13px;outline:none;box-sizing:border-box;" />' +
+              '<label style="display:block;font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:4px;">Maxfiy Parol (Avtomatik):</label>' +
+              '<input type="text" id="eaNewTPassword" readonly style="width:100%;padding:10px 12px;background:#0b101b;border:1px solid rgba(52,211,153,0.25);border-radius:10px;color:#34d399;font-family:monospace;font-weight:900;font-size:13.5px;outline:none;box-sizing:border-box;cursor:default;" />' +
             '</div>' +
           '</div>' +
           '<div>' +
-            '<label style="display:block;font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:4px;">Ustoz Taklif Kodi (O‘quvchilar guruhga qo‘shilishi uchun):</label>' +
-            '<input type="text" id="eaNewTCode" style="width:100%;padding:9px 12px;background:#0b101b;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#f59e0b;font-family:monospace;font-weight:900;font-size:13.5px;letter-spacing:1px;outline:none;box-sizing:border-box;" />' +
+            '<label style="display:block;font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:4px;">Ustoz Taklif Kodi (Avtomatik):</label>' +
+            '<input type="text" id="eaNewTCode" readonly style="width:100%;padding:10px 12px;background:#0b101b;border:1px solid rgba(245,158,11,0.25);border-radius:10px;color:#f59e0b;font-family:monospace;font-weight:900;font-size:14px;letter-spacing:1px;outline:none;box-sizing:border-box;cursor:default;" />' +
           '</div>' +
         '</div>' +
 
-        // Salary Percentage & Speciality
-        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
-          '<div>' +
-            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Oylik Ulush Foizi (%)</label>' +
-            '<input type="number" id="eaNewTSharePercent" min="0" max="100" value="50" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(16,185,129,0.3);border-radius:12px;color:#34d399;font-weight:900;font-size:15px;outline:none;box-sizing:border-box;" />' +
-            '<small style="font-size:10.5px;color:#94a3b8;margin-top:3px;display:block;">Masalan: 50, 55 yoki 30%</small>' +
-          '</div>' +
-          '<div>' +
-            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Fan / Mutaxassislik</label>' +
-            '<input type="text" id="eaNewTSubject" value="Ingliz tili" style="width:100%;padding:11px 14px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:700;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
-          '</div>' +
+        '<input type="hidden" id="eaNewTSharePercent" value="50" />' +
+        '<input type="hidden" id="eaNewTSubject" value="Ingliz tili" />' +
+
+        '<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:8px 14px;font-size:12px;color:#94a3b8;">' +
+          '<span>📊 Ulush: <b style="color:#34d399;">50%</b></span>' +
+          '<span>📚 Fan: <b style="color:#38bdf8;">Ingliz tili</b></span>' +
+          '<span style="color:#64748b;font-size:11px;">(Avtomatik standart)</span>' +
         '</div>' +
 
         '<div style="display:flex;gap:10px;margin-top:10px;">' +
@@ -2870,6 +2869,8 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         }
       }
 
+      EA.activeTeacherId = null;
+      EA.activeClassId = null;
       close();
 
       if (window.EthithApp && window.EthithApp.toast) {
@@ -2879,11 +2880,13 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       }
 
       // Immediately refresh Dashboard, Attendance, and Staff views without delay!
-      if (window._ethithRefreshTeachersList) {
+      var apV = document.getElementById('apView');
+      if (apV && typeof EA.renderTeachersDirectory === 'function') {
+        EA.renderTeachersDirectory(apV);
+      } else if (window._ethithRefreshTeachersList) {
         window._ethithRefreshTeachersList();
-      } else {
-        var apV = document.getElementById('apView');
-        if (apV) EA.render(apV);
+      } else if (apV) {
+        EA.render(apV);
       }
     };
   };
@@ -4493,15 +4496,30 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       return html;
     }
 
-    function buildLessonOptions(bLevel, uNum, activeCode) {
+    var curHwCodes = [];
+    if (Array.isArray(cls.activeHomeworks) && cls.activeHomeworks.length > 0) {
+      curHwCodes = cls.activeHomeworks.map(function(h) { return h.lessonCode; });
+    } else if (curHw && curHw.lessonCode) {
+      curHwCodes = [curHw.lessonCode];
+    } else {
+      curHwCodes = ['1.1'];
+    }
+
+    function buildLessonCheckboxes(bLevel, uNum, selectedCodes) {
+      if (!Array.isArray(selectedCodes)) selectedCodes = [selectedCodes || (uNum + '.1')];
       var uList = getWorkbookUnitsList(bLevel);
       var uObj = uList.find(function(x) { return x.unit === parseInt(uNum, 10); }) || uList[0];
-      var html = '';
+      var html = '<div style="display:grid;grid-template-columns:1fr;gap:6px;max-height:170px;overflow-y:auto;padding:6px;background:rgba(0,0,0,0.3);border-radius:12px;border:1px solid rgba(255,255,255,0.1);">';
       (uObj.lessons || []).forEach(function(les) {
         var dispPgs = (les.pages || []).map(function(p) { return p > 2000 ? (p - 2000) : p; });
-        var pgStr = dispPgs.length ? ' (Workbook ' + dispPgs.join('–') + '-betlar)' : '';
-        html += '<option value="' + esc(les.code) + '" ' + (les.code === activeCode ? 'selected' : '') + '>' + esc(les.title) + pgStr + '</option>';
+        var pgStr = dispPgs.length ? ' (' + dispPgs.join('–') + '-bet)' : '';
+        var isChk = selectedCodes.indexOf(les.code) !== -1;
+        html += '<label style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;background:' + (isChk ? 'rgba(16,185,129,0.18)' : 'rgba(255,255,255,0.04)') + ';border:1px solid ' + (isChk ? '#10b981' : 'rgba(255,255,255,0.1)') + ';cursor:pointer;transition:all 0.15s;">' +
+          '<input type="checkbox" class="ea-hw-lesson-chk" value="' + esc(les.code) + '" ' + (isChk ? 'checked' : '') + ' style="accent-color:#10b981;width:18px;height:18px;cursor:pointer;" />' +
+          '<span style="font-size:13px;font-weight:800;color:' + (isChk ? '#34d399' : '#e2e8f0') + ';">' + esc(les.title) + '<small style="color:#94a3b8;font-weight:600;margin-left:6px;">' + pgStr + '</small></span>' +
+        '</label>';
       });
+      html += '</div>';
       return html;
     }
 
@@ -4545,10 +4563,11 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
               '</select>' +
             '</div>' +
             '<div>' +
-              '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📝 Topshiriq / Workbook Darsi:</label>' +
-              '<select id="eaHwLessonSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(16,185,129,0.45);background:rgba(8,13,26,0.9);color:#34d399;font-weight:800;font-size:13.5px;outline:none;">' +
-                buildLessonOptions(curHw.bookLevel || 'B1+', parseInt(curHw.unit, 10) || 1, curHw.lessonCode || '1.1') +
-              '</select>' +
+              '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📝 Topshiriq / Workbook Darslari (1, 2, 3 yoki 4 ta darsni tanlashingiz mumkin):</label>' +
+              '<div id="eaHwLessonsCheckboxesWrap">' +
+                buildLessonCheckboxes(curHw.bookLevel || 'B1+', parseInt(curHw.unit, 10) || 1, curHwCodes) +
+              '</div>' +
+              '<small style="font-size:11px;color:#38bdf8;margin-top:5px;display:block;">Ustoz bir nechta darsni tanlashi mumkin. O‘quvchi uchun faqat tanlangan darslar ochiladi.</small>' +
             '</div>' +
           '</div>' +
 
@@ -4614,19 +4633,38 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
     var bookLvlSel = modalRoot.querySelector('#eaHwBookLevelSelect');
     var unitSel = modalRoot.querySelector('#eaHwUnitSelect');
-    var lesSel = modalRoot.querySelector('#eaHwLessonSelect');
+
+    function wireCheckboxes() {
+      modalRoot.querySelectorAll('.ea-hw-lesson-chk').forEach(function(chk) {
+        chk.onchange = function() {
+          var lbl = chk.closest('label');
+          if (lbl) {
+            lbl.style.background = chk.checked ? 'rgba(16,185,129,0.18)' : 'rgba(255,255,255,0.04)';
+            lbl.style.borderColor = chk.checked ? '#10b981' : 'rgba(255,255,255,0.1)';
+            var sp = lbl.querySelector('span');
+            if (sp) sp.style.color = chk.checked ? '#34d399' : '#e2e8f0';
+          }
+        };
+      });
+    }
+
+    function refreshLessonCheckboxes() {
+      var bLvl = bookLvlSel.value || 'B1+';
+      var uNum = parseInt(unitSel.value, 10) || 1;
+      var wrap = modalRoot.querySelector('#eaHwLessonsCheckboxesWrap');
+      if (wrap) {
+        wrap.innerHTML = buildLessonCheckboxes(bLvl, uNum, [uNum + '.1']);
+        wireCheckboxes();
+      }
+    }
 
     bookLvlSel.onchange = function() {
       var bLvl = bookLvlSel.value;
-      var uNum = parseInt(unitSel.value, 10) || 1;
-      unitSel.innerHTML = buildUnitOptions(bLvl, uNum);
-      lesSel.innerHTML = buildLessonOptions(bLvl, uNum, uNum + '.1');
+      unitSel.innerHTML = buildUnitOptions(bLvl, 1);
+      refreshLessonCheckboxes();
     };
-    unitSel.onchange = function() {
-      var bLvl = bookLvlSel.value;
-      var uNum = parseInt(unitSel.value, 10);
-      lesSel.innerHTML = buildLessonOptions(bLvl, uNum, uNum + '.1');
-    };
+    unitSel.onchange = refreshLessonCheckboxes;
+    wireCheckboxes();
 
     modalRoot.querySelector('#eaCloseHwModal').onclick = closeGlobalModal;
     modalRoot.querySelector('#eaCancelHwBtn').onclick = closeGlobalModal;
@@ -4664,32 +4702,41 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       } else {
         var bLvl = bookLvlSel.value || 'B1+';
         var uNum = parseInt(unitSel.value, 10) || 1;
-        var lCode = lesSel.value || (uNum + '.1');
+        var chks = modalRoot.querySelectorAll('.ea-hw-lesson-chk:checked');
+        var selectedCodes = [];
+        chks.forEach(function(c) { selectedCodes.push(c.value); });
+        if (selectedCodes.length === 0) {
+          selectedCodes = [uNum + '.1'];
+        }
 
         var uList = getWorkbookUnitsList(bLvl);
         var uObj = uList.find(function(x) { return x.unit === uNum; }) || uList[0];
-        var lObj = (uObj.lessons || []).find(function(l) { return l.code === lCode; }) || { code: lCode, title: lCode, pages: [bLvl === 'B2' ? 2004 : 4] };
 
-        hwObj = {
-          type: 'workbook',
-          dateKey: dKey,
-          dateDisp: dDisp,
-          bookLevel: bLvl,
-          unit: uNum,
-          lessonCode: lCode,
-          lessonTitle: lObj.title,
-          pages: lObj.pages || [],
-          note: noteVal,
-          assignedAt: Date.now(),
-          teacherName: cls.teacherName || 'Ustoz'
-        };
-        cls.attendance.lessonTypes[dKey] = 'Vazifa (' + bLvl + '): ' + lCode;
+        var hwList = selectedCodes.map(function(lCode) {
+          var lObj = (uObj.lessons || []).find(function(l) { return l.code === lCode; }) || { code: lCode, title: lCode, pages: [bLvl === 'B2' ? 2004 : 4] };
+          return {
+            type: 'workbook',
+            dateKey: dKey,
+            dateDisp: dDisp,
+            bookLevel: bLvl,
+            unit: uNum,
+            lessonCode: lCode,
+            lessonTitle: lObj.title,
+            pages: lObj.pages || [],
+            note: noteVal,
+            assignedAt: Date.now(),
+            teacherName: cls.teacherName || 'Ustoz'
+          };
+        });
+
+        hwObj = hwList[0];
+        cls.activeHomeworks = hwList;
+        cls.activeHomework = hwObj;
+        cls.attendance.lessonTypes[dKey] = 'Vazifa (' + bLvl + '): ' + selectedCodes.join(', ');
+        if (!cls.attendance.homeworks) cls.attendance.homeworks = {};
+        cls.attendance.homeworks[dKey] = hwList.length === 1 ? hwList[0] : hwList;
+        delete cls.attendance.holidays[dKey];
       }
-
-      if (!cls.attendance.homeworks) cls.attendance.homeworks = {};
-      cls.attendance.homeworks[dKey] = hwObj;
-      cls.activeHomework = hwObj;
-      delete cls.attendance.holidays[dKey];
 
       persistAttendance(cls);
       closeGlobalModal();
@@ -6249,6 +6296,18 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
     var curMonths = Number(cls.learningMonths) || 0;
     var curDays = Number(cls.learningDays) || 0;
+    if (!curMonths && !curDays) {
+      try {
+        var durStr = localStorage.getItem('ethith_class_duration_' + cls.id);
+        if (durStr) {
+          var durObj = JSON.parse(durStr);
+          if (durObj) {
+            curMonths = Number(durObj.learningMonths) || 0;
+            curDays = Number(durObj.learningDays) || 0;
+          }
+        }
+      } catch(e) {}
+    }
 
     var overlay = document.createElement('div');
     overlay.id = 'eaGroupDurationModalOverlay';
@@ -6347,14 +6406,33 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         storeCls.learningDays = d;
       }
 
+      try {
+        localStorage.setItem('ethith_class_duration_' + cls.id, JSON.stringify({ learningMonths: m, learningDays: d }));
+      } catch(e) {}
+
+      persistAttendance(cls);
+
       if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
         window.EthithEnterprise.saveStore();
       } else if (window.EthithApp && window.EthithApp.saveState) {
         window.EthithApp.saveState();
       }
 
-      if (window.EthithSync && window.EthithSync.broadcastState) {
-        window.EthithSync.broadcastState('class_duration_updated');
+      if (window.EthithSync) {
+        if (typeof window.EthithSync.publishLive === 'function') {
+          window.EthithSync.publishLive({
+            type: 'CLASS_DURATION_UPDATED',
+            classId: cls.id,
+            learningMonths: m,
+            learningDays: d
+          });
+        }
+        if (typeof window.EthithSync.pushRemoteStore === 'function') {
+          window.EthithSync.pushRemoteStore();
+        }
+        if (window.EthithSync.broadcastState) {
+          window.EthithSync.broadcastState('class_duration_updated');
+        }
       }
 
       if (window.EthithApp && window.EthithApp.toast) {
