@@ -25076,8 +25076,8 @@
           "isTester": false,
           "manuallyEnrolled": true,
           "isOnline": true,
-          "coins": 700,
-          "updatedAt": 1793811297042,
+          "coins": 200,
+          "updatedAt": 1793856650071,
           "lastLogin": "2026-11-04T14:59:52.209Z",
           "dailyMinutes": 111,
           "isLoggedOut": false,
@@ -28665,7 +28665,8 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856629375
+      "lastSeen": 1793856629375,
+      "login": "muhammedjoraboyev1"
     },
     {
       "id": "std_13",
@@ -29219,7 +29220,8 @@
       "avatar": "girl_v7_valkyrie_samurai_1",
       "level": "A1",
       "joinedAt": 1793215171236,
-      "title": "👑 IELTS Qiroli"
+      "title": "👑 IELTS Qiroli",
+      "login": "_998950079621"
     },
     {
       "id": "admin_official_teacher",
@@ -29276,13 +29278,13 @@
       "role": "student",
       "name": "Azimjon Toirov",
       "email": "azimjon.toirov@ethith.uz",
-      "coins": 160,
+      "coins": 200,
       "gifts": [],
       "avatar": null,
       "title": null,
       "nameStyle": null,
       "createdAt": 1793720576586,
-      "updatedAt": 1793811297042,
+      "updatedAt": 1793856650071,
       "isOnline": true,
       "isLoggedOut": false,
       "hasLoggedIn": true,
@@ -29326,7 +29328,8 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856629375
+      "lastSeen": 1793856629375,
+      "login": "admin"
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -149482,5 +149485,9 @@
       }
     }
   },
-  "updatedAt": 1793856631309
+  "updatedAt": 1793856650071,
+  "authorizedAdminChatIds": [
+    6772427596,
+    98124765
+  ]
 }
