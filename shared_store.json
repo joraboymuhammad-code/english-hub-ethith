@@ -23202,7 +23202,7 @@
           "updatedAt": 1793811297042,
           "hasLoggedIn": true,
           "isLoggedOut": false,
-          "lastSeen": 1793859692883
+          "lastSeen": 1793859701682
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -23592,6 +23592,8 @@
         "rayxona_271_qoshqarova@student.ethith",
         "rayxona_271_qoshqarova"
       ],
+      "levelTestDate": "2027-02-03",
+      "durationUpdatedAt": 1793859691722,
       "pinnedId": null,
       "customStudentNamesTs": {
         "std_nurlan_856_tangatov": 1793625077010,
@@ -23618,9 +23620,7 @@
         "std_niyatullo_582_asatullayev": 1793625077010,
         "std_navroz_651_shavkatov": 1793625077010,
         "std_otkir_903_tursunmatov": 1793625077010
-      },
-      "levelTestDate": "2027-02-03",
-      "durationUpdatedAt": 1793859691722
+      }
     },
     {
       "id": "cls_urolov_azizbek_standard",
@@ -24802,6 +24802,8 @@
         "assignedAt": 0
       },
       "deletedStudentIds": [],
+      "levelTestDate": "2027-02-03",
+      "durationUpdatedAt": 1793859661504,
       "customStudentNamesTs": {
         "std_orazaliyev_261_amirshox": 1793606286867,
         "std_mahfuza_179_bosimova": 1793606286867,
@@ -24822,9 +24824,7 @@
         "std_asadbek_247_xolboyev": 1793606286867,
         "std_kazakov_769_husniddin": 1793606286867,
         "std_zebo_198_abduganiyeva": 1793606286867
-      },
-      "levelTestDate": "2027-02-03",
-      "durationUpdatedAt": 1793859661504
+      }
     },
     {
       "id": "cls_urolov_azizbek_practice",
@@ -25318,6 +25318,8 @@
         }
       },
       "deletedStudentIds": [],
+      "levelTestDate": "2027-02-03",
+      "durationUpdatedAt": 1793859638601,
       "activeHomework": {
         "dateKey": "2026-11-02",
         "dateDisp": "02.11.2026",
@@ -25331,9 +25333,7 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "customStudentNamesTs": {},
-      "levelTestDate": "2027-02-03",
-      "durationUpdatedAt": 1793859638601
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_1793728994224",
@@ -26242,7 +26242,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511,
+      "lastSeen": 1793859701313,
       "login": "azizbek77",
       "password": "azizbek2026"
     },
@@ -26261,7 +26261,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692325,
+      "lastSeen": 1793859701437,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -26295,7 +26295,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -26471,7 +26471,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "std_13",
@@ -26636,7 +26636,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26660,7 +26660,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26681,7 +26681,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26702,7 +26702,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26726,7 +26726,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26750,7 +26750,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26772,7 +26772,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26794,7 +26794,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26818,7 +26818,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26839,7 +26839,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26861,7 +26861,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26883,7 +26883,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26905,7 +26905,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26929,7 +26929,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26953,7 +26953,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26977,7 +26977,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "admin_official_teacher",
@@ -26998,7 +26998,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511
+      "lastSeen": 1793859701313
     },
     {
       "id": "st_998901239988",
@@ -27043,11 +27043,11 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793473052536,
+      "level": "C2",
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692511,
-      "level": "C2"
+      "lastSeen": 1793859701313
     },
     {
       "id": "shamshodbekibrohimov@telegram.org",
@@ -27090,7 +27090,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793859692883,
+      "lastSeen": 1793859701682,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "password": "azimjon848toi",
@@ -27098,32 +27098,6 @@
       "parentPhone": "950079621",
       "level": "A1",
       "dailyMinutes": 114
-    },
-    {
-      "id": "std_mix_416_selix",
-      "name": "Mix Selix",
-      "role": "student",
-      "login": "mix_416_selix",
-      "password": "mix416sel",
-      "phone": "91`23891738213",
-      "parentPhone": "91`23891738213",
-      "classId": "cls_1793380468126",
-      "isOnline": false,
-      "lastLogin": null,
-      "updatedAt": 1793629984912
-    },
-    {
-      "id": "t_muhammadyusuf",
-      "name": "Muhammadyusuf",
-      "login": "muhammadyusuf11",
-      "password": "muhammadyusuf2026",
-      "email": "muhammadyusuf11@ethith.uz",
-      "role": "teacher",
-      "teacherId": "t_muhammadyusuf",
-      "subject": "Ingliz tili",
-      "salarySharePercent": 50,
-      "createdAt": 1793431051291,
-      "updatedAt": 1793431308524
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -27564,6 +27538,19 @@
       "level": "B1+",
       "dailyMinutes": 0,
       "updatedAt": 1793627425284
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793629984912
     }
   ],
   "p2pListings": [],
@@ -147217,5 +147204,5 @@
       }
     }
   },
-  "updatedAt": 1793859693347
+  "updatedAt": 1793859702047
 }
