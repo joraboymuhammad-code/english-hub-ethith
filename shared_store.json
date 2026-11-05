@@ -338,11 +338,39 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783306398
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956265
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 7.5",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
         "homeworks": {},
-        "updatedAt": 1793213299615
+        "updatedAt": 1793862956265
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -959,10 +987,53 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783306437
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956305
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862956305
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -1100,7 +1171,20 @@
       "deletedStudentIds": [],
       "learningLessons": 0,
       "durationUpdatedAt": 1793862956340,
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_3",
@@ -1440,9 +1524,36 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783306479
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956344
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-29": "Vazifa: 1.1"
+          "2026-10-29": "Vazifa: 1.1",
+          "2026-11-04": "Vazifa: 7.5",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -1459,7 +1570,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1793862956344
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -1950,10 +2062,53 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783306524
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956376
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862956376
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -2091,7 +2246,20 @@
       "deletedStudentIds": [],
       "learningLessons": 0,
       "durationUpdatedAt": 1793862956410,
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_qarshiboyev_humoyun_practice",
@@ -2431,10 +2599,53 @@
       "level": "Practice English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783306576
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956415
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862956415
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -2572,7 +2783,20 @@
       "deletedStudentIds": [],
       "learningLessons": 0,
       "durationUpdatedAt": 1793862956456,
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_tovboyeva_marjona_beginner",
@@ -2912,10 +3136,53 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783306623
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956460
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862956460
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -3051,7 +3318,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862956499,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_olimjonova_durdona_beginner",
@@ -3391,9 +3673,36 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783306667
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956504
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-28": "Vazifa: 1.1"
+          "2026-10-28": "Vazifa: 1.1",
+          "2026-11-04": "Vazifa: 7.5",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -3410,7 +3719,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1793862956504
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -3559,7 +3869,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862956541
     },
     {
       "id": "cls_olimjonova_durdona_pre_intermediate",
@@ -3899,10 +4211,53 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783306714
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956546
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862956546
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -4038,7 +4393,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862956590,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_olimjonova_durdona_intermediate_1",
@@ -4378,9 +4748,36 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783306762
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956593
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-28": "Vazifa: 1.1"
+          "2026-10-28": "Vazifa: 1.1",
+          "2026-11-04": "Vazifa: 7.5",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -4398,7 +4795,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793213300749
+        "updatedAt": 1793862956593
       },
       "customStudentNames": {
         "cls_olimjonova_durdona_intermediate_1_tester_10": "Malika Karimova"
@@ -4551,7 +4948,9 @@
       "deletedStudentIds": [],
       "customStudentNamesTs": {
         "cls_olimjonova_durdona_intermediate_1_tester_10": 1793213300749
-      }
+      },
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862956632
     },
     {
       "id": "cls_olimjonova_durdona_intermediate_2",
@@ -4891,10 +5290,53 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783306817
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956637
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862956637
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -5030,7 +5472,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862956676,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_tagaev_eldor_beginner",
@@ -5370,10 +5827,53 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783306872
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956679
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862956679
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -5509,7 +6009,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862956721,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_tagaev_eldor_elementary",
@@ -5849,10 +6364,53 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783306928
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956725
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862956725
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -5988,7 +6546,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862956768,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_1",
@@ -6328,10 +6901,53 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783306978
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956772
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862956772
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -6467,7 +7083,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862956811,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_2",
@@ -6807,10 +7438,53 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307029
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956816
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862956816
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -6946,7 +7620,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862956859,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_yaxshilikova_kamola_beginner",
@@ -7286,10 +7975,53 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307086
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956867
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862956867
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -7425,7 +8157,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862956908,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_yaxshilikova_kamola_elementary",
@@ -7765,10 +8512,53 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307137
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956914
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862956914
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -7904,7 +8694,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862956950,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_sherqoziyeva_iroda_beginner_1",
@@ -8244,10 +9049,53 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307192
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862956954
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862956954
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -8383,7 +9231,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862956997,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_sherqoziyeva_iroda_beginner_2",
@@ -8723,10 +9586,53 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307245
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957000
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957000
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -8862,7 +9768,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957036,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_aborbekov_elyor_pre_intermediate_1",
@@ -9202,10 +10123,53 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307300
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957041
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957041
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -9341,7 +10305,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957080,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_aborbekov_elyor_pre_intermediate_2",
@@ -9681,10 +10660,53 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307354
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957083
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957083
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -9820,7 +10842,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957124,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_aborbekov_elyor_intermediate_1",
@@ -10160,10 +11197,53 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307411
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957129
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957129
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -10299,7 +11379,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957171,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_aborbekov_elyor_intermediate_2",
@@ -10639,10 +11734,53 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307465
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957176
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957176
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -10778,7 +11916,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957219,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_aborbekov_elyor_upper_intermediate",
@@ -11118,10 +12271,53 @@
       "level": "Upper-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307516
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957222
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957222
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -11257,7 +12453,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957262,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_orinboyev_jaloliddin_pre_intermediate",
@@ -11597,10 +12808,53 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307574
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957268
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957268
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -11736,7 +12990,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957311,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_orinboyev_jaloliddin_intermediate",
@@ -12076,10 +13345,53 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307627
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957316
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957316
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -12215,7 +13527,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957362,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_orinboyev_jaloliddin_standard_1",
@@ -12555,10 +13882,53 @@
       "level": "Standard English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307686
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957367
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957367
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -12694,7 +14064,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957409,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_orinboyev_jaloliddin_standard_2",
@@ -13034,10 +14419,53 @@
       "level": "Standard English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307742
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957415
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957415
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -13173,7 +14601,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957459,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_jumanova_pokiza_beginner",
@@ -13513,10 +14956,53 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307802
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957463
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957463
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -13652,7 +15138,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957510,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_hayrullayev_arslon_beginner_1",
@@ -13992,10 +15493,53 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307856
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957516
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957516
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -14131,7 +15675,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957561,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_hayrullayev_arslon_beginner_2",
@@ -14471,10 +16030,53 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307910
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957567
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957567
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -14610,7 +16212,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957615,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_xudoyorova_sarvinoz_intermediate",
@@ -14950,9 +16567,36 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783307969
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957620
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-28": "Vazifa: 1.1"
+          "2026-10-28": "Vazifa: 1.1",
+          "2026-11-04": "Vazifa: 7.5",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -14969,7 +16613,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1793862957620
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -15118,7 +16763,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957663
     },
     {
       "id": "cls_xudoyorova_sarvinoz_standard",
@@ -15458,10 +17105,53 @@
       "level": "Standard English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308024
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957668
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957668
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -15597,7 +17287,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957710,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_aliqulova_sevinch_beginner_1",
@@ -15937,10 +17642,53 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308076
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957716
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957716
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -16076,7 +17824,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957758,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_aliqulova_sevinch_beginner_2",
@@ -16416,10 +18179,53 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308132
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957763
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957763
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -16555,7 +18361,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957808,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_xojamqulova_diyora_beginner",
@@ -16895,10 +18716,53 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308190
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957812
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957812
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -17034,7 +18898,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957854,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_1",
@@ -17374,10 +19253,53 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308250
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957858
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957858
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -17513,7 +19435,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957901,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_2",
@@ -17853,10 +19790,53 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308302
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957906
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957906
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -17992,7 +19972,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862957955,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_3",
@@ -18332,10 +20327,53 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308369
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862957960
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862957960
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -18471,7 +20509,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862958007,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_bosimbekov_farrux_pre_intermediate_1",
@@ -18811,9 +20864,36 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308425
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862958010
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-29": "Vazifa: 1.1"
+          "2026-10-29": "Vazifa: 1.1",
+          "2026-11-04": "Vazifa: 7.5",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -18830,7 +20910,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1793862958010
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -18979,7 +21060,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862958056
     },
     {
       "id": "cls_bosimbekov_farrux_pre_intermediate_2",
@@ -19319,10 +21402,53 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308487
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862958061
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862958061
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -19458,7 +21584,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862958107,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_bosimbekov_farrux_intermediate_1",
@@ -19798,10 +21939,53 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308559
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862958112
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862958112
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -19937,7 +22121,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862958154,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_bosimbekov_farrux_intermediate_2",
@@ -20277,10 +22476,53 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308619
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862958160
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862958160
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -20416,7 +22658,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862958203,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_ahmadova_barno_elementary_1",
@@ -20756,10 +23013,53 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308684
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862958209
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862958209
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -20895,7 +23195,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862958257,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_ahmadova_barno_elementary_2",
@@ -21235,10 +23550,53 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308746
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862958265
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862958265
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -21374,7 +23732,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862958307,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_ahmadova_barno_elementary_3",
@@ -21714,10 +24087,53 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308801
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862958312
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862958312
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -21853,7 +24269,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862958370,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_ahmadova_barno_pre_intermediate",
@@ -22193,10 +24624,53 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308860
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862958378
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862958378
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -22332,7 +24806,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862958425,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_shodiyor_matematika_matematika",
@@ -22672,10 +25161,53 @@
       "level": "Matematika",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783308928
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862958429
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-04": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {
+          "2026-11-04": {
+            "dateKey": "2026-11-04",
+            "dateDisp": "04.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
+          }
+        },
+        "updatedAt": 1793862958429
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -22811,7 +25343,22 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862958481,
+      "activeHomework": {
+        "dateKey": "2026-11-04",
+        "dateDisp": "04.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_urolov_azizbek_upper",
@@ -22836,28 +25383,94 @@
               "status": "",
               "score": ""
             }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862958485
+            }
           }
         },
         "lessonTypes": {
-          "2026-10-30": "Vazifa: 1.1"
+          "2026-10-30": "Vazifa (A1): 2.1, 2.2, 2.3, 2.4",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
-          "2026-10-30": {
-            "dateKey": "2026-10-30",
-            "dateDisp": "30.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 0
-          }
+          "2026-10-30": [
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A1",
+              "unit": 2,
+              "lessonCode": "2.1",
+              "lessonTitle": "2.1 What's this in English?",
+              "pages": [
+                1012,
+                1013
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793870139075,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A1",
+              "unit": 2,
+              "lessonCode": "2.2",
+              "lessonTitle": "2.2 What's your job?",
+              "pages": [
+                1014,
+                1015
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793870139075,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A1",
+              "unit": 2,
+              "lessonCode": "2.3",
+              "lessonTitle": "2.3 Where is it?",
+              "pages": [
+                1016,
+                1017
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793870139075,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A1",
+              "unit": 2,
+              "lessonCode": "2.4",
+              "lessonTitle": "2.4 Speaking & writing",
+              "pages": [
+                1018,
+                1019
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793870139075,
+              "teacherName": "Azizbek Urolov"
+            }
+          ]
         },
-        "updatedAt": 1793734631041
+        "updatedAt": 1793870139075
       },
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
@@ -23209,10 +25822,10 @@
           "manuallyEnrolled": true,
           "isOnline": true,
           "coins": 160,
-          "updatedAt": 1793811297042,
+          "updatedAt": 1793870202007,
           "hasLoggedIn": true,
           "isLoggedOut": false,
-          "lastSeen": 1793878957223
+          "lastSeen": 1793878963208
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -23308,25 +25921,23 @@
       "deletedMsgIds": [
         "msg_1793718186438_xser5",
         "msg_1793718198750_ptftv",
-        "msg_1793718218122_3dwuk"
+        "msg_1793718218122_3dwuk",
+        "msg_1793863855412_xfm9q",
+        "msg_1793719719874_t87j7",
+        "msg_1793867803252_mhkwo",
+        "msg_1793867784713_unds3",
+        "msg_1793867842032_i3ki3",
+        "msg_1793867832067_aoqnv",
+        "msg_1793869955758_uzstd",
+        "msg_1793869962495_376x4",
+        "msg_1793869972099_rju6f",
+        "msg_1793870014615_5dfx3",
+        "msg_1793870004823_1d5sq",
+        "msg_1793869988201_u2xr0",
+        "msg_1793869983568_yj41q",
+        "msg_1793875515771_vs4sf"
       ],
-      "messages": [
-        {
-          "id": "msg_1793719719874_t87j7",
-          "timestamp": 1793719719874,
-          "senderId": "admin_official_teacher",
-          "senderName": "Azizbek Urolov",
-          "senderEmail": "azizbek.urolov@ethith.uz",
-          "text": "salom",
-          "time": "20:28",
-          "replyTo": null,
-          "reactions": {
-            "👏": [
-              "azimjon_848_toirov"
-            ]
-          }
-        }
-      ],
+      "messages": [],
       "learningMonths": 0,
       "learningDays": 0,
       "studentPayments": {
@@ -23584,17 +26195,20 @@
         }
       },
       "activeHomework": {
+        "type": "workbook",
         "dateKey": "2026-10-30",
         "dateDisp": "30.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
+        "bookLevel": "A1",
+        "unit": 2,
+        "lessonCode": "2.1",
+        "lessonTitle": "2.1 What's this in English?",
         "pages": [
-          4,
-          5
+          1012,
+          1013
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
+        "assignedAt": 1793870139075,
+        "teacherName": "Azizbek Urolov"
       },
       "deletedStudentIds": [
         "std_rayxona_271_qoshqarova",
@@ -23623,7 +26237,7 @@
         "std_xudoyberdiyeva_775_madina": 1793625077010,
         "std_gulruh_365_tangirova": 1793625077010,
         "std_shohsasnam_517_bayrbekova": 1793625077010,
-        "std_azimjon_848_toirov": 1793625077010,
+        "std_azimjon_848_toirov": 1793798133108,
         "std_oktamova_798_zarina": 1793625077010,
         "std_shohista_786_nosurname": 1793625077010,
         "std_diyor_772_suyundikov": 1793625077010,
@@ -23648,9 +26262,23 @@
       "maxCapacity": 18,
       "schedule": "juft",
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862958540
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-11-02": "Vazifa: 1.1"
+          "2026-11-02": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -23667,7 +26295,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1793862958540
       },
       "customStudentNames": {
         "std_ruxshona_493_amalikova": "Ruxshona Amalikova",
@@ -24004,7 +26633,7 @@
       "deletedMsgIds": [],
       "messages": [],
       "learningMonths": 0,
-      "learningDays": 16,
+      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_standard_tester_1": {
           "fee": 300000,
@@ -24156,6 +26785,24 @@
         "std_diyorbek_862_raimqulov": 0,
         "std_hadicha_393_nosurname": 0,
         "std_bahora_901_nosurname": 0
+      },
+      "learningLessons": 0,
+      "levelTestDate": "2027-02-03",
+      "durationUpdatedAt": 1793862958586,
+      "pinnedIds": [],
+      "pinnedId": null,
+      "activeHomework": {
+        "dateKey": "2026-11-02",
+        "dateDisp": "02.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -24177,10 +26824,23 @@
               "status": "",
               "score": ""
             }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862958591
+            }
           }
         },
         "lessonTypes": {
-          "2026-10-29": "Vazifa: 1.1"
+          "2026-10-29": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -24198,7 +26858,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793606286867
+        "updatedAt": 1793862958591
       },
       "customStudentNames": {
         "std_orazaliyev_261_amirshox": "O'razaliyev Amirshox",
@@ -24532,8 +27192,8 @@
       ],
       "deletedMsgIds": [],
       "messages": [],
-      "learningMonths": 1,
-      "learningDays": 21,
+      "learningMonths": 0,
+      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_intermediate_tester_1": {
           "fee": 300000,
@@ -24822,7 +27482,12 @@
         "std_asadbek_247_xolboyev": 1793606286867,
         "std_kazakov_769_husniddin": 1793606286867,
         "std_zebo_198_abduganiyeva": 1793606286867
-      }
+      },
+      "learningLessons": 0,
+      "levelTestDate": "2027-02-03",
+      "durationUpdatedAt": 1793862958640,
+      "pinnedIds": [],
+      "pinnedId": null
     },
     {
       "id": "cls_urolov_azizbek_practice",
@@ -24837,10 +27502,24 @@
       "maxCapacity": 18,
       "schedule": "juft",
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862958645
+            }
+          }
+        },
         "lessonTypes": {
           "2026-11-02": "Vazifa: 1.1",
-          "2026-11-01": "Vazifa: 1.1"
+          "2026-11-01": "Vazifa: 1.1",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -24870,7 +27549,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1793862958645
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -25184,8 +27864,8 @@
       ],
       "deletedMsgIds": [],
       "messages": [],
-      "learningMonths": 2,
-      "learningDays": 26,
+      "learningMonths": 0,
+      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_practice_tester_1": {
           "fee": 300000,
@@ -25315,7 +27995,25 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "levelTestDate": "2027-02-03",
+      "durationUpdatedAt": 1793862958693,
+      "pinnedIds": [],
+      "pinnedId": null,
+      "activeHomework": {
+        "dateKey": "2026-11-02",
+        "dateDisp": "02.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     },
     {
       "id": "cls_1793728994224",
@@ -25637,9 +28335,36 @@
       ],
       "customStudentNames": {},
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-04": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 0,
+              "hwLesson": "7.5",
+              "hwCorrect": 0,
+              "hwTotal": 11,
+              "hwCompletedAt": 1793783309229
+            }
+          },
+          "2026-11-05": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 40,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 2,
+              "hwTotal": 5,
+              "hwCompletedAt": 1793862958698
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-11-03": "Vazifa: 1.1"
+          "2026-11-03": "Vazifa: 1.1",
+          "2026-11-04": "Vazifa: 7.5",
+          "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -25656,12 +28381,26 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1793862958698
       },
       "deletedMsgIds": [],
       "messages": [],
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "activeHomework": {
+        "dateKey": "2026-11-03",
+        "dateDisp": "03.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      }
     }
   ],
   "exams": [
@@ -26226,7 +28965,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793878958230,
+      "lastSeen": 1793878962632,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -26975,7 +29714,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793878957223,
+      "lastSeen": 1793878963208,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "password": "azimjon848toi",
@@ -130744,8 +133483,8 @@
         "page": 4005,
         "exercise": "5a",
         "label": "2",
-        "top": 62.4,
-        "left": 29,
+        "top": 61.8,
+        "left": 32.1,
         "width": 19,
         "height": 1.8,
         "correct": [
@@ -130760,10 +133499,10 @@
         "page": 4005,
         "exercise": "5a",
         "label": "3",
-        "top": 64.5,
-        "left": 29,
+        "top": 63.7,
+        "left": 32.6,
         "width": 19,
-        "height": 1.8,
+        "height": 2,
         "correct": [
           "What kind of films do you like?",
           "of",
@@ -150255,7 +152994,7 @@
     "3086": 1793517957036,
     "3087": 1793517957036,
     "4004": 1793878539074,
-    "4005": 1793878953139,
+    "4005": 1793878962955,
     "4006": 1793878539074,
     "4007": 1793878539074,
     "4008": 1793878539074,
@@ -151686,6 +154425,44 @@
       "authorEmail": "teacher@ethith.uz",
       "startDate": 1793721166177,
       "endDate": 1794325966177,
+      "participants": {
+        "std_azimjon_848_toirov": {
+          "id": "std_azimjon_848_toirov",
+          "name": "Azimjon Toirov",
+          "score": 40,
+          "timeSec": 15,
+          "completedAt": 1793862956196
+        }
+      },
+      "status": "finished",
+      "coinsDistributed": true
+    },
+    {
+      "id": "cnt_1793806521934",
+      "title": "Haftalik Onlayn Musobaqa",
+      "code": "QZ-H3M*VYT",
+      "desc": "Barcha guruhlar o‘rtasida onlayn musobaqa! Top-5 eng yuqori natija qayd etgan o‘quvchilarga 1,000 coindan boshlab sovrinlar beriladi.",
+      "testId": "tst_1793806521934",
+      "authorId": "admin_official_teacher",
+      "authorName": "Azizbek Urolov",
+      "authorEmail": "azizbek.urolov@ethith.uz",
+      "startDate": 1793806521934,
+      "endDate": 1794411321934,
+      "participants": {},
+      "status": "active",
+      "coinsDistributed": false
+    },
+    {
+      "id": "cnt_1793804457677",
+      "title": "Haftalik Onlayn Musobaqa",
+      "code": "QZ-5S9$4NW",
+      "desc": "Barcha guruhlar o‘rtasida onlayn musobaqa! Top-5 eng yuqori natija qayd etgan o‘quvchilarga 1,000 coindan boshlab sovrinlar beriladi.",
+      "testId": "tst_1793804457677",
+      "authorId": "admin_official_teacher",
+      "authorName": "Azizbek Urolov",
+      "authorEmail": "azizbek.urolov@ethith.uz",
+      "startDate": 1793804457677,
+      "endDate": 1794409257677,
       "participants": {},
       "status": "active",
       "coinsDistributed": false
@@ -152294,5 +155071,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1793878958295
+  "updatedAt": 1793878964517
 }
