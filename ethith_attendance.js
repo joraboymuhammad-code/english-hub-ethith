@@ -896,6 +896,8 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
               var durObj = JSON.parse(durStr);
               if (durObj && durObj.learningMonths !== undefined) copy.learningMonths = Number(durObj.learningMonths) || 0;
               if (durObj && durObj.learningDays !== undefined) copy.learningDays = Number(durObj.learningDays) || 0;
+              if (durObj && durObj.levelTestDate) copy.levelTestDate = durObj.levelTestDate;
+              if (durObj && durObj.ts) copy.durationUpdatedAt = durObj.ts;
             }
           } catch(e) {}
           sClasses.push(copy);
@@ -911,9 +913,12 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
               var durObj = JSON.parse(durStr);
               if (durObj && durObj.learningMonths !== undefined) existing.learningMonths = Number(durObj.learningMonths) || 0;
               if (durObj && durObj.learningDays !== undefined) existing.learningDays = Number(durObj.learningDays) || 0;
+              if (durObj && durObj.levelTestDate) existing.levelTestDate = durObj.levelTestDate;
+              if (durObj && durObj.ts) existing.durationUpdatedAt = durObj.ts;
             } else {
               if (existing.learningMonths === undefined && initC.learningMonths !== undefined) existing.learningMonths = initC.learningMonths;
               if (existing.learningDays === undefined && initC.learningDays !== undefined) existing.learningDays = initC.learningDays;
+              if (existing.levelTestDate === undefined && initC.levelTestDate !== undefined) existing.levelTestDate = initC.levelTestDate;
             }
           } catch(e) {}
           if (initC.studentPayments) {
@@ -939,6 +944,8 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           var durObj = JSON.parse(durStr);
           if (durObj && durObj.learningMonths !== undefined) cls.learningMonths = Number(durObj.learningMonths) || 0;
           if (durObj && durObj.learningDays !== undefined) cls.learningDays = Number(durObj.learningDays) || 0;
+          if (durObj && durObj.levelTestDate) cls.levelTestDate = durObj.levelTestDate;
+          if (durObj && durObj.ts) cls.durationUpdatedAt = durObj.ts;
         }
       } catch(e) {}
 
@@ -1928,7 +1935,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">' +
             '<span style="color:#94a3b8;font-weight:700;">⏱️ O‘qish davri:</span>' +
             '<span style="color:#38bdf8;font-weight:900;">' + (ltInfo.lMonths > 0 ? (ltInfo.lMonths + ' oy ') : '') + ltInfo.lDays + ' kun</span>' +
-            (isAdmin ? ('<button type="button" class="ea-btn-edit-duration" data-cid="' + esc(cls.id) + '" title="Guruh o‘qish muddatini belgilash" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.4);color:#38bdf8;border-radius:6px;padding:2px 7px;font-size:10.5px;font-weight:800;cursor:pointer;">✏️ Muddat</button>') : '') +
+            ((isAdmin || isTeacher) ? ('<button type="button" class="ea-btn-edit-duration" data-cid="' + esc(cls.id) + '" title="Guruh o‘qish muddatini belgilash" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.4);color:#38bdf8;border-radius:6px;padding:2px 7px;font-size:10.5px;font-weight:800;cursor:pointer;">✏️ Muddat</button>') : '') +
           '</div>' +
           '<div style="display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:#cbd5e1;margin-bottom:4px;">' +
             '<span>O‘tilgan testlar: <b style="color:#34d399;">' + testsCompleted + ' / 24 ta</b></span>' +
@@ -1942,8 +1949,16 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
         var cardClass = 'ee-class-card ea-draggable-class' + (isSoonLevelTest ? ' ea-level-test-soon-pulse' : '');
 
+        var topNeonExamBanner = isSoonLevelTest
+          ? ('<div style="background:linear-gradient(135deg,rgba(234,179,8,0.35),rgba(250,204,21,0.2));border:2px solid #facc15;color:#fef08a;font-weight:900;font-size:15px;padding:11px 16px;border-radius:14px;text-shadow:0 0 14px #facc15;box-shadow:0 0 25px rgba(250,204,21,0.6);display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;letter-spacing:0.5px;text-transform:uppercase;">' +
+              '<span style="font-size:22px;">⚡</span>' +
+              '<span>IMTIHONGA ' + (remainingDays === 0 ? 'BUGUN!' : (remainingDays + ' KUN QOLDI!')) + '</span>' +
+            '</div>')
+          : '';
+
         h += '<div class="' + cardClass + '" draggable="true" data-cid="' + esc(cls.id) + '" data-tid="' + esc(t.id) + '" style="border-radius:22px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;cursor:grab;transition:all 0.25s;">' +
           '<div>' +
+            topNeonExamBanner +
             '<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(56,189,248,0.08);border:1px dashed rgba(56,189,248,0.3);border-radius:10px;padding:5px 10px;margin-bottom:12px;user-select:none;">' +
               '<div style="font-size:11.5px;font-weight:900;color:#38bdf8;display:flex;align-items:center;gap:6px;">' +
                 '<span style="font-size:14px;cursor:grab;">⋮⋮</span> Bosib surish (Drag &amp; Drop)' +
@@ -2119,7 +2134,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       };
     }
 
-    container.querySelectorAll('.ea-btn-edit-duration').forEach(function(btn) {
+    container.querySelectorAll('.ea-btn-edit-duration, .dash-edit-class-btn').forEach(function(btn) {
       btn.onclick = function(e) {
         if (e) e.stopPropagation();
         var cid = btn.getAttribute('data-cid');
