@@ -347,6 +347,19 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
+      "activeHomework": {
+        "dateKey": "2026-10-28",
+        "dateDisp": "28.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
       "learningMonths": 2,
       "learningDays": 24,
       "studentPayments": {
@@ -604,6 +617,8 @@
         }
       },
       "deletedStudentIds": [],
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862956300,
       "customStudentNamesTs": {}
     },
     {
@@ -1083,6 +1098,8 @@
         }
       },
       "deletedStudentIds": [],
+      "learningLessons": 0,
+      "durationUpdatedAt": 1793862956340,
       "customStudentNamesTs": {}
     },
     {
@@ -1576,6 +1593,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-29",
+        "dateDisp": "29.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       },
       "deletedStudentIds": [],
       "customStudentNamesTs": {}
@@ -3379,6 +3409,19 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
+      "activeHomework": {
+        "dateKey": "2026-10-28",
+        "dateDisp": "28.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
       "learningMonths": 0,
       "learningDays": 2,
       "studentPayments": {
@@ -4356,6 +4399,19 @@
       },
       "customStudentPhones": {},
       "extraHomework": [],
+      "activeHomework": {
+        "dateKey": "2026-10-28",
+        "dateDisp": "28.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
       "learningMonths": 2,
       "learningDays": 12,
       "studentPayments": {
@@ -14912,6 +14968,19 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
+      "activeHomework": {
+        "dateKey": "2026-10-28",
+        "dateDisp": "28.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
       "learningMonths": 0,
       "learningDays": 10,
       "studentPayments": {
@@ -18760,6 +18829,19 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
+      "activeHomework": {
+        "dateKey": "2026-10-29",
+        "dateDisp": "29.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
       "learningMonths": 2,
       "learningDays": 22,
       "studentPayments": {
@@ -22735,7 +22817,7 @@
       "teacherName": "Azizbek Urolov",
       "teacherEmail": "azizbek.urolov@ethith.uz",
       "room": "302-xona",
-      "maxCapacity": 18,
+      "maxCapacity": 23,
       "schedule": "toq",
       "attendance": {
         "records": {
@@ -23124,7 +23206,7 @@
           "updatedAt": 1793811297042,
           "hasLoggedIn": true,
           "isLoggedOut": false,
-          "lastSeen": 1793739652731
+          "lastSeen": 1793875310203
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -23239,12 +23321,8 @@
           }
         }
       ],
-      "learningMonths": 2,
-      "learningDays": 28,
-      "learningLessons": 23,
-      "baselineDate": "2026-11-05",
-      "levelTestDate": "2026-11-07",
-      "durationUpdatedAt": 1793863000000,
+      "learningMonths": 0,
+      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_upper_tester_1": {
           "fee": 300000,
@@ -23499,12 +23577,31 @@
           "date": "To‘lanmagan"
         }
       },
+      "activeHomework": {
+        "dateKey": "2026-10-30",
+        "dateDisp": "30.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
       "deletedStudentIds": [
         "std_rayxona_271_qoshqarova",
         "Rayxona Qo'shqarova",
         "rayxona_271_qoshqarova@student.ethith",
         "rayxona_271_qoshqarova"
       ],
+      "learningLessons": 0,
+      "baselineDate": "2026-11-05",
+      "levelTestDate": "2027-02-03",
+      "durationUpdatedAt": 1793870139102,
+      "pinnedId": null,
+      "pinnedIds": [],
       "customStudentNamesTs": {
         "std_nurlan_856_tangatov": 1793625077010,
         "std_orazaliyev_514_amirshox": 1793625077010,
@@ -23530,8 +23627,7 @@
         "std_niyatullo_582_asatullayev": 1793625077010,
         "std_navroz_651_shavkatov": 1793625077010,
         "std_otkir_903_tursunmatov": 1793625077010
-      },
-      "pinnedId": null
+      }
     },
     {
       "id": "cls_urolov_azizbek_standard",
@@ -24685,6 +24781,19 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "activeHomework": {
+        "dateKey": "2026-10-29",
+        "dateDisp": "29.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       },
       "deletedStudentIds": [],
       "customStudentNamesTs": {
@@ -26079,6 +26188,27 @@
   ],
   "accounts": [
     {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "admin@ethith.uz",
+      "createdAt": 1792429101989,
+      "coins": 100000,
+      "gifts": [],
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793739654663,
+      "avatar": null,
+      "nameStyle": null,
+      "title": null,
+      "victorySound": null,
+      "isLoggedOut": false,
+      "hasLoggedIn": true,
+      "isOnline": true,
+      "lastSeen": 1793875310171,
+      "login": "muhammedjoraboyev1"
+    },
+    {
       "id": "admin_official_root",
       "role": "admin",
       "name": "Bosh Admin",
@@ -26093,7 +26223,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739652977,
+      "lastSeen": 1793875309920,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -26110,6 +26240,24 @@
       "victorySound": null,
       "updatedAt": 1793260926584,
       "login": "mu_striker"
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "teacher@ethith.uz",
+      "coins": 5000,
+      "avatar": null,
+      "level": "A1",
+      "dailyMinutes": 0,
+      "nameStyle": null,
+      "title": null,
+      "victorySound": null,
+      "updatedAt": 1792606425762,
+      "isLoggedOut": false,
+      "hasLoggedIn": true,
+      "isOnline": true,
+      "lastSeen": 1793875310171
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -26271,9 +26419,9 @@
       "title": "👑 IELTS Qiroli",
       "dailyMinutes": 0,
       "updatedAt": 1793215171236,
+      "login": "usmonqulovaetiborxon",
       "phone": "+998 95 007 96 21",
-      "parentPhone": "+998 95 007 96 21",
-      "login": "usmonqulovaetiborxon"
+      "parentPhone": "+998 95 007 96 21"
     },
     {
       "id": "admin_official_teacher",
@@ -26285,9 +26433,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929,
-      "updatedAt": 1793739654663,
-      "login": "muhammedjoraboyev1"
+      "lastSeen": 1793875310171
     },
     {
       "id": "std_13",
@@ -26443,7 +26589,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Elyor Aborbekov",
+      "name": "Ustoz",
       "email": "elyor.aborbekov@ethith.uz",
       "login": "elyor70",
       "role": "teacher",
@@ -26452,11 +26598,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ravshanov Doniyor",
+      "name": "Ustoz",
       "email": "doniyor.ravshanov@ethith.uz",
       "login": "doniyor24",
       "password": "doniyor2026",
@@ -26476,11 +26622,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Qarshiboyev Humoyun",
+      "name": "Ustoz",
       "email": "humoyun.qarshiboyev@ethith.uz",
       "login": "humoyun15",
       "password": "humoyun2026",
@@ -26497,11 +26643,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Marjona Tovboyeva",
+      "name": "Ustoz",
       "email": "marjona.tovboyeva@ethith.uz",
       "login": "marjona88",
       "password": "marjona2026",
@@ -26518,11 +26664,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Durdona Olimjonova",
+      "name": "Ustoz",
       "email": "durdona.olimjonova@ethith.uz",
       "login": "durdona12",
       "password": "durdona2026",
@@ -26542,11 +26688,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Eldor Tagaev",
+      "name": "Ustoz",
       "email": "eldor.tagaev@ethith.uz",
       "login": "eldor33",
       "password": "eldor2026",
@@ -26566,11 +26712,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Kamola Yaxshilikova",
+      "name": "Ustoz",
       "email": "kamola.yaxshilikova@ethith.uz",
       "login": "kamola45",
       "password": "kamola2026",
@@ -26588,11 +26734,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Iroda Sherqoziyeva",
+      "name": "Ustoz",
       "email": "iroda.sherqoziyeva@ethith.uz",
       "login": "iroda19",
       "password": "iroda2026",
@@ -26610,11 +26756,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Jaloliddin O’rinboyev",
+      "name": "Ustoz",
       "email": "jaloliddin.orinboyev@ethith.uz",
       "login": "jaloliddin99",
       "password": "jaloliddin2026",
@@ -26634,11 +26780,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Pokiza Jumanova",
+      "name": "Ustoz",
       "email": "pokiza.jumanova@ethith.uz",
       "login": "pokiza07",
       "password": "pokiza2026",
@@ -26655,11 +26801,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Arslon Hayrullayev",
+      "name": "Ustoz",
       "email": "arslon.hayrullayev@ethith.uz",
       "login": "arslon64",
       "password": "arslon2026",
@@ -26677,11 +26823,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Sarvinoz Xudoyorova",
+      "name": "Ustoz",
       "email": "sarvinoz.xudoyorova@ethith.uz",
       "login": "sarvinoz82",
       "password": "sarvinoz2026",
@@ -26699,11 +26845,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Sevinch Aliqulova",
+      "name": "Ustoz",
       "email": "sevinch.aliqulova@ethith.uz",
       "login": "sevinch55",
       "password": "sevinch2026",
@@ -26721,11 +26867,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Diyora Xo’jamqulova",
+      "name": "Ustoz",
       "email": "diyora.xojamqulova@ethith.uz",
       "login": "diyora21",
       "password": "diyora2026",
@@ -26745,11 +26891,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Farrux Bosimbekov",
+      "name": "Ustoz",
       "email": "farrux.bosimbekov@ethith.uz",
       "login": "farrux93",
       "password": "farrux2026",
@@ -26769,11 +26915,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Barno Ahmadova",
+      "name": "Ustoz",
       "email": "barno.ahmadova@ethith.uz",
       "login": "barno36",
       "password": "barno2026",
@@ -26793,11 +26939,11 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "admin_official_teacher",
-      "name": "Shodiyor (matematika)",
+      "name": "Ustoz",
       "email": "shodiyor.matematika@ethith.uz",
       "login": "shodiyor50",
       "password": "shodiyor2026",
@@ -26814,7 +26960,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "st_998901239988",
@@ -26827,8 +26973,8 @@
       "level": "A1",
       "joinedAt": 1793214970956,
       "updatedAt": 1793215269858,
-      "parentPhone": "+998901239988",
-      "login": "_998901239988"
+      "login": "_998901239988",
+      "parentPhone": "+998901239988"
     },
     {
       "id": "st_998950079621",
@@ -26840,8 +26986,7 @@
       "avatar": "girl_v7_valkyrie_samurai_1",
       "level": "A1",
       "joinedAt": 1793215171236,
-      "title": "👑 IELTS Qiroli",
-      "login": "_998950079621"
+      "title": "👑 IELTS Qiroli"
     },
     {
       "id": "t_urolov_azizbek",
@@ -26864,7 +27009,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739653929
+      "lastSeen": 1793875310171
     },
     {
       "id": "shamshodbekibrohimov@telegram.org",
@@ -26877,19 +27022,6 @@
       "createdAt": 1793630351584,
       "updatedAt": 1793739506865,
       "login": "shamshodbekibrohimov"
-    },
-    {
-      "id": "std_mix_416_selix",
-      "name": "Mix Selix",
-      "role": "student",
-      "login": "mix_416_selix",
-      "password": "mix416sel",
-      "phone": "91`23891738213",
-      "parentPhone": "91`23891738213",
-      "classId": "cls_1793380468126",
-      "isOnline": false,
-      "lastLogin": null,
-      "updatedAt": 1793629984912
     },
     {
       "id": "std_mixswdasd_804_selixasdasd",
@@ -26920,9 +27052,22 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739652731,
+      "lastSeen": 1793875310203,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov"
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793629984912
     }
   ],
   "p2pListings": [],
@@ -28399,6 +28544,296 @@
         "id": "p7_custom_80056",
         "group": "5.2",
         "text": "5.2"
+      }
+    ],
+    "8": [
+      {
+        "id": "p8_ex1_1",
+        "type": "fill",
+        "page": 8,
+        "exercise": "1",
+        "label": "-ity",
+        "top": 27.3,
+        "left": 22,
+        "width": 14,
+        "height": 1.9,
+        "correct": "security or SECURITY"
+      },
+      {
+        "id": "p8_ex1_2a",
+        "type": "fill",
+        "page": 8,
+        "exercise": "1",
+        "label": "-tion(1)",
+        "top": 29.1,
+        "left": 18,
+        "width": 14,
+        "height": 1.9,
+        "correct": "communication or information"
+      },
+      {
+        "id": "p8_ex1_2b",
+        "type": "fill",
+        "page": 8,
+        "exercise": "1",
+        "label": "-tion(2)",
+        "top": 29.1,
+        "left": 33,
+        "width": 14,
+        "height": 1.9,
+        "correct": "information or communication"
+      },
+      {
+        "id": "p8_ex1_3a",
+        "type": "fill",
+        "page": 8,
+        "exercise": "1",
+        "label": "-ment(1)",
+        "top": 30.9,
+        "left": 18,
+        "width": 14,
+        "height": 1.9,
+        "correct": "achievement or government"
+      },
+      {
+        "id": "p8_ex1_3b",
+        "type": "fill",
+        "page": 8,
+        "exercise": "1",
+        "label": "-ment(2)",
+        "top": 30.9,
+        "left": 33,
+        "width": 14,
+        "height": 1.9,
+        "correct": "government or achievement"
+      },
+      {
+        "id": "p8_ex1_4a",
+        "type": "fill",
+        "page": 8,
+        "exercise": "1",
+        "label": "-ship(1)",
+        "top": 32.7,
+        "left": 18,
+        "width": 14,
+        "height": 1.9,
+        "correct": "friendship or membership"
+      },
+      {
+        "id": "p8_ex1_4b",
+        "type": "fill",
+        "page": 8,
+        "exercise": "1",
+        "label": "-ship(2)",
+        "top": 32.7,
+        "left": 33,
+        "width": 14,
+        "height": 1.9,
+        "correct": "membership or friendship"
+      },
+      {
+        "id": "p8_ex2_2",
+        "type": "fill",
+        "page": 8,
+        "exercise": "2",
+        "label": "2",
+        "top": 42.1,
+        "left": 40.5,
+        "width": 12,
+        "height": 1.9,
+        "correct": "security or SECURITY"
+      },
+      {
+        "id": "p8_ex2_3",
+        "type": "fill",
+        "page": 8,
+        "exercise": "2",
+        "label": "3",
+        "top": 46.8,
+        "left": 26.5,
+        "width": 14,
+        "height": 1.9,
+        "correct": "information or INFORMATION"
+      },
+      {
+        "id": "p8_ex2_4",
+        "type": "fill",
+        "page": 8,
+        "exercise": "2",
+        "label": "4",
+        "top": 48.5,
+        "left": 27,
+        "width": 9,
+        "height": 1.9,
+        "correct": "ability or ABILITY"
+      },
+      {
+        "id": "p8_ex2_5",
+        "type": "fill",
+        "page": 8,
+        "exercise": "2",
+        "label": "5",
+        "top": 51.8,
+        "left": 35,
+        "width": 9,
+        "height": 1.9,
+        "correct": "friendship or FRIENDSHIP"
+      },
+      {
+        "id": "p8_ex3_2",
+        "type": "fill",
+        "page": 8,
+        "exercise": "3",
+        "label": "2",
+        "top": 71.8,
+        "left": 19.7,
+        "width": 9.2,
+        "height": 2.2,
+        "correct": "improvements or improvement"
+      },
+      {
+        "id": "p8_ex3_3",
+        "type": "fill",
+        "page": 8,
+        "exercise": "3",
+        "label": "3",
+        "top": 74.7,
+        "left": 29.7,
+        "width": 8.5,
+        "height": 1.9,
+        "correct": "ability or abilities"
+      },
+      {
+        "id": "p8_ex3_4",
+        "type": "fill",
+        "page": 8,
+        "exercise": "3",
+        "label": "4",
+        "top": 79.7,
+        "left": 12.2,
+        "width": 9,
+        "height": 1.9,
+        "correct": "development or DEVELOPMENT"
+      },
+      {
+        "id": "p8_ex3_5",
+        "type": "fill",
+        "page": 8,
+        "exercise": "3",
+        "label": "5",
+        "top": 83.9,
+        "left": 12.2,
+        "width": 9,
+        "height": 1.9,
+        "correct": "imagination or imaginations"
+      },
+      {
+        "id": "p8_ex3_6",
+        "type": "fill",
+        "page": 8,
+        "exercise": "3",
+        "label": "6",
+        "top": 87.4,
+        "left": 12.2,
+        "width": 9,
+        "height": 1.9,
+        "correct": "relationships or relationship"
+      },
+      {
+        "id": "p8_ex3_7",
+        "type": "fill",
+        "page": 8,
+        "exercise": "3",
+        "label": "7",
+        "top": 88.9,
+        "left": 23.2,
+        "width": 9,
+        "height": 1.9,
+        "correct": "friendships or friendship"
+      },
+      {
+        "id": "p8_ex5_2",
+        "type": "fill",
+        "page": 8,
+        "exercise": "5a",
+        "label": "2",
+        "top": 55.6,
+        "left": 60.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "touch or TOUCH"
+      },
+      {
+        "id": "p8_ex5_3",
+        "type": "fill",
+        "page": 8,
+        "exercise": "5a",
+        "label": "3",
+        "top": 57.4,
+        "left": 59,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "on or ON"
+      },
+      {
+        "id": "p8_ex5_5",
+        "type": "fill",
+        "page": 8,
+        "exercise": "5a",
+        "label": "5",
+        "top": 61.4,
+        "left": 57,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "have or HAVE"
+      },
+      {
+        "id": "p8_ex5_6",
+        "type": "fill",
+        "page": 8,
+        "exercise": "5a",
+        "label": "6",
+        "top": 63,
+        "left": 57,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "help or HELP"
+      },
+      {
+        "id": "p8_ex5_7",
+        "type": "fill",
+        "page": 8,
+        "exercise": "5a",
+        "label": "7",
+        "top": 64.6,
+        "left": 57,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "keep or KEEP"
+      },
+      {
+        "id": "p8_ex5_8",
+        "type": "fill",
+        "page": 8,
+        "exercise": "5a",
+        "label": "8",
+        "top": 66.1,
+        "left": 57,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "make or MAKE"
+      },
+      {
+        "id": "p8_ex5_9",
+        "type": "fill",
+        "page": 8,
+        "exercise": "5a",
+        "label": "9",
+        "top": 67.7,
+        "left": 60.5,
+        "width": 8.5,
+        "height": 1.8,
+        "correct": "up or UP"
       }
     ],
     "9": [
@@ -144494,6 +144929,7 @@
     "5": 1793629954889,
     "6": 1793734006280,
     "7": 1793734006280,
+    "8": 1793875305533,
     "9": 1793629954889,
     "10": 1761463225569,
     "12": 1793629954889,
@@ -145400,9 +145836,7 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "AZIZBEK77",
-      "unpaidMonths": 0,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "unpaidMonths": 0
     },
     {
       "id": "admin_official_teacher",
@@ -145610,6 +146044,14 @@
         "ownerId": "t_shodiyor_matematika",
         "parentId": null,
         "createdAt": 1793202631415
+      },
+      {
+        "id": "f_root_teacher_1793475825095",
+        "name": "Azizbek Urolov (Mening Hujjatlarim)",
+        "parentId": null,
+        "ownerRole": "teacher",
+        "ownerId": "teacher_1793475825095",
+        "isSystem": true
       },
       {
         "id": "f_root_admin_official_teacher",
@@ -145912,6 +146354,8 @@
       }
     ]
   },
+  "customCurriculumTests": {},
+  "allCurriculumTests": [],
   "timetable": [
     {
       "id": "tt_1",
@@ -146013,18 +146457,20 @@
       }
     }
   },
-  "updatedAt": 1793811297043,
   "savedSpreadsheets": [
     {
-      "id": "sheet_default",
+      "id": "sheet_admin_official_root_1793874238958",
       "name": "Asosiy Jadval",
-      "authorName": "Admin",
+      "authorId": "admin_official_root",
+      "authorLogin": "",
+      "authorName": "Bosh Admin",
       "authorRole": "admin",
-      "updatedAt": "05.11.2026 12:00",
-      "updatedTs": 1793870000000,
+      "updatedAt": "2026-11-05",
+      "updatedTs": 1793874238958,
       "data": [
         {
           "name": "Sheet1",
+          "color": "",
           "index": 0,
           "status": 1,
           "order": 0,
@@ -146038,5 +146484,13 @@
       ]
     }
   ],
-  "deletedSpreadsheetIds": []
+  "deletedSpreadsheetIds": [
+    "sheet_default",
+    "sheet_1793871594553_d45q17",
+    "sheet_1793872482922_2l7j8q",
+    "sheet_1793871656402_oiy8jh",
+    "sheet_imp_1793871694619",
+    "sheet_admin_official_teacher_1793874172938_f67282"
+  ],
+  "updatedAt": 1793875311043
 }
