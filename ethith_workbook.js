@@ -159990,14 +159990,27 @@
     });
   };
 
+  function normalizeBookLevel(lvl) {
+    if (!lvl) return '';
+    var s = String(lvl).toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (s.includes('a1') || s.includes('begin')) return 'a1';
+    if (s.includes('a2') || s.includes('elem')) return 'a2';
+    if (s.includes('b1pre') || s.includes('preinter') || s.includes('preint')) return 'b1_pre';
+    if (s.includes('b2') || s.includes('upper')) return 'b2';
+    if (s.includes('b1') || s.includes('inter')) return 'b1';
+    return s;
+  }
+
   // Homework Lock and One-Time Submission Checker for Student
-  WB.getStudentHomeworkLockState = function(unitNum, lessonCode) {
+  WB.getStudentHomeworkLockState = function(unitNum, lessonCode, bookLevel) {
     var S = window.S || {};
     var curUser = S.user || {};
     var isStudent = curUser && curUser.role === 'student';
     if (!isStudent) {
       return { isStudent: false, hasActiveHw: false, isLocked: false, isCompleted: false, isAssigned: false };
     }
+
+    var curBookLvl = normalizeBookLevel(bookLevel);
 
     var myClasses = (S.classes || []).filter(function(cls) {
       if (!cls) return false;
@@ -160013,11 +160026,23 @@
 
     var activeHws = [];
     myClasses.forEach(function(cls) {
+      function isRealHw(hw) {
+        if (!hw || !hw.lessonCode) return false;
+        // MUST be assigned by teacher (assignedAt > 0, ignore demo seed data)
+        if (!hw.assignedAt || hw.assignedAt === 0) return false;
+        // MUST match book level if level is specified
+        if (curBookLvl) {
+          var hwLvl = normalizeBookLevel(hw.bookLevel || cls.level);
+          if (hwLvl && hwLvl !== curBookLvl) return false;
+        }
+        return true;
+      }
+
       if (Array.isArray(cls.activeHomeworks) && cls.activeHomeworks.length > 0) {
         cls.activeHomeworks.forEach(function(hw) {
-          if (hw && hw.lessonCode) activeHws.push({ hw: hw, cls: cls });
+          if (isRealHw(hw)) activeHws.push({ hw: hw, cls: cls });
         });
-      } else if (cls.activeHomework && cls.activeHomework.lessonCode) {
+      } else if (cls.activeHomework && isRealHw(cls.activeHomework)) {
         activeHws.push({ hw: cls.activeHomework, cls: cls });
       }
       if (cls.attendance && cls.attendance.homeworks) {
@@ -160025,18 +160050,18 @@
           var item = cls.attendance.homeworks[dk];
           if (Array.isArray(item)) {
             item.forEach(function(hw) {
-              if (hw && hw.lessonCode && !activeHws.some(function(x) { return x.hw.lessonCode === hw.lessonCode; })) {
+              if (isRealHw(hw) && !activeHws.some(function(x) { return x.hw.lessonCode === hw.lessonCode && x.hw.dateKey === hw.dateKey; })) {
                 activeHws.push({ hw: hw, cls: cls });
               }
             });
-          } else if (item && item.lessonCode && !activeHws.some(function(x) { return x.hw.lessonCode === item.lessonCode; })) {
+          } else if (item && isRealHw(item) && !activeHws.some(function(x) { return x.hw.lessonCode === item.lessonCode && x.hw.dateKey === item.dateKey; })) {
             activeHws.push({ hw: item, cls: cls });
           }
         }
       }
     });
 
-    // If NO homework has been assigned by teacher, ALL lessons are strictly locked for students!
+    // If NO homework has been assigned by teacher for this book, EVERYTHING is strictly locked for students!
     if (activeHws.length === 0) {
       return {
         isStudent: true,
@@ -160054,7 +160079,9 @@
     var matchObj = activeHws.find(function(x) {
       var aUnit = parseInt(x.hw.unit, 10);
       var aCode = String(x.hw.lessonCode || '').trim();
-      return (aUnit === thisUnit || isNaN(thisUnit)) && (aCode === thisLessonCode);
+      var aLvl = normalizeBookLevel(x.hw.bookLevel || (x.cls && x.cls.level));
+      var lvlMatches = (!curBookLvl || !aLvl || aLvl === curBookLvl);
+      return lvlMatches && (aUnit === thisUnit || isNaN(thisUnit)) && (aCode === thisLessonCode);
     });
 
     if (!matchObj) {
@@ -160143,8 +160170,8 @@
     };
   };
 
-  WB.renderCatalogHomeworkBannerHtml = function() {
-    var lock = WB.getStudentHomeworkLockState(1, '1.1');
+  WB.renderCatalogHomeworkBannerHtml = function(bookLevel) {
+    var lock = WB.getStudentHomeworkLockState(1, '1.1', bookLevel);
     if (!lock.hasActiveHw) return '';
     return '<div style="background:linear-gradient(135deg,rgba(234,179,8,0.18),rgba(202,138,4,0.28));border:1.5px solid #eab308;padding:16px 22px;border-radius:18px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 10px 25px rgba(234,179,8,0.25);">' +
       '<div style="display:flex;align-items:center;gap:12px;">' +
@@ -160164,7 +160191,7 @@
   };
 
   WB.renderCatalogLessonRowHtml = function(unitNum, les, bookLevel) {
-    var lock = WB.getStudentHomeworkLockState(unitNum, les.code);
+    var lock = WB.getStudentHomeworkLockState(unitNum, les.code, bookLevel);
     var openFnName = 'openLesson';
     var primaryColor = '#0284c7';
     var gradient = 'linear-gradient(135deg, #0284c7, #154b89)';
@@ -160253,7 +160280,7 @@
   WB.openLesson = function(unitNum, lessonCode, pageNum) {
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || '1.1';
-    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode);
+    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode, 'b1');
     if (lockState.isLocked) {
       if (window.EthithApp && window.EthithApp.showToast) {
         window.EthithApp.showToast(lockState.message, 'warning');
@@ -160279,7 +160306,7 @@
   WB.openLessonA1 = function(unitNum, lessonCode, pageNum) {
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || '1.1';
-    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode);
+    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode, 'a1');
     if (lockState.isLocked) {
       if (window.EthithApp && window.EthithApp.showToast) {
         window.EthithApp.showToast(lockState.message, 'warning');
@@ -160302,7 +160329,7 @@
   WB.openLessonA2 = function(unitNum, lessonCode, pageNum) {
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || '1.1';
-    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode);
+    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode, 'a2');
     if (lockState.isLocked) {
       if (window.EthithApp && window.EthithApp.showToast) {
         window.EthithApp.showToast(lockState.message, 'warning');
@@ -160330,7 +160357,7 @@
     } catch(e) {}
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || '1.1';
-    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode);
+    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode, 'b1_pre');
     if (lockState.isLocked) {
       if (window.EthithApp && window.EthithApp.showToast) {
         window.EthithApp.showToast(lockState.message, 'warning');
@@ -160353,7 +160380,7 @@
   WB.openLessonB2 = function(unitNum, lessonCode, pageNum) {
     unitNum = parseInt(unitNum, 10) || 1;
     lessonCode = lessonCode || '1.1';
-    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode);
+    var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode, 'b2');
     if (lockState.isLocked) {
       if (window.EthithApp && window.EthithApp.showToast) {
         window.EthithApp.showToast(lockState.message, 'warning');
@@ -160947,7 +160974,7 @@
       '</div>';
 
     // Active Homework Banner (if assigned)
-    h += WB.renderCatalogHomeworkBannerHtml();
+    h += WB.renderCatalogHomeworkBannerHtml('b1');
 
     // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
     h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
@@ -160970,12 +160997,12 @@
       h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:18px;">';
       WB.units.forEach(function(u) {
         var isAvail = u.available;
-        h += '<div class="eth-wb-unit-card" style="background:var(--card);border:1.5px solid ' + (isAvail ? '#38bdf8' : 'var(--line)') + ';border-radius:18px;padding:20px;position:relative;display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s ease;box-shadow:' + (isAvail ? '0 12px 30px -10px rgba(14,165,233,0.3)' : 'none') + ';">' +
+        h += '<div class="eth-wb-unit-card" style="background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:20px;position:relative;display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s ease;">' +
           '<div>' +
             '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
-              '<span style="font-size:12px;font-weight:800;color:' + (isAvail ? '#0284c7' : 'var(--muted)') + ';text-transform:uppercase;letter-spacing:0.04em;">UNIT ' + u.unit + '</span>' +
-              '<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px;background:' + (isAvail ? 'rgba(16,185,129,0.15)' : 'var(--soft)') + ';color:' + (isAvail ? '#10b981' : 'var(--muted)') + ';">' +
-                (isAvail ? '● Ochiq (Tayyor)' : '🔒 Tayyorlanmoqda') +
+              '<span style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:#0284c7;background:rgba(2,132,199,0.14);padding:3px 10px;border-radius:8px;">UNIT ' + u.unit + '</span>' +
+              '<span style="font-size:11px;font-weight:800;color:#94a3b8;display:inline-flex;align-items:center;gap:4px;">' +
+                '📖 ' + (u.lessons ? u.lessons.length : 0) + ' mavzu' +
               '</span>' +
             '</div>' +
             '<h3 style="font-size:18px;font-weight:800;margin:0 0 6px;color:var(--text);">' + u.title + '</h3>' +
@@ -161065,7 +161092,7 @@
       '</div>';
 
     // Active Homework Banner (if assigned)
-    h += WB.renderCatalogHomeworkBannerHtml();
+    h += WB.renderCatalogHomeworkBannerHtml('b2');
 
     // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
     h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
@@ -161088,12 +161115,12 @@
       h += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:18px;">';
       WB.unitsB2.forEach(function(u) {
         var isAvail = u.available;
-        h += '<div class="eth-wb-unit-card" style="background:var(--card);border:1.5px solid ' + (isAvail ? '#fb923c' : 'var(--line)') + ';border-radius:18px;padding:20px;position:relative;display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s ease;box-shadow:' + (isAvail ? '0 12px 30px -10px rgba(249,115,22,0.28)' : 'none') + ';">' +
+        h += '<div class="eth-wb-unit-card" style="background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:20px;position:relative;display:flex;flex-direction:column;justify-content:space-between;transition:all 0.25s ease;">' +
           '<div>' +
             '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
-              '<span style="font-size:12px;font-weight:800;color:' + (isAvail ? '#fb923c' : 'var(--muted)') + ';text-transform:uppercase;letter-spacing:0.04em;">UNIT ' + u.unit + ' · B2</span>' +
-              '<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px;background:' + (isAvail ? 'rgba(16,185,129,0.15)' : 'var(--soft)') + ';color:' + (isAvail ? '#10b981' : 'var(--muted)') + ';">' +
-                (isAvail ? '● Ochiq (Tayyor)' : '🔒 Tayyorlanmoqda') +
+              '<span style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:#ea580c;background:rgba(234,88,12,0.14);padding:3px 10px;border-radius:8px;">UNIT ' + u.unit + ' · B2</span>' +
+              '<span style="font-size:11px;font-weight:800;color:#94a3b8;display:inline-flex;align-items:center;gap:4px;">' +
+                '📖 ' + (u.lessons ? u.lessons.length : 0) + ' mavzu' +
               '</span>' +
             '</div>' +
             '<h3 style="font-size:18px;font-weight:800;margin:0 0 6px;color:var(--text);">' + u.title + '</h3>' +
@@ -161204,7 +161231,7 @@
       '</div>';
 
     // Active Homework Banner (if assigned)
-    h += WB.renderCatalogHomeworkBannerHtml();
+    h += WB.renderCatalogHomeworkBannerHtml('a1');
 
     // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
     h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
@@ -161328,7 +161355,7 @@
       '</div>';
 
     // Active Homework Banner (if assigned)
-    h += WB.renderCatalogHomeworkBannerHtml();
+    h += WB.renderCatalogHomeworkBannerHtml('a2');
 
     // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
     h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
@@ -161452,7 +161479,7 @@
       '</div>';
 
     // Active Homework Banner (if assigned)
-    h += WB.renderCatalogHomeworkBannerHtml();
+    h += WB.renderCatalogHomeworkBannerHtml('b1_pre');
 
     // 3 Section Tabs: Mavzular | Unit Testlar | Progress Testlar
     h += '<div class="eth-wb-tabs-bar" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:24px;background:rgba(15,23,42,0.65);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">' +
@@ -161582,7 +161609,8 @@
     var isStudent = curUser && curUser.role === 'student';
 
     if (isStudent) {
-      var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode);
+      var currentLevel = bookLevel || (isB2 ? 'b2' : isA1 ? 'a1' : isA2 ? 'a2' : isB1Pre ? 'b1_pre' : 'b1');
+      var lockState = WB.getStudentHomeworkLockState(unitNum, lessonCode, currentLevel);
       if (lockState.isLocked) {
         if (lockState.isCompleted) {
           container.innerHTML = '<div style="max-width:540px;margin:50px auto;text-align:center;background:linear-gradient(145deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1.5px solid rgba(16,185,129,0.45);border-radius:24px;padding:36px 24px;box-shadow:0 20px 60px rgba(0,0,0,0.7);color:#fff;">' +

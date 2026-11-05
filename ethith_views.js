@@ -2336,15 +2336,7 @@
     var pinnedMsgs = (cls.messages || []).filter(function(m) {
       return pinnedIds.indexOf(m.id) > -1 && (!cls.deletedMsgIds || cls.deletedMsgIds.indexOf(m.id) === -1);
     });
-    var activeHw = cls.activeHomework || (window.EthithAttendance && window.EthithAttendance.getLatestClassHomework ? window.EthithAttendance.getLatestClassHomework(cls) : null) || {
-      dateKey: new Date().getFullYear() + '-' + String(new Date().getMonth() + 1).padStart(2, '0') + '-' + String(new Date().getDate()).padStart(2, '0'),
-      dateDisp: String(new Date().getDate()).padStart(2, '0') + '.' + String(new Date().getMonth() + 1).padStart(2, '0') + '.' + new Date().getFullYear(),
-      unit: 1,
-      lessonCode: '1.1',
-      lessonTitle: "1.1 Are you really my friend?",
-      pages: [4, 5],
-      note: "Workbook mashqlarini bajarib Tekshirish tugmasini bosing — baho Davomat jurnaliga avtomatik qo'yiladi."
-    };
+    var activeHw = cls.activeHomework || (window.EthithAttendance && window.EthithAttendance.getLatestClassHomework ? window.EthithAttendance.getLatestClassHomework(cls) : null) || null;
 
     var myStRecord = null;
     if (cls.attendance && cls.attendance.records && activeHw && activeHw.dateKey) {
