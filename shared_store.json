@@ -25775,7 +25775,7 @@
           "updatedAt": 1793856833917,
           "isLoggedOut": false,
           "hasLoggedIn": true,
-          "lastSeen": 1793869998501,
+          "lastSeen": 1793870005112,
           "avatar": null,
           "nameStyle": null,
           "title": null,
@@ -26324,6 +26324,21 @@
           "text": "sad",
           "time": "14:13",
           "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1793870004823_1d5sq",
+          "timestamp": 1793870004823,
+          "senderId": "admin_official_teacher",
+          "senderName": "Azizbek Urolov",
+          "senderEmail": "azizbek.urolov@ethith.uz",
+          "text": "AS",
+          "time": "14:13",
+          "replyTo": {
+            "id": "msg_1793869988201_u2xr0",
+            "senderName": "Azizbek Urolov",
+            "text": "sad"
+          },
           "reactions": {}
         }
       ],
@@ -29927,7 +29942,7 @@
       "login": "azizbek77",
       "password": "azizbek2026",
       "loggedOutAt": 1793779411611,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "std_13",
@@ -30092,7 +30107,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776,
+      "lastSeen": 1793870004170,
       "password": "azizbek2026",
       "level": "B1+",
       "dailyMinutes": 0
@@ -30119,7 +30134,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30140,7 +30155,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30161,7 +30176,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30185,7 +30200,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30209,7 +30224,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30231,7 +30246,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30253,7 +30268,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30277,7 +30292,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30298,7 +30313,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30320,7 +30335,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30342,7 +30357,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30364,7 +30379,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30388,7 +30403,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30412,7 +30427,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30436,7 +30451,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30457,7 +30472,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "st_998901239988",
@@ -30533,7 +30548,7 @@
       "classId": "cls_urolov_azizbek_upper",
       "lastLogin": null,
       "loggedOutAt": 1793783047463,
-      "lastSeen": 1793869998501,
+      "lastSeen": 1793870005112,
       "level": "A1",
       "dailyMinutes": 114
     },
@@ -30555,7 +30570,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "t_muhammadyusuf",
@@ -30586,7 +30601,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "admin_official_teacher",
@@ -30598,7 +30613,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869999776
+      "lastSeen": 1793870004170
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -31055,7 +31070,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793869998501,
+      "lastSeen": 1793870005112,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov"
     },
@@ -150743,5 +150758,5 @@
       }
     }
   },
-  "updatedAt": 1793870000775
+  "updatedAt": 1793870005408
 }
