@@ -22847,7 +22847,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793734631041
+        "updatedAt": 1793858006144
       },
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
@@ -23202,7 +23202,7 @@
           "updatedAt": 1793811297042,
           "hasLoggedIn": true,
           "isLoggedOut": false,
-          "lastSeen": 1793857993090
+          "lastSeen": 1793858006441
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -23317,8 +23317,8 @@
           }
         }
       ],
-      "learningMonths": 2,
-      "learningDays": 11,
+      "learningMonths": 0,
+      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_upper_tester_1": {
           "fee": 300000,
@@ -23571,6 +23571,167 @@
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
+        },
+        "std_azimjon_848_toirov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_behruz_942_oktamov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_charos_386_baxtiyorova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_diyor_772_suyundikov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_gulruh_365_tangirova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_jamshid_843_komilov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_kamron_187_raimberdiyev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_navroz_651_shavkatov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_niyatullo_582_asatullayev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_nurlan_856_tangatov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_oktamova_798_zarina": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_orazaliyev_514_amirshox": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_orozboyev_391_ollohberdi": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_otkir_903_tursunmatov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_odina_419_zoirova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_ozodbek_578_mamatqulov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_rayhona_554_qoshqarova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_sabina_672_ibodullayeva": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_shohista_786_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_shohsasnam_517_bayrbekova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_xudoyberdiyeva_775_madina": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_yulduz_938_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_ziyoda_799_regdfggyj": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
         }
       },
       "activeHomework": {
@@ -23618,7 +23779,8 @@
         "std_niyatullo_582_asatullayev": 1793625077010,
         "std_navroz_651_shavkatov": 1793625077010,
         "std_otkir_903_tursunmatov": 1793625077010
-      }
+      },
+      "durationUpdatedAt": 1793858006144
     },
     {
       "id": "cls_urolov_azizbek_standard",
@@ -26235,7 +26397,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380,
+      "lastSeen": 1793858006724,
       "login": "muhammedjoraboyev1"
     },
     {
@@ -26253,7 +26415,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857994085,
+      "lastSeen": 1793858007286,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -26287,7 +26449,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -26463,7 +26625,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "std_13",
@@ -26628,7 +26790,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26652,7 +26814,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26673,7 +26835,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26694,7 +26856,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26718,7 +26880,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26742,7 +26904,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26764,7 +26926,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26786,7 +26948,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26810,7 +26972,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26831,7 +26993,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26853,7 +27015,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26875,7 +27037,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26897,7 +27059,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26921,7 +27083,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26945,7 +27107,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26969,7 +27131,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "admin_official_teacher",
@@ -26990,7 +27152,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380
+      "lastSeen": 1793858006724
     },
     {
       "id": "st_998901239988",
@@ -27038,7 +27200,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993380,
+      "lastSeen": 1793858006724,
       "level": "C2"
     },
     {
@@ -27082,7 +27244,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793857993090,
+      "lastSeen": 1793858006441,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov"
     },
@@ -146487,5 +146649,5 @@
       }
     }
   },
-  "updatedAt": 1793857994610
+  "updatedAt": 1793858007804
 }
