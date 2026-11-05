@@ -25777,7 +25777,7 @@
           "isLoggedOut": false,
           "hasLoggedIn": true,
           "loggedOutAt": 1793798152254,
-          "lastSeen": 1793868823702
+          "lastSeen": 1793868847898
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -29168,7 +29168,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793868823733,
+      "lastSeen": 1793868847930,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -29536,7 +29536,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Elyor Aborbekov",
+      "name": "Ustoz",
       "email": "elyor.aborbekov@ethith.uz",
       "login": "elyor70",
       "role": "teacher",
@@ -29550,7 +29550,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ravshanov Doniyor",
+      "name": "Ustoz",
       "email": "doniyor.ravshanov@ethith.uz",
       "login": "doniyor24",
       "password": "doniyor2026",
@@ -29574,7 +29574,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Qarshiboyev Humoyun",
+      "name": "Ustoz",
       "email": "humoyun.qarshiboyev@ethith.uz",
       "login": "humoyun15",
       "password": "humoyun2026",
@@ -29595,7 +29595,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Marjona Tovboyeva",
+      "name": "Ustoz",
       "email": "marjona.tovboyeva@ethith.uz",
       "login": "marjona88",
       "password": "marjona2026",
@@ -29616,7 +29616,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Durdona Olimjonova",
+      "name": "Ustoz",
       "email": "durdona.olimjonova@ethith.uz",
       "login": "durdona12",
       "password": "durdona2026",
@@ -29640,7 +29640,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Eldor Tagaev",
+      "name": "Ustoz",
       "email": "eldor.tagaev@ethith.uz",
       "login": "eldor33",
       "password": "eldor2026",
@@ -29664,7 +29664,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Kamola Yaxshilikova",
+      "name": "Ustoz",
       "email": "kamola.yaxshilikova@ethith.uz",
       "login": "kamola45",
       "password": "kamola2026",
@@ -29686,7 +29686,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Iroda Sherqoziyeva",
+      "name": "Ustoz",
       "email": "iroda.sherqoziyeva@ethith.uz",
       "login": "iroda19",
       "password": "iroda2026",
@@ -29708,7 +29708,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Jaloliddin O’rinboyev",
+      "name": "Ustoz",
       "email": "jaloliddin.orinboyev@ethith.uz",
       "login": "jaloliddin99",
       "password": "jaloliddin2026",
@@ -29732,7 +29732,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Pokiza Jumanova",
+      "name": "Ustoz",
       "email": "pokiza.jumanova@ethith.uz",
       "login": "pokiza07",
       "password": "pokiza2026",
@@ -29753,7 +29753,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Arslon Hayrullayev",
+      "name": "Ustoz",
       "email": "arslon.hayrullayev@ethith.uz",
       "login": "arslon64",
       "password": "arslon2026",
@@ -29775,7 +29775,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Sarvinoz Xudoyorova",
+      "name": "Ustoz",
       "email": "sarvinoz.xudoyorova@ethith.uz",
       "login": "sarvinoz82",
       "password": "sarvinoz2026",
@@ -29797,7 +29797,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Sevinch Aliqulova",
+      "name": "Ustoz",
       "email": "sevinch.aliqulova@ethith.uz",
       "login": "sevinch55",
       "password": "sevinch2026",
@@ -29819,7 +29819,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Diyora Xo’jamqulova",
+      "name": "Ustoz",
       "email": "diyora.xojamqulova@ethith.uz",
       "login": "diyora21",
       "password": "diyora2026",
@@ -29843,7 +29843,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Farrux Bosimbekov",
+      "name": "Ustoz",
       "email": "farrux.bosimbekov@ethith.uz",
       "login": "farrux93",
       "password": "farrux2026",
@@ -29867,7 +29867,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Barno Ahmadova",
+      "name": "Ustoz",
       "email": "barno.ahmadova@ethith.uz",
       "login": "barno36",
       "password": "barno2026",
@@ -29891,7 +29891,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Shodiyor (matematika)",
+      "name": "Ustoz",
       "email": "shodiyor.matematika@ethith.uz",
       "login": "shodiyor50",
       "password": "shodiyor2026",
@@ -29938,7 +29938,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Azizbek Urolov",
+      "name": "Ustoz",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
       "password": "azizbek2026",
@@ -30008,12 +30008,12 @@
       "parentPhone": "950079621",
       "classId": "cls_urolov_azizbek_upper",
       "lastLogin": "2026-11-04T14:59:52.209Z",
-      "lastSeen": 1793868823702,
+      "lastSeen": 1793868847898,
       "level": "A1",
       "dailyMinutes": 114
     },
     {
-      "id": "t_muhammadyusuf",
+      "id": "admin_official_teacher",
       "name": "Muhammadyusuf",
       "login": "muhammadyusuf11",
       "password": "muhammadyusuf2026",
@@ -30500,7 +30500,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793868823702,
+      "lastSeen": 1793868847898,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov"
     },
@@ -149737,6 +149737,70 @@
         ]
       },
       {
+        "id": "tst_haftalik_musobaqa",
+        "title": "Haftalik Onlayn Musobaqa",
+        "code": "QZ-WEEKLY-1",
+        "type": "standard_quiz",
+        "folderId": "f_root",
+        "createdAt": 1793807566177,
+        "authorId": "t_urolov_azizbek",
+        "authorName": "Azizbek Urolov",
+        "authorEmail": "teacher@ethith.uz",
+        "maxAttempts": 1,
+        "questions": [
+          {
+            "q": "Which sentence is grammatically correct?",
+            "options": [
+              "She do not like coffee.",
+              "She does not likes coffee.",
+              "She does not like coffee.",
+              "She not like coffee."
+            ],
+            "correct": 2
+          },
+          {
+            "q": "Choose the correct preposition: I arrived ______ the airport at 6 p.m.",
+            "options": [
+              "at",
+              "in",
+              "to",
+              "on"
+            ],
+            "correct": 0
+          },
+          {
+            "q": "If I ______ enough money, I would travel around the world.",
+            "options": [
+              "have",
+              "had",
+              "will have",
+              "would have"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Complete the sentence: By the time we arrived, the movie ______.",
+            "options": [
+              "started",
+              "has started",
+              "had started",
+              "was starting"
+            ],
+            "correct": 2
+          },
+          {
+            "q": "Select the synonym for diligent:",
+            "options": [
+              "Lazy",
+              "Hardworking",
+              "Quick",
+              "Careless"
+            ],
+            "correct": 1
+          }
+        ]
+      },
+      {
         "id": "tst_1793804457677",
         "title": "Haftalik Onlayn Musobaqa",
         "code": "QZ-5S9$4NW",
@@ -149999,70 +150063,6 @@
             "timeSec": 30
           }
         ]
-      },
-      {
-        "id": "tst_haftalik_musobaqa",
-        "title": "Haftalik Onlayn Musobaqa",
-        "code": "QZ-WEEKLY-1",
-        "type": "standard_quiz",
-        "folderId": "f_root",
-        "createdAt": 1793807566177,
-        "authorId": "t_urolov_azizbek",
-        "authorName": "Azizbek Urolov",
-        "authorEmail": "teacher@ethith.uz",
-        "maxAttempts": 1,
-        "questions": [
-          {
-            "q": "Which sentence is grammatically correct?",
-            "options": [
-              "She do not like coffee.",
-              "She does not likes coffee.",
-              "She does not like coffee.",
-              "She not like coffee."
-            ],
-            "correct": 2
-          },
-          {
-            "q": "Choose the correct preposition: I arrived ______ the airport at 6 p.m.",
-            "options": [
-              "at",
-              "in",
-              "to",
-              "on"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "If I ______ enough money, I would travel around the world.",
-            "options": [
-              "have",
-              "had",
-              "will have",
-              "would have"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Complete the sentence: By the time we arrived, the movie ______.",
-            "options": [
-              "started",
-              "has started",
-              "had started",
-              "was starting"
-            ],
-            "correct": 2
-          },
-          {
-            "q": "Select the synonym for diligent:",
-            "options": [
-              "Lazy",
-              "Hardworking",
-              "Quick",
-              "Careless"
-            ],
-            "correct": 1
-          }
-        ]
       }
     ]
   },
@@ -150207,5 +150207,5 @@
       }
     }
   },
-  "updatedAt": 1793868824867
+  "updatedAt": 1793868849973
 }
