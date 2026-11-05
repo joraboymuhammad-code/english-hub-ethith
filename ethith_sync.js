@@ -1273,15 +1273,27 @@
     }
 
     // E2. ATTENDANCE & JOURNAL REAL-TIME UPDATE
-    else if (event.type === 'ATTENDANCE_UPDATED') {
+    else if (event.type === 'ATTENDANCE_UPDATED' || event.type === 'CLASS_DURATION_UPDATED') {
       var attCls = targetCls || classes.find(function(c) {
         return (event.classId && c.id === event.classId) || (event.classCode && c.code === event.classCode);
       });
       if (attCls) {
         if (event.attendance) attCls.attendance = event.attendance;
         if (event.schedule) attCls.schedule = event.schedule;
-        if (event.learningMonths !== undefined) attCls.learningMonths = event.learningMonths;
-        if (event.learningDays !== undefined) attCls.learningDays = event.learningDays;
+        if (event.learningMonths !== undefined || event.learningDays !== undefined) {
+          var rM = event.learningMonths !== undefined ? Number(event.learningMonths) : (attCls.learningMonths || 0);
+          var rD = event.learningDays !== undefined ? Number(event.learningDays) : (attCls.learningDays || 0);
+          attCls.learningMonths = rM;
+          attCls.learningDays = rD;
+          attCls.durationUpdatedAt = event.ts || Date.now();
+          try {
+            localStorage.setItem('ethith_class_duration_' + attCls.id, JSON.stringify({
+              learningMonths: rM,
+              learningDays: rD,
+              ts: attCls.durationUpdatedAt
+            }));
+          } catch(e) {}
+        }
         if (event.customStudentNames) attCls.customStudentNames = event.customStudentNames;
         if (event.activeHomework !== undefined) attCls.activeHomework = event.activeHomework;
         if (event.activeHomeworks !== undefined) attCls.activeHomeworks = event.activeHomeworks;
@@ -1289,6 +1301,11 @@
         uiNeedsRefresh = true;
         if (window._ethithRefreshAttendance && window._ethithCurrentView === 'attendance') {
           try { window._ethithRefreshAttendance(); } catch(e) {}
+        } else if (window.EA && typeof window.EA.render === 'function') {
+          var apView = document.getElementById('apView') || document.getElementById('viewContainer');
+          if (apView && (window._ethithCurrentView === 'attendance' || document.querySelector('.ea-teachers-grid') || document.querySelector('.ea-teacher-groups-wrap'))) {
+            try { window.EA.render(apView, true); } catch(e) {}
+          }
         }
       }
     }
@@ -2427,6 +2444,39 @@
         changed = true;
       }
 
+      // Sync Group Duration & Level Test Countdown (learningMonths & learningDays)
+      if (rc.learningMonths !== undefined || rc.learningDays !== undefined) {
+        var rM = Number(rc.learningMonths) || 0;
+        var rD = Number(rc.learningDays) || 0;
+        var rDurTs = Number(rc.durationUpdatedAt || (rc.attendance && rc.attendance.updatedAt) || 0);
+        var locDurObj = null;
+        try {
+          var locDurStr = localStorage.getItem('ethith_class_duration_' + localCls.id);
+          if (locDurStr) locDurObj = JSON.parse(locDurStr);
+        } catch(e) {}
+
+        if (locDurObj && locDurObj.ts && locDurObj.ts > rDurTs) {
+          localCls.learningMonths = Number(locDurObj.learningMonths) || 0;
+          localCls.learningDays = Number(locDurObj.learningDays) || 0;
+          localCls.durationUpdatedAt = locDurObj.ts;
+          rc.learningMonths = localCls.learningMonths;
+          rc.learningDays = localCls.learningDays;
+          rc.durationUpdatedAt = locDurObj.ts;
+        } else if (localCls.learningMonths !== rM || localCls.learningDays !== rD) {
+          localCls.learningMonths = rM;
+          localCls.learningDays = rD;
+          localCls.durationUpdatedAt = rDurTs || Date.now();
+          try {
+            localStorage.setItem('ethith_class_duration_' + localCls.id, JSON.stringify({
+              learningMonths: rM,
+              learningDays: rD,
+              ts: localCls.durationUpdatedAt
+            }));
+          } catch(e) {}
+          changed = true;
+        }
+      }
+
       // Sync Deleted Message IDs
       if (!localCls.deletedMsgIds) localCls.deletedMsgIds = [];
       if (rc.deletedMsgIds && Array.isArray(rc.deletedMsgIds)) {
@@ -3191,6 +3241,15 @@
         var globalDels = (S.deletedStudentIds || []);
         var cleanClasses = JSON.parse(JSON.stringify(S.classes));
         cleanClasses.forEach(function(c) {
+          try {
+            var durStr = localStorage.getItem('ethith_class_duration_' + c.id);
+            if (durStr) {
+              var durObj = JSON.parse(durStr);
+              if (durObj && durObj.learningMonths !== undefined) c.learningMonths = Number(durObj.learningMonths) || 0;
+              if (durObj && durObj.learningDays !== undefined) c.learningDays = Number(durObj.learningDays) || 0;
+              if (durObj && durObj.ts) c.durationUpdatedAt = durObj.ts;
+            }
+          } catch(e) {}
           if (c.deletedMsgIds && Array.isArray(c.deletedMsgIds) && c.messages) {
             c.messages = c.messages.filter(function(m) {
               return c.deletedMsgIds.indexOf(m.id) === -1;

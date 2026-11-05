@@ -889,21 +889,31 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
         var existing = sClasses.find(function(c) { return c.id === initC.id; });
         if (!existing) {
-          sClasses.push(JSON.parse(JSON.stringify(initC)));
+          var copy = JSON.parse(JSON.stringify(initC));
+          try {
+            var durStr = localStorage.getItem('ethith_class_duration_' + copy.id);
+            if (durStr) {
+              var durObj = JSON.parse(durStr);
+              if (durObj && durObj.learningMonths !== undefined) copy.learningMonths = Number(durObj.learningMonths) || 0;
+              if (durObj && durObj.learningDays !== undefined) copy.learningDays = Number(durObj.learningDays) || 0;
+            }
+          } catch(e) {}
+          sClasses.push(copy);
         } else {
           existing.maxCapacity = 18;
           if (initC.code && !existing.code) existing.code = initC.code;
           if (initC.name) existing.name = initC.name;
           if (initC.level) existing.level = initC.level;
           if (initC.teacherName) existing.teacherName = initC.teacherName;
-          if (existing.learningMonths === undefined && initC.learningMonths !== undefined) existing.learningMonths = initC.learningMonths;
-          if (existing.learningDays === undefined && initC.learningDays !== undefined) existing.learningDays = initC.learningDays;
           try {
             var durStr = localStorage.getItem('ethith_class_duration_' + existing.id);
             if (durStr) {
               var durObj = JSON.parse(durStr);
-              if (durObj && durObj.learningMonths !== undefined) existing.learningMonths = durObj.learningMonths;
-              if (durObj && durObj.learningDays !== undefined) existing.learningDays = durObj.learningDays;
+              if (durObj && durObj.learningMonths !== undefined) existing.learningMonths = Number(durObj.learningMonths) || 0;
+              if (durObj && durObj.learningDays !== undefined) existing.learningDays = Number(durObj.learningDays) || 0;
+            } else {
+              if (existing.learningMonths === undefined && initC.learningMonths !== undefined) existing.learningMonths = initC.learningMonths;
+              if (existing.learningDays === undefined && initC.learningDays !== undefined) existing.learningDays = initC.learningDays;
             }
           } catch(e) {}
           if (initC.studentPayments) {
@@ -923,6 +933,14 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     sClasses.forEach(function(cls) {
       if (!cls) return;
       if (!Array.isArray(cls.students)) cls.students = [];
+      try {
+        var durStr = localStorage.getItem('ethith_class_duration_' + cls.id);
+        if (durStr) {
+          var durObj = JSON.parse(durStr);
+          if (durObj && durObj.learningMonths !== undefined) cls.learningMonths = Number(durObj.learningMonths) || 0;
+          if (durObj && durObj.learningDays !== undefined) cls.learningDays = Number(durObj.learningDays) || 0;
+        }
+      } catch(e) {}
 
       if (cls.id === 'cls_urolov_azizbek_upper') {
         cls.maxCapacity = Math.max(cls.students.length, 23);
@@ -1838,18 +1856,18 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         // Group Duration & 90-Day Level Test Countdown
         var lMonths = Number(cls.learningMonths) || 0;
         var lDays = Number(cls.learningDays) || 0;
-        if (!lMonths && !lDays) {
-          try {
-            var durStr = localStorage.getItem('ethith_class_duration_' + cls.id);
-            if (durStr) {
-              var durObj = JSON.parse(durStr);
-              if (durObj) {
-                lMonths = Number(durObj.learningMonths) || 0;
-                lDays = Number(durObj.learningDays) || 0;
-              }
+        try {
+          var durStr = localStorage.getItem('ethith_class_duration_' + cls.id);
+          if (durStr) {
+            var durObj = JSON.parse(durStr);
+            if (durObj && durObj.learningMonths !== undefined) {
+              lMonths = Number(durObj.learningMonths) || 0;
+              lDays = Number(durObj.learningDays) || 0;
+              cls.learningMonths = lMonths;
+              cls.learningDays = lDays;
             }
-          } catch(e) {}
-        }
+          }
+        } catch(e) {}
         var totalDaysElapsed = (lMonths * 30) + lDays;
         var remainingDays = Math.max(0, 90 - totalDaysElapsed);
         var testsCompleted = Math.min(24, Math.max(0, Math.round((totalDaysElapsed / 90) * 24)));
@@ -6333,18 +6351,16 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
     var curMonths = Number(cls.learningMonths) || 0;
     var curDays = Number(cls.learningDays) || 0;
-    if (!curMonths && !curDays) {
-      try {
-        var durStr = localStorage.getItem('ethith_class_duration_' + cls.id);
-        if (durStr) {
-          var durObj = JSON.parse(durStr);
-          if (durObj) {
-            curMonths = Number(durObj.learningMonths) || 0;
-            curDays = Number(durObj.learningDays) || 0;
-          }
+    try {
+      var durStr = localStorage.getItem('ethith_class_duration_' + cls.id);
+      if (durStr) {
+        var durObj = JSON.parse(durStr);
+        if (durObj && durObj.learningMonths !== undefined) {
+          curMonths = Number(durObj.learningMonths) || 0;
+          curDays = Number(durObj.learningDays) || 0;
         }
-      } catch(e) {}
-    }
+      }
+    } catch(e) {}
 
     var overlay = document.createElement('div');
     overlay.id = 'eaGroupDurationModalOverlay';
@@ -6435,36 +6451,37 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       var d = Math.max(0, Math.min(29, parseInt(dInp.value, 10) || 0));
       cls.learningMonths = m;
       cls.learningDays = d;
-
-      var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
-      var storeCls = (S.classes || []).find(function(it) { return it.id === cls.id; });
-      if (storeCls) {
-        storeCls.learningMonths = m;
-        storeCls.learningDays = d;
-      }
+      cls.durationUpdatedAt = Date.now();
 
       try {
-        localStorage.setItem('ethith_class_duration_' + cls.id, JSON.stringify({ learningMonths: m, learningDays: d }));
+        localStorage.setItem('ethith_class_duration_' + cls.id, JSON.stringify({
+          learningMonths: m,
+          learningDays: d,
+          ts: Date.now()
+        }));
       } catch(e) {}
+
+      // Update all in-memory class stores: S, EthithApp.state, ETHITH_INITIAL_STORE, EthithEnterprise
+      [window.S, (window.EthithApp && window.EthithApp.state), window.ETHITH_INITIAL_STORE].forEach(function(st) {
+        if (!st || !Array.isArray(st.classes)) return;
+        var target = st.classes.find(function(it) { return it && (it.id === cls.id || it.code === cls.code); });
+        if (target) {
+          target.learningMonths = m;
+          target.learningDays = d;
+          target.durationUpdatedAt = Date.now();
+        }
+      });
 
       // Update EthithEnterprise store classes
       if (window.EthithEnterprise && typeof window.EthithEnterprise.getStore === 'function') {
         var eeSt = window.EthithEnterprise.getStore();
         if (eeSt && Array.isArray(eeSt.classes)) {
-          var eeCls = eeSt.classes.find(function(it) { return it && it.id === cls.id; });
+          var eeCls = eeSt.classes.find(function(it) { return it && (it.id === cls.id || it.code === cls.code); });
           if (eeCls) {
             eeCls.learningMonths = m;
             eeCls.learningDays = d;
+            eeCls.durationUpdatedAt = Date.now();
           }
-        }
-      }
-
-      // Update ETHITH_INITIAL_STORE classes
-      if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.classes)) {
-        var initCls = window.ETHITH_INITIAL_STORE.classes.find(function(it) { return it && it.id === cls.id; });
-        if (initCls) {
-          initCls.learningMonths = m;
-          initCls.learningDays = d;
         }
       }
 
@@ -6472,7 +6489,8 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
       if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
         window.EthithEnterprise.saveStore();
-      } else if (window.EthithApp && window.EthithApp.saveState) {
+      }
+      if (window.EthithApp && window.EthithApp.saveState) {
         window.EthithApp.saveState();
       }
 
@@ -6481,8 +6499,10 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           window.EthithSync.publishLive({
             type: 'CLASS_DURATION_UPDATED',
             classId: cls.id,
+            classCode: cls.code,
             learningMonths: m,
-            learningDays: d
+            learningDays: d,
+            ts: Date.now()
           });
         }
         if (typeof window.EthithSync.pushRemoteStore === 'function') {
@@ -6498,7 +6518,11 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       }
 
       overlay.remove();
-      EA.render(container);
+
+      var apView = document.getElementById('apView') || document.getElementById('viewContainer');
+      if (apView && typeof EA.render === 'function') {
+        EA.render(apView, true);
+      }
     };
   };
 
