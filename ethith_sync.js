@@ -1280,17 +1280,23 @@
       if (attCls) {
         if (event.attendance) attCls.attendance = event.attendance;
         if (event.schedule) attCls.schedule = event.schedule;
-        if (event.learningMonths !== undefined || event.learningDays !== undefined || event.levelTestDate) {
+        if (event.learningMonths !== undefined || event.learningDays !== undefined || event.levelTestDate || event.learningLessons !== undefined) {
           var rM = event.learningMonths !== undefined ? Number(event.learningMonths) : (attCls.learningMonths || 0);
           var rD = event.learningDays !== undefined ? Number(event.learningDays) : (attCls.learningDays || 0);
           attCls.learningMonths = rM;
           attCls.learningDays = rD;
+          if (event.learningLessons !== undefined) attCls.learningLessons = Number(event.learningLessons);
+          if (event.baselineDate) attCls.baselineDate = event.baselineDate;
+          if (event.schedule) attCls.schedule = event.schedule;
           if (event.levelTestDate) attCls.levelTestDate = event.levelTestDate;
           attCls.durationUpdatedAt = event.ts || Date.now();
           try {
             localStorage.setItem('ethith_class_duration_' + attCls.id, JSON.stringify({
               learningMonths: rM,
               learningDays: rD,
+              learningLessons: attCls.learningLessons !== undefined ? attCls.learningLessons : null,
+              baselineDate: attCls.baselineDate || '',
+              schedule: attCls.schedule || '',
               levelTestDate: attCls.levelTestDate || '',
               ts: attCls.durationUpdatedAt
             }));
@@ -2460,22 +2466,34 @@
       if (locDurObj && (locDurTs >= rDurTs || rDurTs === 0)) {
         localCls.learningMonths = Number(locDurObj.learningMonths) || 0;
         localCls.learningDays = Number(locDurObj.learningDays) || 0;
+        if (locDurObj.learningLessons !== undefined) localCls.learningLessons = Number(locDurObj.learningLessons);
+        if (locDurObj.baselineDate) localCls.baselineDate = locDurObj.baselineDate;
+        if (locDurObj.schedule) localCls.schedule = locDurObj.schedule;
         if (locDurObj.levelTestDate) localCls.levelTestDate = locDurObj.levelTestDate;
         localCls.durationUpdatedAt = locDurTs || Date.now();
         rc.learningMonths = localCls.learningMonths;
         rc.learningDays = localCls.learningDays;
+        if (localCls.learningLessons !== undefined) rc.learningLessons = localCls.learningLessons;
+        if (localCls.baselineDate) rc.baselineDate = localCls.baselineDate;
+        if (localCls.schedule) rc.schedule = localCls.schedule;
         rc.levelTestDate = localCls.levelTestDate;
         rc.durationUpdatedAt = localCls.durationUpdatedAt;
       } else if (rc.durationUpdatedAt && rDurTs > locDurTs) {
         // Remote is genuinely newer with an explicit durationUpdatedAt
         localCls.learningMonths = Number(rc.learningMonths) || 0;
         localCls.learningDays = Number(rc.learningDays) || 0;
+        if (rc.learningLessons !== undefined) localCls.learningLessons = Number(rc.learningLessons);
+        if (rc.baselineDate) localCls.baselineDate = rc.baselineDate;
+        if (rc.schedule) localCls.schedule = rc.schedule;
         if (rc.levelTestDate) localCls.levelTestDate = rc.levelTestDate;
         localCls.durationUpdatedAt = rDurTs;
         try {
           localStorage.setItem('ethith_class_duration_' + localCls.id, JSON.stringify({
             learningMonths: localCls.learningMonths,
             learningDays: localCls.learningDays,
+            learningLessons: localCls.learningLessons !== undefined ? localCls.learningLessons : null,
+            baselineDate: localCls.baselineDate || '',
+            schedule: localCls.schedule || '',
             levelTestDate: localCls.levelTestDate || '',
             ts: rDurTs
           }));
@@ -3253,6 +3271,9 @@
               var durObj = JSON.parse(durStr);
               if (durObj && durObj.learningMonths !== undefined) c.learningMonths = Number(durObj.learningMonths) || 0;
               if (durObj && durObj.learningDays !== undefined) c.learningDays = Number(durObj.learningDays) || 0;
+              if (durObj && durObj.learningLessons !== undefined) c.learningLessons = Number(durObj.learningLessons);
+              if (durObj && durObj.baselineDate) c.baselineDate = durObj.baselineDate;
+              if (durObj && durObj.schedule) c.schedule = durObj.schedule;
               if (durObj && durObj.levelTestDate) c.levelTestDate = durObj.levelTestDate;
               if (durObj && durObj.ts) c.durationUpdatedAt = durObj.ts;
             }

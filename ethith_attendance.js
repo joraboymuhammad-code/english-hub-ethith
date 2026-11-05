@@ -896,6 +896,9 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
               var durObj = JSON.parse(durStr);
               if (durObj && durObj.learningMonths !== undefined) copy.learningMonths = Number(durObj.learningMonths) || 0;
               if (durObj && durObj.learningDays !== undefined) copy.learningDays = Number(durObj.learningDays) || 0;
+              if (durObj && durObj.learningLessons !== undefined) copy.learningLessons = Number(durObj.learningLessons);
+              if (durObj && durObj.baselineDate) copy.baselineDate = durObj.baselineDate;
+              if (durObj && durObj.schedule) copy.schedule = durObj.schedule;
               if (durObj && durObj.levelTestDate) copy.levelTestDate = durObj.levelTestDate;
               if (durObj && durObj.ts) copy.durationUpdatedAt = durObj.ts;
             }
@@ -913,11 +916,17 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
               var durObj = JSON.parse(durStr);
               if (durObj && durObj.learningMonths !== undefined) existing.learningMonths = Number(durObj.learningMonths) || 0;
               if (durObj && durObj.learningDays !== undefined) existing.learningDays = Number(durObj.learningDays) || 0;
+              if (durObj && durObj.learningLessons !== undefined) existing.learningLessons = Number(durObj.learningLessons);
+              if (durObj && durObj.baselineDate) existing.baselineDate = durObj.baselineDate;
+              if (durObj && durObj.schedule) existing.schedule = durObj.schedule;
               if (durObj && durObj.levelTestDate) existing.levelTestDate = durObj.levelTestDate;
               if (durObj && durObj.ts) existing.durationUpdatedAt = durObj.ts;
             } else {
               if (existing.learningMonths === undefined && initC.learningMonths !== undefined) existing.learningMonths = initC.learningMonths;
               if (existing.learningDays === undefined && initC.learningDays !== undefined) existing.learningDays = initC.learningDays;
+              if (existing.learningLessons === undefined && initC.learningLessons !== undefined) existing.learningLessons = initC.learningLessons;
+              if (existing.baselineDate === undefined && initC.baselineDate !== undefined) existing.baselineDate = initC.baselineDate;
+              if (existing.schedule === undefined && initC.schedule !== undefined) existing.schedule = initC.schedule;
               if (existing.levelTestDate === undefined && initC.levelTestDate !== undefined) existing.levelTestDate = initC.levelTestDate;
             }
           } catch(e) {}
@@ -944,6 +953,9 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           var durObj = JSON.parse(durStr);
           if (durObj && durObj.learningMonths !== undefined) cls.learningMonths = Number(durObj.learningMonths) || 0;
           if (durObj && durObj.learningDays !== undefined) cls.learningDays = Number(durObj.learningDays) || 0;
+          if (durObj && durObj.learningLessons !== undefined) cls.learningLessons = Number(durObj.learningLessons);
+          if (durObj && durObj.baselineDate) cls.baselineDate = durObj.baselineDate;
+          if (durObj && durObj.schedule) cls.schedule = durObj.schedule;
           if (durObj && durObj.levelTestDate) cls.levelTestDate = durObj.levelTestDate;
           if (durObj && durObj.ts) cls.durationUpdatedAt = durObj.ts;
         }
@@ -1345,34 +1357,95 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   }
 
   function getGroupLevelTestInfo(cls) {
-    if (!cls) return { remainingDays: 90, totalDaysElapsed: 0, dateKey: '', displayDate: '', isSoon: false, isToday: false };
-    var lMonths = Number(cls.learningMonths) || 0;
-    var lDays = Number(cls.learningDays) || 0;
+    if (!cls) return { remainingDays: 90, totalDaysElapsed: 0, dateKey: '', displayDate: '', isSoon: false, isToday: false, testsCompleted: 0, lMonths: 0, lDays: 0 };
+
+    var schedule = cls.schedule || 'har_kuni';
+    var today = getUniversalToday();
+    today.setHours(0, 0, 0, 0);
+
+    // Baseline inputs from cls and localStorage
+    var baseMonths = Number(cls.learningMonths) || 0;
+    var baseDays = Number(cls.learningDays) || 0;
+    var baseLessons = (cls.learningLessons !== undefined && cls.learningLessons !== null) ? Number(cls.learningLessons) : null;
+    var baselineDateKey = cls.baselineDate || '';
+    var durationUpdatedAt = Number(cls.durationUpdatedAt) || 0;
+    var fixedExamDateKey = cls.levelTestDate || '';
+
     try {
       var durStr = localStorage.getItem('ethith_class_duration_' + cls.id);
       if (durStr) {
         var durObj = JSON.parse(durStr);
-        if (durObj && durObj.learningMonths !== undefined) {
-          lMonths = Number(durObj.learningMonths) || 0;
-          lDays = Number(durObj.learningDays) || 0;
+        if (durObj) {
+          if (durObj.learningMonths !== undefined) baseMonths = Number(durObj.learningMonths) || 0;
+          if (durObj.learningDays !== undefined) baseDays = Number(durObj.learningDays) || 0;
+          if (durObj.learningLessons !== undefined && durObj.learningLessons !== null) baseLessons = Number(durObj.learningLessons);
+          if (durObj.baselineDate) baselineDateKey = durObj.baselineDate;
+          if (durObj.levelTestDate) fixedExamDateKey = durObj.levelTestDate;
+          if (durObj.ts) durationUpdatedAt = Number(durObj.ts);
+          if (durObj.schedule) schedule = durObj.schedule;
         }
       }
     } catch(e) {}
 
-    var totalDaysElapsed = (lMonths * 30) + lDays;
+    // If baselineDateKey is not set, derive from durationUpdatedAt or today
+    if (!baselineDateKey) {
+      if (durationUpdatedAt > 0) {
+        var dUp = new Date(durationUpdatedAt);
+        dUp.setHours(0, 0, 0, 0);
+        baselineDateKey = formatDateKey(dUp);
+      } else {
+        baselineDateKey = formatDateKey(today);
+      }
+    }
+
+    var baseDateObj = null;
+    var bp = baselineDateKey.split('-');
+    if (bp.length === 3) {
+      baseDateObj = new Date(parseInt(bp[0], 10), parseInt(bp[1], 10) - 1, parseInt(bp[2], 10));
+      baseDateObj.setHours(0, 0, 0, 0);
+    }
+    if (!baseDateObj || isNaN(baseDateObj.getTime())) {
+      baseDateObj = new Date(today);
+    }
+
+    var baseTotalDays = (baseMonths * 30) + baseDays;
+    if (baseLessons === null || isNaN(baseLessons)) {
+      baseLessons = Math.min(24, Math.max(0, Math.round((baseTotalDays / 90) * 24)));
+    }
+
+    // Automatic day-by-day calendar progression:
+    // Every passing calendar day: day +1 ("kun o'tdi")
+    // Only scheduled class days (toq/juft): lesson +1 ("dars o'tildi")
+    // Non-class days (cherez dars o'tilmaydigan kunlar & yakshanba): only day +1, lesson does not increase
+    var extraDays = 0;
+    var extraLessons = 0;
+
+    if (today > baseDateObj) {
+      var iter = new Date(baseDateObj);
+      iter.setDate(iter.getDate() + 1);
+      while (iter <= today) {
+        extraDays++;
+        if (isScheduledLessonDay(iter, schedule)) {
+          extraLessons++;
+        }
+        iter.setDate(iter.getDate() + 1);
+      }
+    }
+
+    var totalDaysElapsed = Math.min(90, baseTotalDays + extraDays);
+    var lMonths = Math.floor(totalDaysElapsed / 30);
+    var lDays = totalDaysElapsed % 30;
+
+    var testsCompleted = Math.min(24, Math.max(0, baseLessons + extraLessons));
     var remainingDays = Math.max(0, 90 - totalDaysElapsed);
-    var isSoon = (remainingDays <= 7);
 
-    var today = getUniversalToday();
-    today.setHours(0, 0, 0, 0);
-
-    var dateKey = '';
+    var dateKey = fixedExamDateKey;
     var dateObj = null;
-    if (cls.levelTestDate) {
-      dateKey = cls.levelTestDate;
+    if (dateKey) {
       var parts = dateKey.split('-');
       if (parts.length === 3) {
         dateObj = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+        dateObj.setHours(0, 0, 0, 0);
       }
     }
 
@@ -1382,15 +1455,28 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         dateObj.setDate(dateObj.getDate() + 1);
       }
       dateKey = formatDateKey(dateObj);
+    } else {
+      var diffToExam = Math.round((dateObj.getTime() - today.getTime()) / 86400000);
+      if (diffToExam >= 0) {
+        remainingDays = diffToExam;
+      } else {
+        remainingDays = 0;
+      }
     }
 
+    var isSoon = (remainingDays <= 7);
     var displayDate = formatDisplayDate(dateObj);
     var todayKey = formatDateKey(today);
 
     return {
       lMonths: lMonths,
       lDays: lDays,
+      baseMonths: baseMonths,
+      baseDays: baseDays,
+      baseLessons: baseLessons,
+      baselineDate: baselineDateKey,
       totalDaysElapsed: totalDaysElapsed,
+      testsCompleted: testsCompleted,
       remainingDays: remainingDays,
       dateKey: dateKey,
       dateObj: dateObj,
@@ -1923,7 +2009,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         var ltInfo = getGroupLevelTestInfo(cls);
         var totalDaysElapsed = ltInfo.totalDaysElapsed;
         var remainingDays = ltInfo.remainingDays;
-        var testsCompleted = Math.min(24, Math.max(0, Math.round((totalDaysElapsed / 90) * 24)));
+        var testsCompleted = ltInfo.testsCompleted;
         var isSoonLevelTest = ltInfo.isSoon;
 
         var paidInGroup = (cls.students || []).filter(function(st) {
@@ -6418,15 +6504,21 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     var old = document.getElementById('eaGroupDurationModalOverlay');
     if (old) old.remove();
 
-    var curMonths = Number(cls.learningMonths) || 0;
-    var curDays = Number(cls.learningDays) || 0;
+    var ltInfo = getGroupLevelTestInfo(cls);
+    var curMonths = ltInfo.baseMonths !== undefined ? ltInfo.baseMonths : (Number(cls.learningMonths) || 0);
+    var curDays = ltInfo.baseDays !== undefined ? ltInfo.baseDays : (Number(cls.learningDays) || 0);
+    var curLessons = ltInfo.baseLessons !== undefined ? ltInfo.baseLessons : ltInfo.testsCompleted;
+    var curSchedule = cls.schedule || 'toq';
+
     try {
       var durStr = localStorage.getItem('ethith_class_duration_' + cls.id);
       if (durStr) {
         var durObj = JSON.parse(durStr);
-        if (durObj && durObj.learningMonths !== undefined) {
-          curMonths = Number(durObj.learningMonths) || 0;
-          curDays = Number(durObj.learningDays) || 0;
+        if (durObj) {
+          if (durObj.learningMonths !== undefined) curMonths = Number(durObj.learningMonths) || 0;
+          if (durObj.learningDays !== undefined) curDays = Number(durObj.learningDays) || 0;
+          if (durObj.learningLessons !== undefined) curLessons = Number(durObj.learningLessons);
+          if (durObj.schedule) curSchedule = durObj.schedule;
         }
       }
     } catch(e) {}
@@ -6435,20 +6527,20 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     overlay.id = 'eaGroupDurationModalOverlay';
     overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(18px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;';
 
-    overlay.innerHTML = '<div style="background:linear-gradient(145deg,#0f172a,#1e293b);border:1.5px solid rgba(56,189,248,0.5);border-radius:24px;width:100%;max-width:480px;padding:26px;box-shadow:0 25px 60px rgba(0,0,0,0.85);color:#fff;font-family:inherit;">' +
+    overlay.innerHTML = '<div style="background:linear-gradient(145deg,#0f172a,#1e293b);border:1.5px solid rgba(56,189,248,0.5);border-radius:24px;width:100%;max-width:500px;padding:26px;box-shadow:0 25px 60px rgba(0,0,0,0.85);color:#fff;font-family:inherit;">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:12px;">' +
         '<div style="display:flex;align-items:center;gap:10px;">' +
           '<span style="font-size:26px;">⏱️</span>' +
           '<div>' +
             '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Guruh O‘qish Muddatini Belgilash</h3>' +
-            '<div style="font-size:12px;color:#38bdf8;margin-top:2px;">' + esc(cls.name) + ' — Level test hisobi</div>' +
+            '<div style="font-size:12px;color:#38bdf8;margin-top:2px;">' + esc(cls.name) + ' — Avtomatik davom etish hisobi</div>' +
           '</div>' +
         '</div>' +
         '<button id="eaCloseDurModalBtn" style="background:transparent;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">&times;</button>' +
       '</div>' +
 
       '<div style="display:flex;flex-direction:column;gap:14px;">' +
-        '<p style="margin:0;font-size:13px;color:#cbd5e1;line-height:1.5;">Har bir daraja (level) 3 oy (90 kun) davom etadi. Tizim o‘tilgan vaqtga qarab testlarni va imtihongacha qolgan kunni hisoblaydi.</p>' +
+        '<p style="margin:0;font-size:12.5px;color:#cbd5e1;line-height:1.5;">Oldin o‘tilgan vaqtni bir marta belgilab bering. Platforma bugundan boshlab o‘qish kunlarini har kuni avtomatik oshirib davom ettiradi!</p>' +
 
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
           '<div>' +
@@ -6458,6 +6550,21 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           '<div>' +
             '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Necha Kun O‘tgan?</label>' +
             '<input type="number" id="eaDurDays" min="0" max="29" value="' + curDays + '" style="width:100%;padding:10px 14px;background:#0f172a;border:1.5px solid rgba(56,189,248,0.4);border-radius:12px;color:#fff;font-size:15px;font-weight:900;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+        '</div>' +
+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">O‘tilgan Darslar (Testlar):</label>' +
+            '<input type="number" id="eaDurLessons" min="0" max="24" value="' + curLessons + '" style="width:100%;padding:10px 14px;background:#0f172a;border:1.5px solid rgba(56,189,248,0.4);border-radius:12px;color:#fff;font-size:15px;font-weight:900;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Dars Jadvali Tartibi:</label>' +
+            '<select id="eaDurSchedule" style="width:100%;padding:10px 14px;background:#0f172a;border:1.5px solid rgba(56,189,248,0.4);border-radius:12px;color:#fff;font-size:13px;font-weight:800;outline:none;box-sizing:border-box;cursor:pointer;">' +
+              '<option value="toq"' + (curSchedule === 'toq' ? ' selected' : '') + '>Toq kunlari (Dush / Chor / Juma)</option>' +
+              '<option value="juft"' + (curSchedule === 'juft' ? ' selected' : '') + '>Juft kunlari (Sesh / Pay / Shanba)</option>' +
+              '<option value="har_kuni"' + (curSchedule === 'har_kuni' ? ' selected' : '') + '>Har kungi dars</option>' +
+            '</select>' +
           '</div>' +
         '</div>' +
 
@@ -6476,14 +6583,22 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
     var mInp = overlay.querySelector('#eaDurMonths');
     var dInp = overlay.querySelector('#eaDurDays');
+    var lessonsInp = overlay.querySelector('#eaDurLessons');
+    var schedSelect = overlay.querySelector('#eaDurSchedule');
     var prev = overlay.querySelector('#eaDurLivePreview');
 
-    function updatePrev() {
+    function updatePrev(fromDaysChange) {
       var m = Math.max(0, parseInt(mInp.value, 10) || 0);
       var d = Math.max(0, Math.min(29, parseInt(dInp.value, 10) || 0));
       var total = (m * 30) + d;
       var remaining = Math.max(0, 90 - total);
-      var testsTaken = Math.min(24, Math.max(0, Math.round((total / 90) * 24)));
+
+      if (fromDaysChange) {
+        lessonsInp.value = Math.min(24, Math.max(0, Math.round((total / 90) * 24)));
+      }
+      var testsTaken = Math.max(0, Math.min(24, parseInt(lessonsInp.value, 10) || 0));
+      var sched = schedSelect.value || 'toq';
+      var schedLabel = sched === 'juft' ? 'Juft kunlari (Sesh / Pay / Shanba)' : (sched === 'toq' ? 'Toq kunlari (Dush / Chor / Juma)' : 'Har kungi dars');
       var isSoon = (remaining <= 7);
 
       var today = getUniversalToday();
@@ -6497,24 +6612,29 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         '<b style="color:#38bdf8;">' + m + ' oy ' + d + ' kun (' + total + ' kun)</b>' +
       '</div>' +
       '<div style="display:flex;justify-content:space-between;margin-bottom:6px;">' +
-        '<span style="color:#94a3b8;">O‘tilgan testlar:</span>' +
+        '<span style="color:#94a3b8;">O‘tilgan darslar / testlar:</span>' +
         '<b style="color:#34d399;">' + testsTaken + ' / 24 ta test</b>' +
       '</div>' +
       '<div style="display:flex;justify-content:space-between;margin-bottom:6px;">' +
         '<span style="color:#94a3b8;">Level test imtihon kuni:</span>' +
         '<b style="color:#facc15;font-size:13.5px;">' + examDisplay + '</b>' +
       '</div>' +
-      '<div style="display:flex;justify-content:space-between;">' +
+      '<div style="display:flex;justify-content:space-between;margin-bottom:8px;">' +
         '<span style="color:#94a3b8;">Imtihonga:</span>' +
         '<b style="color:' + (isSoon ? '#facc15;font-size:14px;' : '#38bdf8;') + '">' + (remaining === 0 ? 'Bugun!' : (remaining + ' kun qoldi')) + '</b>' +
+      '</div>' +
+      '<div style="margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,0.1);font-size:11.5px;color:#38bdf8;line-height:1.45;">' +
+        '⚡ <b>Avtomatik hisob qoidasi:</b> Bugundan boshlab tizim har kuni avtomatik ravishda o‘qish kunini davom ettiradi. <b>' + esc(schedLabel) + '</b> jadvaliga asosan dars bo‘ladigan kunlari dars o‘tildi deb belgilanadi, dars bo‘lmaydigan kunlari esa faqat kun o‘tdi deb hisoblanadi.' +
       '</div>';
 
       prev.innerHTML = h;
     }
 
-    mInp.oninput = updatePrev;
-    dInp.oninput = updatePrev;
-    updatePrev();
+    mInp.oninput = function() { updatePrev(true); };
+    dInp.oninput = function() { updatePrev(true); };
+    lessonsInp.oninput = function() { updatePrev(false); };
+    schedSelect.onchange = function() { updatePrev(false); };
+    updatePrev(false);
 
     overlay.querySelector('#eaCloseDurModalBtn').onclick = function() { overlay.remove(); };
     overlay.querySelector('#eaCancelDurBtn').onclick = function() { overlay.remove(); };
@@ -6522,16 +6642,22 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     overlay.querySelector('#eaSaveDurBtn').onclick = function() {
       var m = Math.max(0, parseInt(mInp.value, 10) || 0);
       var d = Math.max(0, Math.min(29, parseInt(dInp.value, 10) || 0));
+      var lessons = Math.max(0, Math.min(24, parseInt(lessonsInp.value, 10) || 0));
+      var sched = schedSelect.value || 'toq';
       var total = (m * 30) + d;
       var remaining = Math.max(0, 90 - total);
       var today = getUniversalToday();
       today.setHours(0, 0, 0, 0);
+      var todayKey = formatDateKey(today);
       var examDate = new Date(today.getTime() + (remaining * 86400000));
       if (examDate.getDay() === 0) examDate.setDate(examDate.getDate() + 1);
       var examKey = formatDateKey(examDate);
 
       cls.learningMonths = m;
       cls.learningDays = d;
+      cls.learningLessons = lessons;
+      cls.schedule = sched;
+      cls.baselineDate = todayKey;
       cls.levelTestDate = examKey;
       cls.durationUpdatedAt = Date.now();
 
@@ -6539,8 +6665,11 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         localStorage.setItem('ethith_class_duration_' + cls.id, JSON.stringify({
           learningMonths: m,
           learningDays: d,
+          learningLessons: lessons,
+          schedule: sched,
+          baselineDate: todayKey,
           levelTestDate: examKey,
-          ts: Date.now()
+          ts: cls.durationUpdatedAt
         }));
       } catch(e) {}
 
@@ -6551,8 +6680,11 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         if (target) {
           target.learningMonths = m;
           target.learningDays = d;
+          target.learningLessons = lessons;
+          target.schedule = sched;
+          target.baselineDate = todayKey;
           target.levelTestDate = examKey;
-          target.durationUpdatedAt = Date.now();
+          target.durationUpdatedAt = cls.durationUpdatedAt;
         }
       });
 
@@ -6564,8 +6696,11 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           if (eeCls) {
             eeCls.learningMonths = m;
             eeCls.learningDays = d;
+            eeCls.learningLessons = lessons;
+            eeCls.schedule = sched;
+            eeCls.baselineDate = todayKey;
             eeCls.levelTestDate = examKey;
-            eeCls.durationUpdatedAt = Date.now();
+            eeCls.durationUpdatedAt = cls.durationUpdatedAt;
           }
         }
       }
@@ -6587,8 +6722,11 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
             classCode: cls.code,
             learningMonths: m,
             learningDays: d,
+            learningLessons: lessons,
+            schedule: sched,
+            baselineDate: todayKey,
             levelTestDate: examKey,
-            ts: Date.now()
+            ts: cls.durationUpdatedAt
           });
         }
         if (typeof window.EthithSync.pushRemoteStore === 'function') {
@@ -6600,7 +6738,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       }
 
       if (window.EthithApp && window.EthithApp.toast) {
-        window.EthithApp.toast("Guruh o‘qish muddati saqlandi (" + m + " oy " + d + " kun)! Level test kuni: " + formatDisplayDate(examDate));
+        window.EthithApp.toast("Guruh o‘qish muddati va dars jadvali saqlandi (" + m + " oy " + d + " kun, " + lessons + " dars)! Platforma bugundan avtomatik hisoblab davom ettiradi.");
       }
 
       overlay.remove();
