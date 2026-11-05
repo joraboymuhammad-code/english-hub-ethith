@@ -25825,7 +25825,7 @@
           "updatedAt": 1793870202007,
           "hasLoggedIn": true,
           "isLoggedOut": false,
-          "lastSeen": 1793878979198
+          "lastSeen": 1793878983196
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -28965,7 +28965,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793878978039,
+      "lastSeen": 1793878982443,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -29714,7 +29714,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793878979198,
+      "lastSeen": 1793878983196,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "password": "azimjon848toi",
@@ -133674,8 +133674,8 @@
         "page": 4005,
         "exercise": "6",
         "label": "7",
-        "top": 72.2,
-        "left": 62.5,
+        "top": 71.5,
+        "left": 61.4,
         "width": 13.5,
         "height": 2,
         "correct": [
@@ -152994,7 +152994,7 @@
     "3086": 1793517957036,
     "3087": 1793517957036,
     "4004": 1793878539074,
-    "4005": 1793878979341,
+    "4005": 1793878983895,
     "4006": 1793878539074,
     "4007": 1793878539074,
     "4008": 1793878539074,
@@ -155071,5 +155071,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1793878979564
+  "updatedAt": 1793878984484
 }
