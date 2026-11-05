@@ -3356,6 +3356,13 @@
           }
         });
         var finalMergedSheets = Object.values(pushSheetMap);
+        finalMergedSheets.forEach(function(shItem) {
+          if (Array.isArray(shItem.data)) {
+            shItem.data.forEach(function(sheetObj) {
+              if (sheetObj && sheetObj.data) delete sheetObj.data;
+            });
+          }
+        });
         S.savedSpreadsheets = finalMergedSheets;
         try { localStorage.setItem('eh_saved_spreadsheets_v2', JSON.stringify(finalMergedSheets)); } catch(e) {}
 
@@ -3559,6 +3566,13 @@
         }
       });
       var finalSheets = Object.values(sheetMap);
+      finalSheets.forEach(function(shItem) {
+        if (Array.isArray(shItem.data)) {
+          shItem.data.forEach(function(sheetObj) {
+            if (sheetObj && sheetObj.data) delete sheetObj.data;
+          });
+        }
+      });
       if (finalSheets.length > 0) {
         try { localStorage.setItem('eh_saved_spreadsheets_v2', JSON.stringify(finalSheets)); } catch(e) {}
         if (window.EthithApp && window.EthithApp.state) {

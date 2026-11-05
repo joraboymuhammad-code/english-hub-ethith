@@ -2107,6 +2107,93 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       }, true);
     }
 
+    function commitActiveLuckysheetCell() {
+      try {
+        var editor = document.getElementById('luckysheet-rich-text-editor');
+        if (editor && editor.style.display !== 'none') {
+          var evt = new KeyboardEvent('keydown', { key: 'Enter', keyCode: 13, which: 13, bubbles: true });
+          editor.dispatchEvent(evt);
+        }
+      } catch(e) {}
+    }
+
+    function extractCleanSheets(sourceSheets) {
+      if (!Array.isArray(sourceSheets)) return getBlankWorkbook('Sheet1');
+      return sourceSheets.map(function(sh, i) {
+        var celldata = [];
+
+        // 1. Check if luckysheet transToCellData is available
+        if (typeof window.luckysheet !== 'undefined' && typeof window.luckysheet.transToCellData === 'function' && Array.isArray(sh.data)) {
+          try {
+            var tRes = window.luckysheet.transToCellData(sh.data);
+            if (Array.isArray(tRes) && tRes.length > 0) celldata = tRes;
+          } catch(e) {}
+        }
+
+        // 2. Manual extraction from 2D sh.data matrix
+        if (celldata.length === 0 && Array.isArray(sh.data)) {
+          for (var r = 0; r < sh.data.length; r++) {
+            var row = sh.data[r];
+            if (!Array.isArray(row)) continue;
+            for (var c = 0; c < row.length; c++) {
+              var cell = row[c];
+              if (cell !== null && cell !== undefined) {
+                if (typeof cell === 'object') {
+                  var v = cell.v, m = cell.m, f = cell.f, bg = cell.bg, fc = cell.fc, bl = cell.bl;
+                  if ((v !== undefined && v !== null && v !== '') ||
+                      (m !== undefined && m !== null && m !== '') ||
+                      (f !== undefined && f !== null && f !== '') ||
+                      (bg !== undefined && bg !== null && bg !== '') ||
+                      (fc !== undefined && fc !== null && fc !== '') ||
+                      (bl !== undefined && bl !== null && bl !== 0)) {
+                    var cleanCell = {};
+                    if (v !== undefined) cleanCell.v = v;
+                    if (m !== undefined) cleanCell.m = m;
+                    if (f !== undefined) cleanCell.f = f;
+                    if (bg) cleanCell.bg = bg;
+                    if (fc) cleanCell.fc = fc;
+                    if (bl) cleanCell.bl = bl;
+                    if (cell.ct) cleanCell.ct = cell.ct;
+                    if (cell.fs) cleanCell.fs = cell.fs;
+                    if (cell.ht) cleanCell.ht = cell.ht;
+                    if (cell.vt) cleanCell.vt = cell.vt;
+                    celldata.push({ r: r, c: c, v: cleanCell });
+                  }
+                } else if (cell !== '') {
+                  celldata.push({ r: r, c: c, v: { v: cell, m: String(cell) } });
+                }
+              }
+            }
+          }
+        }
+
+        // 3. Fallback to existing sh.celldata
+        if (celldata.length === 0 && Array.isArray(sh.celldata)) {
+          celldata = sh.celldata;
+        }
+
+        var cleanConfig = Object.assign({}, sh.config || {});
+        delete cleanConfig.defaultRowHeight;
+        delete cleanConfig.defaultColWidth;
+        delete cleanConfig.rowlen;
+        delete cleanConfig.columnlen;
+
+        return {
+          name: sh.name || ('Sheet' + (i + 1)),
+          color: sh.color || '',
+          index: sh.index !== undefined ? sh.index : i,
+          status: sh.status !== undefined ? sh.status : (i === 0 ? 1 : 0),
+          order: sh.order !== undefined ? sh.order : i,
+          row: Math.max(sh.row || 0, 584),
+          column: Math.max(sh.column || 0, 500),
+          defaultRowHeight: 20,
+          defaultColWidth: 73,
+          celldata: celldata,
+          config: cleanConfig
+        };
+      });
+    }
+
     function getBlankWorkbook(name) {
       return [{
         name: name || "Sheet1",
@@ -2154,21 +2241,10 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         }];
         try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); } catch(e) {}
       } else {
-        // Enforce 584 rows, 500 columns and restore standard Excel rectangular cells
+        // Enforce 584 rows, 500 columns and ensure compact sparse celldata format
         list.forEach(function(item) {
           if (Array.isArray(item.data)) {
-            item.data.forEach(function(sh) {
-              if (!sh.row || sh.row < 584) sh.row = 584;
-              if (!sh.column || sh.column < 500) sh.column = 500;
-              sh.defaultRowHeight = 20;
-              sh.defaultColWidth = 73;
-              if (sh.config) {
-                delete sh.config.defaultRowHeight;
-                delete sh.config.defaultColWidth;
-                delete sh.config.rowlen;
-                delete sh.config.columnlen;
-              }
-            });
+            item.data = extractCleanSheets(item.data);
           }
         });
       }
@@ -2215,21 +2291,20 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     renderSelectOptions(activeDoc.id);
 
     function getActiveWorkbookData() {
-      var sheets = [];
-      if (typeof window.luckysheet !== 'undefined' && window.luckysheet.getAllSheets) {
-        try {
-          sheets = window.luckysheet.getAllSheets();
-        } catch(e) {}
+      commitActiveLuckysheetCell();
+      var rawSheets = [];
+      if (typeof window.luckysheet !== 'undefined') {
+        if (typeof window.luckysheet.getluckysheetfile === 'function') {
+          try { rawSheets = window.luckysheet.getluckysheetfile(); } catch(e) {}
+        }
+        if ((!Array.isArray(rawSheets) || rawSheets.length === 0) && typeof window.luckysheet.getAllSheets === 'function') {
+          try { rawSheets = window.luckysheet.getAllSheets(); } catch(e) {}
+        }
       }
-      if ((!Array.isArray(sheets) || sheets.length === 0) && typeof window.luckysheet !== 'undefined' && window.luckysheet.getluckysheetfile) {
-        try {
-          sheets = window.luckysheet.getluckysheetfile();
-        } catch(e) {}
+      if (!Array.isArray(rawSheets) || rawSheets.length === 0) {
+        rawSheets = (activeDoc && activeDoc.data) ? activeDoc.data : getBlankWorkbook('Sheet1');
       }
-      if (!Array.isArray(sheets) || sheets.length === 0) {
-        sheets = activeDoc.data || getBlankWorkbook('Sheet1');
-      }
-      return sheets;
+      return extractCleanSheets(rawSheets);
     }
 
     // Auto-save logic
@@ -2302,30 +2377,8 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
           window.luckysheet.destroy();
         } catch(e) {}
 
-        // Ensure proper index, status and standard rectangular Excel dimensions (584 rows, 500 cols)
-        var cleanSheets = (dataSheets || []).map(function(sh, i) {
-          var cfg = Object.assign({}, sh.config || {});
-          delete cfg.defaultRowHeight;
-          delete cfg.defaultColWidth;
-          delete cfg.rowlen;
-          delete cfg.columnlen;
-
-          return {
-            name: sh.name || ('Sheet' + (i + 1)),
-            color: sh.color || '',
-            index: sh.index !== undefined ? sh.index : i,
-            status: sh.status !== undefined ? sh.status : (i === 0 ? 1 : 0),
-            order: sh.order !== undefined ? sh.order : i,
-            row: Math.max(sh.row || 0, 584),
-            column: Math.max(sh.column || 0, 500),
-            defaultRowHeight: 20,
-            defaultColWidth: 73,
-            celldata: Array.isArray(sh.celldata) ? sh.celldata : [],
-            config: cfg
-          };
-        });
-
-        if (cleanSheets.length === 0) {
+        var cleanSheets = extractCleanSheets(dataSheets);
+        if (!cleanSheets || cleanSheets.length === 0) {
           cleanSheets = getBlankWorkbook('Sheet1');
         }
 
