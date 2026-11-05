@@ -25078,7 +25078,7 @@
           "updatedAt": 1793856833917,
           "hasLoggedIn": true,
           "isLoggedOut": false,
-          "lastSeen": 1793856912890,
+          "lastSeen": 1793856917290,
           "avatar": null,
           "nameStyle": null,
           "title": null,
@@ -26267,7 +26267,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793797844685
+        "updatedAt": 1793856919318
       },
       "customStudentNames": {
         "std_orazaliyev_261_amirshox": "O'razaliyev Amirshox",
@@ -26601,8 +26601,8 @@
       ],
       "deletedMsgIds": [],
       "messages": [],
-      "learningMonths": 1,
-      "learningDays": 21,
+      "learningMonths": 0,
+      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_intermediate_tester_1": {
           "fee": 300000,
@@ -26954,7 +26954,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793797849013
+        "updatedAt": 1793856913690
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -27268,8 +27268,8 @@
       ],
       "deletedMsgIds": [],
       "messages": [],
-      "learningMonths": 2,
-      "learningDays": 26,
+      "learningMonths": 0,
+      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_practice_tester_1": {
           "fee": 300000,
@@ -28337,7 +28337,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978,
+      "lastSeen": 1793856917577,
       "password": "azizbek2026"
     },
     {
@@ -28355,7 +28355,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856913067,
+      "lastSeen": 1793856919667,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -28389,7 +28389,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -28565,7 +28565,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "std_13",
@@ -28730,7 +28730,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -28754,7 +28754,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -28775,7 +28775,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -28796,7 +28796,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -28820,7 +28820,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -28844,7 +28844,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -28866,7 +28866,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -28888,7 +28888,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -28912,7 +28912,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -28933,7 +28933,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -28955,7 +28955,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -28977,7 +28977,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -28999,7 +28999,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -29023,7 +29023,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -29047,7 +29047,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -29071,7 +29071,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "admin_official_teacher",
@@ -29092,7 +29092,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "st_998901239988",
@@ -29141,7 +29141,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856910978
+      "lastSeen": 1793856917577
     },
     {
       "id": "shamshodbekibrohimov@telegram.org",
@@ -29184,7 +29184,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793856912890,
+      "lastSeen": 1793856917290,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "password": "azimjon848toi",
@@ -149341,5 +149341,5 @@
       }
     }
   },
-  "updatedAt": 1793856913260
+  "updatedAt": 1793856919837
 }
