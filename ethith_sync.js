@@ -1865,6 +1865,54 @@
         }
       }
     }
+
+    // L. SPREADSHEET REAL-TIME SYNC & EVENTS (LUCKYSHEET MULTI-DOC)
+    else if (event.type === 'SPREADSHEET_SAVED' && event.spreadsheet) {
+      var sObj = event.spreadsheet;
+      var curDelSheets = [];
+      try { curDelSheets = JSON.parse(localStorage.getItem('eh_deleted_sheets') || '[]'); } catch(e) {}
+      if (!Array.isArray(curDelSheets)) curDelSheets = [];
+      if (curDelSheets.indexOf(sObj.id) === -1) {
+        var lList = [];
+        try { lList = JSON.parse(localStorage.getItem('eh_saved_spreadsheets_v2') || '[]'); } catch(e) {}
+        if (!Array.isArray(lList)) lList = [];
+        var sIdx = lList.findIndex(function(x) { return x.id === sObj.id; });
+        if (sIdx > -1) {
+          if ((sObj.updatedTs || 0) >= (lList[sIdx].updatedTs || 0)) {
+            lList[sIdx] = sObj;
+          }
+        } else {
+          lList.push(sObj);
+        }
+        try { localStorage.setItem('eh_saved_spreadsheets_v2', JSON.stringify(lList)); } catch(e) {}
+        if (window.EthithApp && window.EthithApp.state) {
+          window.EthithApp.state.savedSpreadsheets = lList;
+        }
+        if (typeof window._ethithRefreshLuckyDocSelect === 'function') {
+          window._ethithRefreshLuckyDocSelect();
+        }
+      }
+    }
+    else if (event.type === 'SPREADSHEET_DELETED' && event.spreadsheetId) {
+      var delId = event.spreadsheetId;
+      var delArr = [];
+      try { delArr = JSON.parse(localStorage.getItem('eh_deleted_sheets') || '[]'); } catch(e) {}
+      if (!Array.isArray(delArr)) delArr = [];
+      if (delArr.indexOf(delId) === -1) delArr.push(delId);
+      try { localStorage.setItem('eh_deleted_sheets', JSON.stringify(delArr)); } catch(e) {}
+      var lList2 = [];
+      try { lList2 = JSON.parse(localStorage.getItem('eh_saved_spreadsheets_v2') || '[]'); } catch(e) {}
+      if (Array.isArray(lList2)) {
+        lList2 = lList2.filter(function(x) { return x.id !== delId; });
+        try { localStorage.setItem('eh_saved_spreadsheets_v2', JSON.stringify(lList2)); } catch(e) {}
+        if (window.EthithApp && window.EthithApp.state) {
+          window.EthithApp.state.savedSpreadsheets = lList2;
+        }
+      }
+      if (typeof window._ethithRefreshLuckyDocSelect === 'function') {
+        window._ethithRefreshLuckyDocSelect();
+      }
+    }
     else if (event.type === 'CONTEST_PARTICIPATION' && event.contestId && event.participant) {
       if (!S.contests) S.contests = [];
       var pc = S.contests.find(function(x) { return x.id === event.contestId; });
@@ -3269,6 +3317,48 @@
         if (!S.p2pListings) S.p2pListings = [];
         mergeP2PListings(S.p2pListings, remoteData.p2pListings || [], S.deletedListingIds || []);
 
+        // Spreadsheets sync (Luckysheet Multi-Documents)
+        var localDelSheets = [];
+        try { localDelSheets = JSON.parse(localStorage.getItem('eh_deleted_sheets') || '[]'); } catch(e) {}
+        if (!Array.isArray(localDelSheets)) localDelSheets = [];
+        var remoteDelSheets = Array.isArray(remoteData.deletedSpreadsheetIds) ? remoteData.deletedSpreadsheetIds : [];
+        var allDelSheets = Array.from(new Set(localDelSheets.concat(remoteDelSheets)));
+        remoteData.deletedSpreadsheetIds = allDelSheets;
+        try { localStorage.setItem('eh_deleted_sheets', JSON.stringify(allDelSheets)); } catch(e) {}
+
+        var curLocalSheets = [];
+        try {
+          var rawCur = localStorage.getItem('eh_saved_spreadsheets_v2');
+          if (rawCur) curLocalSheets = JSON.parse(rawCur);
+        } catch(e) {}
+        if (!Array.isArray(curLocalSheets)) curLocalSheets = [];
+        if (Array.isArray(S.savedSpreadsheets)) {
+          S.savedSpreadsheets.forEach(function(sh) {
+            if (sh && sh.id && allDelSheets.indexOf(sh.id) === -1 && !curLocalSheets.some(function(x) { return x.id === sh.id; })) {
+              curLocalSheets.push(sh);
+            }
+          });
+        }
+        var remSheets = Array.isArray(remoteData.savedSpreadsheets) ? remoteData.savedSpreadsheets : [];
+
+        var pushSheetMap = {};
+        remSheets.forEach(function(sh) {
+          if (sh && sh.id && allDelSheets.indexOf(sh.id) === -1) {
+            pushSheetMap[sh.id] = sh;
+          }
+        });
+        curLocalSheets.forEach(function(sh) {
+          if (sh && sh.id && allDelSheets.indexOf(sh.id) === -1) {
+            var ex = pushSheetMap[sh.id];
+            if (!ex || ((sh.updatedTs || 0) >= (ex.updatedTs || 0))) {
+              pushSheetMap[sh.id] = sh;
+            }
+          }
+        });
+        var finalMergedSheets = Object.values(pushSheetMap);
+        S.savedSpreadsheets = finalMergedSheets;
+        try { localStorage.setItem('eh_saved_spreadsheets_v2', JSON.stringify(finalMergedSheets)); } catch(e) {}
+
         if (!S.workbookOverrides) S.workbookOverrides = {};
         if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
         // Also harvest any local v15/v14 workbook overrides from localStorage before pushing
@@ -3389,6 +3479,8 @@
           timetable: S.timetable || [],
           contests: S.contests || [],
           payments: S.payments || {},
+          savedSpreadsheets: finalMergedSheets,
+          deletedSpreadsheetIds: allDelSheets,
           updatedAt: Date.now()
         };
 
@@ -3433,10 +3525,59 @@
     }
   }
 
+  // Synchronize management spreadsheets (Luckysheet Multi-Documents)
+  function syncSpreadsheetsWithRemote(remote) {
+    if (!remote) return;
+    try {
+      var localDelSheets = [];
+      try { localDelSheets = JSON.parse(localStorage.getItem('eh_deleted_sheets') || '[]'); } catch(e) {}
+      if (!Array.isArray(localDelSheets)) localDelSheets = [];
+      var remoteDelSheets = Array.isArray(remote.deletedSpreadsheetIds) ? remote.deletedSpreadsheetIds : [];
+      var allDelSheets = Array.from(new Set(localDelSheets.concat(remoteDelSheets)));
+      try { localStorage.setItem('eh_deleted_sheets', JSON.stringify(allDelSheets)); } catch(e) {}
+
+      var localSheets = [];
+      try {
+        var rawLs = localStorage.getItem('eh_saved_spreadsheets_v2');
+        if (rawLs) localSheets = JSON.parse(rawLs);
+      } catch(e) {}
+      if (!Array.isArray(localSheets)) localSheets = [];
+      var remoteSheets = Array.isArray(remote.savedSpreadsheets) ? remote.savedSpreadsheets : [];
+
+      var sheetMap = {};
+      localSheets.forEach(function(sh) {
+        if (sh && sh.id && allDelSheets.indexOf(sh.id) === -1) {
+          sheetMap[sh.id] = sh;
+        }
+      });
+      remoteSheets.forEach(function(rSh) {
+        if (rSh && rSh.id && allDelSheets.indexOf(rSh.id) === -1) {
+          var lSh = sheetMap[rSh.id];
+          if (!lSh || ((rSh.updatedTs || 0) >= (lSh.updatedTs || 0))) {
+            sheetMap[rSh.id] = rSh;
+          }
+        }
+      });
+      var finalSheets = Object.values(sheetMap);
+      if (finalSheets.length > 0) {
+        try { localStorage.setItem('eh_saved_spreadsheets_v2', JSON.stringify(finalSheets)); } catch(e) {}
+        if (window.EthithApp && window.EthithApp.state) {
+          window.EthithApp.state.savedSpreadsheets = finalSheets;
+        }
+        if (typeof window._ethithRefreshLuckyDocSelect === 'function') {
+          window._ethithRefreshLuckyDocSelect();
+        }
+      }
+    } catch(err) {
+      console.warn('[Sync] Spreadsheets sync error:', err);
+    }
+  }
+
   // Initial Data Sync on App Start
   async function syncInitialData(S) {
     var remote = await fetchRemoteStore();
     if (remote) {
+      syncSpreadsheetsWithRemote(remote);
       if (remote.deletedExamIds && Array.isArray(remote.deletedExamIds)) {
         if (!S.deletedExamIds) S.deletedExamIds = [];
         remote.deletedExamIds.forEach(function(id) {
@@ -3744,6 +3885,7 @@
       }
       var remote = await fetchRemoteStore();
       if (remote) {
+        syncSpreadsheetsWithRemote(remote);
         if (remote.deletedExamIds && Array.isArray(remote.deletedExamIds)) {
           if (!S.deletedExamIds) S.deletedExamIds = [];
           remote.deletedExamIds.forEach(function(id) {
@@ -4113,6 +4255,26 @@
     pushStore: pushRemoteStore,
     syncInitialData: syncInitialData,
     broadcastLocal: broadcastLocal,
+    broadcastSpreadsheetSaved: function(spreadsheet) {
+      try {
+        publishLive({
+          type: 'SPREADSHEET_SAVED',
+          spreadsheet: spreadsheet,
+          from: myClientId,
+          ts: Date.now()
+        });
+      } catch(e) {}
+    },
+    broadcastSpreadsheetDeleted: function(spreadsheetId) {
+      try {
+        publishLive({
+          type: 'SPREADSHEET_DELETED',
+          spreadsheetId: spreadsheetId,
+          from: myClientId,
+          ts: Date.now()
+        });
+      } catch(e) {}
+    },
     saveWorkbookCloudOverrides: saveWorkbookCloudOverrides,
     getWorkbookCloudOverrides: getWorkbookCloudOverrides,
     syncAllLocalWorkbookOverridesToCloud: syncAllLocalWorkbookOverridesToCloud,

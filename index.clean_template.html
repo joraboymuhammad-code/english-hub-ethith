@@ -1809,6 +1809,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
     // Teardown any running Luckysheet instance before rendering another view
     if (view.name !== 'luckysheet') {
+      if (typeof window._ethithSaveCurrentLuckysheetSilently === 'function') {
+        try { window._ethithSaveCurrentLuckysheetSilently(); } catch(e) {}
+      }
       if (window.luckysheet && typeof window.luckysheet.destroy === 'function') {
         try {
           window.luckysheet.destroy();
@@ -1964,6 +1967,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
             '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
               '<h1 style="font-size:18px;font-weight:900;margin:0;letter-spacing:-0.4px;color:#f8fafc;">Boshqaruv Jadvali (Excel format)</h1>' +
               roleBadge +
+              '<span id="ethLuckySaveStatus" style="font-size:11.5px;font-weight:700;color:#34d399;display:inline-flex;align-items:center;gap:5px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.35);padding:2px 10px;border-radius:20px;">' +
+                '<span>⚡</span> Avtomatik saqlash faol' +
+              '</span>' +
             '</div>' +
             '<p style="font-size:12px;color:#94a3b8;margin:3px 0 0;">Barcha formulalar (=SUM, =AVERAGE, =COUNT, =IF...), kataklarni bo‘yash, cheksiz kataklar va avtomatik saqlash</p>' +
           '</div>' +
@@ -2049,6 +2055,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
   function initLuckysheetMultiDoc() {
     var STORAGE_KEY = 'eh_saved_spreadsheets_v2';
     var ACTIVE_ID_KEY = 'eh_active_sheet_id';
+    var DELETED_KEY = 'eh_deleted_sheets';
 
     // 1. Intercept HTMLElement.prototype.focus to prevent browser jumping viewport to top when selecting cells
     if (!window._luckysheetFocusPatched) {
@@ -2122,14 +2129,30 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         var raw = localStorage.getItem(STORAGE_KEY);
         if (raw) list = JSON.parse(raw);
       } catch(e) {}
+      if ((!Array.isArray(list) || list.length === 0) && window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.savedSpreadsheets) && window.ETHITH_INITIAL_STORE.savedSpreadsheets.length > 0) {
+        list = JSON.parse(JSON.stringify(window.ETHITH_INITIAL_STORE.savedSpreadsheets));
+      }
+      if ((!Array.isArray(list) || list.length === 0) && window.EthithApp && window.EthithApp.state && Array.isArray(window.EthithApp.state.savedSpreadsheets) && window.EthithApp.state.savedSpreadsheets.length > 0) {
+        list = JSON.parse(JSON.stringify(window.EthithApp.state.savedSpreadsheets));
+      }
+
+      var delList = [];
+      try { delList = JSON.parse(localStorage.getItem(DELETED_KEY) || '[]'); } catch(e) {}
+      if (Array.isArray(delList) && delList.length > 0) {
+        list = (list || []).filter(function(x) { return x && x.id && delList.indexOf(x.id) === -1; });
+      }
+
       if (!Array.isArray(list) || list.length === 0) {
         list = [{
           id: 'sheet_default',
           name: 'Asosiy Jadval',
+          authorName: (S.user && S.user.name) ? S.user.name : (isAdmin ? 'Admin' : 'Ustoz'),
+          authorRole: (S.user && S.user.role) ? S.user.role : 'teacher',
           updatedAt: new Date().toLocaleDateString('uz-UZ'),
+          updatedTs: Date.now(),
           data: getBlankWorkbook('Sheet1')
         }];
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); } catch(e) {}
       } else {
         // Enforce 584 rows, 500 columns and restore standard Excel rectangular cells
         list.forEach(function(item) {
@@ -2152,14 +2175,14 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       return list;
     }
 
-    function saveList(list) {
+    function saveList(list, pushNow) {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
       } catch(e) {}
       if (window.EthithApp && window.EthithApp.state) {
         window.EthithApp.state.savedSpreadsheets = list;
       }
-      if (window.EthithSync && window.EthithSync.pushRemoteStore) {
+      if (pushNow !== false && window.EthithSync && typeof window.EthithSync.pushRemoteStore === 'function') {
         window.EthithSync.pushRemoteStore();
       }
     }
@@ -2177,9 +2200,17 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       var curList = loadSavedList();
       docSelect.innerHTML = curList.map(function(item) {
         var isSel = item.id === selectedId ? ' selected' : '';
-        return '<option value="' + item.id + '"' + isSel + '>📁 ' + esc(item.name) + '</option>';
+        var author = item.authorName || (item.authorRole === 'admin' ? 'Admin' : 'Ustoz');
+        var label = item.name + (author ? ' (' + author + ')' : '');
+        return '<option value="' + item.id + '"' + isSel + '>📁 ' + esc(label) + '</option>';
       }).join('');
     }
+
+    window._ethithRefreshLuckyDocSelect = function() {
+      if (document.getElementById('ethLuckyDocSelect')) {
+        renderSelectOptions(activeDoc ? activeDoc.id : null);
+      }
+    };
 
     renderSelectOptions(activeDoc.id);
 
@@ -2200,6 +2231,70 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       }
       return sheets;
     }
+
+    // Auto-save logic
+    var autoSaveTimer = null;
+    function triggerAutoSave() {
+      var statusEl = document.getElementById('ethLuckySaveStatus');
+      if (statusEl) {
+        statusEl.innerHTML = '<span style="color:#fbbf24;font-weight:700;">⏳ Saqlanmoqda...</span>';
+      }
+      if (autoSaveTimer) clearTimeout(autoSaveTimer);
+      autoSaveTimer = setTimeout(function() {
+        performSave(false);
+      }, 1000);
+    }
+
+    function performSave(isManual) {
+      if (autoSaveTimer) { clearTimeout(autoSaveTimer); autoSaveTimer = null; }
+      var currentData = getActiveWorkbookData();
+      var curName = (docNameInput ? docNameInput.value : activeDoc.name).trim() || activeDoc.name || 'Mening Jadvalim';
+      var curList = loadSavedList();
+      var existIdx = curList.findIndex(function(x) { return x.id === activeDoc.id; });
+      var now = new Date();
+      var timeStr = now.toLocaleDateString('uz-UZ') + ' ' + now.toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' });
+
+      var updatedDoc = Object.assign({}, activeDoc, {
+        id: activeDoc.id,
+        name: curName,
+        authorName: activeDoc.authorName || (S.user && S.user.name) || (isAdmin ? 'Admin' : 'Ustoz'),
+        authorRole: activeDoc.authorRole || (S.user && S.user.role) || (isAdmin ? 'admin' : 'teacher'),
+        updatedAt: timeStr,
+        updatedTs: Date.now(),
+        data: currentData
+      });
+
+      if (existIdx >= 0) {
+        curList[existIdx] = updatedDoc;
+      } else {
+        curList.push(updatedDoc);
+      }
+
+      activeDoc = updatedDoc;
+      saveList(curList, true);
+      renderSelectOptions(activeDoc.id);
+
+      if (window.EthithSync && typeof window.EthithSync.broadcastSpreadsheetSaved === 'function') {
+        window.EthithSync.broadcastSpreadsheetSaved(updatedDoc);
+      }
+
+      var statusEl = document.getElementById('ethLuckySaveStatus');
+      if (statusEl) {
+        statusEl.innerHTML = '<span style="color:#10b981;font-weight:700;">✓ Serverga saqlandi (' + now.toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' }) + ')</span>';
+      }
+
+      if (isManual) {
+        toast('💾 "' + curName + '" jadvali GitHub serverga to‘liq saqlandi!');
+      }
+    }
+
+    window._ethithSaveCurrentLuckysheetSilently = function() {
+      try {
+        if (typeof window.luckysheet !== 'undefined' && activeDoc) {
+          performSave(false);
+        }
+      } catch(e) {}
+    };
 
     function renderLuckysheet(dataSheets) {
       if (typeof window.luckysheet !== 'undefined' && window.luckysheet.create) {
@@ -2250,7 +2345,16 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
           autoFormatw: true,
           allowEdit: true,
           userInfo: '<span style="color:#0284c7;font-weight:800;">' + ((S.user && S.user.role === 'admin') ? '🛡️ Admin' : '👨‍🏫 Ustoz') + '</span>',
-          userMenuItem: []
+          userMenuItem: [],
+          hook: {
+            cellUpdated: function() { triggerAutoSave(); },
+            sheetActivate: function() { triggerAutoSave(); },
+            sheetCreateAfter: function() { triggerAutoSave(); },
+            sheetDeleteAfter: function() { triggerAutoSave(); },
+            rangeClear: function() { triggerAutoSave(); },
+            rangePasteAfter: function() { triggerAutoSave(); },
+            updated: function() { triggerAutoSave(); }
+          }
         });
 
         // Backup timer to guarantee canvas renders and mask disappears
@@ -2277,9 +2381,40 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
     renderLuckysheet(activeDoc.data);
 
+    // Attach auto-save event listeners to wrapper container
+    var lWrap = document.getElementById('luckysheetWrapper');
+    if (lWrap && !lWrap._autoSaveAttached) {
+      lWrap._autoSaveAttached = true;
+      lWrap.addEventListener('input', function() { triggerAutoSave(); }, true);
+      lWrap.addEventListener('change', function() { triggerAutoSave(); }, true);
+      lWrap.addEventListener('paste', function() { triggerAutoSave(); }, true);
+      lWrap.addEventListener('keyup', function(e) {
+        if (e.key === 'Enter' || e.key === 'Tab' || e.key === 'Delete' || e.key === 'Backspace') {
+          triggerAutoSave();
+        }
+      }, true);
+    }
+
+    // Input rename listener
+    if (docNameInput) {
+      docNameInput.oninput = function() {
+        var newTitle = docNameInput.value.trim() || activeDoc.name;
+        activeDoc.name = newTitle;
+        if (docSelect) {
+          var selOpt = docSelect.querySelector('option[value="' + activeDoc.id + '"]');
+          if (selOpt) {
+            var author = activeDoc.authorName || (activeDoc.authorRole === 'admin' ? 'Admin' : 'Ustoz');
+            selOpt.textContent = '📁 ' + newTitle + (author ? ' (' + author + ')' : '');
+          }
+        }
+        triggerAutoSave();
+      };
+    }
+
     // Dropdown change: switch active document
     if (docSelect) {
       docSelect.onchange = function() {
+        performSave(false);
         var selectedId = docSelect.value;
         var curList = loadSavedList();
         var targetDoc = curList.find(function(x) { return x.id === selectedId; });
@@ -2287,6 +2422,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
           localStorage.setItem(ACTIVE_ID_KEY, targetDoc.id);
           activeDoc = targetDoc;
           if (docNameInput) docNameInput.value = targetDoc.name;
+          renderSelectOptions(targetDoc.id);
           renderLuckysheet(targetDoc.data);
           toast('📂 "' + targetDoc.name + '" jadvali ochildi');
         }
@@ -2297,27 +2433,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     var btnSave = document.getElementById('ethLuckySaveBtn');
     if (btnSave) {
       btnSave.onclick = function() {
-        var currentData = getActiveWorkbookData();
-        var curName = (docNameInput ? docNameInput.value : activeDoc.name).trim() || 'Mening Jadvalim';
-        var curList = loadSavedList();
-        var existIdx = curList.findIndex(function(x) { return x.id === activeDoc.id; });
-        var updatedDoc = {
-          id: activeDoc.id,
-          name: curName,
-          updatedAt: new Date().toLocaleDateString('uz-UZ') + ' ' + new Date().toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' }),
-          data: currentData
-        };
-
-        if (existIdx >= 0) {
-          curList[existIdx] = updatedDoc;
-        } else {
-          curList.unshift(updatedDoc);
-        }
-
-        saveList(curList);
-        activeDoc = updatedDoc;
-        renderSelectOptions(activeDoc.id);
-        toast('💾 "' + curName + '" jadvali muvaffaqiyatli saqlandi!');
+        performSave(true);
       };
     }
 
@@ -2325,22 +2441,54 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     var btnNewSheet = document.getElementById('ethLuckyNewSheetBtn');
     if (btnNewSheet) {
       btnNewSheet.onclick = function() {
+        var statusEl = document.getElementById('ethLuckySaveStatus');
+        if (statusEl) {
+          statusEl.innerHTML = '<span style="color:#38bdf8;font-weight:700;">⏳ Oldingi jadval serverga saqlanmoqda...</span>';
+        }
+
+        // 1. Force save the current active workbook completely FIRST!
+        performSave(false);
+
+        // 2. Load latest updated list
         var curList = loadSavedList();
-        var newTitle = 'Yangi Jadval ' + (curList.length + 1);
+
+        // 3. Generate sequential new name e.g. "Yangi Jadval 1", "Yangi Jadval 2", etc.
+        var nextNum = 1;
+        var existingNames = curList.map(function(x) { return (x.name || '').trim().toLowerCase(); });
+        while (existingNames.indexOf(('yangi jadval ' + nextNum).toLowerCase()) !== -1) {
+          nextNum++;
+        }
+        var newTitle = 'Yangi Jadval ' + nextNum;
+
         var newDoc = {
-          id: 'sheet_' + Date.now(),
+          id: 'sheet_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
           name: newTitle,
-          updatedAt: new Date().toLocaleDateString('uz-UZ'),
+          authorName: (S.user && S.user.name) ? S.user.name : (isAdmin ? 'Admin' : 'Ustoz'),
+          authorRole: (S.user && S.user.role) ? S.user.role : 'teacher',
+          authorId: (S.user && (S.user.id || S.user.login)) ? (S.user.id || S.user.login) : '',
+          createdAt: Date.now(),
+          updatedAt: new Date().toLocaleDateString('uz-UZ') + ' ' + new Date().toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' }),
+          updatedTs: Date.now(),
           data: getBlankWorkbook('Sheet1')
         };
+
         curList.push(newDoc);
-        saveList(curList);
+        saveList(curList, true);
         localStorage.setItem(ACTIVE_ID_KEY, newDoc.id);
         activeDoc = newDoc;
+
         if (docNameInput) docNameInput.value = newTitle;
         renderSelectOptions(newDoc.id);
         renderLuckysheet(newDoc.data);
-        toast('✨ Yangi toza bo‘sh jadval ochildi');
+
+        if (window.EthithSync && typeof window.EthithSync.broadcastSpreadsheetSaved === 'function') {
+          window.EthithSync.broadcastSpreadsheetSaved(newDoc);
+        }
+
+        if (statusEl) {
+          statusEl.innerHTML = '<span style="color:#10b981;font-weight:700;">✓ Serverga saqlandi (' + new Date().toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' }) + ')</span>';
+        }
+        toast('✨ Oldingi jadval serverga saqlandi va yangi bo‘sh jadval ochildi!');
       };
     }
 
@@ -2349,20 +2497,43 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     if (btnDelete) {
       btnDelete.onclick = function() {
         var curList = loadSavedList();
-        if (curList.length <= 1) {
-          toast('⚠️ Oxirgi jadvalni o‘chirib bo‘lmaydi. Bo‘shatish uchun "Yangi Bo‘sh" tugmasidan foydalaning.');
-          return;
+        var curName = (docNameInput ? docNameInput.value : activeDoc.name).trim() || activeDoc.name;
+        if (!confirm('"' + curName + '" jadvalini tizimdan butunlay o‘chirib tashlamoqchimisiz?')) return;
+
+        // Record in deleted spreadsheet IDs
+        var delList = [];
+        try { delList = JSON.parse(localStorage.getItem(DELETED_KEY) || '[]'); } catch(e) {}
+        if (!Array.isArray(delList)) delList = [];
+        if (delList.indexOf(activeDoc.id) === -1) delList.push(activeDoc.id);
+        try { localStorage.setItem(DELETED_KEY, JSON.stringify(delList)); } catch(e) {}
+
+        var deletedId = activeDoc.id;
+        curList = curList.filter(function(x) { return x.id !== deletedId; });
+        if (curList.length === 0) {
+          var fallbackDoc = {
+            id: 'sheet_' + Date.now(),
+            name: 'Asosiy Jadval',
+            authorName: (S.user && S.user.name) ? S.user.name : (isAdmin ? 'Admin' : 'Ustoz'),
+            authorRole: (S.user && S.user.role) ? S.user.role : 'teacher',
+            updatedAt: new Date().toLocaleDateString('uz-UZ'),
+            updatedTs: Date.now(),
+            data: getBlankWorkbook('Sheet1')
+          };
+          curList = [fallbackDoc];
         }
-        var curName = (docNameInput ? docNameInput.value : activeDoc.name);
-        if (!confirm('"' + curName + '" jadvalini o‘chirmoqchimisiz?')) return;
-        curList = curList.filter(function(x) { return x.id !== activeDoc.id; });
-        saveList(curList);
+
         activeDoc = curList[0];
         localStorage.setItem(ACTIVE_ID_KEY, activeDoc.id);
+        saveList(curList, true);
+
+        if (window.EthithSync && typeof window.EthithSync.broadcastSpreadsheetDeleted === 'function') {
+          window.EthithSync.broadcastSpreadsheetDeleted(deletedId);
+        }
+
         if (docNameInput) docNameInput.value = activeDoc.name;
         renderSelectOptions(activeDoc.id);
         renderLuckysheet(activeDoc.data);
-        toast('🗑️ Jadval o‘chirildi');
+        toast('🗑️ "' + curName + '" jadvali butunlay o‘chirildi');
       };
     }
 
@@ -2387,6 +2558,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
               }
             }
           }
+          triggerAutoSave();
           toast('🎨 Katak rangi o‘zgartirildi');
         } catch(e) {
           console.warn('Set bg error', e);
@@ -2402,6 +2574,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         try {
           if (typeof window.luckysheet.setRangeFormat === 'function') {
             window.luckysheet.setRangeFormat('bl', 1);
+            triggerAutoSave();
             toast('B Qalin shrift qo‘yildi');
           }
         } catch(e) {}
@@ -2418,8 +2591,12 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
           var curSh = sheets[activeIndex] || sheets[0];
           curSh.column = (curSh.column || 500) + 50;
           activeDoc.data = sheets;
-          saveList(list);
+          var curList = loadSavedList();
+          var idx = curList.findIndex(function(x) { return x.id === activeDoc.id; });
+          if (idx >= 0) curList[idx] = activeDoc;
+          saveList(curList, true);
           renderLuckysheet(sheets);
+          triggerAutoSave();
           toast("✓ O‘ng tomonga 50 ta yangi ustun qo‘shildi! (Jami: " + curSh.column + " ustun)");
         }
       };
@@ -2435,8 +2612,12 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
           var curSh = sheets[activeIndex] || sheets[0];
           curSh.row = (curSh.row || 584) + 50;
           activeDoc.data = sheets;
-          saveList(list);
+          var curList = loadSavedList();
+          var idx = curList.findIndex(function(x) { return x.id === activeDoc.id; });
+          if (idx >= 0) curList[idx] = activeDoc;
+          saveList(curList, true);
           renderLuckysheet(sheets);
+          triggerAutoSave();
           toast("✓ Pastga 50 ta yangi qator qo‘shildi! (Jami: " + curSh.row + " qator)");
         }
       };
@@ -2458,11 +2639,23 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
           }
         });
         activeDoc.data = sheets;
-        saveList(list);
+        var curList = loadSavedList();
+        var idx = curList.findIndex(function(x) { return x.id === activeDoc.id; });
+        if (idx >= 0) curList[idx] = activeDoc;
+        saveList(curList, true);
         renderLuckysheet(sheets);
+        triggerAutoSave();
         toast("✓ Kataklar standart to‘g‘ri to‘rtburchak Excel formatiga keltirildi!");
       };
     }
+
+    window.addEventListener('beforeunload', function() {
+      try {
+        if (typeof window.luckysheet !== 'undefined' && activeDoc) {
+          performSave(false);
+        }
+      } catch(e) {}
+    });
 
     // Export XLSX File Button
     var btnExportXlsx = document.getElementById('ethLuckyExportXlsxBtn');
@@ -2624,7 +2817,10 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
                 data: newLuckySheets
               };
               curList.unshift(importedDoc);
-              saveList(curList);
+              saveList(curList, true);
+              if (window.EthithSync && typeof window.EthithSync.broadcastSpreadsheetSaved === 'function') {
+                window.EthithSync.broadcastSpreadsheetSaved(importedDoc);
+              }
               localStorage.setItem(ACTIVE_ID_KEY, importedDoc.id);
               activeDoc = importedDoc;
               if (docNameInput) docNameInput.value = importTitle;
