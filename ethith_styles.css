@@ -11099,3 +11099,46 @@ html, body {
 .ec-send-btn:active {
   transform: scale(0.96);
 }
+
+/* Pinned Messages & Disintegration & Highlighting Enhancements */
+@keyframes tgFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes tgSlideUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes tgHighlightPulse {
+  0% { transform: scale(1.02); box-shadow: 0 0 25px rgba(56, 189, 248, 0.95); outline: 2.5px solid #38bdf8; }
+  40% { transform: scale(1.01); box-shadow: 0 0 16px rgba(56, 189, 248, 0.6); outline: 2px solid #38bdf8; }
+  100% { transform: scale(1); box-shadow: none; outline: none; }
+}
+
+.tg-msg-row.tg-msg-highlight > .tg-bubble {
+  animation: tgHighlightPulse 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
+}
+
+.tg-pinned-modal-item:hover {
+  background: rgba(51, 65, 85, 0.9) !important;
+  border-color: rgba(56, 189, 248, 0.6) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.tg-pinned-bar {
+  background: rgba(15, 23, 42, 0.92) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-left: 3.5px solid #38bdf8 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25) !important;
+  padding: 8px 16px !important;
+  transition: all 0.2s ease !important;
+}
+
+.tg-pinned-bar:hover {
+  background: rgba(30, 41, 59, 0.95) !important;
+  border-color: rgba(56, 189, 248, 0.7) !important;
+}

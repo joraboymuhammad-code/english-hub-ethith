@@ -954,9 +954,20 @@
       }
       var lenBefore = (foundInCls.messages || []).length;
       foundInCls.messages = (foundInCls.messages || []).filter(function(m) { return m.id !== event.msgId; });
-      if (foundInCls.pinnedId === event.msgId) foundInCls.pinnedId = null;
-      if (window._ethithDisintegrateChatMessage) {
+      if (foundInCls.pinnedIds) {
+        foundInCls.pinnedIds = foundInCls.pinnedIds.filter(function(pid) { return pid !== event.msgId; });
+      }
+      if (foundInCls.pinnedId === event.msgId) {
+        foundInCls.pinnedId = (foundInCls.pinnedIds && foundInCls.pinnedIds.length > 0) ? foundInCls.pinnedIds[foundInCls.pinnedIds.length - 1] : null;
+      }
+      if (typeof window._ethithDisintegrateChatMessage === 'function') {
         window._ethithDisintegrateChatMessage(event.msgId);
+      } else {
+        var row = document.querySelector('.tg-msg-row[data-msg-id="' + event.msgId + '"]');
+        if (row && row.parentNode) row.parentNode.removeChild(row);
+      }
+      if (typeof window._ethithUpdatePinnedBarFromSync === 'function') {
+        window._ethithUpdatePinnedBarFromSync(foundInCls);
       }
       if (foundInCls.messages.length !== lenBefore) {
         uiNeedsRefresh = false; // already disintegrated smoothly!
@@ -981,17 +992,38 @@
     }
 
     // D. PIN / UNPIN MESSAGE
-    else if (event.type === 'PIN_MSG' && targetCls) {
-      targetCls.pinnedId = event.msgId || null;
-      var pBar = document.getElementById('tgPinnedBar');
-      if (!event.msgId) {
-        if (pBar) {
-          pBar.style.transition = 'all 0.25s ease';
-          pBar.style.opacity = '0';
-          setTimeout(function() { pBar.remove(); }, 250);
+    else if ((event.type === 'PIN_MSG' || event.type === 'UNPIN_MSG') && targetCls) {
+      if (Array.isArray(event.pinnedIds)) {
+        targetCls.pinnedIds = event.pinnedIds;
+        targetCls.pinnedId = event.pinnedIds.length > 0 ? event.pinnedIds[event.pinnedIds.length - 1] : null;
+      } else if (event.type === 'UNPIN_MSG') {
+        if (event.msgId && targetCls.pinnedIds) {
+          targetCls.pinnedIds = targetCls.pinnedIds.filter(function(pid) { return pid !== event.msgId; });
+        } else {
+          targetCls.pinnedIds = [];
         }
+        targetCls.pinnedId = (targetCls.pinnedIds && targetCls.pinnedIds.length > 0) ? targetCls.pinnedIds[targetCls.pinnedIds.length - 1] : null;
+      } else if (event.type === 'PIN_MSG') {
+        if (!targetCls.pinnedIds) targetCls.pinnedIds = [];
+        if (event.msgId && targetCls.pinnedIds.indexOf(event.msgId) === -1) {
+          targetCls.pinnedIds.push(event.msgId);
+        }
+        targetCls.pinnedId = event.msgId || (targetCls.pinnedIds.length > 0 ? targetCls.pinnedIds[targetCls.pinnedIds.length - 1] : null);
+      }
+
+      if (typeof window._ethithUpdatePinnedBarFromSync === 'function') {
+        window._ethithUpdatePinnedBarFromSync(targetCls);
       } else {
-        uiNeedsRefresh = true;
+        var pBar = document.getElementById('tgPinnedBar');
+        if (!targetCls.pinnedId && (!targetCls.pinnedIds || targetCls.pinnedIds.length === 0)) {
+          if (pBar) {
+            pBar.style.transition = 'all 0.25s ease';
+            pBar.style.opacity = '0';
+            setTimeout(function() { pBar.remove(); }, 250);
+          }
+        } else {
+          uiNeedsRefresh = true;
+        }
       }
     }
 
@@ -2679,13 +2711,21 @@
         });
       }
 
-      // Sync Pinned Message
-      if (rc.pinnedId !== undefined && rc.pinnedId !== localCls.pinnedId) {
-        if (localCls.deletedMsgIds.indexOf(rc.pinnedId) === -1) {
+      // Sync Pinned Messages
+      if (Array.isArray(rc.pinnedIds)) {
+        localCls.pinnedIds = rc.pinnedIds.filter(function(pid) {
+          return !localCls.deletedMsgIds || localCls.deletedMsgIds.indexOf(pid) === -1;
+        });
+        localCls.pinnedId = localCls.pinnedIds.length > 0 ? localCls.pinnedIds[localCls.pinnedIds.length - 1] : null;
+        changed = true;
+      } else if (rc.pinnedId !== undefined && rc.pinnedId !== localCls.pinnedId) {
+        if (!localCls.deletedMsgIds || localCls.deletedMsgIds.indexOf(rc.pinnedId) === -1) {
           localCls.pinnedId = rc.pinnedId;
+          localCls.pinnedIds = rc.pinnedId ? [rc.pinnedId] : [];
           changed = true;
         } else {
           localCls.pinnedId = null;
+          localCls.pinnedIds = [];
           changed = true;
         }
       }

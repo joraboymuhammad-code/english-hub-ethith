@@ -1538,11 +1538,362 @@
     return false;
   }
 
+  // --- DISINTEGRATION, PINNED MESSAGES & HIGHLIGHTING HELPERS ---
+  function disintegrateMsgRow(row) {
+    if (!row) return;
+    row.style.pointerEvents = 'none';
+    row.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+    row.style.transform = 'scale(0.8) translateY(-10px)';
+    row.style.opacity = '0';
+    row.style.filter = 'blur(6px)';
+    setTimeout(function() {
+      row.style.maxHeight = '0px';
+      row.style.marginTop = '0px';
+      row.style.marginBottom = '0px';
+      row.style.paddingTop = '0px';
+      row.style.paddingBottom = '0px';
+      row.style.overflow = 'hidden';
+      setTimeout(function() {
+        if (row.parentNode) row.parentNode.removeChild(row);
+      }, 200);
+    }, 100);
+  }
+
+  window._ethithDisintegrateChatMessage = function(msgId) {
+    var row = document.querySelector('.tg-msg-row[data-msg-id="' + msgId + '"]');
+    if (row) disintegrateMsgRow(row);
+  };
+
+  function scrollToChatMessage(msgId) {
+    var row = document.querySelector('.tg-msg-row[data-msg-id="' + msgId + '"]');
+    if (row) {
+      row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      row.classList.remove('tg-msg-highlight');
+      void row.offsetWidth; // force reflow
+      row.classList.add('tg-msg-highlight');
+      setTimeout(function() {
+        row.classList.remove('tg-msg-highlight');
+      }, 2500);
+    } else {
+      if (typeof showToast === 'function') {
+        showToast('Xabar topilmadi yoki o‘chirilgan', 'warning');
+      } else if (window.EthithApp && typeof window.EthithApp.toast === 'function') {
+        window.EthithApp.toast('Xabar topilmadi yoki o‘chirilgan');
+      }
+    }
+  }
+
+  function pinMessage(cls, msgId, container) {
+    if (!cls.pinnedIds) cls.pinnedIds = [];
+    if (cls.pinnedIds.indexOf(msgId) === -1) {
+      cls.pinnedIds.push(msgId);
+    }
+    cls.pinnedId = msgId;
+
+    var liveCls = (S.classes && S.classes.find(function(c) {
+      return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+    })) || cls;
+    liveCls.pinnedIds = cls.pinnedIds;
+    liveCls.pinnedId = cls.pinnedId;
+
+    App.saveState();
+
+    if (window.EthithSync) {
+      window.EthithSync.publishLive({
+        type: 'PIN_MSG',
+        classId: cls.code || cls.id,
+        msgId: msgId,
+        pinnedIds: cls.pinnedIds
+      });
+      window.EthithSync.broadcastLocal(S.classes, S.exams);
+      window.EthithSync.pushRemoteStore(S.classes, S.exams);
+    }
+
+    updatePinnedBarUi(cls, container);
+  }
+
+  function unpinMessage(cls, msgId, container) {
+    if (!cls.pinnedIds) cls.pinnedIds = [];
+    cls.pinnedIds = cls.pinnedIds.filter(function(id) { return id !== msgId; });
+    cls.pinnedId = cls.pinnedIds.length > 0 ? cls.pinnedIds[cls.pinnedIds.length - 1] : null;
+
+    var liveCls = (S.classes && S.classes.find(function(c) {
+      return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+    })) || cls;
+    liveCls.pinnedIds = cls.pinnedIds;
+    liveCls.pinnedId = cls.pinnedId;
+
+    App.saveState();
+
+    if (window.EthithSync) {
+      window.EthithSync.publishLive({
+        type: 'UNPIN_MSG',
+        classId: cls.code || cls.id,
+        msgId: msgId,
+        pinnedIds: cls.pinnedIds,
+        latestPinnedId: cls.pinnedId
+      });
+      window.EthithSync.publishLive({
+        type: 'PIN_MSG',
+        classId: cls.code || cls.id,
+        msgId: cls.pinnedId,
+        pinnedIds: cls.pinnedIds
+      });
+      window.EthithSync.broadcastLocal(S.classes, S.exams);
+      window.EthithSync.pushRemoteStore(S.classes, S.exams);
+    }
+
+    updatePinnedBarUi(cls, container);
+  }
+
+  function updatePinnedBarUi(cls, container) {
+    var chatWrap = (container && container.querySelector('.tg-chat-wrap')) || document.querySelector('.tg-chat-wrap');
+    if (!chatWrap) return;
+
+    var pinnedIds = cls.pinnedIds || (cls.pinnedId ? [cls.pinnedId] : []);
+    var pinnedMsgs = (cls.messages || []).filter(function(m) {
+      return pinnedIds.indexOf(m.id) > -1 && (!cls.deletedMsgIds || cls.deletedMsgIds.indexOf(m.id) === -1);
+    });
+
+    var existingBar = chatWrap.querySelector('#tgPinnedBar');
+    var isTeacher = (S.user && (S.user.role === 'teacher' || S.user.isTeacher === true));
+
+    if (pinnedMsgs.length === 0) {
+      if (existingBar) {
+        existingBar.style.transition = 'all 0.25s ease';
+        existingBar.style.opacity = '0';
+        existingBar.style.transform = 'translateY(-6px)';
+        setTimeout(function() {
+          if (existingBar.parentNode) existingBar.parentNode.removeChild(existingBar);
+        }, 250);
+      }
+      var modal = document.getElementById('tgPinnedModalOverlay');
+      if (modal) modal.remove();
+      return;
+    }
+
+    var latestPinned = pinnedMsgs[pinnedMsgs.length - 1];
+    var countText = pinnedMsgs.length > 1 ? 'lar (' + pinnedMsgs.length + ' ta)' : '';
+    var subHint = pinnedMsgs.length > 1 ? '<span style="font-size:10.5px;color:#94a3b8;font-weight:700;margin-left:4px;">(barchasini ko‘rish uchun bosing)</span>' : '<span style="font-size:10.5px;color:#94a3b8;font-weight:700;margin-left:4px;">(xabarga o‘tish)</span>';
+
+    var barInnerHtml = '' +
+      '<div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;" id="tgPinnedBarContent">' +
+      '  <span style="font-size:16px;color:#38bdf8;flex-shrink:0;">📌</span>' +
+      '  <div style="flex:1;min-width:0;display:flex;flex-direction:column;">' +
+      '    <div style="display:flex;align-items:center;gap:6px;">' +
+      '      <span style="font-size:11.5px;font-weight:900;color:#38bdf8;text-transform:uppercase;letter-spacing:0.5px;">Qadalgan xabar' + countText + '</span>' +
+      '      ' + subHint +
+      '    </div>' +
+      '    <div style="font-size:12.5px;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px;">' +
+      '      <b>' + esc(latestPinned.senderName) + ':</b> "' + esc(latestPinned.text.slice(0, 60)) + (latestPinned.text.length > 60 ? '...' : '') + '"' +
+      '    </div>' +
+      '  </div>' +
+      '</div>' +
+      (isTeacher ? '  <button id="tgUnpinBtn" type="button" title="Pindan yechish" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.35);color:#ef4444;border-radius:8px;padding:4px 8px;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:4px;flex-shrink:0;margin-left:8px;">✕ Pindan yechish</button>' : '');
+
+    if (existingBar) {
+      existingBar.innerHTML = barInnerHtml;
+      existingBar.style.opacity = '1';
+      existingBar.style.transform = 'none';
+    } else {
+      var newBar = document.createElement('div');
+      newBar.className = 'tg-pinned-bar';
+      newBar.id = 'tgPinnedBar';
+      newBar.style.cursor = 'pointer';
+      newBar.innerHTML = barInnerHtml;
+      var msgBox = chatWrap.querySelector('#tgMsgBox');
+      if (msgBox) {
+        chatWrap.insertBefore(newBar, msgBox);
+      } else {
+        chatWrap.appendChild(newBar);
+      }
+    }
+
+    var barEl = chatWrap.querySelector('#tgPinnedBar');
+    if (barEl) {
+      var contentEl = barEl.querySelector('#tgPinnedBarContent') || barEl;
+      contentEl.onclick = function(e) {
+        if (e.target && e.target.id === 'tgUnpinBtn') return;
+        if (pinnedMsgs.length === 1) {
+          scrollToChatMessage(pinnedMsgs[0].id);
+        } else {
+          showAllPinnedMessagesModal(cls, container);
+        }
+      };
+
+      var unpinBtn = barEl.querySelector('#tgUnpinBtn');
+      if (unpinBtn) {
+        unpinBtn.onclick = function(e) {
+          e.stopPropagation();
+          if (pinnedMsgs.length === 1) {
+            unpinMessage(cls, latestPinned.id, container);
+          } else {
+            showAllPinnedMessagesModal(cls, container);
+          }
+        };
+      }
+    }
+
+    var modalList = document.getElementById('tgPinnedModalList');
+    if (modalList) {
+      renderPinnedModalListContent(modalList, cls, pinnedMsgs, container);
+    }
+  }
+
+  function showAllPinnedMessagesModal(cls, container) {
+    var existing = document.getElementById('tgPinnedModalOverlay');
+    if (existing) existing.remove();
+
+    var pinnedIds = cls.pinnedIds || (cls.pinnedId ? [cls.pinnedId] : []);
+    var pinnedMsgs = (cls.messages || []).filter(function(m) {
+      return pinnedIds.indexOf(m.id) > -1 && (!cls.deletedMsgIds || cls.deletedMsgIds.indexOf(m.id) === -1);
+    });
+
+    if (pinnedMsgs.length === 0) return;
+
+    var overlay = document.createElement('div');
+    overlay.id = 'tgPinnedModalOverlay';
+    overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:16px;animation:tgFadeIn 0.2s ease;';
+
+    var isTeacher = (S.user && (S.user.role === 'teacher' || S.user.isTeacher === true));
+
+    var modalHtml = '' +
+      '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.35);box-shadow:0 10px 40px rgba(0,0,0,0.8),0 0 20px rgba(56,189,248,0.25);border-radius:18px;width:100%;max-width:520px;max-height:85vh;display:flex;flex-direction:column;overflow:hidden;animation:tgSlideUp 0.25s cubic-bezier(0.16,1,0.3,1);">' +
+      '  <div style="padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,rgba(2,132,199,0.25),rgba(15,23,42,0.95));">' +
+      '    <div style="display:flex;align-items:center;gap:10px;">' +
+      '      <span style="font-size:22px;">📌</span>' +
+      '      <div>' +
+      '        <h4 style="margin:0;font-size:15px;font-weight:900;color:#f8fafc;">Qadalgan Xabarlar (' + pinnedMsgs.length + ' ta)</h4>' +
+      '        <div style="font-size:11.5px;color:#94a3b8;margin-top:2px;">Xabarga o‘tish uchun uning ustiga bosing</div>' +
+      '      </div>' +
+      '    </div>' +
+      '    <button id="tgPinnedModalCloseBtn" type="button" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;width:32px;height:32px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;">✕</button>' +
+      '  </div>' +
+      '  <div id="tgPinnedModalList" style="padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;flex:1;">' +
+      '  </div>' +
+      (isTeacher && pinnedMsgs.length > 1 ?
+        '  <div style="padding:12px 18px;border-top:1px solid rgba(255,255,255,0.08);background:rgba(15,23,42,0.8);display:flex;justify-content:flex-end;">' +
+        '    <button id="tgUnpinAllBtn" type="button" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);color:#ef4444;border-radius:10px;padding:7px 14px;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">🗑️ Barchasini pindan yechish</button>' +
+        '  </div>' : '') +
+      '</div>';
+
+    overlay.innerHTML = modalHtml;
+    document.body.appendChild(overlay);
+
+    var listEl = overlay.querySelector('#tgPinnedModalList');
+    renderPinnedModalListContent(listEl, cls, pinnedMsgs, container);
+
+    overlay.querySelector('#tgPinnedModalCloseBtn').onclick = function() {
+      overlay.remove();
+    };
+    overlay.onclick = function(e) {
+      if (e.target === overlay) overlay.remove();
+    };
+
+    var unpinAllBtn = overlay.querySelector('#tgUnpinAllBtn');
+    if (unpinAllBtn) {
+      unpinAllBtn.onclick = function() {
+        if (confirm('Barcha qadalgan xabarlarni pindan yechishni xohlaysizmi?')) {
+          cls.pinnedIds = [];
+          cls.pinnedId = null;
+          var liveCls = (S.classes && S.classes.find(function(c) {
+            return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+          })) || cls;
+          liveCls.pinnedIds = [];
+          liveCls.pinnedId = null;
+          App.saveState();
+          if (window.EthithSync) {
+            window.EthithSync.publishLive({
+              type: 'UNPIN_MSG',
+              classId: cls.code || cls.id,
+              msgId: null,
+              pinnedIds: []
+            });
+            window.EthithSync.publishLive({
+              type: 'PIN_MSG',
+              classId: cls.code || cls.id,
+              msgId: null,
+              pinnedIds: []
+            });
+            window.EthithSync.broadcastLocal(S.classes, S.exams);
+            window.EthithSync.pushRemoteStore(S.classes, S.exams);
+          }
+          overlay.remove();
+          updatePinnedBarUi(cls, container);
+        }
+      };
+    }
+  }
+
+  function renderPinnedModalListContent(listEl, cls, pinnedMsgs, container) {
+    if (!listEl) return;
+    var isTeacher = (S.user && (S.user.role === 'teacher' || S.user.isTeacher === true));
+
+    if (!pinnedMsgs || pinnedMsgs.length === 0) {
+      listEl.innerHTML = '<div style="text-align:center;padding:24px;color:#94a3b8;font-size:13px;">Qadalgan xabarlar mavjud emas</div>';
+      return;
+    }
+
+    var revMsgs = pinnedMsgs.slice().reverse();
+    listEl.innerHTML = revMsgs.map(function(pm) {
+      return '' +
+        '<div class="tg-pinned-modal-item" data-pin-id="' + esc(pm.id) + '" style="background:rgba(30,41,59,0.7);border:1px solid rgba(56,189,248,0.2);border-radius:12px;padding:12px 14px;cursor:pointer;transition:all 0.15s ease;display:flex;flex-direction:column;gap:6px;">' +
+        '  <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">' +
+        '    <div style="display:flex;align-items:center;gap:8px;min-width:0;">' +
+        '      ' + (window.ETHITH_RENDER_USER_AVATAR ? window.ETHITH_RENDER_USER_AVATAR({ name: pm.senderName, avatar: pm.senderAvatar }, 24) : '<span style="font-weight:900;color:#38bdf8;">' + esc((pm.senderName||'U').charAt(0)) + '</span>') +
+        '      <span style="font-size:13px;font-weight:800;color:#38bdf8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(pm.senderName) + '</span>' +
+        '      <span style="font-size:11px;color:#64748b;flex-shrink:0;">' + esc(pm.time || '') + '</span>' +
+        '    </div>' +
+        (isTeacher ? '    <button type="button" class="tg-modal-unpin-single-btn" data-unpin-id="' + esc(pm.id) + '" title="Ushbu xabarni pindan yechish" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:#ef4444;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:4px;flex-shrink:0;">✕ Yechish</button>' : '') +
+        '  </div>' +
+        '  <div style="font-size:13px;color:#e2e8f0;line-height:1.4;word-break:break-word;">' + esc(pm.text) + '</div>' +
+        '  <div style="display:flex;justify-content:flex-end;">' +
+        '    <span style="font-size:11px;color:#0284c7;font-weight:800;display:inline-flex;align-items:center;gap:3px;">👉 Xabarga o‘tish</span>' +
+        '  </div>' +
+        '</div>';
+    }).join('');
+
+    listEl.querySelectorAll('.tg-pinned-modal-item').forEach(function(item) {
+      item.onclick = function(e) {
+        if (e.target && e.target.classList.contains('tg-modal-unpin-single-btn')) return;
+        var msgId = item.dataset.pinId;
+        var overlay = document.getElementById('tgPinnedModalOverlay');
+        if (overlay) overlay.remove();
+        scrollToChatMessage(msgId);
+      };
+    });
+
+    listEl.querySelectorAll('.tg-modal-unpin-single-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        var msgId = btn.dataset.unpinId;
+        unpinMessage(cls, msgId, container);
+      };
+    });
+  }
+
+  window._ethithUpdatePinnedBarFromSync = function(targetCls) {
+    if (!targetCls) return;
+    var chatWrap = document.querySelector('.tg-chat-wrap');
+    if (!chatWrap) return;
+    var currentClassCode = (window._ethithCurrentActiveClass && (window._ethithCurrentActiveClass.code || window._ethithCurrentActiveClass.id)) || null;
+    var targetCode = targetCls.code || targetCls.id;
+    if (currentClassCode && targetCode && currentClassCode !== targetCode) {
+      return;
+    }
+    updatePinnedBarUi(targetCls);
+  };
+
   function renderClassesView(container) {
     window._ethithCurrentView = 'classes';
     var isTeacher = S.user && (S.user.role === 'teacher' || S.user.isTeacher === true);
     var isAdmin = S.user && (S.user.role === 'admin' || (S.user.email && S.user.email.toLowerCase().includes('admin')));
     var isStudent = S.user && S.user.role === 'student';
+
+    if (isAdmin) {
+      container.innerHTML = '<div style="padding:50px 20px;text-align:center;color:#94a3b8;font-size:15px;font-weight:700;">Admin uchun sinf chati mavjud emas.</div>';
+      return;
+    }
 
     var userClasses = getTeacherGroupsForUser(S.user, S.classes);
 
@@ -1949,7 +2300,14 @@
       return (clsParam && c.id === clsParam.id) || (clsParam && c.code === clsParam.code) || (c.id === S.activeClassId);
     })) || clsParam;
 
-    var isTeacher = S.user && (S.user.role === 'teacher' || S.user.role === 'admin');
+    var isAdmin = S.user && (S.user.role === 'admin' || (S.user.email && S.user.email.toLowerCase().includes('admin')));
+    if (isAdmin) {
+      container.innerHTML = '<div style="padding:50px 20px;text-align:center;color:#94a3b8;font-size:15px;font-weight:700;">Admin uchun sinf chati mavjud emas.</div>';
+      return;
+    }
+
+    var isTeacher = S.user && (S.user.role === 'teacher' || S.user.isTeacher === true);
+    window._ethithCurrentActiveClass = cls;
 
     // Strict enrollment guard: if a student was expelled, kick them out to classes list immediately!
     if (cls && S.user && !isTeacher) {
@@ -1972,7 +2330,12 @@
     if (window.EthithSync) {
       window.EthithSync.subscribeClass(cls.code || cls.id);
     }
-    var pinnedMsg = cls.messages ? cls.messages.find(function(m) { return m.id === cls.pinnedId; }) : null;
+    var pinnedIds = cls.pinnedIds || (cls.pinnedId ? [cls.pinnedId] : []);
+    if (cls.pinnedId && pinnedIds.indexOf(cls.pinnedId) === -1) pinnedIds.push(cls.pinnedId);
+    cls.pinnedIds = pinnedIds;
+    var pinnedMsgs = (cls.messages || []).filter(function(m) {
+      return pinnedIds.indexOf(m.id) > -1 && (!cls.deletedMsgIds || cls.deletedMsgIds.indexOf(m.id) === -1);
+    });
     var activeHw = cls.activeHomework || (window.EthithAttendance && window.EthithAttendance.getLatestClassHomework ? window.EthithAttendance.getLatestClassHomework(cls) : null) || {
       dateKey: new Date().getFullYear() + '-' + String(new Date().getMonth() + 1).padStart(2, '0') + '-' + String(new Date().getDate()).padStart(2, '0'),
       dateDisp: String(new Date().getDate()).padStart(2, '0') + '.' + String(new Date().getMonth() + 1).padStart(2, '0') + '.' + new Date().getFullYear(),
@@ -2130,11 +2493,27 @@
       '    </div>' +
       '  </div>' +
       // Bulky homework banner removed for clean chat view
-      (pinnedMsg ?
-        '<div class="tg-pinned-bar" id="tgPinnedBar">' +
-        '  <div>' + ic('pin') + ' <b>Pinned Message:</b> ' + esc(pinnedMsg.senderName) + ': "' + esc(pinnedMsg.text.slice(0, 50)) + '..."</div>' +
-        (isTeacher ? '  <button id="tgUnpinBtn" style="background:none;border:none;cursor:pointer;color:var(--muted)">✕</button>' : '') +
-        '</div>' : '') +
+      (pinnedMsgs.length > 0 ?
+        (function() {
+          var latestPinned = pinnedMsgs[pinnedMsgs.length - 1];
+          var countText = pinnedMsgs.length > 1 ? 'lar (' + pinnedMsgs.length + ' ta)' : '';
+          var subHint = pinnedMsgs.length > 1 ? '<span style="font-size:10.5px;color:#94a3b8;font-weight:700;margin-left:4px;">(barchasini ko‘rish uchun bosing)</span>' : '<span style="font-size:10.5px;color:#94a3b8;font-weight:700;margin-left:4px;">(xabarga o‘tish)</span>';
+          return '<div class="tg-pinned-bar" id="tgPinnedBar" style="cursor:pointer;" title="Qadalgan xabarlarni ko‘rish">' +
+            '<div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;" id="tgPinnedBarContent">' +
+            '  <span style="font-size:16px;color:#38bdf8;flex-shrink:0;">📌</span>' +
+            '  <div style="flex:1;min-width:0;display:flex;flex-direction:column;">' +
+            '    <div style="display:flex;align-items:center;gap:6px;">' +
+            '      <span style="font-size:11.5px;font-weight:900;color:#38bdf8;text-transform:uppercase;letter-spacing:0.5px;">Qadalgan xabar' + countText + '</span>' +
+            '      ' + subHint +
+            '    </div>' +
+            '    <div style="font-size:12.5px;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px;">' +
+            '      <b>' + esc(latestPinned.senderName) + ':</b> "' + esc(latestPinned.text.slice(0, 60)) + (latestPinned.text.length > 60 ? '...' : '') + '"' +
+            '    </div>' +
+            '  </div>' +
+            '</div>' +
+            (isTeacher ? '  <button id="tgUnpinBtn" type="button" title="Pindan yechish" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.35);color:#ef4444;border-radius:8px;padding:4px 8px;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:4px;flex-shrink:0;margin-left:8px;">✕ Pindan yechish</button>' : '') +
+            '</div>';
+        })() : '') +
       '  <div class="tg-messages-scroll" id="tgMsgBox">' +
       (cls.messages || []).map(function(m) {
         return renderMsgBubbleHtml(m, cls, S.user || {});
@@ -2274,14 +2653,29 @@
       };
     }
 
-    var unpinBtn = document.getElementById('tgUnpinBtn');
-    if (unpinBtn) {
-      unpinBtn.onclick = function(e) {
-        e.stopPropagation();
-        cls.pinnedId = null;
-        App.saveState();
-        renderClassDetail(container, cls);
+    var pBar = container.querySelector('#tgPinnedBar');
+    if (pBar) {
+      var pContent = pBar.querySelector('#tgPinnedBarContent') || pBar;
+      pContent.onclick = function(e) {
+        if (e.target && e.target.id === 'tgUnpinBtn') return;
+        if (pinnedMsgs.length === 1) {
+          scrollToChatMessage(pinnedMsgs[0].id);
+        } else {
+          showAllPinnedMessagesModal(cls, container);
+        }
       };
+
+      var unpinBtn = pBar.querySelector('#tgUnpinBtn');
+      if (unpinBtn) {
+        unpinBtn.onclick = function(e) {
+          e.stopPropagation();
+          if (pinnedMsgs.length === 1) {
+            unpinMessage(cls, pinnedMsgs[0].id, container);
+          } else {
+            showAllPinnedMessagesModal(cls, container);
+          }
+        };
+      }
     }
 
     // Insert Emoji into Message Text
@@ -2629,16 +3023,17 @@
       '  <button class="tg-context-reaction-btn" id="tgMoreEmojisBtn" title="All Emojis">➕</button>' +
       '</div>' +
       (function() {
-        var isTeacherUser = (S.user && (S.user.role === 'teacher' || S.user.role === 'admin' || S.user.isTeacher === true));
+        var isTeacherUser = (S.user && (S.user.role === 'teacher' || S.user.isTeacher === true));
         var isMyMsg = (S.user && (
           (msg.senderId && S.user.id && msg.senderId === S.user.id) ||
           (msg.senderEmail && S.user.email && msg.senderEmail.toLowerCase() === S.user.email.toLowerCase()) ||
           (msg.senderName && S.user.name && msg.senderName.toLowerCase().trim() === S.user.name.toLowerCase().trim())
         ));
         var canDelete = isTeacherUser || isMyMsg;
+        var isPinned = (cls.pinnedIds && cls.pinnedIds.indexOf(msg.id) > -1) || (cls.pinnedId === msg.id);
 
         return '<button class="tg-context-item" id="ctxReplyBtn">' + ic('reply') + ' Reply</button>' +
-          (isTeacherUser ? '<button class="tg-context-item" id="ctxPinBtn">' + ic('pin') + ' Pin Message</button>' : '') +
+          (isTeacherUser ? '<button class="tg-context-item" id="ctxPinBtn">' + ic('pin') + (isPinned ? ' 📌 Pindan yechish' : ' 📌 Qadash (Pin)') + '</button>' : '') +
           (canDelete ? '<button class="tg-context-item danger" id="ctxDeleteBtn">' + ic('trash') + ' O\'chirish (Delete)</button>' : '');
       })();
 
@@ -2681,22 +3076,19 @@
       activeContextMenu = null;
     };
 
-    menu.querySelector('#ctxPinBtn').onclick = function() {
-      cls.pinnedId = msg.id;
-      App.saveState();
-      if (window.EthithSync) {
-        window.EthithSync.publishLive({
-          type: 'PIN_MSG',
-          classId: cls.code || cls.id,
-          msgId: msg.id
-        });
-        window.EthithSync.broadcastLocal(S.classes, S.exams);
-        window.EthithSync.pushRemoteStore(S.classes, S.exams);
-      }
-      menu.remove();
-      activeContextMenu = null;
-      renderClassDetail(mainContainer, cls);
-    };
+    var pinBtn = menu.querySelector('#ctxPinBtn');
+    if (pinBtn) {
+      pinBtn.onclick = function() {
+        menu.remove();
+        activeContextMenu = null;
+        var isPinned = (cls.pinnedIds && cls.pinnedIds.indexOf(msg.id) > -1) || (cls.pinnedId === msg.id);
+        if (isPinned) {
+          unpinMessage(cls, msg.id, mainContainer);
+        } else {
+          pinMessage(cls, msg.id, mainContainer);
+        }
+      };
+    }
 
     var delBtn = menu.querySelector('#ctxDeleteBtn');
     if (delBtn) {
@@ -2718,9 +3110,16 @@
         if (cls !== liveCls && cls.messages) {
           cls.messages = (cls.messages || []).filter(function(m) { return m.id !== msgId; });
         }
-        if (liveCls.pinnedId === msgId) liveCls.pinnedId = null;
+        if (!liveCls.pinnedIds) liveCls.pinnedIds = [];
+        liveCls.pinnedIds = liveCls.pinnedIds.filter(function(pid) { return pid !== msgId; });
+        if (cls.pinnedIds) cls.pinnedIds = cls.pinnedIds.filter(function(pid) { return pid !== msgId; });
+        if (liveCls.pinnedId === msgId) liveCls.pinnedId = (liveCls.pinnedIds && liveCls.pinnedIds.length > 0) ? liveCls.pinnedIds[liveCls.pinnedIds.length - 1] : null;
+        if (cls.pinnedId === msgId) cls.pinnedId = liveCls.pinnedId;
+
         if (!liveCls.deletedMsgIds) liveCls.deletedMsgIds = [];
         if (liveCls.deletedMsgIds.indexOf(msgId) === -1) liveCls.deletedMsgIds.push(msgId);
+
+        updatePinnedBarUi(liveCls, mainContainer);
 
         // 3. Save state
         App.saveState();
