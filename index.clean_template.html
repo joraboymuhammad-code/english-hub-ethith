@@ -2055,6 +2055,63 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
   function initLuckysheetMultiDoc() {
     var isAdmin = S.user && (S.user.role === 'admin' || S.user.role === 'administrator');
 
+    // Safe localStorage wrapper that automatically recovers and purges bloated caches if quota exceeded
+    function safeStorageSet(key, val) {
+      try {
+        localStorage.setItem(key, val);
+        return true;
+      } catch(e) {
+        console.warn('[Storage] Quota exceeded on setItem:', key);
+        try {
+          var toDel = [];
+          for (var i = 0; i < localStorage.length; i++) {
+            var k = localStorage.key(i);
+            if (k && (k.indexOf('luckysheet') === 0 || k.indexOf('luckysheet_') === 0) && k.indexOf('eh_saved_spreadsheets') === -1) {
+              toDel.push(k);
+            }
+          }
+          toDel.forEach(function(k) { localStorage.removeItem(k); });
+          var raw = localStorage.getItem('eh_saved_spreadsheets_v2');
+          if (raw && raw.length > 50000) {
+            var p = JSON.parse(raw);
+            if (Array.isArray(p)) {
+              p.forEach(function(sh) {
+                if (Array.isArray(sh.data)) sh.data = extractCleanSheets(sh.data);
+              });
+              localStorage.setItem('eh_saved_spreadsheets_v2', JSON.stringify(p));
+            }
+          }
+          localStorage.setItem(key, val);
+          return true;
+        } catch(e2) {
+          return false;
+        }
+      }
+    }
+
+    // Immediate cleanup of any old Luckysheet internal caches & compact bloated legacy sheets
+    try {
+      var initialPurge = [];
+      for (var pi = 0; pi < localStorage.length; pi++) {
+        var pk = localStorage.key(pi);
+        if (pk && (pk.indexOf('luckysheet') === 0 || pk.indexOf('luckysheet_') === 0) && pk.indexOf('eh_saved_spreadsheets') === -1) {
+          initialPurge.push(pk);
+        }
+      }
+      initialPurge.forEach(function(pk) { localStorage.removeItem(pk); });
+
+      var rawInit = localStorage.getItem('eh_saved_spreadsheets_v2');
+      if (rawInit && rawInit.length > 50000) {
+        var parsedInit = JSON.parse(rawInit);
+        if (Array.isArray(parsedInit)) {
+          parsedInit.forEach(function(shItem) {
+            if (Array.isArray(shItem.data)) shItem.data = extractCleanSheets(shItem.data);
+          });
+          safeStorageSet('eh_saved_spreadsheets_v2', JSON.stringify(parsedInit));
+        }
+      }
+    } catch(e) {}
+
     function getCurrentUserId() {
       if (S.user) {
         if (S.user.id) return String(S.user.id);
@@ -2267,9 +2324,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     }
 
     function saveAllList(list, pushNow) {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-      } catch(e) {}
+      safeStorageSet(STORAGE_KEY, JSON.stringify(list));
       if (window.EthithApp && window.EthithApp.state) {
         window.EthithApp.state.savedSpreadsheets = list;
       }
@@ -2315,7 +2370,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     var list = loadMySavedList();
     var storedActiveId = localStorage.getItem(ACTIVE_ID_KEY);
     var activeDoc = list.find(function(x) { return x.id === storedActiveId; }) || list[0];
-    localStorage.setItem(ACTIVE_ID_KEY, activeDoc.id);
+    safeStorageSet(ACTIVE_ID_KEY, activeDoc.id);
 
     var docSelect = document.getElementById('ethLuckyDocSelect');
     var docNameInput = document.getElementById('ethLuckyDocName');
@@ -2558,7 +2613,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         var myList = loadMySavedList();
         var targetDoc = myList.find(function(x) { return x.id === selectedId; });
         if (targetDoc) {
-          localStorage.setItem(ACTIVE_ID_KEY, targetDoc.id);
+          safeStorageSet(ACTIVE_ID_KEY, targetDoc.id);
           activeDoc = targetDoc;
           if (docNameInput) docNameInput.value = targetDoc.name;
           renderSelectOptions(targetDoc.id);
@@ -2616,7 +2671,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
         allList.push(newDoc);
         saveAllList(allList, true);
-        localStorage.setItem(ACTIVE_ID_KEY, newDoc.id);
+        safeStorageSet(ACTIVE_ID_KEY, newDoc.id);
         activeDoc = newDoc;
 
         if (docNameInput) docNameInput.value = newTitle;
@@ -2646,7 +2701,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         try { delList = JSON.parse(localStorage.getItem(DELETED_KEY) || '[]'); } catch(e) {}
         if (!Array.isArray(delList)) delList = [];
         if (delList.indexOf(activeDoc.id) === -1) delList.push(activeDoc.id);
-        try { localStorage.setItem(DELETED_KEY, JSON.stringify(delList)); } catch(e) {}
+        safeStorageSet(DELETED_KEY, JSON.stringify(delList));
 
         var deletedId = activeDoc.id;
         var allList = loadAllSavedList();
@@ -2655,7 +2710,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
         var myList = loadMySavedList();
         activeDoc = myList[0];
-        localStorage.setItem(ACTIVE_ID_KEY, activeDoc.id);
+        safeStorageSet(ACTIVE_ID_KEY, activeDoc.id);
 
         if (window.EthithSync && typeof window.EthithSync.broadcastSpreadsheetDeleted === 'function') {
           window.EthithSync.broadcastSpreadsheetDeleted(deletedId);
