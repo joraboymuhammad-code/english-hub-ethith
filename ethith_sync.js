@@ -53,6 +53,28 @@
     }
   }
 
+  function safeStorageSetSync(key, val) {
+    try {
+      localStorage.setItem(key, val);
+      return true;
+    } catch(e) {
+      try {
+        var toDel = [];
+        for (var i = 0; i < localStorage.length; i++) {
+          var k = localStorage.key(i);
+          if (k && (k.indexOf('luckysheet') === 0 || k.indexOf('luckysheet_') === 0) && k.indexOf('eh_saved_spreadsheets') === -1) {
+            toDel.push(k);
+          }
+        }
+        toDel.forEach(function(k) { localStorage.removeItem(k); });
+        localStorage.setItem(key, val);
+        return true;
+      } catch(e2) {
+        return false;
+      }
+    }
+  }
+
   var _lastKnownSha = null;
   var channel = null;
   var myClientId = 'cli_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 7);
@@ -1884,7 +1906,7 @@
         } else {
           lList.push(sObj);
         }
-        try { localStorage.setItem('eh_saved_spreadsheets_v2', JSON.stringify(lList)); } catch(e) {}
+        safeStorageSetSync('eh_saved_spreadsheets_v2', JSON.stringify(lList));
         if (window.EthithApp && window.EthithApp.state) {
           window.EthithApp.state.savedSpreadsheets = lList;
         }
@@ -1904,7 +1926,7 @@
       try { lList2 = JSON.parse(localStorage.getItem('eh_saved_spreadsheets_v2') || '[]'); } catch(e) {}
       if (Array.isArray(lList2)) {
         lList2 = lList2.filter(function(x) { return x.id !== delId; });
-        try { localStorage.setItem('eh_saved_spreadsheets_v2', JSON.stringify(lList2)); } catch(e) {}
+        safeStorageSetSync('eh_saved_spreadsheets_v2', JSON.stringify(lList2));
         if (window.EthithApp && window.EthithApp.state) {
           window.EthithApp.state.savedSpreadsheets = lList2;
         }
@@ -3364,7 +3386,7 @@
           }
         });
         S.savedSpreadsheets = finalMergedSheets;
-        try { localStorage.setItem('eh_saved_spreadsheets_v2', JSON.stringify(finalMergedSheets)); } catch(e) {}
+        safeStorageSetSync('eh_saved_spreadsheets_v2', JSON.stringify(finalMergedSheets));
 
         if (!S.workbookOverrides) S.workbookOverrides = {};
         if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
@@ -3560,7 +3582,7 @@
       remoteSheets.forEach(function(rSh) {
         if (rSh && rSh.id && allDelSheets.indexOf(rSh.id) === -1) {
           var lSh = sheetMap[rSh.id];
-          if (!lSh || ((rSh.updatedTs || 0) >= (lSh.updatedTs || 0))) {
+          if (!lSh || ((rSh.updatedTs || 0) > (lSh.updatedTs || 0))) {
             sheetMap[rSh.id] = rSh;
           }
         }
@@ -3574,7 +3596,7 @@
         }
       });
       if (finalSheets.length > 0) {
-        try { localStorage.setItem('eh_saved_spreadsheets_v2', JSON.stringify(finalSheets)); } catch(e) {}
+        safeStorageSetSync('eh_saved_spreadsheets_v2', JSON.stringify(finalSheets));
         if (window.EthithApp && window.EthithApp.state) {
           window.EthithApp.state.savedSpreadsheets = finalSheets;
         }

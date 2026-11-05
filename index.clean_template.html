@@ -2053,7 +2053,23 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
   // Multi-document management and Luckysheet controller
   function initLuckysheetMultiDoc() {
-    var isAdmin = S.user && (S.user.role === 'admin' || S.user.role === 'administrator');
+    function getResolvedUser() {
+      if (typeof S !== 'undefined' && S && S.user) return S.user;
+      if (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) return window.EthithApp.state.user;
+      try {
+        var raw = localStorage.getItem('ethith_active_user') || localStorage.getItem('ethith_user');
+        if (raw) return JSON.parse(raw);
+      } catch(e) {}
+      return null;
+    }
+
+    function isUserAdmin(u) {
+      if (!u) return false;
+      return u.role === 'admin' || u.role === 'administrator' || u.id === 'admin_official_root' || (u.email && u.email.toLowerCase().indexOf('admin') !== -1);
+    }
+
+    var currentUserObj = getResolvedUser();
+    var isAdmin = isUserAdmin(currentUserObj);
 
     // Safe localStorage wrapper that automatically recovers and purges bloated caches if quota exceeded
     function safeStorageSet(key, val) {
@@ -2113,12 +2129,13 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     } catch(e) {}
 
     function getCurrentUserId() {
-      if (S.user) {
-        if (S.user.id) return String(S.user.id);
-        if (S.user.login) return String(S.user.login);
-        if (S.user.name) return String(S.user.name);
+      var u = getResolvedUser();
+      if (u) {
+        if (u.id) return String(u.id);
+        if (u.login) return String(u.login);
+        if (u.name) return String(u.name);
       }
-      return isAdmin ? 'admin_root' : 'teacher_root';
+      return isAdmin ? 'admin_official_root' : 'teacher_root';
     }
 
     var STORAGE_KEY = 'eh_saved_spreadsheets_v2';
@@ -2177,6 +2194,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
     function commitActiveLuckysheetCell() {
       try {
+        if (typeof window.luckysheet !== 'undefined' && typeof window.luckysheet.exitEdit === 'function') {
+          window.luckysheet.exitEdit({ isRefresh: true });
+        }
         var editor = document.getElementById('luckysheet-rich-text-editor');
         if (editor && editor.style.display !== 'none') {
           var evt = new KeyboardEvent('keydown', { key: 'Enter', keyCode: 13, which: 13, bubbles: true });
@@ -2282,12 +2302,12 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       if (!doc) return false;
       var curId = getCurrentUserId();
       if (doc.authorId && String(doc.authorId) === curId) return true;
-      if (isAdmin && (doc.authorRole === 'admin' || (doc.authorName && doc.authorName.toLowerCase().indexOf('admin') !== -1))) return true;
-      if (S.user) {
-        if (doc.authorId && S.user.id && String(doc.authorId) === String(S.user.id)) return true;
-        if (doc.authorId && S.user.login && String(doc.authorId) === String(S.user.login)) return true;
-        if (doc.authorLogin && S.user.login && String(doc.authorLogin) === String(S.user.login)) return true;
-        if (doc.authorName && S.user.name && String(doc.authorName).trim().toLowerCase() === String(S.user.name).trim().toLowerCase()) return true;
+      var u = getResolvedUser();
+      if (u) {
+        if (doc.authorId && u.id && String(doc.authorId) === String(u.id)) return true;
+        if (doc.authorId && u.login && String(doc.authorId) === String(u.login)) return true;
+        if (doc.authorLogin && u.login && String(doc.authorLogin) === String(u.login)) return true;
+        if (doc.authorName && u.name && String(doc.authorName).trim().toLowerCase() === String(u.name).trim().toLowerCase()) return true;
       }
       return false;
     }
@@ -2341,13 +2361,14 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
       if (myList.length === 0) {
         var myUserId = getCurrentUserId();
+        var u = getResolvedUser();
         var defaultMyDoc = {
-          id: 'sheet_' + myUserId + '_' + Date.now(),
+          id: 'sheet_' + myUserId + '_main',
           name: 'Asosiy Jadval',
           authorId: myUserId,
-          authorLogin: (S.user && S.user.login) ? S.user.login : '',
-          authorName: (S.user && S.user.name) ? S.user.name : (isAdmin ? 'Admin' : 'Ustoz'),
-          authorRole: isAdmin ? 'admin' : ((S.user && S.user.role) ? S.user.role : 'teacher'),
+          authorLogin: (u && u.login) ? u.login : '',
+          authorName: (u && u.name) ? u.name : (isAdmin ? 'Admin' : 'Ustoz'),
+          authorRole: isAdmin ? 'admin' : ((u && u.role) ? u.role : 'teacher'),
           updatedAt: new Date().toLocaleDateString('uz-UZ'),
           updatedTs: Date.now(),
           data: getBlankWorkbook('Sheet1')
@@ -2439,13 +2460,14 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       var now = new Date();
       var timeStr = now.toLocaleDateString('uz-UZ') + ' ' + now.toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' });
 
+      var u = getResolvedUser();
       var updatedDoc = Object.assign({}, activeDoc, {
         id: activeDoc.id,
         name: curName,
         authorId: activeDoc.authorId || myUserId,
-        authorLogin: activeDoc.authorLogin || (S.user ? S.user.login : ''),
-        authorName: (S.user && S.user.name) || activeDoc.authorName || (isAdmin ? 'Admin' : 'Ustoz'),
-        authorRole: isAdmin ? 'admin' : ((S.user && S.user.role) || activeDoc.authorRole || 'teacher'),
+        authorLogin: activeDoc.authorLogin || (u ? u.login : ''),
+        authorName: (u && u.name) || activeDoc.authorName || (isAdmin ? 'Admin' : 'Ustoz'),
+        authorRole: isAdmin ? 'admin' : ((u && u.role) || activeDoc.authorRole || 'teacher'),
         updatedAt: timeStr,
         updatedTs: Date.now(),
         data: currentData
@@ -2606,6 +2628,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         var selectedId = docSelect.value;
         if (!selectedId || (activeDoc && selectedId === activeDoc.id)) return;
 
+        // Commit active cell before saving
+        commitActiveLuckysheetCell();
+
         // 1. Save currently active sheet FIRST without breaking the select's target!
         performSave(false, selectedId);
 
@@ -2627,6 +2652,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     var btnSave = document.getElementById('ethLuckySaveBtn');
     if (btnSave) {
       btnSave.onclick = function() {
+        commitActiveLuckysheetCell();
         performSave(true);
       };
     }
@@ -2639,6 +2665,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         if (statusEl) {
           statusEl.innerHTML = '<span style="color:#38bdf8;font-weight:700;">⏳ Oldingi jadval serverga saqlanmoqda...</span>';
         }
+
+        // Commit active cell before saving
+        commitActiveLuckysheetCell();
 
         // 1. Force save the current active workbook completely FIRST!
         performSave(false);
@@ -2656,13 +2685,14 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         var newTitle = 'Yangi Jadval ' + nextNum;
         var myUserId = getCurrentUserId();
 
+        var u = getResolvedUser();
         var newDoc = {
           id: 'sheet_' + myUserId + '_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
           name: newTitle,
           authorId: myUserId,
-          authorLogin: (S.user && S.user.login) ? S.user.login : '',
-          authorName: (S.user && S.user.name) ? S.user.name : (isAdmin ? 'Admin' : 'Ustoz'),
-          authorRole: isAdmin ? 'admin' : ((S.user && S.user.role) ? S.user.role : 'teacher'),
+          authorLogin: (u && u.login) ? u.login : '',
+          authorName: (u && u.name) ? u.name : (isAdmin ? 'Admin' : 'Ustoz'),
+          authorRole: isAdmin ? 'admin' : ((u && u.role) ? u.role : 'teacher'),
           createdAt: Date.now(),
           updatedAt: new Date().toLocaleDateString('uz-UZ') + ' ' + new Date().toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' }),
           updatedTs: Date.now(),
