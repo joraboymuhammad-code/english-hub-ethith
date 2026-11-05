@@ -2053,6 +2053,8 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
   // Multi-document management and Luckysheet controller
   function initLuckysheetMultiDoc() {
+    var isAdmin = S.user && (S.user.role === 'admin' || S.user.role === 'administrator');
+
     function getCurrentUserId() {
       if (S.user) {
         if (S.user.id) return String(S.user.id);
