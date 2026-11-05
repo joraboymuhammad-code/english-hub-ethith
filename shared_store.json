@@ -26232,10 +26232,6 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394,
       "login": "muhammedjoraboyev1"
     },
     {
@@ -26253,7 +26249,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793811410058,
+      "lastSeen": 1793855410196,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -26283,11 +26279,7 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "updatedAt": 1792606425762,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1792606425762
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -26459,11 +26451,7 @@
       "email": "muhammedjoraboyev1@gmail.com",
       "role": "teacher",
       "coins": 100000,
-      "level": "B1+",
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "level": "B1+"
     },
     {
       "id": "std_13",
@@ -26624,11 +26612,7 @@
       "login": "elyor70",
       "role": "teacher",
       "coins": 1000,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -26648,11 +26632,7 @@
         "cls_ravshanov_doniyor_cefr_4"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -26669,11 +26649,7 @@
         "cls_qarshiboyev_humoyun_practice"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -26690,11 +26666,7 @@
         "cls_tovboyeva_marjona_beginner"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -26714,11 +26686,7 @@
         "cls_olimjonova_durdona_intermediate_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -26738,11 +26706,7 @@
         "cls_tagaev_eldor_pre_intermediate_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -26760,11 +26724,7 @@
         "cls_yaxshilikova_kamola_elementary"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -26782,11 +26742,7 @@
         "cls_sherqoziyeva_iroda_beginner_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -26806,11 +26762,7 @@
         "cls_orinboyev_jaloliddin_standard_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -26827,11 +26779,7 @@
         "cls_jumanova_pokiza_beginner"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -26849,11 +26797,7 @@
         "cls_hayrullayev_arslon_beginner_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -26871,11 +26815,7 @@
         "cls_xudoyorova_sarvinoz_standard"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -26893,11 +26833,7 @@
         "cls_aliqulova_sevinch_beginner_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014532
     },
     {
       "id": "admin_official_teacher",
@@ -26917,11 +26853,7 @@
         "cls_xojamqulova_diyora_elementary_3"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014533
     },
     {
       "id": "admin_official_teacher",
@@ -26941,11 +26873,7 @@
         "cls_bosimbekov_farrux_intermediate_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014533
     },
     {
       "id": "admin_official_teacher",
@@ -26965,11 +26893,7 @@
         "cls_ahmadova_barno_pre_intermediate"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014533
     },
     {
       "id": "admin_official_teacher",
@@ -26986,11 +26910,7 @@
         "cls_shodiyor_matematika_matematika"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "updatedAt": 1793392014533
     },
     {
       "id": "st_998901239988",
@@ -27035,11 +26955,7 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793473052536,
-      "level": "C2",
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793811359394
+      "level": "C2"
     },
     {
       "id": "shamshodbekibrohimov@telegram.org",
@@ -146487,5 +146403,5 @@
       }
     }
   },
-  "updatedAt": 1793811411774
+  "updatedAt": 1793855412292
 }
