@@ -2275,11 +2275,14 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       if (!docSelect) return;
       var curList = loadSavedList();
       docSelect.innerHTML = curList.map(function(item) {
-        var isSel = item.id === selectedId ? ' selected' : '';
+        var isSel = (item.id === selectedId) ? ' selected="selected"' : '';
         var author = item.authorName || (item.authorRole === 'admin' ? 'Admin' : 'Ustoz');
         var label = item.name + (author ? ' (' + author + ')' : '');
         return '<option value="' + item.id + '"' + isSel + '>📁 ' + esc(label) + '</option>';
       }).join('');
+      if (selectedId) {
+        docSelect.value = selectedId;
+      }
     }
 
     window._ethithRefreshLuckyDocSelect = function() {
@@ -2320,7 +2323,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       }, 1000);
     }
 
-    function performSave(isManual) {
+    function performSave(isManual, keepSelectedId) {
       if (autoSaveTimer) { clearTimeout(autoSaveTimer); autoSaveTimer = null; }
       var currentData = getActiveWorkbookData();
       var curName = (docNameInput ? docNameInput.value : activeDoc.name).trim() || activeDoc.name || 'Mening Jadvalim';
@@ -2347,7 +2350,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
       activeDoc = updatedDoc;
       saveList(curList, true);
-      renderSelectOptions(activeDoc.id);
+      renderSelectOptions(keepSelectedId || activeDoc.id);
 
       if (window.EthithSync && typeof window.EthithSync.broadcastSpreadsheetSaved === 'function') {
         window.EthithSync.broadcastSpreadsheetSaved(updatedDoc);
@@ -2374,8 +2377,15 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     function renderLuckysheet(dataSheets) {
       if (typeof window.luckysheet !== 'undefined' && window.luckysheet.create) {
         try {
-          window.luckysheet.destroy();
+          if (typeof window.luckysheet.destroy === 'function') {
+            window.luckysheet.destroy();
+          }
         } catch(e) {}
+
+        var wrap = document.getElementById('luckysheetWrapper');
+        if (wrap) {
+          wrap.innerHTML = '<div id="luckysheet" style="margin:0px;padding:0px;position:absolute;width:100%;height:100%;left:0px;top:0px;"></div>';
+        }
 
         var cleanSheets = extractCleanSheets(dataSheets);
         if (!cleanSheets || cleanSheets.length === 0) {
@@ -2467,8 +2477,13 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     // Dropdown change: switch active document
     if (docSelect) {
       docSelect.onchange = function() {
-        performSave(false);
         var selectedId = docSelect.value;
+        if (!selectedId || (activeDoc && selectedId === activeDoc.id)) return;
+
+        // 1. Save currently active sheet FIRST without breaking the select's target!
+        performSave(false, selectedId);
+
+        // 2. Load latest list from storage
         var curList = loadSavedList();
         var targetDoc = curList.find(function(x) { return x.id === selectedId; });
         if (targetDoc) {
