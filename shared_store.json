@@ -28973,7 +28973,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793877581117,
+      "lastSeen": 1793877587723,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -134481,8 +134481,8 @@
         "page": 4009,
         "exercise": "1",
         "label": "2",
-        "top": 32.5,
-        "left": 29.5,
+        "top": 45.6,
+        "left": 39.5,
         "width": 8,
         "height": 2,
         "correct": [
@@ -134496,8 +134496,8 @@
         "page": 4009,
         "exercise": "1",
         "label": "3",
-        "top": 36,
-        "left": 23.5,
+        "top": 49.1,
+        "left": 33.5,
         "width": 8,
         "height": 2,
         "correct": [
@@ -134511,8 +134511,8 @@
         "page": 4009,
         "exercise": "1",
         "label": "4",
-        "top": 39.5,
-        "left": 27.5,
+        "top": 52.6,
+        "left": 37.5,
         "width": 8,
         "height": 2,
         "correct": [
@@ -134526,8 +134526,8 @@
         "page": 4009,
         "exercise": "1",
         "label": "5",
-        "top": 43.5,
-        "left": 28.5,
+        "top": 54.8,
+        "left": 38.5,
         "width": 8,
         "height": 2,
         "correct": [
@@ -134541,8 +134541,8 @@
         "page": 4009,
         "exercise": "1",
         "label": "6",
-        "top": 47,
-        "left": 27.5,
+        "top": 60.1,
+        "left": 37.5,
         "width": 10,
         "height": 2,
         "correct": [
@@ -148465,7 +148465,7 @@
     "4006": 1793629954893,
     "4007": 1793629954893,
     "4008": 1793629954893,
-    "4009": 1793629954893,
+    "4009": 1793877588870,
     "4010": 1793629970047,
     "4011": 1793629970047,
     "4012": 1793629954894,
@@ -150114,5 +150114,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1793877582754
+  "updatedAt": 1793877589322
 }
