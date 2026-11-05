@@ -2053,8 +2053,17 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
   // Multi-document management and Luckysheet controller
   function initLuckysheetMultiDoc() {
+    function getCurrentUserId() {
+      if (S.user) {
+        if (S.user.id) return String(S.user.id);
+        if (S.user.login) return String(S.user.login);
+        if (S.user.name) return String(S.user.name);
+      }
+      return isAdmin ? 'admin_root' : 'teacher_root';
+    }
+
     var STORAGE_KEY = 'eh_saved_spreadsheets_v2';
-    var ACTIVE_ID_KEY = 'eh_active_sheet_id';
+    var ACTIVE_ID_KEY = 'eh_active_sheet_id_' + getCurrentUserId();
     var DELETED_KEY = 'eh_deleted_sheets';
 
     // 1. Intercept HTMLElement.prototype.focus to prevent browser jumping viewport to top when selecting cells
@@ -2210,7 +2219,21 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       }];
     }
 
-    function loadSavedList() {
+    function isMyDoc(doc) {
+      if (!doc) return false;
+      var curId = getCurrentUserId();
+      if (doc.authorId && String(doc.authorId) === curId) return true;
+      if (isAdmin && (doc.authorRole === 'admin' || (doc.authorName && doc.authorName.toLowerCase().indexOf('admin') !== -1))) return true;
+      if (S.user) {
+        if (doc.authorId && S.user.id && String(doc.authorId) === String(S.user.id)) return true;
+        if (doc.authorId && S.user.login && String(doc.authorId) === String(S.user.login)) return true;
+        if (doc.authorLogin && S.user.login && String(doc.authorLogin) === String(S.user.login)) return true;
+        if (doc.authorName && S.user.name && String(doc.authorName).trim().toLowerCase() === String(S.user.name).trim().toLowerCase()) return true;
+      }
+      return false;
+    }
+
+    function loadAllSavedList() {
       var list = [];
       try {
         var raw = localStorage.getItem(STORAGE_KEY);
@@ -2229,29 +2252,19 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         list = (list || []).filter(function(x) { return x && x.id && delList.indexOf(x.id) === -1; });
       }
 
-      if (!Array.isArray(list) || list.length === 0) {
-        list = [{
-          id: 'sheet_default',
-          name: 'Asosiy Jadval',
-          authorName: (S.user && S.user.name) ? S.user.name : (isAdmin ? 'Admin' : 'Ustoz'),
-          authorRole: (S.user && S.user.role) ? S.user.role : 'teacher',
-          updatedAt: new Date().toLocaleDateString('uz-UZ'),
-          updatedTs: Date.now(),
-          data: getBlankWorkbook('Sheet1')
-        }];
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); } catch(e) {}
-      } else {
-        // Enforce 584 rows, 500 columns and ensure compact sparse celldata format
+      if (Array.isArray(list)) {
         list.forEach(function(item) {
           if (Array.isArray(item.data)) {
             item.data = extractCleanSheets(item.data);
           }
         });
+      } else {
+        list = [];
       }
       return list;
     }
 
-    function saveList(list, pushNow) {
+    function saveAllList(list, pushNow) {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
       } catch(e) {}
@@ -2263,7 +2276,41 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       }
     }
 
-    var list = loadSavedList();
+    function loadMySavedList() {
+      var allList = loadAllSavedList();
+      var myList = allList.filter(function(doc) {
+        return isMyDoc(doc);
+      });
+
+      if (myList.length === 0) {
+        var myUserId = getCurrentUserId();
+        var defaultMyDoc = {
+          id: 'sheet_' + myUserId + '_' + Date.now(),
+          name: 'Asosiy Jadval',
+          authorId: myUserId,
+          authorLogin: (S.user && S.user.login) ? S.user.login : '',
+          authorName: (S.user && S.user.name) ? S.user.name : (isAdmin ? 'Admin' : 'Ustoz'),
+          authorRole: (S.user && S.user.role) ? S.user.role : 'teacher',
+          updatedAt: new Date().toLocaleDateString('uz-UZ'),
+          updatedTs: Date.now(),
+          data: getBlankWorkbook('Sheet1')
+        };
+        allList.push(defaultMyDoc);
+        saveAllList(allList, true);
+        myList = [defaultMyDoc];
+      }
+      return myList;
+    }
+
+    function loadSavedList() {
+      return loadMySavedList();
+    }
+
+    function saveList(list, pushNow) {
+      saveAllList(list, pushNow);
+    }
+
+    var list = loadMySavedList();
     var activeId = localStorage.getItem(ACTIVE_ID_KEY) || list[0].id;
     var activeDoc = list.find(function(x) { return x.id === activeId; }) || list[0];
 
@@ -2273,12 +2320,10 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
     function renderSelectOptions(selectedId) {
       if (!docSelect) return;
-      var curList = loadSavedList();
+      var curList = loadMySavedList();
       docSelect.innerHTML = curList.map(function(item) {
         var isSel = (item.id === selectedId) ? ' selected="selected"' : '';
-        var author = item.authorName || (item.authorRole === 'admin' ? 'Admin' : 'Ustoz');
-        var label = item.name + (author ? ' (' + author + ')' : '');
-        return '<option value="' + item.id + '"' + isSel + '>📁 ' + esc(label) + '</option>';
+        return '<option value="' + item.id + '"' + isSel + '>📁 ' + esc(item.name) + '</option>';
       }).join('');
       if (selectedId) {
         docSelect.value = selectedId;
@@ -2327,29 +2372,32 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       if (autoSaveTimer) { clearTimeout(autoSaveTimer); autoSaveTimer = null; }
       var currentData = getActiveWorkbookData();
       var curName = (docNameInput ? docNameInput.value : activeDoc.name).trim() || activeDoc.name || 'Mening Jadvalim';
-      var curList = loadSavedList();
-      var existIdx = curList.findIndex(function(x) { return x.id === activeDoc.id; });
+      var allList = loadAllSavedList();
+      var myUserId = getCurrentUserId();
+      var existIdx = allList.findIndex(function(x) { return x.id === activeDoc.id; });
       var now = new Date();
       var timeStr = now.toLocaleDateString('uz-UZ') + ' ' + now.toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' });
 
       var updatedDoc = Object.assign({}, activeDoc, {
         id: activeDoc.id,
         name: curName,
-        authorName: activeDoc.authorName || (S.user && S.user.name) || (isAdmin ? 'Admin' : 'Ustoz'),
-        authorRole: activeDoc.authorRole || (S.user && S.user.role) || (isAdmin ? 'admin' : 'teacher'),
+        authorId: activeDoc.authorId || myUserId,
+        authorLogin: activeDoc.authorLogin || (S.user ? S.user.login : ''),
+        authorName: (S.user && S.user.name) || activeDoc.authorName || (isAdmin ? 'Admin' : 'Ustoz'),
+        authorRole: (S.user && S.user.role) || activeDoc.authorRole || (isAdmin ? 'admin' : 'teacher'),
         updatedAt: timeStr,
         updatedTs: Date.now(),
         data: currentData
       });
 
       if (existIdx >= 0) {
-        curList[existIdx] = updatedDoc;
+        allList[existIdx] = updatedDoc;
       } else {
-        curList.push(updatedDoc);
+        allList.push(updatedDoc);
       }
 
       activeDoc = updatedDoc;
-      saveList(curList, true);
+      saveAllList(allList, true);
       renderSelectOptions(keepSelectedId || activeDoc.id);
 
       if (window.EthithSync && typeof window.EthithSync.broadcastSpreadsheetSaved === 'function') {
@@ -2362,7 +2410,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       }
 
       if (isManual) {
-        toast('💾 "' + curName + '" jadvali GitHub serverga to‘liq saqlandi!');
+        toast('💾 "' + curName + '" shaxsiy jadvalingiz saqlandi!');
       }
     }
 
@@ -2466,8 +2514,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         if (docSelect) {
           var selOpt = docSelect.querySelector('option[value="' + activeDoc.id + '"]');
           if (selOpt) {
-            var author = activeDoc.authorName || (activeDoc.authorRole === 'admin' ? 'Admin' : 'Ustoz');
-            selOpt.textContent = '📁 ' + newTitle + (author ? ' (' + author + ')' : '');
+            selOpt.textContent = '📁 ' + newTitle;
           }
         }
         triggerAutoSave();
@@ -2484,8 +2531,8 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         performSave(false, selectedId);
 
         // 2. Load latest list from storage
-        var curList = loadSavedList();
-        var targetDoc = curList.find(function(x) { return x.id === selectedId; });
+        var myList = loadMySavedList();
+        var targetDoc = myList.find(function(x) { return x.id === selectedId; });
         if (targetDoc) {
           localStorage.setItem(ACTIVE_ID_KEY, targetDoc.id);
           activeDoc = targetDoc;
@@ -2517,31 +2564,34 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         // 1. Force save the current active workbook completely FIRST!
         performSave(false);
 
-        // 2. Load latest updated list
-        var curList = loadSavedList();
+        // 2. Load latest updated list of THIS user and all users
+        var myList = loadMySavedList();
+        var allList = loadAllSavedList();
 
         // 3. Generate sequential new name e.g. "Yangi Jadval 1", "Yangi Jadval 2", etc.
         var nextNum = 1;
-        var existingNames = curList.map(function(x) { return (x.name || '').trim().toLowerCase(); });
+        var existingNames = myList.map(function(x) { return (x.name || '').trim().toLowerCase(); });
         while (existingNames.indexOf(('yangi jadval ' + nextNum).toLowerCase()) !== -1) {
           nextNum++;
         }
         var newTitle = 'Yangi Jadval ' + nextNum;
+        var myUserId = getCurrentUserId();
 
         var newDoc = {
-          id: 'sheet_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+          id: 'sheet_' + myUserId + '_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
           name: newTitle,
+          authorId: myUserId,
+          authorLogin: (S.user && S.user.login) ? S.user.login : '',
           authorName: (S.user && S.user.name) ? S.user.name : (isAdmin ? 'Admin' : 'Ustoz'),
           authorRole: (S.user && S.user.role) ? S.user.role : 'teacher',
-          authorId: (S.user && (S.user.id || S.user.login)) ? (S.user.id || S.user.login) : '',
           createdAt: Date.now(),
           updatedAt: new Date().toLocaleDateString('uz-UZ') + ' ' + new Date().toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' }),
           updatedTs: Date.now(),
           data: getBlankWorkbook('Sheet1')
         };
 
-        curList.push(newDoc);
-        saveList(curList, true);
+        allList.push(newDoc);
+        saveAllList(allList, true);
         localStorage.setItem(ACTIVE_ID_KEY, newDoc.id);
         activeDoc = newDoc;
 
@@ -2556,7 +2606,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         if (statusEl) {
           statusEl.innerHTML = '<span style="color:#10b981;font-weight:700;">✓ Serverga saqlandi (' + new Date().toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' }) + ')</span>';
         }
-        toast('✨ Oldingi jadval serverga saqlandi va yangi bo‘sh jadval ochildi!');
+        toast('✨ Yangi shaxsiy jadval ochildi!');
       };
     }
 
@@ -2564,9 +2614,8 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     var btnDelete = document.getElementById('ethLuckyDeleteBtn');
     if (btnDelete) {
       btnDelete.onclick = function() {
-        var curList = loadSavedList();
         var curName = (docNameInput ? docNameInput.value : activeDoc.name).trim() || activeDoc.name;
-        if (!confirm('"' + curName + '" jadvalini tizimdan butunlay o‘chirib tashlamoqchimisiz?')) return;
+        if (!confirm('"' + curName + '" shaxsiy jadvalingizni tizimdan butunlay o‘chirib tashlamoqchimisiz?')) return;
 
         // Record in deleted spreadsheet IDs
         var delList = [];
@@ -2576,23 +2625,13 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         try { localStorage.setItem(DELETED_KEY, JSON.stringify(delList)); } catch(e) {}
 
         var deletedId = activeDoc.id;
-        curList = curList.filter(function(x) { return x.id !== deletedId; });
-        if (curList.length === 0) {
-          var fallbackDoc = {
-            id: 'sheet_' + Date.now(),
-            name: 'Asosiy Jadval',
-            authorName: (S.user && S.user.name) ? S.user.name : (isAdmin ? 'Admin' : 'Ustoz'),
-            authorRole: (S.user && S.user.role) ? S.user.role : 'teacher',
-            updatedAt: new Date().toLocaleDateString('uz-UZ'),
-            updatedTs: Date.now(),
-            data: getBlankWorkbook('Sheet1')
-          };
-          curList = [fallbackDoc];
-        }
+        var allList = loadAllSavedList();
+        allList = allList.filter(function(x) { return x.id !== deletedId; });
+        saveAllList(allList, true);
 
-        activeDoc = curList[0];
+        var myList = loadMySavedList();
+        activeDoc = myList[0];
         localStorage.setItem(ACTIVE_ID_KEY, activeDoc.id);
-        saveList(curList, true);
 
         if (window.EthithSync && typeof window.EthithSync.broadcastSpreadsheetDeleted === 'function') {
           window.EthithSync.broadcastSpreadsheetDeleted(deletedId);
@@ -2601,7 +2640,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         if (docNameInput) docNameInput.value = activeDoc.name;
         renderSelectOptions(activeDoc.id);
         renderLuckysheet(activeDoc.data);
-        toast('🗑️ "' + curName + '" jadvali butunlay o‘chirildi');
+        toast('🗑️ "' + curName + '" jadvali tizimdan o‘chirildi');
       };
     }
 
