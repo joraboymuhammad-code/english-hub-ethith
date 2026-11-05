@@ -2420,7 +2420,30 @@
     var user = getCurrentUser();
     var isStaff = (user && (user.role === 'teacher' || user.role === 'admin'));
 
-    if (user && user.role === 'student' && !test.isCurriculum && !test.isPublic) {
+    // Check if this test is taken as an online contest
+    var S_c = getStore();
+    var contestObj = null;
+    if (contestId) {
+      contestObj = (S_c.contests || []).find(function(c) { return c.id === contestId; });
+    } else {
+      contestObj = (S_c.contests || []).find(function(c) { return test && c.testId === test.id; });
+    }
+
+    if (contestObj && user && user.role === 'student') {
+      // ANY student can take ANY teacher's contest without restriction!
+      // But only ONCE (bir marta):
+      var uKey = (user.id || user.email || user.login || '').toLowerCase().trim();
+      var alreadyParticipated = Object.values(contestObj.participants || {}).some(function(p) {
+        return (p.id && p.id.toLowerCase().trim() === uKey) ||
+               (p.email && p.email.toLowerCase().trim() === uKey) ||
+               (p.login && p.login.toLowerCase().trim() === uKey) ||
+               (p.name && user.name && p.name.toLowerCase().trim() === user.name.toLowerCase().trim());
+      });
+      if (alreadyParticipated) {
+        alert("⚠️ Siz ushbu musobaqa testini allaqachon topshirgansiz! Musobaqa faqat 1 marta yechiladi.");
+        return;
+      }
+    } else if (user && user.role === 'student' && !test.isCurriculum && !test.isPublic) {
       var myTeacherIds = [];
       (S.classes || []).forEach(function(cls) {
         var inClass = (cls.students || []).some(function(s) {
@@ -6084,24 +6107,73 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     });
 
     if (parts.length === 0) {
-      alert("Musobaqada hali ishtirokchilar mavjud emas!");
+      // Allow ending tournament even if no one has participated yet
+      c.status = 'finished';
+      c.coinsDistributed = true;
+      c.endDate = Date.now();
+      saveStore();
+      if (window.EthithSync && typeof window.EthithSync.publishMqtt === 'function') {
+        window.EthithSync.publishMqtt('ethith/v3/global', {
+          type: 'CONTEST_FINISHED',
+          contestId: c.id,
+          contestTitle: c.title,
+          winners: [],
+          timestamp: Date.now()
+        });
+      }
+      if (window.EthithSync && typeof window.EthithSync.pushStore === 'function') {
+        window.EthithSync.pushStore();
+      }
+      showToast("🏁 Turnir yakunlandi (ishtirokchilar bo‘lmagan)!");
       return;
     }
 
-    var coinTiers = [1000, 900, 800, 700, 600];
+    var baseCoin = Number(c.prizeCoins) || 1000;
+    var coinTiers = (c.prizes && Array.isArray(c.prizes.coinTiers) && c.prizes.coinTiers.length >= 5) ?
+      c.prizes.coinTiers :
+      [baseCoin, Math.round(baseCoin * 0.9), Math.round(baseCoin * 0.8), Math.round(baseCoin * 0.7), Math.round(baseCoin * 0.6)];
+
     var awarded = 0;
     var winners = [];
+    var avatarObj = (c.prizes && c.prizes.avatar) ? ((window.ETHITH_AVATARS || []).find(function(a) { return a.id === c.prizes.avatar; })) : null;
+
     for (var i = 0; i < Math.min(parts.length, 5); i++) {
       var p = parts[i];
-      var amount = coinTiers[i] || 600;
+      var amount = Number(coinTiers[i]) || 600;
       var acc = (S.accounts || []).find(function(a) {
         return (p.id && a.id === p.id) || (p.login && a.login === p.login) || (p.email && a.email === p.email) || (p.name && a.name && a.name.toLowerCase() === p.name.toLowerCase());
       });
       if (acc) {
         acc.coins = (Number(acc.coins) || 0) + amount;
+
+        // Award avatar
+        if (avatarObj) {
+          if (!Array.isArray(acc.unlockedAvatars)) acc.unlockedAvatars = [];
+          if (!acc.unlockedAvatars.includes(avatarObj.id)) acc.unlockedAvatars.push(avatarObj.id);
+        }
+
+        // Award emoji
+        if (c.prizes && c.prizes.emoji) {
+          if (!Array.isArray(acc.unlockedEmojis)) acc.unlockedEmojis = [];
+          if (!acc.unlockedEmojis.includes(c.prizes.emoji)) acc.unlockedEmojis.push(c.prizes.emoji);
+        }
+
+        // Award gift
+        if (c.prizes && c.prizes.gift) {
+          if (!Array.isArray(acc.gifts)) acc.gifts = [];
+          acc.gifts.push({
+            id: 'gft_' + Date.now() + '_' + i,
+            title: c.prizes.gift,
+            icon: c.prizes.giftIcon || '🏆',
+            from: (c.authorName || 'Musobaqa') + ' (O‘rin: ' + (i + 1) + ')',
+            date: Date.now()
+          });
+        }
+
         awarded++;
         winners.push({ rank: i + 1, name: acc.name, login: acc.login || acc.id, coins: amount });
       }
+
       // Also update student inside classes
       if (Array.isArray(S.classes)) {
         S.classes.forEach(function(cls) {
@@ -6109,6 +6181,24 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
             cls.students.forEach(function(st) {
               if ((p.id && st.id === p.id) || (p.login && st.login === p.login) || (p.email && st.email === p.email) || (p.name && st.name && st.name.toLowerCase() === p.name.toLowerCase())) {
                 st.coins = (Number(st.coins) || 0) + amount;
+                if (avatarObj) {
+                  if (!Array.isArray(st.unlockedAvatars)) st.unlockedAvatars = [];
+                  if (!st.unlockedAvatars.includes(avatarObj.id)) st.unlockedAvatars.push(avatarObj.id);
+                }
+                if (c.prizes && c.prizes.emoji) {
+                  if (!Array.isArray(st.unlockedEmojis)) st.unlockedEmojis = [];
+                  if (!st.unlockedEmojis.includes(c.prizes.emoji)) st.unlockedEmojis.push(c.prizes.emoji);
+                }
+                if (c.prizes && c.prizes.gift) {
+                  if (!Array.isArray(st.gifts)) st.gifts = [];
+                  st.gifts.push({
+                    id: 'gft_' + Date.now() + '_' + i,
+                    title: c.prizes.gift,
+                    icon: c.prizes.giftIcon || '🏆',
+                    from: (c.authorName || 'Musobaqa') + ' (O‘rin: ' + (i + 1) + ')',
+                    date: Date.now()
+                  });
+                }
               }
             });
           }
@@ -6128,6 +6218,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
         contestId: c.id,
         contestTitle: c.title,
         winners: winners,
+        prizes: c.prizes,
         timestamp: Date.now()
       });
     }
@@ -6135,7 +6226,147 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
       window.EthithSync.pushStore();
     }
 
-    showToast("🎉 Turnir yakunlandi! Top-5 g‘olibga jami sovrin Coinlari taqsimlandi! (1: 1000, 2: 900, 3: 800, 4: 700, 5: 600)");
+    showToast("🎉 Turnir yakunlandi! Top-5 g‘olibga barcha sovrinlar (Coin, Avatar, Emoji, Sovg‘alar) to‘liq taqsimlandi!");
+  };
+
+  // MODAL: EDIT CONTEST PRIZES (Coins, Avatars, Emojis, Gifts)
+  EE.openEditContestPrizesModal = function(c, container) {
+    if (!c) return;
+    var old = document.getElementById('eeEditContestPrizesModalOverlay');
+    if (old) old.remove();
+
+    var curPrizes = c.prizes || {};
+    var curCoin1 = c.prizeCoins || (curPrizes.coinTiers && curPrizes.coinTiers[0]) || 1000;
+    var curAvatar = curPrizes.avatar || '';
+    var curEmoji = curPrizes.emoji || '';
+    var curGift = curPrizes.gift || '';
+
+    var avatars = window.ETHITH_AVATARS || [];
+    var avatarOptions = '<option value="">— Avatarsiz (Sovrin berilmaydi) —</option>';
+    avatars.forEach(function(av) {
+      avatarOptions += '<option value="' + esc(av.id) + '"' + (curAvatar === av.id ? ' selected' : '') + '>' + esc(av.name) + ' (' + esc(av.rarity || 'Maxsus') + ')</option>';
+    });
+
+    var emojiOptions = '<option value="">— Emojisiz —</option>' +
+      '<option value="🏆"' + (curEmoji === '🏆' ? ' selected' : '') + '>🏆 Oltin Kubok Emojisi</option>' +
+      '<option value="👑"' + (curEmoji === '👑' ? ' selected' : '') + '>👑 Qirollik Toji Emojisi</option>' +
+      '<option value="💎"' + (curEmoji === '💎' ? ' selected' : '') + '>💎 Qimmatbaho Brilliant Emojisi</option>' +
+      '<option value="🔥"' + (curEmoji === '🔥' ? ' selected' : '') + '>🔥 Olov Emojisi</option>' +
+      '<option value="⚡"' + (curEmoji === '⚡' ? ' selected' : '') + '>⚡ Chaqmoq Emojisi</option>' +
+      '<option value="🚀"' + (curEmoji === '🚀' ? ' selected' : '') + '>🚀 Kosmik Raketa Emojisi</option>' +
+      '<option value="🦾"' + (curEmoji === '🦾' ? ' selected' : '') + '>🦾 Kiber Qo‘l Emojisi</option>' +
+      '<option value="🌟"' + (curEmoji === '🌟' ? ' selected' : '') + '>🌟 Yulduz Emojisi</option>';
+
+    var giftOptions = '<option value="">— Sovg‘asiz —</option>' +
+      '<option value="🏆 Oltin Chempion Kubogi"' + (curGift === '🏆 Oltin Chempion Kubogi' ? ' selected' : '') + '>🏆 Oltin Chempion Kubogi</option>' +
+      '<option value="🥇 1-O‘rin Oltin Medali"' + (curGift === '🥇 1-O‘rin Oltin Medali' ? ' selected' : '') + '>🥇 1-O‘rin Oltin Medali</option>' +
+      '<option value="👑 Sharafli Qirol Toji"' + (curGift === '👑 Sharafli Qirol Toji' ? ' selected' : '') + '>👑 Sharafli Qirol Toji</option>' +
+      '<option value="💎 Brilliant Qutisi"' + (curGift === '💎 Brilliant Qutisi' ? ' selected' : '') + '>💎 Brilliant Qutisi</option>' +
+      '<option value="🎖️ Turnir G‘olibi Sertifikati"' + (curGift === '🎖️ Turnir G‘olibi Sertifikati' ? ' selected' : '') + '>🎖️ Turnir G‘olibi Sertifikati</option>' +
+      '<option value="🚀 Kosmik G‘oliblik Raketasi"' + (curGift === '🚀 Kosmik G‘oliblik Raketasi' ? ' selected' : '') + '>🚀 Kosmik G‘oliblik Raketasi</option>';
+
+    var overlay = document.createElement('div');
+    overlay.id = 'eeEditContestPrizesModalOverlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(18px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    overlay.innerHTML = '<div style="background:linear-gradient(145deg,#0f172a,#1e293b);border:1.5px solid rgba(245,158,11,0.5);border-radius:24px;width:100%;max-width:520px;padding:26px;box-shadow:0 25px 60px rgba(0,0,0,0.85);color:#fff;font-family:inherit;">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:12px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<span style="font-size:28px;">🎁</span>' +
+          '<div>' +
+            '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fcd34d;">Musobaqa Sovrinlarini Belgilash</h3>' +
+            '<div style="font-size:12px;color:#94a3b8;margin-top:2px;">' + esc(c.title) + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<button id="eeClosePrizeModalBtn" style="background:transparent;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">&times;</button>' +
+      '</div>' +
+
+      '<div style="display:flex;flex-direction:column;gap:14px;">' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#f59e0b;text-transform:uppercase;margin-bottom:6px;">💰 1-O‘rin Sovrin Coini (Asosiy miqdor):</label>' +
+          '<input type="number" id="eePrizeCoinInp" min="100" max="100000" step="50" value="' + curCoin1 + '" style="width:100%;padding:10px 14px;background:#0f172a;border:1.5px solid rgba(245,158,11,0.4);border-radius:12px;color:#fff;font-size:15px;font-weight:900;outline:none;box-sizing:border-box;" />' +
+          '<div style="font-size:11.5px;color:#94a3b8;margin-top:4px;">Top-5 ga mutanosib taqsimlanadi: 1-o‘rin (100%), 2-o‘rin (90%), 3-o‘rin (80%), 4-o‘rin (70%), 5-o‘rin (60%).</div>' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#c084fc;text-transform:uppercase;margin-bottom:6px;">👤 Sovrin Avatari (Top-5 o‘quvchi profiliga tekin beriladi):</label>' +
+          '<select id="eePrizeAvatarInp" style="width:100%;padding:10px 14px;background:#0f172a;border:1.5px solid rgba(168,85,247,0.4);border-radius:12px;color:#fff;font-size:13px;font-weight:800;outline:none;box-sizing:border-box;cursor:pointer;">' +
+            avatarOptions +
+          '</select>' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#38bdf8;text-transform:uppercase;margin-bottom:6px;">💬 Sovrin Emojisi (Chatda foydalanish uchun ochiladi):</label>' +
+          '<select id="eePrizeEmojiInp" style="width:100%;padding:10px 14px;background:#0f172a;border:1.5px solid rgba(56,189,248,0.4);border-radius:12px;color:#fff;font-size:13px;font-weight:800;outline:none;box-sizing:border-box;cursor:pointer;">' +
+            emojiOptions +
+          '</select>' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#34d399;text-transform:uppercase;margin-bottom:6px;">🏆 Maxsus Sovg‘a (Profil "Gifts" kolleksiyasiga tushadi):</label>' +
+          '<select id="eePrizeGiftInp" style="width:100%;padding:10px 14px;background:#0f172a;border:1.5px solid rgba(52,211,153,0.4);border-radius:12px;color:#fff;font-size:13px;font-weight:800;outline:none;box-sizing:border-box;cursor:pointer;">' +
+            giftOptions +
+          '</select>' +
+        '</div>' +
+
+        '<div style="display:flex;gap:10px;justify-content:flex-end;margin-top:10px;">' +
+          '<button id="eeCancelPrizeBtn" style="background:rgba(255,255,255,0.08);color:#cbd5e1;border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:10px 18px;font-size:13px;font-weight:800;cursor:pointer;">Bekor Qilish</button>' +
+          '<button id="eeSavePrizeBtn" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:10px 24px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(245,158,11,0.45);">✓ Sovrinlarni Saqlash</button>' +
+        '</div>' +
+
+      '</div></div>';
+
+    document.body.appendChild(overlay);
+
+    overlay.querySelector('#eeClosePrizeModalBtn').onclick = function() { overlay.remove(); };
+    overlay.querySelector('#eeCancelPrizeBtn').onclick = function() { overlay.remove(); };
+
+    overlay.querySelector('#eeSavePrizeBtn').onclick = function() {
+      var coinVal = Math.max(0, parseInt(overlay.querySelector('#eePrizeCoinInp').value, 10) || 1000);
+      var avId = overlay.querySelector('#eePrizeAvatarInp').value;
+      var avMatch = (window.ETHITH_AVATARS || []).find(function(a) { return a.id === avId; });
+      var emVal = overlay.querySelector('#eePrizeEmojiInp').value;
+      var gVal = overlay.querySelector('#eePrizeGiftInp').value;
+
+      var coinTiers = [
+        coinVal,
+        Math.round(coinVal * 0.9),
+        Math.round(coinVal * 0.8),
+        Math.round(coinVal * 0.7),
+        Math.round(coinVal * 0.6)
+      ];
+
+      c.prizeCoins = coinVal;
+      c.prizes = {
+        coinTiers: coinTiers,
+        avatar: avId || '',
+        avatarName: avMatch ? avMatch.name : '',
+        emoji: emVal || '',
+        gift: gVal || '',
+        giftIcon: gVal ? gVal.split(' ')[0] : '🏆'
+      };
+
+      saveStore();
+
+      if (window.EthithSync && typeof window.EthithSync.publishMqtt === 'function') {
+        window.EthithSync.publishMqtt('ethith/v3/global', {
+          type: 'CONTEST_PRIZES_UPDATED',
+          contestId: c.id,
+          prizeCoins: coinVal,
+          prizes: c.prizes,
+          timestamp: Date.now()
+        });
+      }
+      if (window.EthithSync && typeof window.EthithSync.pushStore === 'function') {
+        window.EthithSync.pushStore();
+      }
+
+      showToast("✓ Musobaqa sovrinlari (Coin, Avatar, Emoji, Sovg‘a) saqlandi!");
+      overlay.remove();
+      if (container && typeof EE.renderContestsView === 'function') {
+        EE.renderContestsView(container);
+      }
+    };
   };
 
   EE.openNewContestModal = function(container) {
@@ -6276,7 +6507,21 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
           return (a.timeSec || 999) - (b.timeSec || 999);
         });
 
-        var prizeTiers = [1000, 900, 800, 700, 600];
+        var baseCoin = Number(c.prizeCoins) || 1000;
+        var prizeTiers = (c.prizes && Array.isArray(c.prizes.coinTiers) && c.prizes.coinTiers.length >= 5) ?
+          c.prizes.coinTiers :
+          [baseCoin, Math.round(baseCoin * 0.9), Math.round(baseCoin * 0.8), Math.round(baseCoin * 0.7), Math.round(baseCoin * 0.6)];
+
+        var prizeSummary = baseCoin.toLocaleString() + ' Coin';
+        if (c.prizes) {
+          if (c.prizes.avatarName) prizeSummary += ' + 👤 ' + c.prizes.avatarName;
+          if (c.prizes.emoji) prizeSummary += ' + ' + c.prizes.emoji;
+          if (c.prizes.gift) prizeSummary += ' + ' + c.prizes.gift;
+        }
+
+        var prizePillHtml = (isTeacher || isAdmin) ?
+          ('<button type="button" class="ee-edit-prize-btn" data-cid="' + esc(c.id) + '" style="background:linear-gradient(135deg,rgba(245,158,11,0.25),rgba(217,119,6,0.3));color:#fbbf24;border:1.5px solid #f59e0b;padding:4px 12px;border-radius:8px;font-weight:900;font-size:11.5px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 0 12px rgba(245,158,11,0.35);transition:all 0.2s;" title="Sovrinlarni tahrirlash (Coin, Avatar, Emoji, Sovg‘a)">🎁 Sovrin: ' + esc(prizeSummary) + ' <span style="font-size:12px;">✏️</span></button>') :
+          ('<span style="background:rgba(245,158,11,0.18);color:#fbbf24;border:1px solid rgba(245,158,11,0.4);padding:4px 10px;border-radius:8px;font-weight:900;font-size:11.5px;">🎁 Sovrin: ' + esc(prizeSummary) + '</span>');
 
         // Calculate Remaining Days & Hours
         var now = Date.now();
@@ -6314,7 +6559,7 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
               '<h3 style="margin:0 0 6px;font-size:20px;font-weight:900;color:#fcd34d;">' + esc(c.title) + '</h3>' +
               '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
                 '<span style="background:rgba(168,85,247,0.18);color:#c084fc;border:1px solid rgba(168,85,247,0.4);padding:4px 10px;border-radius:8px;font-weight:800;font-size:11.5px;">👨‍🏫 Ustoz: ' + esc(authorDisplayName) + '</span>' +
-                '<span style="background:rgba(245,158,11,0.18);color:#fbbf24;border:1px solid rgba(245,158,11,0.4);padding:4px 10px;border-radius:8px;font-weight:900;font-size:11.5px;">🎁 Sovrin: 1,000 Coin</span>' +
+                prizePillHtml +
                 timeLeftBadge +
               '</div>' +
             '</div>' +
@@ -6368,7 +6613,15 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
           } else {
             parts.slice(0, 50).forEach(function(p, idx) {
               var medal = (idx === 0 ? '🥇 1' : (idx === 1 ? '🥈 2' : (idx === 2 ? '🥉 3' : (idx + 1))));
-              var coinText = (idx < 5) ? ('+' + prizeTiers[idx] + ' 🪙') : '—';
+              var coinText = '—';
+              if (idx < 5) {
+                coinText = '+' + (prizeTiers[idx] || 600) + ' 🪙';
+                if (c.prizes) {
+                  if (c.prizes.avatarName) coinText += ' + 👤';
+                  if (c.prizes.emoji) coinText += ' ' + c.prizes.emoji;
+                  if (c.prizes.gift) coinText += ' 🏆';
+                }
+              }
               var colorCoin = (idx < 5) ? '#f59e0b' : '#64748b';
 
               h += '<tr style="border-top:1px solid rgba(255,255,255,0.05);">' +
@@ -6388,6 +6641,17 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
     h += '</div>';
     container.innerHTML = h;
 
+    // Edit Contest Prizes (Coins, Avatars, Emojis, Gifts) by clicking the prize badge
+    container.querySelectorAll('.ee-edit-prize-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        var cid = btn.getAttribute('data-cid');
+        var c = contests.find(function(x) { return x.id === cid; });
+        if (!c) return;
+        EE.openEditContestPrizesModal(c, container);
+      };
+    });
+
     // Distribute coins button / Finish Contest button (Teachers & Admins)
     container.querySelectorAll('.ee-finish-contest-btn, .ee-distribute-coins-btn').forEach(function(b) {
       b.onclick = function() {
@@ -6395,7 +6659,10 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
         var c = contests.find(function(x) { return x.id === cid; });
         if (!c) return;
         var pCount = Object.keys(c.participants || {}).length;
-        if (!confirm("Haqiqatan ham turnirni tugatib, TOP-5 o‘quvchilarga sovrin Coinlarini (1: 1,000 | 2: 900 | 3: 800 | 4: 700 | 5: 600 Coin) bermoqchimisiz?\n\n(Qatnashuvchilar: " + pCount + " nafar)")) {
+        var confirmMsg = (pCount === 0) ?
+          "Ushbu turnirda hali hech kim qatnashmagan. Haqiqatan ham turnirni hoziroq tugatmoqchimisiz?" :
+          ("Haqiqatan ham turnirni tugatib, TOP-5 o‘quvchilarga sovrinlarni (Coin, Avatar, Emoji, Sovg‘a) taqsimlamoqchimisiz?\n\n(Qatnashuvchilar: " + pCount + " nafar)");
+        if (!confirm(confirmMsg)) {
           return;
         }
         EE.distributeContestPrizes(c);
