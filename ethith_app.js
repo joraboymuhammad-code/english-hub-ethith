@@ -1744,7 +1744,7 @@
   // ====================================================
   // ETHITH CLIENT BUILD VERSION & CACHE MANAGEMENT
   // ====================================================
-  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "v2026.11.05.0119";
+  window.ETHITH_BUILD_VERSION = window.ETHITH_BUILD_VERSION || "v2026.11.05.0120";
 
   (function ensureFreshBuildOnStartup() {
     function purgeCachesAndReload(newVer) {

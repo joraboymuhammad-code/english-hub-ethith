@@ -9837,19 +9837,23 @@ html, body {
 }
 
 /* Level Test Countdown Neon Yellow Warning Pulse */
-@keyframes eaNeonYellowPulse {
+@keyframes eaNeonCardGlow {
   0% {
-    box-shadow: 0 0 20px rgba(250, 204, 21, 0.6), inset 0 0 10px rgba(250, 204, 21, 0.2);
-    border-color: #facc15;
+    border-color: rgba(250, 204, 21, 0.75) !important;
+    box-shadow: 0 0 25px rgba(250, 204, 21, 0.55), 0 0 50px rgba(250, 204, 21, 0.28), inset 0 0 15px rgba(250, 204, 21, 0.2) !important;
+  }
+  50% {
+    border-color: #fef08a !important;
+    box-shadow: 0 0 45px rgba(250, 204, 21, 0.85), 0 0 80px rgba(250, 204, 21, 0.45), inset 0 0 25px rgba(250, 204, 21, 0.3) !important;
   }
   100% {
-    box-shadow: 0 0 45px rgba(250, 204, 21, 0.95), 0 0 70px rgba(250, 204, 21, 0.45), inset 0 0 25px rgba(250, 204, 21, 0.35);
-    border-color: #fef08a;
+    border-color: rgba(250, 204, 21, 0.75) !important;
+    box-shadow: 0 0 25px rgba(250, 204, 21, 0.55), 0 0 50px rgba(250, 204, 21, 0.28), inset 0 0 15px rgba(250, 204, 21, 0.2) !important;
   }
 }
 .ea-level-test-soon-pulse {
   border: 2px solid #facc15 !important;
-  animation: eaNeonYellowPulse 1.4s infinite alternate ease-in-out !important;
+  animation: eaNeonCardGlow 1.8s infinite ease-in-out !important;
 }
 
 /* Translucent Neon Glowing Glass Cards (Matching Screenshot) */

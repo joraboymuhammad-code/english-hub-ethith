@@ -1924,12 +1924,6 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           return cls.studentPayments && cls.studentPayments[stId] && cls.studentPayments[stId].status === 'paid';
         }).length;
 
-        var yellowWarningBanner = isSoonLevelTest
-          ? ('<div class="ea-yellow-neon-alert" style="background:linear-gradient(135deg,rgba(234,179,8,0.25),rgba(250,204,21,0.15));border:1.5px solid #facc15;color:#fef08a;font-weight:900;font-size:12px;padding:7px 12px;border-radius:12px;text-shadow:0 0 8px #facc15;box-shadow:0 0 16px rgba(250,204,21,0.45);display:flex;align-items:center;gap:6px;margin-bottom:12px;">' +
-              '<span>⚡</span> <span>Level test imtihon kuni: <b style="color:#fff;">' + ltInfo.displayDate + '</b> (Qoldi: <b style="color:#fff;">' + remainingDays + ' kun</b>)</span>' +
-            '</div>')
-          : '';
-
         var durationHtml = '<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:8px 12px;margin-bottom:14px;font-size:12px;">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">' +
             '<span style="color:#94a3b8;font-weight:700;">⏱️ O‘qish davri:</span>' +
@@ -1938,11 +1932,11 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           '</div>' +
           '<div style="display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:#cbd5e1;margin-bottom:4px;">' +
             '<span>O‘tilgan testlar: <b style="color:#34d399;">' + testsCompleted + ' / 24 ta</b></span>' +
-            '<span>Imtihongacha: <b style="color:' + (isSoonLevelTest ? '#facc15;text-shadow:0 0 6px #facc15;' : '#38bdf8;') + '">' + (remainingDays === 0 ? 'Bugun!' : (remainingDays + ' kun qoldi')) + '</b></span>' +
+            '<span>Imtihonga: <b style="color:' + (isSoonLevelTest ? '#facc15;font-size:12.5px;text-shadow:0 0 8px rgba(250,204,21,0.6);' : '#38bdf8;') + '">' + (remainingDays === 0 ? 'Bugun!' : (remainingDays + ' kun qoldi')) + '</b></span>' +
           '</div>' +
           '<div style="display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:#cbd5e1;border-top:1px dashed rgba(255,255,255,0.08);padding-top:4px;">' +
             '<span style="color:#94a3b8;">🎯 Level Test kuni:</span>' +
-            '<b style="color:#facc15;">' + ltInfo.displayDate + '</b>' +
+            '<b style="color:' + (isSoonLevelTest ? '#facc15' : '#38bdf8') + ';">' + ltInfo.displayDate + '</b>' +
           '</div>' +
         '</div>';
 
@@ -1950,7 +1944,6 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
         h += '<div class="' + cardClass + '" draggable="true" data-cid="' + esc(cls.id) + '" data-tid="' + esc(t.id) + '" style="border-radius:22px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;cursor:grab;transition:all 0.25s;">' +
           '<div>' +
-            yellowWarningBanner +
             '<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(56,189,248,0.08);border:1px dashed rgba(56,189,248,0.3);border-radius:10px;padding:5px 10px;margin-bottom:12px;user-select:none;">' +
               '<div style="font-size:11.5px;font-weight:900;color:#38bdf8;display:flex;align-items:center;gap:6px;">' +
                 '<span style="font-size:14px;cursor:grab;">⋮⋮</span> Bosib surish (Drag &amp; Drop)' +
@@ -6497,15 +6490,9 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         '<b style="color:#facc15;font-size:13.5px;">' + examDisplay + '</b>' +
       '</div>' +
       '<div style="display:flex;justify-content:space-between;">' +
-        '<span style="color:#94a3b8;">Level test imtihonigacha:</span>' +
+        '<span style="color:#94a3b8;">Imtihonga:</span>' +
         '<b style="color:' + (isSoon ? '#facc15;font-size:14px;' : '#38bdf8;') + '">' + (remaining === 0 ? 'Bugun!' : (remaining + ' kun qoldi')) + '</b>' +
       '</div>';
-
-      if (isSoon) {
-        h += '<div style="margin-top:10px;padding:8px 12px;border-radius:10px;background:rgba(234,179,8,0.2);border:1px solid #facc15;color:#fef08a;font-weight:900;font-size:12px;display:flex;align-items:center;gap:6px;box-shadow:0 0 12px rgba(250,204,21,0.3);">' +
-          '<span>⚡</span> <span>Level testlar tez kunda! Guruh sariq neon nurlar bilan ogohlantiradi.</span>' +
-        '</div>';
-      }
 
       prev.innerHTML = h;
     }
