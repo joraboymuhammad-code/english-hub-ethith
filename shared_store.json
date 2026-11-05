@@ -375,21 +375,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "activeHomework": {
-        "dateKey": "2026-10-28",
-        "dateDisp": "28.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
-      },
-      "learningMonths": 2,
-      "learningDays": 24,
       "studentPayments": {
         "cls_ravshanov_doniyor_cefr_1_tester_1": {
           "fee": 300000,
@@ -643,6 +628,21 @@
           "method": "—",
           "date": "To‘lanmagan"
         }
+      },
+      "learningMonths": 2,
+      "learningDays": 24,
+      "activeHomework": {
+        "dateKey": "2026-10-28",
+        "dateDisp": "28.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       },
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
@@ -1038,8 +1038,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 15,
       "studentPayments": {
         "cls_ravshanov_doniyor_cefr_2_tester_1": {
           "fee": 300000,
@@ -1168,6 +1166,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 15,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -1576,8 +1576,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 20,
       "studentPayments": {
         "cls_ravshanov_doniyor_cefr_3_tester_1": {
           "fee": 300000,
@@ -1706,6 +1704,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 20,
       "activeHomework": {
         "dateKey": "2026-10-29",
         "dateDisp": "29.10.2026",
@@ -2113,8 +2113,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 15,
       "studentPayments": {
         "cls_ravshanov_doniyor_cefr_4_tester_1": {
           "fee": 300000,
@@ -2243,6 +2241,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 15,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -2650,8 +2650,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 20,
       "studentPayments": {
         "cls_qarshiboyev_humoyun_practice_tester_1": {
           "fee": 300000,
@@ -2780,6 +2778,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 20,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -2795,8 +2795,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862956456
+      "durationUpdatedAt": 1793862956456,
+      "learningLessons": 0
     },
     {
       "id": "cls_tovboyeva_marjona_beginner",
@@ -3187,8 +3187,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 2,
-      "learningDays": 25,
       "studentPayments": {
         "cls_tovboyeva_marjona_beginner_tester_1": {
           "fee": 300000,
@@ -3317,6 +3315,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 2,
+      "learningDays": 25,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -3332,8 +3332,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862956499
+      "durationUpdatedAt": 1793862956499,
+      "learningLessons": 0
     },
     {
       "id": "cls_olimjonova_durdona_beginner",
@@ -3725,21 +3725,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "activeHomework": {
-        "dateKey": "2026-10-28",
-        "dateDisp": "28.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
-      },
-      "learningMonths": 0,
-      "learningDays": 2,
       "studentPayments": {
         "cls_olimjonova_durdona_beginner_tester_1": {
           "fee": 300000,
@@ -3868,10 +3853,25 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 2,
+      "activeHomework": {
+        "dateKey": "2026-10-28",
+        "dateDisp": "28.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862956541
+      "durationUpdatedAt": 1793862956541,
+      "learningLessons": 0
     },
     {
       "id": "cls_olimjonova_durdona_pre_intermediate",
@@ -4262,8 +4262,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 7,
       "studentPayments": {
         "cls_olimjonova_durdona_pre_intermediate_tester_1": {
           "fee": 300000,
@@ -4392,6 +4390,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 7,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -4407,8 +4407,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862956590
+      "durationUpdatedAt": 1793862956590,
+      "learningLessons": 0
     },
     {
       "id": "cls_olimjonova_durdona_intermediate_1",
@@ -4802,21 +4802,6 @@
       },
       "customStudentPhones": {},
       "extraHomework": [],
-      "activeHomework": {
-        "dateKey": "2026-10-28",
-        "dateDisp": "28.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
-      },
-      "learningMonths": 2,
-      "learningDays": 12,
       "studentPayments": {
         "cls_olimjonova_durdona_intermediate_1_tester_1": {
           "fee": 300000,
@@ -4945,12 +4930,27 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 2,
+      "learningDays": 12,
+      "activeHomework": {
+        "dateKey": "2026-10-28",
+        "dateDisp": "28.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
       "deletedStudentIds": [],
       "customStudentNamesTs": {
         "cls_olimjonova_durdona_intermediate_1_tester_10": 1793213300749
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862956632
+      "durationUpdatedAt": 1793862956632,
+      "learningLessons": 0
     },
     {
       "id": "cls_olimjonova_durdona_intermediate_2",
@@ -5341,8 +5341,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 17,
       "studentPayments": {
         "cls_olimjonova_durdona_intermediate_2_tester_1": {
           "fee": 300000,
@@ -5471,6 +5469,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 17,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -5486,8 +5486,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862956676
+      "durationUpdatedAt": 1793862956676,
+      "learningLessons": 0
     },
     {
       "id": "cls_tagaev_eldor_beginner",
@@ -5878,8 +5878,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 22,
       "studentPayments": {
         "cls_tagaev_eldor_beginner_tester_1": {
           "fee": 300000,
@@ -6008,6 +6006,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 22,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -6023,8 +6023,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862956721
+      "durationUpdatedAt": 1793862956721,
+      "learningLessons": 0
     },
     {
       "id": "cls_tagaev_eldor_elementary",
@@ -6415,8 +6415,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 2,
-      "learningDays": 27,
       "studentPayments": {
         "cls_tagaev_eldor_elementary_tester_1": {
           "fee": 300000,
@@ -6545,6 +6543,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 2,
+      "learningDays": 27,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -6560,8 +6560,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862956768
+      "durationUpdatedAt": 1793862956768,
+      "learningLessons": 0
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_1",
@@ -6952,8 +6952,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 4,
       "studentPayments": {
         "cls_tagaev_eldor_pre_intermediate_1_tester_1": {
           "fee": 300000,
@@ -7082,6 +7080,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 4,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -7097,8 +7097,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862956811
+      "durationUpdatedAt": 1793862956811,
+      "learningLessons": 0
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_2",
@@ -7489,8 +7489,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 9,
       "studentPayments": {
         "cls_tagaev_eldor_pre_intermediate_2_tester_1": {
           "fee": 300000,
@@ -7619,6 +7617,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 9,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -7634,8 +7634,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862956859
+      "durationUpdatedAt": 1793862956859,
+      "learningLessons": 0
     },
     {
       "id": "cls_yaxshilikova_kamola_beginner",
@@ -8026,8 +8026,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 2,
-      "learningDays": 14,
       "studentPayments": {
         "cls_yaxshilikova_kamola_beginner_tester_1": {
           "fee": 300000,
@@ -8156,6 +8154,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 2,
+      "learningDays": 14,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -8171,8 +8171,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862956908
+      "durationUpdatedAt": 1793862956908,
+      "learningLessons": 0
     },
     {
       "id": "cls_yaxshilikova_kamola_elementary",
@@ -8563,8 +8563,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 19,
       "studentPayments": {
         "cls_yaxshilikova_kamola_elementary_tester_1": {
           "fee": 300000,
@@ -8693,6 +8691,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 19,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -8708,8 +8708,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862956950
+      "durationUpdatedAt": 1793862956950,
+      "learningLessons": 0
     },
     {
       "id": "cls_sherqoziyeva_iroda_beginner_1",
@@ -9100,8 +9100,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 24,
       "studentPayments": {
         "cls_sherqoziyeva_iroda_beginner_1_tester_1": {
           "fee": 300000,
@@ -9230,6 +9228,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 24,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -9245,8 +9245,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862956997
+      "durationUpdatedAt": 1793862956997,
+      "learningLessons": 0
     },
     {
       "id": "cls_sherqoziyeva_iroda_beginner_2",
@@ -9637,8 +9637,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 2,
-      "learningDays": 1,
       "studentPayments": {
         "cls_sherqoziyeva_iroda_beginner_2_tester_1": {
           "fee": 300000,
@@ -9767,6 +9765,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 2,
+      "learningDays": 1,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -9782,8 +9782,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957036
+      "durationUpdatedAt": 1793862957036,
+      "learningLessons": 0
     },
     {
       "id": "cls_aborbekov_elyor_pre_intermediate_1",
@@ -10174,8 +10174,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 6,
       "studentPayments": {
         "cls_aborbekov_elyor_pre_intermediate_1_tester_1": {
           "fee": 300000,
@@ -10304,6 +10302,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 6,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -10319,8 +10319,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957080
+      "durationUpdatedAt": 1793862957080,
+      "learningLessons": 0
     },
     {
       "id": "cls_aborbekov_elyor_pre_intermediate_2",
@@ -10711,8 +10711,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 11,
       "studentPayments": {
         "cls_aborbekov_elyor_pre_intermediate_2_tester_1": {
           "fee": 300000,
@@ -10841,6 +10839,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 11,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -10856,8 +10856,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957124
+      "durationUpdatedAt": 1793862957124,
+      "learningLessons": 0
     },
     {
       "id": "cls_aborbekov_elyor_intermediate_1",
@@ -11248,8 +11248,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 2,
-      "learningDays": 16,
       "studentPayments": {
         "cls_aborbekov_elyor_intermediate_1_tester_1": {
           "fee": 300000,
@@ -11378,6 +11376,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 2,
+      "learningDays": 16,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -11393,8 +11393,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957171
+      "durationUpdatedAt": 1793862957171,
+      "learningLessons": 0
     },
     {
       "id": "cls_aborbekov_elyor_intermediate_2",
@@ -11785,8 +11785,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 21,
       "studentPayments": {
         "cls_aborbekov_elyor_intermediate_2_tester_1": {
           "fee": 300000,
@@ -11915,6 +11913,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 21,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -11930,8 +11930,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957219
+      "durationUpdatedAt": 1793862957219,
+      "learningLessons": 0
     },
     {
       "id": "cls_aborbekov_elyor_upper_intermediate",
@@ -12322,8 +12322,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 26,
       "studentPayments": {
         "cls_aborbekov_elyor_upper_intermediate_tester_1": {
           "fee": 300000,
@@ -12452,6 +12450,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 26,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -12467,8 +12467,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957262
+      "durationUpdatedAt": 1793862957262,
+      "learningLessons": 0
     },
     {
       "id": "cls_orinboyev_jaloliddin_pre_intermediate",
@@ -12859,8 +12859,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 2,
-      "learningDays": 3,
       "studentPayments": {
         "cls_orinboyev_jaloliddin_pre_intermediate_tester_1": {
           "fee": 300000,
@@ -12989,6 +12987,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 2,
+      "learningDays": 3,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -13004,8 +13004,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957311
+      "durationUpdatedAt": 1793862957311,
+      "learningLessons": 0
     },
     {
       "id": "cls_orinboyev_jaloliddin_intermediate",
@@ -13396,8 +13396,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 8,
       "studentPayments": {
         "cls_orinboyev_jaloliddin_intermediate_tester_1": {
           "fee": 300000,
@@ -13526,6 +13524,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 8,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -13541,8 +13541,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957362
+      "durationUpdatedAt": 1793862957362,
+      "learningLessons": 0
     },
     {
       "id": "cls_orinboyev_jaloliddin_standard_1",
@@ -13933,8 +13933,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 13,
       "studentPayments": {
         "cls_orinboyev_jaloliddin_standard_1_tester_1": {
           "fee": 300000,
@@ -14063,6 +14061,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 13,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -14078,8 +14078,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957409
+      "durationUpdatedAt": 1793862957409,
+      "learningLessons": 0
     },
     {
       "id": "cls_orinboyev_jaloliddin_standard_2",
@@ -14470,8 +14470,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 2,
-      "learningDays": 18,
       "studentPayments": {
         "cls_orinboyev_jaloliddin_standard_2_tester_1": {
           "fee": 300000,
@@ -14600,6 +14598,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 2,
+      "learningDays": 18,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -14615,8 +14615,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957459
+      "durationUpdatedAt": 1793862957459,
+      "learningLessons": 0
     },
     {
       "id": "cls_jumanova_pokiza_beginner",
@@ -15007,8 +15007,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 23,
       "studentPayments": {
         "cls_jumanova_pokiza_beginner_tester_1": {
           "fee": 300000,
@@ -15137,6 +15135,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 23,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -15152,8 +15152,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957510
+      "durationUpdatedAt": 1793862957510,
+      "learningLessons": 0
     },
     {
       "id": "cls_hayrullayev_arslon_beginner_1",
@@ -15544,8 +15544,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 0,
       "studentPayments": {
         "cls_hayrullayev_arslon_beginner_1_tester_1": {
           "fee": 300000,
@@ -15674,6 +15672,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 0,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -15689,8 +15689,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957561
+      "durationUpdatedAt": 1793862957561,
+      "learningLessons": 0
     },
     {
       "id": "cls_hayrullayev_arslon_beginner_2",
@@ -16081,8 +16081,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 2,
-      "learningDays": 5,
       "studentPayments": {
         "cls_hayrullayev_arslon_beginner_2_tester_1": {
           "fee": 300000,
@@ -16211,6 +16209,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 2,
+      "learningDays": 5,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -16226,8 +16226,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957615
+      "durationUpdatedAt": 1793862957615,
+      "learningLessons": 0
     },
     {
       "id": "cls_xudoyorova_sarvinoz_intermediate",
@@ -16619,21 +16619,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "activeHomework": {
-        "dateKey": "2026-10-28",
-        "dateDisp": "28.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
-      },
-      "learningMonths": 0,
-      "learningDays": 10,
       "studentPayments": {
         "cls_xudoyorova_sarvinoz_intermediate_tester_1": {
           "fee": 300000,
@@ -16762,10 +16747,25 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 10,
+      "activeHomework": {
+        "dateKey": "2026-10-28",
+        "dateDisp": "28.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957663
+      "durationUpdatedAt": 1793862957663,
+      "learningLessons": 0
     },
     {
       "id": "cls_xudoyorova_sarvinoz_standard",
@@ -17156,8 +17156,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 15,
       "studentPayments": {
         "cls_xudoyorova_sarvinoz_standard_tester_1": {
           "fee": 300000,
@@ -17286,6 +17284,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 15,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -17301,8 +17301,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957710
+      "durationUpdatedAt": 1793862957710,
+      "learningLessons": 0
     },
     {
       "id": "cls_aliqulova_sevinch_beginner_1",
@@ -17693,8 +17693,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 2,
-      "learningDays": 20,
       "studentPayments": {
         "cls_aliqulova_sevinch_beginner_1_tester_1": {
           "fee": 300000,
@@ -17823,6 +17821,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 2,
+      "learningDays": 20,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -17838,8 +17838,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957758
+      "durationUpdatedAt": 1793862957758,
+      "learningLessons": 0
     },
     {
       "id": "cls_aliqulova_sevinch_beginner_2",
@@ -18230,8 +18230,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 25,
       "studentPayments": {
         "cls_aliqulova_sevinch_beginner_2_tester_1": {
           "fee": 300000,
@@ -18360,6 +18358,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 25,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -18375,8 +18375,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957808
+      "durationUpdatedAt": 1793862957808,
+      "learningLessons": 0
     },
     {
       "id": "cls_xojamqulova_diyora_beginner",
@@ -18767,8 +18767,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 2,
       "studentPayments": {
         "cls_xojamqulova_diyora_beginner_tester_1": {
           "fee": 300000,
@@ -18897,6 +18895,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 2,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -18912,8 +18912,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957854
+      "durationUpdatedAt": 1793862957854,
+      "learningLessons": 0
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_1",
@@ -19304,8 +19304,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 2,
-      "learningDays": 7,
       "studentPayments": {
         "cls_xojamqulova_diyora_elementary_1_tester_1": {
           "fee": 300000,
@@ -19434,6 +19432,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 2,
+      "learningDays": 7,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -19449,8 +19449,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957901
+      "durationUpdatedAt": 1793862957901,
+      "learningLessons": 0
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_2",
@@ -19841,8 +19841,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 12,
       "studentPayments": {
         "cls_xojamqulova_diyora_elementary_2_tester_1": {
           "fee": 300000,
@@ -19971,6 +19969,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 12,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -19986,8 +19986,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862957955
+      "durationUpdatedAt": 1793862957955,
+      "learningLessons": 0
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_3",
@@ -20378,8 +20378,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 17,
       "studentPayments": {
         "cls_xojamqulova_diyora_elementary_3_tester_1": {
           "fee": 300000,
@@ -20508,6 +20506,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 17,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -20523,8 +20523,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862958007
+      "durationUpdatedAt": 1793862958007,
+      "learningLessons": 0
     },
     {
       "id": "cls_bosimbekov_farrux_pre_intermediate_1",
@@ -20916,21 +20916,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "activeHomework": {
-        "dateKey": "2026-10-29",
-        "dateDisp": "29.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
-      },
-      "learningMonths": 2,
-      "learningDays": 22,
       "studentPayments": {
         "cls_bosimbekov_farrux_pre_intermediate_1_tester_1": {
           "fee": 300000,
@@ -21059,10 +21044,25 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 2,
+      "learningDays": 22,
+      "activeHomework": {
+        "dateKey": "2026-10-29",
+        "dateDisp": "29.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862958056
+      "durationUpdatedAt": 1793862958056,
+      "learningLessons": 0
     },
     {
       "id": "cls_bosimbekov_farrux_pre_intermediate_2",
@@ -21453,8 +21453,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 27,
       "studentPayments": {
         "cls_bosimbekov_farrux_pre_intermediate_2_tester_1": {
           "fee": 300000,
@@ -21583,6 +21581,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 27,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -21598,8 +21598,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862958107
+      "durationUpdatedAt": 1793862958107,
+      "learningLessons": 0
     },
     {
       "id": "cls_bosimbekov_farrux_intermediate_1",
@@ -21990,8 +21990,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 4,
       "studentPayments": {
         "cls_bosimbekov_farrux_intermediate_1_tester_1": {
           "fee": 300000,
@@ -22120,6 +22118,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 4,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -22135,8 +22135,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862958154
+      "durationUpdatedAt": 1793862958154,
+      "learningLessons": 0
     },
     {
       "id": "cls_bosimbekov_farrux_intermediate_2",
@@ -22527,8 +22527,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 2,
-      "learningDays": 9,
       "studentPayments": {
         "cls_bosimbekov_farrux_intermediate_2_tester_1": {
           "fee": 300000,
@@ -22657,6 +22655,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 2,
+      "learningDays": 9,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -22672,8 +22672,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862958203
+      "durationUpdatedAt": 1793862958203,
+      "learningLessons": 0
     },
     {
       "id": "cls_ahmadova_barno_elementary_1",
@@ -23064,8 +23064,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 14,
       "studentPayments": {
         "cls_ahmadova_barno_elementary_1_tester_1": {
           "fee": 300000,
@@ -23194,6 +23192,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 14,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -23209,8 +23209,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862958257
+      "durationUpdatedAt": 1793862958257,
+      "learningLessons": 0
     },
     {
       "id": "cls_ahmadova_barno_elementary_2",
@@ -23601,8 +23601,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 19,
       "studentPayments": {
         "cls_ahmadova_barno_elementary_2_tester_1": {
           "fee": 300000,
@@ -23731,6 +23729,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 19,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -23746,8 +23746,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862958307
+      "durationUpdatedAt": 1793862958307,
+      "learningLessons": 0
     },
     {
       "id": "cls_ahmadova_barno_elementary_3",
@@ -24138,8 +24138,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 2,
-      "learningDays": 24,
       "studentPayments": {
         "cls_ahmadova_barno_elementary_3_tester_1": {
           "fee": 300000,
@@ -24268,6 +24266,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 2,
+      "learningDays": 24,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -24283,8 +24283,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862958370
+      "durationUpdatedAt": 1793862958370,
+      "learningLessons": 0
     },
     {
       "id": "cls_ahmadova_barno_pre_intermediate",
@@ -24675,8 +24675,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 1,
       "studentPayments": {
         "cls_ahmadova_barno_pre_intermediate_tester_1": {
           "fee": 300000,
@@ -24805,6 +24803,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 1,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -24820,8 +24820,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862958425
+      "durationUpdatedAt": 1793862958425,
+      "learningLessons": 0
     },
     {
       "id": "cls_shodiyor_matematika_matematika",
@@ -25212,8 +25212,6 @@
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 1,
-      "learningDays": 6,
       "studentPayments": {
         "cls_shodiyor_matematika_matematika_tester_1": {
           "fee": 300000,
@@ -25342,6 +25340,8 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 1,
+      "learningDays": 6,
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
       "activeHomework": {
@@ -25357,8 +25357,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningLessons": 0,
-      "durationUpdatedAt": 1793862958481
+      "durationUpdatedAt": 1793862958481,
+      "learningLessons": 0
     },
     {
       "id": "cls_urolov_azizbek_upper",
@@ -25499,6 +25499,7 @@
         "std_otkir_903_tursunmatov": "O'tkir Tursunmatov"
       },
       "customStudentPhones": {
+        "std_ziyoda_799_regdfggyj": "234312354",
         "std_azimjon_848_toirov": "950079621"
       },
       "students": [
@@ -25823,14 +25824,15 @@
           "isTester": false,
           "manuallyEnrolled": true,
           "isOnline": true,
-          "coins": 210,
+          "coins": 130,
           "updatedAt": 1793870202007,
-          "lastLogin": "2026-11-04T14:59:52.209Z",
-          "dailyMinutes": 378,
           "isLoggedOut": false,
           "hasLoggedIn": true,
-          "loggedOutAt": 1793798152254,
-          "lastSeen": 1793874174202
+          "lastSeen": 1793874181198,
+          "avatar": null,
+          "nameStyle": null,
+          "title": null,
+          "dailyMinutes": 330
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -25923,27 +25925,6 @@
           "updatedAt": 1793627425284
         }
       ],
-      "deletedMsgIds": [
-        "msg_1793718186438_xser5",
-        "msg_1793718198750_ptftv",
-        "msg_1793718218122_3dwuk",
-        "msg_1793863855412_xfm9q",
-        "msg_1793719719874_t87j7",
-        "msg_1793867803252_mhkwo",
-        "msg_1793867784713_unds3",
-        "msg_1793867842032_i3ki3",
-        "msg_1793867832067_aoqnv",
-        "msg_1793869955758_uzstd",
-        "msg_1793869962495_376x4",
-        "msg_1793869972099_rju6f",
-        "msg_1793870014615_5dfx3",
-        "msg_1793870004823_1d5sq",
-        "msg_1793869988201_u2xr0",
-        "msg_1793869983568_yj41q"
-      ],
-      "messages": [],
-      "learningMonths": 0,
-      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_upper_tester_1": {
           "fee": 300000,
@@ -26359,6 +26340,27 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 0,
+      "deletedMsgIds": [
+        "msg_1793718186438_xser5",
+        "msg_1793718198750_ptftv",
+        "msg_1793718218122_3dwuk",
+        "msg_1793863855412_xfm9q",
+        "msg_1793719719874_t87j7",
+        "msg_1793867803252_mhkwo",
+        "msg_1793867784713_unds3",
+        "msg_1793867842032_i3ki3",
+        "msg_1793867832067_aoqnv",
+        "msg_1793869955758_uzstd",
+        "msg_1793869962495_376x4",
+        "msg_1793869972099_rju6f",
+        "msg_1793870014615_5dfx3",
+        "msg_1793870004823_1d5sq",
+        "msg_1793869988201_u2xr0",
+        "msg_1793869983568_yj41q"
+      ],
+      "messages": [],
       "activeHomework": {
         "type": "workbook",
         "dateKey": "2026-10-30",
@@ -26382,10 +26384,10 @@
         "rayxona_271_qoshqarova"
       ],
       "customStudentNamesTs": {
+        "std_ziyoda_799_regdfggyj": 1793627422057,
         "std_nurlan_856_tangatov": 1793625077010,
         "std_orazaliyev_514_amirshox": 1793625077010,
         "std_kamron_187_raimberdiyev": 1793625077010,
-        "std_ziyoda_799_regdfggyj": 1793627422057,
         "std_rayxona_271_qoshqarova": 1793625077010,
         "std_rayhona_554_qoshqarova": 1793625077010,
         "std_jamshid_843_komilov": 1793625077010,
@@ -26408,6 +26410,7 @@
         "std_otkir_903_tursunmatov": 1793625077010,
         "azimjon_848_toirov": 0
       },
+      "updatedAt": 1793772854690,
       "pinnedId": null,
       "levelTestResults": {
         "std_nurlan_856_tangatov": {
@@ -26979,10 +26982,6 @@
           "updatedAt": 1793794747826
         }
       ],
-      "deletedMsgIds": [],
-      "messages": [],
-      "learningMonths": 0,
-      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_standard_tester_1": {
           "fee": 300000,
@@ -27109,8 +27108,285 @@
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_1": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_2": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_3": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_4": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_5": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_6": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_7": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_8": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_9": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_10": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_11": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_12": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_13": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_14": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_15": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_16": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_17": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_standard_std_18": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_abdulaziz_982_habibullayev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_abdulaziz_454_shodiyorov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_atham_184_xudoyberdiyev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_bahora_901_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_dildora_362_norsurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_diyorbek_862_raimqulov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_fariza_430_faxriddinova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_fayozbek_997_abdukarimov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_hadicha_393_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_iroda_252_isroilova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_jahongir_489_polatboyev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_lazizbek_393_nuriddinov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_malohat_489_abdulhamidova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_marvarid_151_anvarova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_orzumurod_789_bekmurodov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_parizoda_786_xalikova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_ruxshona_493_amalikova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_sevinch_279_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_shuhrat_255_rahmatullayev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_subhon_167_saidmurodov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_ulugbek_746_gulomov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 0,
+      "deletedMsgIds": [],
+      "messages": [],
       "deletedStudentIds": [],
       "activeHomework": {
         "dateKey": "2026-11-02",
@@ -27539,10 +27815,6 @@
           "updatedAt": 1793794747826
         }
       ],
-      "deletedMsgIds": [],
-      "messages": [],
-      "learningMonths": 0,
-      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_intermediate_tester_1": {
           "fee": 300000,
@@ -27795,8 +28067,145 @@
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
+        },
+        "std_azamova_593_asila": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_asadbek_247_xolboyev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_bahora_639_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_charos_327_isroilova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_dilnoza_261_ergasheva": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_gulsevar_485_anorqulova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_kazakov_769_husniddin": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_mahfuza_179_bosimova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_marjona_346_qodirqulova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_muxlisa_356_obloqulova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_muxlisa_786_xudoyberdiyeva": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_nozima_834_norqulova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_nozima_471_yaxshilikova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_nurmuhammad_852_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_orazaliyev_261_amirshox": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_oydinoy_472_ibragimova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_shabnam_737_ergasheva": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_xonzoda_538_amirova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_zebo_198_abduganiyeva": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 0,
+      "deletedMsgIds": [],
+      "messages": [],
       "activeHomework": {
         "dateKey": "2026-10-29",
         "dateDisp": "29.10.2026",
@@ -28211,10 +28620,6 @@
           "updatedAt": 1793794747826
         }
       ],
-      "deletedMsgIds": [],
-      "messages": [],
-      "learningMonths": 0,
-      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_practice_tester_1": {
           "fee": 300000,
@@ -28341,8 +28746,138 @@
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_1": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_2": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_3": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_4": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_5": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_6": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_7": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_8": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_9": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_10": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_11": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_12": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_13": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_14": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_15": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_16": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_17": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_18": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 0,
+      "deletedMsgIds": [],
+      "messages": [],
       "deletedStudentIds": [],
       "activeHomework": {
         "dateKey": "2026-11-02",
@@ -28369,7 +28904,7 @@
       "code": "ETH-AUW99R",
       "name": "asdasdasdasd",
       "teacher": "muhammad",
-      "teacherId": "teacher_1793728925723",
+      "teacherId": "",
       "teacherName": "Biriktirilmagan",
       "room": "302-xona",
       "schedule": "har_kuni",
@@ -28749,8 +29284,7 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "customStudentNamesTs": {},
-      "customStudentPhones": {}
+      "customStudentNamesTs": {}
     }
   ],
   "exams": [
@@ -29283,24 +29817,6 @@
   ],
   "accounts": [
     {
-      "id": "admin_official_root",
-      "role": "admin",
-      "name": "Bosh Admin",
-      "email": "admin_12038f1aq8syash@ethith.uz",
-      "coins": 5000,
-      "gifts": [],
-      "nameStyle": null,
-      "createdAt": 1792502058827,
-      "level": "C2",
-      "dailyMinutes": 0,
-      "updatedAt": 1792612388994,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793874175060,
-      "login": "admin_12038f1aq8syash"
-    },
-    {
       "id": "tg_98124765",
       "role": "student",
       "name": "Striker_uzb",
@@ -29316,24 +29832,22 @@
       "login": "mu_striker"
     },
     {
-      "id": "admin_official_teacher",
-      "role": "teacher",
-      "name": "Ustoz",
-      "email": "teacher@ethith.uz",
-      "coins": 100000,
-      "avatar": null,
-      "level": "B1+",
-      "dailyMinutes": 0,
+      "id": "admin_official_root",
+      "role": "admin",
+      "name": "Bosh Admin",
+      "email": "admin_12038f1aq8syash@ethith.uz",
+      "coins": 5000,
+      "gifts": [],
       "nameStyle": null,
-      "title": null,
-      "victorySound": null,
-      "updatedAt": 1793773725443,
+      "createdAt": 1792502058827,
+      "level": "C2",
+      "dailyMinutes": 0,
+      "updatedAt": 1792612388994,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174,
-      "login": "azizbek77",
-      "password": "azizbek2026"
+      "lastSeen": 1793874181660,
+      "login": "admin_12038f1aq8syash"
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -29500,16 +30014,23 @@
       "login": "usmonqulovaetiborxon"
     },
     {
-      "id": "admin_official_teacher",
-      "name": "Ustoz",
-      "email": "muhammedjoraboyev1@gmail.com",
+      "id": "t_urolov_azizbek",
       "role": "teacher",
+      "name": "Azizbek Urolov",
+      "email": "azizbek.urolov@ethith.uz",
       "coins": 100000,
-      "level": "B1+",
+      "createdAt": 1793780676843,
+      "gifts": [],
+      "level": "C2",
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "dailyMinutes": 0,
+      "updatedAt": 1793773725443,
+      "login": "azizbek77",
+      "password": "azizbek2026",
+      "loggedOutAt": 1793779411611,
+      "lastSeen": 1793874180758
     },
     {
       "id": "std_13",
@@ -29665,17 +30186,19 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Elyor Aborbekov",
+      "name": "Ustoz",
       "email": "elyor.aborbekov@ethith.uz",
-      "login": "elyor70",
+      "login": "azizbek77",
       "role": "teacher",
       "coins": 100000,
-      "updatedAt": 1793392014532,
+      "updatedAt": 1793773725443,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174,
-      "level": "B1+"
+      "lastSeen": 1793874180758,
+      "password": "azizbek2026",
+      "level": "B1+",
+      "dailyMinutes": 0
     },
     {
       "id": "admin_official_teacher",
@@ -29699,7 +30222,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -29720,7 +30243,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -29741,7 +30264,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -29765,7 +30288,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -29789,7 +30312,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -29811,7 +30334,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -29833,7 +30356,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -29857,7 +30380,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -29878,7 +30401,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -29900,7 +30423,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -29922,7 +30445,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -29944,7 +30467,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -29968,7 +30491,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -29992,7 +30515,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -30016,7 +30539,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "admin_official_teacher",
@@ -30037,7 +30560,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
     },
     {
       "id": "st_998901239988",
@@ -30064,30 +30587,6 @@
       "level": "A1",
       "joinedAt": 1793215171236,
       "title": "👑 IELTS Qiroli"
-    },
-    {
-      "id": "admin_official_teacher",
-      "name": "Azizbek Urolov",
-      "email": "azizbek.urolov@ethith.uz",
-      "login": "azizbek77",
-      "password": "azizbek2026",
-      "role": "teacher",
-      "coins": 100000,
-      "hourlyRate": 120000,
-      "subject": "Ingliz tili (Upper / Inter)",
-      "teachingHours": 72,
-      "assignedClasses": [
-        "cls_urolov_azizbek_intermediate_practice",
-        "cls_urolov_azizbek_upper_intermediate_standard"
-      ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793773725443,
-      "level": "C2",
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793874174174,
-      "dailyMinutes": 0
     },
     {
       "id": "shamshodbekibrohimov@telegram.org",
@@ -30127,32 +30626,19 @@
       "nameStyle": null,
       "createdAt": 1793720576586,
       "updatedAt": 1793870202006,
-      "isOnline": true,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "loggedOutAt": 1793798152254,
+      "isOnline": true,
       "login": "azimjon_848_toirov",
       "password": "azimjon848toi",
       "phone": "950079621",
       "parentPhone": "950079621",
       "classId": "cls_urolov_azizbek_upper",
-      "lastLogin": "2026-11-04T14:59:52.209Z",
-      "lastSeen": 1793874174202,
+      "lastLogin": null,
+      "loggedOutAt": 1793783047463,
+      "lastSeen": 1793874181198,
       "level": "A1",
       "dailyMinutes": 114
-    },
-    {
-      "id": "t_muhammadyusuf",
-      "name": "Muhammadyusuf",
-      "login": "muhammadyusuf11",
-      "password": "muhammadyusuf2026",
-      "email": "muhammadyusuf11@ethith.uz",
-      "role": "teacher",
-      "teacherId": "t_muhammadyusuf",
-      "subject": "Ingliz tili",
-      "salarySharePercent": 50,
-      "createdAt": 1793431051291,
-      "updatedAt": 1793431308524
     },
     {
       "id": "admin_official_teacher",
@@ -30172,7 +30658,50 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174174
+      "lastSeen": 1793874180758
+    },
+    {
+      "id": "t_muhammadyusuf",
+      "name": "Muhammadyusuf",
+      "login": "muhammadyusuf11",
+      "password": "muhammadyusuf2026",
+      "email": "muhammadyusuf11@ethith.uz",
+      "role": "teacher",
+      "teacherId": "t_muhammadyusuf",
+      "subject": "Ingliz tili",
+      "salarySharePercent": 50,
+      "createdAt": 1793431051291,
+      "updatedAt": 1793431308524
+    },
+    {
+      "id": "admin_official_teacher",
+      "role": "teacher",
+      "name": "Ustoz",
+      "email": "teacher@ethith.uz",
+      "coins": 100000,
+      "avatar": null,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "nameStyle": null,
+      "title": null,
+      "victorySound": null,
+      "updatedAt": 1792606425762,
+      "isLoggedOut": false,
+      "hasLoggedIn": true,
+      "isOnline": true,
+      "lastSeen": 1793874180758
+    },
+    {
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
+      "email": "muhammedjoraboyev1@gmail.com",
+      "role": "teacher",
+      "coins": 100000,
+      "level": "B1+",
+      "isLoggedOut": false,
+      "hasLoggedIn": true,
+      "isOnline": true,
+      "lastSeen": 1793874180758
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -30629,7 +31158,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793874174202,
+      "lastSeen": 1793874181198,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov"
     },
@@ -51994,9 +52523,9 @@
         "page": 1004,
         "exercise": "1",
         "label": "2",
-        "top": 53.2,
-        "left": 65.5,
-        "width": 13,
+        "top": 52.8,
+        "left": 66.6,
+        "width": 9.2,
         "height": 1.6,
         "correct": "to study"
       },
@@ -52006,10 +52535,10 @@
         "page": 1004,
         "exercise": "1",
         "label": "3",
-        "top": 74.6,
-        "left": 23.5,
-        "width": 13,
-        "height": 1.6,
+        "top": 73.4,
+        "left": 24.3,
+        "width": 9.8,
+        "height": 1.8,
         "correct": "on business"
       },
       {
@@ -52018,9 +52547,9 @@
         "page": 1004,
         "exercise": "1",
         "label": "4",
-        "top": 74.6,
-        "left": 65.5,
-        "width": 13,
+        "top": 73.7,
+        "left": 65.7,
+        "width": 9,
         "height": 1.6,
         "correct": "on holiday"
       },
@@ -133588,8 +134117,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "2",
-        "top": 67.2,
-        "left": 14.5,
+        "top": 69.7,
+        "left": 14.1,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -133603,7 +134132,7 @@
         "page": 4004,
         "exercise": "2",
         "label": "3",
-        "top": 73.5,
+        "top": 76,
         "left": 14.5,
         "width": 8.5,
         "height": 2,
@@ -133618,8 +134147,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "4",
-        "top": 79.5,
-        "left": 14.5,
+        "top": 82.3,
+        "left": 14.8,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -133633,8 +134162,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "5",
-        "top": 85.5,
-        "left": 14.5,
+        "top": 86.7,
+        "left": 14,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -133648,8 +134177,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "6",
-        "top": 67.2,
-        "left": 32.5,
+        "top": 66.8,
+        "left": 31.4,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -133663,8 +134192,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "7",
-        "top": 73.5,
-        "left": 32.5,
+        "top": 69.9,
+        "left": 32,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -133678,8 +134207,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "8",
-        "top": 79.5,
-        "left": 32.5,
+        "top": 74.4,
+        "left": 32.2,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -133693,8 +134222,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "9",
-        "top": 85.5,
-        "left": 32.5,
+        "top": 80.3,
+        "left": 31.6,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -133708,8 +134237,8 @@
         "page": 4004,
         "exercise": "2",
         "label": "10",
-        "top": 89.5,
-        "left": 32.5,
+        "top": 84.7,
+        "left": 32.2,
         "width": 8.5,
         "height": 2,
         "correct": [
@@ -133724,7 +134253,7 @@
         "exercise": "3",
         "label": "2",
         "top": 62.4,
-        "left": 56.5,
+        "left": 57.8,
         "width": 14.5,
         "height": 2,
         "correct": [
@@ -133756,7 +134285,7 @@
         "exercise": "3",
         "label": "4",
         "top": 71.3,
-        "left": 63.5,
+        "left": 76.2,
         "width": 13.5,
         "height": 2,
         "correct": [
@@ -133800,8 +134329,8 @@
         "page": 4004,
         "exercise": "3",
         "label": "7",
-        "top": 84.6,
-        "left": 56,
+        "top": 84.5,
+        "left": 54.1,
         "width": 18,
         "height": 2,
         "correct": [
@@ -134824,7 +135353,7 @@
         "exercise": "1",
         "label": "5b",
         "top": 50.9,
-        "left": 20.1,
+        "left": 19.9,
         "width": 7.8,
         "height": 1.3,
         "correct": [
@@ -148912,479 +149441,6 @@
   },
   "teachers": [
     {
-      "id": "t_ravshanov_doniyor",
-      "name": "Ravshanov Doniyor",
-      "email": "doniyor.ravshanov@ethith.uz",
-      "subject": "Ingliz tili (CEFR Multi-Level)",
-      "hourlyRate": 110000,
-      "teachingHours": 0,
-      "card": "8600 1737 6773 7826",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_ravshanov_doniyor_cefr_1",
-        "cls_ravshanov_doniyor_cefr_2",
-        "cls_ravshanov_doniyor_cefr_3",
-        "cls_ravshanov_doniyor_cefr_4"
-      ],
-      "classOrder": [
-        "cls_ravshanov_doniyor_cefr_1",
-        "cls_ravshanov_doniyor_cefr_2",
-        "cls_ravshanov_doniyor_cefr_3",
-        "cls_ravshanov_doniyor_cefr_4"
-      ],
-      "inviteCode": "RAVSHANOV24",
-      "login": "doniyor24",
-      "password": "doniyor2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_qarshiboyev_humoyun",
-      "name": "Qarshiboyev Humoyun",
-      "email": "humoyun.qarshiboyev@ethith.uz",
-      "subject": "Ingliz tili (Practice English)",
-      "hourlyRate": 95000,
-      "teachingHours": 0,
-      "card": "8600 9180 1074 6310",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_qarshiboyev_humoyun_practice"
-      ],
-      "classOrder": [
-        "cls_qarshiboyev_humoyun_practice"
-      ],
-      "inviteCode": "QARSHIBOYEV15",
-      "login": "humoyun15",
-      "password": "humoyun2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_tovboyeva_marjona",
-      "name": "Marjona Tovboyeva",
-      "email": "marjona.tovboyeva@ethith.uz",
-      "subject": "Ingliz tili (Beginner)",
-      "hourlyRate": 90000,
-      "teachingHours": 0,
-      "card": "8600 7570 9747 6845",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_tovboyeva_marjona_beginner"
-      ],
-      "classOrder": [
-        "cls_tovboyeva_marjona_beginner"
-      ],
-      "inviteCode": "MARJONA88",
-      "login": "marjona88",
-      "password": "marjona2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "phone": "+998 90 ..."
-    },
-    {
-      "id": "t_olimjonova_durdona",
-      "name": "Durdona Olimjonova",
-      "email": "durdona.olimjonova@ethith.uz",
-      "subject": "Ingliz tili (Beginner / Inter)",
-      "hourlyRate": 100000,
-      "teachingHours": 0,
-      "card": "8600 5388 3997 7659",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_olimjonova_durdona_beginner",
-        "cls_olimjonova_durdona_pre_intermediate",
-        "cls_olimjonova_durdona_intermediate_1",
-        "cls_olimjonova_durdona_intermediate_2"
-      ],
-      "classOrder": [
-        "cls_olimjonova_durdona_beginner",
-        "cls_olimjonova_durdona_pre_intermediate",
-        "cls_olimjonova_durdona_intermediate_1",
-        "cls_olimjonova_durdona_intermediate_2"
-      ],
-      "inviteCode": "DURDONA12",
-      "login": "durdona12",
-      "password": "durdona2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_tagaev_eldor",
-      "name": "Eldor Tagaev",
-      "email": "eldor.tagaev@ethith.uz",
-      "subject": "Ingliz tili (General English)",
-      "hourlyRate": 100000,
-      "teachingHours": 0,
-      "card": "8600 9836 2231 3521",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_tagaev_eldor_beginner",
-        "cls_tagaev_eldor_elementary",
-        "cls_tagaev_eldor_pre_intermediate_1",
-        "cls_tagaev_eldor_pre_intermediate_2"
-      ],
-      "classOrder": [
-        "cls_tagaev_eldor_beginner",
-        "cls_tagaev_eldor_elementary",
-        "cls_tagaev_eldor_pre_intermediate_1",
-        "cls_tagaev_eldor_pre_intermediate_2"
-      ],
-      "inviteCode": "ELDOR33",
-      "login": "eldor33",
-      "password": "eldor2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_yaxshilikova_kamola",
-      "name": "Kamola Yaxshilikova",
-      "email": "kamola.yaxshilikova@ethith.uz",
-      "subject": "Ingliz tili (Beginner / Elementary)",
-      "hourlyRate": 95000,
-      "teachingHours": 0,
-      "card": "8600 3037 8661 9611",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_yaxshilikova_kamola_beginner",
-        "cls_yaxshilikova_kamola_elementary"
-      ],
-      "classOrder": [
-        "cls_yaxshilikova_kamola_beginner",
-        "cls_yaxshilikova_kamola_elementary"
-      ],
-      "inviteCode": "KAMOLA45",
-      "login": "kamola45",
-      "password": "kamola2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_sherqoziyeva_iroda",
-      "name": "Iroda Sherqoziyeva",
-      "email": "iroda.sherqoziyeva@ethith.uz",
-      "subject": "Ingliz tili (Beginner)",
-      "hourlyRate": 95000,
-      "teachingHours": 0,
-      "card": "8600 8200 8823 6053",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_sherqoziyeva_iroda_beginner_1",
-        "cls_sherqoziyeva_iroda_beginner_2"
-      ],
-      "classOrder": [
-        "cls_sherqoziyeva_iroda_beginner_1",
-        "cls_sherqoziyeva_iroda_beginner_2"
-      ],
-      "inviteCode": "IRODA19",
-      "login": "iroda19",
-      "password": "iroda2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_aborbekov_elyor",
-      "name": "Elyor Aborbekov",
-      "email": "elyor.aborbekov@ethith.uz",
-      "subject": "Ingliz tili (Pre / Inter / Upper)",
-      "hourlyRate": 110000,
-      "teachingHours": 0,
-      "card": "8600 4747 3927 9285",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_aborbekov_elyor_pre_intermediate_1",
-        "cls_aborbekov_elyor_pre_intermediate_2",
-        "cls_aborbekov_elyor_intermediate_1",
-        "cls_aborbekov_elyor_intermediate_2",
-        "cls_aborbekov_elyor_upper_intermediate"
-      ],
-      "classOrder": [
-        "cls_aborbekov_elyor_pre_intermediate_1",
-        "cls_aborbekov_elyor_pre_intermediate_2",
-        "cls_aborbekov_elyor_intermediate_1",
-        "cls_aborbekov_elyor_intermediate_2",
-        "cls_aborbekov_elyor_upper_intermediate"
-      ],
-      "inviteCode": "ELYOR70",
-      "login": "elyor70",
-      "password": "elyor2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_orinboyev_jaloliddin",
-      "name": "Jaloliddin O’rinboyev",
-      "email": "jaloliddin.orinboyev@ethith.uz",
-      "subject": "Ingliz tili (Pre / Inter / Standard)",
-      "hourlyRate": 105000,
-      "teachingHours": 0,
-      "card": "8600 3286 1441 8063",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_orinboyev_jaloliddin_pre_intermediate",
-        "cls_orinboyev_jaloliddin_intermediate",
-        "cls_orinboyev_jaloliddin_standard_1",
-        "cls_orinboyev_jaloliddin_standard_2"
-      ],
-      "classOrder": [
-        "cls_orinboyev_jaloliddin_pre_intermediate",
-        "cls_orinboyev_jaloliddin_intermediate",
-        "cls_orinboyev_jaloliddin_standard_1",
-        "cls_orinboyev_jaloliddin_standard_2"
-      ],
-      "inviteCode": "JALOLIDDIN99",
-      "login": "jaloliddin99",
-      "password": "jaloliddin2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_jumanova_pokiza",
-      "name": "Pokiza Jumanova",
-      "email": "pokiza.jumanova@ethith.uz",
-      "subject": "Ingliz tili (Beginner)",
-      "hourlyRate": 90000,
-      "teachingHours": 0,
-      "card": "8600 4814 2290 9478",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_jumanova_pokiza_beginner"
-      ],
-      "classOrder": [
-        "cls_jumanova_pokiza_beginner"
-      ],
-      "inviteCode": "POKIZA07",
-      "login": "pokiza07",
-      "password": "pokiza2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_hayrullayev_arslon",
-      "name": "Arslon Hayrullayev",
-      "email": "arslon.hayrullayev@ethith.uz",
-      "subject": "Ingliz tili (Beginner)",
-      "hourlyRate": 95000,
-      "teachingHours": 0,
-      "card": "8600 2983 6185 5341",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_hayrullayev_arslon_beginner_1",
-        "cls_hayrullayev_arslon_beginner_2"
-      ],
-      "classOrder": [
-        "cls_hayrullayev_arslon_beginner_1",
-        "cls_hayrullayev_arslon_beginner_2"
-      ],
-      "inviteCode": "ARSLON64",
-      "login": "arslon64",
-      "password": "arslon2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_xudoyorova_sarvinoz",
-      "name": "Sarvinoz Xudoyorova",
-      "email": "sarvinoz.xudoyorova@ethith.uz",
-      "subject": "Ingliz tili (Intermediate / Standard)",
-      "hourlyRate": 100000,
-      "teachingHours": 0,
-      "card": "8600 2510 8636 7287",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_xudoyorova_sarvinoz_intermediate",
-        "cls_xudoyorova_sarvinoz_standard"
-      ],
-      "classOrder": [
-        "cls_xudoyorova_sarvinoz_intermediate",
-        "cls_xudoyorova_sarvinoz_standard"
-      ],
-      "inviteCode": "SARVINOZ82",
-      "login": "sarvinoz82",
-      "password": "sarvinoz2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_aliqulova_sevinch",
-      "name": "Sevinch Aliqulova",
-      "email": "sevinch.aliqulova@ethith.uz",
-      "subject": "Ingliz tili (Beginner)",
-      "hourlyRate": 95000,
-      "teachingHours": 0,
-      "card": "8600 9373 3768 6749",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_aliqulova_sevinch_beginner_1",
-        "cls_aliqulova_sevinch_beginner_2"
-      ],
-      "classOrder": [
-        "cls_aliqulova_sevinch_beginner_1",
-        "cls_aliqulova_sevinch_beginner_2"
-      ],
-      "inviteCode": "SEVINCH55",
-      "login": "sevinch55",
-      "password": "sevinch2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "monthlyBonus": 1000000,
-      "monthlySalary": 0,
-      "unpaidMonths": 0
-    },
-    {
-      "id": "t_xojamqulova_diyora",
-      "name": "Diyora Xo’jamqulova",
-      "email": "diyora.xojamqulova@ethith.uz",
-      "subject": "Ingliz tili (Beginner / Elementary)",
-      "hourlyRate": 100000,
-      "teachingHours": 0,
-      "card": "8600 7019 8442 4863",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_xojamqulova_diyora_beginner",
-        "cls_xojamqulova_diyora_elementary_1",
-        "cls_xojamqulova_diyora_elementary_2",
-        "cls_xojamqulova_diyora_elementary_3"
-      ],
-      "classOrder": [
-        "cls_xojamqulova_diyora_beginner",
-        "cls_xojamqulova_diyora_elementary_1",
-        "cls_xojamqulova_diyora_elementary_2",
-        "cls_xojamqulova_diyora_elementary_3"
-      ],
-      "inviteCode": "DIYORA21",
-      "login": "diyora21",
-      "password": "diyora2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_bosimbekov_farrux",
-      "name": "Farrux Bosimbekov",
-      "email": "farrux.bosimbekov@ethith.uz",
-      "subject": "Ingliz tili (Pre-Inter / Inter)",
-      "hourlyRate": 105000,
-      "teachingHours": 0,
-      "card": "8600 7883 1652 5691",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_bosimbekov_farrux_pre_intermediate_1",
-        "cls_bosimbekov_farrux_pre_intermediate_2",
-        "cls_bosimbekov_farrux_intermediate_1",
-        "cls_bosimbekov_farrux_intermediate_2"
-      ],
-      "classOrder": [
-        "cls_bosimbekov_farrux_pre_intermediate_1",
-        "cls_bosimbekov_farrux_pre_intermediate_2",
-        "cls_bosimbekov_farrux_intermediate_1",
-        "cls_bosimbekov_farrux_intermediate_2"
-      ],
-      "inviteCode": "FARRUX93",
-      "login": "farrux93",
-      "password": "farrux2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_ahmadova_barno",
-      "name": "Barno Ahmadova",
-      "email": "barno.ahmadova@ethith.uz",
-      "subject": "Ingliz tili (Elementary / Pre-Inter)",
-      "hourlyRate": 100000,
-      "teachingHours": 0,
-      "card": "8600 2725 8055 2896",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_ahmadova_barno_elementary_1",
-        "cls_ahmadova_barno_elementary_2",
-        "cls_ahmadova_barno_elementary_3",
-        "cls_ahmadova_barno_pre_intermediate"
-      ],
-      "classOrder": [
-        "cls_ahmadova_barno_elementary_1",
-        "cls_ahmadova_barno_elementary_2",
-        "cls_ahmadova_barno_elementary_3",
-        "cls_ahmadova_barno_pre_intermediate"
-      ],
-      "inviteCode": "BARNO36",
-      "login": "barno36",
-      "password": "barno2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "studentMonthlyFee": 300000,
-      "monthlySalary": 0,
-      "phone": "+998 90 ...",
-      "unpaidMonths": 0
-    },
-    {
-      "id": "t_shodiyor_matematika",
-      "name": "Shodiyor (matematika)",
-      "email": "shodiyor.matematika@ethith.uz",
-      "subject": "Matematika",
-      "hourlyRate": 110000,
-      "teachingHours": 0,
-      "card": "8600 5419 8367 2781",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_shodiyor_matematika_matematika"
-      ],
-      "classOrder": [
-        "cls_shodiyor_matematika_matematika"
-      ],
-      "inviteCode": "SHODIYOR50",
-      "login": "shodiyor50",
-      "password": "shodiyor2026",
-      "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
       "id": "t_urolov_azizbek",
       "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
@@ -149409,10 +149465,464 @@
       ],
       "login": "azizbek77",
       "password": "azizbek2026",
-      "salarySharePercent": 55,
+      "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "AZIZBEK77",
+      "unpaidMonths": 0,
+      "isOnline": true,
+      "hasLoggedIn": true,
+      "isLoggedOut": false
+    },
+    {
+      "id": "t_ravshanov_doniyor",
+      "name": "Ravshanov Doniyor",
+      "email": "doniyor.ravshanov@ethith.uz",
+      "subject": "Ingliz tili (CEFR Multi-Level)",
+      "hourlyRate": 110000,
+      "teachingHours": 0,
+      "card": "8600 1737 6773 7826",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_ravshanov_doniyor_cefr_1",
+        "cls_ravshanov_doniyor_cefr_2",
+        "cls_ravshanov_doniyor_cefr_3",
+        "cls_ravshanov_doniyor_cefr_4"
+      ],
+      "classOrder": [
+        "cls_ravshanov_doniyor_cefr_1",
+        "cls_ravshanov_doniyor_cefr_2",
+        "cls_ravshanov_doniyor_cefr_3",
+        "cls_ravshanov_doniyor_cefr_4"
+      ],
+      "login": "doniyor24",
+      "password": "doniyor2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "RAVSHANOV24",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_qarshiboyev_humoyun",
+      "name": "Qarshiboyev Humoyun",
+      "email": "humoyun.qarshiboyev@ethith.uz",
+      "subject": "Ingliz tili (Practice English)",
+      "hourlyRate": 95000,
+      "teachingHours": 0,
+      "card": "8600 9180 1074 6310",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_qarshiboyev_humoyun_practice"
+      ],
+      "classOrder": [
+        "cls_qarshiboyev_humoyun_practice"
+      ],
+      "login": "humoyun15",
+      "password": "humoyun2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "QARSHIBOYEV15",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_tovboyeva_marjona",
+      "name": "Marjona Tovboyeva",
+      "email": "marjona.tovboyeva@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 90000,
+      "teachingHours": 0,
+      "card": "8600 7570 9747 6845",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_tovboyeva_marjona_beginner"
+      ],
+      "classOrder": [
+        "cls_tovboyeva_marjona_beginner"
+      ],
+      "login": "marjona88",
+      "password": "marjona2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "MARJONA88",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_olimjonova_durdona",
+      "name": "Durdona Olimjonova",
+      "email": "durdona.olimjonova@ethith.uz",
+      "subject": "Ingliz tili (Beginner / Inter)",
+      "hourlyRate": 100000,
+      "teachingHours": 0,
+      "card": "8600 5388 3997 7659",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_olimjonova_durdona_beginner",
+        "cls_olimjonova_durdona_pre_intermediate",
+        "cls_olimjonova_durdona_intermediate_1",
+        "cls_olimjonova_durdona_intermediate_2"
+      ],
+      "classOrder": [
+        "cls_olimjonova_durdona_beginner",
+        "cls_olimjonova_durdona_pre_intermediate",
+        "cls_olimjonova_durdona_intermediate_1",
+        "cls_olimjonova_durdona_intermediate_2"
+      ],
+      "login": "durdona12",
+      "password": "durdona2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "DURDONA12",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_tagaev_eldor",
+      "name": "Eldor Tagaev",
+      "email": "eldor.tagaev@ethith.uz",
+      "subject": "Ingliz tili (General English)",
+      "hourlyRate": 100000,
+      "teachingHours": 0,
+      "card": "8600 9836 2231 3521",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_tagaev_eldor_beginner",
+        "cls_tagaev_eldor_elementary",
+        "cls_tagaev_eldor_pre_intermediate_1",
+        "cls_tagaev_eldor_pre_intermediate_2"
+      ],
+      "classOrder": [
+        "cls_tagaev_eldor_beginner",
+        "cls_tagaev_eldor_elementary",
+        "cls_tagaev_eldor_pre_intermediate_1",
+        "cls_tagaev_eldor_pre_intermediate_2"
+      ],
+      "login": "eldor33",
+      "password": "eldor2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "ELDOR33",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_yaxshilikova_kamola",
+      "name": "Kamola Yaxshilikova",
+      "email": "kamola.yaxshilikova@ethith.uz",
+      "subject": "Ingliz tili (Beginner / Elementary)",
+      "hourlyRate": 95000,
+      "teachingHours": 0,
+      "card": "8600 3037 8661 9611",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_yaxshilikova_kamola_beginner",
+        "cls_yaxshilikova_kamola_elementary"
+      ],
+      "classOrder": [
+        "cls_yaxshilikova_kamola_beginner",
+        "cls_yaxshilikova_kamola_elementary"
+      ],
+      "login": "kamola45",
+      "password": "kamola2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "KAMOLA45",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_sherqoziyeva_iroda",
+      "name": "Iroda Sherqoziyeva",
+      "email": "iroda.sherqoziyeva@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 95000,
+      "teachingHours": 0,
+      "card": "8600 8200 8823 6053",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_sherqoziyeva_iroda_beginner_1",
+        "cls_sherqoziyeva_iroda_beginner_2"
+      ],
+      "classOrder": [
+        "cls_sherqoziyeva_iroda_beginner_1",
+        "cls_sherqoziyeva_iroda_beginner_2"
+      ],
+      "login": "iroda19",
+      "password": "iroda2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "IRODA19",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_aborbekov_elyor",
+      "name": "Elyor Aborbekov",
+      "email": "elyor.aborbekov@ethith.uz",
+      "subject": "Ingliz tili (Pre / Inter / Upper)",
+      "hourlyRate": 110000,
+      "teachingHours": 0,
+      "card": "8600 4747 3927 9285",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_aborbekov_elyor_pre_intermediate_1",
+        "cls_aborbekov_elyor_pre_intermediate_2",
+        "cls_aborbekov_elyor_intermediate_1",
+        "cls_aborbekov_elyor_intermediate_2",
+        "cls_aborbekov_elyor_upper_intermediate"
+      ],
+      "classOrder": [
+        "cls_aborbekov_elyor_pre_intermediate_1",
+        "cls_aborbekov_elyor_pre_intermediate_2",
+        "cls_aborbekov_elyor_intermediate_1",
+        "cls_aborbekov_elyor_intermediate_2",
+        "cls_aborbekov_elyor_upper_intermediate"
+      ],
+      "login": "elyor70",
+      "password": "elyor2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "ELYOR70",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_orinboyev_jaloliddin",
+      "name": "Jaloliddin O’rinboyev",
+      "email": "jaloliddin.orinboyev@ethith.uz",
+      "subject": "Ingliz tili (Pre / Inter / Standard)",
+      "hourlyRate": 105000,
+      "teachingHours": 0,
+      "card": "8600 3286 1441 8063",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_orinboyev_jaloliddin_pre_intermediate",
+        "cls_orinboyev_jaloliddin_intermediate",
+        "cls_orinboyev_jaloliddin_standard_1",
+        "cls_orinboyev_jaloliddin_standard_2"
+      ],
+      "classOrder": [
+        "cls_orinboyev_jaloliddin_pre_intermediate",
+        "cls_orinboyev_jaloliddin_intermediate",
+        "cls_orinboyev_jaloliddin_standard_1",
+        "cls_orinboyev_jaloliddin_standard_2"
+      ],
+      "login": "jaloliddin99",
+      "password": "jaloliddin2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "JALOLIDDIN99",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_jumanova_pokiza",
+      "name": "Pokiza Jumanova",
+      "email": "pokiza.jumanova@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 90000,
+      "teachingHours": 0,
+      "card": "8600 4814 2290 9478",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_jumanova_pokiza_beginner"
+      ],
+      "classOrder": [
+        "cls_jumanova_pokiza_beginner"
+      ],
+      "login": "pokiza07",
+      "password": "pokiza2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "POKIZA07",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_hayrullayev_arslon",
+      "name": "Arslon Hayrullayev",
+      "email": "arslon.hayrullayev@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 95000,
+      "teachingHours": 0,
+      "card": "8600 2983 6185 5341",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_hayrullayev_arslon_beginner_1",
+        "cls_hayrullayev_arslon_beginner_2"
+      ],
+      "classOrder": [
+        "cls_hayrullayev_arslon_beginner_1",
+        "cls_hayrullayev_arslon_beginner_2"
+      ],
+      "login": "arslon64",
+      "password": "arslon2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "ARSLON64",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_xudoyorova_sarvinoz",
+      "name": "Sarvinoz Xudoyorova",
+      "email": "sarvinoz.xudoyorova@ethith.uz",
+      "subject": "Ingliz tili (Intermediate / Standard)",
+      "hourlyRate": 100000,
+      "teachingHours": 0,
+      "card": "8600 2510 8636 7287",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_xudoyorova_sarvinoz_intermediate",
+        "cls_xudoyorova_sarvinoz_standard"
+      ],
+      "classOrder": [
+        "cls_xudoyorova_sarvinoz_intermediate",
+        "cls_xudoyorova_sarvinoz_standard"
+      ],
+      "login": "sarvinoz82",
+      "password": "sarvinoz2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "SARVINOZ82",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_aliqulova_sevinch",
+      "name": "Sevinch Aliqulova",
+      "email": "sevinch.aliqulova@ethith.uz",
+      "subject": "Ingliz tili (Beginner)",
+      "hourlyRate": 95000,
+      "teachingHours": 0,
+      "card": "8600 9373 3768 6749",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_aliqulova_sevinch_beginner_1",
+        "cls_aliqulova_sevinch_beginner_2"
+      ],
+      "classOrder": [
+        "cls_aliqulova_sevinch_beginner_1",
+        "cls_aliqulova_sevinch_beginner_2"
+      ],
+      "login": "sevinch55",
+      "password": "sevinch2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "SEVINCH55",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_xojamqulova_diyora",
+      "name": "Diyora Xo’jamqulova",
+      "email": "diyora.xojamqulova@ethith.uz",
+      "subject": "Ingliz tili (Beginner / Elementary)",
+      "hourlyRate": 100000,
+      "teachingHours": 0,
+      "card": "8600 7019 8442 4863",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_xojamqulova_diyora_beginner",
+        "cls_xojamqulova_diyora_elementary_1",
+        "cls_xojamqulova_diyora_elementary_2",
+        "cls_xojamqulova_diyora_elementary_3"
+      ],
+      "classOrder": [
+        "cls_xojamqulova_diyora_beginner",
+        "cls_xojamqulova_diyora_elementary_1",
+        "cls_xojamqulova_diyora_elementary_2",
+        "cls_xojamqulova_diyora_elementary_3"
+      ],
+      "login": "diyora21",
+      "password": "diyora2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "DIYORA21",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_bosimbekov_farrux",
+      "name": "Farrux Bosimbekov",
+      "email": "farrux.bosimbekov@ethith.uz",
+      "subject": "Ingliz tili (Pre-Inter / Inter)",
+      "hourlyRate": 105000,
+      "teachingHours": 0,
+      "card": "8600 7883 1652 5691",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_bosimbekov_farrux_pre_intermediate_1",
+        "cls_bosimbekov_farrux_pre_intermediate_2",
+        "cls_bosimbekov_farrux_intermediate_1",
+        "cls_bosimbekov_farrux_intermediate_2"
+      ],
+      "classOrder": [
+        "cls_bosimbekov_farrux_pre_intermediate_1",
+        "cls_bosimbekov_farrux_pre_intermediate_2",
+        "cls_bosimbekov_farrux_intermediate_1",
+        "cls_bosimbekov_farrux_intermediate_2"
+      ],
+      "login": "farrux93",
+      "password": "farrux2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "FARRUX93",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_ahmadova_barno",
+      "name": "Barno Ahmadova",
+      "email": "barno.ahmadova@ethith.uz",
+      "subject": "Ingliz tili (Elementary / Pre-Inter)",
+      "hourlyRate": 100000,
+      "teachingHours": 0,
+      "card": "8600 2725 8055 2896",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_ahmadova_barno_elementary_1",
+        "cls_ahmadova_barno_elementary_2",
+        "cls_ahmadova_barno_elementary_3",
+        "cls_ahmadova_barno_pre_intermediate"
+      ],
+      "classOrder": [
+        "cls_ahmadova_barno_elementary_1",
+        "cls_ahmadova_barno_elementary_2",
+        "cls_ahmadova_barno_elementary_3",
+        "cls_ahmadova_barno_pre_intermediate"
+      ],
+      "login": "barno36",
+      "password": "barno2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "BARNO36",
+      "unpaidMonths": 0
+    },
+    {
+      "id": "t_shodiyor_matematika",
+      "name": "Shodiyor (matematika)",
+      "email": "shodiyor.matematika@ethith.uz",
+      "subject": "Matematika",
+      "hourlyRate": 110000,
+      "teachingHours": 0,
+      "card": "8600 5419 8367 2781",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_shodiyor_matematika_matematika"
+      ],
+      "classOrder": [
+        "cls_shodiyor_matematika_matematika"
+      ],
+      "login": "shodiyor50",
+      "password": "shodiyor2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "SHODIYOR50",
       "unpaidMonths": 0
     },
     {
@@ -149448,19 +149958,39 @@
         "id": "f_root",
         "name": "Bosh Papka",
         "parentId": null,
-        "createdAt": 1793024168370
+        "createdAt": 1793103482475
       },
       {
         "id": "f_grammar",
         "name": "Grammar Mastery",
         "parentId": "f_root",
-        "createdAt": 1793024168370
+        "createdAt": 1793103482475
+      },
+      {
+        "id": "f_vocab",
+        "name": "Vocabulary Builder",
+        "parentId": "f_root",
+        "createdAt": 1793103482475
       },
       {
         "id": "f_ielts",
         "name": "IELTS Mock Tests",
         "parentId": "f_root",
-        "createdAt": 1793024168370
+        "createdAt": 1793103482475
+      },
+      {
+        "id": "f_root_t_urolov_azizbek",
+        "name": "Azizbek Urolov (Shaxsiy Papka)",
+        "ownerId": "t_urolov_azizbek",
+        "parentId": null,
+        "createdAt": 1793465627342
+      },
+      {
+        "id": "f_root_admin_official_teacher",
+        "name": "Ustoz (Shaxsiy Papka)",
+        "ownerId": "admin_official_teacher",
+        "parentId": null,
+        "createdAt": 1793468183930
       },
       {
         "id": "f_1793028050497",
@@ -149489,19 +150019,6 @@
         "ownerRole": "teacher",
         "ownerId": "teacher_1793431051291",
         "isSystem": true
-      },
-      {
-        "id": "f_vocab",
-        "name": "Vocabulary Builder",
-        "parentId": "f_root",
-        "createdAt": 1792940000000
-      },
-      {
-        "id": "f_root_t_urolov_azizbek",
-        "name": "Azizbek Urolov (Shaxsiy Papka)",
-        "ownerId": "t_urolov_azizbek",
-        "parentId": null,
-        "createdAt": 1793202631415
       },
       {
         "id": "f_root_t_ravshanov_doniyor",
@@ -149623,13 +150140,6 @@
         "createdAt": 1793202631415
       },
       {
-        "id": "f_root_admin_official_teacher",
-        "name": "Ustoz (Shaxsiy Papka)",
-        "ownerId": "admin_official_teacher",
-        "parentId": null,
-        "createdAt": 1793468183930
-      },
-      {
         "id": "f_1793596846702",
         "name": "fvc",
         "parentId": "f_root_t_urolov_azizbek",
@@ -149651,7 +150161,7 @@
         "title": "Unit 7: Modals of Deduction & Obligation",
         "folderId": "f_grammar",
         "authorName": "Ustoz",
-        "createdAt": 1793024168370,
+        "createdAt": 1793103482475,
         "maxAttempts": 1,
         "questions": [
           {
@@ -149711,7 +150221,7 @@
         "title": "Unit 8: Compound Adjectives & Participle Clauses",
         "folderId": "f_vocab",
         "authorName": "Zizi Ustoz",
-        "createdAt": 1793386368518,
+        "createdAt": 1793103482475,
         "maxAttempts": 1,
         "questions": [
           {
@@ -149753,6 +150263,54 @@
               "open-minded"
             ],
             "correct": 0
+          }
+        ]
+      },
+      {
+        "id": "tst_1793469838525",
+        "title": "Haftalik Onlayn Musobaqa",
+        "code": "QZ-Q3E#AHE",
+        "type": "standard_quiz",
+        "folderId": "f_root",
+        "createdAt": 1793469838525,
+        "authorId": "admin_official_teacher",
+        "authorName": "Ustoz",
+        "authorEmail": "azizbek.urolov@ethith.uz",
+        "maxAttempts": 1,
+        "questions": [
+          {
+            "id": "q_1793469833770_d3yc",
+            "type": "mcq",
+            "question": "asd",
+            "options": [
+              "sad",
+              "asd",
+              "asd",
+              "asdasd"
+            ],
+            "correctAnswers": [
+              0
+            ],
+            "correctAnswer": 0,
+            "points": 1,
+            "timeSec": 30
+          },
+          {
+            "id": "q_1793469837962_n7zt",
+            "type": "mcq",
+            "question": "asd",
+            "options": [
+              "asd",
+              "asd",
+              "asdas",
+              "d"
+            ],
+            "correctAnswers": [
+              0
+            ],
+            "correctAnswer": 0,
+            "points": 1,
+            "timeSec": 30
           }
         ]
       },
@@ -149814,54 +150372,6 @@
               "have we arrived"
             ],
             "correct": 0
-          }
-        ]
-      },
-      {
-        "id": "tst_1793469838525",
-        "title": "Haftalik Onlayn Musobaqa",
-        "code": "QZ-Q3E#AHE",
-        "type": "standard_quiz",
-        "folderId": "f_root",
-        "createdAt": 1793469838525,
-        "authorId": "admin_official_teacher",
-        "authorName": "Ustoz",
-        "authorEmail": "azizbek.urolov@ethith.uz",
-        "maxAttempts": 1,
-        "questions": [
-          {
-            "id": "q_1793469833770_d3yc",
-            "type": "mcq",
-            "question": "asd",
-            "options": [
-              "sad",
-              "asd",
-              "asd",
-              "asdasd"
-            ],
-            "correctAnswers": [
-              0
-            ],
-            "correctAnswer": 0,
-            "points": 1,
-            "timeSec": 30
-          },
-          {
-            "id": "q_1793469837962_n7zt",
-            "type": "mcq",
-            "question": "asd",
-            "options": [
-              "asd",
-              "asd",
-              "asdas",
-              "d"
-            ],
-            "correctAnswers": [
-              0
-            ],
-            "correctAnswer": 0,
-            "points": 1,
-            "timeSec": 30
           }
         ]
       },
@@ -150280,7 +150790,7 @@
       "authorName": "Azizbek Urolov",
       "authorEmail": "teacher@ethith.uz",
       "startDate": 1793721166177,
-      "endDate": 1794325966177,
+      "endDate": 1793862992637,
       "participants": {
         "std_azimjon_848_toirov": {
           "id": "std_azimjon_848_toirov",
@@ -150299,17 +150809,17 @@
       "std_1": {
         "status": "paid",
         "baseAmount": 200000,
-        "offsetAmount": 200081,
-        "paidAmount": 200081,
-        "paidAt": 1793024274243,
-        "verifiedBy": "admin_manual"
+        "offsetAmount": 200014,
+        "paidAmount": 200014,
+        "paidAt": 1792844282475,
+        "verifiedBy": "auto_offset"
       },
       "std_2": {
         "status": "paid",
         "baseAmount": 200000,
         "offsetAmount": 200028,
         "paidAmount": 200028,
-        "paidAt": 1792851368370,
+        "paidAt": 1792930682475,
         "verifiedBy": "auto_offset"
       },
       "std_3": {
@@ -150323,7 +150833,7 @@
         "baseAmount": 200000,
         "offsetAmount": 200056,
         "paidAmount": 200056,
-        "paidAt": 1792937768370,
+        "paidAt": 1793017082475,
         "verifiedBy": "auto_offset"
       },
       "std_5": {
@@ -150332,7 +150842,7 @@
         "offsetAmount": 200070,
         "paidAmount": 200070,
         "receiptUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>",
-        "paidAt": 1793016968370
+        "paidAt": 1793096282475
       }
     }
   },
@@ -150436,8 +150946,8 @@
       "authorName": "Azizbek Urolov",
       "authorRole": "teacher",
       "createdAt": 1793874172938,
-      "updatedAt": "2026-11-05 15:22",
-      "updatedTs": 1793874172938,
+      "updatedAt": "2026-11-05 15:23",
+      "updatedTs": 1793874181866,
       "data": [
         {
           "name": "Sheet1",
@@ -150449,7 +150959,80 @@
           "column": 500,
           "defaultRowHeight": 20,
           "defaultColWidth": 73,
-          "celldata": [],
+          "celldata": [
+            {
+              "r": 0,
+              "c": 0,
+              "v": {
+                "m": "sdfsd",
+                "ct": {
+                  "fa": "General",
+                  "t": "g"
+                },
+                "v": "sdfsd"
+              }
+            },
+            {
+              "r": 1,
+              "c": 0,
+              "v": {
+                "m": "fsdfsdf",
+                "ct": {
+                  "fa": "General",
+                  "t": "g"
+                },
+                "v": "fsdfsdf"
+              }
+            },
+            {
+              "r": 2,
+              "c": 0,
+              "v": {
+                "m": "sdfsd",
+                "ct": {
+                  "fa": "General",
+                  "t": "g"
+                },
+                "v": "sdfsd"
+              }
+            },
+            {
+              "r": 3,
+              "c": 0,
+              "v": {
+                "m": "fsd",
+                "ct": {
+                  "fa": "General",
+                  "t": "g"
+                },
+                "v": "fsd"
+              }
+            },
+            {
+              "r": 4,
+              "c": 0,
+              "v": {
+                "m": "fsdf",
+                "ct": {
+                  "fa": "General",
+                  "t": "g"
+                },
+                "v": "fsdf"
+              }
+            },
+            {
+              "r": 5,
+              "c": 0,
+              "v": {
+                "m": "sdfsdf",
+                "ct": {
+                  "fa": "General",
+                  "t": "g"
+                },
+                "v": "sdfsdf"
+              }
+            }
+          ],
           "config": {}
         }
       ]
@@ -150462,5 +151045,5 @@
     "sheet_1793871594553_d45q17",
     "sheet_1793872482922_2l7j8q"
   ],
-  "updatedAt": 1793874176198
+  "updatedAt": 1793874182472
 }
