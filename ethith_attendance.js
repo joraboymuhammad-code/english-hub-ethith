@@ -1337,6 +1337,63 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     return true;
   }
 
+  function getGroupLevelTestInfo(cls) {
+    if (!cls) return { remainingDays: 90, totalDaysElapsed: 0, dateKey: '', displayDate: '', isSoon: false, isToday: false };
+    var lMonths = Number(cls.learningMonths) || 0;
+    var lDays = Number(cls.learningDays) || 0;
+    try {
+      var durStr = localStorage.getItem('ethith_class_duration_' + cls.id);
+      if (durStr) {
+        var durObj = JSON.parse(durStr);
+        if (durObj && durObj.learningMonths !== undefined) {
+          lMonths = Number(durObj.learningMonths) || 0;
+          lDays = Number(durObj.learningDays) || 0;
+        }
+      }
+    } catch(e) {}
+
+    var totalDaysElapsed = (lMonths * 30) + lDays;
+    var remainingDays = Math.max(0, 90 - totalDaysElapsed);
+    var isSoon = (remainingDays <= 7);
+
+    var today = getUniversalToday();
+    today.setHours(0, 0, 0, 0);
+
+    var dateKey = '';
+    var dateObj = null;
+    if (cls.levelTestDate) {
+      dateKey = cls.levelTestDate;
+      var parts = dateKey.split('-');
+      if (parts.length === 3) {
+        dateObj = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+      }
+    }
+
+    if (!dateObj || isNaN(dateObj.getTime())) {
+      dateObj = new Date(today.getTime() + (remainingDays * 86400000));
+      if (dateObj.getDay() === 0) {
+        dateObj.setDate(dateObj.getDate() + 1);
+      }
+      dateKey = formatDateKey(dateObj);
+    }
+
+    var displayDate = formatDisplayDate(dateObj);
+    var todayKey = formatDateKey(today);
+
+    return {
+      lMonths: lMonths,
+      lDays: lDays,
+      totalDaysElapsed: totalDaysElapsed,
+      remainingDays: remainingDays,
+      dateKey: dateKey,
+      dateObj: dateObj,
+      displayDate: displayDate,
+      isSoon: isSoon,
+      isToday: (dateKey === todayKey) || (remainingDays === 0)
+    };
+  }
+  EA.getGroupLevelTestInfo = getGroupLevelTestInfo;
+
   function getJournalDates(cls, viewMode) {
     var schedule = cls.schedule || 'har_kuni';
     var today = getUniversalToday();
@@ -1856,22 +1913,11 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         // Group Duration & 90-Day Level Test Countdown
         var lMonths = Number(cls.learningMonths) || 0;
         var lDays = Number(cls.learningDays) || 0;
-        try {
-          var durStr = localStorage.getItem('ethith_class_duration_' + cls.id);
-          if (durStr) {
-            var durObj = JSON.parse(durStr);
-            if (durObj && durObj.learningMonths !== undefined) {
-              lMonths = Number(durObj.learningMonths) || 0;
-              lDays = Number(durObj.learningDays) || 0;
-              cls.learningMonths = lMonths;
-              cls.learningDays = lDays;
-            }
-          }
-        } catch(e) {}
-        var totalDaysElapsed = (lMonths * 30) + lDays;
-        var remainingDays = Math.max(0, 90 - totalDaysElapsed);
+        var ltInfo = getGroupLevelTestInfo(cls);
+        var totalDaysElapsed = ltInfo.totalDaysElapsed;
+        var remainingDays = ltInfo.remainingDays;
         var testsCompleted = Math.min(24, Math.max(0, Math.round((totalDaysElapsed / 90) * 24)));
-        var isSoonLevelTest = (remainingDays <= 7);
+        var isSoonLevelTest = ltInfo.isSoon;
 
         var paidInGroup = (cls.students || []).filter(function(st) {
           var stId = st.id || st.email;
@@ -1880,19 +1926,23 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
         var yellowWarningBanner = isSoonLevelTest
           ? ('<div class="ea-yellow-neon-alert" style="background:linear-gradient(135deg,rgba(234,179,8,0.25),rgba(250,204,21,0.15));border:1.5px solid #facc15;color:#fef08a;font-weight:900;font-size:12px;padding:7px 12px;border-radius:12px;text-shadow:0 0 8px #facc15;box-shadow:0 0 16px rgba(250,204,21,0.45);display:flex;align-items:center;gap:6px;margin-bottom:12px;">' +
-              '<span>⚡</span> <span>Level testlar tez kunda! (Qoldi: <b style="color:#fff;">' + remainingDays + ' kun</b>)</span>' +
+              '<span>⚡</span> <span>Level test imtihon kuni: <b style="color:#fff;">' + ltInfo.displayDate + '</b> (Qoldi: <b style="color:#fff;">' + remainingDays + ' kun</b>)</span>' +
             '</div>')
           : '';
 
         var durationHtml = '<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:8px 12px;margin-bottom:14px;font-size:12px;">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">' +
             '<span style="color:#94a3b8;font-weight:700;">⏱️ O‘qish davri:</span>' +
-            '<span style="color:#38bdf8;font-weight:900;">' + (lMonths > 0 ? (lMonths + ' oy ') : '') + lDays + ' kun</span>' +
+            '<span style="color:#38bdf8;font-weight:900;">' + (ltInfo.lMonths > 0 ? (ltInfo.lMonths + ' oy ') : '') + ltInfo.lDays + ' kun</span>' +
             (isAdmin ? ('<button type="button" class="ea-btn-edit-duration" data-cid="' + esc(cls.id) + '" title="Guruh o‘qish muddatini belgilash" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.4);color:#38bdf8;border-radius:6px;padding:2px 7px;font-size:10.5px;font-weight:800;cursor:pointer;">✏️ Muddat</button>') : '') +
           '</div>' +
-          '<div style="display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:#cbd5e1;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:#cbd5e1;margin-bottom:4px;">' +
             '<span>O‘tilgan testlar: <b style="color:#34d399;">' + testsCompleted + ' / 24 ta</b></span>' +
-            '<span>Level testgacha: <b style="color:' + (isSoonLevelTest ? '#facc15;text-shadow:0 0 6px #facc15;' : '#38bdf8;') + '">' + remainingDays + ' kun</b></span>' +
+            '<span>Imtihongacha: <b style="color:' + (isSoonLevelTest ? '#facc15;text-shadow:0 0 6px #facc15;' : '#38bdf8;') + '">' + (remainingDays === 0 ? 'Bugun!' : (remainingDays + ' kun qoldi')) + '</b></span>' +
+          '</div>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:#cbd5e1;border-top:1px dashed rgba(255,255,255,0.08);padding-top:4px;">' +
+            '<span style="color:#94a3b8;">🎯 Level Test kuni:</span>' +
+            '<b style="color:#facc15;">' + ltInfo.displayDate + '</b>' +
           '</div>' +
         '</div>';
 
@@ -3435,6 +3485,13 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       h += '<span class="qe-glass-pill" style="color:#cbd5e1;border-radius:12px;padding:8px 14px;font-size:12.5px;font-weight:800;">👁 O\'quvchi rejimi (Baholar vazifa bajarilgach avtomatik qo\'yiladi)</span>';
     }
 
+    var ltHeaderInfo = getGroupLevelTestInfo(cls);
+    h += '<div style="background:rgba(56,189,248,0.12);border:1.5px solid rgba(56,189,248,0.35);border-radius:12px;padding:8px 14px;font-size:12.5px;font-weight:800;color:#cbd5e1;display:inline-flex;align-items:center;gap:6px;">' +
+      '<span>🎯 Level Test Imtihon Kuni:</span>' +
+      '<b style="color:#38bdf8;">' + ltHeaderInfo.displayDate + '</b>' +
+      '<span style="color:' + (ltHeaderInfo.isSoon ? '#facc15' : '#94a3b8') + ';">(' + (ltHeaderInfo.remainingDays === 0 ? 'Bugun!' : (ltHeaderInfo.remainingDays + ' kun qoldi')) + ')</span>' +
+    '</div>';
+
     h += '</div>';
 
     // Right Action: Parent SMS Button + Authentic Green PIIMA Excel Export Button ("Yuklab olish")
@@ -3568,12 +3625,8 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           ? 'rgba(56, 189, 248, 0.16)'
           : (isFuture ? 'rgba(52, 211, 153, 0.09)' : 'rgba(15, 23, 42, 0.62)'));
 
-      var lMonths = Number(cls.learningMonths) || 0;
-      var lDays = Number(cls.learningDays) || 0;
-      var totalDaysElapsed = (lMonths * 30) + lDays;
-      var remainingDays = Math.max(0, 90 - totalDaysElapsed);
-      var isSoonLevelTest = (remainingDays <= 7) || (cls.levelTestResults && Object.keys(cls.levelTestResults).length > 0);
-      var isLevelTestCol = (dIdx === dates.length - 1) && isSoonLevelTest;
+      var ltInfo = getGroupLevelTestInfo(cls);
+      var isLevelTestCol = (dKey === ltInfo.dateKey) || (ltInfo.remainingDays === 0 && dKey === todayKey);
 
       var cardBorder = isHoliday
         ? 'rgba(251, 113, 133, 0.5)'
@@ -3599,9 +3652,9 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
       h += '<th style="width:136px;min-width:136px;padding:8px 6px;border-bottom:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.06);">' +
         '<div class="ea-date-header-card" data-date="' + dKey + '" data-sunday="' + (isSunday ? '1' : '0') + '" ' +
-          'title="' + (isSunday ? 'Yakshanba - Dam olish kuni' : (isLevelTestCol ? '3 Oylik Level Test Imtihoni — Bosib ochish' : (isTeacher ? '1 marta bosish: Qizil Dam olish kuni qilish / qaytarish' : dDisp))) + '" ' +
-          'style="height:115px;border-radius:12px;border:1.5px solid ' + (isLevelTestCol ? '#10b981' : cardBorder) + ';background:' + (isLevelTestCol ? 'linear-gradient(180deg,rgba(16,185,129,0.22),rgba(15,23,42,0.92))' : cardBg) + ';box-shadow:' + (isLevelTestCol ? '0 0 20px rgba(16,185,129,0.4)' : cardShadow) + ';display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;cursor:' + ((isTeacher || isLevelTestCol) && !isSunday ? 'pointer' : 'default') + ';transition:all 0.2s;">' +
-          (isLevelTestCol ? '<div class="ea-level-test-pill" data-date="' + dKey + '" title="3 Oylik Level Test Imtihoni — Bosib natijalarni ko‘ring" style="position:absolute;top:0;left:0;right:0;background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;font-size:9.5px;font-weight:900;text-align:center;padding:2px 0;letter-spacing:0.5px;box-shadow:0 0 12px rgba(16,185,129,0.85);cursor:pointer;z-index:10;">🟢 LEVEL TEST</div>' : '') +
+          'title="' + (isSunday ? 'Yakshanba - Dam olish kuni' : (isLevelTestCol ? (isTeacher ? '3 Oylik Level Test Imtihoni — Bosib ballarni kiriting' : '3 Oylik Level Test Imtihon Kuni: ' + dDisp) : (isTeacher ? '1 marta bosish: Qizil Dam olish kuni qilish / qaytarish' : dDisp))) + '" ' +
+          'style="height:115px;border-radius:12px;border:1.5px solid ' + (isLevelTestCol ? '#10b981' : cardBorder) + ';background:' + (isLevelTestCol ? 'linear-gradient(180deg,rgba(16,185,129,0.22),rgba(15,23,42,0.92))' : cardBg) + ';box-shadow:' + (isLevelTestCol ? '0 0 20px rgba(16,185,129,0.4)' : cardShadow) + ';display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;cursor:' + ((isTeacher || (isLevelTestCol && isTeacher)) && !isSunday ? 'pointer' : 'default') + ';transition:all 0.2s;">' +
+          (isLevelTestCol ? '<div class="ea-level-test-pill' + (isTeacher ? ' is-clickable' : '') + '" data-date="' + dKey + '" title="' + (isTeacher ? '3 Oylik Level Test Imtihoni — Bosib ballarni kiriting' : '3 Oylik Level Test Imtihon Kuni') + '" style="position:absolute;top:0;left:0;right:0;background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;font-size:9.5px;font-weight:900;text-align:center;padding:2px 0;letter-spacing:0.5px;box-shadow:0 0 12px rgba(16,185,129,0.85);cursor:' + (isTeacher ? 'pointer' : 'default') + ';z-index:10;">🟢 LEVEL TEST</div>' : '') +
           (isTeacher && !isSunday ?
             '<div class="ea-date-opts-btn" data-date="' + dKey + '" data-disp="' + dDisp + '" title="Sana sozlamasi va Uy vazifasi belgilash" style="position:absolute;top:4px;right:5px;cursor:pointer;color:#94a3b8;font-size:15px;font-weight:900;line-height:1;z-index:5;padding:2px 5px;border-radius:6px;background:rgba(255,255,255,0.06);">' +
               '⋮' +
@@ -3706,12 +3759,8 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           var isSunday = (dt.getDay() === 0);
           var isHoliday = isSunday || (cls.attendance.holidays && cls.attendance.holidays[dKey] === true);
 
-          var lMonths = Number(cls.learningMonths) || 0;
-          var lDays = Number(cls.learningDays) || 0;
-          var totalDaysElapsed = (lMonths * 30) + lDays;
-          var remainingDays = Math.max(0, 90 - totalDaysElapsed);
-          var isSoonLevelTest = (remainingDays <= 7) || (cls.levelTestResults && Object.keys(cls.levelTestResults).length > 0);
-          var isLevelTestCol = (dIdx === dates.length - 1) && isSoonLevelTest;
+          var ltInfo = getGroupLevelTestInfo(cls);
+          var isLevelTestCol = (dKey === ltInfo.dateKey) || (ltInfo.remainingDays === 0 && dKey === todayKey);
 
           var rec = (cls.attendance.records[dKey] && cls.attendance.records[dKey][stId]) || {};
           var status = rec.status || '';
@@ -3731,12 +3780,12 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
               var isPassed = hasLtScore ? (ltRes.passed === true) : (rec.passed === true);
               dText = displayScore; // Raw score, NOT percentage!
               if (isPassed) {
-                dBoxStyle += 'background:rgba(16,185,129,0.28);color:#34d399;border:1.5px solid #10b981;cursor:pointer;box-shadow:0 0 16px rgba(16,185,129,0.45);text-shadow:0 0 8px rgba(52,211,153,0.6);font-weight:900;';
+                dBoxStyle += 'background:rgba(16,185,129,0.28);color:#34d399;border:1.5px solid #10b981;cursor:' + (isTeacher ? 'pointer' : 'default') + ';box-shadow:0 0 16px rgba(16,185,129,0.45);text-shadow:0 0 8px rgba(52,211,153,0.6);font-weight:900;';
               } else {
-                dBoxStyle += 'background:rgba(239,68,68,0.28);color:#f87171;border:1.5px solid #ef4444;cursor:pointer;box-shadow:0 0 16px rgba(239,68,68,0.45);text-shadow:0 0 8px rgba(248,113,113,0.6);font-weight:900;';
+                dBoxStyle += 'background:rgba(239,68,68,0.28);color:#f87171;border:1.5px solid #ef4444;cursor:' + (isTeacher ? 'pointer' : 'default') + ';box-shadow:0 0 16px rgba(239,68,68,0.45);text-shadow:0 0 8px rgba(248,113,113,0.6);font-weight:900;';
               }
             } else {
-              dBoxStyle += 'background:rgba(16,185,129,0.12);color:#34d399;border:1px dashed rgba(16,185,129,0.5);cursor:pointer;';
+              dBoxStyle += 'background:rgba(16,185,129,0.12);color:#34d399;border:1px dashed rgba(16,185,129,0.5);cursor:' + (isTeacher ? 'pointer' : 'default') + ';';
               dText = '';
             }
           } else if (isHoliday) {
@@ -3768,12 +3817,12 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
               var bColor = isPassed ? '#34d399' : '#f87171';
               var bBg = isPassed ? 'rgba(16,185,129,0.2)' : 'rgba(239,68,68,0.2)';
               var bBorder = isPassed ? '#10b981' : '#ef4444';
-              bBoxStyle += 'background:' + bBg + ';color:' + bColor + ';border:1px solid ' + bBorder + ';font-size:11px;cursor:pointer;';
+              bBoxStyle += 'background:' + bBg + ';color:' + bColor + ';border:1px solid ' + bBorder + ';font-size:11px;cursor:' + (isTeacher ? 'pointer' : 'default') + ';';
               bTitle = '3 Oylik Level Test: ' + (hasLtScore ? ltRes.score : rec.score) + ' ball (' + (isPassed ? "Keyingi levelga o'tdi" : "Yiqildi") + ')';
             } else {
-              bBoxStyle += 'background:rgba(15,23,42,0.55);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);font-size:11px;cursor:pointer;';
-              bText = 'Test';
-              bTitle = "3 Oylik Level Test imtihoni — Bosib ballarni kiriting";
+              bBoxStyle += 'background:rgba(15,23,42,0.55);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);font-size:11px;cursor:' + (isTeacher ? 'pointer' : 'default') + ';';
+              bText = isTeacher ? 'Test' : '—';
+              bTitle = isTeacher ? "3 Oylik Level Test imtihoni — Bosib ballarni kiriting" : "3 Oylik Level Test natijasi kutilmoqda";
             }
           } else if (isHoliday) {
             bBoxStyle += 'background:rgba(244,63,94,0.14);border:1px solid rgba(251,113,133,0.35);color:#fb7185;';
@@ -3814,18 +3863,18 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           }
 
           var dTitle = isLtCell
-            ? '3 Oylik Level Test ballari (Bosib ochish)'
+            ? (isTeacher ? '3 Oylik Level Test ballari (Bosib ochish)' : '3 Oylik Level Test natijasi')
             : (isHoliday ? 'Dam olish kuni' : (isTeacher ? 'Bosish: Yashil K (Kelgan) -> Qizil K (Kelmagan) -> Sariq S (Sababli) -> Bo\'sh' : 'Davomat holati'));
 
           h += '<td style="width:136px;min-width:136px;padding:6px;border-bottom:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.06);">' +
             '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;align-items:center;">' +
-              '<div class="ea-status-box' + ((isTeacher || isLtCell) && !isHoliday ? ' is-clickable' : '') + '" ' +
+              '<div class="ea-status-box' + (isTeacher && !isHoliday ? ' is-clickable' : '') + '" ' +
                 'data-date="' + dKey + '" data-stid="' + esc(stId) + '" data-cur="' + status + '" data-is-leveltest="' + (isLtCell ? '1' : '0') + '" ' +
                 'style="' + dBoxStyle + '" ' +
                 'title="' + esc(dTitle) + '">' +
                 dText +
               '</div>' +
-              '<div class="ea-score-box' + ((isTeacher || isLtCell) && !isHoliday ? ' is-clickable' : '') + '" ' +
+              '<div class="ea-score-box' + (isTeacher && !isHoliday ? ' is-clickable' : '') + '" ' +
                 'data-date="' + dKey + '" data-stid="' + esc(stId) + '" data-score="' + esc(score) + '" data-is-leveltest="' + (isLtCell ? '1' : '0') + '" ' +
                 'style="' + bBoxStyle + '" ' +
                 'title="' + esc(bTitle) + '">' +
@@ -4109,15 +4158,19 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       };
     });
 
-    // Level Test Neon Banner Click
-    container.querySelectorAll('.ea-level-test-pill').forEach(function(pill) {
-      pill.onclick = function(e) {
-        e.stopPropagation();
-        if (window.EthithEnterprise && typeof window.EthithEnterprise.openLevelTestModal === 'function') {
-          window.EthithEnterprise.openLevelTestModal(cls, pill.getAttribute('data-date'));
-        }
-      };
-    });
+    // Level Test Neon Banner Click (Only for teachers/admin)
+    if (isTeacher) {
+      container.querySelectorAll('.ea-level-test-pill').forEach(function(pill) {
+        pill.onclick = function(e) {
+          e.stopPropagation();
+          var curUser = getActiveUser();
+          if (curUser && curUser.role === 'student') return;
+          if (window.EthithEnterprise && typeof window.EthithEnterprise.openLevelTestModal === 'function') {
+            window.EthithEnterprise.openLevelTestModal(cls, pill.getAttribute('data-date'));
+          }
+        };
+      });
+    }
 
     // Direct 1-click on Date Header Card to toggle red "Dam olish kuni"
     if (isTeacher) {
@@ -4147,7 +4200,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         if (e && e.stopPropagation) e.stopPropagation();
         var curUser = getActiveUser();
         var isStudent = curUser && curUser.role === 'student';
-        if (isStudent) return; // Student cannot mark
+        if (isStudent || !isTeacher) return; // Student cannot mark or open modal
 
         var dKey = box.getAttribute('data-date') || box.dataset.date;
         var stId = box.getAttribute('data-stid') || box.dataset.stid;
@@ -4191,7 +4244,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         if (e && e.stopPropagation) e.stopPropagation();
         var curUser = getActiveUser();
         var isStudent = curUser && curUser.role === 'student';
-        if (isStudent) return;
+        if (isStudent || !isTeacher) return;
 
         var dKey = box.getAttribute('data-date') || box.dataset.date;
         var stId = box.getAttribute('data-stid') || box.dataset.stid;
@@ -4232,7 +4285,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         if (e && e.stopPropagation) e.stopPropagation();
         var curUser = getActiveUser();
         var isStudent = curUser && curUser.role === 'student';
-        if (isStudent) return;
+        if (isStudent || !isTeacher) return;
 
         var dKey = box.getAttribute('data-date') || box.dataset.date;
         var stId = box.getAttribute('data-stid') || box.dataset.stid;
@@ -6346,6 +6399,14 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   // MODAL: EDIT GROUP DURATION & LEVEL TEST COUNTDOWN
   EA.openEditGroupDurationModal = function(cls, teacher, container) {
     if (!cls) return;
+    var curUser = getActiveUser();
+    var isStudent = curUser && curUser.role === 'student';
+    if (isStudent) {
+      if (window.EthithApp && typeof window.EthithApp.toast === 'function') {
+        window.EthithApp.toast("Guruh o‘qish muddatini faqat admin yoki o‘qituvchi belgilay oladi.");
+      }
+      return;
+    }
     var old = document.getElementById('eaGroupDurationModalOverlay');
     if (old) old.remove();
 
@@ -6417,6 +6478,12 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       var testsTaken = Math.min(24, Math.max(0, Math.round((total / 90) * 24)));
       var isSoon = (remaining <= 7);
 
+      var today = getUniversalToday();
+      today.setHours(0, 0, 0, 0);
+      var examDate = new Date(today.getTime() + (remaining * 86400000));
+      if (examDate.getDay() === 0) examDate.setDate(examDate.getDate() + 1);
+      var examDisplay = formatDisplayDate(examDate);
+
       var h = '<div style="display:flex;justify-content:space-between;margin-bottom:6px;">' +
         '<span style="color:#94a3b8;">Jami o‘qilgan vaqt:</span>' +
         '<b style="color:#38bdf8;">' + m + ' oy ' + d + ' kun (' + total + ' kun)</b>' +
@@ -6425,9 +6492,13 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         '<span style="color:#94a3b8;">O‘tilgan testlar:</span>' +
         '<b style="color:#34d399;">' + testsTaken + ' / 24 ta test</b>' +
       '</div>' +
+      '<div style="display:flex;justify-content:space-between;margin-bottom:6px;">' +
+        '<span style="color:#94a3b8;">Level test imtihon kuni:</span>' +
+        '<b style="color:#facc15;font-size:13.5px;">' + examDisplay + '</b>' +
+      '</div>' +
       '<div style="display:flex;justify-content:space-between;">' +
         '<span style="color:#94a3b8;">Level test imtihonigacha:</span>' +
-        '<b style="color:' + (isSoon ? '#facc15;font-size:14px;' : '#38bdf8;') + '">' + remaining + ' kun qoldi</b>' +
+        '<b style="color:' + (isSoon ? '#facc15;font-size:14px;' : '#38bdf8;') + '">' + (remaining === 0 ? 'Bugun!' : (remaining + ' kun qoldi')) + '</b>' +
       '</div>';
 
       if (isSoon) {
@@ -6449,14 +6520,24 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     overlay.querySelector('#eaSaveDurBtn').onclick = function() {
       var m = Math.max(0, parseInt(mInp.value, 10) || 0);
       var d = Math.max(0, Math.min(29, parseInt(dInp.value, 10) || 0));
+      var total = (m * 30) + d;
+      var remaining = Math.max(0, 90 - total);
+      var today = getUniversalToday();
+      today.setHours(0, 0, 0, 0);
+      var examDate = new Date(today.getTime() + (remaining * 86400000));
+      if (examDate.getDay() === 0) examDate.setDate(examDate.getDate() + 1);
+      var examKey = formatDateKey(examDate);
+
       cls.learningMonths = m;
       cls.learningDays = d;
+      cls.levelTestDate = examKey;
       cls.durationUpdatedAt = Date.now();
 
       try {
         localStorage.setItem('ethith_class_duration_' + cls.id, JSON.stringify({
           learningMonths: m,
           learningDays: d,
+          levelTestDate: examKey,
           ts: Date.now()
         }));
       } catch(e) {}
@@ -6468,6 +6549,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         if (target) {
           target.learningMonths = m;
           target.learningDays = d;
+          target.levelTestDate = examKey;
           target.durationUpdatedAt = Date.now();
         }
       });
@@ -6480,6 +6562,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           if (eeCls) {
             eeCls.learningMonths = m;
             eeCls.learningDays = d;
+            eeCls.levelTestDate = examKey;
             eeCls.durationUpdatedAt = Date.now();
           }
         }
@@ -6502,6 +6585,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
             classCode: cls.code,
             learningMonths: m,
             learningDays: d,
+            levelTestDate: examKey,
             ts: Date.now()
           });
         }
@@ -6514,7 +6598,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       }
 
       if (window.EthithApp && window.EthithApp.toast) {
-        window.EthithApp.toast("Guruh o‘qish muddati saqlandi (" + m + " oy " + d + " kun)!");
+        window.EthithApp.toast("Guruh o‘qish muddati saqlandi (" + m + " oy " + d + " kun)! Level test kuni: " + formatDisplayDate(examDate));
       }
 
       overlay.remove();

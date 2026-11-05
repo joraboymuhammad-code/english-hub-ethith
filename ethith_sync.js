@@ -1280,16 +1280,18 @@
       if (attCls) {
         if (event.attendance) attCls.attendance = event.attendance;
         if (event.schedule) attCls.schedule = event.schedule;
-        if (event.learningMonths !== undefined || event.learningDays !== undefined) {
+        if (event.learningMonths !== undefined || event.learningDays !== undefined || event.levelTestDate) {
           var rM = event.learningMonths !== undefined ? Number(event.learningMonths) : (attCls.learningMonths || 0);
           var rD = event.learningDays !== undefined ? Number(event.learningDays) : (attCls.learningDays || 0);
           attCls.learningMonths = rM;
           attCls.learningDays = rD;
+          if (event.levelTestDate) attCls.levelTestDate = event.levelTestDate;
           attCls.durationUpdatedAt = event.ts || Date.now();
           try {
             localStorage.setItem('ethith_class_duration_' + attCls.id, JSON.stringify({
               learningMonths: rM,
               learningDays: rD,
+              levelTestDate: attCls.levelTestDate || '',
               ts: attCls.durationUpdatedAt
             }));
           } catch(e) {}
@@ -2444,8 +2446,8 @@
         changed = true;
       }
 
-      // Sync Group Duration & Level Test Countdown (learningMonths & learningDays)
-      if (rc.learningMonths !== undefined || rc.learningDays !== undefined) {
+      // Sync Group Duration & Level Test Countdown (learningMonths & learningDays & levelTestDate)
+      if (rc.learningMonths !== undefined || rc.learningDays !== undefined || rc.levelTestDate) {
         var rM = Number(rc.learningMonths) || 0;
         var rD = Number(rc.learningDays) || 0;
         var rDurTs = Number(rc.durationUpdatedAt || (rc.attendance && rc.attendance.updatedAt) || 0);
@@ -2458,18 +2460,22 @@
         if (locDurObj && locDurObj.ts && locDurObj.ts > rDurTs) {
           localCls.learningMonths = Number(locDurObj.learningMonths) || 0;
           localCls.learningDays = Number(locDurObj.learningDays) || 0;
+          if (locDurObj.levelTestDate) localCls.levelTestDate = locDurObj.levelTestDate;
           localCls.durationUpdatedAt = locDurObj.ts;
           rc.learningMonths = localCls.learningMonths;
           rc.learningDays = localCls.learningDays;
+          rc.levelTestDate = localCls.levelTestDate;
           rc.durationUpdatedAt = locDurObj.ts;
-        } else if (localCls.learningMonths !== rM || localCls.learningDays !== rD) {
+        } else if (localCls.learningMonths !== rM || localCls.learningDays !== rD || (rc.levelTestDate && localCls.levelTestDate !== rc.levelTestDate)) {
           localCls.learningMonths = rM;
           localCls.learningDays = rD;
+          if (rc.levelTestDate) localCls.levelTestDate = rc.levelTestDate;
           localCls.durationUpdatedAt = rDurTs || Date.now();
           try {
             localStorage.setItem('ethith_class_duration_' + localCls.id, JSON.stringify({
               learningMonths: rM,
               learningDays: rD,
+              levelTestDate: localCls.levelTestDate || '',
               ts: localCls.durationUpdatedAt
             }));
           } catch(e) {}
@@ -3247,6 +3253,7 @@
               var durObj = JSON.parse(durStr);
               if (durObj && durObj.learningMonths !== undefined) c.learningMonths = Number(durObj.learningMonths) || 0;
               if (durObj && durObj.learningDays !== undefined) c.learningDays = Number(durObj.learningDays) || 0;
+              if (durObj && durObj.levelTestDate) c.levelTestDate = durObj.levelTestDate;
               if (durObj && durObj.ts) c.durationUpdatedAt = durObj.ts;
             }
           } catch(e) {}

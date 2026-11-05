@@ -6484,8 +6484,18 @@ EE.renderFinanceStudentsTabHtml = function(studentList) {
 
     var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
     var curUser = S_app.user || {};
+    var isStudent = curUser && curUser.role === 'student';
+    if (isStudent) {
+      if (window.EthithApp && typeof window.EthithApp.toast === 'function') {
+        window.EthithApp.toast("Level test imtihonini faqat o‘qituvchilar va admin boshqara oladi.");
+      }
+      return;
+    }
     var isAdmin = curUser.role === 'admin' || (curUser.email && curUser.email.toLowerCase().includes('admin'));
-    var isTeacher = true; // Admin va o'qituvchilar doim balni kiritishi va qarorni belgilashi mumkin!
+    var isTeacher = isAdmin || curUser.role === 'teacher';
+    if (!isAdmin && !isTeacher) {
+      return;
+    }
 
     if (!cls.levelTestResults) cls.levelTestResults = {};
 
