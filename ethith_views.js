@@ -2006,52 +2006,8 @@
       else neverCount++;
     });
 
-  
-  function canUserDeleteThisMsg(msg, user) {
-    if (!user) return true;
-    if (user.role === 'teacher' || user.role === 'admin' || user.isTeacher === true || (user.email && user.email.toLowerCase().includes('admin'))) {
-      return true;
-    }
-    var uName = (user.name || '').toLowerCase().trim();
-    var uId = (user.id || '').toLowerCase().trim();
-    var uLogin = (user.login || '').toLowerCase().trim();
-    var uEmail = (user.email || '').toLowerCase().trim();
-
-    var sName = (msg.senderName || '').toLowerCase().trim();
-    var sId = (msg.senderId || '').toLowerCase().trim();
-    var sEmail = (msg.senderEmail || '').toLowerCase().trim();
-
-    if (uId && sId && uId === sId) return true;
-    if (uName && sName && (uName === sName || uName.includes(sName) || sName.includes(uName))) return true;
-    if (uEmail && sEmail && uEmail === sEmail) return true;
-    if (uLogin && sId && sId.includes(uLogin)) return true;
-    if (uLogin && sEmail && sEmail.includes(uLogin)) return true;
-    if (uLogin && sName && sName.includes(uLogin)) return true;
-    return false;
-  }
-
-  function checkIsOwnMsg(m, myUser) {
-    if (!myUser) return false;
-    var myName = (myUser.name || '').toLowerCase().trim();
-    var myId = (myUser.id || '').toLowerCase().trim();
-    var myLogin = (myUser.login || '').toLowerCase().trim();
-    var myEmail = (myUser.email || '').toLowerCase().trim();
-
-    var sName = (m.senderName || '').toLowerCase().trim();
-    var sId = (m.senderId || '').toLowerCase().trim();
-    var sEmail = (m.senderEmail || '').toLowerCase().trim();
-
-    if (myId && sId && myId === sId) return true;
-    if (myName && sName && (myName === sName || myName.includes(sName) || sName.includes(myName))) return true;
-    if (myEmail && sEmail && myEmail === sEmail) return true;
-    if (myLogin && sId && sId.includes(myLogin)) return true;
-    if (myLogin && sEmail && sEmail.includes(myLogin)) return true;
-    if (myLogin && sName && sName.includes(myLogin)) return true;
-    return false;
-  }
-
-  function renderMsgBubbleHtml(m, activeCls, myUser) {
-      var isOwn = checkIsOwnMsg(m, myUser);
+    function renderMsgBubbleHtml(m, activeCls, myUser) {
+      var isOwn = myUser && ((m.senderId && myUser.id && m.senderId === myUser.id) || (m.senderEmail && myUser.email && m.senderEmail === myUser.email));
       var reactionsList = [];
       if (m.reactions) {
         for (var em in m.reactions) {
@@ -2117,6 +2073,7 @@
           }).join('') +
           '</div>' : '') +
         '  </div>' +
+        '  <button class="tg-hover-react-btn" data-msg-id="' + m.id + '" title="Add reaction">😄</button>' +
         '</div>';
     }
 
@@ -2156,103 +2113,62 @@
       '    </button>' +
       '  </div>' +
       '</div>' +
-      '<div class="cls-workspace-wrap" style="margin-top:14px;display:flex;flex-direction:column;gap:18px;">' +
-      '  <div class="cls-overview-card" style="background:linear-gradient(135deg,rgba(15,23,42,0.96),rgba(30,41,59,0.94));border:1.5px solid rgba(56,189,248,0.35);border-radius:20px;padding:20px 24px;box-shadow:0 12px 36px rgba(0,0,0,0.45);">' +
-      '    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">' +
-      '      <div style="display:flex;align-items:center;gap:16px;">' +
-      '        <div style="width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;color:#ffffff;box-shadow:0 6px 20px rgba(2,132,199,0.45);">' + cls.name.charAt(0).toUpperCase() + '</div>' +
-      '        <div>' +
-      '          <h2 style="margin:0;font-size:22px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:10px;">' + esc(cls.name) + ' <span style="font-size:12px;background:rgba(56,189,248,0.2);color:#38bdf8;padding:3px 10px;border-radius:12px;font-weight:700;">' + (cls.level || 'Guruh') + '</span></h2>' +
-      '          <div style="margin-top:5px;font-size:13px;color:#94a3b8;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">' +
-      '            <span>👥 Jami: <b style="color:#f8fafc;">' + totalMembers + ' nafar o‘quvchi</b></span>' +
-      '            <span style="color:#22c55e;font-weight:800;">🟢 ' + onlineCount + ' online</span>' +
-      '            <span style="color:#38bdf8;font-weight:700;">🔵 ' + offlineCount + ' offline</span>' +
-      '            <span style="color:#ef4444;font-weight:700;">🔴 ' + neverCount + ' kirmagan</span>' +
-      '            <span>🔑 Kod: <b style="color:#38bdf8;user-select:all;font-family:monospace;font-size:14px;">' + cls.code + '</b></span>' +
-      '          </div>' +
+      '<div class="tg-chat-wrap">' +
+      '  <div class="tg-header">' +
+      '    <div class="tg-header-info" id="tgHeaderTitleWrap" style="cursor:pointer;" title="Guruh a‘zolari va online holatini ko‘rish">' +
+      '      <div class="tg-header-avatar">' + cls.name.charAt(0).toUpperCase() + '</div>' +
+      '      <div class="tg-header-title">' +
+      '        <h3 style="display:flex;align-items:center;gap:8px;">' + esc(cls.name) + ' <span style="font-size:12px;color:#38bdf8;font-weight:600;">(A‘zolar 👥)</span></h3>' +
+      '        <div style="font-size:12px;color:#94a3b8;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:2px;">' +
+      '          <span><b>' + totalMembers + '</b> a‘zo</span>' +
+      '          <span style="color:#22c55e;font-weight:800;">🟢 ' + onlineCount + ' online</span>' +
+      '          <span style="color:#38bdf8;font-weight:700;">🔵 ' + offlineCount + ' offline</span>' +
+      '          <span style="color:#ef4444;font-weight:700;">🔴 ' + neverCount + ' kirmagan</span>' +
+      '          <span style="color:#64748b;">· Kod: <b style="color:#38bdf8;user-select:all">' + cls.code + '</b></span>' +
       '        </div>' +
-      '      </div>' +
-      '      <div style="display:flex;gap:10px;flex-wrap:wrap;">' +
-      (isTeacher ? '        <button type="button" class="ap-btn solid" id="btnClsAddStudentDirect" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:800;border-radius:12px;padding:9px 18px;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(16,185,129,0.35);">➕ O‘quvchi qo‘shish</button>' : '') +
       '      </div>' +
       '    </div>' +
       '  </div>' +
-
-      // Active Homework Banner (if available)
-      (activeHw ? (
-        '  <div class="cls-hw-banner" style="background:rgba(30,41,59,0.85);border:1.5px solid rgba(139,92,246,0.45);border-radius:16px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 6px 20px rgba(0,0,0,0.3);">' +
-        '    <div style="display:flex;align-items:center;gap:12px;">' +
-        '      <span style="font-size:28px;">📚</span>' +
-        '      <div>' +
-        '        <div style="font-size:12px;color:#a78bfa;font-weight:800;text-transform:uppercase;">Belgilangan Uy Vazifasi (' + esc(activeHw.dateKey || '') + ')</div>' +
-        '        <div style="font-size:15px;font-weight:800;color:#f8fafc;margin-top:2px;">' + esc(activeHw.title || 'Workbook Mashqlari') + '</div>' +
-        '      </div>' +
-        '    </div>' +
-        '    <div style="display:flex;gap:8px;">' +
-        '      <button type="button" class="ap-btn solid" id="tgOpenHomeworkLessonBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:800;border-radius:10px;padding:8px 16px;">🚀 Vazifani Bajarish (Ochish) →</button>' +
-        (isTeacher ? '      <button type="button" class="ap-btn out" id="tgEditHomeworkBtn" style="border:1px solid rgba(255,255,255,0.2);color:#cbd5e1;border-radius:10px;padding:8px 14px;">✏️ O‘zgartirish</button>' : '') +
-        '    </div>' +
-        '  </div>'
-      ) : '') +
-
-      // Students Roster Section
-      '  <div class="cls-students-card" style="background:rgba(15,23,42,0.92);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:20px 24px;box-shadow:0 10px 30px rgba(0,0,0,0.4);">' +
-      '    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;flex-wrap:wrap;gap:10px;">' +
-      '      <div>' +
-      '        <h3 style="margin:0;font-size:18px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:8px;">👥 Guruh A‘zolari Ro‘yxati <span style="font-size:13px;color:#38bdf8;font-weight:700;">(' + (cls.students || []).length + ' nafar)</span></h3>' +
-      '        <p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">O‘quvchilarning online holati, faolligi va monitoring ma‘lumotlari</p>' +
-      '      </div>' +
-      '      <button type="button" class="ap-btn out" id="btnRefreshRosterTop" style="border:1px solid rgba(56,189,248,0.4);color:#38bdf8;padding:6px 14px;border-radius:10px;font-size:12.5px;font-weight:700;cursor:pointer;">🔄 Yangilash</button>' +
-      '    </div>' +
-      '    <div class="cls-students-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:12px;">' +
+      // Bulky homework banner removed for clean chat view
+      (pinnedMsg ?
+        '<div class="tg-pinned-bar" id="tgPinnedBar">' +
+        '  <div>' + ic('pin') + ' <b>Pinned Message:</b> ' + esc(pinnedMsg.senderName) + ': "' + esc(pinnedMsg.text.slice(0, 50)) + '..."</div>' +
+        (isTeacher ? '  <button id="tgUnpinBtn" style="background:none;border:none;cursor:pointer;color:var(--muted)">✕</button>' : '') +
+        '</div>' : '') +
+      '  <div class="tg-messages-scroll" id="tgMsgBox">' +
+      (cls.messages || []).map(function(m) {
+        return renderMsgBubbleHtml(m, cls, S.user || {});
+      }).join('') +
+      '  </div>' +
+      '  <div class="tg-reply-bar" id="tgReplyBar" style="display:none">' +
+      '    <div id="tgReplyBarText"></div>' +
+      '    <button id="tgReplyCancelBtn" style="background:none;border:none;cursor:pointer;color:red">✕</button>' +
+      '  </div>' +
+      '  <div class="tg-input-area">' +
+      '    <input type="text" id="tgInputText" placeholder="Write a message..." autocomplete="off">' +
+      '    <button class="eth-btn-primary" id="tgSendBtn" style="width:40px;height:40px;border-radius:50%;padding:0">' + ic('send') + '</button>' +
+      '  </div>' +
+      '  <div class="tg-chat-emoji-tray" id="tgChatEmojiTray">' +
+      '    <span style="font-size:11.5px;color:var(--muted);font-weight:700;margin-right:2px">Emojis:</span>' +
       (function() {
-        var stList = (cls.students || []).slice();
-        // Strict sorting: 🟢 Online first, 🔵 Offline second, 🔴 Never third
-        stList.sort(function(a, b) {
-          var stA = window._ethithGetUserStatus ? window._ethithGetUserStatus(a) : { status: 'red' };
-          var stB = window._ethithGetUserStatus ? window._ethithGetUserStatus(b) : { status: 'red' };
-          var weight = { 'green': 1, 'blue': 2, 'red': 3 };
-          var wA = weight[stA.status] || 3;
-          var wB = weight[stB.status] || 3;
-          if (wA !== wB) return wA - wB;
-          return (a.name || '').localeCompare(b.name || '');
-        });
-
-        if (stList.length === 0) {
-          return '<div style="grid-column:1/-1;text-align:center;padding:36px;color:#94a3b8;font-size:14px;">Guruhda hozircha o‘quvchilar mavjud emas.</div>';
-        }
-
-        return stList.map(function(st, idx) {
-          var stObj = window._ethithGetUserStatus ? window._ethithGetUserStatus(st) : { status: 'red', color: '#ef4444', label: 'Kirmagan' };
-          var stColor = stObj.color || '#ef4444';
-          var stLabel = stObj.label || 'Kirmagan';
-
-          return '<div class="cls-student-card-item" data-st-login="' + esc(st.login || st.id || '') + '" style="background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:all 0.15s ease;">' +
-            '  <div style="display:flex;align-items:center;gap:12px;min-width:0;">' +
-            '    <div style="position:relative;flex-shrink:0;">' +
-            '      <div style="width:40px;height:40px;border-radius:12px;background:rgba(2,132,199,0.25);border:1.5px solid rgba(56,189,248,0.4);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#38bdf8;">' + (st.name || 'S').charAt(0).toUpperCase() + '</div>' +
-            '      <span class="cls-student-status-dot" style="position:absolute;bottom:-2px;right:-2px;width:11px;height:11px;border-radius:50%;background:' + stColor + ';border:2px solid #0f172a;box-shadow:0 0 6px ' + stColor + ';" title="' + stLabel + '"></span>' +
-            '    </div>' +
-            '    <div style="min-width:0;">' +
-            '      <div style="font-size:14px;font-weight:800;color:#f8fafc;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(st.name || 'Nomsiz') + '</div>' +
-            '      <div style="font-size:11.5px;color:#94a3b8;margin-top:2px;display:flex;align-items:center;gap:6px;">' +
-            '        <span style="font-family:monospace;color:#7dd3fc;">@' + esc(st.login || st.id || 'id') + '</span>' +
-            '        <span>·</span>' +
-            '        <span class="cls-student-status-label" style="color:' + stColor + ';font-weight:700;">' + stLabel + '</span>' +
-            '      </div>' +
-            '    </div>' +
-            '  </div>' +
-            (isTeacher ? (
-              '  <button type="button" class="btn-st-row-edit" data-edit-st-login="' + esc(st.login || st.id) + '" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:8px;color:#cbd5e1;padding:6px 10px;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0;" title="O‘quvchini tahrirlash">✏️</button>'
-            ) : '') +
-            '</div>';
+        var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.isTeacher === true);
+        var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍','😊','❤️'];
+        return (window.ETHITH_CHAT_EMOJIS || []).map(function(item) {
+          var isUnlocked = isTeacherUser || item.isDefault || (myUnlocked.indexOf(item.emoji) !== -1);
+          if (isUnlocked) {
+            return '<button type="button" class="tg-emoji-pill" data-insert-em="' + item.emoji + '" title="' + esc(item.name) + '">' + item.emoji + '</button>';
+          } else {
+            return '<button type="button" class="tg-emoji-pill is-locked" data-locked-em="' + item.emoji + '" title="' + esc(item.name) + ' (Qulflangan: Marketdan oching)">' + item.emoji + '</button>';
+          }
         }).join('');
       })() +
-      '    </div>' +
       '  </div>' +
       '</div>';
 
     container.innerHTML = html;
+
+    var msgBox = document.getElementById('tgMsgBox');
+    msgBox.scrollTop = msgBox.scrollHeight;
 
     document.getElementById('backClassesListBtn').onclick = function() {
       S.activeClassId = null;
@@ -2361,33 +2277,10 @@
     var unpinBtn = document.getElementById('tgUnpinBtn');
     if (unpinBtn) {
       unpinBtn.onclick = function(e) {
-        e.preventDefault();
         e.stopPropagation();
-        var liveCls = (S.classes && S.classes.find(function(c) {
-          return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
-        })) || cls;
-
-        liveCls.pinnedId = null;
         cls.pinnedId = null;
         App.saveState();
-
-        if (window.EthithSync) {
-          window.EthithSync.publishLive({
-            type: 'PIN_MSG',
-            classId: liveCls.code || liveCls.id || cls.code || cls.id,
-            msgId: null
-          });
-          window.EthithSync.broadcastLocal(S.classes, S.exams);
-          window.EthithSync.pushRemoteStore(S.classes, S.exams);
-        }
-
-        var pBar = document.getElementById('tgPinnedBar');
-        if (pBar) {
-          pBar.style.transition = 'all 0.25s ease';
-          pBar.style.opacity = '0';
-          pBar.style.transform = 'translateY(-10px)';
-          setTimeout(function() { pBar.remove(); }, 250);
-        }
+        renderClassDetail(container, cls);
       };
     }
 
@@ -2427,102 +2320,41 @@
         };
       }
 
-      var hoverReplyBtn = rowEl.querySelector('.tg-hover-reply-btn');
-      if (hoverReplyBtn) {
-        hoverReplyBtn.onclick = function(e) {
+      var bubble = rowEl.querySelector('.tg-bubble');
+      if (bubble) {
+        bubble.ondblclick = function(e) {
           e.stopPropagation();
-          currentReplyingMessage = mItem;
+          var msgId = bubble.dataset.msgId;
+          var msg = (activeCls.messages || []).find(function(mItem2) { return mItem2.id === msgId; });
+          if (!msg) return;
+
+          currentReplyingMessage = msg;
           var replyBar = document.getElementById('tgReplyBar');
           var replyText = document.getElementById('tgReplyBarText');
           if (replyBar && replyText) {
             replyBar.style.display = 'flex';
-            replyText.innerHTML = ic('reply') + ' <b>Replying to: ' + esc(mItem.senderName) + '</b>: "' + esc(mItem.text.slice(0, 45)) + '..."';
+            replyText.innerHTML = ic('reply') + ' <b>Replying to: ' + esc(msg.senderName) + '</b>: "' + esc(msg.text.slice(0, 45)) + '..."';
           }
           var input = document.getElementById('tgInputText');
           if (input) input.focus();
         };
-      }
 
-      var hoverDelBtn = rowEl.querySelector('.tg-hover-del-btn');
-      if (hoverDelBtn) {
-        hoverDelBtn.onclick = function(e) {
-          e.stopPropagation();
-          triggerDeleteMessage(mItem.id, activeCls, cnt);
-        };
-      }
-
-      var bubble = rowEl.querySelector('.tg-bubble');
-      if (bubble) {
-        var bubbleClickTimer = null;
-
-        // Sichqonchaning CHAP TUGMASI (Left Click) & KETMA-KET 2 MARTA (Double Click):
-        bubble.addEventListener('click', function(e) {
-          if (e.target.closest('.tg-reaction-pill') || e.target.closest('a') || e.target.closest('button')) return;
-          e.stopPropagation();
-
-          // Tanlash rejimi (Selection mode) faol bo'lsa:
-          if (window._ethithIsSelectionMode) {
-            toggleMessageSelection(mItem.id, rowEl, activeCls, cnt);
-            return;
-          }
-
-          if (bubbleClickTimer) {
-            // KETMA-KET 2 MARTA BOSILDI (Double Click):
-            clearTimeout(bubbleClickTimer);
-            bubbleClickTimer = null;
-            // Avtomatik reaksiya biriktiriladi (Telegram Double-tap kabi):
-            applyReaction('👍', mItem, activeCls, cnt);
-            showTelegramDoubleTapHeart(e.clientX, e.clientY, '👍');
-          } else {
-            // 1-marta chap tomon bilan bosildi -> 220ms kutiladi:
-            var cx = e.clientX;
-            var cy = e.clientY;
-            bubbleClickTimer = setTimeout(function() {
-              bubbleClickTimer = null;
-              // BIR MARTA CHAP TOMON BILAN BOSILGANDA -> REAKSIYALAR CHIQADI:
-              showTelegramReactionsBar(cx, cy, mItem, activeCls, cnt);
-            }, 220);
-          }
-        });
-
-        // Sichqonchaning O'NG TOMONI BILAN BOSILGANDA (Right Click) -> 1:1 TELEGRAM CONTEXT MENU:
-        bubble.addEventListener('contextmenu', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          if (bubbleClickTimer) {
-            clearTimeout(bubbleClickTimer);
-            bubbleClickTimer = null;
-          }
-          showTelegramContextMenu(e.clientX, e.clientY, mItem, activeCls, cnt);
-        });
-
-        // Sensorli (mobil) qurilmalar uchun bosib turish (Long press):
         var touchTimer = null;
         bubble.addEventListener('touchstart', function(e) {
-          var touch = e.touches[0];
-          var tx = touch ? touch.clientX : 50;
-          var ty = touch ? touch.clientY : 50;
           touchTimer = setTimeout(function() {
-            showTelegramContextMenu(tx, ty, mItem, activeCls, cnt);
-          }, 420);
+            showContextMenu(e.touches[0].clientX, e.touches[0].clientY, bubble.dataset.msgId, activeCls, cnt);
+          }, 550);
         }, { passive: true });
-
-        bubble.addEventListener('touchmove', function() {
-          clearTimeout(touchTimer);
-        });
 
         bubble.addEventListener('touchend', function() {
           clearTimeout(touchTimer);
         });
-      }
 
-      // Butun qatorda o'ng tugma bosilganda ham kontekst menyu ochiladi:
-      rowEl.addEventListener('contextmenu', function(e) {
-        if (e.target.closest('a') || e.target.closest('button') || e.target.closest('input')) return;
-        e.preventDefault();
-        e.stopPropagation();
-        showTelegramContextMenu(e.clientX, e.clientY, mItem, activeCls, cnt);
-      });
+        bubble.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+          showContextMenu(e.clientX, e.clientY, bubble.dataset.msgId, activeCls, cnt);
+        });
+      }
     }
 
     container.querySelectorAll('.tg-msg-row').forEach(function(row) {
@@ -2557,115 +2389,16 @@
       return appendSingleMsgToDom(msg, liveCls, container);
     };
 
-    var replyCancelBtn = document.getElementById('tgReplyCancelBtn');
-    if (replyCancelBtn) {
-      replyCancelBtn.onclick = function() {
-        currentReplyingMessage = null;
-        var rBar = document.getElementById('tgReplyBar');
-        if (rBar) rBar.style.display = 'none';
-      };
-    }
-
-    var editCancelBtn = document.getElementById('tgEditCancelBtn');
-    if (editCancelBtn) {
-      editCancelBtn.onclick = function() {
-        currentEditingMessage = null;
-        var editBar = document.getElementById('tgEditBar');
-        if (editBar) editBar.style.display = 'none';
-        var inp = document.getElementById('tgInputText');
-        if (inp) inp.value = '';
-      };
-    }
-
-    var selCancelBtn = document.getElementById('tgSelCancelBtn');
-    if (selCancelBtn) {
-      selCancelBtn.onclick = function() {
-        exitSelectionMode();
-      };
-    }
-
-    var selCopyBtn = document.getElementById('tgSelCopyBtn');
-    if (selCopyBtn) {
-      selCopyBtn.onclick = function() {
-        var liveCls = (S.classes && S.classes.find(function(c) {
-          return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
-        })) || cls;
-        var texts = (window._ethithSelectedMsgIds || []).map(function(id) {
-          var m = (liveCls.messages || []).find(function(item) { return item.id === id; });
-          return m ? (m.senderName + ': ' + m.text) : '';
-        }).filter(Boolean);
-        if (texts.length && navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(texts.join('\n')).then(function() {
-            showToast(texts.length + ' ta habar nusxalandi!');
-            exitSelectionMode();
-          }).catch(function(){});
-        }
-      };
-    }
-
-    var selDeleteBtn = document.getElementById('tgSelDeleteBtn');
-    if (selDeleteBtn) {
-      selDeleteBtn.onclick = function() {
-        var ids = (window._ethithSelectedMsgIds || []).slice();
-        ids.forEach(function(mid) {
-          triggerDeleteMessage(mid, cls, container);
-        });
-        exitSelectionMode();
-      };
-    }
+    document.getElementById('tgReplyCancelBtn').onclick = function() {
+      currentReplyingMessage = null;
+      document.getElementById('tgReplyBar').style.display = 'none';
+    };
 
     // Send Message - Super Instant (0ms DOM append & async broadcast)
     function sendMessage() {
       var input = document.getElementById('tgInputText');
       var text = input.value.trim();
       if (!text) return;
-
-      // Agar tahrirlash (Edit) rejimi bo'lsa:
-      if (currentEditingMessage) {
-        var editTargetId = currentEditingMessage.id;
-        var liveCls = (S.classes && S.classes.find(function(c) {
-          return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
-        })) || cls;
-
-        var msgToEdit = (liveCls.messages || []).find(function(m) { return m.id === editTargetId; });
-        if (msgToEdit) {
-          msgToEdit.text = text;
-          msgToEdit.isEdited = true;
-          msgToEdit.editedAt = Date.now();
-        }
-        if (cls !== liveCls && cls.messages) {
-          var clsMsg = cls.messages.find(function(m) { return m.id === editTargetId; });
-          if (clsMsg) { msgToEdit.text = text; clsMsg.isEdited = true; }
-        }
-
-        // DOM dagi xabarni shu zahoti yangilash (0ms):
-        var rowEl = document.querySelector('.tg-msg-row[data-msg-id="' + editTargetId + '"]');
-        if (rowEl) {
-          var textEl = rowEl.querySelector('.tg-msg-text');
-          if (textEl) {
-            textEl.innerHTML = esc(text) + ' <span class="tg-edited-badge" style="font-size:10.5px;opacity:0.65;margin-left:4px;">(tahrirlangan)</span>';
-          }
-        }
-
-        // Dual-broker MQTT orqali barcha qurilmalarga yuborish
-        if (window.EthithSync) {
-          window.EthithSync.publishLive({
-            type: 'EDIT_MSG',
-            classId: liveCls.code || liveCls.id || cls.code || cls.id,
-            msgId: editTargetId,
-            text: text
-          });
-          window.EthithSync.broadcastLocal(S.classes, S.exams);
-          window.EthithSync.pushRemoteStore(S.classes, S.exams);
-        }
-        App.saveState();
-
-        currentEditingMessage = null;
-        var editBar = document.getElementById('tgEditBar');
-        if (editBar) editBar.style.display = 'none';
-        input.value = '';
-        return;
-      }
 
       var newMsg = {
         id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
@@ -2751,37 +2484,12 @@
       }
     };
 
-    var tgSendBtn = document.getElementById('tgSendBtn');
-    if (tgSendBtn) tgSendBtn.onclick = sendMessage;
-    var tgInpText = document.getElementById('tgInputText');
-    if (tgInpText) {
-      tgInpText.onkeydown = function(e) {
-        if (e.key === 'Enter') {
-          sendMessage();
-        }
-      };
-    }
-
-    // Wire Roster Buttons
-    var btnRefreshRoster = document.getElementById('btnRefreshRosterTop');
-    if (btnRefreshRoster) {
-      btnRefreshRoster.onclick = function() {
-        renderClassDetail(container, cls);
-      };
-    }
-
-    var btnAddSt = document.getElementById('btnClsAddStudentDirect');
-    if (btnAddSt) {
-      btnAddSt.onclick = function() {
-        showClassMonitoringModal(cls);
-      };
-    }
-
-    container.querySelectorAll('.btn-st-row-edit').forEach(function(btn) {
-      btn.onclick = function() {
-        showClassMonitoringModal(cls);
-      };
-    });
+    document.getElementById('tgSendBtn').onclick = sendMessage;
+    document.getElementById('tgInputText').onkeydown = function(e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    };
   }
 
   var EMOJIS_MASTER_LIST = [
@@ -2822,82 +2530,51 @@
     };
   }
 
-  // Helper: Dissolve bubble smoothly
-  function telegramDisintegrateBubble(row) {
-    if (!row) return;
-    row.style.transition = 'all 0.15s ease';
-    row.style.opacity = '0';
-    row.style.transform = 'scale(0.88)';
-    setTimeout(function() {
-      if (row.parentNode) row.parentNode.removeChild(row);
-    }, 150);
-  }
-  window._ethithDisintegrateChatMessage = function(msgId) {
-    var row = document.querySelector('.tg-msg-row[data-msg-id="' + msgId + '"]');
-    if (row) telegramDisintegrateBubble(row);
-  };
-
-  // Telegram Double-Tap Floating Pop
-  function showTelegramDoubleTapHeart(x, y, emoji) {
-    var pop = document.createElement('div');
-    pop.className = 'tg-double-tap-pop';
-    pop.textContent = emoji || '👍';
-    pop.style.left = (x || (window.innerWidth / 2)) + 'px';
-    pop.style.top = (y || (window.innerHeight / 2)) + 'px';
-    document.body.appendChild(pop);
-    setTimeout(function() {
-      if (pop.parentNode) pop.parentNode.removeChild(pop);
-    }, 650);
-  }
-
-  // Telegram Quick Reaction Bar (Single Left Click)
-  function showTelegramReactionsBar(x, y, msg, cls, mainContainer) {
+  // Telegram Quick Reaction Bar Capsule (Floating bubble on hover)
+  function showQuickReactionPopup(x, y, msgId, cls, mainContainer) {
     if (activeContextMenu) {
       activeContextMenu.remove();
       activeContextMenu = null;
     }
 
-    var liveCls = (S.classes && S.classes.find(function(c) {
-      return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
-    })) || cls;
-    var liveMsg = (liveCls.messages || []).find(function(m) { return m.id === msg.id; }) || msg;
+    var msg = cls.messages.find(function(m) { return m.id === msgId; });
+    if (!msg) return;
 
     var bar = document.createElement('div');
-    bar.className = 'tg-floating-reactions-bar';
-    bar._openedAt = Date.now();
+    bar.className = 'tg-quick-reaction-bar';
 
-    // Hisoblangan joylashuv
-    var posX = Math.max(12, Math.min(x - 110, window.innerWidth - 310));
-    var posY = Math.max(12, Math.min(y - 52, window.innerHeight - 70));
+    // Position capsule
+    var posX = Math.max(10, Math.min(x - 90, window.innerWidth - 280));
+    var posY = Math.max(10, Math.min(y, window.innerHeight - 60));
     bar.style.left = posX + 'px';
     bar.style.top = posY + 'px';
 
-    var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.role === 'admin' || S.user.isTeacher === true);
+    var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.isTeacher === true);
     var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍', '😊', '❤️'];
-    var quickEmojis = (S.quickReactions && S.quickReactions.length >= 7) ? S.quickReactions.slice(0, 7) : ['👍', '❤️', '🔥', '👏', '🎉', '😊', '🎯'];
-    var myUserId = (S.user && (S.user.email || S.user.login || S.user.id || S.user.name)) || 'guest';
+    var quickEmojis = (S.quickReactions && S.quickReactions.length >= 6) ? S.quickReactions : EMOJIS_MASTER_LIST;
+    var top6 = quickEmojis.slice(0, 6);
 
-    var html = quickEmojis.map(function(em) {
-      var isActive = liveMsg.reactions && liveMsg.reactions[em] && liveMsg.reactions[em].some(function(u) {
-        return checkIsMyReaction(u, S.user);
-      });
+    var currentUserId = (S.user && (S.user.email || S.user.id)) || 'guest';
+
+    var html = top6.map(function(em) {
+      var isActive = msg.reactions && msg.reactions[em] && msg.reactions[em].indexOf(currentUserId) > -1;
       var isUnlocked = isTeacherUser || (myUnlocked.indexOf(em) !== -1);
       if (isUnlocked) {
-        return '<button type="button" class="tg-floating-react-btn ' + (isActive ? 'is-active' : '') + '" data-fl-em="' + em + '">' + em + '</button>';
+        return '<button class="tg-quick-bar-em ' + (isActive ? 'active' : '') + '" data-quick-em="' + em + '">' + em + '</button>';
       } else {
-        return '<button type="button" class="tg-floating-react-btn is-locked" data-locked-em="' + em + '" title="🔒 Qulflangan">' + em + '</button>';
+        return '<button class="tg-quick-bar-em is-locked" data-locked-em="' + em + '" title="🔒 Qulflangan (Marketdan oching)"><span style="filter:grayscale(0.7) opacity(0.35)">' + em + '</span><span class="eth-emoji-lock-badge">🔒</span></button>';
       }
     }).join('') +
-    '<button type="button" class="tg-floating-react-btn tg-floating-react-more" id="tgFlMoreBtn" title="Barcha emojilar">➕</button>';
+    '<button class="tg-quick-bar-em tg-quick-bar-more" id="tgQuickMoreBtn" title="More emojis">➕</button>';
 
     bar.innerHTML = html;
     document.body.appendChild(bar);
     activeContextMenu = bar;
 
-    bar.querySelectorAll('[data-fl-em]').forEach(function(btn) {
+    bar.querySelectorAll('[data-quick-em]').forEach(function(btn) {
       btn.onclick = function(e) {
         e.stopPropagation();
-        applyReaction(btn.dataset.flEm, liveMsg, liveCls, mainContainer);
+        applyReaction(btn.dataset.quickEm, msg, cls, mainContainer);
         bar.remove();
         activeContextMenu = null;
       };
@@ -2910,420 +2587,157 @@
       };
     });
 
-    var moreBtn = bar.querySelector('#tgFlMoreBtn');
+    var moreBtn = bar.querySelector('#tgQuickMoreBtn');
     if (moreBtn) {
       moreBtn.onclick = function(e) {
         e.stopPropagation();
-        bar.remove();
-        activeContextMenu = null;
-        showAllEmojisPicker(posX, posY - 180, liveMsg, liveCls, mainContainer);
+        showAllEmojisPicker(posX, posY - 180, msg, cls, mainContainer);
       };
     }
-
-    setTimeout(function() {
-      function dismissHandler(e) {
-        if (Date.now() - bar._openedAt < 180) return;
-        if (!bar.contains(e.target)) {
-          bar.remove();
-          if (activeContextMenu === bar) activeContextMenu = null;
-          document.removeEventListener('click', dismissHandler);
-        }
-      }
-      document.addEventListener('click', dismissHandler);
-    }, 20);
   }
 
-  // Telegram 1:1 Context Menu (Right Click)
-  // Exact Replica of Screenshot media_1793724132736_4290f841.png
-  function showTelegramContextMenu(x, y, msg, cls, mainContainer) {
-    if (activeContextMenu) {
-      activeContextMenu.remove();
-      activeContextMenu = null;
-    }
+  // Telegram Context Menu: Compact Reactions Row, Reply, Pin, Delete
+  function showContextMenu(x, y, msgId, cls, mainContainer) {
+    if (activeContextMenu) activeContextMenu.remove();
 
-    var liveCls = (S.classes && S.classes.find(function(c) {
-      return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
-    })) || cls;
-
-    var liveMsg = (liveCls.messages || []).find(function(m) { return m.id === msg.id; }) ||
-                  (cls.messages || []).find(function(m) { return m.id === msg.id; }) || msg;
+    var msg = cls.messages.find(function(m) { return m.id === msgId; });
+    if (!msg) return;
 
     var menu = document.createElement('div');
-    menu.className = 'tg-telegram-context-menu';
-    menu._openedAt = Date.now();
+    menu.className = 'tg-context-menu';
 
-    // Position context menu bounded to viewport
-    var row = document.querySelector('.tg-msg-row[data-msg-id="' + liveMsg.id + '"]');
-    var bRect = row ? (row.querySelector('.tg-bubble') || row).getBoundingClientRect() : null;
-    var posX = x;
-    var posY = y;
-    if ((!posX || posX < 5) && bRect) posX = bRect.left + 20;
-    if ((!posY || posY < 5) && bRect) posY = bRect.top + 20;
-
-    posX = Math.max(10, Math.min(posX, window.innerWidth - 200));
-    posY = Math.max(10, Math.min(posY, window.innerHeight - 240));
+    // Position menu within viewport
+    var posX = Math.max(10, Math.min(x, window.innerWidth - 225));
+    var posY = Math.max(10, Math.min(y, window.innerHeight - 240));
     menu.style.left = posX + 'px';
     menu.style.top = posY + 'px';
 
-    var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.role === 'admin' || S.user.isTeacher === true);
-    var isOwn = checkIsOwnMsg(liveMsg, S.user);
-    var canDelete = canUserDeleteThisMsg(liveMsg, S.user);
-    var isPinned = (liveCls.pinnedId === liveMsg.id);
+    var isTeacherUser = S.user && (S.user.role === 'teacher' || S.user.isTeacher === true);
+    var myUnlocked = (S.user && S.user.unlockedEmojis) || window.ETHITH_DEFAULT_FREE_EMOJIS || ['👍', '😊', '❤️'];
+    var quickEmojis = (S.quickReactions && S.quickReactions.length >= 7) ? S.quickReactions : EMOJIS_MASTER_LIST;
 
-    // Exact Items Matching media_1793724132736_4290f841.png:
-    // 1. Reply
-    // 2. Edit (if own)
-    // 3. Pin (if teacher)
-    // 4. Forward (ONLY for teachers! Hidden for students!)
-    // 5. Delete (red icon & red text)
-    // 6. Select
     var html = '' +
-      '<button type="button" class="tg-tg-menu-item" id="tgCtxReply">' +
-      '  <div class="tg-tg-menu-left">' +
-      '    <svg class="tg-tg-menu-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-      '      <polyline points="9 17 4 12 9 7"></polyline><path d="M20 18v-2a4 4 0 0 0-4-4H4"></path>' +
-      '    </svg>' +
-      '    <span>Reply</span>' +
-      '  </div>' +
-      '</button>' +
-      (isOwn ? (
-        '<button type="button" class="tg-tg-menu-item" id="tgCtxEdit">' +
-        '  <div class="tg-tg-menu-left">' +
-        '    <svg class="tg-tg-menu-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-        '      <path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>' +
-        '    </svg>' +
-        '    <span>Edit</span>' +
-        '  </div>' +
-        '</button>'
-      ) : '') +
-      (isTeacherUser ? (
-        '<button type="button" class="tg-tg-menu-item" id="tgCtxPin">' +
-        '  <div class="tg-tg-menu-left">' +
-        '    <svg class="tg-tg-menu-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-        '      <line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-2l-2-2V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v8l-2 2v2z"></path>' +
-        '    </svg>' +
-        '    <span>' + (isPinned ? 'Unpin' : 'Pin') + '</span>' +
-        '  </div>' +
-        '</button>'
-      ) : '') +
-      (isTeacherUser ? (
-        '<button type="button" class="tg-tg-menu-item" id="tgCtxForward">' +
-        '  <div class="tg-tg-menu-left">' +
-        '    <svg class="tg-tg-menu-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-        '      <polyline points="15 17 20 12 15 7"></polyline><path d="M4 18v-2a4 4 0 0 1 4-4h12"></path>' +
-        '    </svg>' +
-        '    <span>Forward</span>' +
-        '  </div>' +
-        '  <svg class="tg-tg-menu-chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-        '    <polyline points="9 18 15 12 9 6"></polyline>' +
-        '  </svg>' +
-        '</button>'
-      ) : '') +
-      (canDelete ? (
-        '<button type="button" class="tg-tg-menu-item danger" id="tgCtxDelete">' +
-        '  <div class="tg-tg-menu-left">' +
-        '    <svg class="tg-tg-menu-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ef5350" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-        '      <polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line>' +
-        '    </svg>' +
-        '    <span>Delete</span>' +
-        '  </div>' +
-        '</button>'
-      ) : '') +
-      '<button type="button" class="tg-tg-menu-item" id="tgCtxSelect">' +
-      '  <div class="tg-tg-menu-left">' +
-      '    <svg class="tg-tg-menu-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-      '      <circle cx="12" cy="12" r="10"></circle><polyline points="9 12 11 14 15 10"></polyline>' +
-      '    </svg>' +
-      '    <span>Select</span>' +
-      '  </div>' +
-      '</button>';
+      '<div class="tg-context-reactions">' +
+      quickEmojis.slice(0, 7).map(function(em) {
+        var isUnlocked = isTeacherUser || (myUnlocked.indexOf(em) !== -1);
+        if (isUnlocked) {
+          return '<button class="tg-context-reaction-btn" data-em="' + em + '">' + em + '</button>';
+        } else {
+          return '<button class="tg-context-reaction-btn is-locked" data-locked-em="' + em + '" title="🔒 Qulflangan"><span style="filter:grayscale(0.7) opacity(0.35)">' + em + '</span><span class="eth-emoji-lock-badge">🔒</span></button>';
+        }
+      }).join('') +
+      '  <button class="tg-context-reaction-btn" id="tgMoreEmojisBtn" title="All Emojis">➕</button>' +
+      '</div>' +
+      (function() {
+        var isTeacherUser = (S.user && (S.user.role === 'teacher' || S.user.role === 'admin' || S.user.isTeacher === true));
+        var isMyMsg = (S.user && (
+          (msg.senderId && S.user.id && msg.senderId === S.user.id) ||
+          (msg.senderEmail && S.user.email && msg.senderEmail.toLowerCase() === S.user.email.toLowerCase()) ||
+          (msg.senderName && S.user.name && msg.senderName.toLowerCase().trim() === S.user.name.toLowerCase().trim())
+        ));
+        var canDelete = isTeacherUser || isMyMsg;
+
+        return '<button class="tg-context-item" id="ctxReplyBtn">' + ic('reply') + ' Reply</button>' +
+          (isTeacherUser ? '<button class="tg-context-item" id="ctxPinBtn">' + ic('pin') + ' Pin Message</button>' : '') +
+          (canDelete ? '<button class="tg-context-item danger" id="ctxDeleteBtn">' + ic('trash') + ' O\'chirish (Delete)</button>' : '');
+      })();
 
     menu.innerHTML = html;
     document.body.appendChild(menu);
     activeContextMenu = menu;
 
-    // 1. Reply
-    var replyBtn = menu.querySelector('#tgCtxReply');
-    if (replyBtn) {
-      replyBtn.onclick = function(e) {
+    // Apply Reaction
+    menu.querySelectorAll('[data-em]').forEach(function(btn) {
+      btn.onclick = function(e) {
         e.stopPropagation();
+        applyReaction(btn.dataset.em, msg, cls, mainContainer);
         menu.remove();
         activeContextMenu = null;
-        currentReplyingMessage = liveMsg;
-        var replyBar = document.getElementById('tgReplyBar');
-        var replyText = document.getElementById('tgReplyBarText');
-        if (replyBar && replyText) {
-          replyBar.style.display = 'flex';
-          replyText.innerHTML = ic('reply') + ' <b>Replying to: ' + esc(liveMsg.senderName) + '</b>: "' + esc(liveMsg.text.slice(0, 45)) + '..."';
-          var inp = document.getElementById('tgInputText');
-          if (inp) inp.focus();
-        }
       };
-    }
-
-    // 2. Edit
-    var editBtn = menu.querySelector('#tgCtxEdit');
-    if (editBtn) {
-      editBtn.onclick = function(e) {
-        e.stopPropagation();
-        menu.remove();
-        activeContextMenu = null;
-        startEditingMessage(liveMsg, liveCls, mainContainer);
-      };
-    }
-
-    // 3. Pin / Unpin
-    var pinBtn = menu.querySelector('#tgCtxPin');
-    if (pinBtn) {
-      pinBtn.onclick = function(e) {
-        e.stopPropagation();
-        menu.remove();
-        activeContextMenu = null;
-        var newPinId = isPinned ? null : liveMsg.id;
-        liveCls.pinnedId = newPinId;
-        App.saveState();
-        if (window.EthithSync) {
-          window.EthithSync.publishLive({
-            type: 'PIN_MSG',
-            classId: liveCls.code || liveCls.id,
-            msgId: newPinId
-          });
-          window.EthithSync.broadcastLocal(S.classes, S.exams);
-          window.EthithSync.pushRemoteStore(S.classes, S.exams);
-        }
-        renderClassDetail(mainContainer, liveCls);
-      };
-    }
-
-    // 4. Forward (Teachers only!)
-    var forwardBtn = menu.querySelector('#tgCtxForward');
-    if (forwardBtn) {
-      forwardBtn.onclick = function(e) {
-        e.stopPropagation();
-        menu.remove();
-        activeContextMenu = null;
-        showTelegramForwardModal(liveMsg, liveCls, mainContainer);
-      };
-    }
-
-    // 5. Delete (0ms instant disintegration)
-    var delBtn = menu.querySelector('#tgCtxDelete');
-    if (delBtn) {
-      delBtn.onclick = function(e) {
-        e.stopPropagation();
-        var targetId = liveMsg.id;
-        menu.remove();
-        activeContextMenu = null;
-        triggerDeleteMessage(targetId, liveCls, mainContainer);
-      };
-    }
-
-    // 6. Select
-    var selectBtn = menu.querySelector('#tgCtxSelect');
-    if (selectBtn) {
-      selectBtn.onclick = function(e) {
-        e.stopPropagation();
-        menu.remove();
-        activeContextMenu = null;
-        toggleMessageSelection(liveMsg.id, row, liveCls, mainContainer);
-      };
-    }
-
-    setTimeout(function() {
-      function dismissCtx(e) {
-        if (Date.now() - menu._openedAt < 180) return;
-        if (!menu.contains(e.target)) {
-          menu.remove();
-          if (activeContextMenu === menu) activeContextMenu = null;
-          document.removeEventListener('click', dismissCtx);
-        }
-      }
-      document.addEventListener('click', dismissCtx);
-    }, 20);
-  }
-
-  // Telegram Forward Modal (Ustozlar uchun boshqa guruhlarga yuborish)
-  function showTelegramForwardModal(msg, currentCls, mainContainer) {
-    var overlay = document.createElement('div');
-    overlay.className = 'tg-forward-modal-overlay';
-
-    var curId = currentCls.id || currentCls.code;
-    var otherGroups = (S.classes || []).filter(function(c) {
-      return c && c.id !== curId && c.code !== curId;
     });
 
-    var html = '' +
-      '<div class="tg-forward-modal">' +
-      '  <div style="padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;">' +
-      '    <div>' +
-      '      <h3 style="margin:0;font-size:16px;font-weight:800;color:#f8fafc;display:flex;align-items:center;gap:8px;">' +
-      '        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 17 20 12 15 7"></polyline><path d="M4 18v-2a4 4 0 0 1 4-4h12"></path></svg>' +
-      '        Habarni boshqa guruhga yuborish (Forward)' +
-      '      </h3>' +
-      '      <p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">Ushbu habarni qaysi guruh chatiga yo\'naltirmoqchisiz?</p>' +
-      '    </div>' +
-      '    <button type="button" id="btnCloseFwdModal" style="background:none;border:none;color:#94a3b8;font-size:18px;cursor:pointer;">✕</button>' +
-      '  </div>' +
-      '  <div style="padding:12px 20px;background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.06);font-size:12.5px;color:#cbd5e1;display:flex;align-items:center;gap:8px;">' +
-      '    <span style="opacity:0.7;">Habar:</span> <b style="color:#38bdf8;">' + esc(msg.senderName) + ':</b> "' + esc(msg.text.slice(0, 50)) + (msg.text.length > 50 ? '...' : '') + '"' +
-      '  </div>' +
-      '  <div style="max-height:320px;overflow-y:auto;padding:6px 0;">' +
-      (otherGroups.length === 0 ? (
-        '<div style="padding:32px 20px;text-align:center;color:#94a3b8;font-size:13px;">Boshqa sinf yoki guruhlar topilmadi.</div>'
-      ) : (
-        otherGroups.map(function(g) {
-          var stCount = (g.students || []).length;
-          return '<div class="tg-forward-group-item" data-target-group-id="' + esc(g.id || g.code) + '">' +
-            '  <div>' +
-            '    <div style="font-size:14px;font-weight:700;color:#f8fafc;">' + esc(g.name) + '</div>' +
-            '    <div style="font-size:12px;color:#94a3b8;">' + (g.level || 'Guruh') + ' · ' + stCount + ' nafar o\'quvchi</div>' +
-            '  </div>' +
-            '  <button type="button" class="tg-forward-send-btn">' +
-            '    <span>Yuborish</span> ➔' +
-            '  </button>' +
-            '</div>';
-        }).join('')
-      )) +
-      '  </div>' +
-      '</div>';
+    menu.querySelectorAll('[data-locked-em]').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        showLockedEmojiModal(btn.dataset.lockedEm);
+      };
+    });
 
-    overlay.innerHTML = html;
-    document.body.appendChild(overlay);
-
-    overlay.onclick = function(e) {
-      if (e.target === overlay) overlay.remove();
+    menu.querySelector('#tgMoreEmojisBtn').onclick = function(e) {
+      e.stopPropagation();
+      showAllEmojisPicker(posX, posY, msg, cls, mainContainer);
     };
 
-    var closeBtn = overlay.querySelector('#btnCloseFwdModal');
-    if (closeBtn) closeBtn.onclick = function() { overlay.remove(); };
+    menu.querySelector('#ctxReplyBtn').onclick = function() {
+      currentReplyingMessage = msg;
+      var replyBar = document.getElementById('tgReplyBar');
+      var replyText = document.getElementById('tgReplyBarText');
+      if (replyBar && replyText) {
+        replyBar.style.display = 'flex';
+        replyText.innerHTML = ic('reply') + ' <b>Replying to: ' + esc(msg.senderName) + '</b>: "' + esc(msg.text.slice(0, 45)) + '..."';
+        document.getElementById('tgInputText').focus();
+      }
+      menu.remove();
+      activeContextMenu = null;
+    };
 
-    overlay.querySelectorAll('.tg-forward-group-item').forEach(function(item) {
-      item.onclick = function(e) {
-        var targetGid = item.dataset.targetGroupId;
-        var targetCls = (S.classes || []).find(function(c) {
-          return (c.id && c.id === targetGid) || (c.code && c.code === targetGid);
+    menu.querySelector('#ctxPinBtn').onclick = function() {
+      cls.pinnedId = msg.id;
+      App.saveState();
+      if (window.EthithSync) {
+        window.EthithSync.publishLive({
+          type: 'PIN_MSG',
+          classId: cls.code || cls.id,
+          msgId: msg.id
         });
-        if (!targetCls) return;
+        window.EthithSync.broadcastLocal(S.classes, S.exams);
+        window.EthithSync.pushRemoteStore(S.classes, S.exams);
+      }
+      menu.remove();
+      activeContextMenu = null;
+      renderClassDetail(mainContainer, cls);
+    };
 
-        var fwdMsg = {
-          id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
-          timestamp: Date.now(),
-          senderId: S.user.id,
-          senderName: S.user.name,
-          senderEmail: S.user.email,
-          text: msg.text,
-          forwardedFrom: msg.senderName,
-          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          reactions: {}
-        };
+    var delBtn = menu.querySelector('#ctxDeleteBtn');
+    if (delBtn) {
+      delBtn.onclick = function() {
+        var msgId = msg.id;
+        menu.remove();
+        activeContextMenu = null;
 
-        if (!targetCls.messages) targetCls.messages = [];
-        targetCls.messages.push(fwdMsg);
+        // 1. Instant 0ms particle disintegration locally!
+        var row = document.querySelector('.tg-msg-row[data-msg-id="' + msgId + '"]');
+        if (row) disintegrateMsgRow(row);
+
+        // 2. Remove from live state
+        var liveCls = (S.classes && S.classes.find(function(c) {
+          return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
+        })) || cls;
+
+        liveCls.messages = (liveCls.messages || []).filter(function(m) { return m.id !== msgId; });
+        if (cls !== liveCls && cls.messages) {
+          cls.messages = (cls.messages || []).filter(function(m) { return m.id !== msgId; });
+        }
+        if (liveCls.pinnedId === msgId) liveCls.pinnedId = null;
+        if (!liveCls.deletedMsgIds) liveCls.deletedMsgIds = [];
+        if (liveCls.deletedMsgIds.indexOf(msgId) === -1) liveCls.deletedMsgIds.push(msgId);
+
+        // 3. Save state
         App.saveState();
 
+        // 4. Instant Dual-broker MQTT broadcast for 0ms peer disintegration
         if (window.EthithSync) {
           window.EthithSync.publishLive({
-            type: 'CHAT_MSG',
-            classId: targetCls.code || targetCls.id,
-            message: fwdMsg
+            type: 'DELETE_MSG',
+            classId: liveCls.code || liveCls.id || cls.code || cls.id,
+            msgId: msgId
           });
           window.EthithSync.broadcastLocal(S.classes, S.exams);
           window.EthithSync.pushRemoteStore(S.classes, S.exams);
         }
-
-        overlay.remove();
-        showToast('Habar muvaffaqiyatli "' + targetCls.name + '" guruhiga yuborildi!');
       };
-    });
-  }
-
-  // Tahrirlashni boshlash (Edit message)
-  function startEditingMessage(msg, cls, mainContainer) {
-    currentEditingMessage = msg;
-    var inp = document.getElementById('tgInputText');
-    if (inp) {
-      inp.value = msg.text || '';
-      inp.focus();
-    }
-    var editBar = document.getElementById('tgEditBar');
-    var editBarText = document.getElementById('tgEditBarText');
-    if (editBar && editBarText) {
-      editBar.style.display = 'flex';
-      editBarText.innerHTML = '✏️ <b>Tahrirlash:</b> "' + esc((msg.text || '').slice(0, 45)) + '..."';
     }
   }
-
-  // Tanlash rejimini boshqarish (Selection mode)
-  function toggleMessageSelection(msgId, rowEl, activeCls, cnt) {
-    if (!window._ethithSelectedMsgIds) window._ethithSelectedMsgIds = [];
-    var idx = window._ethithSelectedMsgIds.indexOf(msgId);
-    if (idx > -1) {
-      window._ethithSelectedMsgIds.splice(idx, 1);
-      if (rowEl) rowEl.classList.remove('is-selected');
-    } else {
-      window._ethithSelectedMsgIds.push(msgId);
-      if (rowEl) rowEl.classList.add('is-selected');
-    }
-
-    var selBar = document.getElementById('tgSelectionBar');
-    var selText = document.getElementById('tgSelectionText');
-    if (window._ethithSelectedMsgIds.length > 0) {
-      window._ethithIsSelectionMode = true;
-      if (selBar && selText) {
-        selBar.style.display = 'flex';
-        selText.textContent = window._ethithSelectedMsgIds.length + ' ta habar tanlandi';
-      }
-    } else {
-      exitSelectionMode();
-    }
-  }
-
-  function exitSelectionMode() {
-    window._ethithIsSelectionMode = false;
-    window._ethithSelectedMsgIds = [];
-    document.querySelectorAll('.tg-msg-row.is-selected').forEach(function(r) {
-      r.classList.remove('is-selected');
-    });
-    var selBar = document.getElementById('tgSelectionBar');
-    if (selBar) selBar.style.display = 'none';
-  }
-
-  // Reusable 0ms message deletion with Telegram sand/pixel disintegration
-  function triggerDeleteMessage(msgId, cls, mainContainer) {
-    if (!msgId) return;
-
-    // 1. Instant Telegram sand/pixel dissolution in 0ms!
-    var row = document.querySelector('.tg-msg-row[data-msg-id="' + msgId + '"]');
-    if (row) telegramDisintegrateBubble(row);
-
-    // 2. Remove from live state
-    var liveCls = (S.classes && S.classes.find(function(c) {
-      return (c.id && c.id === cls.id) || (c.code && c.code === cls.code);
-    })) || cls;
-
-    liveCls.messages = (liveCls.messages || []).filter(function(m) { return m.id !== msgId; });
-    if (cls !== liveCls && cls.messages) {
-      cls.messages = (cls.messages || []).filter(function(m) { return m.id !== msgId; });
-    }
-    if (liveCls.pinnedId === msgId) liveCls.pinnedId = null;
-    if (!liveCls.deletedMsgIds) liveCls.deletedMsgIds = [];
-    if (liveCls.deletedMsgIds.indexOf(msgId) === -1) liveCls.deletedMsgIds.push(msgId);
-
-    // 3. Save state
-    App.saveState();
-
-    // 4. Instant Dual-broker MQTT broadcast for 0ms peer disintegration
-    if (window.EthithSync) {
-      window.EthithSync.publishLive({
-        type: 'DELETE_MSG',
-        classId: liveCls.code || liveCls.id || cls.code || cls.id,
-        msgId: msgId
-      });
-      window.EthithSync.broadcastLocal(S.classes, S.exams);
-      window.EthithSync.pushRemoteStore(S.classes, S.exams);
-    }
-  }
-
 
   // In-place 0ms DOM updater for bubble reactions (NO full page reload!)
   function updateBubbleReactionsDom(msgId, m, activeCls, myUser, cnt) {
@@ -3734,6 +3148,8 @@
       };
     });
   }
+
+
 
   // ==========================================
   // VIEW 4: EXAMS & LEADERBOARD
@@ -15312,6 +14728,7 @@
     renderAskAITeacher: renderAskAITeacher,
     renderLevelsView: renderLevelsView,
     renderClassesView: renderClassesView,
+    renderChatView: renderClassesView,
     renderExamsView: renderExamsView,
     renderPlacementView: renderPlacementView,
     renderProgressionTestsView: renderProgressionTestsView,

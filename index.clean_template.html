@@ -1427,7 +1427,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       h += sec('Admin Boshqaruvi');
       h += item('luckysheet', '📑', 'Boshqaruv Jadvali (Excel format)');
       h += item('attendance', '📅', 'Attendance');
-      h += item('chat', '<span class="neon-badge neon-badge-cyan">👥</span>', 'Sinflar');
+      h += item('classes', '<span class="neon-badge neon-badge-cyan">💬</span>', 'Sinf Chati');
       h += item('billing', '💳', 'Oylik To‘lovlar (Moliya)');
       h += item('staff', '👨‍🏫', 'O‘qituvchilar (Payroll)');
       h += item('contests', '🏆', 'Onlayn Musobaqalar');
@@ -1444,7 +1444,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       h += item('luckysheet', '📑', 'Boshqaruv Jadvali (Excel format)');
       h += item('explorer', '💻', 'Qo‘shimcha testlar');
       h += item('attendance', '📅', 'Attendance');
-      h += item('chat', '<span class="neon-badge neon-badge-cyan">👥</span>', 'Sinflar');
+      h += item('classes', '<span class="neon-badge neon-badge-cyan">💬</span>', 'Sinf Chati');
       // timetable merged into attendance
 
       h += sec('Darsliklar & Materiallar');
@@ -1465,7 +1465,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       h += item('upper_intermediate', ic('book'), 'Upper-Intermediate (B2)');
       h += item('explorer', '📝', 'Qo‘shimcha vazifalar');
       h += item('attendance', '📅', 'Attendance');
-      h += item('chat', '<span class="neon-badge neon-badge-cyan">👥</span>', 'Sinflar');
+      h += item('classes', '<span class="neon-badge neon-badge-cyan">💬</span>', 'Sinf Chati');
       h += sec('Reyting & Musobaqalar');
       h += item('contests', '<span class="neon-badge neon-badge-amber">🏆</span>', 'Onlayn Musobaqalar');
       h += item('quiz', '<span class="neon-badge neon-badge-cyan">⚡</span>', 'Quiz Test');
@@ -1503,9 +1503,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     upper_intermediate: 'Oxford Navigate Upper-Intermediate (B2)',
     ask_ai: 'ETHITH AI Teacher',
     quiz: 'Live Quiz Battle & Test',
-    classes: '👥 Sinflar',
+    classes: '💬 Sinf Chati',
     attendance: 'Attendance (O‘qituvchilar & Guruhlar)',
-    chat: 'ETHITH Chat (Matrix & Centrifugo)',
+    chat: '💬 Sinf Chati',
     explorer: 'Qo‘shimcha testlar va Savollar Banki',
     timetable: 'Attendance (O‘qituvchilar & Guruhlar)',
     billing: 'Oylik To‘lovlar & Moliya',
@@ -1895,10 +1895,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         } else if (window.EthithViews && window.EthithViews.renderAttendanceView) {
           window.EthithViews.renderAttendanceView(v);
         }
-      } else if (view.name === 'chat') {
-        if (window.EthithChat && window.EthithChat.render) {
-          window.EthithChat.render(v);
-        }
+
       } else if (view.name === 'billing') {
         if (window.EthithEnterprise && window.EthithEnterprise.renderBillingView) {
           window.EthithEnterprise.renderBillingView(v);

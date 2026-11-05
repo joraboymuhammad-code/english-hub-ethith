@@ -11,7 +11,16 @@
   var EC = {};
   window.EthithChat = EC;
   window.EthithViews = window.EthithViews || {};
-  window.EthithViews.renderChatView = function(container) { EC.render(container); };
+  window.EthithViews.renderChatView = function(container) {
+    if (window.EthithViews && typeof window.EthithViews.renderClassesView === 'function') {
+      window.EthithViews.renderClassesView(container);
+    }
+  };
+  EC.render = function(container) {
+    if (window.EthithViews && typeof window.EthithViews.renderClassesView === 'function') {
+      window.EthithViews.renderClassesView(container);
+    }
+  };
 
   // Handler for dynamic student group transfers
   EC.onClassTransfer = function(newClassId) {
