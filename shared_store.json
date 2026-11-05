@@ -25825,7 +25825,7 @@
           "updatedAt": 1793870202007,
           "hasLoggedIn": true,
           "isLoggedOut": false,
-          "lastSeen": 1793876408209
+          "lastSeen": 1793739652731
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -28935,12 +28935,12 @@
     {
       "id": "admin_official_teacher",
       "role": "teacher",
-      "name": "Ustoz",
+      "name": "Azizbek Urolov",
       "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
       "coins": 100000,
       "gifts": [],
-      "level": "B1+",
+      "level": "C2",
       "dailyMinutes": 0,
       "updatedAt": 1793773725443,
       "avatar": null,
@@ -28969,7 +28969,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793876408524,
+      "lastSeen": 1793876598769,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -29737,7 +29737,7 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Azizbek Urolov",
+      "name": "Ustoz",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
       "password": "azizbek2026",
@@ -150112,5 +150112,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1793876409198
+  "updatedAt": 1793876600078
 }
