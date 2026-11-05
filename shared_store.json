@@ -25398,26 +25398,79 @@
           }
         },
         "lessonTypes": {
-          "2026-10-30": "Vazifa: 1.1",
+          "2026-10-30": "Vazifa (A1): 2.1, 2.2, 2.3, 2.4",
           "2026-11-05": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
-          "2026-10-30": {
-            "dateKey": "2026-10-30",
-            "dateDisp": "30.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 0
-          }
+          "2026-10-30": [
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A1",
+              "unit": 2,
+              "lessonCode": "2.1",
+              "lessonTitle": "2.1 What's this in English?",
+              "pages": [
+                1012,
+                1013
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793870139075,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A1",
+              "unit": 2,
+              "lessonCode": "2.2",
+              "lessonTitle": "2.2 What's your job?",
+              "pages": [
+                1014,
+                1015
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793870139075,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A1",
+              "unit": 2,
+              "lessonCode": "2.3",
+              "lessonTitle": "2.3 Where is it?",
+              "pages": [
+                1016,
+                1017
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793870139075,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A1",
+              "unit": 2,
+              "lessonCode": "2.4",
+              "lessonTitle": "2.4 Speaking & writing",
+              "pages": [
+                1018,
+                1019
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793870139075,
+              "teacherName": "Azizbek Urolov"
+            }
+          ]
         },
-        "updatedAt": 1793867564943
+        "updatedAt": 1793870139075
       },
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
@@ -25775,7 +25828,7 @@
           "updatedAt": 1793856833917,
           "isLoggedOut": false,
           "hasLoggedIn": true,
-          "lastSeen": 1793870110705,
+          "lastSeen": 1793870139299,
           "avatar": null,
           "nameStyle": null,
           "title": null,
@@ -26309,17 +26362,20 @@
       ],
       "messages": [],
       "activeHomework": {
+        "type": "workbook",
         "dateKey": "2026-10-30",
         "dateDisp": "30.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
+        "bookLevel": "A1",
+        "unit": 2,
+        "lessonCode": "2.1",
+        "lessonTitle": "2.1 What's this in English?",
         "pages": [
-          4,
-          5
+          1012,
+          1013
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
+        "assignedAt": 1793870139075,
+        "teacherName": "Azizbek Urolov"
       },
       "deletedStudentIds": [
         "std_rayxona_271_qoshqarova",
@@ -26477,7 +26533,73 @@
       "levelTestDate": "2027-02-03",
       "learningLessons": 0,
       "baselineDate": "2026-11-05",
-      "pinnedIds": []
+      "pinnedIds": [],
+      "activeHomeworks": [
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "A1",
+          "unit": 2,
+          "lessonCode": "2.1",
+          "lessonTitle": "2.1 What's this in English?",
+          "pages": [
+            1012,
+            1013
+          ],
+          "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+          "assignedAt": 1793870139075,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "A1",
+          "unit": 2,
+          "lessonCode": "2.2",
+          "lessonTitle": "2.2 What's your job?",
+          "pages": [
+            1014,
+            1015
+          ],
+          "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+          "assignedAt": 1793870139075,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "A1",
+          "unit": 2,
+          "lessonCode": "2.3",
+          "lessonTitle": "2.3 Where is it?",
+          "pages": [
+            1016,
+            1017
+          ],
+          "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+          "assignedAt": 1793870139075,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "A1",
+          "unit": 2,
+          "lessonCode": "2.4",
+          "lessonTitle": "2.4 Speaking & writing",
+          "pages": [
+            1018,
+            1019
+          ],
+          "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+          "assignedAt": 1793870139075,
+          "teacherName": "Azizbek Urolov"
+        }
+      ]
     },
     {
       "id": "cls_urolov_azizbek_standard",
@@ -29724,7 +29846,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870077194,
+      "lastSeen": 1793870137200,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -29908,7 +30030,7 @@
       "login": "azizbek77",
       "password": "azizbek2026",
       "loggedOutAt": 1793779411611,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "std_13",
@@ -30073,7 +30195,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971,
+      "lastSeen": 1793870140577,
       "password": "azizbek2026",
       "level": "B1+",
       "dailyMinutes": 0
@@ -30100,7 +30222,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30121,7 +30243,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30142,7 +30264,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30166,7 +30288,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30190,7 +30312,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30212,7 +30334,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30234,7 +30356,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30258,7 +30380,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30279,7 +30401,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30301,7 +30423,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30323,7 +30445,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30345,7 +30467,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30369,7 +30491,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30393,7 +30515,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30417,7 +30539,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30438,7 +30560,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "st_998901239988",
@@ -30514,7 +30636,7 @@
       "classId": "cls_urolov_azizbek_upper",
       "lastLogin": null,
       "loggedOutAt": 1793783047463,
-      "lastSeen": 1793870110705,
+      "lastSeen": 1793870139299,
       "level": "A1",
       "dailyMinutes": 114
     },
@@ -30536,7 +30658,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "t_muhammadyusuf",
@@ -30567,7 +30689,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "admin_official_teacher",
@@ -30579,7 +30701,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870111971
+      "lastSeen": 1793870140577
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -31036,7 +31158,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793870110705,
+      "lastSeen": 1793870139299,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov"
     },
@@ -150724,5 +150846,5 @@
       }
     }
   },
-  "updatedAt": 1793870112517
+  "updatedAt": 1793870140914
 }
