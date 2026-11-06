@@ -356,12 +356,18 @@
               "status": "",
               "score": ""
             }
+          },
+          "2026-11-04": {
+            "cls_ravshanov_doniyor_cefr_1_std_1": {
+              "status": "",
+              "score": ""
+            }
           }
         },
         "lessonTypes": {},
         "holidays": {},
         "homeworks": {},
-        "updatedAt": 1793965232662
+        "updatedAt": 1793965605492
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -23302,7 +23308,7 @@
           "lastLogin": "2026-11-06T10:58:45.561Z",
           "dailyMinutes": 39,
           "loggedOutAt": 1793948950245,
-          "lastSeen": 1793965546333
+          "lastSeen": 1793965612329
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -26392,7 +26398,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793965546377,
+      "lastSeen": 1793965612382,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -27150,7 +27156,7 @@
       "dailyMinutes": 3,
       "lastLogin": "2026-11-06T10:58:45.560Z",
       "loggedOutAt": 1793948950245,
-      "lastSeen": 1793965546333
+      "lastSeen": 1793965612329
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -27606,7 +27612,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793965546333
+      "lastSeen": 1793965612329
     },
     {
       "id": "std_mix_416_selix",
@@ -152529,5 +152535,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1793965546997
+  "updatedAt": 1793965612902
 }
