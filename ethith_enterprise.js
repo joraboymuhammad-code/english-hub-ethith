@@ -3842,19 +3842,24 @@
 
     var h = '<div style="display:flex;flex-direction:column;gap:20px;">' +
 
-      // CHARTS SECTION
-      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">' +
-        '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:22px;backdrop-filter:blur(20px);box-shadow:0 10px 30px rgba(0,0,0,0.4);">' +
-          '<h3 style="margin:0 0 14px;font-size:16px;font-weight:900;color:#fff;">📊 Ustozlar O‘tilgan Dars Soatlari va Maosh Solishtiruvi</h3>' +
-          '<div style="position:relative;height:240px;width:100%;">' +
-            '<canvas id="eeTeacherPayrollBarChart"></canvas>' +
-          '</div>' +
+      // 3 KPI HIGHLIGHT CARDS FOR TEACHER PAYROLL RULE
+      '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">' +
+        '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(168,85,247,0.35);border-radius:18px;padding:18px;backdrop-filter:blur(16px);">' +
+          '<div style="font-size:11px;font-weight:800;color:#c084fc;text-transform:uppercase;margin-bottom:6px;">👨‍🏫 Ustoz Maoshi Asosi</div>' +
+          '<div style="font-size:15px;font-weight:900;color:#fff;line-height:1.4;">O‘quvchilar To‘lovining Belgilangan Foizi</div>' +
+          '<div style="font-size:12px;color:#94a3b8;margin-top:6px;">Ustozga dars soatlari bo‘yicha emas, faqat o‘zining guruhidagi to‘lov qilgan o‘quvchilarining oylik pulidan foiz (masalan 50%) beriladi.</div>' +
         '</div>' +
-        '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:22px;backdrop-filter:blur(20px);box-shadow:0 10px 30px rgba(0,0,0,0.4);">' +
-          '<h3 style="margin:0 0 14px;font-size:16px;font-weight:900;color:#fff;">🎯 Pedagogik Intizom va Davomat Radari</h3>' +
-          '<div style="position:relative;height:240px;width:100%;">' +
-            '<canvas id="eeTeacherRadarChart"></canvas>' +
-          '</div>' +
+
+        '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(56,189,248,0.35);border-radius:18px;padding:18px;backdrop-filter:blur(16px);">' +
+          '<div style="font-size:11px;font-weight:800;color:#38bdf8;text-transform:uppercase;margin-bottom:6px;">⚡ Real-Vaqtda Hisoblash</div>' +
+          '<div style="font-size:15px;font-weight:900;color:#38bdf8;line-height:1.4;">Har Bir O‘quvchi To‘lagan Zahoti</div>' +
+          '<div style="font-size:12px;color:#94a3b8;margin-top:6px;">O‘quvchi oylik to‘laganda uning foizi avtomatik ravishda shu o‘qituvchining maoshiga qo‘shilib boradi.</div>' +
+        '</div>' +
+
+        '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(16,185,129,0.35);border-radius:18px;padding:18px;backdrop-filter:blur(16px);">' +
+          '<div style="font-size:11px;font-weight:800;color:#34d399;text-transform:uppercase;margin-bottom:6px;">💎 Markaz Sof Foydasi</div>' +
+          '<div style="font-size:15px;font-weight:900;color:#34d399;line-height:1.4;">O‘qituvchidan Ortgan Qoldiq Qism</div>' +
+          '<div style="font-size:12px;color:#94a3b8;margin-top:6px;">O‘quvchilar pulidan o‘qituvchiga foiz berilgach, qolgan butun mablag‘ to‘g‘ridan-to‘g‘ri markazning sof foydasi bo‘ladi.</div>' +
         '</div>' +
       '</div>' +
 
@@ -4577,15 +4582,10 @@
           '<small style="color:#94a3b8;font-size:11px;margin-top:4px;display:block;">Masalan: 50% kiritilsa, har bir to‘langan o‘quvchi pulining 50 foizi ushbu ustoz maoshiga real vaqtda qo‘shiladi.</small>' +
         '</div>' +
 
-        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
-          '<div>' +
-            '<label style="display:block;font-size:11.5px;font-weight:800;color:#38bdf8;text-transform:uppercase;margin-bottom:6px;">O‘tilgan Dars Soati</label>' +
-            '<input type="number" id="eeEditTHours" value="' + hours + '" style="width:100%;padding:11px 14px;background:#1e293b;border:1.5px solid #38bdf8;border-radius:12px;color:#38bdf8;font-weight:900;font-size:16px;outline:none;box-sizing:border-box;" />' +
-          '</div>' +
-          '<div>' +
-            '<label style="display:block;font-size:11.5px;font-weight:800;color:#10b981;text-transform:uppercase;margin-bottom:6px;">Soatlik Stavka (so‘m)</label>' +
-            '<input type="number" id="eeEditTRate" value="' + rate + '" style="width:100%;padding:11px 14px;background:#1e293b;border:1.5px solid #10b981;border-radius:12px;color:#34d399;font-weight:900;font-size:16px;outline:none;box-sizing:border-box;" />' +
-          '</div>' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#38bdf8;text-transform:uppercase;margin-bottom:6px;">1 Ta O‘quvchining Standart Oylik To‘lovi (so‘m)</label>' +
+          '<input type="number" id="eeEditTFee" value="' + (Number(t.studentMonthlyFee) || 300000) + '" style="width:100%;padding:11px 14px;background:#1e293b;border:1.5px solid #38bdf8;border-radius:12px;color:#38bdf8;font-weight:900;font-size:16px;outline:none;box-sizing:border-box;" />' +
+          '<small style="color:#94a3b8;font-size:11px;margin-top:4px;display:block;">Har bir to‘lagan o‘quvchi summasining ' + share + '% qismi ushbu o‘qituvchining maoshiga hisoblanadi.</small>' +
         '</div>' +
 
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
@@ -4630,8 +4630,8 @@
 
     m.querySelector('#eeSaveTeacherModal').onclick = function() {
       var nName = m.querySelector('#eeEditTName').value.trim();
-      var nHours = parseInt(m.querySelector('#eeEditTHours').value, 10) || 0;
-      var nRate = parseInt(m.querySelector('#eeEditTRate').value, 10) || 0;
+      var nFeeInput = m.querySelector('#eeEditTFee');
+      var nFee = nFeeInput ? (parseInt(nFeeInput.value, 10) || 300000) : (t.studentMonthlyFee || 300000);
       var nShare = parseInt(m.querySelector('#eeEditTShare').value, 10);
       if (isNaN(nShare)) nShare = 50;
       nShare = Math.max(0, Math.min(100, nShare));
@@ -4640,8 +4640,7 @@
       var statusVal = m.querySelector('#eeEditTPaidStatus').value;
 
       t.name = nName || t.name;
-      t.teachingHours = nHours;
-      t.hourlyRate = nRate;
+      t.studentMonthlyFee = nFee;
       t.salarySharePercent = nShare;
       t.unpaidMonths = nUnpaid;
       t.paidThisMonth = (statusVal === 'paid');
@@ -4651,8 +4650,7 @@
         var tMap = JSON.parse(localStorage.getItem('ethith_teacher_settings') || '{}');
         tMap[t.id] = {
           salarySharePercent: t.salarySharePercent,
-          teachingHours: t.teachingHours,
-          hourlyRate: t.hourlyRate,
+          studentMonthlyFee: t.studentMonthlyFee,
           unpaidMonths: t.unpaidMonths,
           paidThisMonth: t.paidThisMonth
         };
