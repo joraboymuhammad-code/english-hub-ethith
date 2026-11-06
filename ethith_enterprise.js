@@ -477,11 +477,15 @@
 
     (S.teachers || []).forEach(function(t) {
       var sal = Number(t.computedLiveSalary) || Number(t.monthlySalary) || 0;
+      var coll = Number(t.liveCollectedRevenue) || (sal * 2);
+      var retain = Number(t.centerRetainedShare) || (coll - sal);
       if (t.paidThisMonth === true) payout += sal;
       octSalaries[t.id] = {
         name: t.name,
         paidThisMonth: (t.paidThisMonth === true),
         amount: sal,
+        collectedRevenue: coll,
+        centerRetainedShare: retain,
         unpaidMonths: Number(t.unpaidMonths) || 0
       };
     });
@@ -3465,6 +3469,8 @@
         var at = archTMap[t.id] || {};
         return Object.assign({}, t, {
           computedLiveSalary: at.amount !== undefined ? at.amount : t.computedLiveSalary,
+          liveCollectedRevenue: at.collectedRevenue !== undefined ? at.collectedRevenue : (at.amount ? at.amount * 2 : 0),
+          centerRetainedShare: at.centerRetainedShare !== undefined ? at.centerRetainedShare : (at.amount ? at.amount : 0),
           paidThisMonth: at.paidThisMonth === true,
           unpaidMonths: at.unpaidMonths || 0
         });
@@ -3515,7 +3521,9 @@
           }
         });
         t.livePaidStudents = tPaidCount;
+        t.liveCollectedRevenue = tCollectedSum;
         t.computedLiveSalary = Math.round(tCollectedSum * (tShare / 100));
+        t.centerRetainedShare = tCollectedSum - t.computedLiveSalary;
 
         if (t.paidThisMonth === true) {
           paidTeacherPayout += t.computedLiveSalary;
@@ -3863,16 +3871,23 @@
           '</div>' : '<span style="background:rgba(56,189,248,0.15);color:#38bdf8;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:800;">📜 O‘tgan Oygi Hisobot Arvivi</span>') +
         '</div>' +
 
+        '<div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);border-radius:14px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px;">' +
+          '<span style="font-size:26px;">💡</span>' +
+          '<div style="font-size:12.5px;color:#cbd5e1;line-height:1.5;">' +
+            '<strong style="color:#38bdf8;font-size:13px;">Daromad Taqsimoti Qoidasi:</strong> Har bir o‘qituvchiga faqat o‘zining guruhlaridagi to‘lov qilgan o‘quvchilarining oylik to‘lovidan belgilangan foiz (standart <strong>50%</strong>) o‘tadi. O‘sha to‘lovlardan ustoz ulushi ajratilgach, <strong style="color:#34d399;">qolgan mablag‘ to‘g‘ridan-to‘g‘ri o‘quv markazning sof foydasi</strong> bo‘lib qoladi.' +
+          '</div>' +
+        '</div>' +
+
         '<div style="overflow-x:auto;">' +
           '<table style="width:100%;border-collapse:collapse;text-align:left;">' +
             '<thead>' +
               '<tr style="border-bottom:1px solid rgba(255,255,255,0.1);font-size:11px;font-weight:900;color:#94a3b8;text-transform:uppercase;letter-spacing:0.04em;white-space:nowrap;">' +
                 '<th style="padding:12px 14px;white-space:nowrap;">№</th>' +
                 '<th style="padding:12px 14px;white-space:nowrap;">O‘qituvchi</th>' +
-                '<th style="padding:12px 14px;white-space:nowrap;">Mutaxassislik</th>' +
-                '<th style="padding:12px 14px;white-space:nowrap;">O‘tilgan Dars Soati</th>' +
-                '<th style="padding:12px 14px;white-space:nowrap;">Ulush Foizi</th>' +
+                '<th style="padding:12px 14px;white-space:nowrap;">Guruh Tushumi</th>' +
+                '<th style="padding:12px 14px;white-space:nowrap;">Ustoz Ulushi</th>' +
                 '<th style="padding:12px 14px;white-space:nowrap;">Hisoblangan Maosh</th>' +
+                '<th style="padding:12px 14px;white-space:nowrap;">Markazga Qolgan Sof Foyda</th>' +
                 '<th style="padding:12px 14px;white-space:nowrap;">Holat</th>' +
                 '<th style="padding:12px 14px;text-align:right;white-space:nowrap;">Amal</th>' +
               '</tr>' +
@@ -3885,6 +3900,9 @@
                 var unpaidCount = Number(t.unpaidMonths) || 0;
                 var isPaid = (t.paidThisMonth === true);
                 var salary = Number(t.computedLiveSalary) || 0;
+                var collRevenue = Number(t.liveCollectedRevenue) || (salary > 0 ? Math.round(salary / (share / 100)) : 0);
+                var centerRetained = collRevenue - salary;
+                var centerPercent = 100 - share;
 
                 var statusBadge = '';
                 if (isPaid) {
@@ -3917,10 +3935,20 @@
                       '</div>' +
                     '</div>' +
                   '</td>' +
-                  '<td style="padding:12px 14px;color:#cbd5e1;font-weight:700;font-size:12px;white-space:nowrap;">' + esc(t.subject || 'Ingliz tili') + '</td>' +
-                  '<td style="padding:12px 14px;font-family:monospace;font-weight:800;color:#38bdf8;font-size:13px;white-space:nowrap;">' + hours + ' soat</td>' +
-                  '<td style="padding:12px 14px;font-family:monospace;font-weight:800;color:#a855f7;font-size:13px;white-space:nowrap;">' + share + '%</td>' +
-                  '<td style="padding:12px 14px;font-family:monospace;font-weight:900;color:#34d399;font-size:14px;white-space:nowrap;">' + fmtUZS(salary) + '</td>' +
+                  '<td style="padding:12px 14px;font-family:monospace;font-weight:800;color:#38bdf8;font-size:13.5px;white-space:nowrap;">' +
+                    fmtUZS(collRevenue) +
+                    '<div style="font-size:10.5px;color:#94a3b8;font-weight:600;font-family:sans-serif;">' + (t.livePaidStudents || 0) + ' ta to‘lagan o‘quvchi</div>' +
+                  '</td>' +
+                  '<td style="padding:12px 14px;font-family:monospace;font-weight:900;color:#c084fc;font-size:13px;white-space:nowrap;">' +
+                    '<span style="background:rgba(192,132,252,0.15);padding:3px 8px;border-radius:6px;border:1px solid rgba(192,132,252,0.3);">' + share + '%</span>' +
+                  '</td>' +
+                  '<td style="padding:12px 14px;font-family:monospace;font-weight:900;color:#34d399;font-size:14px;white-space:nowrap;">' +
+                    fmtUZS(salary) +
+                  '</td>' +
+                  '<td style="padding:12px 14px;font-family:monospace;font-weight:900;color:#4ade80;font-size:13.5px;white-space:nowrap;">' +
+                    fmtUZS(centerRetained) +
+                    '<div style="font-size:10.5px;color:#10b981;font-weight:700;font-family:sans-serif;">' + centerPercent + '% markaz ulushi</div>' +
+                  '</td>' +
                   '<td style="padding:12px 14px;white-space:nowrap;">' + statusBadge + '</td>' +
                   '<td style="padding:12px 14px;text-align:right;white-space:nowrap;">' +
                     '<div style="display:inline-flex;gap:6px;align-items:center;">' +
@@ -4280,13 +4308,20 @@
 
         // Sheet 2: Teachers
         var tData = (S.teachers || []).map(function(t, i) {
+          var share = t.salarySharePercent !== undefined ? t.salarySharePercent : 50;
+          var sal = t.computedLiveSalary || 0;
+          var coll = Number(t.liveCollectedRevenue) || (sal > 0 ? Math.round(sal / (share / 100)) : 0);
+          var centerProfit = coll - sal;
           return {
             "№": i + 1,
             "O'qituvchi": t.name,
             "Fani": t.subject || 'Ingliz tili',
             "Dars Soati": t.teachingHours || 0,
-            "Ulush (%)": (t.salarySharePercent !== undefined ? t.salarySharePercent : 50) + '%',
-            "Hisoblangan Maosh (so'm)": t.computedLiveSalary || 0,
+            "To'lagan O'quvchilar": t.livePaidStudents || 0,
+            "Guruh Tushumi (so'm)": coll,
+            "Ustoz Ulushi (%)": share + '%',
+            "Hisoblangan Maosh (so'm)": sal,
+            "Markazga Qolgan Sof Foyda (so'm)": centerProfit,
             "Holat": t.paidThisMonth ? "To'langan (Kassadan yechilgan)" : "Kutilmoqda"
           };
         });
