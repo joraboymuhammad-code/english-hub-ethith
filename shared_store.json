@@ -23308,7 +23308,7 @@
           "lastLogin": "2026-11-06T10:58:45.561Z",
           "dailyMinutes": 39,
           "loggedOutAt": 1793948950245,
-          "lastSeen": 1793965625534
+          "lastSeen": 1793965838931
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -25011,7 +25011,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1793965837562
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -25325,8 +25326,8 @@
       ],
       "deletedMsgIds": [],
       "messages": [],
-      "learningMonths": 2,
-      "learningDays": 26,
+      "learningMonths": 0,
+      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_practice_tester_1": {
           "fee": 300000,
@@ -25469,7 +25470,11 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "baselineDate": "2026-11-06",
+      "levelTestDate": "2027-02-04",
+      "durationUpdatedAt": 1793965837562
     },
     {
       "id": "cls_1793728994224",
@@ -26398,7 +26403,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793965625577,
+      "lastSeen": 1793965838974,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -27156,7 +27161,7 @@
       "dailyMinutes": 3,
       "lastLogin": "2026-11-06T10:58:45.560Z",
       "loggedOutAt": 1793948950245,
-      "lastSeen": 1793965625534
+      "lastSeen": 1793965838931
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -27612,7 +27617,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793965625534
+      "lastSeen": 1793965838931
     },
     {
       "id": "std_mix_416_selix",
@@ -152535,5 +152540,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1793965626032
+  "updatedAt": 1793965839641
 }
