@@ -11142,3 +11142,11 @@ html, body {
   background: rgba(30, 41, 59, 0.95) !important;
   border-color: rgba(56, 189, 248, 0.7) !important;
 }
+
+/* Student 2+ Months Unpaid Yellow Neon Glow */
+.ea-st-debt-yellow-neon, .ee-st-debt-yellow-neon {
+  color: #facc15 !important;
+  font-weight: 900 !important;
+  text-shadow: 0 0 10px rgba(250, 204, 21, 0.95), 0 0 20px rgba(234, 179, 8, 0.75), 0 0 30px rgba(202, 138, 4, 0.5) !important;
+  letter-spacing: 0.25px;
+}

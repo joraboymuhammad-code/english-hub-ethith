@@ -3803,8 +3803,22 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           S_app.finance.studentFees[stId] = pInfo;
         }
 
-        var isPaid = (pInfo.status === 'paid');
-        var payBadge = ''; // Clean view: No bulky badge in front of name! Only pure neon name glow!
+        var isPaid = (pInfo.status === 'paid' || (Number(pInfo.paid) >= Number(pInfo.fee) && Number(pInfo.fee) > 0));
+        var isYellowNeon = false;
+        if (!isPaid) {
+          var unpaidCount = Number(st.unpaidMonths) || 1;
+          var curM = (window.EE && window.EE.getActiveMonthKey ? window.EE.getActiveMonthKey() : '2026-11');
+          var prevM = (window.EE && window.EE.getPrevMonthKey ? window.EE.getPrevMonthKey(curM) : '2026-10');
+          var mHist = S_app.finance && S_app.finance.monthlyHistory;
+          if (mHist && mHist[prevM] && mHist[prevM].studentPayments) {
+            var prevP = mHist[prevM].studentPayments[stId] || (st.email ? mHist[prevM].studentPayments[st.email.toLowerCase().trim()] : null);
+            if (prevP && prevP.status !== 'paid' && Number(prevP.paid) < Number(prevP.fee)) {
+              unpaidCount = Math.max(unpaidCount, 2);
+            }
+          }
+          if (unpaidCount >= 2) isYellowNeon = true;
+        }
+        var payBadge = '';
 
         var stStatus = (window._ethithGetUserStatus ? window._ethithGetUserStatus(st) : (st.isOnline ? { status: 'green', label: 'Online', color: '#22c55e', dot: '🟢' } : { status: 'red', label: 'Kirmagan', color: '#ef4444', dot: '🔴' }));
         var stKey = esc(st.id || st.login || st.name || '');
@@ -3812,7 +3826,9 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
         var studentNameDisplay = isPaid
           ? (onlineDot + '<span class="ea-st-paid-neon" title="Oylik to‘lov to‘langan (✓ Yashil Neon)" style="color:#4ade80 !important;font-size:13.5px;font-weight:900;text-shadow:0 0 10px rgba(74,222,128,0.95),0 0 20px rgba(74,222,128,0.7),0 0 30px rgba(74,222,128,0.4);letter-spacing:0.3px;white-space:nowrap;">' + esc(stName) + '</span>')
-          : (onlineDot + '<span style="color:#f8fafc;font-size:13px;font-weight:800;white-space:nowrap;">' + esc(stName) + '</span>');
+          : (isYellowNeon
+            ? (onlineDot + '<span class="ea-st-debt-yellow-neon" title="⚠️ O‘tgan oy ham to‘lanmagan (2+ oy qarzdor - Sariq Neon)" style="color:#facc15 !important;font-size:13.5px;font-weight:900;text-shadow:0 0 10px rgba(250,204,21,0.95),0 0 20px rgba(234,179,8,0.75),0 0 30px rgba(202,138,4,0.5);letter-spacing:0.3px;white-space:nowrap;">' + esc(stName) + ' <span style="font-size:10px;background:rgba(234,179,8,0.22);border:1px solid #facc15;padding:1px 5px;border-radius:4px;color:#facc15;font-weight:900;margin-left:4px;">⚠️ 2 oy</span></span>')
+            : (onlineDot + '<span style="color:#f8fafc;font-size:13px;font-weight:800;white-space:nowrap;">' + esc(stName) + '</span>'));
 
         h += '<tr class="ea-journal-row" style="background:' + rowBg + ';transition:background 0.15s;">';
 
@@ -3826,7 +3842,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           (isCollapsed
             ? '<div class="ea-student-name-box" style="display:flex;align-items:center;gap:6px;overflow:hidden;width:100%;">' +
                 '<span style="width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,rgba(56,189,248,0.22),rgba(129,140,248,0.22));border:1px solid rgba(56,189,248,0.45);color:#7dd3fc;font-size:10px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:-0.03em;">' + esc(shortInfo.initials) + '</span>' +
-                (isPaid ? '<span class="ea-st-paid-neon" style="font-size:11.5px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;">' + esc(shortInfo.shortStart) + '</span>' : '<span style="font-size:11.5px;font-weight:800;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;">' + esc(shortInfo.shortStart) + '</span>') +
+                (isPaid ? '<span class="ea-st-paid-neon" style="font-size:11.5px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;">' + esc(shortInfo.shortStart) + '</span>' : (isYellowNeon ? '<span class="ea-st-debt-yellow-neon" style="font-size:11.5px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;">' + esc(shortInfo.shortStart) + '</span>' : '<span style="font-size:11.5px;font-weight:800;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;">' + esc(shortInfo.shortStart) + '</span>')) +
               '</div>'
             : '<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;">' +
                 '<div class="ea-student-name-box" style="overflow:hidden;flex:1;">' +
