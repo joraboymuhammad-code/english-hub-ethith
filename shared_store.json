@@ -347,15 +347,15 @@
           },
           "2026-10-30": {
             "cls_ravshanov_doniyor_cefr_1_std_1": {
-              "status": "Q",
-              "score": "2"
+              "status": "",
+              "score": ""
             }
           }
         },
         "lessonTypes": {},
         "holidays": {},
         "homeworks": {},
-        "updatedAt": 1793965075726
+        "updatedAt": 1793965080727
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -26401,7 +26401,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793965078680,
+      "lastSeen": 1793965083083,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -152482,5 +152482,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1793965079179
+  "updatedAt": 1793965083848
 }
