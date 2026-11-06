@@ -8493,62 +8493,27 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     var dates = getJournalDates(curClass, EA.viewMode || 'window');
     var todayKey = formatDateKey(new Date());
 
-    // 1. Check if today has absents
-    var matchDateKey = todayKey;
-    var foundAbsents = false;
-    var rMapToday = (curClass.attendance && curClass.attendance.records && curClass.attendance.records[todayKey]) || {};
-    for (var sid in rMapToday) {
-      var r = rMapToday[sid];
-      if (r && (r.status === 'Q' || r.status === 'absent' || r.status === 'q' || r.val === 'Q')) {
-        foundAbsents = true;
-        break;
-      }
+    // Strictly target the specific lesson date (defaulting to today's date if in journal, else latest lesson date)
+    var matchDateKey = arg2 || todayKey;
+    if (!dates.some(function(d) { return formatDateKey(d) === matchDateKey; })) {
+      matchDateKey = (dates.length > 0) ? formatDateKey(dates[dates.length - 1]) : todayKey;
     }
 
-    // 2. If no absents today, search backwards through journal dates for latest date with Q
-    if (!foundAbsents) {
-      for (var di = dates.length - 1; di >= 0; di--) {
-        var dk = formatDateKey(dates[di]);
-        var rMap = (curClass.attendance && curClass.attendance.records && curClass.attendance.records[dk]) || {};
-        for (var sid2 in rMap) {
-          var r2 = rMap[sid2];
-          if (r2 && (r2.status === 'Q' || r2.status === 'absent' || r2.status === 'q' || r2.val === 'Q')) {
-            matchDateKey = dk;
-            foundAbsents = true;
-            break;
-          }
+    // Strictly collect absent students ONLY for the chosen lesson date (never look back to past months or other dates)
+    function getAbsentsForDate(dKey) {
+      var result = [];
+      (curClass.students || []).forEach(function(st, sIdx) {
+        var stId = st.id || st.email || ('std_' + sIdx);
+        var rMap = (curClass.attendance && curClass.attendance.records && curClass.attendance.records[dKey]) || {};
+        var rec = rMap[stId] || (st.id && rMap[st.id]) || (st.login && rMap[st.login]) || (st.name && rMap[st.name]);
+        if (rec && (rec.status === 'Q' || rec.status === 'absent' || rec.status === 'q' || rec.val === 'Q')) {
+          result.push(st);
         }
-        if (foundAbsents) break;
-      }
-    }
-
-    // Collect absent students for matchDateKey
-    var absentStudents = [];
-    (curClass.students || []).forEach(function(st, sIdx) {
-      var stId = st.id || st.email || ('std_' + sIdx);
-      var rMap = (curClass.attendance && curClass.attendance.records && curClass.attendance.records[matchDateKey]) || {};
-      var rec = rMap[stId] || (st.id && rMap[st.id]) || (st.login && rMap[st.login]) || (st.name && rMap[st.name]);
-      if (rec && (rec.status === 'Q' || rec.status === 'absent' || rec.status === 'q' || rec.val === 'Q')) {
-        absentStudents.push(st);
-      }
-    });
-
-    // Also collect from other journal dates if today has 0
-    if (absentStudents.length === 0) {
-      dates.forEach(function(rd) {
-        var dk = formatDateKey(rd);
-        var rMap = curClass.attendance.records[dk] || {};
-        (curClass.students || []).forEach(function(st, sIdx) {
-          var stId = st.id || st.email || ('std_' + sIdx);
-          var rec = rMap[stId] || (st.id && rMap[st.id]) || (st.login && rMap[st.login]) || (st.name && rMap[st.name]);
-          if (rec && (rec.status === 'Q' || rec.status === 'absent' || rec.status === 'q' || rec.val === 'Q')) {
-            if (!absentStudents.some(function(as) { return (as.id || as.email) === stId; })) {
-              absentStudents.push(st);
-            }
-          }
-        });
       });
+      return result;
     }
+
+    var absentStudents = getAbsentsForDate(matchDateKey);
 
     // Permanent text persistence from localStorage (strictly <= 160 chars)
     var EXACT_SMSAPI_TEMPLATE = "Hurmatli ota-ona! Farzandingiz bugun darsga qatnashmadi. Sababini bilishimiz uchun guruh ustozi bilan telegram orqali bog'laning. English House o'quv markazi.";
@@ -8561,7 +8526,14 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       try { localStorage.setItem('ethith_saved_absent_sms_template', EXACT_SMSAPI_TEMPLATE); } catch(e) {}
     }
 
-    
+    // Build Date Options strictly from current journal
+    var dateOptionsHtml = '';
+    dates.forEach(function(d) {
+      var dk = formatDateKey(d);
+      var dd = formatDisplayDate(d);
+      var isT = (dk === todayKey);
+      dateOptionsHtml += '<option value="' + dk + '" ' + (dk === matchDateKey ? 'selected' : '') + '>' + dd + (isT ? ' (Bugungi dars)' : '') + '</option>';
+    });
 
     var html = '<div class="eth-modal" style="max-width:640px;background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:1.5px solid rgba(245,158,11,0.5);box-shadow:0 24px 60px rgba(0,0,0,0.85),0 0 35px rgba(245,158,11,0.25);border-radius:24px;padding:26px 30px;color:#fff;">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">' +
@@ -8571,53 +8543,102 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
             '<h2 style="margin:0;font-size:18.5px;font-weight:900;color:#fff;display:flex;align-items:center;gap:8px;">' +
               'Darsga Kelmaganlarga SMS Yuborish' +
             '</h2>' +
-            '<p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">Guruh: <b style="color:#38bdf8;">' + esc(curClass.name || curClass.id) + '</b> • Ustoz: <b style="color:#fff;">' + esc(curClass.teacherName || curClass.teacher || 'Ustoz') + '</b> • Sana: <b style="color:#f59e0b;">' + esc(matchDateKey) + '</b></p>' +
+            '<p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">Guruh: <b style="color:#38bdf8;">' + esc(curClass.name || curClass.id) + '</b> • Ustoz: <b style="color:#fff;">' + esc(curClass.teacherName || curClass.teacher || 'Ustoz') + '</b></p>' +
           '</div>' +
         '</div>' +
         '<button type="button" id="eaCloseAbsentSmsBtn" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:20px;cursor:pointer;border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">✕</button>' +
       '</div>';
 
-    // Automatic Seamless SMS Gateway Banner (100% Avtomatik, shlyuz tanlash talab etilmaydi)
+    // Dars kunini tanlash (Faqat bitta aniq dars kuni uchun SMS yuboriladi!)
+    html += '<div style="background:rgba(15,23,42,0.9);border:1px solid rgba(56,189,248,0.3);border-radius:14px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">' +
+        '<div style="display:flex;align-items:center;gap:8px;">' +
+          '<span style="font-size:18px;">📅</span>' +
+          '<span style="font-size:13px;font-weight:800;color:#cbd5e1;">Qaysi dars kuni uchun SMS yuborilsin?</span>' +
+        '</div>' +
+        '<select id="eaAbsentSmsDateSelect" style="background:#1e293b;border:1.5px solid #0284c7;border-radius:10px;padding:6px 12px;color:#fff;font-size:13px;font-weight:800;outline:none;cursor:pointer;">' +
+          dateOptionsHtml +
+        '</select>' +
+      '</div>';
+
+    // Automatic Seamless SMS Gateway Banner
     html += '<div style="background:rgba(15,23,42,0.85);border:1px solid rgba(245,158,11,0.35);border-radius:14px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">' +
         '<div style="display:flex;align-items:center;gap:10px;">' +
           '<span style="font-size:22px;">⚡</span>' +
           '<div>' +
-            '<div style="font-size:12.5px;font-weight:900;color:#6ee7b7;">SMS Shlyuz: smsapi.uz (Rasmiy Sayt Shlyuzi)</div>' + '<div style="font-size:11px;color:#94a3b8;">API: 4480804365a1569479f178d2c1834629 • Server orqali rasmiy yuboriladi</div>' +
+            '<div style="font-size:12.5px;font-weight:900;color:#6ee7b7;">SMS Shlyuz: smsapi.uz (Rasmiy Sayt Shlyuzi)</div>' +
+            '<div style="font-size:11px;color:#94a3b8;">Faqat tanlangan dars kunida dars qoldirgan o‘quvchilar ota-onasiga 1 marta yuboriladi</div>' +
           '</div>' +
         '</div>' +
         '<span style="background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.5);color:#6ee7b7;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:900;">🟢 Avtomatik Faol</span>' +
       '</div>' +
 
-      // Automatically Detected Absent Students Box
-      '<div style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);border-radius:16px;padding:14px 18px;margin-bottom:18px;">' +
-        '<div style="font-size:12.5px;font-weight:900;color:#fca5a5;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;">' +
-          '<span>🔴 Darsga kelmagan deb aniqlangan o‘quvchilar:</span>' +
-          '<span style="background:rgba(239,68,68,0.25);border:1px solid #ef4444;color:#fff;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:900;">' + absentStudents.length + ' ta o‘quvchi</span>' +
-        '</div>';
+      // Dynamic Absent Students Container
+      '<div id="eaAbsentListWrapper" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);border-radius:16px;padding:14px 18px;margin-bottom:18px;">' +
+      '</div>';
 
-    if (absentStudents.length === 0) {
-      html += '<div style="font-size:12.5px;color:#cbd5e1;padding:6px 0;">✅ Ushbu guruhda bugun barcha o‘quvchilar qatnashgan (Dars qoldirganlar yo‘q). Xabar yuborish uchun davomat jadvalida o‘quvchi katakchasini "Q" (Kelmagan - qizil) deb belgilang.</div>';
-    } else {
-      html += '<div style="max-height:160px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px;">';
-      absentStudents.forEach(function(ast, aidx) {
-        var sid = ast.id || ast.email || ('std_' + aidx);
-        var phone = (curClass.customStudentPhones && curClass.customStudentPhones[sid]) || ast.parentPhone || ast.phone || '';
-        html += '<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(15,23,42,0.7);border:1px solid rgba(239,68,68,0.25);padding:8px 12px;border-radius:10px;font-size:12.5px;flex-wrap:wrap;gap:8px;">' +
-          '<span><b>' + (aidx + 1) + '. ' + esc(ast.name) + '</b></span>' +
-          '<div style="display:flex;align-items:center;gap:6px;">' +
-            '<div style="display:flex;align-items:center;background:#0b1222;border:1px solid rgba(245,158,11,0.4);border-radius:8px;overflow:hidden;">' +
-              '<span style="background:rgba(245,158,11,0.2);border-right:1px solid rgba(245,158,11,0.3);color:#fbbf24;font-weight:900;font-size:11.5px;padding:4px 7px;user-select:none;font-family:monospace;">+998</span>' +
-              '<input type="tel" class="ea-live-absent-phone" data-stid="' + esc(sid) + '" maxlength="9" value="' + esc(phone.replace(/\D/g, '').slice(-9)) + '" placeholder="901234567" style="width:90px;background:transparent;border:none;color:#fff;padding:4px 6px;font-size:12px;font-weight:900;letter-spacing:0.5px;outline:none;" />' +
+    var currentAbsentList = absentStudents;
+
+    function renderAbsentList(dKey) {
+      currentAbsentList = getAbsentsForDate(dKey);
+      var wrap = overlay.querySelector('#eaAbsentListWrapper');
+      var sBtn = overlay.querySelector('button[type="submit"]');
+      if (!wrap) return;
+
+      var boxHtml = '<div style="font-size:12.5px;font-weight:900;color:#fca5a5;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;">' +
+        '<span>🔴 ' + formatDisplayDate(dKey) + ' darsiga kelmagan o‘quvchilar:</span>' +
+        '<span style="background:rgba(239,68,68,0.25);border:1px solid #ef4444;color:#fff;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:900;">' + currentAbsentList.length + ' ta o‘quvchi</span>' +
+      '</div>';
+
+      if (currentAbsentList.length === 0) {
+        boxHtml += '<div style="font-size:12.5px;color:#cbd5e1;padding:8px 0;">✅ Tanlangan dars kunida (' + formatDisplayDate(dKey) + ') dars qoldirgan o‘quvchilar yo‘q (0 ta). Faqat davomat jadvalida "Q" (Kelmagan) deb belgilangan o‘quvchilargagina SMS boradi.</div>';
+        if (sBtn) {
+          sBtn.disabled = true;
+          sBtn.style.opacity = '0.5';
+          sBtn.style.cursor = 'not-allowed';
+        }
+      } else {
+        if (sBtn) {
+          sBtn.disabled = false;
+          sBtn.style.opacity = '1';
+          sBtn.style.cursor = 'pointer';
+        }
+        boxHtml += '<div style="max-height:160px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px;">';
+        currentAbsentList.forEach(function(ast, aidx) {
+          var sid = ast.id || ast.email || ('std_' + aidx);
+          var phone = (curClass.customStudentPhones && curClass.customStudentPhones[sid]) || ast.parentPhone || ast.phone || '';
+          boxHtml += '<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(15,23,42,0.7);border:1px solid rgba(239,68,68,0.25);padding:8px 12px;border-radius:10px;font-size:12.5px;flex-wrap:wrap;gap:8px;">' +
+            '<span><b>' + (aidx + 1) + '. ' + esc(ast.name) + '</b></span>' +
+            '<div style="display:flex;align-items:center;gap:6px;">' +
+              '<div style="display:flex;align-items:center;background:#0b1222;border:1px solid rgba(245,158,11,0.4);border-radius:8px;overflow:hidden;">' +
+                '<span style="background:rgba(245,158,11,0.2);border-right:1px solid rgba(245,158,11,0.3);color:#fbbf24;font-weight:900;font-size:11.5px;padding:4px 7px;user-select:none;font-family:monospace;">+998</span>' +
+                '<input type="tel" class="ea-live-absent-phone" data-stid="' + esc(sid) + '" maxlength="9" value="' + esc(phone.replace(/\D/g, '').slice(-9)) + '" placeholder="901234567" style="width:90px;background:transparent;border:none;color:#fff;padding:4px 6px;font-size:12px;font-weight:900;letter-spacing:0.5px;outline:none;" />' +
+              '</div>' +
             '</div>' +
-          '</div>' +
-        '</div>';
-      });
-      html += '</div>';
-    }
-    html += '</div>' +
+          '</div>';
+        });
+        boxHtml += '</div>';
+      }
+      wrap.innerHTML = boxHtml;
 
-      // Message Area with Permanent Persistence
-      '<form id="eaSendAbsentSmsForm">' +
+      wrap.querySelectorAll('.ea-live-absent-phone').forEach(function(inp) {
+        inp.oninput = function() {
+          this.value = this.value.replace(/\D/g, '').slice(0, 9);
+        };
+        inp.onchange = function() {
+          var sid = inp.getAttribute('data-stid');
+          var val9 = inp.value.replace(/\D/g, '');
+          var fullPh = val9 ? ('+998' + val9) : '';
+          curClass.customStudentPhones[sid] = fullPh;
+          var ast = currentAbsentList.find(function(a) { return (a.id || a.email) === sid; });
+          if (ast) {
+            ast.parentPhone = fullPh;
+            ast.phone = fullPh;
+          }
+        };
+      });
+    }
+
+    html += '<form id="eaSendAbsentSmsForm">' +
         '<div style="margin-bottom:16px;">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">' +
             '<label style="font-size:12px;font-weight:800;color:#cbd5e1;">SMS Xabar Matni (Har doim saqlanib qoladi):</label>' +
@@ -8629,7 +8650,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
         // Actions
         '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">' +
-          '<div style="font-size:11px;color:#94a3b8;">🔒 Faqat ushbu guruhdagi kelmaganlarning ota-onalariga boradi.</div>' +
+          '<div style="font-size:11px;color:#94a3b8;">🔒 Faqat tanlangan dars kunida kelmagan o‘quvchilar ota-onalariga boradi.</div>' +
           '<div style="display:flex;align-items:center;gap:10px;">' +
             '<button type="button" id="eaCancelAbsentSmsBtn" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
             '<button type="submit" ' + (absentStudents.length === 0 ? 'disabled style="opacity:0.5;cursor:not-allowed;' : 'style="cursor:pointer;') + 'background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:10px 22px;font-size:13px;font-weight:900;box-shadow:0 4px 18px rgba(245,158,11,0.4);display:inline-flex;align-items:center;gap:6px;">🚀 Kelmaganlarga SMS Yuborish</button>' +
@@ -8640,6 +8661,15 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
     overlay.innerHTML = html;
     document.body.appendChild(overlay);
+
+    renderAbsentList(matchDateKey);
+
+    var dateSelect = overlay.querySelector('#eaAbsentSmsDateSelect');
+    if (dateSelect) {
+      dateSelect.onchange = function() {
+        renderAbsentList(this.value);
+      };
+    }
 
     var ta = overlay.querySelector('#eaAbsentSmsTextarea');
     var counter = overlay.querySelector('#eaAbsentSmsCharCounter');
@@ -8687,13 +8717,13 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         msg = msg.slice(0, 160);
       }
 
-      if (absentStudents.length === 0) {
-        alert("Darsga kelmagan deb belgilangan o'quvchilar yo'q!");
+      if (!currentAbsentList || currentAbsentList.length === 0) {
+        alert("Tanlangan dars kunida dars qoldirgan deb belgilangan o‘quvchilar yo‘q!");
         return;
       }
 
       var recipients = [];
-      absentStudents.forEach(function(ast) {
+      currentAbsentList.forEach(function(ast) {
         var sid = ast.id || ast.email;
         var ph = (curClass.customStudentPhones && curClass.customStudentPhones[sid]) || ast.parentPhone || ast.phone;
         if (ph) {

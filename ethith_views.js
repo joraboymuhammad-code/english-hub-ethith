@@ -248,10 +248,9 @@
       '  <div class="ask-ai-history-panel" id="askAiHistoryPanel">' +
       '    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:6px">' +
       '      <b style="font-size:13.5px;color:var(--text);display:flex;align-items:center;gap:6px">' + ic('layers') + ' Conversations</b>' +
-      '      <div style="display:flex;align-items:center;gap:5px">' +
+      '      <div style="display:flex;align-items:center;gap:6px">' +
       '        <button class="eth-btn-primary" id="aiNewChatBtn" style="padding:6px 10px;font-size:12px;width:auto;border-radius:8px;' + (!hasMessagesInActive ? 'opacity:0.4;cursor:not-allowed;' : '') + '" ' + (!hasMessagesInActive ? 'disabled title="Hozirgi suhbatingiz bo\'sh. Yangi suhbat ochish uchun avval xabar yozing."' : 'title="Yangi suhbat ochish"') + '>' + ic('plus') + ' Yangi</button>' +
-      '        <button type="button" id="btnCollapseAiSidebar" class="eth-modal-close-btn" style="position:static !important;width:28px !important;height:28px !important;font-size:13px !important;display:inline-flex;align-items:center;justify-content:center" title="Panelni berkitish (Collapse)">◀</button>' +
-      '        <button class="eth-modal-close-btn" id="btnCloseAiDrawer" style="position:static !important;width:28px !important;height:28px !important;font-size:13px !important;display:none" title="Yopish">✕</button>' +
+      '        <button type="button" id="btnCollapseAiSidebar" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:#94a3b8;border-radius:8px;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:11px;transition:all 0.15s;" title="Panelni berkitish (Yashirish)">◀</button>' +
       '      </div>' +
       '    </div>' +
       '    <div class="ask-ai-history-list">' +
@@ -274,8 +273,8 @@
       '  <div class="ask-ai-main">' +
       '    <div class="eth-ai-topbar">' +
       '      <div style="display:flex;align-items:center;gap:10px">' +
-      '        <button type="button" class="eth-btn-ghost" id="btnToggleAiSidebar" style="padding:5px 9px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px;cursor:pointer;color:var(--text)" title="Suhbatlar panelini ko‘rsatish/yashirish">' +
-      '          ' + ic('layers') + ' <span class="ai-hide-mob">Suhbatlar</span>' +
+      '        <button type="button" id="btnToggleAiSidebar" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(56,189,248,0.4);border-radius:10px;padding:6px 12px;font-size:12px;font-weight:800;color:#38bdf8;cursor:pointer;display:none;align-items:center;gap:6px;backdrop-filter:blur(10px);transition:all 0.15s;" title="Suhbatlar panelini ko‘rsatish">' +
+      '          ' + ic('layers') + ' <span>Suhbatlar</span>' +
       '        </button>' +
       '        ' + ethEmblemImg('eth-brand-emblem-mini', 'width:24px;height:24px;border-radius:6px;object-fit:cover;vertical-align:middle') + ' ' +
       '        <b style="font-size:14px;color:var(--text)">ETHITH AI Teacher</b>' +
@@ -330,9 +329,19 @@
       if (drawerBackdrop) drawerBackdrop.classList.remove('active');
     }
 
+    function syncSidebarButtons() {
+      var isCollapsed = historyPanel && historyPanel.classList.contains('collapsed');
+      if (btnToggleSidebar) {
+        btnToggleSidebar.style.display = isCollapsed ? 'inline-flex' : 'none';
+      }
+    }
+
     if (btnCollapseSidebar) {
       btnCollapseSidebar.onclick = function() {
-        if (historyPanel) historyPanel.classList.toggle('collapsed');
+        if (historyPanel) {
+          historyPanel.classList.add('collapsed');
+          syncSidebarButtons();
+        }
       };
     }
     if (btnToggleSidebar) {
@@ -342,7 +351,8 @@
             historyPanel.classList.toggle('mobile-open');
             if (drawerBackdrop) drawerBackdrop.classList.toggle('active');
           } else {
-            historyPanel.classList.toggle('collapsed');
+            historyPanel.classList.remove('collapsed');
+            syncSidebarButtons();
           }
         }
       };
