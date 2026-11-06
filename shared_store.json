@@ -23613,6 +23613,167 @@
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
+        },
+        "std_azimjon_848_toirov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_behruz_942_oktamov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_charos_386_baxtiyorova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_diyor_772_suyundikov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_gulruh_365_tangirova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_jamshid_843_komilov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_kamron_187_raimberdiyev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_navroz_651_shavkatov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_niyatullo_582_asatullayev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_nurlan_856_tangatov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_oktamova_798_zarina": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_orazaliyev_514_amirshox": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_orozboyev_391_ollohberdi": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_otkir_903_tursunmatov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_odina_419_zoirova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_ozodbek_578_mamatqulov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_rayhona_554_qoshqarova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_sabina_672_ibodullayeva": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_shohista_786_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_shohsasnam_517_bayrbekova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_xudoyberdiyeva_775_madina": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_yulduz_938_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_ziyoda_799_regdfggyj": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
         }
       },
       "activeHomework": {
@@ -23638,8 +23799,8 @@
       "baselineDate": "2026-11-05",
       "levelTestDate": "2027-02-03",
       "durationUpdatedAt": 1793948784245,
-      "pinnedId": null,
       "pinnedIds": [],
+      "pinnedId": null,
       "customStudentNamesTs": {
         "std_nurlan_856_tangatov": 1793625077010,
         "std_orazaliyev_514_amirshox": 1793625077010,
@@ -26275,7 +26436,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793962381334,
+      "lastSeen": 1793962537444,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -149965,9 +150126,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "monthlySalary": 0
     },
     {
       "id": "t_qarshiboyev_humoyun",
@@ -149991,9 +150150,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "monthlySalary": 0
     },
     {
       "id": "t_tovboyeva_marjona",
@@ -150019,9 +150176,7 @@
       "unpaidMonths": 0,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "phone": "+998 90 ...",
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "phone": "+998 90 ..."
     },
     {
       "id": "t_olimjonova_durdona",
@@ -150051,9 +150206,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "monthlySalary": 0
     },
     {
       "id": "t_tagaev_eldor",
@@ -150083,9 +150236,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "monthlySalary": 0
     },
     {
       "id": "t_yaxshilikova_kamola",
@@ -150111,9 +150262,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "monthlySalary": 0
     },
     {
       "id": "t_sherqoziyeva_iroda",
@@ -150139,9 +150288,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "monthlySalary": 0
     },
     {
       "id": "t_aborbekov_elyor",
@@ -150173,9 +150320,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "monthlySalary": 0
     },
     {
       "id": "t_orinboyev_jaloliddin",
@@ -150205,9 +150350,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "monthlySalary": 0
     },
     {
       "id": "t_jumanova_pokiza",
@@ -150231,9 +150374,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "monthlySalary": 0
     },
     {
       "id": "t_hayrullayev_arslon",
@@ -150259,9 +150400,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "monthlySalary": 0
     },
     {
       "id": "t_xudoyorova_sarvinoz",
@@ -150287,9 +150426,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "monthlySalary": 0
     },
     {
       "id": "t_aliqulova_sevinch",
@@ -150316,9 +150453,7 @@
       "computedLiveSalary": 0,
       "monthlyBonus": 1000000,
       "monthlySalary": 0,
-      "unpaidMonths": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "unpaidMonths": 0
     },
     {
       "id": "t_xojamqulova_diyora",
@@ -150348,9 +150483,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "monthlySalary": 0
     },
     {
       "id": "t_bosimbekov_farrux",
@@ -150380,9 +150513,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "monthlySalary": 0
     },
     {
       "id": "t_ahmadova_barno",
@@ -150414,9 +150545,7 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "phone": "+998 90 ...",
-      "unpaidMonths": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "unpaidMonths": 0
     },
     {
       "id": "t_shodiyor_matematika",
@@ -150440,9 +150569,7 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "monthlySalary": 0
     },
     {
       "id": "t_urolov_azizbek",
@@ -150473,11 +150600,7 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "AZIZBEK77",
-      "unpaidMonths": 0,
-      "livePaidStudents": 0,
-      "liveCollectedRevenue": 0,
-      "computedLiveSalary": 0,
-      "centerRetainedShare": 0
+      "unpaidMonths": 0
     },
     {
       "id": "admin_official_teacher",
@@ -151188,8 +151311,8 @@
       "authorId": "admin_official_root",
       "authorName": "Bosh Admin",
       "authorRole": "admin",
-      "updatedAt": "2026-11-06 15:52",
-      "updatedTs": 1793962360779,
+      "updatedAt": "2026-11-06 15:53",
+      "updatedTs": 1793962428606,
       "data": [
         {
           "name": "Sheet1",
@@ -151685,5 +151808,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1793962381480
+  "updatedAt": 1793962538479
 }
