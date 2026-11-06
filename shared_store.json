@@ -341,7 +341,7 @@
         "records": {
           "2026-11-02": {
             "cls_ravshanov_doniyor_cefr_1_std_1": {
-              "status": "",
+              "status": "S",
               "score": ""
             }
           }
@@ -349,7 +349,7 @@
         "lessonTypes": {},
         "holidays": {},
         "homeworks": {},
-        "updatedAt": 1793962375155
+        "updatedAt": 1793965009358
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -22832,7 +22832,7 @@
       "teacherName": "Azizbek Urolov",
       "teacherEmail": "azizbek.urolov@ethith.uz",
       "room": "302-xona",
-      "maxCapacity": 18,
+      "maxCapacity": 23,
       "schedule": "toq",
       "attendance": {
         "records": {
@@ -26395,7 +26395,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793964984203,
+      "lastSeen": 1793965008277,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -152476,5 +152476,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1793964986519
+  "updatedAt": 1793965009927
 }
