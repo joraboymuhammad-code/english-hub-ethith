@@ -23300,14 +23300,15 @@
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
-          "isOnline": false,
+          "isOnline": true,
           "coins": 210,
           "updatedAt": 1793948599638,
           "hasLoggedIn": true,
-          "isLoggedOut": true,
-          "lastLogin": "2026-11-06T10:58:45.561Z",
+          "isLoggedOut": false,
+          "lastLogin": "2026-11-06T12:12:39.376Z",
           "dailyMinutes": 46,
-          "loggedOutAt": 1793965855661
+          "loggedOutAt": 1793965855661,
+          "lastSeen": 1793967160558
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -26406,7 +26407,7 @@
       "isOnline": true,
       "login": "admin_12038f1aq8syash",
       "loggedOutAt": 1793962599794,
-      "lastSeen": 1793967152439
+      "lastSeen": 1793967159041
     },
     {
       "id": "tg_98124765",
@@ -27210,9 +27211,9 @@
       "nameStyle": null,
       "createdAt": 1793720576586,
       "updatedAt": 1793948599638,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
+      "isOnline": true,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "password": "azimjon848toi",
@@ -27220,8 +27221,9 @@
       "parentPhone": "941941527",
       "level": "A1",
       "dailyMinutes": 3,
-      "lastLogin": "2026-11-06T10:58:45.560Z",
-      "loggedOutAt": 1793965855661
+      "lastLogin": "2026-11-06T12:12:39.376Z",
+      "loggedOutAt": 1793965855661,
+      "lastSeen": 1793967160558
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -27677,7 +27679,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793965854319
+      "lastSeen": 1793967160558
     },
     {
       "id": "admin_official_teacher",
@@ -152587,5 +152589,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1793967153060
+  "updatedAt": 1793967161236
 }
