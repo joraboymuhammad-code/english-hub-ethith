@@ -26479,7 +26479,11 @@
       "updatedAt": 1792612388994,
       "nameStyle": null,
       "victorySound": null,
-      "login": "admin_12038f1aq8syash"
+      "login": "admin_12038f1aq8syash",
+      "isLoggedOut": false,
+      "hasLoggedIn": true,
+      "isOnline": true,
+      "lastSeen": 1793947902892
     },
     {
       "id": "tg_98124765",
@@ -152616,5 +152620,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1793947874811
+  "updatedAt": 1793947904893
 }
