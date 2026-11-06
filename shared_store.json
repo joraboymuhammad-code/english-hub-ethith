@@ -6017,10 +6017,10 @@
       },
       "deletedStudentIds": [],
       "customStudentNamesTs": {},
-      "durationUpdatedAt": 1793964909067,
       "learningLessons": 0,
       "baselineDate": "2026-11-06",
-      "levelTestDate": "2027-02-04"
+      "levelTestDate": "2027-02-04",
+      "durationUpdatedAt": 1793964909067
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_1",
@@ -22981,60 +22981,6 @@
       "customStudentPhones": {},
       "students": [
         {
-          "id": "std_otkir_903_tursunmatov",
-          "name": "O'tkir Tursunmatov",
-          "firstName": "O'tkir",
-          "lastName": "Tursunmatov",
-          "email": "otkir_903_tursunmatov@student.ethith",
-          "role": "student",
-          "phone": "941973993",
-          "parentPhone": "941973993",
-          "login": "otkir_903_tursunmatov",
-          "password": "otkir903tur",
-          "joinedAt": "2025-11-02",
-          "isTester": false,
-          "manuallyEnrolled": true,
-          "isOnline": false,
-          "coins": 150,
-          "updatedAt": 1793627425284
-        },
-        {
-          "id": "std_navroz_651_shavkatov",
-          "name": "Navro'z Shavkatov",
-          "firstName": "Navro'z",
-          "lastName": "Shavkatov",
-          "email": "navroz_651_shavkatov@student.ethith",
-          "role": "student",
-          "phone": "941973993",
-          "parentPhone": "941973993",
-          "login": "navroz_651_shavkatov",
-          "password": "navroz651sha",
-          "joinedAt": "2025-11-02",
-          "isTester": false,
-          "manuallyEnrolled": true,
-          "isOnline": false,
-          "coins": 150,
-          "updatedAt": 1793627425284
-        },
-        {
-          "id": "std_niyatullo_582_asatullayev",
-          "name": "Niyatullo Asatullayev",
-          "firstName": "Niyatullo",
-          "lastName": "Asatullayev",
-          "email": "niyatullo_582_asatullayev@student.ethith",
-          "role": "student",
-          "phone": "941973993",
-          "parentPhone": "941973993",
-          "login": "niyatullo_582_asatullayev",
-          "password": "niyatullo582asa",
-          "joinedAt": "2025-11-02",
-          "isTester": false,
-          "manuallyEnrolled": true,
-          "isOnline": false,
-          "coins": 150,
-          "updatedAt": 1793627425284
-        },
-        {
           "id": "std_nurlan_856_tangatov",
           "name": "Nurlan Tangatov",
           "firstName": "Nurlan",
@@ -23050,7 +22996,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425283
+          "updatedAt": 1793627425283,
+          "unpaidMonths": 0
         },
         {
           "id": "std_orazaliyev_514_amirshox",
@@ -23068,7 +23015,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_kamron_187_raimberdiyev",
@@ -23086,7 +23034,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_ziyoda_799_regdfggyj",
@@ -23104,7 +23053,65 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627422057
+          "updatedAt": 1793627422057,
+          "unpaidMonths": 0
+        },
+        {
+          "id": "std_otkir_903_tursunmatov",
+          "name": "O'tkir Tursunmatov",
+          "firstName": "O'tkir",
+          "lastName": "Tursunmatov",
+          "email": "otkir_903_tursunmatov@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "otkir_903_tursunmatov",
+          "password": "otkir903tur",
+          "joinedAt": "2025-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150,
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
+        },
+        {
+          "id": "std_navroz_651_shavkatov",
+          "name": "Navro'z Shavkatov",
+          "firstName": "Navro'z",
+          "lastName": "Shavkatov",
+          "email": "navroz_651_shavkatov@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "navroz_651_shavkatov",
+          "password": "navroz651sha",
+          "joinedAt": "2025-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150,
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
+        },
+        {
+          "id": "std_niyatullo_582_asatullayev",
+          "name": "Niyatullo Asatullayev",
+          "firstName": "Niyatullo",
+          "lastName": "Asatullayev",
+          "email": "niyatullo_582_asatullayev@student.ethith",
+          "role": "student",
+          "phone": "941973993",
+          "parentPhone": "941973993",
+          "login": "niyatullo_582_asatullayev",
+          "password": "niyatullo582asa",
+          "joinedAt": "2025-11-02",
+          "isTester": false,
+          "manuallyEnrolled": true,
+          "isOnline": false,
+          "coins": 150,
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_behruz_942_oktamov",
@@ -23122,7 +23129,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_rayhona_554_qoshqarova",
@@ -23140,7 +23148,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_jamshid_843_komilov",
@@ -23158,7 +23167,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_ozodbek_578_mamatqulov",
@@ -23176,7 +23186,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_odina_419_zoirova",
@@ -23194,7 +23205,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_orozboyev_391_ollohberdi",
@@ -23212,7 +23224,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_yulduz_938_nosurname",
@@ -23230,7 +23243,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_xudoyberdiyeva_775_madina",
@@ -23248,7 +23262,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_gulruh_365_tangirova",
@@ -23266,7 +23281,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_shohsasnam_517_bayrbekova",
@@ -23284,7 +23300,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_azimjon_848_toirov",
@@ -23301,14 +23318,12 @@
           "isTester": false,
           "manuallyEnrolled": true,
           "isOnline": true,
-          "coins": 210,
+          "coins": 160,
           "updatedAt": 1793948599638,
           "hasLoggedIn": true,
           "isLoggedOut": false,
-          "lastLogin": "2026-11-06T12:12:39.376Z",
-          "dailyMinutes": 1,
-          "loggedOutAt": 1793965855661,
-          "lastSeen": 1793967215206
+          "lastSeen": 1793967241195,
+          "unpaidMonths": 0
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -23326,7 +23341,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_shohista_786_nosurname",
@@ -23344,7 +23360,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_diyor_772_suyundikov",
@@ -23362,7 +23379,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_sabina_672_ibodullayeva",
@@ -23380,7 +23398,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         },
         {
           "id": "std_charos_386_baxtiyorova",
@@ -23398,7 +23417,8 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284
+          "updatedAt": 1793627425284,
+          "unpaidMonths": 0
         }
       ],
       "deletedMsgIds": [
@@ -23720,8 +23740,8 @@
       "baselineDate": "2026-11-05",
       "levelTestDate": "2027-02-03",
       "durationUpdatedAt": 1793963033664,
-      "pinnedIds": [],
       "pinnedId": null,
+      "pinnedIds": [],
       "customStudentNamesTs": {
         "std_nurlan_856_tangatov": 1793625077010,
         "std_orazaliyev_514_amirshox": 1793625077010,
@@ -24248,19 +24268,6 @@
         }
       },
       "deletedStudentIds": [],
-      "activeHomework": {
-        "dateKey": "2026-11-02",
-        "dateDisp": "02.11.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
-      },
       "customStudentNamesTs": {
         "std_ruxshona_493_amalikova": 0,
         "std_abdulaziz_454_shodiyorov": 0,
@@ -24283,6 +24290,19 @@
         "std_diyorbek_862_raimqulov": 0,
         "std_hadicha_393_nosurname": 0,
         "std_bahora_901_nosurname": 0
+      },
+      "activeHomework": {
+        "dateKey": "2026-11-02",
+        "dateDisp": "02.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
       }
     },
     {
@@ -24941,8 +24961,6 @@
         "assignedAt": 0
       },
       "deletedStudentIds": [],
-      "pinnedIds": [],
-      "pinnedId": null,
       "customStudentNamesTs": {
         "std_orazaliyev_261_amirshox": 1793606286867,
         "std_mahfuza_179_bosimova": 1793606286867,
@@ -24963,7 +24981,9 @@
         "std_asadbek_247_xolboyev": 1793606286867,
         "std_kazakov_769_husniddin": 1793606286867,
         "std_zebo_198_abduganiyeva": 1793606286867
-      }
+      },
+      "pinnedIds": [],
+      "pinnedId": null
     },
     {
       "id": "cls_urolov_azizbek_practice",
@@ -25457,6 +25477,11 @@
         }
       },
       "deletedStudentIds": [],
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "baselineDate": "2026-11-06",
+      "levelTestDate": "2027-02-04",
+      "durationUpdatedAt": 1793965837592,
       "activeHomework": {
         "dateKey": "2026-11-02",
         "dateDisp": "02.11.2026",
@@ -25469,12 +25494,7 @@
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
-      },
-      "customStudentNamesTs": {},
-      "durationUpdatedAt": 1793965837592,
-      "learningLessons": 0,
-      "baselineDate": "2026-11-06",
-      "levelTestDate": "2027-02-04"
+      }
     },
     {
       "id": "cls_1793728994224",
@@ -25503,7 +25523,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 1
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_2",
@@ -25521,7 +25541,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 2
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_3",
@@ -25539,7 +25559,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 2
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_4",
@@ -25557,7 +25577,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 1
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_5",
@@ -25575,7 +25595,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 1
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_6",
@@ -25593,7 +25613,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 1
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_7",
@@ -25611,7 +25631,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 2
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_8",
@@ -25629,7 +25649,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 2
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_9",
@@ -25647,7 +25667,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 1
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_10",
@@ -25665,7 +25685,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 1
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_11",
@@ -25683,7 +25703,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 1
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_12",
@@ -25701,7 +25721,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 2
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_13",
@@ -25719,7 +25739,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 2
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_14",
@@ -25737,7 +25757,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 1
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_15",
@@ -25755,7 +25775,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 1
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_16",
@@ -25773,7 +25793,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 1
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_17",
@@ -25791,7 +25811,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 2
+          "unpaidMonths": 0
         },
         {
           "id": "cls_1793728994224_std_18",
@@ -25809,7 +25829,7 @@
           "isOnline": false,
           "lastLogin": null,
           "updatedAt": 1793794747826,
-          "unpaidMonths": 2
+          "unpaidMonths": 0
         }
       ],
       "customStudentNames": {},
@@ -26371,23 +26391,25 @@
   ],
   "accounts": [
     {
-      "id": "t_urolov_azizbek",
+      "id": "admin_official_teacher",
       "role": "teacher",
-      "name": "Azizbek Urolov",
-      "email": "azizbek.urolov@ethith.uz",
-      "createdAt": 1793965889017,
-      "coins": 1000,
+      "name": "Ustoz",
+      "email": "admin@ethith.uz",
+      "createdAt": 1792429101989,
+      "coins": 100000,
       "gifts": [],
-      "level": "C2",
+      "level": "A1",
       "dailyMinutes": 0,
-      "updatedAt": 1793773725443,
+      "updatedAt": 1793965896265,
+      "avatar": null,
       "nameStyle": null,
+      "title": null,
       "victorySound": null,
-      "login": "azizbek77",
-      "password": "azizbek2026",
-      "isOnline": false,
-      "hasLoggedIn": true,
+      "login": "shodiyor50",
       "isLoggedOut": true,
+      "hasLoggedIn": true,
+      "isOnline": false,
+      "password": "shodiyor2026",
       "loggedOutAt": 1793967150607
     },
     {
@@ -26405,9 +26427,8 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "login": "admin_12038f1aq8syash",
-      "loggedOutAt": 1793962599794,
-      "lastSeen": 1793967216241
+      "lastSeen": 1793967240442,
+      "login": "admin_12038f1aq8syash"
     },
     {
       "id": "tg_98124765",
@@ -26429,20 +26450,18 @@
       "role": "teacher",
       "name": "Ustoz",
       "email": "teacher@ethith.uz",
-      "coins": 100000,
+      "coins": 5000,
       "avatar": null,
       "level": "A1",
       "dailyMinutes": 0,
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "updatedAt": 1793965896265,
-      "login": "shodiyor50",
-      "password": "shodiyor2026",
-      "isLoggedOut": false,
+      "updatedAt": 1792606425762,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -26615,10 +26634,10 @@
       "role": "teacher",
       "coins": 100000,
       "level": "B1+",
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "std_13",
@@ -26780,10 +26799,10 @@
       "role": "teacher",
       "coins": 1000,
       "updatedAt": 1793392014532,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -26804,10 +26823,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014532,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -26825,10 +26844,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014532,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -26846,10 +26865,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014532,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -26870,10 +26889,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014532,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -26894,10 +26913,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014532,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -26916,10 +26935,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014532,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -26938,10 +26957,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014532,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -26962,10 +26981,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014532,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -26983,10 +27002,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014532,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -27005,10 +27024,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014532,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -27027,10 +27046,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014532,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -27049,10 +27068,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014532,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -27073,10 +27092,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014533,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -27097,10 +27116,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014533,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -27121,10 +27140,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014533,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "admin_official_teacher",
@@ -27142,10 +27161,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793392014533,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
+      "isOnline": false,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "st_998901239988",
@@ -27172,6 +27191,30 @@
       "level": "A1",
       "joinedAt": 1793215171236,
       "title": "👑 IELTS Qiroli"
+    },
+    {
+      "id": "t_urolov_azizbek",
+      "name": "Azizbek Urolov",
+      "email": "azizbek.urolov@ethith.uz",
+      "login": "azizbek77",
+      "password": "azizbek2026",
+      "role": "teacher",
+      "coins": 1000,
+      "hourlyRate": 120000,
+      "subject": "Ingliz tili (Upper / Inter)",
+      "teachingHours": 72,
+      "assignedClasses": [
+        "cls_urolov_azizbek_intermediate_practice",
+        "cls_urolov_azizbek_upper_intermediate_standard"
+      ],
+      "createdAt": 1793202631415,
+      "updatedAt": 1793773725443,
+      "level": "C2",
+      "isLoggedOut": true,
+      "hasLoggedIn": true,
+      "isOnline": false,
+      "dailyMinutes": 0,
+      "loggedOutAt": 1793967150607
     },
     {
       "id": "shamshodbekibrohimov@telegram.org",
@@ -27214,16 +27257,27 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
+      "lastSeen": 1793967241195,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "password": "azimjon848toi",
       "phone": "941941527",
       "parentPhone": "941941527",
       "level": "A1",
-      "dailyMinutes": 3,
-      "lastLogin": "2026-11-06T12:12:39.376Z",
-      "loggedOutAt": 1793965855661,
-      "lastSeen": 1793967215206
+      "dailyMinutes": 3
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793629984912
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -27664,57 +27718,6 @@
       "level": "B1+",
       "dailyMinutes": 0,
       "updatedAt": 1793627425284
-    },
-    {
-      "id": "std_azimjon_848_toirov",
-      "role": "student",
-      "name": "Azimjon Toirov",
-      "email": "azimjon.toirov@ethith.uz",
-      "coins": 210,
-      "gifts": [],
-      "avatar": null,
-      "title": null,
-      "nameStyle": null,
-      "createdAt": 1793965365309,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967215206
-    },
-    {
-      "id": "admin_official_teacher",
-      "role": "teacher",
-      "name": "Ustoz",
-      "email": "admin@ethith.uz",
-      "createdAt": 1792429101989,
-      "coins": 100000,
-      "gifts": [],
-      "level": "B1+",
-      "dailyMinutes": 0,
-      "updatedAt": 1793773725443,
-      "avatar": null,
-      "nameStyle": null,
-      "title": null,
-      "victorySound": null,
-      "login": "azizbek77",
-      "password": "azizbek2026",
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1793967149563
-    },
-    {
-      "id": "std_mix_416_selix",
-      "name": "Mix Selix",
-      "role": "student",
-      "login": "mix_416_selix",
-      "password": "mix416sel",
-      "phone": "91`23891738213",
-      "parentPhone": "91`23891738213",
-      "classId": "cls_1793380468126",
-      "isOnline": false,
-      "lastLogin": null,
-      "updatedAt": 1793629984912
     }
   ],
   "p2pListings": [],
@@ -49064,9 +49067,9 @@
         "page": 1004,
         "exercise": "1",
         "label": "2",
-        "top": 53.5,
-        "left": 66.5,
-        "width": 10.1,
+        "top": 53.2,
+        "left": 65.5,
+        "width": 13,
         "height": 1.6,
         "correct": "to study"
       },
@@ -49076,9 +49079,9 @@
         "page": 1004,
         "exercise": "1",
         "label": "3",
-        "top": 73.8,
-        "left": 24.5,
-        "width": 9.1,
+        "top": 74.6,
+        "left": 23.5,
+        "width": 13,
         "height": 1.6,
         "correct": "on business"
       },
@@ -49088,9 +49091,9 @@
         "page": 1004,
         "exercise": "1",
         "label": "4",
-        "top": 73.6,
-        "left": 66.4,
-        "width": 8.6,
+        "top": 74.6,
+        "left": 65.5,
+        "width": 13,
         "height": 1.6,
         "correct": "on holiday"
       },
@@ -150640,7 +150643,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_qarshiboyev_humoyun",
@@ -150664,7 +150669,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_tovboyeva_marjona",
@@ -150690,7 +150697,9 @@
       "unpaidMonths": 0,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "phone": "+998 90 ..."
+      "phone": "+998 90 ...",
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_olimjonova_durdona",
@@ -150720,7 +150729,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_tagaev_eldor",
@@ -150750,7 +150761,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_yaxshilikova_kamola",
@@ -150776,7 +150789,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_sherqoziyeva_iroda",
@@ -150802,7 +150817,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_aborbekov_elyor",
@@ -150834,7 +150851,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_orinboyev_jaloliddin",
@@ -150864,7 +150883,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_jumanova_pokiza",
@@ -150888,7 +150909,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_hayrullayev_arslon",
@@ -150914,7 +150937,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_xudoyorova_sarvinoz",
@@ -150940,7 +150965,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_aliqulova_sevinch",
@@ -150967,7 +150994,9 @@
       "computedLiveSalary": 0,
       "monthlyBonus": 1000000,
       "monthlySalary": 0,
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_xojamqulova_diyora",
@@ -150997,7 +151026,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_bosimbekov_farrux",
@@ -151027,7 +151058,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_ahmadova_barno",
@@ -151059,7 +151092,9 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "phone": "+998 90 ...",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_shodiyor_matematika",
@@ -151083,7 +151118,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_urolov_azizbek",
@@ -151115,9 +151152,10 @@
       "monthlySalary": 0,
       "inviteCode": "AZIZBEK77",
       "unpaidMonths": 0,
-      "isOnline": true,
-      "hasLoggedIn": true,
-      "isLoggedOut": false
+      "livePaidStudents": 0,
+      "liveCollectedRevenue": 0,
+      "computedLiveSalary": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "admin_official_teacher",
@@ -151327,6 +151365,14 @@
         "createdAt": 1793202631415
       },
       {
+        "id": "f_root_teacher_1793475825095",
+        "name": "Azizbek Urolov (Mening Hujjatlarim)",
+        "parentId": null,
+        "ownerRole": "teacher",
+        "ownerId": "teacher_1793475825095",
+        "isSystem": true
+      },
+      {
         "id": "f_root_admin_official_teacher",
         "name": "Ustoz (Shaxsiy Papka)",
         "ownerId": "admin_official_teacher",
@@ -151339,14 +151385,6 @@
         "parentId": "f_root_t_urolov_azizbek",
         "ownerId": "t_urolov_azizbek",
         "createdAt": 1793596846702
-      },
-      {
-        "id": "f_root_teacher_1793475825095",
-        "name": "Azizbek Urolov (Mening Hujjatlarim)",
-        "parentId": null,
-        "ownerRole": "teacher",
-        "ownerId": "teacher_1793475825095",
-        "isSystem": true
       }
     ],
     "tests": [
@@ -152589,5 +152627,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1793967216916
+  "updatedAt": 1793967241725
 }
