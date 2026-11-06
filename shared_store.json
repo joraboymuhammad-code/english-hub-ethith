@@ -22836,6 +22836,12 @@
               "status": "",
               "score": ""
             }
+          },
+          "2026-11-06": {
+            "std_azimjon_848_toirov": {
+              "status": "Q",
+              "score": "2"
+            }
           }
         },
         "lessonTypes": {
@@ -22857,7 +22863,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793734631041
+        "updatedAt": 1793948583635
       },
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
@@ -23214,10 +23220,10 @@
           "manuallyEnrolled": true,
           "isOnline": true,
           "coins": 210,
-          "updatedAt": 1793948192441,
+          "updatedAt": 1793948193144,
           "isLoggedOut": false,
           "hasLoggedIn": true,
-          "lastSeen": 1793948228471,
+          "lastSeen": 1793948580472,
           "avatar": null,
           "nameStyle": null,
           "title": null,
@@ -25484,6 +25490,132 @@
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_1": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_2": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_3": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_4": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_5": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_6": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_7": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_8": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_9": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_10": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_11": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_12": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_13": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_14": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_15": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_16": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_17": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_urolov_azizbek_practice_std_18": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
         }
       },
       "learningMonths": 2,
@@ -26413,11 +26545,12 @@
       "updatedAt": 1792612388994,
       "nameStyle": null,
       "victorySound": null,
+      "login": "admin_12038f1aq8syash",
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948228894,
-      "login": "admin_12038f1aq8syash"
+      "loggedOutAt": 1793947950903,
+      "lastSeen": 1793948583119
     },
     {
       "id": "tg_98124765",
@@ -26595,7 +26728,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "std_13",
@@ -26750,8 +26883,8 @@
       "login": "vohidova"
     },
     {
-      "id": "t_urolov_azizbek",
-      "name": "Azizbek Urolov",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
       "password": "azizbek2026",
@@ -26771,7 +26904,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -26795,7 +26928,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -26816,7 +26949,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -26837,7 +26970,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -26861,7 +26994,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -26885,7 +27018,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -26907,7 +27040,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -26929,7 +27062,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -26954,7 +27087,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -26978,7 +27111,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -26999,7 +27132,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -27021,7 +27154,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -27043,7 +27176,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -27065,7 +27198,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -27089,7 +27222,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -27113,7 +27246,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -27137,7 +27270,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -27158,7 +27291,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "usmonqulovaetiborxon@gmail.com",
@@ -27209,7 +27342,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "admin_official_teacher",
@@ -27221,7 +27354,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948229634
+      "lastSeen": 1793948581635
     },
     {
       "id": "st_998950079621",
@@ -27272,11 +27405,11 @@
       "title": null,
       "nameStyle": null,
       "createdAt": 1793720576586,
-      "updatedAt": 1793948192440,
+      "updatedAt": 1793948193144,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948228471,
+      "lastSeen": 1793948580472,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "password": "azimjon848toi",
@@ -151186,25 +151319,19 @@
         "id": "f_root",
         "name": "Bosh Papka",
         "parentId": null,
-        "createdAt": 1793186120200
+        "createdAt": 1793024168370
       },
       {
         "id": "f_grammar",
         "name": "Grammar Mastery",
         "parentId": "f_root",
-        "createdAt": 1793186120200
-      },
-      {
-        "id": "f_vocab",
-        "name": "Vocabulary Builder",
-        "parentId": "f_root",
-        "createdAt": 1793186120200
+        "createdAt": 1793024168370
       },
       {
         "id": "f_ielts",
         "name": "IELTS Mock Tests",
         "parentId": "f_root",
-        "createdAt": 1793186120200
+        "createdAt": 1793024168370
       },
       {
         "id": "f_1793028050497",
@@ -151233,6 +151360,12 @@
         "ownerRole": "teacher",
         "ownerId": "teacher_1793431051291",
         "isSystem": true
+      },
+      {
+        "id": "f_vocab",
+        "name": "Vocabulary Builder",
+        "parentId": "f_root",
+        "createdAt": 1792940000000
       },
       {
         "id": "f_root_t_urolov_azizbek",
@@ -151361,18 +151494,18 @@
         "createdAt": 1793202631415
       },
       {
+        "id": "f_root_admin_official_teacher",
+        "name": "Ustoz (Shaxsiy Papka)",
+        "ownerId": "admin_official_teacher",
+        "parentId": null,
+        "createdAt": 1793468183930
+      },
+      {
         "id": "f_1793596846702",
         "name": "fvc",
         "parentId": "f_root_t_urolov_azizbek",
         "ownerId": "t_urolov_azizbek",
         "createdAt": 1793596846702
-      },
-      {
-        "id": "f_root_admin_official_teacher",
-        "name": "Azizbek Urolov (Shaxsiy Papka)",
-        "ownerId": "admin_official_teacher",
-        "parentId": null,
-        "createdAt": 1793600145400
       },
       {
         "id": "f_root_teacher_1793475825095",
@@ -151389,7 +151522,7 @@
         "title": "Unit 7: Modals of Deduction & Obligation",
         "folderId": "f_grammar",
         "authorName": "Ustoz",
-        "createdAt": 1793186120200,
+        "createdAt": 1793024168370,
         "maxAttempts": 1,
         "questions": [
           {
@@ -151449,7 +151582,7 @@
         "title": "Unit 8: Compound Adjectives & Participle Clauses",
         "folderId": "f_vocab",
         "authorName": "Zizi Ustoz",
-        "createdAt": 1793186120200,
+        "createdAt": 1793386368518,
         "maxAttempts": 1,
         "questions": [
           {
@@ -152623,5 +152756,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1793948230282
+  "updatedAt": 1793948584506
 }
