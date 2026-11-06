@@ -23302,7 +23302,7 @@
           "lastLogin": "2026-11-06T10:58:45.561Z",
           "dailyMinutes": 39,
           "loggedOutAt": 1793948950245,
-          "lastSeen": 1793965369671
+          "lastSeen": 1793965401194
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -26391,10 +26391,10 @@
       "updatedAt": 1792612388994,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": true,
+      "isOnline": false,
       "login": "admin_12038f1aq8syash",
       "loggedOutAt": 1793962599794,
-      "lastSeen": 1793965369084
+      "lastSeen": 1793965388861
     },
     {
       "id": "tg_98124765",
@@ -27151,7 +27151,7 @@
       "dailyMinutes": 3,
       "lastLogin": "2026-11-06T10:58:45.560Z",
       "loggedOutAt": 1793948950245,
-      "lastSeen": 1793965369671
+      "lastSeen": 1793965401194
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -27607,7 +27607,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793965369671
+      "lastSeen": 1793965401194
     },
     {
       "id": "std_mix_416_selix",
@@ -151995,8 +151995,8 @@
       "authorId": "admin_official_root",
       "authorName": "Bosh Admin",
       "authorRole": "admin",
-      "updatedAt": "2026-11-06 16:41",
-      "updatedTs": 1793965313933,
+      "updatedAt": "2026-11-06 16:43",
+      "updatedTs": 1793965398619,
       "data": [
         {
           "name": "Sheet1",
@@ -152492,5 +152492,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1793965370875
+  "updatedAt": 1793965402168
 }
