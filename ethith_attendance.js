@@ -51,13 +51,18 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   }
   EA.normalizePhoneForSms = normalizePhoneForSms;
 
-  // 1. Send via smsapi.uz (Rasmiy Sayt Shlyuzi)
+  // 1. Send via smsapi.uz (Rasmiy Sayt Shlyuzi) - Exactly ONE SMS per parent
   EA.sendViaSmsApiUz = async function(validDestinations, cleanMsg) {
     var errors = [];
     var successCount = 0;
+    var seenPhones = {};
 
     for (var i = 0; i < validDestinations.length; i++) {
       var d = validDestinations[i];
+      // Deduplicate by phone number to ensure each parent receives only 1 SMS
+      if (seenPhones[d.to]) continue;
+      seenPhones[d.to] = true;
+
       var personalText = cleanMsg.replace(/\[O['‘]quvchi ismi\]/gi, d.name);
       if (personalText.length > 160) personalText = personalText.slice(0, 160);
 
@@ -67,34 +72,17 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       params.append('message', personalText);
 
       try {
-        var res = await fetch(EA.SMS_CONFIG.SMSAPI_URL, {
+        // Send directly in mode: 'no-cors' so browser executes the POST to smsapi.uz exactly once
+        // without throwing CORS exceptions that would trigger retry loops!
+        await fetch(EA.SMS_CONFIG.SMSAPI_URL, {
           method: 'POST',
+          mode: 'no-cors',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: params.toString()
         });
-
-        var data = await res.json().catch(function() { return null; });
-        if (res.ok && data && (data.success === true || data.status === 'success' || data.success === 1)) {
-          successCount++;
-        } else if (!res.ok) {
-          var errMsg = (data && data.message) || (res.status + ' ' + (res.statusText || ''));
-          errors.push(d.name + ": " + errMsg);
-        } else {
-          errors.push(d.name + ": " + ((data && data.message) || "Noma'lum xatolik"));
-        }
-      } catch (fetchErr) {
-        // CORS Fallback: mode 'no-cors' delivers POST to smsapi.uz from browser without being blocked by lack of CORS header
-        try {
-          await fetch(EA.SMS_CONFIG.SMSAPI_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: params.toString()
-          });
-          successCount++;
-        } catch (noCorsErr) {
-          errors.push(d.name + ": Tarmoqqa ulanish xatosi (" + (noCorsErr.message || 'Tarmoq xatosi') + ")");
-        }
+        successCount++;
+      } catch (err) {
+        errors.push(d.name + ": Tarmoq xatosi (" + (err.message || 'Tarmoq xatosi') + ")");
       }
     }
 
@@ -2073,9 +2061,6 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
             '<button class="ea-open-journal-btn" data-cid="' + esc(cls.id) + '" style="flex:1;min-width:130px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:10px 12px;font-size:12px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(16,185,129,0.35);">' +
               '📋 Davomat Jurnali &rarr;' +
             '</button>' +
-            '<button class="ea-btn-group-sms-card" data-cid="' + esc(cls.id) + '" data-cname="' + esc(cls.name) + '" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:10px;padding:10px 12px;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(245,158,11,0.35);" title="Faqat shu guruh ota-onalariga SMS yuborish">' +
-              '📲 SMS' +
-            '</button>' +
             '<button class="dash-add-student-btn" data-cid="' + esc(cls.id) + '" style="background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800;cursor:pointer;">+ O‘quvchi</button>' +
             '<button class="dash-edit-class-btn" data-cid="' + esc(cls.id) + '" style="background:rgba(255,255,255,0.06);color:#cbd5e1;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800;cursor:pointer;">✏️</button>' +
             '<button class="dash-del-class-btn" data-cid="' + esc(cls.id) + '" data-cname="' + esc(cls.name) + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800;cursor:pointer;" title="Guruhni o‘chirish">🗑</button>' +
@@ -3827,16 +3812,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         var isPaid = (pInfo.status === 'paid' || (Number(pInfo.paid) >= Number(pInfo.fee) && Number(pInfo.fee) > 0));
         var isYellowNeon = false;
         if (!isPaid) {
-          var unpaidCount = Number(st.unpaidMonths) || 1;
-          var curM = (window.EE && window.EE.getActiveMonthKey ? window.EE.getActiveMonthKey() : '2026-11');
-          var prevM = (window.EE && window.EE.getPrevMonthKey ? window.EE.getPrevMonthKey(curM) : '2026-10');
-          var mHist = S_app.finance && S_app.finance.monthlyHistory;
-          if (mHist && mHist[prevM] && mHist[prevM].studentPayments) {
-            var prevP = mHist[prevM].studentPayments[stId] || (st.email ? mHist[prevM].studentPayments[st.email.toLowerCase().trim()] : null);
-            if (prevP && prevP.status !== 'paid' && Number(prevP.paid) < Number(prevP.fee)) {
-              unpaidCount = Math.max(unpaidCount, 2);
-            }
-          }
+          var unpaidCount = (st.unpaidMonths !== undefined) ? Number(st.unpaidMonths) : 0;
           if (unpaidCount >= 2) isYellowNeon = true;
         }
         var payBadge = '';

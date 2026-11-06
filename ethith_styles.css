@@ -349,13 +349,7 @@ html, body {
 }
 
 .ask-ai-sidebar {
-  width: 250px;
-  border-right: 1px solid var(--border, #e2e8f0);
-  background: var(--bg2, #f8fafc);
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  flex-shrink: 0;
+  display: none !important;
 }
 
 .ask-ai-main {
@@ -368,13 +362,25 @@ html, body {
 }
 
 .ask-ai-history-panel {
-  width: 260px;
-  border-left: 1px solid var(--border, #e2e8f0);
+  width: 270px;
+  border-right: 1px solid var(--border, #e2e8f0);
   background: var(--bg2, #f8fafc);
   display: flex;
   flex-direction: column;
   padding: 16px;
   flex-shrink: 0;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), padding 0.25s ease, opacity 0.2s ease;
+}
+
+.ask-ai-history-panel.collapsed {
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 0 !important;
+  padding: 0 !important;
+  border-right: none !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 @media (max-width: 1080px) {
@@ -2801,16 +2807,18 @@ body[data-theme="light"] .eth-test-timer-pill {
     display: flex !important;
     position: fixed !important;
     top: 0 !important;
-    right: 0 !important;
+    left: 0 !important;
+    right: auto !important;
     bottom: 0 !important;
     width: 85% !important;
     max-width: 320px !important;
     height: 100vh !important;
     z-index: 9999 !important;
     background: var(--card, #ffffff) !important;
-    border-left: 2px solid var(--border, #e2e8f0) !important;
-    box-shadow: -15px 0 45px rgba(0, 0, 0, 0.45) !important;
-    animation: drawerSlideIn 0.22s ease-out !important;
+    border-right: 2px solid var(--border, #e2e8f0) !important;
+    border-left: none !important;
+    box-shadow: 15px 0 45px rgba(0, 0, 0, 0.45) !important;
+    animation: drawerSlideInLeft 0.22s ease-out !important;
     padding: 16px !important;
   }
 
@@ -2819,8 +2827,8 @@ body[data-theme="light"] .eth-test-timer-pill {
   }
 }
 
-@keyframes drawerSlideIn {
-  from { transform: translateX(100%); }
+@keyframes drawerSlideInLeft {
+  from { transform: translateX(-100%); }
   to { transform: translateX(0); }
 }
 

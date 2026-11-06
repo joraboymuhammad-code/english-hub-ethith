@@ -244,28 +244,44 @@
     var html = '' +
       '<div class="eth-ai-drawer-backdrop" id="aiDrawerBackdrop"></div>' +
       '<div class="ask-ai-container">' +
-      // LEFT SIDEBAR: Recommended Prompts & Info
-      '  <div class="ask-ai-sidebar">' +
-      '    <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em">Recommended Prompts</div>' +
-      '    <div style="display:flex;flex-direction:column;gap:6px;overflow-y:auto;flex:1">' +
-      '      <button class="ap-item ai-prompt-pill" data-p="Provide a sample Band 7.0+ response and idioms for IELTS Speaking">' + ic('sparkles') + ' IELTS Speaking Template</button>' +
-      '      <button class="ap-item ai-prompt-pill" data-p="Explain the difference between Present Perfect and Past Simple with examples">' + ic('book') + ' Grammar Differences</button>' +
-      '      <button class="ap-item ai-prompt-pill" data-p="Explain the 10 most essential phrasal verbs in English with examples">' + ic('layers') + ' Phrasal Verbs</button>' +
-      '      <button class="ap-item ai-prompt-pill" data-p="How can I quickly improve my English proficiency?">' + ic('trophy') + ' Learning Strategies</button>' +
+      // LEFT SIDEBAR: "Suhbatlar" / Conversations History Panel (Collapsible into side)
+      '  <div class="ask-ai-history-panel" id="askAiHistoryPanel">' +
+      '    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:6px">' +
+      '      <b style="font-size:13.5px;color:var(--text);display:flex;align-items:center;gap:6px">' + ic('layers') + ' Conversations</b>' +
+      '      <div style="display:flex;align-items:center;gap:5px">' +
+      '        <button class="eth-btn-primary" id="aiNewChatBtn" style="padding:6px 10px;font-size:12px;width:auto;border-radius:8px;' + (!hasMessagesInActive ? 'opacity:0.4;cursor:not-allowed;' : '') + '" ' + (!hasMessagesInActive ? 'disabled title="Hozirgi suhbatingiz bo\'sh. Yangi suhbat ochish uchun avval xabar yozing."' : 'title="Yangi suhbat ochish"') + '>' + ic('plus') + ' Yangi</button>' +
+      '        <button type="button" id="btnCollapseAiSidebar" class="eth-modal-close-btn" style="position:static !important;width:28px !important;height:28px !important;font-size:13px !important;display:inline-flex;align-items:center;justify-content:center" title="Panelni berkitish (Collapse)">◀</button>' +
+      '        <button class="eth-modal-close-btn" id="btnCloseAiDrawer" style="position:static !important;width:28px !important;height:28px !important;font-size:13px !important;display:none" title="Yopish">✕</button>' +
+      '      </div>' +
       '    </div>' +
-      '    <div style="padding-top:12px;border-top:1px solid var(--border);font-size:11.5px;color:var(--muted);text-align:center">' +
-      '      <b>ETHITH AI Teacher</b><br>Created by: Muhammadyusuf Jo\'raboyev' +
+      '    <div class="ask-ai-history-list">' +
+      S.aiConversations.map(function(conv) {
+        var isActive = conv.id === S.currentAiChatId;
+        var msgCount = conv.messages ? conv.messages.length : 0;
+        return '' +
+          '<div class="ask-ai-history-item ' + (isActive ? 'active' : '') + '" data-chat-id="' + conv.id + '">' +
+          '  <div class="ask-ai-history-title" title="' + esc(conv.title) + '">' + esc(conv.title) + '</div>' +
+          '  <span style="font-size:11px;opacity:0.7">' + msgCount + '</span>' +
+          '  <button class="ask-ai-history-del" data-del-chat="' + conv.id + '" title="Delete conversation">✕</button>' +
+          '</div>';
+      }).join('') +
+      '    </div>' +
+      '    <div style="padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--muted);text-align:center;margin-top:auto">' +
+      '      <b>ETHITH AI Teacher</b><br>Muhammadyusuf Jo\'raboyev' +
       '    </div>' +
       '  </div>' +
-      // CENTER: Main Chat
+      // CENTER/RIGHT: Main Chat
       '  <div class="ask-ai-main">' +
       '    <div class="eth-ai-topbar">' +
-      '      <div style="display:flex;align-items:center;gap:8px">' +
+      '      <div style="display:flex;align-items:center;gap:10px">' +
+      '        <button type="button" class="eth-btn-ghost" id="btnToggleAiSidebar" style="padding:5px 9px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px;cursor:pointer;color:var(--text)" title="Suhbatlar panelini ko‘rsatish/yashirish">' +
+      '          ' + ic('layers') + ' <span class="ai-hide-mob">Suhbatlar</span>' +
+      '        </button>' +
       '        ' + ethEmblemImg('eth-brand-emblem-mini', 'width:24px;height:24px;border-radius:6px;object-fit:cover;vertical-align:middle') + ' ' +
       '        <b style="font-size:14px;color:var(--text)">ETHITH AI Teacher</b>' +
       '      </div>' +
       '      <button type="button" class="eth-ai-mobile-history-toggle" id="btnToggleAiMobileHistory">' +
-      '        💬 Suhbatlar Tarixi (<span id="aiChatCountPill">' + S.aiConversations.length + '</span>)' +
+      '        💬 Suhbatlar (<span id="aiChatCountPill">' + S.aiConversations.length + '</span>)' +
       '      </button>' +
       '    </div>' +
       '    <div class="ask-ai-messages" id="aiMsgBox">' +
@@ -297,41 +313,51 @@
       '      </form>' +
       '    </div>' +
       '  </div>' +
-      // RIGHT SIDEBAR: "Suhbatlar" / Conversations History Panel
-      '  <div class="ask-ai-history-panel" id="askAiHistoryPanel">' +
-      '    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">' +
-      '      <b style="font-size:13.5px;color:var(--text);display:flex;align-items:center;gap:6px">' + ic('layers') + ' Conversations</b>' +
-      '      <div style="display:flex;align-items:center;gap:6px">' +
-      '        <button class="eth-btn-primary" id="aiNewChatBtn" style="padding:6px 12px;font-size:12px;width:auto;border-radius:8px;' + (!hasMessagesInActive ? 'opacity:0.4;cursor:not-allowed;' : '') + '" ' + (!hasMessagesInActive ? 'disabled title="Hozirgi suhbatingiz bo\'sh. Yangi suhbat ochish uchun avval xabar yozing."' : 'title="Yangi suhbat ochish"') + '>' + ic('plus') + ' Yangi</button>' +
-      '        <button class="eth-modal-close-btn" id="btnCloseAiDrawer" style="position:static !important;width:30px !important;height:30px !important;font-size:13px !important" title="Yopish">✕</button>' +
-      '      </div>' +
-      '    </div>' +
-      '    <div class="ask-ai-history-list">' +
-      S.aiConversations.map(function(conv) {
-        var isActive = conv.id === S.currentAiChatId;
-        var msgCount = conv.messages ? conv.messages.length : 0;
-        return '' +
-          '<div class="ask-ai-history-item ' + (isActive ? 'active' : '') + '" data-chat-id="' + conv.id + '">' +
-          '  <div class="ask-ai-history-title" title="' + esc(conv.title) + '">' + esc(conv.title) + '</div>' +
-          '  <span style="font-size:11px;opacity:0.7">' + msgCount + '</span>' +
-          '  <button class="ask-ai-history-del" data-del-chat="' + conv.id + '" title="Delete conversation">✕</button>' +
-          '</div>';
-      }).join('') +
-      '    </div>' +
-      '  </div>' +
       '</div>';
 
     container.innerHTML = html;
 
-    // Mobile drawer toggle handlers
+    // History panel collapse / expand toggle handlers
     var historyPanel = document.getElementById('askAiHistoryPanel');
     var drawerBackdrop = document.getElementById('aiDrawerBackdrop');
     var btnToggleMobile = document.getElementById('btnToggleAiMobileHistory');
+    var btnToggleSidebar = document.getElementById('btnToggleAiSidebar');
+    var btnCollapseSidebar = document.getElementById('btnCollapseAiSidebar');
     var btnCloseDrawer = document.getElementById('btnCloseAiDrawer');
 
     function closeMobileDrawer() {
       if (historyPanel) historyPanel.classList.remove('mobile-open');
       if (drawerBackdrop) drawerBackdrop.classList.remove('active');
+    }
+
+    if (btnCollapseSidebar) {
+      btnCollapseSidebar.onclick = function() {
+        if (historyPanel) historyPanel.classList.toggle('collapsed');
+      };
+    }
+    if (btnToggleSidebar) {
+      btnToggleSidebar.onclick = function() {
+        if (historyPanel) {
+          if (window.innerWidth <= 768) {
+            historyPanel.classList.toggle('mobile-open');
+            if (drawerBackdrop) drawerBackdrop.classList.toggle('active');
+          } else {
+            historyPanel.classList.toggle('collapsed');
+          }
+        }
+      };
+    }
+    if (btnToggleMobile) {
+      btnToggleMobile.onclick = function() {
+        if (historyPanel) historyPanel.classList.toggle('mobile-open');
+        if (drawerBackdrop) drawerBackdrop.classList.toggle('active');
+      };
+    }
+    if (btnCloseDrawer) {
+      btnCloseDrawer.onclick = closeMobileDrawer;
+    }
+    if (drawerBackdrop) {
+      drawerBackdrop.onclick = closeMobileDrawer;
     }
 
     if (btnToggleMobile) {
