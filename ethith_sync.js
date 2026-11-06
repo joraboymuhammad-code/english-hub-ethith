@@ -1661,6 +1661,24 @@
         S.customCurriculumTests[tObj.testKey] = tObj;
         S.customCurriculumTests[tObj.id] = tObj;
       }
+      if (!S.allCurriculumTests) S.allCurriculumTests = [];
+      var acIdx = S.allCurriculumTests.findIndex(function(x) { return x.id === tObj.id || (tObj.testKey && x.testKey === tObj.testKey); });
+      if (acIdx > -1) S.allCurriculumTests[acIdx] = tObj;
+      else S.allCurriculumTests.push(tObj);
+
+      if (!S.quizzes) S.quizzes = [];
+      var qzIdx = S.quizzes.findIndex(function(x) { return x.id === tObj.id; });
+      if (qzIdx > -1) S.quizzes[qzIdx] = tObj;
+      else S.quizzes.push(tObj);
+
+      // Auto re-render open tests view across tabs and student devices in real-time
+      if (typeof window.renderNavigateView === 'function' && document.querySelector('.nav-curriculum-container')) {
+        var nParent = document.querySelector('.nav-curriculum-container').parentElement;
+        if (nParent) window.renderNavigateView(nParent);
+      }
+      if (window.EE && typeof window.EE.renderExplorerView === 'function' && document.getElementById('eeExplorerContainer')) {
+        window.EE.renderExplorerView(document.getElementById('eeExplorerContainer'));
+      }
       // If student is currently taking this test, live patch pins in 0ms!
       var takeModal = document.getElementById('eeTakeVisualOverlay');
       if (takeModal) {

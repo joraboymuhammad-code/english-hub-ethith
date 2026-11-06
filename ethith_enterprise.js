@@ -326,22 +326,104 @@
     return appState;
   }
 
+  // IndexedDB Persistent Storage for Tests and Heavy Assets (Unlimited Quota)
+  var IDB_NAME = 'ethith_enterprise_db';
+  var IDB_STORE = 'app_data';
+  function openIdb(callback) {
+    if (!window.indexedDB) return callback(null);
+    try {
+      var req = indexedDB.open(IDB_NAME, 1);
+      req.onupgradeneeded = function(e) {
+        var db = e.target.result;
+        if (!db.objectStoreNames.contains(IDB_STORE)) {
+          db.createObjectStore(IDB_STORE, { keyPath: 'key' });
+        }
+      };
+      req.onsuccess = function(e) { callback(e.target.result); };
+      req.onerror = function() { callback(null); };
+    } catch(e) { callback(null); }
+  }
+
+  function idbSet(key, val) {
+    openIdb(function(db) {
+      if (!db) return;
+      try {
+        var tx = db.transaction(IDB_STORE, 'readwrite');
+        tx.objectStore(IDB_STORE).put({ key: key, value: val });
+      } catch(e) {}
+    });
+  }
+
+  function idbGet(key, callback) {
+    openIdb(function(db) {
+      if (!db) return callback(null);
+      try {
+        var tx = db.transaction(IDB_STORE, 'readonly');
+        var req = tx.objectStore(IDB_STORE).get(key);
+        req.onsuccess = function(e) {
+          callback(e.target.result ? e.target.result.value : null);
+        };
+        req.onerror = function() { callback(null); };
+      } catch(e) { callback(null); }
+    });
+  }
+
+  // Real-time Cross-Tab BroadcastChannel listener (0.1ms sync)
+  try {
+    if (typeof BroadcastChannel !== 'undefined') {
+      if (!window._eeChannel) window._eeChannel = new BroadcastChannel('ethith_cloud_channel');
+      window._eeChannel.onmessage = function(ev) {
+        if (!ev.data) return;
+        if ((ev.data.type === 'ENTERPRISE_SYNC' || ev.data.type === 'TEST_SAVED') && (ev.data.state || ev.data.test)) {
+          var S = getStore();
+          if (ev.data.state) {
+            var st = ev.data.state;
+            if (st.customCurriculumTests) S.customCurriculumTests = Object.assign(S.customCurriculumTests || {}, st.customCurriculumTests);
+            if (st.allCurriculumTests) S.allCurriculumTests = st.allCurriculumTests;
+            if (st.fileExplorer) S.fileExplorer = st.fileExplorer;
+            if (st.quizzes) S.quizzes = st.quizzes;
+          }
+          if (ev.data.test) {
+            var t = ev.data.test;
+            if (!S.customCurriculumTests) S.customCurriculumTests = {};
+            if (t.testKey) S.customCurriculumTests[t.testKey] = t;
+            if (t.id) S.customCurriculumTests[t.id] = t;
+            if (!S.allCurriculumTests) S.allCurriculumTests = [];
+            var ex = S.allCurriculumTests.findIndex(function(x) { return x.id === t.id || x.testKey === t.testKey; });
+            if (ex !== -1) S.allCurriculumTests[ex] = t;
+            else S.allCurriculumTests.push(t);
+          }
+          // Auto re-render views in other tabs instantly
+          var navContainer = document.getElementById('eaNavigateRoot') || document.querySelector('.ea-curriculum-container');
+          if (navContainer && typeof window.renderNavigateView === 'function' && window._activeNavLevel && window._activeNavTab) {
+            window.renderNavigateView(navContainer, window._activeNavLevel, window._activeNavTab);
+          }
+          var expContainer = document.getElementById('eeExplorerContainer');
+          if (expContainer && window.EE && typeof window.EE.renderExplorerView === 'function') {
+            window.EE.renderExplorerView(expContainer);
+          }
+        }
+      };
+    }
+  } catch(e) {}
+
   function saveStore() {
     var st = getStore();
     try {
       localStorage.setItem('ethith_enterprise_store', JSON.stringify(st));
-      if (st.fileExplorer) {
-        localStorage.setItem('ethith_file_explorer', JSON.stringify(st.fileExplorer));
-      }
-      if (st.customCurriculumTests) {
-        localStorage.setItem('ethith_custom_curriculum_tests', JSON.stringify(st.customCurriculumTests));
-      }
-      if (st.allCurriculumTests) {
-        localStorage.setItem('ethith_all_curriculum_tests', JSON.stringify(st.allCurriculumTests));
-      }
-    } catch(e) {}
+      if (st.fileExplorer) localStorage.setItem('ethith_file_explorer', JSON.stringify(st.fileExplorer));
+      if (st.customCurriculumTests) localStorage.setItem('ethith_custom_curriculum_tests', JSON.stringify(st.customCurriculumTests));
+      if (st.allCurriculumTests) localStorage.setItem('ethith_all_curriculum_tests', JSON.stringify(st.allCurriculumTests));
+    } catch(e) {
+      console.warn('LocalStorage quota limit reached, saving to IndexedDB with unlimited capacity');
+    }
 
-    // 1. In-memory & LocalStorage instant update (0.01ms - 0.05ms)
+    // Permanent IndexedDB backup (unlimited quota)
+    idbSet('customCurriculumTests', st.customCurriculumTests);
+    idbSet('allCurriculumTests', st.allCurriculumTests);
+    idbSet('fileExplorer', st.fileExplorer);
+
+    // 1. In-memory instant update (0.01ms)
     if (window.EthithApp && window.EthithApp.state) {
       if (st.finance) window.EthithApp.state.finance = st.finance;
       if (st.teachers) window.EthithApp.state.teachers = st.teachers;
@@ -1706,7 +1788,7 @@
         var overlay = document.createElement('div');
         overlay.className = 'ee-page-overlay';
         overlay.setAttribute('data-page-idx', pIdx);
-        overlay.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;cursor:crosshair;touch-action:none;';
+        overlay.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;cursor:crosshair;touch-action:none;line-height:normal;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;';
 
         // Marquee selection rectangle element
         var marqueeBox = document.createElement('div');
@@ -1763,83 +1845,66 @@
         // Styles and colors matching Oxford Navigate Workbook authentic teacher view
         var boxBg = 'rgba(16, 185, 129, 0.18)';
         var boxBorder = '1.5px solid #10b981';
-        var boxColor = '#047857';
-        var tagBg = '#10b981';
         var innerContent = '';
 
         if (curType === 'choose') {
           if (isChooseCorrect) {
-            boxBg = 'rgba(16, 185, 129, 0.22)';
-            boxBorder = '1.5px solid #10b981';
-            boxColor = '#059669';
-            tagBg = '#10b981';
-            innerContent = '<span style="font-size:11.5px;font-weight:900;color:#047857;">✓ To‘g‘ri</span>';
+            boxBg = 'rgba(16, 185, 129, 0.16)';
+            boxBorder = '2px solid #10b981';
+            innerContent = '<span style="background:#10b981;color:#ffffff;font-size:11px;font-weight:900;padding:2px 7px;border-radius:4px;flex-shrink:0;line-height:1.2;">✓ ' + esc(labelStr) + '</span>';
           } else {
             boxBg = 'rgba(239, 68, 68, 0.12)';
-            boxBorder = '1.5px dashed rgba(239, 68, 68, 0.6)';
-            boxColor = '#ef4444';
-            tagBg = '#ef4444';
-            innerContent = '<span style="font-size:11px;font-weight:800;color:#ef4444;">✕ Noto‘g‘ri</span>';
+            boxBorder = '2px dashed rgba(239, 68, 68, 0.55)';
+            innerContent = '<span style="background:#ef4444;color:#ffffff;font-size:11px;font-weight:900;padding:2px 7px;border-radius:4px;flex-shrink:0;line-height:1.2;">✕ ' + esc(labelStr) + '</span>';
+          }
+          if (correctStr && correctStr !== 'true' && correctStr !== 'false' && correctStr !== '1' && correctStr !== '0') {
+            innerContent += '<span style="margin-left:6px;font-size:13.5px;font-weight:800;color:' + (isChooseCorrect ? '#065f46' : '#991b1b') + ';line-height:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(correctStr) + '</span>';
           }
         } else if (curType === 'select') {
           boxBg = 'rgba(2, 132, 199, 0.18)';
           boxBorder = '1.5px solid #0284c7';
-          boxColor = '#0284c7';
-          tagBg = '#0284c7';
-          innerContent = '<span style="font-size:11.5px;font-weight:800;color:#0284c7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(correctStr || (Array.isArray(el.options) ? el.options.join('/') : 'Select')) + ' ▾</span>';
+          innerContent = '<span style="background:#0284c7;color:#ffffff;font-size:11px;font-weight:900;padding:2px 6px;border-radius:4px;flex-shrink:0;margin-right:6px;line-height:1.2;">' + esc(labelStr) + '</span><span style="font-size:13.5px;font-weight:800;color:#0284c7;line-height:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(correctStr || (Array.isArray(el.options) ? el.options.join('/') : 'Select')) + ' ▾</span>';
         } else if (curType === 'cross') {
           boxBg = 'rgba(239, 68, 68, 0.16)';
           boxBorder = '1.5px solid #ef4444';
-          boxColor = '#ef4444';
-          tagBg = '#ef4444';
-          innerContent = '<span style="font-size:12px;font-weight:800;color:#ef4444;text-decoration:line-through;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(correctStr || 'O‘chirish') + '</span>';
+          innerContent = '<span style="background:#ef4444;color:#ffffff;font-size:11px;font-weight:900;padding:2px 6px;border-radius:4px;flex-shrink:0;margin-right:6px;line-height:1.2;">' + esc(labelStr) + '</span><span style="font-size:13.5px;font-weight:800;color:#ef4444;text-decoration:line-through;line-height:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(correctStr || 'O‘chirish') + '</span>';
         } else if (curType === 'match') {
           boxBg = 'rgba(16, 185, 129, 0.18)';
           boxBorder = '1.5px solid #10b981';
-          boxColor = '#047857';
-          tagBg = '#10b981';
-          innerContent = '<span style="font-size:12.5px;font-weight:900;color:#047857;">' + esc(correctStr.toUpperCase() || '?') + '</span>';
+          innerContent = '<span style="background:#10b981;color:#ffffff;font-size:11px;font-weight:900;padding:2px 6px;border-radius:4px;flex-shrink:0;margin-right:6px;line-height:1.2;">' + esc(labelStr) + '</span><span style="font-size:13.5px;font-weight:900;color:#047857;line-height:normal;">' + esc(correctStr.toUpperCase() || '?') + '</span>';
         } else if (curType === 'insert') {
           boxBg = 'rgba(168, 85, 247, 0.18)';
           boxBorder = '1.5px solid #a855f7';
-          boxColor = '#7e22ce';
-          tagBg = '#a855f7';
-          innerContent = '<span style="font-size:11.5px;font-weight:800;color:#7e22ce;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(correctStr || '^') + '</span>';
+          innerContent = '<span style="background:#a855f7;color:#ffffff;font-size:11px;font-weight:900;padding:2px 6px;border-radius:4px;flex-shrink:0;margin-right:6px;line-height:1.2;">' + esc(labelStr) + '</span><span style="font-size:13.5px;font-weight:800;color:#7e22ce;line-height:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(correctStr || '^') + '</span>';
         } else {
           // Fill (standard blank line)
-          innerContent = '<span style="font-size:12px;font-weight:800;color:#047857;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(correctStr || 'Javob') + '</span>';
+          boxBg = 'rgba(16, 185, 129, 0.18)';
+          boxBorder = '1.5px solid #10b981';
+          innerContent = '<span style="background:#10b981;color:#ffffff;font-size:11px;font-weight:900;padding:2px 6px;border-radius:4px;flex-shrink:0;margin-right:6px;line-height:1.2;">' + esc(labelStr) + '</span><span style="font-size:13.5px;font-weight:800;color:#047857;line-height:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(correctStr || 'Javob...') + '</span>';
         }
 
-        pin.style.cssText = 'position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;min-height:22px;min-width:32px;background:' + boxBg + ';border:' + boxBorder + ';border-radius:6px;display:flex;align-items:center;justify-content:center;padding:0 4px;box-sizing:border-box;pointer-events:auto;cursor:move;box-shadow:0 0 8px rgba(0,0,0,0.15);transition:border-color 0.15s,box-shadow 0.15s;z-index:20;';
+        pin.style.cssText = 'position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;min-height:24px;min-width:36px;line-height:normal;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:' + boxBg + ';border:' + boxBorder + ';border-radius:6px;display:flex;align-items:center;padding:0 6px;box-sizing:border-box;pointer-events:auto;cursor:move;box-shadow:0 0 8px rgba(0,0,0,0.12);transition:border-color 0.15s,box-shadow 0.15s;z-index:20;';
         pin.title = 'Tahrirlash uchun bosing | O‘ng tugma: O‘chirish | ' + labelStr + ': ' + (correctStr || curType);
 
-        pin.innerHTML = '<span style="background:' + tagBg + ';color:#ffffff;font-size:10px;font-weight:900;padding:1px 5px;border-radius:3px;margin-right:4px;flex-shrink:0;line-height:1.2;pointer-events:none;">' + esc(labelStr) + '</span>' +
-          '<div style="flex:1;min-width:0;display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden;">' + innerContent + '</div>' +
-          // Floating full-answer hover tooltip (pops up above box so it is NEVER cut off)
-          '<div class="ee-pin-hover-badge" style="display:none;position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);background:#0f172a;border:1.5px solid #38bdf8;color:#38bdf8;padding:3px 10px;border-radius:6px;font-size:11.5px;font-weight:800;white-space:nowrap;z-index:100;box-shadow:0 4px 16px rgba(0,0,0,0.6);pointer-events:none;">' +
-            '✏️ ' + esc(labelStr) + ': ' + esc(correctStr || curType) +
-          '</div>' +
-          // Subtle delete button that appears on hover
-          '<button class="ee-quick-del-pin" data-idx="' + idx + '" style="position:absolute;top:-10px;right:-10px;background:#ef4444;color:#fff;border:1.5px solid #ffffff;border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:900;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.4);z-index:80;" title="Katakchani o‘chirish">✕</button>' +
+        pin.innerHTML = '<div style="flex:1;min-width:0;display:flex;align-items:center;pointer-events:none;overflow:hidden;line-height:normal;">' + innerContent + '</div>' +
+          // Subtle delete button that appears on hover only (no ugly full-answer badge!)
+          '<button class="ee-quick-del-pin" data-idx="' + idx + '" style="position:absolute;top:-11px;right:-11px;background:#ef4444;color:#fff;border:1.5px solid #ffffff;border-radius:50%;width:20px;height:20px;font-size:11px;font-weight:900;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.4);z-index:80;line-height:1;" title="Katakchani o‘chirish">✕</button>' +
           // Window resize handle
-          '<div class="ee-pin-resize-handle ee-pin-resize-se" data-type="se" data-idx="' + idx + '" style="position:absolute;right:-3px;bottom:-3px;width:10px;height:10px;background:#38bdf8;border:1.5px solid #ffffff;border-radius:2px;cursor:nwse-resize;z-index:70;opacity:0;transition:opacity 0.15s;" title="O‘lchamni o‘zgartirish"></div>';
+          '<div class="ee-pin-resize-handle ee-pin-resize-se" data-type="se" data-idx="' + idx + '" style="position:absolute;right:-4px;bottom:-4px;width:10px;height:10px;background:#38bdf8;border:1.5px solid #ffffff;border-radius:2px;cursor:nwse-resize;z-index:70;opacity:0;transition:opacity 0.15s;" title="O‘lchamni o‘zgartirish"></div>';
 
-        // Hover events for tooltip, delete button, and resize handle
-        var hoverBadge = pin.querySelector('.ee-pin-hover-badge');
+        // Hover events for delete button and resize handle
         var delBtn = pin.querySelector('.ee-quick-del-pin');
         var rHandle = pin.querySelector('.ee-pin-resize-handle');
 
         pin.onmouseenter = function() {
-          if (hoverBadge) hoverBadge.style.display = 'block';
           if (delBtn) delBtn.style.display = 'flex';
           if (rHandle) rHandle.style.opacity = '1';
           pin.style.boxShadow = '0 0 12px rgba(56,189,248,0.5)';
         };
         pin.onmouseleave = function() {
-          if (hoverBadge) hoverBadge.style.display = 'none';
           if (delBtn) delBtn.style.display = 'none';
           if (rHandle) rHandle.style.opacity = '0';
-          pin.style.boxShadow = '0 0 8px rgba(0,0,0,0.15)';
+          pin.style.boxShadow = '0 0 8px rgba(0,0,0,0.12)';
         };
 
         // Right click directly deletes pin
@@ -1866,92 +1931,16 @@
           if (e.shiftKey || activeTool === 'lasso') {
             if (selectedPinKeys.has(pinKey)) selectedPinKeys.delete(pinKey);
             else selectedPinKeys.add(pinKey);
-            updateSelectionVisuals();
-            return;
+            updatePinSelectionStyles();
+          } else {
+            eeOpenPinModal(el, p, pIdx, false, function() {
+              renderPagePins(overlay, p, pIdx);
+              updateCounter();
+            });
           }
-          openKatakchaModal(false, el, idx, p, overlay, pIdx);
         };
 
         overlay.appendChild(pin);
-      });
-
-      var subCounter = overlay.closest('.ee-page-box').querySelector('.ee-page-subcounter');
-      if (subCounter) subCounter.textContent = (p.elements || []).length + " ta topshiriq";
-
-      overlay.querySelectorAll('.ee-quick-del-pin').forEach(function(b) {
-        b.onclick = function(e) {
-          e.stopPropagation();
-          var i = parseInt(b.getAttribute('data-idx'), 10);
-          p.elements.splice(i, 1);
-          selectedPinKeys.delete(pIdx + '_' + i);
-          renderPagePins(overlay, p, pIdx);
-          updateCounter();
-        };
-      });
-    }
-
-    // Window-style resize handler (Corner SE, Right E, Bottom S)
-    function attachPinResize(pin, el, idx, p, overlay) {
-      pin.querySelectorAll('.ee-pin-resize-handle').forEach(function(handle) {
-        function startResize(e) {
-          var isTouch = !!e.touches;
-          if (isTouch && e.touches.length > 1) return;
-          if (!isTouch && e.button !== 0) return;
-          if (e.cancelable) e.preventDefault();
-          e.stopPropagation();
-
-          var pt = isTouch ? e.touches[0] : e;
-          var rType = handle.getAttribute('data-type') || 'se';
-          var rect = overlay.getBoundingClientRect();
-          var startX = pt.clientX;
-          var startY = pt.clientY;
-          var startW = parseFloat(pin.style.width) || el.width;
-          var startH = parseFloat(pin.style.height) || el.height;
-
-          pin.style.transition = 'none';
-          pin.style.zIndex = '999';
-
-          var curW = startW;
-          var curH = startH;
-
-          function onResizeMove(ev) {
-            if (ev.touches && ev.touches.length > 1) return;
-            if (ev.cancelable) ev.preventDefault();
-            var pPt = ev.touches ? ev.touches[0] : ev;
-            var dx = pPt.clientX - startX;
-            var dy = pPt.clientY - startY;
-            var dxPct = (dx / rect.width) * 100;
-            var dyPct = (dy / rect.height) * 100;
-
-            if (rType === 'e' || rType === 'se') {
-              curW = Math.max(1.5, Math.min(95, startW + dxPct));
-              pin.style.width = curW.toFixed(2) + '%';
-            }
-            if (rType === 's' || rType === 'se') {
-              curH = Math.max(1.0, Math.min(80, startH + dyPct));
-              pin.style.height = curH.toFixed(2) + '%';
-            }
-          }
-
-          function onResizeEnd() {
-            window.removeEventListener('mousemove', onResizeMove);
-            window.removeEventListener('mouseup', onResizeEnd);
-            window.removeEventListener('touchmove', onResizeMove);
-            window.removeEventListener('touchend', onResizeEnd);
-
-            pin.style.zIndex = '20';
-            el.width = parseFloat(curW.toFixed(2));
-            el.height = parseFloat(curH.toFixed(2));
-          }
-
-          window.addEventListener('mousemove', onResizeMove);
-          window.addEventListener('mouseup', onResizeEnd);
-          window.addEventListener('touchmove', onResizeMove, { passive: false });
-          window.addEventListener('touchend', onResizeEnd);
-        }
-
-        handle.addEventListener('mousedown', startResize);
-        handle.addEventListener('touchstart', startResize, { passive: false });
       });
     }
 
@@ -2245,11 +2234,15 @@
 
           // Choose type specific UI (Matches Screenshot 2)
           '<div id="eeKatakchaChooseWrap" style="' + (isChooseType ? 'display:block;' : 'display:none;') + '">' +
-            '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;margin-bottom:4px;">Ushbu variant to‘g‘rimi? (Variant to‘g‘riligi):</label>' +
-            '<input type="text" id="eeKatakchaChooseInput" value="' + (isChooseVal ? 'true' : esc(elData.correct || '')) + '" placeholder="Bo‘sh = Noto‘g‘ri. \'To‘g‘ri\' bosilsa = To‘g‘ri" style="width:100%;padding:8px 12px;background:#1e293b;border:1px solid ' + (isChooseVal ? '#10b981' : '#334155') + ';border-radius:8px;color:' + (isChooseVal ? '#10b981' : '#f8fafc') + ';font-weight:900;font-size:12.5px;outline:none;box-sizing:border-box;margin-bottom:8px;" />' +
-            '<div style="display:flex;gap:8px;">' +
-              '<button type="button" id="eeChooseTrueBtn" style="flex:1;background:rgba(16,185,129,0.18);border:1.5px solid #10b981;color:#10b981;padding:8px 10px;border-radius:8px;font-weight:900;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;">✓ To‘g‘ri variant</button>' +
-              '<button type="button" id="eeChooseFalseBtn" style="flex:1;background:#ef4444;border:none;color:#ffffff;padding:8px 10px;border-radius:8px;font-weight:900;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;">✕ Noto‘g‘ri variant</button>' +
+            '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;margin-bottom:6px;">Ushbu variant to‘g‘riligini tanlang:</label>' +
+            '<input type="hidden" id="eeKatakchaChooseInput" value="' + (isChooseVal ? 'true' : '') + '" />' +
+            '<div style="display:flex;gap:10px;">' +
+              '<button type="button" id="eeChooseTrueBtn" style="flex:1;background:' + (isChooseVal ? '#10b981' : 'rgba(16,185,129,0.12)') + ';border:2px solid #10b981;color:' + (isChooseVal ? '#ffffff' : '#10b981') + ';padding:10px 12px;border-radius:10px;font-weight:900;font-size:12.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:' + (isChooseVal ? '0 0 16px rgba(16,185,129,0.45)' : 'none') + ';transition:all 0.15s;">' +
+                (isChooseVal ? '✓ To‘g‘ri Variant (Tanlangan)' : '○ To‘g‘ri Variant') +
+              '</button>' +
+              '<button type="button" id="eeChooseFalseBtn" style="flex:1;background:' + (!isChooseVal ? '#ef4444' : 'rgba(239,68,68,0.12)') + ';border:2px solid #ef4444;color:' + (!isChooseVal ? '#ffffff' : '#f87171') + ';padding:10px 12px;border-radius:10px;font-weight:900;font-size:12.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:' + (!isChooseVal ? '0 0 16px rgba(239,68,68,0.45)' : 'none') + ';transition:all 0.15s;">' +
+                (!isChooseVal ? '✕ Noto‘g‘ri Variant (Tanlangan)' : '○ Noto‘g‘ri Variant') +
+              '</button>' +
             '</div>' +
           '</div>' +
 
@@ -2282,19 +2275,34 @@
       var prevBtn = om.querySelector('#eeKatakchaPrevPageBtn');
       var nextBtn = om.querySelector('#eeKatakchaNextPageBtn');
 
-      if (trueBtn && chooseInp) {
-        trueBtn.onclick = function() {
-          chooseInp.value = 'true';
-          chooseInp.style.borderColor = '#10b981';
-          chooseInp.style.color = '#10b981';
-        };
+      function updateChooseButtons(isVal) {
+        if (!trueBtn || !falseBtn || !chooseInp) return;
+        chooseInp.value = isVal ? 'true' : '';
+        if (isVal) {
+          trueBtn.style.background = '#10b981';
+          trueBtn.style.color = '#ffffff';
+          trueBtn.style.boxShadow = '0 0 16px rgba(16,185,129,0.45)';
+          trueBtn.innerHTML = '✓ To‘g‘ri Variant (Tanlangan)';
+          falseBtn.style.background = 'rgba(239,68,68,0.12)';
+          falseBtn.style.color = '#f87171';
+          falseBtn.style.boxShadow = 'none';
+          falseBtn.innerHTML = '○ Noto‘g‘ri Variant';
+        } else {
+          trueBtn.style.background = 'rgba(16,185,129,0.12)';
+          trueBtn.style.color = '#10b981';
+          trueBtn.style.boxShadow = 'none';
+          trueBtn.innerHTML = '○ To‘g‘ri Variant';
+          falseBtn.style.background = '#ef4444';
+          falseBtn.style.color = '#ffffff';
+          falseBtn.style.boxShadow = '0 0 16px rgba(239,68,68,0.45)';
+          falseBtn.innerHTML = '✕ Noto‘g‘ri Variant (Tanlangan)';
+        }
       }
-      if (falseBtn && chooseInp) {
-        falseBtn.onclick = function() {
-          chooseInp.value = '';
-          chooseInp.style.borderColor = '#334155';
-          chooseInp.style.color = '#f8fafc';
-        };
+      if (trueBtn) {
+        trueBtn.onclick = function() { updateChooseButtons(true); };
+      }
+      if (falseBtn) {
+        falseBtn.onclick = function() { updateChooseButtons(false); };
       }
 
       if (prevBtn && pageInp) {
@@ -2423,13 +2431,13 @@
               for (var i = 1; i <= numPages; i++) {
                 (function(pageNumber) {
                   pdf.getPage(pageNumber).then(function(page) {
-                    var viewport = page.getViewport({ scale: 2 });
+                    var viewport = page.getViewport({ scale: 1.5 });
                     var canvas = document.createElement('canvas');
                     canvas.width = viewport.width;
                     canvas.height = viewport.height;
                     var ctx = canvas.getContext('2d');
                     page.render({ canvasContext: ctx, viewport: viewport }).promise.then(function() {
-                      var dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+                      var dataUrl = canvas.toDataURL('image/jpeg', 0.82);
                       pagesData[pageNumber - 1] = { pageNum: pageNumber, imageUrl: dataUrl, elements: [] };
                       loaded++;
                       if (loaded === numPages) {

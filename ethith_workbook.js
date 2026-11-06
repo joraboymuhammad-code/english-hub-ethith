@@ -168574,7 +168574,7 @@
               '<option value="select">Select (Dropdown - Tanlash)</option>' +
               '<option value="cross">Cross (Chizib o‘chirish)</option>' +
               '<option value="choose">Choose (Variant tanlash)</option>' +
-              '<option value="choice">Choice (Variant tanlash)</option>' +
+              '' +
               '<option value="match">Match (Harf bilan bog‘lash)</option>' +
               '<option value="insert">Insert (Prepozitsiya kiritish)</option>' +
             '</select>' +

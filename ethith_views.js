@@ -273,8 +273,8 @@
       '  <div class="ask-ai-main">' +
       '    <div class="eth-ai-topbar">' +
       '      <div style="display:flex;align-items:center;gap:10px">' +
-      '        <button type="button" id="btnToggleAiSidebar" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(56,189,248,0.4);border-radius:10px;padding:6px 12px;font-size:12px;font-weight:800;color:#38bdf8;cursor:pointer;display:none;align-items:center;gap:6px;backdrop-filter:blur(10px);transition:all 0.15s;" title="Suhbatlar panelini ko‘rsatish">' +
-      '          ' + ic('layers') + ' <span>Suhbatlar</span>' +
+      '        <button type="button" id="btnToggleAiSidebar" style="background:rgba(15,23,42,0.88);border:1.5px solid rgba(56,189,248,0.45);border-radius:10px;padding:6px 14px;font-size:12px;font-weight:800;color:#38bdf8;cursor:pointer;display:none;align-items:center;gap:6px;backdrop-filter:blur(10px);box-shadow:0 4px 14px rgba(0,0,0,0.3);transition:all 0.15s;" title="Suhbatlar panelini ko‘rsatish">' +
+      '          ' + ic('layers') + ' <span style="color:#38bdf8;font-weight:800;">Suhbatlar</span>' +
       '        </button>' +
       '        ' + ethEmblemImg('eth-brand-emblem-mini', 'width:24px;height:24px;border-radius:6px;object-fit:cover;vertical-align:middle') + ' ' +
       '        <b style="font-size:14px;color:var(--text)">ETHITH AI Teacher</b>' +
@@ -357,6 +357,7 @@
         }
       };
     }
+    syncSidebarButtons();
     if (btnToggleMobile) {
       btnToggleMobile.onclick = function() {
         if (historyPanel) historyPanel.classList.toggle('mobile-open');

@@ -11158,3 +11158,20 @@ html, body {
   text-shadow: 0 0 10px rgba(250, 204, 21, 0.95), 0 0 20px rgba(234, 179, 8, 0.75), 0 0 30px rgba(202, 138, 4, 0.5) !important;
   letter-spacing: 0.25px;
 }
+
+/* ETHITH AI Teacher Controls */
+#btnToggleAiSidebar {
+  background: rgba(15, 23, 42, 0.88) !important;
+  color: #38bdf8 !important;
+  border: 1.5px solid rgba(56, 189, 248, 0.45) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+}
+#btnToggleAiSidebar:hover {
+  background: rgba(56, 189, 248, 0.22) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+}
+.ask-ai-sidebar {
+  display: none !important;
+}
