@@ -1754,16 +1754,105 @@
         pin.className = 'ee-visual-pin';
         pin.setAttribute('data-pin-key', pinKey);
         pin.setAttribute('data-idx', idx);
-        pin.style.cssText = 'position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;border:2px solid #00c0ff;background:rgba(0,192,255,0.22);border-radius:6px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;pointer-events:auto;cursor:move;box-shadow:0 0 10px rgba(0,192,255,0.45);transition:outline 0.15s ease;z-index:20;';
-        pin.title = 'Tahrirlash yoki surish: ' + (el.label || idx + 1);
 
-        var badgeLabel = (el.label ? el.label : (idx + 1)) + ': ' + esc(el.correct || (el.options ? (Array.isArray(el.options) ? el.options.join('/') : el.options) : el.type));
-        pin.innerHTML = '<span style="background:rgba(2,132,199,0.92);color:#fff;font-size:11px;font-weight:900;padding:2px 7px;border-radius:4px;pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:92%;">' + badgeLabel + '</span>' +
-          '<button class="ee-quick-del-pin" data-idx="' + idx + '" style="position:absolute;top:-8px;right:-8px;background:#ef4444;color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:11px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.5);" title="O‘chirish">✕</button>' +
-          // RESIZE HANDLES: Corner (SE), Right Edge (E), Bottom Edge (S)
-          '<div class="ee-pin-resize-handle ee-pin-resize-se" data-type="se" data-idx="' + idx + '" style="position:absolute;right:-4px;bottom:-4px;width:12px;height:12px;background:#38bdf8;border:2px solid #ffffff;border-radius:3px;cursor:nwse-resize;z-index:70;box-shadow:0 0 6px rgba(0,0,0,0.6);" title="Kattalashtirish / Kichraytirish (Burchak)"></div>' +
-          '<div class="ee-pin-resize-handle ee-pin-resize-e" data-type="e" data-idx="' + idx + '" style="position:absolute;right:-3px;top:20%;height:60%;width:6px;background:rgba(56,189,248,0.75);border-radius:2px;cursor:ew-resize;z-index:69;" title="Kengligini o‘zgartirish (O‘ng qirra)"></div>' +
-          '<div class="ee-pin-resize-handle ee-pin-resize-s" data-type="s" data-idx="' + idx + '" style="position:absolute;bottom:-3px;left:20%;width:60%;height:6px;background:rgba(56,189,248,0.75);border-radius:2px;cursor:ns-resize;z-index:69;" title="Balandligini o‘zgartirish (Pastki qirra)"></div>';
+        var curType = el.type || 'fill';
+        var labelStr = el.label ? String(el.label) : String(idx + 1);
+        var correctStr = el.correct !== undefined ? String(el.correct) : '';
+        var isChooseCorrect = (el.correct === true || el.correct === 'true' || el.correct === '1');
+
+        // Styles and colors matching Oxford Navigate Workbook authentic teacher view
+        var boxBg = 'rgba(16, 185, 129, 0.18)';
+        var boxBorder = '1.5px solid #10b981';
+        var boxColor = '#047857';
+        var tagBg = '#10b981';
+        var innerContent = '';
+
+        if (curType === 'choose') {
+          if (isChooseCorrect) {
+            boxBg = 'rgba(16, 185, 129, 0.22)';
+            boxBorder = '1.5px solid #10b981';
+            boxColor = '#059669';
+            tagBg = '#10b981';
+            innerContent = '<span style="font-size:11.5px;font-weight:900;color:#047857;">✓ To‘g‘ri</span>';
+          } else {
+            boxBg = 'rgba(239, 68, 68, 0.12)';
+            boxBorder = '1.5px dashed rgba(239, 68, 68, 0.6)';
+            boxColor = '#ef4444';
+            tagBg = '#ef4444';
+            innerContent = '<span style="font-size:11px;font-weight:800;color:#ef4444;">✕ Noto‘g‘ri</span>';
+          }
+        } else if (curType === 'select') {
+          boxBg = 'rgba(2, 132, 199, 0.18)';
+          boxBorder = '1.5px solid #0284c7';
+          boxColor = '#0284c7';
+          tagBg = '#0284c7';
+          innerContent = '<span style="font-size:11.5px;font-weight:800;color:#0284c7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(correctStr || (Array.isArray(el.options) ? el.options.join('/') : 'Select')) + ' ▾</span>';
+        } else if (curType === 'cross') {
+          boxBg = 'rgba(239, 68, 68, 0.16)';
+          boxBorder = '1.5px solid #ef4444';
+          boxColor = '#ef4444';
+          tagBg = '#ef4444';
+          innerContent = '<span style="font-size:12px;font-weight:800;color:#ef4444;text-decoration:line-through;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(correctStr || 'O‘chirish') + '</span>';
+        } else if (curType === 'match') {
+          boxBg = 'rgba(16, 185, 129, 0.18)';
+          boxBorder = '1.5px solid #10b981';
+          boxColor = '#047857';
+          tagBg = '#10b981';
+          innerContent = '<span style="font-size:12.5px;font-weight:900;color:#047857;">' + esc(correctStr.toUpperCase() || '?') + '</span>';
+        } else if (curType === 'insert') {
+          boxBg = 'rgba(168, 85, 247, 0.18)';
+          boxBorder = '1.5px solid #a855f7';
+          boxColor = '#7e22ce';
+          tagBg = '#a855f7';
+          innerContent = '<span style="font-size:11.5px;font-weight:800;color:#7e22ce;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(correctStr || '^') + '</span>';
+        } else {
+          // Fill (standard blank line)
+          innerContent = '<span style="font-size:12px;font-weight:800;color:#047857;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(correctStr || 'Javob') + '</span>';
+        }
+
+        pin.style.cssText = 'position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;min-height:22px;min-width:32px;background:' + boxBg + ';border:' + boxBorder + ';border-radius:6px;display:flex;align-items:center;justify-content:center;padding:0 4px;box-sizing:border-box;pointer-events:auto;cursor:move;box-shadow:0 0 8px rgba(0,0,0,0.15);transition:border-color 0.15s,box-shadow 0.15s;z-index:20;';
+        pin.title = 'Tahrirlash uchun bosing | O‘ng tugma: O‘chirish | ' + labelStr + ': ' + (correctStr || curType);
+
+        pin.innerHTML = '<span style="background:' + tagBg + ';color:#ffffff;font-size:10px;font-weight:900;padding:1px 5px;border-radius:3px;margin-right:4px;flex-shrink:0;line-height:1.2;pointer-events:none;">' + esc(labelStr) + '</span>' +
+          '<div style="flex:1;min-width:0;display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden;">' + innerContent + '</div>' +
+          // Floating full-answer hover tooltip (pops up above box so it is NEVER cut off)
+          '<div class="ee-pin-hover-badge" style="display:none;position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);background:#0f172a;border:1.5px solid #38bdf8;color:#38bdf8;padding:3px 10px;border-radius:6px;font-size:11.5px;font-weight:800;white-space:nowrap;z-index:100;box-shadow:0 4px 16px rgba(0,0,0,0.6);pointer-events:none;">' +
+            '✏️ ' + esc(labelStr) + ': ' + esc(correctStr || curType) +
+          '</div>' +
+          // Subtle delete button that appears on hover
+          '<button class="ee-quick-del-pin" data-idx="' + idx + '" style="position:absolute;top:-10px;right:-10px;background:#ef4444;color:#fff;border:1.5px solid #ffffff;border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:900;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.4);z-index:80;" title="Katakchani o‘chirish">✕</button>' +
+          // Window resize handle
+          '<div class="ee-pin-resize-handle ee-pin-resize-se" data-type="se" data-idx="' + idx + '" style="position:absolute;right:-3px;bottom:-3px;width:10px;height:10px;background:#38bdf8;border:1.5px solid #ffffff;border-radius:2px;cursor:nwse-resize;z-index:70;opacity:0;transition:opacity 0.15s;" title="O‘lchamni o‘zgartirish"></div>';
+
+        // Hover events for tooltip, delete button, and resize handle
+        var hoverBadge = pin.querySelector('.ee-pin-hover-badge');
+        var delBtn = pin.querySelector('.ee-quick-del-pin');
+        var rHandle = pin.querySelector('.ee-pin-resize-handle');
+
+        pin.onmouseenter = function() {
+          if (hoverBadge) hoverBadge.style.display = 'block';
+          if (delBtn) delBtn.style.display = 'flex';
+          if (rHandle) rHandle.style.opacity = '1';
+          pin.style.boxShadow = '0 0 12px rgba(56,189,248,0.5)';
+        };
+        pin.onmouseleave = function() {
+          if (hoverBadge) hoverBadge.style.display = 'none';
+          if (delBtn) delBtn.style.display = 'none';
+          if (rHandle) rHandle.style.opacity = '0';
+          pin.style.boxShadow = '0 0 8px rgba(0,0,0,0.15)';
+        };
+
+        // Right click directly deletes pin
+        pin.oncontextmenu = function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (confirm(labelStr + "-katakchani o‘chirmoqchimisiz?")) {
+            p.elements = (p.elements || []).filter(function(x) { return x.id !== el.id; });
+            selectedPinKeys.delete(pinKey);
+            renderPagePins(overlay, p, pIdx);
+            updateCounter();
+          }
+        };
 
         // Dragging & Moving Pins (Individual OR Multi-Drag if part of selected pins!)
         attachPinDrag(pin, el, idx, p, pIdx, overlay);
@@ -2076,11 +2165,11 @@
         var wPx = Math.abs(endX - startX);
         var hPx = Math.abs(endY - startY);
 
-        if (wPx > 10 && hPx > 8) {
+        if (wPx > 8 && hPx > 6) {
           var topPct = parseFloat(((Math.min(startY, endY) / rect.height) * 100).toFixed(2));
           var leftPct = parseFloat(((Math.min(startX, endX) / rect.width) * 100).toFixed(2));
-          var widthPct = parseFloat(((wPx / rect.width) * 100).toFixed(2));
-          var heightPct = parseFloat(((hPx / rect.height) * 100).toFixed(2));
+          var widthPct = parseFloat((Math.max(4.0, (wPx / rect.width) * 100)).toFixed(2));
+          var heightPct = parseFloat((Math.max(2.4, (hPx / rect.height) * 100)).toFixed(2));
 
           openKatakchaModal(true, {
             id: 'inp_' + Date.now() + '_' + Math.floor(Math.random() * 999),
@@ -3158,18 +3247,41 @@
 
         (p.elements || []).forEach(function(el, i) {
           var w = document.createElement('div');
-          w.style.cssText = 'position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;display:flex;align-items:center;justify-content:center;box-sizing:border-box;z-index:20;';
+          w.style.cssText = 'position:absolute;top:' + el.top + '%;left:' + el.left + '%;width:' + el.width + '%;height:' + el.height + '%;min-height:24px;min-width:32px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;z-index:20;';
 
-          if (el.type === 'choose') {
-            w.innerHTML = '<span class="ee-chip-choose" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" data-selected="false" style="cursor:pointer;padding:2px 8px;border-radius:6px;font-size:13px;font-weight:800;color:#0284c7;user-select:none;transition:all 0.15s ease;">' + esc(el.label || el.correct || 'Tanlash') + '</span>';
-          } else if (el.type === 'cross') {
-            w.innerHTML = '<span class="ee-chip-cross" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" data-selected="false" style="cursor:pointer;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:800;color:#ef4444;user-select:none;transition:all 0.15s ease;">' + esc(el.label || el.correct || 'O‘chirish') + '</span>';
+          var curType = el.type || 'fill';
+          var isChooseCor = (el.correct === true || el.correct === 'true' || el.correct === '1');
+
+          if (curType === 'choose') {
+            var chipStyle = isStaff ?
+              ('cursor:pointer;padding:3px 10px;border-radius:6px;font-size:12.5px;font-weight:900;user-select:none;transition:all 0.15s ease;border:1.5px solid ' + (isChooseCor ? '#10b981' : '#ef4444') + ';background:' + (isChooseCor ? 'rgba(16,185,129,0.22)' : 'rgba(239,68,68,0.12)') + ';color:' + (isChooseCor ? '#047857' : '#ef4444') + ';box-shadow:0 0 6px rgba(0,0,0,0.1);') :
+              ('cursor:pointer;padding:3px 10px;border-radius:6px;font-size:12.5px;font-weight:800;color:#0284c7;user-select:none;transition:all 0.15s ease;border:1.5px dashed rgba(2,132,199,0.5);background:rgba(2,132,199,0.08);');
+            var chipText = isStaff ?
+              (esc(el.label ? (el.label + ': ') : '') + (isChooseCor ? '✓ To‘g‘ri' : '✕ Noto‘g‘ri')) :
+              esc(el.label || el.correct || 'Tanlash');
+            w.innerHTML = '<span class="ee-chip-choose" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" data-selected="' + (isStaff && isChooseCor ? 'true' : 'false') + '" style="' + chipStyle + '">' + chipText + '</span>';
+          } else if (curType === 'cross') {
+            var crossStyle = isStaff ?
+              ('cursor:pointer;padding:2px 8px;border-radius:5px;font-size:12.5px;font-weight:900;border:1.5px solid #ef4444;background:rgba(239,68,68,0.18);color:#ef4444;text-decoration:line-through;') :
+              ('cursor:pointer;padding:2px 8px;border-radius:5px;font-size:12.5px;font-weight:800;color:#ef4444;border:1.5px dashed rgba(239,68,68,0.5);background:rgba(239,68,68,0.08);user-select:none;transition:all 0.15s ease;');
+            w.innerHTML = '<span class="ee-chip-cross" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" data-selected="' + (isStaff ? 'true' : 'false') + '" style="' + crossStyle + '">' + esc(el.label || el.correct || 'O‘chirish') + '</span>';
           } else if (Array.isArray(el.options) && el.options.length > 0) {
             var optHtml = '<option value="">-- Tanlang --</option>';
-            el.options.forEach(function(o) { optHtml += '<option value="' + esc(o) + '">' + esc(o) + '</option>'; });
-            w.innerHTML = '<select class="ee-take-input ee-take-select" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" style="width:100%;height:100%;background:rgba(255,255,255,0.95);border:1.5px solid #0284c7;border-radius:5px;padding:1px 4px;font-size:12px;font-weight:800;color:#0f172a;outline:none;box-sizing:border-box;cursor:pointer;">' + optHtml + '</select>';
+            el.options.forEach(function(o) {
+              var isSel = isStaff && (String(o).trim().toLowerCase() === String(el.correct || '').trim().toLowerCase());
+              optHtml += '<option value="' + esc(o) + '"' + (isSel ? ' selected' : '') + '>' + esc(o) + '</option>';
+            });
+            var selStyle = isStaff ?
+              'width:100%;height:100%;min-height:24px;background:rgba(16,185,129,0.18);border:1.5px solid #10b981;border-radius:6px;padding:2px 6px;font-size:12.5px;font-weight:900;color:#047857;outline:none;box-sizing:border-box;cursor:pointer;' :
+              'width:100%;height:100%;min-height:24px;background:rgba(255,255,255,0.96);border:1.5px solid #0284c7;border-radius:6px;padding:2px 6px;font-size:12.5px;font-weight:800;color:#0f172a;outline:none;box-sizing:border-box;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,0.12);';
+            w.innerHTML = '<select class="ee-take-input ee-take-select" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" style="' + selStyle + '">' + optHtml + '</select>';
           } else {
-            w.innerHTML = '<input type="text" class="ee-take-input" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" placeholder="' + esc(el.label || '') + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width:100%;height:100%;background:rgba(255,255,255,0.92);border:1.5px solid #0284c7;border-radius:5px;padding:2px 6px;font-size:13.5px;font-weight:700;color:#0f172a;outline:none;box-sizing:border-box;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.15);" />';
+            // Fill
+            var inpStyle = isStaff ?
+              'width:100%;height:100%;min-height:24px;background:rgba(16,185,129,0.18);border:1.5px solid #10b981;border-radius:6px;padding:2px 6px;font-size:13px;font-weight:900;color:#047857;outline:none;box-sizing:border-box;text-align:center;box-shadow:0 0 8px rgba(16,185,129,0.25);' :
+              'width:100%;height:100%;min-height:24px;background:rgba(255,255,255,0.95);border:1.5px solid #0284c7;border-radius:6px;padding:2px 6px;font-size:13px;font-weight:700;color:#0f172a;outline:none;box-sizing:border-box;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.12);';
+            var valAttr = isStaff ? (' value="' + esc(el.correct || '') + '"') : '';
+            w.innerHTML = '<input type="text" class="ee-take-input" data-id="' + el.id + '" data-correct="' + esc(el.correct) + '" placeholder="' + esc(el.label || '') + '"' + valAttr + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="' + inpStyle + '" />';
           }
 
           pOverlay.appendChild(w);
