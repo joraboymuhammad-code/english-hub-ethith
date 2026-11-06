@@ -1432,12 +1432,10 @@
     m.id = 'eeVisualBuilderOverlay';
     m.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;background:#070b14;z-index:2147483640;display:flex;flex-direction:column;overflow:hidden;margin:0;padding:0;box-sizing:border-box;color:#f8fafc;font-family:system-ui,-apple-system,sans-serif;';
 
-    var defaultSvg = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200"><rect width="100%" height="100%" fill="#ffffff"/><rect x="40" y="40" width="820" height="1120" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/><text x="70" y="100" font-family="sans-serif" font-weight="900" font-size="28" fill="#0f172a">ETHITH ENGLISH TEST SHEET</text><text x="70" y="135" font-family="sans-serif" font-weight="600" font-size="16" fill="#64748b">Exercise 1: Read the sentences and fill in the missing grammar forms</text><line x1="70" y1="155" x2="830" y2="155" stroke="#cbd5e1" stroke-width="1.5"/><text x="70" y="210" font-family="sans-serif" font-size="17" fill="#334155">1. By the time Sarah arrived, the train _________________ (already / leave).</text><text x="70" y="270" font-family="sans-serif" font-size="17" fill="#334155">2. If you study diligently every day, you _________________ (pass) the IELTS exam.</text><text x="70" y="330" font-family="sans-serif" font-size="17" fill="#334155">3. Neither John nor his friends _________________ (be) aware of the changes.</text><text x="70" y="390" font-family="sans-serif" font-size="17" fill="#334155">4. The CEO demanded that the report _________________ (submit) before noon.</text><text x="70" y="450" font-family="sans-serif" font-size="17" fill="#334155">5. I wish I _________________ (know) the truth earlier!</text><text x="70" y="520" font-family="sans-serif" font-weight="700" font-size="18" fill="#0f172a">Exercise 2: Choose the correct preposition or connector</text><line x1="70" y1="540" x2="830" y2="540" stroke="#cbd5e1" stroke-width="1.5"/><text x="70" y="590" font-family="sans-serif" font-size="17" fill="#334155">6. She is extremely passionate [ about / with / for ] environmental protection.</text><text x="70" y="650" font-family="sans-serif" font-size="17" fill="#334155">7. Despite [ of the rain / the heavy rain / it was raining ], the match continued.</text><text x="70" y="710" font-family="sans-serif" font-size="17" fill="#334155">8. We arrived at the venue just [ in / on / at ] time for the opening speech.</text></svg>');
-
     // Array of pages: [ { pageNum: 1, imageUrl: '...', elements: [] }, ... ]
     var pagesData = (prefillTest && prefillTest.pages && prefillTest.pages.length > 0) ?
       JSON.parse(JSON.stringify(prefillTest.pages)) :
-      [ { pageNum: 1, imageUrl: defaultSvg, elements: [] } ];
+      ((prefillTest && prefillTest.imageUrl) ? [{ pageNum: 1, imageUrl: prefillTest.imageUrl, elements: prefillTest.elements || [] }] : []);
 
     var currentWidthPx = Math.min(1000, Math.max(760, Math.floor((window.innerWidth || 1000) * 0.94)));
     var activeTool = 'draw'; // 'draw' | 'lasso'
@@ -1667,6 +1665,23 @@
 
     function renderAllPages() {
       streamWrap.innerHTML = '';
+      if (pagesData.length === 0) {
+        var emptyZone = document.createElement('div');
+        emptyZone.id = 'eeVisualEmptyDropzone';
+        emptyZone.style.cssText = 'max-width:740px;width:100%;margin:40px auto;border:2.5px dashed rgba(56,189,248,0.45);border-radius:20px;background:rgba(15,23,42,0.75);padding:50px 30px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;box-shadow:0 16px 50px rgba(0,0,0,0.6);';
+        emptyZone.innerHTML = '<div style="font-size:52px;line-height:1;filter:drop-shadow(0 4px 12px rgba(56,189,248,0.4));">📑</div>' +
+          '<h3 style="margin:0;font-size:20px;font-weight:900;color:#f8fafc;">PDF yoki Rasm test varag‘ini yuklang</h3>' +
+          '<p style="margin:0;font-size:13.5px;color:#94a3b8;max-width:480px;line-height:1.5;">Navigate oraliq testi, progress test yoki o‘zingizning maxsus listening/reading varag‘ingizni (PDF yoki rasm) yuklang. Barcha sahifalar to‘liq ekranga chiqadi.</p>' +
+          '<label style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;padding:12px 28px;border-radius:12px;font-weight:900;font-size:13.5px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 20px rgba(2,132,199,0.4);margin-top:6px;">' +
+            '📁 PDF / Rasm Tanlash <input type="file" class="ee-drop-file-inp" accept="image/*,application/pdf,.pdf" style="display:none;" />' +
+          '</label>';
+        streamWrap.appendChild(emptyZone);
+        var dropInp = emptyZone.querySelector('.ee-drop-file-inp');
+        if (dropInp) {
+          dropInp.onchange = function(e) { handleFileSelect(e.target.files && e.target.files[0]); };
+        }
+        return;
+      }
       pagesData.forEach(function(p, pIdx) {
         var pageBox = document.createElement('div');
         pageBox.className = 'ee-page-box';
@@ -2093,6 +2108,11 @@
       var om = document.createElement('div');
       om.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(10px);z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:16px;font-family:system-ui,-apple-system,sans-serif;';
 
+      var curType = elData.type || 'fill';
+      if (curType === 'choice') curType = 'choose';
+      var isChooseType = (curType === 'choose');
+      var isChooseVal = (elData.correct === true || elData.correct === 'true' || elData.correct === '1');
+
       om.innerHTML = '<div style="background:#0f172a;border:1.5px solid #38bdf8;border-radius:18px;max-width:380px;width:100%;padding:20px;box-shadow:0 24px 60px rgba(0,0,0,0.85);color:#f8fafc;box-sizing:border-box;">' +
         '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid #334155;padding-bottom:10px;">' +
           '<div style="display:flex;align-items:center;gap:8px;">' +
@@ -2107,7 +2127,7 @@
             '<label style="display:block;font-size:11px;font-weight:800;color:#38bdf8;margin-bottom:6px;">📄 Sahifa raqami (istalgan sahifaga o\'tkazish):</label>' +
             '<div style="display:flex;gap:6px;align-items:center;">' +
               '<button type="button" id="eeKatakchaPrevPageBtn" style="padding:6px 12px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#38bdf8;font-weight:900;cursor:pointer;font-size:13px;" title="Oldingi sahifa">←</button>' +
-              '<input type="number" id="eeKatakchaPageInput" value="' + (p.pageNum || (pIdx + 1)) + '" min="1" max="' + pagesData.length + '" style="flex:1;padding:7px 10px;border-radius:8px;border:1.5px solid #38bdf8;background:#1e293b;color:#38bdf8;font-weight:900;font-size:14px;text-align:center;box-sizing:border-box;outline:none;" />' +
+              '<input type="number" id="eeKatakchaPageInput" value="' + (p.pageNum || (pIdx + 1)) + '" min="1" max="' + Math.max(1, pagesData.length) + '" style="flex:1;padding:7px 10px;border-radius:8px;border:1.5px solid #38bdf8;background:#1e293b;color:#38bdf8;font-weight:900;font-size:14px;text-align:center;box-sizing:border-box;outline:none;" />' +
               '<button type="button" id="eeKatakchaNextPageBtn" style="padding:6px 12px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#38bdf8;font-weight:900;cursor:pointer;font-size:13px;" title="Keyingi sahifa">→</button>' +
             '</div>' +
           '</div>' +
@@ -2115,17 +2135,16 @@
           '<div>' +
             '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;margin-bottom:5px;">Turi (interaction type):</label>' +
             '<select id="eeKatakchaType" style="width:100%;padding:9px 12px;background:#1e293b;border:1px solid #334155;border-radius:10px;color:#f8fafc;font-weight:700;font-size:12.5px;outline:none;">' +
-              '<option value="fill"' + (elData.type === 'fill' ? ' selected' : '') + '>Fill (O‘qib yozish)</option>' +
-              '<option value="select"' + (elData.type === 'select' ? ' selected' : '') + '>Select (Dropdown - Tanlash)</option>' +
-              '<option value="cross"' + (elData.type === 'cross' ? ' selected' : '') + '>Cross (Chizib o‘chirish)</option>' +
-              '<option value="choose"' + (elData.type === 'choose' ? ' selected' : '') + '>Choose (Variant tanlash)</option>' +
-              '<option value="choice"' + (elData.type === 'choice' ? ' selected' : '') + '>Choice (Variant tanlash)</option>' +
-              '<option value="match"' + (elData.type === 'match' ? ' selected' : '') + '>Match (Harf bilan bog‘lash)</option>' +
-              '<option value="insert"' + (elData.type === 'insert' ? ' selected' : '') + '>Insert (Prepozitsiya kiritish)</option>' +
+              '<option value="fill"' + (curType === 'fill' ? ' selected' : '') + '>Fill (O‘qib yozish)</option>' +
+              '<option value="select"' + (curType === 'select' ? ' selected' : '') + '>Select (Dropdown - Tanlash)</option>' +
+              '<option value="cross"' + (curType === 'cross' ? ' selected' : '') + '>Cross (Chizib o‘chirish)</option>' +
+              '<option value="choose"' + (curType === 'choose' ? ' selected' : '') + '>Choose (Variant tanlash)</option>' +
+              '<option value="match"' + (curType === 'match' ? ' selected' : '') + '>Match (Harf bilan bog‘lash)</option>' +
+              '<option value="insert"' + (curType === 'insert' ? ' selected' : '') + '>Insert (Prepozitsiya kiritish)</option>' +
             '</select>' +
           '</div>' +
 
-          '<div id="eeKatakchaOptionsWrap" style="' + ((elData.type === 'choose' || elData.type === 'choice' || elData.type === 'select') ? 'display:block;' : 'display:none;') + '">' +
+          '<div id="eeKatakchaOptionsWrap" style="' + (curType === 'select' ? 'display:block;' : 'display:none;') + '">' +
             '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;margin-bottom:4px;">Variantlar (vergul yoki slash bilan: at / in / on):</label>' +
             '<input type="text" id="eeKatakchaOptions" value="' + esc(Array.isArray(elData.options) ? elData.options.join(' / ') : (elData.options || '')) + '" placeholder="masalan: at / on / in yoki coast / river" style="width:100%;padding:8px 12px;background:#1e293b;border:1px solid #334155;border-radius:8px;color:#fff;font-weight:700;font-size:12px;outline:none;box-sizing:border-box;" />' +
           '</div>' +
@@ -2135,7 +2154,18 @@
             '<input type="text" id="eeKatakchaLabel" value="' + esc(elData.label || '') + '" placeholder="masalan: 2 yoki 3a" style="width:100%;padding:8px 12px;background:#1e293b;border:1px solid #334155;border-radius:8px;color:#fff;font-weight:700;font-size:12px;outline:none;box-sizing:border-box;" />' +
           '</div>' +
 
-          '<div>' +
+          // Choose type specific UI (Matches Screenshot 2)
+          '<div id="eeKatakchaChooseWrap" style="' + (isChooseType ? 'display:block;' : 'display:none;') + '">' +
+            '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;margin-bottom:4px;">Ushbu variant to‘g‘rimi? (Variant to‘g‘riligi):</label>' +
+            '<input type="text" id="eeKatakchaChooseInput" value="' + (isChooseVal ? 'true' : esc(elData.correct || '')) + '" placeholder="Bo‘sh = Noto‘g‘ri. \'To‘g‘ri\' bosilsa = To‘g‘ri" style="width:100%;padding:8px 12px;background:#1e293b;border:1px solid ' + (isChooseVal ? '#10b981' : '#334155') + ';border-radius:8px;color:' + (isChooseVal ? '#10b981' : '#f8fafc') + ';font-weight:900;font-size:12.5px;outline:none;box-sizing:border-box;margin-bottom:8px;" />' +
+            '<div style="display:flex;gap:8px;">' +
+              '<button type="button" id="eeChooseTrueBtn" style="flex:1;background:rgba(16,185,129,0.18);border:1.5px solid #10b981;color:#10b981;padding:8px 10px;border-radius:8px;font-weight:900;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;">✓ To‘g‘ri variant</button>' +
+              '<button type="button" id="eeChooseFalseBtn" style="flex:1;background:#ef4444;border:none;color:#ffffff;padding:8px 10px;border-radius:8px;font-weight:900;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;">✕ Noto‘g‘ri variant</button>' +
+            '</div>' +
+          '</div>' +
+
+          // Standard types UI
+          '<div id="eeKatakchaStandardWrap" style="' + (isChooseType ? 'display:none;' : 'display:block;') + '">' +
             '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;margin-bottom:4px;">To‘g‘ri Javob ("or" bilan variantlar):</label>' +
             '<input type="text" id="eeKatakchaCorrect" value="' + esc(elData.correct || '') + '" placeholder="masalan: coast yoki a" style="width:100%;padding:8px 12px;background:#1e293b;border:1px solid #10b981;border-radius:8px;color:#10b981;font-weight:900;font-size:12.5px;outline:none;box-sizing:border-box;" />' +
           '</div>' +
@@ -2154,9 +2184,29 @@
 
       var typeSel = om.querySelector('#eeKatakchaType');
       var optWrap = om.querySelector('#eeKatakchaOptionsWrap');
+      var chooseWrap = om.querySelector('#eeKatakchaChooseWrap');
+      var standardWrap = om.querySelector('#eeKatakchaStandardWrap');
+      var chooseInp = om.querySelector('#eeKatakchaChooseInput');
+      var trueBtn = om.querySelector('#eeChooseTrueBtn');
+      var falseBtn = om.querySelector('#eeChooseFalseBtn');
       var pageInp = om.querySelector('#eeKatakchaPageInput');
       var prevBtn = om.querySelector('#eeKatakchaPrevPageBtn');
       var nextBtn = om.querySelector('#eeKatakchaNextPageBtn');
+
+      if (trueBtn && chooseInp) {
+        trueBtn.onclick = function() {
+          chooseInp.value = 'true';
+          chooseInp.style.borderColor = '#10b981';
+          chooseInp.style.color = '#10b981';
+        };
+      }
+      if (falseBtn && chooseInp) {
+        falseBtn.onclick = function() {
+          chooseInp.value = '';
+          chooseInp.style.borderColor = '#334155';
+          chooseInp.style.color = '#f8fafc';
+        };
+      }
 
       if (prevBtn && pageInp) {
         prevBtn.onclick = function() {
@@ -2166,14 +2216,17 @@
       }
       if (nextBtn && pageInp) {
         nextBtn.onclick = function() {
-          var val = Math.min(pagesData.length, (parseInt(pageInp.value, 10) || 1) + 1);
+          var val = Math.min(Math.max(1, pagesData.length), (parseInt(pageInp.value, 10) || 1) + 1);
           pageInp.value = val;
         };
       }
 
       typeSel.onchange = function() {
         var v = typeSel.value;
-        optWrap.style.display = (v === 'choose' || v === 'choice' || v === 'select') ? 'block' : 'none';
+        var isCh = (v === 'choose');
+        chooseWrap.style.display = isCh ? 'block' : 'none';
+        standardWrap.style.display = isCh ? 'none' : 'block';
+        optWrap.style.display = (v === 'select') ? 'block' : 'none';
       };
 
       var delBtn = om.querySelector('#eeDeleteKatakcha');
@@ -2190,11 +2243,13 @@
       };
 
       om.querySelector('#eeSaveKatakcha').onclick = function() {
-        var correctVal = om.querySelector('#eeKatakchaCorrect').value.trim();
-        var labelVal = om.querySelector('#eeKatakchaLabel').value.trim() || ((p.elements || []).length + 1);
         var tVal = typeSel.value;
+        var correctVal = (tVal === 'choose') ?
+          (chooseInp ? chooseInp.value.trim() : '') :
+          (om.querySelector('#eeKatakchaCorrect') ? om.querySelector('#eeKatakchaCorrect').value.trim() : '');
+        var labelVal = om.querySelector('#eeKatakchaLabel').value.trim() || ((p.elements || []).length + 1);
         var opts = [];
-        if (tVal === 'choose' || tVal === 'choice' || tVal === 'select') {
+        if (tVal === 'select') {
           var rawOpts = om.querySelector('#eeKatakchaOptions').value;
           opts = rawOpts.split(/[\/,]/).map(function(s) { return s.trim(); }).filter(Boolean);
         }
@@ -2238,17 +2293,41 @@
       };
     }
 
-    // PDF / Image Upload Handler
-    fileInp.onchange = function(e) {
-      var file = e.target.files && e.target.files[0];
+    // Robust PDF / Image Upload Function
+    function handleFileSelect(file) {
       if (!file) return;
 
-      if (file.type === 'application/pdf' || file.name.endsWith('.pdf')) {
+      var loadPill = document.createElement('div');
+      loadPill.id = 'eePdfLoadingIndicator';
+      loadPill.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#0f172a;border:2px solid #38bdf8;padding:22px 34px;border-radius:16px;color:#fff;font-weight:900;font-size:14px;z-index:2147483647;box-shadow:0 20px 60px rgba(0,0,0,0.85);display:flex;align-items:center;gap:12px;';
+      loadPill.innerHTML = '<span style="font-size:24px;">⏳</span> <span>Fayl sahifalari qayta ishlanmoqda, iltimos kuting...</span>';
+      document.body.appendChild(loadPill);
+
+      function removeLoading() {
+        var el = document.getElementById('eePdfLoadingIndicator');
+        if (el) el.remove();
+      }
+
+      if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
         var fr = new FileReader();
         fr.onload = function(ev) {
           var typedarray = new Uint8Array(ev.target.result);
           if (window.pdfjsLib) {
-            window.pdfjsLib.getDocument(typedarray).promise.then(function(pdf) {
+            try {
+              if (!window.pdfjsLib.GlobalWorkerOptions.workerSrc) {
+                window.pdfjsLib.GlobalWorkerOptions.workerSrc = (window.location.protocol === 'file:') ?
+                  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js' :
+                  'pdf.worker.min.js';
+              }
+            } catch(e) {
+              window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            }
+
+            window.pdfjsLib.getDocument({
+              data: typedarray,
+              cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
+              cMapPacked: true
+            }).promise.then(function(pdf) {
               pagesData = [];
               var numPages = pdf.numPages;
               var loaded = 0;
@@ -2265,33 +2344,85 @@
                       pagesData[pageNumber - 1] = { pageNum: pageNumber, imageUrl: dataUrl, elements: [] };
                       loaded++;
                       if (loaded === numPages) {
+                        removeLoading();
                         renderAllPages();
                         updateCounter();
-                        showToast("PDF yuklandi: " + numPages + " ta sahifa tayyor!");
+                        showToast("PDF muvaffaqiyatli yuklandi: " + numPages + " ta sahifa tayyor!");
+                      }
+                    }).catch(function(rErr) {
+                      console.error('Render err:', rErr);
+                      loaded++;
+                      if (loaded === numPages) {
+                        removeLoading();
+                        renderAllPages();
+                        updateCounter();
                       }
                     });
+                  }).catch(function(pErr) {
+                    console.error('Page err:', pErr);
+                    loaded++;
+                    if (loaded === numPages) {
+                      removeLoading();
+                      renderAllPages();
+                      updateCounter();
+                    }
                   });
                 })(i);
               }
             }).catch(function(err) {
-              alert("PDF faylni yuklashda xatolik: " + err.message);
+              removeLoading();
+              console.error("PDF yuklashda xatolik:", err);
+              alert("PDF faylni ochishda xatolik: " + (err.message || err));
             });
           } else {
-            alert("PDF kutubxonasi topilmadi. Iltimos rasm shaklida yuklang.");
+            removeLoading();
+            alert("PDF kutubxonasi topilmadi. Iltimos rasm shaklida (JPG/PNG) yuklang.");
           }
+        };
+        fr.onerror = function() {
+          removeLoading();
+          alert("Faylni o‘qishda xatolik yuz berdi!");
         };
         fr.readAsArrayBuffer(file);
       } else {
         var frImg = new FileReader();
         frImg.onload = function(ev) {
+          removeLoading();
           pagesData = [{ pageNum: 1, imageUrl: ev.target.result, elements: [] }];
           renderAllPages();
           updateCounter();
           showToast("Rasm muvaffaqiyatli yuklandi!");
         };
+        frImg.onerror = function() {
+          removeLoading();
+          alert("Rasm faylini o‘qishda xatolik!");
+        };
         frImg.readAsDataURL(file);
       }
+    }
+
+    fileInp.onchange = function(e) {
+      handleFileSelect(e.target.files && e.target.files[0]);
     };
+
+    var wsEl = m.querySelector('#eeVisualWorkspace');
+    if (wsEl) {
+      wsEl.ondragover = function(e) {
+        e.preventDefault();
+        wsEl.style.outline = '2px dashed #38bdf8';
+      };
+      wsEl.ondragleave = function(e) {
+        e.preventDefault();
+        wsEl.style.outline = 'none';
+      };
+      wsEl.ondrop = function(e) {
+        e.preventDefault();
+        wsEl.style.outline = 'none';
+        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+          handleFileSelect(e.dataTransfer.files[0]);
+        }
+      };
+    }
 
     function closeAll() {
       m.remove();
@@ -2308,6 +2439,11 @@
       var audioLimit = parseInt(m.querySelector('#eeAudioLimitInp').value, 10) || 2;
       if (!title) { alert("Iltimos, test nomini kiriting!"); return; }
 
+      if (pagesData.length === 0) {
+        alert("Iltimos, avval PDF yoki rasm test varag‘ini yuklang!");
+        return;
+      }
+
       var allElements = [];
       pagesData.forEach(function(p) {
         (p.elements || []).forEach(function(el) {
@@ -2316,10 +2452,13 @@
         });
       });
 
-      if (allElements.length === 0) { alert("Iltimos, varaq ustiga kamida 1 ta interaktiv katakcha belgilang!"); return; }
+      if (allElements.length === 0) {
+        alert("Iltimos, sahifa ustiga kamida 1 ta javob katakchasi belgilang!");
+        return;
+      }
 
       var S = getStore();
-      var curU = getCurrentUser();
+      var curU = getCurrentUser() || { id: 'admin', role: 'teacher', name: 'Ustoz' };
 
       if (curriculumContext) {
         var tMatchCur = (S.teachers || []).find(function(t) {
@@ -2372,11 +2511,29 @@
         if (exIdx !== -1) S.allCurriculumTests[exIdx] = newCurTest;
         else S.allCurriculumTests.push(newCurTest);
 
+        if (!S.fileExplorer) S.fileExplorer = { tests: [], folders: [] };
+        if (!Array.isArray(S.fileExplorer.tests)) S.fileExplorer.tests = [];
+        var exTIdx = S.fileExplorer.tests.findIndex(function(t) { return t.id === testCode || t.id === curriculumContext.testKey; });
+        if (exTIdx !== -1) S.fileExplorer.tests[exTIdx] = newCurTest;
+        else S.fileExplorer.tests.push(newCurTest);
+
+        if (!S.quizzes) S.quizzes = [];
+        var exQIdx = S.quizzes.findIndex(function(q) { return q.id === testCode || q.id === curriculumContext.testKey; });
+        if (exQIdx !== -1) S.quizzes[exQIdx] = newCurTest;
+        else S.quizzes.push(newCurTest);
+
         try {
           localStorage.setItem('ethith_custom_curriculum_tests', JSON.stringify(S.customCurriculumTests));
           localStorage.setItem('ethith_all_curriculum_tests', JSON.stringify(S.allCurriculumTests));
         } catch(e) {}
         saveStore();
+        if (window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
+          window.EthithSync.publishLive({
+            type: 'TEST_SAVED',
+            test: newCurTest,
+            ts: Date.now()
+          });
+        }
         closeAll();
         showToast("✓ " + title + " muvaffaqiyatli saqlandi!");
         if (typeof curriculumContext.onSaved === 'function') {
@@ -2392,14 +2549,14 @@
         title: title,
         type: 'visual_overlay',
         folderId: folderId || defaultFid,
-        createdAt: Date.now(),
+        createdAt: (prefillTest && prefillTest.createdAt) ? prefillTest.createdAt : Date.now(),
         authorId: curU.id,
         teacherId: curU.id,
         creatorId: curU.id,
         authorName: curU.name || 'Ustoz',
         maxAttempts: attempts,
         pages: pagesData,
-        imageUrl: pagesData[0].imageUrl,
+        imageUrl: (pagesData[0] && pagesData[0].imageUrl) ? pagesData[0].imageUrl : null,
         elements: allElements,
         audioUrl: uploadedAudio ? uploadedAudio.url : null,
         audioName: uploadedAudio ? uploadedAudio.name : null,
@@ -2409,12 +2566,20 @@
         })
       };
 
+      if (!S.fileExplorer) S.fileExplorer = { tests: [], folders: [] };
+      if (!Array.isArray(S.fileExplorer.tests)) S.fileExplorer.tests = [];
       var exTIndex = S.fileExplorer.tests.findIndex(function(x) { return x.id === randCode; });
       if (exTIndex !== -1) {
         S.fileExplorer.tests[exTIndex] = newTest;
       } else {
         S.fileExplorer.tests.push(newTest);
       }
+
+      if (!S.quizzes) S.quizzes = [];
+      var exQIndex = S.quizzes.findIndex(function(x) { return x.id === randCode; });
+      if (exQIndex !== -1) S.quizzes[exQIndex] = newTest;
+      else S.quizzes.push(newTest);
+
       saveStore();
       if (window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
         window.EthithSync.publishLive({
@@ -2424,7 +2589,7 @@
         });
       }
       closeAll();
-      showToast("✓ Interaktiv listening test saqlandi! Test ID: " + randCode);
+      showToast("✓ Interaktiv test saqlandi! Test ID: " + randCode);
       if (container) EE.renderExplorerView(container);
     };
   };
@@ -2561,22 +2726,27 @@
       }
       qList.forEach(function(q, idx) {
         var card = document.createElement('div');
-        card.style.cssText = 'background:#1e293b;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;';
+        card.style.cssText = 'background:#1e293b;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px;box-sizing:border-box;width:100%;';
+        
+        var optLetters = ['A', 'B', 'C', 'D'];
+        var optGrid = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;box-sizing:border-box;">';
+        for (var o = 0; o < 4; o++) {
+          var isCor = (q.correct === o);
+          optGrid += '<div class="ee-opt-box" data-idx="' + idx + '" data-opt="' + o + '" style="display:flex;align-items:center;gap:8px;background:#0f172a;border:1.5px solid ' + (isCor ? '#10b981' : '#334155') + ';border-radius:10px;padding:7px 10px;box-sizing:border-box;' + (isCor ? 'box-shadow:0 0 12px rgba(16,185,129,0.35);' : '') + '">' +
+              '<button type="button" class="ee-opt-check-btn" data-idx="' + idx + '" data-opt="' + o + '" style="background:' + (isCor ? '#10b981' : 'rgba(255,255,255,0.06)') + ';color:' + (isCor ? '#ffffff' : '#94a3b8') + ';border:1px solid ' + (isCor ? '#10b981' : '#475569') + ';border-radius:7px;padding:5px 9px;font-size:12px;font-weight:900;cursor:pointer;line-height:1;display:flex;align-items:center;gap:4px;flex-shrink:0;" title="To‘g‘ri javob deb belgilash">' +
+                (isCor ? '✓ ' : '○ ') + optLetters[o] +
+              '</button>' +
+              '<input type="text" class="ee-q-opt" data-idx="' + idx + '" data-opt="' + o + '" value="' + esc(q.options[o] || '') + '" placeholder="' + optLetters[o] + ' varianti..." style="flex:1;min-width:0;background:transparent;border:none;color:#ffffff;font-size:12.5px;font-weight:600;outline:none;" />' +
+            '</div>';
+        }
+        optGrid += '</div>';
+
         card.innerHTML = '<div style="display:flex;align-items:center;justify-content:space-between;">' +
-            '<span style="font-size:12.5px;font-weight:900;color:#38bdf8;">' + (idx + 1) + '-Savol</span>' +
+            '<span style="font-size:13px;font-weight:900;color:#38bdf8;">' + (idx + 1) + '-Savol</span>' +
             '<button type="button" class="ee-del-q-btn" data-idx="' + idx + '" style="background:none;border:none;color:#ef4444;font-size:14px;font-weight:900;cursor:pointer;">✕</button>' +
           '</div>' +
-          '<input type="text" class="ee-q-text" data-idx="' + idx + '" value="' + esc(q.q || '') + '" placeholder="Savol matni..." style="width:100%;padding:8px 12px;background:#0f172a;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-weight:700;box-sizing:border-box;outline:none;" />' +
-          '<div style="display:flex;gap:8px;">' +
-            '<input type="text" class="ee-q-opt" data-idx="' + idx + '" data-opt="0" value="' + esc(q.options[0] || '') + '" placeholder="A varianti" style="flex:1;padding:6px 10px;background:#0f172a;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#fff;font-size:12px;box-sizing:border-box;" />' +
-            '<input type="text" class="ee-q-opt" data-idx="' + idx + '" data-opt="1" value="' + esc(q.options[1] || '') + '" placeholder="B varianti" style="flex:1;padding:6px 10px;background:#0f172a;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#fff;font-size:12px;box-sizing:border-box;" />' +
-            '<input type="text" class="ee-q-opt" data-idx="' + idx + '" data-opt="2" value="' + esc(q.options[2] || '') + '" placeholder="C varianti" style="flex:1;padding:6px 10px;background:#0f172a;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#fff;font-size:12px;box-sizing:border-box;" />' +
-            '<input type="text" class="ee-q-opt" data-idx="' + idx + '" data-opt="3" value="' + esc(q.options[3] || '') + '" placeholder="D varianti" style="flex:1;padding:6px 10px;background:#0f172a;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#fff;font-size:12px;box-sizing:border-box;" />' +
-          '</div>' +
-          '<div style="display:flex;align-items:center;gap:10px;">' +
-            '<span style="font-size:11.5px;color:#94a3b8;font-weight:700;">To‘g‘ri javob indeksi (0=A, 1=B, 2=C, 3=D):</span>' +
-            '<input type="number" class="ee-q-correct" data-idx="' + idx + '" min="0" max="3" value="' + (q.correct !== undefined ? q.correct : 0) + '" style="width:48px;padding:4px 8px;background:#0f172a;border:1px solid #10b981;border-radius:6px;color:#10b981;font-weight:900;text-align:center;" />' +
-          '</div>';
+          '<input type="text" class="ee-q-text" data-idx="' + idx + '" value="' + esc(q.q || '') + '" placeholder="Savol matnini kiriting..." style="width:100%;padding:9px 12px;background:#0f172a;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-weight:700;font-size:13px;box-sizing:border-box;outline:none;" />' +
+          optGrid;
         qContainer.appendChild(card);
       });
 
@@ -2584,6 +2754,15 @@
         b.onclick = function() {
           var i = parseInt(b.getAttribute('data-idx'), 10);
           qList.splice(i, 1);
+          renderQuestions();
+        };
+      });
+
+      qContainer.querySelectorAll('.ee-opt-check-btn').forEach(function(b) {
+        b.onclick = function() {
+          var i = parseInt(b.getAttribute('data-idx'), 10);
+          var o = parseInt(b.getAttribute('data-opt'), 10);
+          qList[i].correct = o;
           renderQuestions();
         };
       });
@@ -2600,13 +2779,6 @@
           var i = parseInt(inp.getAttribute('data-idx'), 10);
           var o = parseInt(inp.getAttribute('data-opt'), 10);
           qList[i].options[o] = inp.value;
-        };
-      });
-
-      qContainer.querySelectorAll('.ee-q-correct').forEach(function(inp) {
-        inp.oninput = function() {
-          var i = parseInt(inp.getAttribute('data-idx'), 10);
-          qList[i].correct = parseInt(inp.value, 10) || 0;
         };
       });
     }
@@ -2633,7 +2805,7 @@
       if (qList.length === 0) { alert("Iltimos, kamida 1 ta savol qo‘shing!"); return; }
 
       var S = getStore();
-      var curU = getCurrentUser();
+      var curU = getCurrentUser() || { id: 'admin', role: 'teacher', name: 'Ustoz' };
       var defaultFid = (curU.role === 'teacher' && !isAdminOrTeacher() ? ('f_root_' + curU.id) : (curU.role === 'teacher' ? ('f_root_' + curU.id) : 'f_root'));
 
       var newTest = {
@@ -2655,9 +2827,29 @@
 
       if (!S.fileExplorer) S.fileExplorer = { tests: [], folders: [] };
       if (!Array.isArray(S.fileExplorer.tests)) S.fileExplorer.tests = [];
-      S.fileExplorer.tests.push(newTest);
+      var exTIndex = S.fileExplorer.tests.findIndex(function(x) { return x.id === randCode; });
+      if (exTIndex !== -1) {
+        S.fileExplorer.tests[exTIndex] = newTest;
+      } else {
+        S.fileExplorer.tests.push(newTest);
+      }
+
+      if (!S.quizzes) S.quizzes = [];
+      var exQIndex = S.quizzes.findIndex(function(x) { return x.id === randCode; });
+      if (exQIndex !== -1) {
+        S.quizzes[exQIndex] = newTest;
+      } else {
+        S.quizzes.push(newTest);
+      }
 
       saveStore();
+      if (window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
+        window.EthithSync.publishLive({
+          type: 'TEST_SAVED',
+          test: newTest,
+          ts: Date.now()
+        });
+      }
       m.remove();
       showToast("✓ Test muvaffaqiyatli saqlandi! Test ID: " + randCode);
       if (typeof onSaved === 'function') onSaved(newTest);
