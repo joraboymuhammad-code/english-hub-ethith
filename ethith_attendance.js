@@ -2220,13 +2220,23 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       };
     }
 
-    container.querySelectorAll('.ea-btn-edit-duration, .dash-edit-class-btn').forEach(function(btn) {
+    container.querySelectorAll('.ea-btn-edit-duration').forEach(function(btn) {
       btn.onclick = function(e) {
         if (e) e.stopPropagation();
         var cid = btn.getAttribute('data-cid');
         var classes = (window.EA && window.EA.getAvailableClasses) ? window.EA.getAvailableClasses() : [];
         var targetCls = classes.find(function(c) { return c.id === cid; });
         if (targetCls) EA.openEditGroupDurationModal(targetCls, teacher, container);
+      };
+    });
+
+    container.querySelectorAll('.dash-edit-class-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        if (e) e.stopPropagation();
+        var cid = btn.getAttribute('data-cid');
+        var classes = (window.EA && window.EA.getAvailableClasses) ? window.EA.getAvailableClasses() : [];
+        var targetCls = classes.find(function(c) { return c.id === cid; });
+        if (targetCls) EA.openFullEditGroupModal(targetCls, teacher, container);
       };
     });
 
@@ -3523,25 +3533,36 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       }
     }
 
-    // 1. ACTIVE HOMEWORK & AUTO-GRADING BANNER (For every class!)
-    if (activeHw) {
-      h += '<div class="qe-glass-panel" style="border-radius:18px;padding:12px 18px;margin-bottom:16px;border-color:rgba(56,189,248,0.4);background:linear-gradient(135deg,rgba(15,23,42,0.75),rgba(30,58,138,0.45));display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">' +
+    // 1. ACTIVE HOMEWORK & AUTO-GRADING BANNER (Multi-unit homework supported!)
+    var activeHwsList = Array.isArray(cls.activeHomeworks) && cls.activeHomeworks.length > 0 ? cls.activeHomeworks : (activeHw ? [activeHw] : []);
+    if (activeHwsList.length > 0) {
+      var primaryHw = activeHwsList[0];
+      var hwSummaryText = activeHwsList.map(function(h) {
+        return 'Unit ' + h.unit + ' (' + h.lessonCode + (h.lessonTitle ? (' · ' + h.lessonTitle.substring(0, 18)) : '') + ')';
+      }).join(' • ');
+
+      h += '<div class="qe-glass-panel" style="border-radius:18px;padding:14px 18px;margin-bottom:16px;border-color:rgba(56,189,248,0.4);background:linear-gradient(135deg,rgba(15,23,42,0.85),rgba(30,58,138,0.45));display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">' +
         '<div style="display:flex;align-items:center;gap:12px;flex:1;min-width:240px;">' +
           '<div style="width:42px;height:42px;border-radius:12px;background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.45);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📚</div>' +
           '<div>' +
             '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
-              '<span style="font-size:11px;font-weight:900;text-transform:uppercase;padding:2px 8px;border-radius:6px;background:rgba(56,189,248,0.22);color:#7dd3fc;border:1px solid rgba(56,189,248,0.4);">SINF UY VAZIFASI (' + esc(activeHw.dateDisp || activeHw.dateKey) + ')</span>' +
-              '<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:rgba(16,185,129,0.2);color:#6ee7b7;border:1px solid rgba(52,211,153,0.4);">⚡ Avtomatik tekshirish va kunlik baho (B) qo\'yish faol</span>' +
+              '<span style="font-size:11px;font-weight:900;text-transform:uppercase;padding:2px 8px;border-radius:6px;background:rgba(56,189,248,0.22);color:#7dd3fc;border:1px solid rgba(56,189,248,0.4);">SINF UY VAZIFASI (' + esc(primaryHw.dateDisp || primaryHw.dateKey) + ')</span>' +
+              '<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:rgba(16,185,129,0.2);color:#6ee7b7;border:1px solid rgba(52,211,153,0.4);">⚡ Avtomatik tekshirish va kunlik baho (B) faol</span>' +
+              (activeHwsList.length > 1 ? '<span style="font-size:11px;font-weight:900;padding:2px 8px;border-radius:6px;background:rgba(168,85,247,0.25);color:#d8b4fe;border:1px solid rgba(168,85,247,0.4);">' + activeHwsList.length + ' ta dars belgilangan</span>' : '') +
             '</div>' +
-            '<div style="font-size:14px;font-weight:800;color:#ffffff;margin-top:3px;">Intermediate (B1+) · Unit ' + esc(activeHw.unit) + ' — ' + esc(activeHw.lessonTitle || activeHw.lessonCode) + (activeHw.pages ? ' <span style="color:#7dd3fc;font-size:12.5px;">(Workbook ' + activeHw.pages.join('–') + '-betlar)</span>' : '') + '</div>' +
+            '<div style="font-size:14px;font-weight:800;color:#ffffff;margin-top:3px;">' + esc(primaryHw.bookLevel || 'Intermediate B1+') + ' · ' + esc(hwSummaryText) + '</div>' +
           '</div>' +
         '</div>' +
         '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">';
       if (isTeacher) {
-        h += '<button type="button" id="eaAssignHomeworkBtn2" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#ffffff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(139,92,246,0.35);" title="Yangi vazifa yoki test belgilash">⚙️ Topshiriqni Belgilash</button>' +
-             '<button type="button" id="eaOpenActiveHwBtn" style="background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.45);color:#38bdf8;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;">👁️ Ko‘rib chiqish</button>';
+        h += '<button type="button" id="eaAssignHomeworkBtn2" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#ffffff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(139,92,246,0.35);" title="Yangi vazifa yoki test belgilash">⚙️ Topshiriqni Belgilash</button>';
+        activeHwsList.forEach(function(hwItem, hIdx) {
+          h += '<button type="button" class="ea-open-specific-hw-btn" data-hw-idx="' + hIdx + '" style="background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.45);color:#38bdf8;border-radius:10px;padding:8px 12px;font-size:12px;font-weight:800;cursor:pointer;">👁️ ' + esc(hwItem.lessonCode) + '</button>';
+        });
       } else {
-        h += '<button type="button" id="eaOpenActiveHwBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;border:none;border-radius:10px;padding:9px 18px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(16,185,129,0.4);">🚀 Topshiriqni Ochish (Bajarish) &rarr;</button>';
+        activeHwsList.forEach(function(hwItem, hIdx) {
+          h += '<button type="button" class="ea-open-specific-hw-btn" data-hw-idx="' + hIdx + '" style="background:linear-gradient(135deg,#10b981,#059669);color:#ffffff;border:none;border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(16,185,129,0.35);">🚀 U' + esc(hwItem.unit) + ' (' + esc(hwItem.lessonCode) + ') ni Bajarish &rarr;</button>';
+        });
       }
       h += '</div>' +
       '</div>';
@@ -4160,65 +4181,74 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       };
     }
 
-    // Open active homework lesson directly
+    // Open active homework lesson directly (Supports specific multi-unit homework items!)
+    function openHwItem(hw) {
+      if (!hw) return;
+      if (hw.type === 'test' || hw.testId) {
+        if (window.EthithEnterprise && typeof window.EthithEnterprise.openTakeTestModal === 'function') {
+          window.EthithEnterprise.openTakeTestModal(hw.testId);
+          return;
+        }
+      }
+      window._ethithActiveHwContext = {
+        classId: cls.id,
+        classCode: cls.code,
+        dateKey: hw.dateKey,
+        bookLevel: hw.bookLevel || 'B1+',
+        unit: hw.unit,
+        lessonCode: hw.lessonCode
+      };
+      var bLevel = hw.bookLevel || 'B1+';
+      var firstPg = (hw.pages && hw.pages[0]) || 4;
+      var wbObj = window.ETHITH_WORKBOOK_B1 || window.WB;
+
+      if (bLevel === 'A1' || bLevel === 'Beginner') {
+        if (wbObj && typeof wbObj.openLessonA1 === 'function') {
+          wbObj.openLessonA1(hw.unit, hw.lessonCode, firstPg);
+        } else if (typeof window.go === 'function') {
+          window.go('beginner', { unit: hw.unit, lesson: hw.lessonCode });
+        }
+      } else if (bLevel === 'A2' || bLevel === 'Elementary') {
+        if (wbObj && typeof wbObj.openLessonA2 === 'function') {
+          wbObj.openLessonA2(hw.unit, hw.lessonCode, firstPg);
+        } else if (typeof window.go === 'function') {
+          window.go('elementary', { unit: hw.unit, lesson: hw.lessonCode });
+        }
+      } else if (bLevel === 'B1' || bLevel === 'Pre-Intermediate') {
+        if (wbObj && typeof wbObj.openLessonB1Pre === 'function') {
+          wbObj.openLessonB1Pre(hw.unit, hw.lessonCode, firstPg);
+        } else if (typeof window.go === 'function') {
+          window.go('pre_intermediate', { unit: hw.unit, lesson: hw.lessonCode });
+        }
+      } else if (bLevel === 'B2' || bLevel === 'Upper-Intermediate' || firstPg > 2000) {
+        if (wbObj && typeof wbObj.openLessonB2 === 'function') {
+          wbObj.openLessonB2(hw.unit, hw.lessonCode, firstPg);
+        } else if (typeof window.go === 'function') {
+          window.go('upper_intermediate', { unit: hw.unit, lesson: hw.lessonCode });
+        }
+      } else {
+        if (wbObj && typeof wbObj.openLesson === 'function') {
+          wbObj.openLesson(hw.unit, hw.lessonCode, firstPg);
+        } else if (typeof window.go === 'function') {
+          window.go('intermediate', { unit: hw.unit, lesson: hw.lessonCode });
+        }
+      }
+    }
+
+    container.querySelectorAll('.ea-open-specific-hw-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        if (e && e.stopPropagation) e.stopPropagation();
+        var idx = parseInt(btn.getAttribute('data-hw-idx'), 10) || 0;
+        var list = Array.isArray(cls.activeHomeworks) && cls.activeHomeworks.length > 0 ? cls.activeHomeworks : [cls.activeHomework];
+        openHwItem(list[idx] || cls.activeHomework);
+      };
+    });
+
     var openActiveHwBtn = container.querySelector('#eaOpenActiveHwBtn');
     if (openActiveHwBtn && cls.activeHomework) {
       openActiveHwBtn.onclick = function(e) {
         if (e && e.stopPropagation) e.stopPropagation();
-        var hw = cls.activeHomework;
-
-        // If homework is an assigned test from teacher
-        if (hw.type === 'test' || hw.testId) {
-          if (window.EthithEnterprise && typeof window.EthithEnterprise.openTakeTestModal === 'function') {
-            window.EthithEnterprise.openTakeTestModal(hw.testId);
-            return;
-          }
-        }
-
-        // Standard Workbook homework
-        window._ethithActiveHwContext = {
-          classId: cls.id,
-          classCode: cls.code,
-          dateKey: hw.dateKey,
-          bookLevel: hw.bookLevel || 'B1+',
-          unit: hw.unit,
-          lessonCode: hw.lessonCode
-        };
-        var bLevel = hw.bookLevel || 'B1+';
-        var firstPg = (hw.pages && hw.pages[0]) || 4;
-        var wbObj = window.ETHITH_WORKBOOK_B1 || window.WB;
-
-        if (bLevel === 'A1' || bLevel === 'Beginner') {
-          if (wbObj && typeof wbObj.openLessonA1 === 'function') {
-            wbObj.openLessonA1(hw.unit, hw.lessonCode, firstPg);
-          } else if (typeof window.go === 'function') {
-            window.go('beginner', { unit: hw.unit, lesson: hw.lessonCode });
-          }
-        } else if (bLevel === 'A2' || bLevel === 'Elementary') {
-          if (wbObj && typeof wbObj.openLessonA2 === 'function') {
-            wbObj.openLessonA2(hw.unit, hw.lessonCode, firstPg);
-          } else if (typeof window.go === 'function') {
-            window.go('elementary', { unit: hw.unit, lesson: hw.lessonCode });
-          }
-        } else if (bLevel === 'B1' || bLevel === 'Pre-Intermediate') {
-          if (wbObj && typeof wbObj.openLessonB1Pre === 'function') {
-            wbObj.openLessonB1Pre(hw.unit, hw.lessonCode, firstPg);
-          } else if (typeof window.go === 'function') {
-            window.go('pre_intermediate', { unit: hw.unit, lesson: hw.lessonCode });
-          }
-        } else if (bLevel === 'B2' || bLevel === 'Upper-Intermediate' || firstPg > 2000) {
-          if (wbObj && typeof wbObj.openLessonB2 === 'function') {
-            wbObj.openLessonB2(hw.unit, hw.lessonCode, firstPg);
-          } else if (typeof window.go === 'function') {
-            window.go('upper_intermediate', { unit: hw.unit, lesson: hw.lessonCode });
-          }
-        } else {
-          if (wbObj && typeof wbObj.openLesson === 'function') {
-            wbObj.openLesson(hw.unit, hw.lessonCode, firstPg);
-          } else if (typeof window.go === 'function') {
-            window.go('intermediate', { unit: hw.unit, lesson: hw.lessonCode });
-          }
-        }
+        openHwItem(cls.activeHomework);
       };
     }
 
@@ -4623,7 +4653,10 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   };
 
   // ============================================================================
+  // ============================================================================
   // MODAL: ASSIGN HOMEWORK ("📚 Uy vazifasi belgilash")
+  // MULTI-UNIT HOMEWORK ASSIGNMENT SUPPORTED: Teachers can select lessons across multiple units
+  // (e.g. Unit 1: 1.4 and Unit 2: 2.1 simultaneously)
   // ============================================================================
   EA.openHomeworkAssignModal = function(container, cls, defaultDateKey, onDoneCallback) {
     if (!cls) cls = (typeof getActiveOrFirstClass === 'function' ? getActiveOrFirstClass() : null) || (getAvailableClasses()[0]);
@@ -4681,7 +4714,6 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       if (S_store.fileExplorer) S_store.fileExplorer.tests = allTests;
     }
 
-    var curUser = getActiveUser();
     var curTName = (cls.teacherName || cls.teacher || (curUser && curUser.name) || '').toLowerCase().trim();
     var curTId = (cls.teacherId || (curUser && curUser.id) || '').toLowerCase().trim();
 
@@ -4690,7 +4722,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       if (!t) return false;
       var tAuthor = (t.authorName || t.author || '').toLowerCase().trim();
       var tId = (t.teacherId || t.authorId || '').toLowerCase().trim();
-      if (isAdmin) return true; // Admin can see all
+      if (isAdmin) return true;
       return (curTId && tId && (tId === curTId || tId.indexOf(curTId) !== -1)) ||
              (tAuthor && curTName && (tAuthor === curTName || tAuthor.indexOf(curTName) !== -1 || curTName.indexOf(tAuthor) !== -1));
     });
@@ -4704,35 +4736,73 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       });
     }
 
+    // MULTI-UNIT SELECTION STATE: Preserves chosen tasks across ALL units
+    var initialBLvl = curHw.bookLevel || 'B1+';
+    var uList = getWorkbookUnitsList(initialBLvl);
+    var selectedLessonsMap = {};
+
+    function findLessonInUnits(targetList, lCode) {
+      var uNum = parseInt(String(lCode).split('.')[0], 10) || 1;
+      var uObj = targetList.find(function(u) { return u.unit === uNum; });
+      if (uObj && Array.isArray(uObj.lessons)) {
+        var l = uObj.lessons.find(function(x) { return x.code === lCode; });
+        if (l) return { code: l.code, unit: uNum, title: l.title, pages: l.pages || [] };
+      }
+      for (var i = 0; i < targetList.length; i++) {
+        var u = targetList[i];
+        var l = (u.lessons || []).find(function(x) { return x.code === lCode; });
+        if (l) return { code: l.code, unit: u.unit, title: l.title, pages: l.pages || [] };
+      }
+      return { code: lCode, unit: uNum, title: 'Lesson ' + lCode, pages: [] };
+    }
+
+    // Seed selectedLessonsMap from currently active homeworks
+    if (Array.isArray(cls.activeHomeworks) && cls.activeHomeworks.length > 0) {
+      cls.activeHomeworks.forEach(function(h) {
+        if (h && h.lessonCode) {
+          var lesInfo = findLessonInUnits(uList, h.lessonCode);
+          selectedLessonsMap[h.lessonCode] = {
+            code: h.lessonCode,
+            unit: h.unit || lesInfo.unit,
+            title: h.lessonTitle || lesInfo.title,
+            pages: h.pages || lesInfo.pages,
+            bookLevel: h.bookLevel || initialBLvl
+          };
+        }
+      });
+    } else if (curHw && curHw.lessonCode) {
+      var initInfo = findLessonInUnits(uList, curHw.lessonCode);
+      selectedLessonsMap[curHw.lessonCode] = {
+        code: curHw.lessonCode,
+        unit: curHw.unit || initInfo.unit,
+        title: curHw.lessonTitle || initInfo.title,
+        pages: curHw.pages || initInfo.pages,
+        bookLevel: curHw.bookLevel || initialBLvl
+      };
+    } else {
+      var defaultInfo = findLessonInUnits(uList, '1.1');
+      selectedLessonsMap['1.1'] = defaultInfo;
+    }
+
     function buildUnitOptions(bLevel, activeUnitNum) {
-      var uList = getWorkbookUnitsList(bLevel);
+      var list = getWorkbookUnitsList(bLevel);
       var html = '';
-      uList.forEach(function(u) {
+      list.forEach(function(u) {
         html += '<option value="' + u.unit + '" ' + (u.unit === activeUnitNum ? 'selected' : '') + '>' + esc(u.title) + '</option>';
       });
       return html;
     }
 
-    var curHwCodes = [];
-    if (Array.isArray(cls.activeHomeworks) && cls.activeHomeworks.length > 0) {
-      curHwCodes = cls.activeHomeworks.map(function(h) { return h.lessonCode; });
-    } else if (curHw && curHw.lessonCode) {
-      curHwCodes = [curHw.lessonCode];
-    } else {
-      curHwCodes = ['1.1'];
-    }
-
-    function buildLessonCheckboxes(bLevel, uNum, selectedCodes) {
-      if (!Array.isArray(selectedCodes)) selectedCodes = [selectedCodes || (uNum + '.1')];
-      var uList = getWorkbookUnitsList(bLevel);
-      var uObj = uList.find(function(x) { return x.unit === parseInt(uNum, 10); }) || uList[0];
-      var html = '<div style="display:grid;grid-template-columns:1fr;gap:6px;max-height:170px;overflow-y:auto;padding:6px;background:rgba(0,0,0,0.3);border-radius:12px;border:1px solid rgba(255,255,255,0.1);">';
+    function buildLessonCheckboxesForUnit(bLevel, uNum) {
+      var list = getWorkbookUnitsList(bLevel);
+      var uObj = list.find(function(x) { return x.unit === parseInt(uNum, 10); }) || list[0];
+      var html = '<div style="display:grid;grid-template-columns:1fr;gap:6px;max-height:180px;overflow-y:auto;padding:8px;background:rgba(0,0,0,0.3);border-radius:12px;border:1px solid rgba(255,255,255,0.1);">';
       (uObj.lessons || []).forEach(function(les) {
         var dispPgs = (les.pages || []).map(function(p) { return p > 2000 ? (p - 2000) : p; });
         var pgStr = dispPgs.length ? ' (' + dispPgs.join('–') + '-bet)' : '';
-        var isChk = selectedCodes.indexOf(les.code) !== -1;
+        var isChk = !!selectedLessonsMap[les.code];
         html += '<label style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;background:' + (isChk ? 'rgba(16,185,129,0.18)' : 'rgba(255,255,255,0.04)') + ';border:1px solid ' + (isChk ? '#10b981' : 'rgba(255,255,255,0.1)') + ';cursor:pointer;transition:all 0.15s;">' +
-          '<input type="checkbox" class="ea-hw-lesson-chk" value="' + esc(les.code) + '" ' + (isChk ? 'checked' : '') + ' style="accent-color:#10b981;width:18px;height:18px;cursor:pointer;" />' +
+          '<input type="checkbox" class="ea-hw-lesson-chk" data-unit="' + uObj.unit + '" data-title="' + esc(les.title) + '" data-pages="' + esc(JSON.stringify(les.pages || [])) + '" value="' + esc(les.code) + '" ' + (isChk ? 'checked' : '') + ' style="accent-color:#10b981;width:18px;height:18px;cursor:pointer;" />' +
           '<span style="font-size:13px;font-weight:800;color:' + (isChk ? '#34d399' : '#e2e8f0') + ';">' + esc(les.title) + '<small style="color:#94a3b8;font-weight:600;margin-left:6px;">' + pgStr + '</small></span>' +
         '</label>';
       });
@@ -4740,20 +4810,40 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       return html;
     }
 
-    var mHtml = '<div id="eaHwOverlayBg" style="position:fixed;inset:0;background:rgba(2,6,23,0.78);backdrop-filter:blur(12px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;">' +
-      '<div style="background:linear-gradient(145deg,rgba(15,23,42,0.98),rgba(30,41,59,0.95));backdrop-filter:blur(24px);border:1.5px solid rgba(139,92,246,0.5);border-radius:24px;max-width:540px;width:100%;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,0.8),0 0 35px rgba(139,92,246,0.25);color:#f8fafc;font-family:inherit;">' +
+    function buildAllUnitsAccordionHtml(bLevel) {
+      var list = getWorkbookUnitsList(bLevel);
+      var html = '<div style="display:flex;flex-direction:column;gap:8px;max-height:260px;overflow-y:auto;padding:6px;background:rgba(0,0,0,0.3);border-radius:12px;border:1px solid rgba(255,255,255,0.1);">';
+      list.forEach(function(u) {
+        html += '<div style="background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:8px 12px;">' +
+          '<div style="font-size:12px;font-weight:900;color:#38bdf8;margin-bottom:6px;">' + esc(u.title) + '</div>' +
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">';
+        (u.lessons || []).forEach(function(les) {
+          var isChk = !!selectedLessonsMap[les.code];
+          html += '<label style="display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:8px;background:' + (isChk ? 'rgba(16,185,129,0.18)' : 'rgba(255,255,255,0.03)') + ';border:1px solid ' + (isChk ? '#10b981' : 'rgba(255,255,255,0.08)') + ';cursor:pointer;font-size:11.5px;font-weight:700;color:' + (isChk ? '#34d399' : '#cbd5e1') + ';">' +
+            '<input type="checkbox" class="ea-hw-lesson-chk" data-unit="' + u.unit + '" data-title="' + esc(les.title) + '" data-pages="' + esc(JSON.stringify(les.pages || [])) + '" value="' + esc(les.code) + '" ' + (isChk ? 'checked' : '') + ' style="accent-color:#10b981;width:15px;height:15px;cursor:pointer;" />' +
+            '<span>' + esc(les.code) + ' (' + esc(les.title.split(' ').slice(1).join(' ').substring(0, 16)) + ')</span>' +
+          '</label>';
+        });
+        html += '</div></div>';
+      });
+      html += '</div>';
+      return html;
+    }
+
+    var mHtml = '<div id="eaHwOverlayBg" style="position:fixed;inset:0;background:rgba(2,6,23,0.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;">' +
+      '<div style="background:linear-gradient(145deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));backdrop-filter:blur(24px);border:1.5px solid rgba(139,92,246,0.5);border-radius:24px;max-width:560px;width:100%;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,0.85),0 0 35px rgba(139,92,246,0.25);color:#f8fafc;font-family:inherit;max-height:92vh;overflow-y:auto;box-sizing:border-box;">' +
         '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:12px;">' +
           '<h3 style="margin:0;font-size:19px;font-weight:900;color:#ffffff;display:flex;align-items:center;gap:8px;">⚙️ Topshiriq Belgilash (' + esc(cls.name) + ')</h3>' +
           '<button type="button" id="eaCloseHwModal" style="border:none;background:rgba(255,255,255,0.08);width:32px;height:32px;border-radius:10px;font-size:16px;cursor:pointer;color:#cbd5e1;">✕</button>' +
         '</div>' +
 
         // Tab selection: Workbook vs Personal Test
-        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;">' +
-          '<button type="button" id="eaTabWorkbookBtn" style="padding:10px 14px;border-radius:12px;font-weight:900;font-size:13px;cursor:pointer;border:1.5px solid ' + (currentType !== 'test' ? '#8b5cf6' : 'rgba(255,255,255,0.12)') + ';background:' + (currentType !== 'test' ? 'rgba(139,92,246,0.25)' : 'rgba(15,23,42,0.6)') + ';color:#fff;">📘 Oxford Workbook</button>' +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">' +
+          '<button type="button" id="eaTabWorkbookBtn" style="padding:10px 14px;border-radius:12px;font-weight:900;font-size:13px;cursor:pointer;border:1.5px solid ' + (currentType !== 'test' ? '#8b5cf6' : 'rgba(255,255,255,0.12)') + ';background:' + (currentType !== 'test' ? 'rgba(139,92,246,0.25)' : 'rgba(15,23,42,0.6)') + ';color:#fff;">📘 Oxford Workbook (Ko‘p unitli)</button>' +
           '<button type="button" id="eaTabTestBtn" style="padding:10px 14px;border-radius:12px;font-weight:900;font-size:13px;cursor:pointer;border:1.5px solid ' + (currentType === 'test' ? '#38bdf8' : 'rgba(255,255,255,0.12)') + ';background:' + (currentType === 'test' ? 'rgba(56,189,248,0.25)' : 'rgba(15,23,42,0.6)') + ';color:#fff;">📝 Shaxsiy Qo‘shimcha Test</button>' +
         '</div>' +
 
-        '<div style="display:flex;flex-direction:column;gap:13px;margin-bottom:20px;">' +
+        '<div style="display:flex;flex-direction:column;gap:13px;margin-bottom:18px;">' +
           '<div>' +
             '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📅 Qaysi sanaga belgilansin:</label>' +
             '<select id="eaHwDateSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.16);background:rgba(8,13,26,0.9);color:#fff;font-weight:800;font-size:13.5px;outline:none;">' +
@@ -4761,30 +4851,50 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
             '</select>' +
           '</div>' +
 
-          // WORKBOOK CONTROLS WRAPPER
-          '<div id="eaHwWorkbookControls" style="' + (currentType === 'test' ? 'display:none;' : 'display:flex;flex-direction:column;gap:13px;') + '">' +
+          // WORKBOOK CONTROLS WRAPPER (MULTI-UNIT ENABLED)
+          '<div id="eaHwWorkbookControls" style="' + (currentType === 'test' ? 'display:none;' : 'display:flex;flex-direction:column;gap:12px;') + '">' +
             '<div>' +
               '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📖 Kitob darajasi (Workbook):</label>' +
               '<select id="eaHwBookLevelSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(168,85,247,0.5);background:rgba(8,13,26,0.9);color:#c084fc;font-weight:800;font-size:13.5px;outline:none;">' +
-                '<option value="A1" ' + ((curHw.bookLevel || '') === 'A1' ? 'selected' : '') + '>📗 Beginner (A1) Workbook</option>' +
-                '<option value="A2" ' + ((curHw.bookLevel || '') === 'A2' ? 'selected' : '') + '>📙 Elementary (A2) Workbook</option>' +
-                '<option value="B1" ' + ((curHw.bookLevel || '') === 'B1' ? 'selected' : '') + '>📘 Pre-Intermediate (B1) Workbook</option>' +
-                '<option value="B1+" ' + ((curHw.bookLevel || 'B1+') === 'B1+' ? 'selected' : '') + '>📘 Intermediate (B1+) Workbook</option>' +
-                '<option value="B2" ' + ((curHw.bookLevel || '') === 'B2' ? 'selected' : '') + '>📕 Upper-Intermediate (B2) Workbook</option>' +
+                '<option value="A1" ' + (initialBLvl === 'A1' ? 'selected' : '') + '>📗 Beginner (A1) Workbook</option>' +
+                '<option value="A2" ' + (initialBLvl === 'A2' ? 'selected' : '') + '>📙 Elementary (A2) Workbook</option>' +
+                '<option value="B1" ' + (initialBLvl === 'B1' ? 'selected' : '') + '>📘 Pre-Intermediate (B1) Workbook</option>' +
+                '<option value="B1+" ' + (initialBLvl === 'B1+' ? 'selected' : '') + '>📘 Intermediate (B1+) Workbook</option>' +
+                '<option value="B2" ' + (initialBLvl === 'B2' ? 'selected' : '') + '>📕 Upper-Intermediate (B2) Workbook</option>' +
               '</select>' +
             '</div>' +
-            '<div>' +
-              '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📘 Bo‘lim (Unit 1–12):</label>' +
-              '<select id="eaHwUnitSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(56,189,248,0.45);background:rgba(8,13,26,0.9);color:#38bdf8;font-weight:800;font-size:13.5px;outline:none;">' +
-                buildUnitOptions(curHw.bookLevel || 'B1+', parseInt(curHw.unit, 10) || 1) +
-              '</select>' +
-            '</div>' +
-            '<div>' +
-              '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📝 Topshiriq / Workbook Darslari (1, 2, 3 yoki 4 ta darsni tanlashingiz mumkin):</label>' +
-              '<div id="eaHwLessonsCheckboxesWrap">' +
-                buildLessonCheckboxes(curHw.bookLevel || 'B1+', parseInt(curHw.unit, 10) || 1, curHwCodes) +
+
+            // PERSISTENT SELECTED TASKS BASKET (Always visible across all units!)
+            '<div id="eaHwSelectedBasket" style="background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(56,189,248,0.08));border:1.5px solid rgba(16,185,129,0.35);border-radius:16px;padding:12px 14px;">' +
+              '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">' +
+                '<div style="font-size:12px;font-weight:900;color:#34d399;text-transform:uppercase;display:flex;align-items:center;gap:6px;">' +
+                  '<span>🎯 Tanlangan Topshiriqlar:</span>' +
+                  '<span id="eaHwBasketCount" style="background:#10b981;color:#fff;border-radius:20px;padding:2px 8px;font-size:11px;font-weight:900;">0 ta dars</span>' +
+                '</div>' +
+                '<button type="button" id="eaHwClearBasketBtn" style="background:none;border:none;color:#f87171;font-size:11.5px;font-weight:800;cursor:pointer;">Tozalash 🗑️</button>' +
               '</div>' +
-              '<small style="font-size:11px;color:#38bdf8;margin-top:5px;display:block;">Ustoz bir nechta darsni tanlashi mumkin. O‘quvchi uchun faqat tanlangan darslar ochiladi.</small>' +
+              '<div id="eaHwBasketChips" style="display:flex;gap:6px;flex-wrap:wrap;min-height:28px;"></div>' +
+              '<small style="font-size:11px;color:#94a3b8;margin-top:6px;display:block;">Har xil Unitlardan darslarni bemalol tanlang (masalan, <strong>Unit 1 dan 1.4</strong> va <strong>Unit 2 dan 2.1</strong>). Barchasi saqlanadi!</small>' +
+            '</div>' +
+
+            // UNIT CONTROLS HEADER (DROPDOWN + ALL-UNITS TOGGLE)
+            '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">' +
+              '<div style="flex:1;">' +
+                '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📘 Bo‘limni Tanlash (Unit 1–12):</label>' +
+                '<select id="eaHwUnitSelect" style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(56,189,248,0.45);background:rgba(8,13,26,0.9);color:#38bdf8;font-weight:800;font-size:13.5px;outline:none;">' +
+                  buildUnitOptions(initialBLvl, 1) +
+                '</select>' +
+              '</div>' +
+              '<div style="align-self:flex-end;">' +
+                '<button type="button" id="eaHwToggleAllUnitsBtn" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:10px 14px;font-size:12px;font-weight:800;color:#cbd5e1;cursor:pointer;white-space:nowrap;">📑 Barcha Unitlar</button>' +
+              '</div>' +
+            '</div>' +
+
+            '<div>' +
+              '<label id="eaHwLessonsWrapLabel" style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">📝 Shu Bo‘lim Darslari (Belgilang):</label>' +
+              '<div id="eaHwLessonsCheckboxesWrap">' +
+                buildLessonCheckboxesForUnit(initialBLvl, 1) +
+              '</div>' +
             '</div>' +
           '</div>' +
 
@@ -4843,44 +4953,139 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       tabTest.style.borderColor = '#38bdf8';
       tabTest.style.background = 'rgba(56,189,248,0.25)';
       tabWb.style.borderColor = 'rgba(255,255,255,0.12)';
-      tabWb.style.background = 'rgba(15,23,42,0.6)';
+      tabTest.style.background = 'rgba(15,23,42,0.6)';
       wbControls.style.display = 'none';
       testControls.style.display = 'flex';
     };
 
     var bookLvlSel = modalRoot.querySelector('#eaHwBookLevelSelect');
     var unitSel = modalRoot.querySelector('#eaHwUnitSelect');
+    var wrap = modalRoot.querySelector('#eaHwLessonsCheckboxesWrap');
+    var wrapLabel = modalRoot.querySelector('#eaHwLessonsWrapLabel');
+    var toggleAllUnitsBtn = modalRoot.querySelector('#eaHwToggleAllUnitsBtn');
+    var isAllUnitsView = false;
 
-    function wireCheckboxes() {
-      modalRoot.querySelectorAll('.ea-hw-lesson-chk').forEach(function(chk) {
-        chk.onchange = function() {
-          var lbl = chk.closest('label');
-          if (lbl) {
-            lbl.style.background = chk.checked ? 'rgba(16,185,129,0.18)' : 'rgba(255,255,255,0.04)';
-            lbl.style.borderColor = chk.checked ? '#10b981' : 'rgba(255,255,255,0.1)';
-            var sp = lbl.querySelector('span');
-            if (sp) sp.style.color = chk.checked ? '#34d399' : '#e2e8f0';
-          }
+    // RENDER BASKET CHIPS
+    function renderBasket() {
+      var chipsWrap = modalRoot.querySelector('#eaHwBasketChips');
+      var countEl = modalRoot.querySelector('#eaHwBasketCount');
+      if (!chipsWrap || !countEl) return;
+
+      var keys = Object.keys(selectedLessonsMap);
+      countEl.textContent = keys.length + ' ta dars';
+
+      if (keys.length === 0) {
+        chipsWrap.innerHTML = '<span style="color:#64748b;font-size:12px;font-style:italic;">Hech qanday dars tanlanmagan. Quyidan xohlagan Unit darslarini belgilang.</span>';
+        return;
+      }
+
+      chipsWrap.innerHTML = keys.map(function(k) {
+        var it = selectedLessonsMap[k];
+        var uLabel = it.unit ? ('Unit ' + it.unit + ': ') : '';
+        return '<span style="background:rgba(56,189,248,0.18);border:1px solid #38bdf8;border-radius:20px;padding:4px 10px;font-size:12px;font-weight:800;color:#e0f2fe;display:inline-flex;align-items:center;gap:6px;box-shadow:0 0 10px rgba(56,189,248,0.25);">' +
+          '<span>📘 ' + esc(uLabel + it.code) + '</span>' +
+          '<button type="button" class="ea-remove-hw-chip" data-code="' + esc(it.code) + '" style="background:none;border:none;color:#fca5a5;cursor:pointer;font-weight:900;font-size:13px;line-height:1;" title="Olib tashlash">✕</button>' +
+        '</span>';
+      }).join('');
+
+      chipsWrap.querySelectorAll('.ea-remove-hw-chip').forEach(function(btn) {
+        btn.onclick = function() {
+          var code = btn.getAttribute('data-code');
+          delete selectedLessonsMap[code];
+          renderBasket();
+          syncCheckboxesWithMap();
         };
       });
     }
 
-    function refreshLessonCheckboxes() {
+    function syncCheckboxesWithMap() {
+      modalRoot.querySelectorAll('.ea-hw-lesson-chk').forEach(function(chk) {
+        var isChk = !!selectedLessonsMap[chk.value];
+        chk.checked = isChk;
+        var lbl = chk.closest('label');
+        if (lbl) {
+          lbl.style.background = isChk ? 'rgba(16,185,129,0.18)' : 'rgba(255,255,255,0.04)';
+          lbl.style.borderColor = isChk ? '#10b981' : 'rgba(255,255,255,0.1)';
+          var sp = lbl.querySelector('span');
+          if (sp) sp.style.color = isChk ? '#34d399' : '#e2e8f0';
+        }
+      });
+    }
+
+    function wireCheckboxes() {
+      modalRoot.querySelectorAll('.ea-hw-lesson-chk').forEach(function(chk) {
+        chk.onchange = function() {
+          var code = chk.value;
+          var uNum = parseInt(chk.getAttribute('data-unit'), 10) || parseInt(code.split('.')[0], 10) || 1;
+          var title = chk.getAttribute('data-title') || code;
+          var pages = [];
+          try { pages = JSON.parse(chk.getAttribute('data-pages') || '[]'); } catch(e) {}
+
+          if (chk.checked) {
+            selectedLessonsMap[code] = {
+              code: code,
+              unit: uNum,
+              title: title,
+              pages: pages,
+              bookLevel: bookLvlSel.value || 'B1+'
+            };
+          } else {
+            delete selectedLessonsMap[code];
+          }
+          renderBasket();
+          syncCheckboxesWithMap();
+        };
+      });
+    }
+
+    function refreshLessonView() {
       var bLvl = bookLvlSel.value || 'B1+';
-      var uNum = parseInt(unitSel.value, 10) || 1;
-      var wrap = modalRoot.querySelector('#eaHwLessonsCheckboxesWrap');
-      if (wrap) {
-        wrap.innerHTML = buildLessonCheckboxes(bLvl, uNum, [uNum + '.1']);
-        wireCheckboxes();
+      if (isAllUnitsView) {
+        wrap.innerHTML = buildAllUnitsAccordionHtml(bLvl);
+        if (wrapLabel) wrapLabel.textContent = '📝 Barcha 12 ta Bo‘lim Darslari (Xohlagan unitlardan bir vaqtda belgilang):';
+      } else {
+        var uNum = parseInt(unitSel.value, 10) || 1;
+        wrap.innerHTML = buildLessonCheckboxesForUnit(bLvl, uNum);
+        if (wrapLabel) wrapLabel.textContent = '📝 ' + (unitSel.options[unitSel.selectedIndex] ? unitSel.options[unitSel.selectedIndex].text : ('Unit ' + uNum)) + ' Darslari:';
       }
+      wireCheckboxes();
+      syncCheckboxesWithMap();
     }
 
     bookLvlSel.onchange = function() {
       var bLvl = bookLvlSel.value;
       unitSel.innerHTML = buildUnitOptions(bLvl, 1);
-      refreshLessonCheckboxes();
+      refreshLessonView();
     };
-    unitSel.onchange = refreshLessonCheckboxes;
+
+    unitSel.onchange = function() {
+      if (isAllUnitsView) {
+        isAllUnitsView = false;
+        toggleAllUnitsBtn.style.background = 'rgba(255,255,255,0.07)';
+        toggleAllUnitsBtn.style.color = '#cbd5e1';
+      }
+      refreshLessonView();
+    };
+
+    toggleAllUnitsBtn.onclick = function() {
+      isAllUnitsView = !isAllUnitsView;
+      if (isAllUnitsView) {
+        toggleAllUnitsBtn.style.background = 'rgba(56,189,248,0.25)';
+        toggleAllUnitsBtn.style.color = '#38bdf8';
+      } else {
+        toggleAllUnitsBtn.style.background = 'rgba(255,255,255,0.07)';
+        toggleAllUnitsBtn.style.color = '#cbd5e1';
+      }
+      refreshLessonView();
+    };
+
+    modalRoot.querySelector('#eaHwClearBasketBtn').onclick = function() {
+      selectedLessonsMap = {};
+      renderBasket();
+      syncCheckboxesWithMap();
+    };
+
+    renderBasket();
     wireCheckboxes();
 
     modalRoot.querySelector('#eaCloseHwModal').onclick = closeGlobalModal;
@@ -4918,19 +5123,22 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         cls.attendance.lessonTypes[dKey] = 'Test: ' + chosenTest.title;
       } else {
         var bLvl = bookLvlSel.value || 'B1+';
-        var uNum = parseInt(unitSel.value, 10) || 1;
-        var chks = modalRoot.querySelectorAll('.ea-hw-lesson-chk:checked');
-        var selectedCodes = [];
-        chks.forEach(function(c) { selectedCodes.push(c.value); });
+        var selectedCodes = Object.keys(selectedLessonsMap);
+
         if (selectedCodes.length === 0) {
-          selectedCodes = [uNum + '.1'];
+          alert("Iltimos, kamida bitta topshiriq darsini tanlang!");
+          return;
         }
 
-        var uList = getWorkbookUnitsList(bLvl);
-        var uObj = uList.find(function(x) { return x.unit === uNum; }) || uList[0];
+        var curUList = getWorkbookUnitsList(bLvl);
 
+        // Build MULTI-UNIT homework list preserving each lesson's respective unit and title
         var hwList = selectedCodes.map(function(lCode) {
-          var lObj = (uObj.lessons || []).find(function(l) { return l.code === lCode; }) || { code: lCode, title: lCode, pages: [bLvl === 'B2' ? 2004 : 4] };
+          var item = selectedLessonsMap[lCode];
+          var lesInfo = findLessonInUnits(curUList, lCode);
+          var uNum = item.unit || lesInfo.unit || parseInt(String(lCode).split('.')[0], 10) || 1;
+          var title = item.title || lesInfo.title || lCode;
+          var pgs = item.pages && item.pages.length ? item.pages : (lesInfo.pages || []);
           return {
             type: 'workbook',
             dateKey: dKey,
@@ -4938,8 +5146,8 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
             bookLevel: bLvl,
             unit: uNum,
             lessonCode: lCode,
-            lessonTitle: lObj.title,
-            pages: lObj.pages || [],
+            lessonTitle: title,
+            pages: pgs,
             note: noteVal,
             assignedAt: Date.now(),
             teacherName: cls.teacherName || 'Ustoz'
@@ -4949,7 +5157,10 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         hwObj = hwList[0];
         cls.activeHomeworks = hwList;
         cls.activeHomework = hwObj;
-        cls.attendance.lessonTypes[dKey] = 'Vazifa (' + bLvl + '): ' + selectedCodes.join(', ');
+
+        // Group codes by unit for clear display: e.g. "Vazifa: U1 (1.4), U2 (2.1)"
+        var summaryCodes = hwList.map(function(h) { return 'U' + h.unit + ' (' + h.lessonCode + ')'; }).join(', ');
+        cls.attendance.lessonTypes[dKey] = 'Vazifa (' + bLvl + '): ' + summaryCodes;
         if (!cls.attendance.homeworks) cls.attendance.homeworks = {};
         cls.attendance.homeworks[dKey] = hwList.length === 1 ? hwList[0] : hwList;
         delete cls.attendance.holidays[dKey];
@@ -4957,6 +5168,10 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
       persistAttendance(cls);
       closeGlobalModal();
+
+      if (window.EthithApp && typeof window.EthithApp.toast === 'function') {
+        window.EthithApp.toast("✅ Topshiriq muvaffaqiyatli belgilandi!");
+      }
 
       if (typeof onDoneCallback === 'function') {
         onDoneCallback(hwObj);
@@ -6505,6 +6720,213 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   };
 
 
+
+  // ============================================================================
+  // MODAL: FULL GENERAL GROUP EDIT ("Umumiy Guruhni Tahrirlash")
+  // Allows editing: Name, Room, Schedule, Time, Level, Capacity, Monthly Fee, Teacher, and Duration
+  // ============================================================================
+  EA.openFullEditGroupModal = function(cls, teacher, container) {
+    if (!cls) return;
+    var curUser = getActiveUser();
+    var isStudent = curUser && curUser.role === 'student';
+    if (isStudent) {
+      if (window.EthithApp && typeof window.EthithApp.toast === 'function') {
+        window.EthithApp.toast("Guruhni faqat admin yoki o‘qituvchi tahrirlay oladi.");
+      }
+      return;
+    }
+    var old = document.getElementById('eaFullEditGroupModalOverlay');
+    if (old) old.remove();
+
+    var curName = cls.name || '';
+    var curRoom = cls.room || '302-xona';
+    var curCap = cls.maxCapacity || 18;
+    var curSched = cls.schedule || 'toq';
+    var curTime = cls.time || cls.scheduleTime || '14:00 - 16:00';
+    var curFee = Number(cls.studentMonthlyFee) || 300000;
+    var curTeacher = cls.teacherName || cls.teacher || (teacher ? teacher.name : 'Ustoz');
+    var curLevel = cls.level || cls.subject || 'Ingliz tili';
+
+    var ltInfo = getGroupLevelTestInfo(cls);
+    var curMonths = ltInfo.baseMonths !== undefined ? ltInfo.baseMonths : (Number(cls.learningMonths) || 0);
+    var curDays = ltInfo.baseDays !== undefined ? ltInfo.baseDays : (Number(cls.learningDays) || 0);
+
+    var overlay = document.createElement('div');
+    overlay.id = 'eaFullEditGroupModalOverlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:2147483645;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    overlay.innerHTML = '<div style="background:linear-gradient(145deg,#0f172a,#1e293b);border:1.5px solid rgba(56,189,248,0.45);border-radius:24px;width:100%;max-width:540px;padding:26px 28px;box-shadow:0 25px 70px rgba(0,0,0,0.85),0 0 35px rgba(56,189,248,0.2);color:#fff;font-family:inherit;max-height:92vh;overflow-y:auto;box-sizing:border-box;">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;">' +
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          '<span style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 15px rgba(2,132,199,0.4);">⚙️</span>' +
+          '<div>' +
+            '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">Guruhni Tahrirlash</h3>' +
+            '<div style="font-size:12px;color:#38bdf8;margin-top:2px;font-weight:700;">Guruh kodi: ' + esc(cls.code || cls.id) + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<button id="eaCloseFullEditModalBtn" style="background:transparent;border:none;color:#94a3b8;font-size:24px;cursor:pointer;line-height:1;">&times;</button>' +
+      '</div>' +
+
+      '<div style="display:flex;flex-direction:column;gap:14px;">' +
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Guruh Nomi</label>' +
+          '<input type="text" id="eaEditGName" value="' + esc(curName) + '" placeholder="Guruh nomini kiriting" style="width:100%;padding:11px 14px;background:#0f172a;border:1.5px solid rgba(56,189,248,0.4);border-radius:12px;color:#fff;font-weight:800;font-size:14px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Dars Xonasi (Nechanchi xona)</label>' +
+            '<input type="text" id="eaEditGRoom" value="' + esc(curRoom) + '" placeholder="masalan: 302-xona" style="width:100%;padding:11px 14px;background:#0f172a;border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:800;font-size:14px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Maksimal Sig‘imi (Joy)</label>' +
+            '<input type="number" id="eaEditGCap" min="1" max="150" value="' + curCap + '" style="width:100%;padding:11px 14px;background:#0f172a;border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;color:#38bdf8;font-weight:900;font-size:14px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+        '</div>' +
+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Dars Kunlari (Jadval)</label>' +
+            '<select id="eaEditGSched" style="width:100%;padding:11px 14px;background:#0f172a;border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:800;font-size:13px;outline:none;box-sizing:border-box;cursor:pointer;">' +
+              '<option value="toq"' + (curSched === 'toq' ? ' selected' : '') + '>Toq kunlari (Dush / Chor / Juma)</option>' +
+              '<option value="juft"' + (curSched === 'juft' ? ' selected' : '') + '>Juft kunlari (Sesh / Pay / Shanba)</option>' +
+              '<option value="har_kuni"' + (curSched === 'har_kuni' ? ' selected' : '') + '>Har kungi dars (Dush – Shanba)</option>' +
+            '</select>' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Dars Vaqti</label>' +
+            '<input type="text" id="eaEditGTime" value="' + esc(curTime) + '" placeholder="masalan: 14:00 - 16:00" style="width:100%;padding:11px 14px;background:#0f172a;border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:800;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+        '</div>' +
+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Kurs Darajasi / Fan</label>' +
+            '<input type="text" id="eaEditGLevel" value="' + esc(curLevel) + '" placeholder="masalan: Intermediate (B1+)" style="width:100%;padding:11px 14px;background:#0f172a;border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;font-weight:800;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+          '<div>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#10b981;text-transform:uppercase;margin-bottom:6px;">O‘quvchi Oylik To‘lovi (so‘m)</label>' +
+            '<input type="number" id="eaEditGFee" value="' + curFee + '" style="width:100%;padding:11px 14px;background:#0f172a;border:1.5px solid #10b981;border-radius:12px;color:#34d399;font-weight:900;font-size:14px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+        '</div>' +
+
+        '<div>' +
+          '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">O‘qituvchi (Ustoz)</label>' +
+          '<input type="text" id="eaEditGTeacher" value="' + esc(curTeacher) + '" style="width:100%;padding:11px 14px;background:#0f172a;border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;color:#cbd5e1;font-weight:800;font-size:13.5px;outline:none;box-sizing:border-box;" />' +
+        '</div>' +
+
+        '<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:12px 14px;">' +
+          '<div style="font-size:11.5px;font-weight:800;color:#38bdf8;margin-bottom:8px;">⏱️ O‘qish Muddatini Hisoblash (Ixtiyoriy)</div>' +
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
+            '<div>' +
+              '<label style="display:block;font-size:10.5px;color:#94a3b8;margin-bottom:4px;">O‘tgan oylar soni</label>' +
+              '<input type="number" id="eaEditGMonths" min="0" max="12" value="' + curMonths + '" style="width:100%;padding:8px 12px;background:#0f172a;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:800;font-size:13px;outline:none;box-sizing:border-box;" />' +
+            '</div>' +
+            '<div>' +
+              '<label style="display:block;font-size:10.5px;color:#94a3b8;margin-bottom:4px;">O‘tgan kunlar soni</label>' +
+              '<input type="number" id="eaEditGDays" min="0" max="31" value="' + curDays + '" style="width:100%;padding:8px 12px;background:#0f172a;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:800;font-size:13px;outline:none;box-sizing:border-box;" />' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div style="display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:12px;">' +
+          '<button id="eaDeleteGroupFromModalBtn" style="background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.35);border-radius:12px;padding:11px 16px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">🗑️ Guruhni O‘chirish</button>' +
+          '<div style="display:flex;gap:10px;">' +
+            '<button id="eaCancelFullEditBtn" style="background:rgba(255,255,255,0.08);color:#cbd5e1;border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:11px 18px;font-size:13px;font-weight:800;cursor:pointer;">Bekor Qilish</button>' +
+            '<button id="eaSaveFullEditBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:11px 24px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(2,132,199,0.4);">💾 Saqlash</button>' +
+          '</div>' +
+        '</div>' +
+
+      '</div></div>';
+
+    document.body.appendChild(overlay);
+
+    function close() { overlay.remove(); }
+    overlay.querySelector('#eaCloseFullEditModalBtn').onclick = close;
+    overlay.querySelector('#eaCancelFullEditBtn').onclick = close;
+
+    overlay.querySelector('#eaDeleteGroupFromModalBtn').onclick = function() {
+      close();
+      EA.deleteClass(cls.id, cls.name, container);
+    };
+
+    overlay.querySelector('#eaSaveFullEditBtn').onclick = function() {
+      var nName = overlay.querySelector('#eaEditGName').value.trim();
+      var nRoom = overlay.querySelector('#eaEditGRoom').value.trim() || '302-xona';
+      var nCap = parseInt(overlay.querySelector('#eaEditGCap').value, 10) || 16;
+      var nSched = overlay.querySelector('#eaEditGSched').value || 'toq';
+      var nTime = overlay.querySelector('#eaEditGTime').value.trim() || '14:00 - 16:00';
+      var nLevel = overlay.querySelector('#eaEditGLevel').value.trim() || 'Ingliz tili';
+      var nFee = parseInt(overlay.querySelector('#eaEditGFee').value, 10) || 300000;
+      var nTeacher = overlay.querySelector('#eaEditGTeacher').value.trim() || (teacher ? teacher.name : 'Ustoz');
+      var nMonths = parseInt(overlay.querySelector('#eaEditGMonths').value, 10) || 0;
+      var nDays = parseInt(overlay.querySelector('#eaEditGDays').value, 10) || 0;
+
+      if (!nName) { alert("Iltimos, guruh nomini kiriting!"); return; }
+
+      cls.name = nName;
+      cls.room = nRoom;
+      cls.maxCapacity = nCap;
+      cls.schedule = nSched;
+      cls.time = nTime;
+      cls.scheduleTime = nTime;
+      cls.level = nLevel;
+      cls.subject = nLevel;
+      cls.studentMonthlyFee = nFee;
+      cls.teacherName = nTeacher;
+      cls.teacher = nTeacher;
+      cls.learningMonths = nMonths;
+      cls.learningDays = nDays;
+
+      // Save duration to localStorage
+      try {
+        localStorage.setItem('ethith_class_duration_' + cls.id, JSON.stringify({
+          baseTimestamp: Date.now(),
+          learningMonths: nMonths,
+          learningDays: nDays,
+          learningLessons: nMonths * 8 + Math.floor(nDays / 3),
+          schedule: nSched
+        }));
+      } catch(e) {}
+
+      // Sync across all store locations
+      var S = window.S || (window.EthithApp && window.EthithApp.state) || {};
+      if (Array.isArray(S.classes)) {
+        var sCls = S.classes.find(function(c) { return c.id === cls.id; });
+        if (sCls) Object.assign(sCls, cls);
+      }
+      if (window.ETHITH_INITIAL_STORE && Array.isArray(window.ETHITH_INITIAL_STORE.classes)) {
+        var initCls = window.ETHITH_INITIAL_STORE.classes.find(function(c) { return c.id === cls.id; });
+        if (initCls) Object.assign(initCls, cls);
+      }
+      if (window.EthithEnterprise && typeof window.EthithEnterprise.getStore === 'function') {
+        var eeSt = window.EthithEnterprise.getStore();
+        if (eeSt && Array.isArray(eeSt.classes)) {
+          var eeCls = eeSt.classes.find(function(c) { return c.id === cls.id; });
+          if (eeCls) Object.assign(eeCls, cls);
+        }
+      }
+
+      if (typeof persistAttendance === 'function') persistAttendance(cls);
+      if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
+        window.EthithEnterprise.saveStore();
+      } else if (window.EthithApp && window.EthithApp.saveState) {
+        window.EthithApp.saveState();
+      }
+
+      if (window.EthithApp && typeof window.EthithApp.toast === 'function') {
+        window.EthithApp.toast("✓ " + nName + " guruhi ma'lumotlari muvaffaqiyatli saqlandi!");
+      }
+
+      close();
+      var c = document.getElementById('apView') || container;
+      if (c && teacher) {
+        EA.renderTeacherGroupsView(c, teacher);
+      } else if (c) {
+        EA.render(c);
+      }
+    };
+  };
 
   // MODAL: EDIT GROUP DURATION & LEVEL TEST COUNTDOWN
   EA.openEditGroupDurationModal = function(cls, teacher, container) {
