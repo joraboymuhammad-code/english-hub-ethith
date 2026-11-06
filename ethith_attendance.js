@@ -5844,6 +5844,70 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     var lastV = qScores[qScores.length - 1] || 95;
     var isGrowing = lastV >= firstV;
 
+    // Realtime monthly lessons according to group schedule (toq / juft / har_kuni)
+    var curSched = cls.schedule || 'toq';
+    var monthLessons = [];
+    var tObj = getUniversalToday();
+    tObj.setHours(0, 0, 0, 0);
+    var curYr = tObj.getFullYear();
+    var curMo = tObj.getMonth();
+    var daysInMo = new Date(curYr, curMo + 1, 0).getDate();
+
+    for (var d = 1; d <= daysInMo; d++) {
+      var dObj = new Date(curYr, curMo, d);
+      if (dObj.getDay() === 0) continue; // sunday off
+      if (isScheduledLessonDay(dObj, curSched)) {
+        var dKey = formatDateKey(dObj);
+        var isHol = (cls.attendance && cls.attendance.holidays && cls.attendance.holidays[dKey] === true);
+        var rec = (cls.attendance && cls.attendance.records && cls.attendance.records[dKey] && cls.attendance.records[dKey][stId]) || {};
+        var lType = (cls.attendance && cls.attendance.lessonTypes && cls.attendance.lessonTypes[dKey]) || (isHol ? 'Dam olish' : 'Oddiy dars');
+        var isFuture = (dObj > tObj);
+
+        var stat = 'planned';
+        if (!isFuture) {
+          if (rec.status === 'K' || rec.status === 'present' || (!rec.status && rec.score && rec.score !== '2')) {
+            stat = 'present';
+          } else if (rec.status === 'Q' || rec.status === 'absent' || rec.score === '2') {
+            stat = 'absent';
+          } else if (rec.status === 'S' || rec.status === 'excused') {
+            stat = 'excused';
+          } else if (rec.score) {
+            stat = 'present';
+          }
+        }
+
+        monthLessons.push({
+          date: dObj,
+          dateKey: dKey,
+          dayNum: d,
+          dayName: ["Yak", "Dush", "Sesh", "Chor", "Pay", "Jum", "Shan"][dObj.getDay()],
+          fullDayName: ["Yakshanba", "Dushanba", "Seshanba", "Chorshanba", "Payshanba", "Juma", "Shanba"][dObj.getDay()],
+          isFuture: isFuture,
+          isHoliday: isHol,
+          status: stat,
+          score: rec.score || '',
+          lessonType: lType,
+          hwLesson: rec.hwLesson || ''
+        });
+      }
+    }
+
+    var liveStudyHours = [3.5, 3.8, 4.0, 3.6, 4.2, 3.2, 2.0];
+    if (st.dailyMinutes && st.dailyMinutes > 0) {
+      var hBase = Number((st.dailyMinutes / 60).toFixed(1));
+      liveStudyHours = [
+        Number(Math.max(0.5, hBase * 0.95).toFixed(1)),
+        Number(Math.max(0.5, hBase * 1.05).toFixed(1)),
+        Number(Math.max(0.5, hBase * 1.1).toFixed(1)),
+        Number(Math.max(0.5, hBase * 0.9).toFixed(1)),
+        Number(Math.max(0.5, hBase * 1.15).toFixed(1)),
+        Number(Math.max(0.5, hBase * 0.8).toFixed(1)),
+        Number(Math.max(0.2, hBase * 0.5).toFixed(1))
+      ];
+    } else if (!isGrowing) {
+      liveStudyHours = [2.2, 2.0, 1.8, 1.9, 1.5, 1.2, 0.8];
+    }
+
     return {
       stId: stId,
       id: "#QE-2026-" + (100 + sIdx * 37),
@@ -5854,6 +5918,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       presentCount: presentCount,
       absentCount: absentCount,
       excusedCount: excusedCount,
+      monthLessons: monthLessons,
       attendance: {
         quarter: attPct,
         semester: attPct,
@@ -5889,7 +5954,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       radar: isGrowing ? [98, 95, 94, 97, 92, Math.round(attPct)] : [74, 78, 75, 70, 72, Math.round(attPct)],
       topSkill: isGrowing ? "Davomat va kunlik faollik (" + Math.round(attPct) + "%)" : "Amaliy mashqlar (78%)",
       focusSkill: isGrowing ? "Qo'shimcha mustaqil ish (92%)" : "Dars qoldirmaslik va vazifa (70%)",
-      studyHours: isGrowing ? [4.1, 3.8, 4.4, 3.9, 4.6, 3.7, 2.3] : [2.7, 2.4, 2.2, 1.9, 1.8, 1.5, 1.1]
+      studyHours: liveStudyHours
     };
   }
 
@@ -6185,8 +6250,17 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       '</div>' +
     '</div></div>';
 
-    // TAB 2: ATTENDANCE HEATMAP + STUDY HOURS BAR CHART
-    var totalHours = st.studyHours.reduce(function(a, b) { return a + b; }, 0);
+    // TAB 2: ATTENDANCE MAP (1 MONTH LIVE) + STUDY HOURS BAR CHART
+    var clsSched = cls.schedule || 'toq';
+    var schedBadge = (clsSched === 'juft') ? 'Juft kunlari (Sesh - Pay - Shan)' : (clsSched === 'toq' ? 'Toq kunlari (Dush - Chor - Jum)' : 'Har kuni (Dush - Shan)');
+    
+    var mLessons = st.monthLessons || [];
+    var mPresentCount = mLessons.filter(function(l) { return l.status === 'present'; }).length;
+    var mAbsentCount = mLessons.filter(function(l) { return l.status === 'absent'; }).length;
+    var mExcusedCount = mLessons.filter(function(l) { return l.status === 'excused'; }).length;
+    var mFutureCount = mLessons.filter(function(l) { return l.isFuture; }).length;
+
+    var totalHours = (st.studyHours || []).reduce(function(a, b) { return a + b; }, 0);
     var avgHours = (totalHours / 7).toFixed(1);
 
     h += '<div id="qe-tab-attendance" style="display:' + (EA.qeTab === 'attendance' ? 'block' : 'none') + ';">' +
@@ -6194,53 +6268,57 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         '<div class="qe-glass-panel" style="border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:18px;">' +
           '<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;">' +
             '<div>' +
-              '<h3 style="margin:0;font-size:17px;font-weight:800;color:#fff;">Kunlik Davomat va Bajarilgan Vazifalar Xaritasi (12 Hafta)</h3>' +
-              '<div style="font-size:12px;color:#94a3b8;margin-top:2px;">Har bir katakcha o\'quv kunidagi davomat va kunlik vazifa bajarilish darajasini bildiradi</div>' +
+              '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+                '<h3 style="margin:0;font-size:17px;font-weight:800;color:#fff;">Kunlik Davomat va Darslar Xaritasi (1 Oylik)</h3>' +
+                '<span style="background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.35);color:#38bdf8;padding:2px 10px;border-radius:12px;font-size:11.5px;font-weight:800;">🗓️ Jadval: ' + schedBadge + '</span>' +
+              '</div>' +
+              '<div style="font-size:12px;color:#94a3b8;margin-top:4px;">Guruh dars jadvali bo‘yicha to‘liq 1 oylik real davomat: Keldi (yashil), Kelmadi (qizil), Sababli (sariq)</div>' +
             '</div>' +
-            '<div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#94a3b8;">' +
-              '<span>Cho\'kish</span>' +
-              '<span style="width:12px;height:12px;border-radius:4px;background:rgba(244,63,94,0.65);display:inline-block;"></span>' +
-              '<span style="width:12px;height:12px;border-radius:4px;background:rgba(251,191,36,0.65);display:inline-block;"></span>' +
-              '<span style="width:12px;height:12px;border-radius:4px;background:rgba(16,185,129,0.45);display:inline-block;"></span>' +
-              '<span style="width:12px;height:12px;border-radius:4px;background:#34d399;box-shadow:0 0 8px #34d399;display:inline-block;"></span>' +
-              '<span>O\'sish</span>' +
+            '<div style="display:flex;align-items:center;gap:10px;font-size:11.5px;font-weight:800;flex-wrap:wrap;">' +
+              '<span style="display:flex;align-items:center;gap:4px;color:#34d399;"><span style="width:12px;height:12px;border-radius:4px;background:#10b981;display:inline-block;"></span> Keldi (' + mPresentCount + ')</span>' +
+              '<span style="display:flex;align-items:center;gap:4px;color:#f87171;"><span style="width:12px;height:12px;border-radius:4px;background:#ef4444;display:inline-block;"></span> Kelmadi (' + mAbsentCount + ')</span>' +
+              '<span style="display:flex;align-items:center;gap:4px;color:#fbbf24;"><span style="width:12px;height:12px;border-radius:4px;background:#f59e0b;display:inline-block;"></span> Sababli (' + mExcusedCount + ')</span>' +
+              '<span style="display:flex;align-items:center;gap:4px;color:#94a3b8;"><span style="width:12px;height:12px;border-radius:4px;background:rgba(255,255,255,0.12);border:1px dashed #64748b;display:inline-block;"></span> Reja (' + mFutureCount + ')</span>' +
             '</div>' +
-          '</div>' +
-          '<div id="qeHeatmapGrid" class="qe-heatmap-cols">';
+          '</div>';
 
-    var daysNames = ["Dushanba", "Seshanba", "Chorshanba", "Payshanba", "Juma", "Shanba"];
-    for (var w = 1; w <= 12; w++) {
-      h += '<div style="display:flex;flex-direction:column;gap:6px;"><div style="font-size:10px;color:#94a3b8;text-align:center;font-family:monospace;">' + w + '-h</div>';
-      for (var d = 0; d < 6; d++) {
-        var seed = (w * 7 + d * 3 + Math.round(trend.lastVal)) % 17;
-        var stText = "Darsda faol, kunlik vazifa 100% bajarildi (O'sish ↑ • Baho: 5)";
-        var cellStyle = "background:#34d399;box-shadow:0 0 8px rgba(52,211,153,0.45);";
-        if (!trend.isGrowing && w >= 9 && d >= 3) {
-          stText = "Kunlik vazifa bajarilmadi / Dars qoldirildi (Cho'kish ↓ • Baho: 2)";
-          cellStyle = "background:rgba(244,63,94,0.65);";
-        } else if (seed === 0) {
-          stText = "Qisman bajarildi / Sababli (S)";
-          cellStyle = "background:rgba(251,191,36,0.65);";
-        } else if (seed < 5) {
-          stText = "Darsda qatnashdi (K), vazifa bajarildi (Baho: 5)";
-          cellStyle = "background:rgba(16,185,129,0.45);";
-        }
-        var dateLbl = w + "-hafta, " + daysNames[d];
-        h += '<button type="button" class="qe-heat-cell" data-heat-info="' + esc(dateLbl + ': ' + stText) + '" title="' + esc(dateLbl + ': ' + stText) + '" style="width:100%;height:20px;border-radius:6px;border:none;cursor:pointer;transition:transform 0.15s;' + cellStyle + '"></button>';
+    // Grid of 1-month lessons
+    h += '<div id="qeHeatmapGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:10px;margin-top:6px;">';
+    mLessons.forEach(function(les) {
+      var bg = 'background:rgba(255,255,255,0.06);border:1px dashed rgba(255,255,255,0.18);color:#94a3b8;';
+      var badge = '—';
+      var stTitle = les.dateKey + ' (' + les.fullDayName + '): Rejalashtirilgan kelgusi dars • ' + les.lessonType;
+
+      if (les.status === 'present') {
+        bg = 'background:linear-gradient(135deg,rgba(16,185,129,0.35),rgba(5,150,105,0.6));border:1.5px solid #10b981;color:#fff;box-shadow:0 0 10px rgba(16,185,129,0.35);';
+        badge = les.score ? ('K • ' + les.score) : 'K (Keldi)';
+        stTitle = les.dateKey + ' (' + les.fullDayName + '): Kelgan (K) • Baho: ' + (les.score || 5) + ' • ' + les.lessonType;
+      } else if (les.status === 'absent') {
+        bg = 'background:linear-gradient(135deg,rgba(239,68,68,0.4),rgba(225,29,72,0.65));border:1.5px solid #ef4444;color:#fff;box-shadow:0 0 10px rgba(239,68,68,0.35);';
+        badge = 'Q (Kelmadi)';
+        stTitle = les.dateKey + ' (' + les.fullDayName + '): Kelmagan (Q) • Dars qoldirilgan • ' + les.lessonType;
+      } else if (les.status === 'excused') {
+        bg = 'background:linear-gradient(135deg,rgba(245,158,11,0.35),rgba(217,119,6,0.6));border:1.5px solid #f59e0b;color:#fff;box-shadow:0 0 10px rgba(245,158,11,0.35);';
+        badge = 'S (Sababli)';
+        stTitle = les.dateKey + ' (' + les.fullDayName + '): Sababli (S) • Javob so‘ralgan • ' + les.lessonType;
       }
-      h += '</div>';
-    }
 
+      h += '<button type="button" class="qe-heat-cell" data-heat-info="' + esc(stTitle) + '" title="' + esc(stTitle) + '" style="padding:10px 4px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;transition:all 0.2s;' + bg + '">' +
+        '<span style="font-size:10px;font-weight:700;opacity:0.8;">' + les.dayName + '</span>' +
+        '<span style="font-size:14px;font-weight:900;">' + les.dayNum + '</span>' +
+        '<span style="font-size:9.5px;font-weight:800;padding:2px 5px;border-radius:4px;background:rgba(0,0,0,0.4);">' + badge + '</span>' +
+      '</button>';
+    });
     h += '</div>' +
           '<div id="qeHeatmapBanner" class="qe-glass-pill" style="border-radius:16px;padding:12px 16px;font-size:12px;color:#cbd5e1;display:flex;align-items:center;justify-content:space-between;">' +
             '<span>Katakcha ustiga bosing — o\'sha kundagi dars va vazifa tafsiloti shu yerda chiqadi.</span>' +
-            '<span style="color:#7dd3fc;font-weight:700;">Jami: 72 o\'quv kuni</span>' +
+            '<span style="color:#7dd3fc;font-weight:700;">Jami: ' + mLessons.length + ' ta oylik dars</span>' +
           '</div>' +
         '</div>' +
         '<div class="qe-glass-panel" style="border-radius:24px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;">' +
           '<div>' +
             '<h3 style="margin:0;font-size:17px;font-weight:800;color:#fff;">Kunlik Vazifa Bajarish Soatlari</h3>' +
-            '<div style="font-size:12px;color:#94a3b8;margin-top:2px;">Hafta kunlari kesimida kunlik ish va dars tayyorlash vaqti</div>' +
+            '<div style="font-size:12px;color:#94a3b8;margin-top:2px;">Hafta kunlari kesimida platformada dars qilish va vazifa tayyorlash vaqti</div>' +
           '</div>' +
           '<div style="position:relative;height:220px;width:100%;margin:12px 0;"><canvas id="qeStudyHoursChart"></canvas></div>' +
           '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center;">' +

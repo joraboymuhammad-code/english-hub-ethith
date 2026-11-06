@@ -62,8 +62,14 @@
     var curS = getS();
 
     if (levelKey) {
-      if (levelKey === 'upperIntermediate' || levelKey === 'B2' || levelKey === 'b2') {
-        _activeNavLevel = 'upperIntermediate';
+      if (levelKey === 'upperIntermediate' || levelKey === 'upper_intermediate' || levelKey === 'B2' || levelKey === 'b2') {
+        _activeNavLevel = 'upper_intermediate';
+      } else if (levelKey === 'beginner' || levelKey === 'a1' || levelKey === 'A1') {
+        _activeNavLevel = 'beginner';
+      } else if (levelKey === 'elementary' || levelKey === 'a2' || levelKey === 'A2') {
+        _activeNavLevel = 'elementary';
+      } else if (levelKey === 'pre_intermediate' || levelKey === 'b1_pre' || levelKey === 'preIntermediate') {
+        _activeNavLevel = 'pre_intermediate';
       } else {
         _activeNavLevel = 'intermediate';
       }
@@ -87,9 +93,12 @@
     html += '  </div>';
     html += '  <div style="text-align:right;flex-shrink:0">';
     html += '    <div style="font-size:11.5px;color:#94a3b8;font-weight:700;margin-bottom:6px">O\'QUV DARAJASI:</div>';
-    html += '    <div style="display:inline-flex;gap:6px;background:rgba(0,0,0,0.35);padding:4px;border-radius:14px;border:1px solid rgba(255,255,255,0.12)">';
+    html += '    <div style="display:inline-flex;gap:4px;background:rgba(0,0,0,0.35);padding:4px;border-radius:14px;border:1px solid rgba(255,255,255,0.12);flex-wrap:wrap;">';
+    html += '      <button type="button" class="eth-nav-lvl-btn ' + (_activeNavLevel === 'beginner' ? 'active' : '') + '" data-nav-level="beginner">Beginner (A1)</button>';
+    html += '      <button type="button" class="eth-nav-lvl-btn ' + (_activeNavLevel === 'elementary' ? 'active' : '') + '" data-nav-level="elementary">Elementary (A2)</button>';
+    html += '      <button type="button" class="eth-nav-lvl-btn ' + (_activeNavLevel === 'pre_intermediate' ? 'active' : '') + '" data-nav-level="pre_intermediate">Pre-Int (B1)</button>';
     html += '      <button type="button" class="eth-nav-lvl-btn ' + (_activeNavLevel === 'intermediate' ? 'active' : '') + '" data-nav-level="intermediate">Intermediate (B1+)</button>';
-    html += '      <button type="button" class="eth-nav-lvl-btn ' + (_activeNavLevel === 'upperIntermediate' ? 'active' : '') + '" data-nav-level="upperIntermediate">Upper-Intermediate (B2)</button>';
+    html += '      <button type="button" class="eth-nav-lvl-btn ' + ((_activeNavLevel === 'upper_intermediate' || _activeNavLevel === 'upperIntermediate') ? 'active' : '') + '" data-nav-level="upper_intermediate">Upper-Int (B2)</button>';
     html += '    </div>';
     html += '  </div>';
     html += '</div>';
@@ -146,7 +155,12 @@
     else if (_activeNavTab === 'unitTests') {
       var isTeacher = (S.user && (S.user.role === 'teacher' || S.user.role === 'admin'));
       var customTests = S.customCurriculumTests || {};
-      var levelTitle = (_activeNavLevel === 'intermediate') ? 'B1+ Intermediate' : 'B2 Upper-Intermediate';
+      var levelTitle = (_activeNavLevel === 'beginner') ? 'A1 Beginner' :
+                       (_activeNavLevel === 'elementary') ? 'A2 Elementary' :
+                       (_activeNavLevel === 'pre_intermediate') ? 'B1 Pre-Intermediate' :
+                       (_activeNavLevel === 'upper_intermediate' || _activeNavLevel === 'upperIntermediate') ? 'B2 Upper-Intermediate' :
+                       'B1+ Intermediate';
+      var totalUnits = (_activeNavLevel === 'beginner') ? 10 : 12;
 
       html += '<div style="background:radial-gradient(circle at 10% 20%, rgba(56,189,248,0.18), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1.5px solid rgba(56,189,248,0.35);border-radius:22px;padding:26px 28px;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">' +
         '<div style="display:flex;align-items:center;gap:14px;">' +
@@ -155,7 +169,7 @@
           '</div>' +
           '<div>' +
             '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
-              '<h3 style="margin:0;font-size:19px;font-weight:900;color:#fff;">Oxford Navigate Unit Testlari (1–12)</h3>' +
+              '<h3 style="margin:0;font-size:19px;font-weight:900;color:#fff;">Oxford Navigate Unit Testlari (1–' + totalUnits + ')</h3>' +
               '<span style="background:rgba(56,189,248,0.15);color:#38bdf8;font-size:11.5px;font-weight:800;padding:2px 10px;border-radius:10px;border:1px solid rgba(56,189,248,0.3);">' + levelTitle + '</span>' +
             '</div>' +
             '<p style="margin:4px 0 0;font-size:12.5px;color:#94a3b8;">Har bir unit bo‘yicha oraliq testlar. O‘qituvchi o‘z PDF testini yuklab, shaffof interaktiv katakchalar qo‘shishi mumkin.</p>' +
@@ -165,9 +179,13 @@
       '</div>';
 
       html += '<div class="eth-grid-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px">';
-      for (var uNum = 1; uNum <= 12; uNum++) {
+      for (var uNum = 1; uNum <= totalUnits; uNum++) {
         var testKey = _activeNavLevel + '_unit_' + uNum;
-        var customT = customTests[testKey];
+        var altKey = (_activeNavLevel === 'beginner' ? 'a1' :
+                      _activeNavLevel === 'elementary' ? 'a2' :
+                      _activeNavLevel === 'pre_intermediate' ? 'b1_pre' :
+                      (_activeNavLevel === 'upper_intermediate' || _activeNavLevel === 'upperIntermediate') ? 'b2' : 'b1') + '_unit_' + uNum;
+        var customT = customTests[testKey] || customTests[altKey];
         var stdT = (curLevelData.unitTests && curLevelData.unitTests[uNum - 1]);
         var userScore = (S.user && S.user.curriculumTestResults && S.user.curriculumTestResults[testKey]);
 
@@ -243,7 +261,11 @@
     else if (_activeNavTab === 'progressTests') {
       var isTeacher = (S.user && (S.user.role === 'teacher' || S.user.role === 'admin'));
       var customTests = S.customCurriculumTests || {};
-      var levelTitle = (_activeNavLevel === 'intermediate') ? 'B1+ Intermediate' : 'B2 Upper-Intermediate';
+      var levelTitle = (_activeNavLevel === 'beginner') ? 'A1 Beginner' :
+                       (_activeNavLevel === 'elementary') ? 'A2 Elementary' :
+                       (_activeNavLevel === 'pre_intermediate') ? 'B1 Pre-Intermediate' :
+                       (_activeNavLevel === 'upper_intermediate' || _activeNavLevel === 'upperIntermediate') ? 'B2 Upper-Intermediate' :
+                       'B1+ Intermediate';
 
       html += '<div style="background:radial-gradient(circle at 10% 20%, rgba(139,92,246,0.18), transparent 40%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1.5px solid rgba(168,85,247,0.35);border-radius:22px;padding:26px 28px;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">' +
         '<div style="display:flex;align-items:center;gap:14px;">' +
@@ -271,7 +293,11 @@
       html += '<div class="eth-grid-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px">';
       pTestsNav.forEach(function(pt) {
         var testKey = _activeNavLevel + '_progress_' + pt.id;
-        var customPT = customTests[testKey];
+        var altKey = (_activeNavLevel === 'beginner' ? 'a1' :
+                      _activeNavLevel === 'elementary' ? 'a2' :
+                      _activeNavLevel === 'pre_intermediate' ? 'b1_pre' :
+                      (_activeNavLevel === 'upper_intermediate' || _activeNavLevel === 'upperIntermediate') ? 'b2' : 'b1') + '_progress_' + pt.id;
+        var customPT = customTests[testKey] || customTests[altKey];
         var stdPT = (curLevelData.progressTests && curLevelData.progressTests[pt.id - 1]);
         var userScore = (S.user && S.user.curriculumTestResults && S.user.curriculumTestResults[testKey]);
 

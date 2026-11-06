@@ -836,6 +836,7 @@
             '</div>' +
           '</div>' +
           '<div style="margin-top:14px;display:flex;gap:6px;flex-wrap:wrap;">' +
+            (isStaff ? '<button class="ee-edit-visual-test-btn" data-tid="' + t.id + '" style="background:rgba(56,189,248,0.18);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);border-radius:8px;padding:6px 8px;font-size:11px;font-weight:800;cursor:pointer;">🎨 Tahrir</button>' : '') +
             (isStaff ? '<button class="ee-assign-hw-btn" data-tid="' + t.id + '" style="flex:1;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:8px;padding:6px 8px;font-size:11px;font-weight:800;cursor:pointer;">📤 Guruhga</button>' : '') +
             '<button class="ee-take-test-btn" data-tid="' + t.id + '" style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:8px;padding:6px 10px;font-size:11px;font-weight:800;cursor:pointer;">✍️ Ishlash</button>' +
             (isStaff ? '<button class="ee-del-test-btn" data-tid="' + t.id + '" style="background:rgba(239,68,68,0.15);color:#f87171;border:none;border-radius:8px;padding:6px 8px;font-size:11px;font-weight:800;cursor:pointer;">🗑</button>' : '') +
@@ -883,6 +884,7 @@
               '<td style="padding:12px 16px;color:#94a3b8;">' + (t.questions || []).length + ' ta</td>' +
               '<td style="padding:12px 16px;color:#94a3b8;">' + esc(t.authorName || 'Ustoz') + '</td>' +
               '<td style="padding:12px 16px;text-align:right;">' +
+                (isStaff ? '<button class="ee-edit-visual-test-btn" data-tid="' + t.id + '" style="background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.35);color:#38bdf8;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:800;cursor:pointer;margin-right:6px;">🎨 Visual Tahrir</button>' : '') +
                 (isStaff ? '<button class="ee-assign-hw-btn" data-tid="' + t.id + '" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:800;cursor:pointer;margin-right:6px;">Guruhga</button>' : '') +
                 '<button class="ee-take-test-btn" data-tid="' + t.id + '" style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:800;cursor:pointer;margin-right:6px;">Ishlash</button>' +
                 (isStaff ? '<button class="ee-del-test-btn" data-tid="' + t.id + '" style="background:none;border:none;color:#ef4444;font-weight:700;cursor:pointer;">O‘chirish</button>' : '') +
@@ -1049,6 +1051,18 @@
           saveStore();
           showToast("Test o‘chirildi");
           EE.renderExplorerView(container);
+        }
+      };
+    });
+
+    // Edit visual test button
+    container.querySelectorAll('.ee-edit-visual-test-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        var tid = btn.getAttribute('data-tid');
+        var tObj = fe.tests.find(function(item) { return item.id === tid; });
+        if (tObj) {
+          EE.openVisualTestBuilderModal(container, currentFolderId, tObj);
         }
       };
     });
@@ -2079,56 +2093,60 @@
       var om = document.createElement('div');
       om.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.85);backdrop-filter:blur(10px);z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:16px;font-family:system-ui,-apple-system,sans-serif;';
 
-      om.innerHTML = '<div style="background:#0f172a;border:1px solid rgba(56,189,248,0.35);border-radius:20px;max-width:540px;width:100%;padding:26px;box-shadow:0 24px 60px rgba(0,0,0,0.8);color:#f8fafc;">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:12px;">' +
-          '<div style="display:flex;align-items:center;gap:10px;">' +
-            '<span style="font-size:22px;">🎯</span>' +
-            '<h3 style="margin:0;font-size:17px;font-weight:900;">' + (isNew ? 'Yangi Katakcha Qo‘shish' : 'Katakchani Tahrirlash') + '</h3>' +
+      om.innerHTML = '<div style="background:#0f172a;border:1.5px solid #38bdf8;border-radius:18px;max-width:380px;width:100%;padding:20px;box-shadow:0 24px 60px rgba(0,0,0,0.85);color:#f8fafc;box-sizing:border-box;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid #334155;padding-bottom:10px;">' +
+          '<div style="display:flex;align-items:center;gap:8px;">' +
+            '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#38bdf8;box-shadow:0 0 8px #38bdf8;"></span>' +
+            '<h3 style="margin:0;font-size:15px;font-weight:900;color:#38bdf8;">' + (isNew ? '+ Yangi Katakcha' : 'Katakchani Tahrirlash') + '</h3>' +
           '</div>' +
-          '<button id="eeCloseKatakchaModal" style="background:none;border:none;color:#94a3b8;font-size:20px;cursor:pointer;">✕</button>' +
+          '<button id="eeCloseKatakchaModal" style="background:none;border:none;color:#94a3b8;font-size:18px;cursor:pointer;font-weight:900;line-height:1;">✕</button>' +
         '</div>' +
 
-        '<div style="display:flex;flex-direction:column;gap:14px;">' +
-          (pagesData.length > 1 ? (
-            '<div>' +
-              '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Qaysi sahifaga joylashtirilsin:</label>' +
-              '<select id="eeKatakchaPageSelect" style="width:100%;padding:10px;background:#1e293b;border:1px solid rgba(56,189,248,0.3);border-radius:10px;color:#38bdf8;font-weight:800;outline:none;">' +
-                pagesData.map(function(pg, pi) {
-                  return '<option value="' + pi + '" ' + (pi === pIdx ? 'selected' : '') + '>📄 Sahifa ' + (pg.pageNum || (pi + 1)) + '</option>';
-                }).join('') +
-              '</select>' +
-            '</div>'
-          ) : '') +
+        '<div style="display:flex;flex-direction:column;gap:12px;">' +
+          '<div style="background:rgba(56,189,248,0.08);padding:8px 10px;border-radius:10px;border:1px solid rgba(56,189,248,0.2);">' +
+            '<label style="display:block;font-size:11px;font-weight:800;color:#38bdf8;margin-bottom:6px;">📄 Sahifa raqami (istalgan sahifaga o\'tkazish):</label>' +
+            '<div style="display:flex;gap:6px;align-items:center;">' +
+              '<button type="button" id="eeKatakchaPrevPageBtn" style="padding:6px 12px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#38bdf8;font-weight:900;cursor:pointer;font-size:13px;" title="Oldingi sahifa">←</button>' +
+              '<input type="number" id="eeKatakchaPageInput" value="' + (p.pageNum || (pIdx + 1)) + '" min="1" max="' + pagesData.length + '" style="flex:1;padding:7px 10px;border-radius:8px;border:1.5px solid #38bdf8;background:#1e293b;color:#38bdf8;font-weight:900;font-size:14px;text-align:center;box-sizing:border-box;outline:none;" />' +
+              '<button type="button" id="eeKatakchaNextPageBtn" style="padding:6px 12px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#38bdf8;font-weight:900;cursor:pointer;font-size:13px;" title="Keyingi sahifa">→</button>' +
+            '</div>' +
+          '</div>' +
+
           '<div>' +
-            '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Topshiriq Turi:</label>' +
-            '<select id="eeKatakchaType" style="width:100%;padding:10px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:800;outline:none;">' +
-              '<option value="fill"' + (elData.type === 'fill' ? ' selected' : '') + '>✍️ O‘qib yoziladigan (Fill in blanks / Text Input)</option>' +
-              '<option value="choose"' + (elData.type === 'choose' ? ' selected' : '') + '>🔘 Tanlanadigan (Variantni bosish)</option>' +
-              '<option value="cross"' + (elData.type === 'cross' ? ' selected' : '') + '>❌ O‘chiriladigan (Strikethrough / Chiqitga chiqarish)</option>' +
-              '<option value="match"' + (elData.type === 'match' ? ' selected' : '') + '>🔗 Bog‘lanadigan (Letter match badge A-H)</option>' +
+            '<label style="display:block;font-size:11.5px;font-weight:800;color:#94a3b8;margin-bottom:5px;">Turi (interaction type):</label>' +
+            '<select id="eeKatakchaType" style="width:100%;padding:9px 12px;background:#1e293b;border:1px solid #334155;border-radius:10px;color:#f8fafc;font-weight:700;font-size:12.5px;outline:none;">' +
+              '<option value="fill"' + (elData.type === 'fill' ? ' selected' : '') + '>Fill (O‘qib yozish)</option>' +
+              '<option value="select"' + (elData.type === 'select' ? ' selected' : '') + '>Select (Dropdown - Tanlash)</option>' +
+              '<option value="cross"' + (elData.type === 'cross' ? ' selected' : '') + '>Cross (Chizib o‘chirish)</option>' +
+              '<option value="choose"' + (elData.type === 'choose' ? ' selected' : '') + '>Choose (Variant tanlash)</option>' +
+              '<option value="choice"' + (elData.type === 'choice' ? ' selected' : '') + '>Choice (Variant tanlash)</option>' +
+              '<option value="match"' + (elData.type === 'match' ? ' selected' : '') + '>Match (Harf bilan bog‘lash)</option>' +
+              '<option value="insert"' + (elData.type === 'insert' ? ' selected' : '') + '>Insert (Prepozitsiya kiritish)</option>' +
             '</select>' +
           '</div>' +
 
-          '<div style="display:flex;gap:10px;">' +
-            '<div style="flex:1;">' +
-              '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Savol Raqami / Label:</label>' +
-              '<input type="text" id="eeKatakchaLabel" value="' + esc(elData.label || '') + '" placeholder="1, 2, 3a..." style="width:100%;padding:10px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:800;outline:none;box-sizing:border-box;" />' +
-            '</div>' +
-            '<div style="flex:2;">' +
-              '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">To‘g‘ri Javob (Key):</label>' +
-              '<input type="text" id="eeKatakchaCorrect" value="' + esc(elData.correct || '') + '" placeholder="Masalan: is watching / ' + esc("has seen") + '" style="width:100%;padding:10px;background:#1e293b;border:1px solid #10b981;border-radius:10px;color:#10b981;font-weight:900;outline:none;box-sizing:border-box;" />' +
-            '</div>' +
+          '<div id="eeKatakchaOptionsWrap" style="' + ((elData.type === 'choose' || elData.type === 'choice' || elData.type === 'select') ? 'display:block;' : 'display:none;') + '">' +
+            '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;margin-bottom:4px;">Variantlar (vergul yoki slash bilan: at / in / on):</label>' +
+            '<input type="text" id="eeKatakchaOptions" value="' + esc(Array.isArray(elData.options) ? elData.options.join(' / ') : (elData.options || '')) + '" placeholder="masalan: at / on / in yoki coast / river" style="width:100%;padding:8px 12px;background:#1e293b;border:1px solid #334155;border-radius:8px;color:#fff;font-weight:700;font-size:12px;outline:none;box-sizing:border-box;" />' +
           '</div>' +
 
-          '<div id="eeKatakchaOptionsWrap" style="' + (elData.type === 'choose' ? 'display:block;' : 'display:none;') + '">' +
-            '<label style="display:block;font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;">Variantlar (slash / bilan ajrating):</label>' +
-            '<input type="text" id="eeKatakchaOptions" value="' + esc(Array.isArray(elData.options) ? elData.options.join('/') : (elData.options || '')) + '" placeholder="Masalan: at / on / in" style="width:100%;padding:10px;background:#1e293b;border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-weight:800;outline:none;box-sizing:border-box;" />' +
+          '<div>' +
+            '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;margin-bottom:4px;">Guruh / Belgisi (Label / Group):</label>' +
+            '<input type="text" id="eeKatakchaLabel" value="' + esc(elData.label || '') + '" placeholder="masalan: 2 yoki 3a" style="width:100%;padding:8px 12px;background:#1e293b;border:1px solid #334155;border-radius:8px;color:#fff;font-weight:700;font-size:12px;outline:none;box-sizing:border-box;" />' +
+          '</div>' +
+
+          '<div>' +
+            '<label style="display:block;font-size:11px;font-weight:800;color:#94a3b8;margin-bottom:4px;">To‘g‘ri Javob ("or" bilan variantlar):</label>' +
+            '<input type="text" id="eeKatakchaCorrect" value="' + esc(elData.correct || '') + '" placeholder="masalan: coast yoki a" style="width:100%;padding:8px 12px;background:#1e293b;border:1px solid #10b981;border-radius:8px;color:#10b981;font-weight:900;font-size:12.5px;outline:none;box-sizing:border-box;" />' +
           '</div>' +
         '</div>' +
 
-        '<div style="display:flex;justify-content:flex-end;gap:10px;margin-top:24px;">' +
-          '<button id="eeCancelKatakcha" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;padding:9px 18px;border-radius:10px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
-          '<button id="eeSaveKatakcha" style="background:linear-gradient(135deg,#0284c7,#2563eb);border:none;color:#fff;padding:9px 24px;border-radius:10px;font-weight:900;cursor:pointer;">Katakchani Saqlash</button>' +
+        '<div style="display:flex;justify-content:space-between;gap:8px;margin-top:18px;border-top:1px solid rgba(255,255,255,0.08);padding-top:14px;">' +
+          (isNew ? '' : '<button id="eeDeleteKatakcha" style="background:#ef4444;color:#fff;border:none;padding:7px 12px;border-radius:8px;font-size:11.5px;font-weight:800;cursor:pointer;">O‘chirish</button>') +
+          '<div style="display:flex;gap:8px;margin-left:auto;">' +
+            '<button id="eeCancelKatakcha" style="background:#334155;border:none;color:#f8fafc;padding:7px 14px;border-radius:8px;font-size:11.5px;font-weight:800;cursor:pointer;">Bekor qilish</button>' +
+            '<button id="eeSaveKatakcha" style="background:#0284c7;border:none;color:#fff;padding:7px 18px;border-radius:8px;font-size:11.5px;font-weight:900;cursor:pointer;">Saqlash</button>' +
+          '</div>' +
         '</div>' +
       '</div>';
 
@@ -2136,9 +2154,36 @@
 
       var typeSel = om.querySelector('#eeKatakchaType');
       var optWrap = om.querySelector('#eeKatakchaOptionsWrap');
+      var pageInp = om.querySelector('#eeKatakchaPageInput');
+      var prevBtn = om.querySelector('#eeKatakchaPrevPageBtn');
+      var nextBtn = om.querySelector('#eeKatakchaNextPageBtn');
+
+      if (prevBtn && pageInp) {
+        prevBtn.onclick = function() {
+          var val = Math.max(1, (parseInt(pageInp.value, 10) || 1) - 1);
+          pageInp.value = val;
+        };
+      }
+      if (nextBtn && pageInp) {
+        nextBtn.onclick = function() {
+          var val = Math.min(pagesData.length, (parseInt(pageInp.value, 10) || 1) + 1);
+          pageInp.value = val;
+        };
+      }
+
       typeSel.onchange = function() {
-        optWrap.style.display = (typeSel.value === 'choose') ? 'block' : 'none';
+        var v = typeSel.value;
+        optWrap.style.display = (v === 'choose' || v === 'choice' || v === 'select') ? 'block' : 'none';
       };
+
+      var delBtn = om.querySelector('#eeDeleteKatakcha');
+      if (delBtn) {
+        delBtn.onclick = function() {
+          p.elements = (p.elements || []).filter(function(x) { return x.id !== elData.id; });
+          om.remove();
+          renderPagesStream();
+        };
+      }
 
       om.querySelector('#eeCloseKatakchaModal').onclick = om.querySelector('#eeCancelKatakcha').onclick = function() {
         om.remove();
@@ -2149,14 +2194,24 @@
         var labelVal = om.querySelector('#eeKatakchaLabel').value.trim() || ((p.elements || []).length + 1);
         var tVal = typeSel.value;
         var opts = [];
-        if (tVal === 'choose') {
-          opts = om.querySelector('#eeKatakchaOptions').value.split('/').map(function(s) { return s.trim(); }).filter(Boolean);
+        if (tVal === 'choose' || tVal === 'choice' || tVal === 'select') {
+          var rawOpts = om.querySelector('#eeKatakchaOptions').value;
+          opts = rawOpts.split(/[\/,]/).map(function(s) { return s.trim(); }).filter(Boolean);
         }
 
         elData.type = tVal;
         elData.correct = correctVal;
         elData.label = labelVal;
         if (opts.length > 0) elData.options = opts;
+
+        var targetPageNum = parseInt(pageInp ? pageInp.value : (pIdx + 1), 10) || (pIdx + 1);
+        var targetPageIdx = Math.max(0, Math.min(pagesData.length - 1, targetPageNum - 1));
+        if (targetPageIdx !== pIdx) {
+          p.elements = (p.elements || []).filter(function(x) { return x.id !== elData.id; });
+          var targetPage = pagesData[targetPageIdx];
+          if (!targetPage.elements) targetPage.elements = [];
+          targetPage.elements.push(elData);
+        }
 
         var targetPIdx = (pIdx !== undefined && pIdx !== null) ? pIdx : 0;
         var pageSel = om.querySelector('#eeKatakchaPageSelect');
@@ -2305,6 +2360,12 @@
         S.customCurriculumTests = S.customCurriculumTests || {};
         S.customCurriculumTests[curriculumContext.testKey] = newCurTest;
         S.customCurriculumTests[testCode] = newCurTest;
+        var altKey = (curriculumContext.level === 'beginner' ? 'a1' :
+                      curriculumContext.level === 'elementary' ? 'a2' :
+                      curriculumContext.level === 'pre_intermediate' ? 'b1_pre' :
+                      (curriculumContext.level === 'upper_intermediate' || curriculumContext.level === 'upperIntermediate') ? 'b2' :
+                      (curriculumContext.level === 'intermediate' ? 'b1' : curriculumContext.level)) + '_' + curriculumContext.testType + '_' + curriculumContext.num;
+        S.customCurriculumTests[altKey] = newCurTest;
 
         S.allCurriculumTests = S.allCurriculumTests || [];
         var exIdx = S.allCurriculumTests.findIndex(function(t) { return t.id === testCode || (t.testKey === curriculumContext.testKey && t.authorId === (curU ? curU.id : 'admin')); });
@@ -2372,12 +2433,17 @@
   EE.openCurriculumVisualTestBuilder = function(level, testType, num, onSaved, existingTestObj) {
     var S = getStore();
     var testKey = level + '_' + testType + '_' + num;
-    var existingTest = existingTestObj || (S.customCurriculumTests && S.customCurriculumTests[testKey]) || null;
+    var altKey = (level === 'beginner' ? 'a1' :
+                  level === 'elementary' ? 'a2' :
+                  level === 'pre_intermediate' ? 'b1_pre' :
+                  (level === 'upper_intermediate' || level === 'upperIntermediate' || level === 'b2') ? 'b2' :
+                  (level === 'intermediate' || level === 'b1') ? 'b1' : level) + '_' + testType + '_' + num;
+    var existingTest = existingTestObj || (S.customCurriculumTests && (S.customCurriculumTests[testKey] || S.customCurriculumTests[altKey])) || null;
     if (!existingTest && S.allCurriculumTests) {
-      existingTest = S.allCurriculumTests.find(function(t) { return t.testKey === testKey || (t.level === level && t.testType === testType && t.unitOrProgressNum == num); });
+      existingTest = S.allCurriculumTests.find(function(t) { return t.testKey === testKey || t.testKey === altKey || (t.level === level && t.testType === testType && t.unitOrProgressNum == num); });
     }
     var levelLabel = (level === 'intermediate' || level === 'b1') ? 'B1+ Intermediate' :
-                     (level === 'upper_intermediate' || level === 'b2') ? 'B2 Upper-Intermediate' :
+                     (level === 'upper_intermediate' || level === 'upperIntermediate' || level === 'b2') ? 'B2 Upper-Intermediate' :
                      (level === 'beginner' || level === 'a1') ? 'A1 Beginner' :
                      (level === 'elementary' || level === 'a2') ? 'A2 Elementary' :
                      (level === 'pre_intermediate' || level === 'b1_pre') ? 'B1 Pre-Intermediate' : level;
@@ -3827,12 +3893,16 @@
               }
             },
             y: {
+              min: 0,
+              suggestedMax: 100000000,
               grid: { color: 'rgba(255,255,255,0.06)' },
               ticks: {
                 color: '#94a3b8',
+                stepSize: 10000000,
                 callback: function(v) {
-                  if (Math.abs(v) >= 1000000) return (v / 1000000) + ' mln';
-                  if (Math.abs(v) >= 1000) return (v / 1000) + ' ming';
+                  if (v === 0) return '0 so‘m';
+                  if (Math.abs(v) >= 1000000) return (v / 1000000) + ' mln so‘m';
+                  if (Math.abs(v) >= 1000) return (v / 1000) + ' ming so‘m';
                   return v + ' so‘m';
                 }
               }
@@ -3854,18 +3924,39 @@
       
       var totalStudents = 0;
       var totalCap = 0;
-      if (S && S.classes) {
+      var totalPresent = 0;
+      var totalLessonRecords = 0;
+      var totalPaidCount = 0;
+      if (S && Array.isArray(S.classes)) {
         S.classes.forEach(function(c) {
-          totalStudents += (c.students ? c.students.length : 0);
+          var sts = c.students || [];
+          totalStudents += sts.length;
           totalCap += (Number(c.capacity) || 18);
+          if (c.studentPayments) {
+            for (var sid in c.studentPayments) {
+              if (Number(c.studentPayments[sid].paid) > 0) totalPaidCount++;
+            }
+          }
+          if (c.attendance && c.attendance.records) {
+            for (var dk in c.attendance.records) {
+              var dayRecs = c.attendance.records[dk] || {};
+              for (var stKey in dayRecs) {
+                totalLessonRecords++;
+                if (dayRecs[stKey].status === 'K' || dayRecs[stKey].status === 'present') {
+                  totalPresent++;
+                }
+              }
+            }
+          }
         });
       }
       var sigimScore = totalCap > 0 ? Math.min(100, Math.round((totalStudents / totalCap) * 100)) : 85;
-      var intizomScore = rev > 0 ? 95 : 70;
-      var kpiScore = rev > 0 ? 92 : 80;
-      var davomatScore = 88;
-      var rentabellikScore = rev > 0 ? 86 : 75;
-      var xarajatScore = 90;
+      var intizomScore = totalStudents > 0 ? Math.min(100, Math.round((totalPaidCount / totalStudents) * 100)) : (rev > 0 ? 95 : 70);
+      var kpiScore = rev > 0 ? Math.min(100, Math.round(75 + Math.min(25, (Number(paidTeacherPayout) / (rev || 1)) * 50))) : 80;
+      var davomatScore = totalLessonRecords > 0 ? Math.min(100, Math.round((totalPresent / totalLessonRecords) * 100)) : 92;
+      var netP = rev - Number(paidTeacherPayout) - Number(totalExpenses);
+      var rentabellikScore = rev > 0 ? Math.min(100, Math.max(0, Math.round((netP / rev) * 100))) : 75;
+      var xarajatScore = rev > 0 ? Math.min(100, Math.max(0, Math.round(100 - (Number(totalExpenses) / rev) * 100))) : 90;
 
       _eeFinRadarChartInst = new window.Chart(ctxR, {
         type: 'radar',
@@ -3889,6 +3980,13 @@
             legend: {
               position: 'top',
               labels: { color: '#cbd5e1', font: { size: 11, weight: '700' } }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(c) {
+                  return ' ' + c.dataset.label + ': ' + c.raw + '%';
+                }
+              }
             }
           },
           scales: {
