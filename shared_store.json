@@ -23374,10 +23374,6 @@
             "std_navroz_651_shavkatov": {
               "status": "",
               "score": ""
-            },
-            "std_azimjon_848_toirov": {
-              "status": "",
-              "score": ""
             }
           },
           "2026-11-06": {
@@ -23388,25 +23384,76 @@
           }
         },
         "lessonTypes": {
-          "2026-10-30": "Vazifa: 1.1"
+          "2026-10-30": "Vazifa (A2): 7.1, 7.2, 7.3, 7.4"
         },
         "holidays": {},
         "homeworks": {
-          "2026-10-30": {
-            "dateKey": "2026-10-30",
-            "dateDisp": "30.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 0
-          }
+          "2026-10-30": [
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A2",
+              "unit": 7,
+              "lessonCode": "7.1",
+              "lessonTitle": "7.1 Staying healthy",
+              "pages": [
+                3046,
+                3047
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793948784202,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A2",
+              "unit": 7,
+              "lessonCode": "7.2",
+              "lessonTitle": "7.2 Sports and workouts",
+              "pages": [
+                3048,
+                3049
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793948784202,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A2",
+              "unit": 7,
+              "lessonCode": "7.3",
+              "lessonTitle": "7.3 Vocabulary development",
+              "pages": [
+                3050
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793948784202,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A2",
+              "unit": 7,
+              "lessonCode": "7.4",
+              "lessonTitle": "7.4 Speaking and writing",
+              "pages": [
+                3051
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793948784202,
+              "teacherName": "Azizbek Urolov"
+            }
+          ]
         },
-        "updatedAt": 1793948682139
+        "updatedAt": 1793948784202
       },
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
@@ -24317,17 +24364,20 @@
         }
       ],
       "activeHomework": {
+        "type": "workbook",
         "dateKey": "2026-10-30",
         "dateDisp": "30.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
+        "bookLevel": "A2",
+        "unit": 7,
+        "lessonCode": "7.1",
+        "lessonTitle": "7.1 Staying healthy",
         "pages": [
-          4,
-          5
+          3046,
+          3047
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
+        "assignedAt": 1793948784202,
+        "teacherName": "Azizbek Urolov"
       },
       "deletedStudentIds": [
         "std_rayxona_271_qoshqarova",
@@ -26983,7 +27033,7 @@
       "hasLoggedIn": true,
       "isOnline": true,
       "loggedOutAt": 1793947950903,
-      "lastSeen": 1794457101858
+      "lastSeen": 1794457126060
     },
     {
       "id": "tg_98124765",
@@ -27161,7 +27211,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "std_13",
@@ -27337,7 +27387,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27361,7 +27411,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606,
+      "lastSeen": 1794457125597,
       "level": "A1"
     },
     {
@@ -27383,7 +27433,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27404,7 +27454,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27428,7 +27478,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27452,7 +27502,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27474,7 +27524,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27496,7 +27546,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27521,7 +27571,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606,
+      "lastSeen": 1794457125597,
       "level": "B1+"
     },
     {
@@ -27546,7 +27596,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27567,7 +27617,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27589,7 +27639,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27611,7 +27661,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27633,7 +27683,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27657,7 +27707,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27681,7 +27731,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27705,7 +27755,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27726,7 +27776,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "usmonqulovaetiborxon@gmail.com",
@@ -27777,7 +27827,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "admin_official_teacher",
@@ -27789,7 +27839,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794457103606
+      "lastSeen": 1794457125597
     },
     {
       "id": "st_998950079621",
@@ -132106,8 +132156,8 @@
         "y": 68,
         "w": 16,
         "h": 2.2,
-        "top": 86.2,
-        "left": 56.6,
+        "top": 85.2,
+        "left": 58.9,
         "width": 16,
         "height": 2.2,
         "correct": [
@@ -151136,7 +151186,7 @@
     "3087": 1793517957036,
     "4004": 1794456671556,
     "4005": 1794456671557,
-    "4006": 1794457056556,
+    "4006": 1794457119954,
     "4007": 1794457056556,
     "4008": 1793878539074,
     "4009": 1793878539074,
@@ -153356,5 +153406,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794457103986
+  "updatedAt": 1794457126971
 }
