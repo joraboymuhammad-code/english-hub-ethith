@@ -186,6 +186,21 @@
         });
       }
     } catch(e) {}
+    // Load deletedFolderIds & deletedTestIds lists
+    var deletedFolderIds = appState.deletedFolderIds || [];
+    try {
+      var lsDelF = JSON.parse(localStorage.getItem('ethith_deleted_folder_ids') || '[]');
+      if (Array.isArray(lsDelF)) lsDelF.forEach(function(did) { if (deletedFolderIds.indexOf(did) === -1) deletedFolderIds.push(did); });
+    } catch(e) {}
+    appState.deletedFolderIds = deletedFolderIds;
+
+    var deletedTestIds = appState.deletedTestIds || [];
+    try {
+      var lsDelT = JSON.parse(localStorage.getItem('ethith_deleted_test_ids') || '[]');
+      if (Array.isArray(lsDelT)) lsDelT.forEach(function(did) { if (deletedTestIds.indexOf(did) === -1) deletedTestIds.push(did); });
+    } catch(e) {}
+    appState.deletedTestIds = deletedTestIds;
+
     // Load fileExplorer from localStorage or existing appState
     if (!appState.fileExplorer) {
       appState.fileExplorer = { folders: [], tests: [] };
@@ -198,7 +213,7 @@
         if (sourceFe) {
           if (Array.isArray(sourceFe.folders)) {
             sourceFe.folders.forEach(function(f) {
-              if (!appState.fileExplorer.folders.some(function(x) { return x.id === f.id; })) {
+              if (f && deletedFolderIds.indexOf(f.id) === -1 && !appState.fileExplorer.folders.some(function(x) { return x.id === f.id; })) {
                 appState.fileExplorer.folders.push(f);
               }
             });
@@ -206,14 +221,28 @@
           if (Array.isArray(sourceFe.tests)) {
             if (!Array.isArray(appState.fileExplorer.tests)) appState.fileExplorer.tests = [];
             sourceFe.tests.forEach(function(t) {
-              var tIdx = appState.fileExplorer.tests.findIndex(function(x) { return x.id === t.id; });
-              if (tIdx !== -1) appState.fileExplorer.tests[tIdx] = t;
-              else appState.fileExplorer.tests.push(t);
+              if (t && deletedTestIds.indexOf(t.id) === -1) {
+                var tIdx = appState.fileExplorer.tests.findIndex(function(x) { return x.id === t.id; });
+                if (tIdx !== -1) appState.fileExplorer.tests[tIdx] = t;
+                else appState.fileExplorer.tests.push(t);
+              }
             });
           }
         }
       }
     } catch(e) {}
+
+    // Strict cleanup of any deleted items
+    if (appState.fileExplorer && Array.isArray(appState.fileExplorer.folders)) {
+      appState.fileExplorer.folders = appState.fileExplorer.folders.filter(function(f) {
+        return f && deletedFolderIds.indexOf(f.id) === -1;
+      });
+    }
+    if (appState.fileExplorer && Array.isArray(appState.fileExplorer.tests)) {
+      appState.fileExplorer.tests = appState.fileExplorer.tests.filter(function(t) {
+        return t && deletedTestIds.indexOf(t.id) === -1;
+      });
+    }
 
     if (!appState.fileExplorer || !appState.fileExplorer.folders || appState.fileExplorer.folders.length === 0) {
       appState.fileExplorer = {
@@ -1115,10 +1144,31 @@
         e.stopPropagation();
         var fid = btn.getAttribute('data-fid');
         if (confirm("Ushbu papkani va uning ichidagi bog‘langan fayllarni o‘chirishni xohlaysizmi?")) {
+          var S_cur = getStore();
+          var delF = S_cur.deletedFolderIds || [];
+          try {
+            var lsDelF = JSON.parse(localStorage.getItem('ethith_deleted_folder_ids') || '[]');
+            if (Array.isArray(lsDelF)) lsDelF.forEach(function(id) { if (delF.indexOf(id) === -1) delF.push(id); });
+          } catch(e) {}
+          if (delF.indexOf(fid) === -1) delF.push(fid);
+          S_cur.deletedFolderIds = delF;
+          try {
+            localStorage.setItem('ethith_deleted_folder_ids', JSON.stringify(delF));
+          } catch(e) {}
+
           fe.folders = fe.folders.filter(function(f) { return f.id !== fid; });
+          if (S_cur.fileExplorer) S_cur.fileExplorer.folders = fe.folders;
+          if (window.EthithApp && window.EthithApp.state && window.EthithApp.state.fileExplorer) {
+            window.EthithApp.state.fileExplorer.folders = fe.folders;
+          }
           fe.tests.forEach(function(t) { if (t.folderId === fid) t.folderId = 'f_root'; });
+
+          try {
+            localStorage.setItem('ethith_file_explorer', JSON.stringify(fe));
+          } catch(e) {}
+
           saveStore();
-          showToast("Papka o‘chirildi");
+          showToast("✓ Papka o‘chirildi");
           EE.renderExplorerView(container);
         }
       };
@@ -1126,12 +1176,33 @@
 
     // Delete test
     container.querySelectorAll('.ee-del-test-btn').forEach(function(btn) {
-      btn.onclick = function() {
+      btn.onclick = function(e) {
+        if (e) e.stopPropagation();
         var tid = btn.getAttribute('data-tid');
         if (confirm("Rostdan ham ushbu testni o‘chirmoqchimisiz?")) {
+          var S_cur = getStore();
+          var delT = S_cur.deletedTestIds || [];
+          try {
+            var lsDelT = JSON.parse(localStorage.getItem('ethith_deleted_test_ids') || '[]');
+            if (Array.isArray(lsDelT)) lsDelT.forEach(function(id) { if (delT.indexOf(id) === -1) delT.push(id); });
+          } catch(e) {}
+          if (delT.indexOf(tid) === -1) delT.push(tid);
+          S_cur.deletedTestIds = delT;
+          try {
+            localStorage.setItem('ethith_deleted_test_ids', JSON.stringify(delT));
+          } catch(e) {}
+
           fe.tests = fe.tests.filter(function(t) { return t.id !== tid; });
+          if (S_cur.fileExplorer) S_cur.fileExplorer.tests = fe.tests;
+          if (window.EthithApp && window.EthithApp.state && window.EthithApp.state.fileExplorer) {
+            window.EthithApp.state.fileExplorer.tests = fe.tests;
+          }
+          try {
+            localStorage.setItem('ethith_file_explorer', JSON.stringify(fe));
+          } catch(e) {}
+
           saveStore();
-          showToast("Test o‘chirildi");
+          showToast("✓ Test o‘chirildi");
           EE.renderExplorerView(container);
         }
       };
@@ -1341,10 +1412,31 @@
 
     menu.querySelector('#eeCtxDelFolder').onclick = function() {
       if (confirm("Ushbu papkani o‘chirishni xohlaysizmi?")) {
+        var S_cur = getStore();
+        var delF = S_cur.deletedFolderIds || [];
+        try {
+          var lsDelF = JSON.parse(localStorage.getItem('ethith_deleted_folder_ids') || '[]');
+          if (Array.isArray(lsDelF)) lsDelF.forEach(function(id) { if (delF.indexOf(id) === -1) delF.push(id); });
+        } catch(e) {}
+        if (delF.indexOf(folderId) === -1) delF.push(folderId);
+        S_cur.deletedFolderIds = delF;
+        try {
+          localStorage.setItem('ethith_deleted_folder_ids', JSON.stringify(delF));
+        } catch(e) {}
+
         fe.folders = fe.folders.filter(function(item) { return item.id !== folderId; });
+        if (S_cur.fileExplorer) S_cur.fileExplorer.folders = fe.folders;
+        if (window.EthithApp && window.EthithApp.state && window.EthithApp.state.fileExplorer) {
+          window.EthithApp.state.fileExplorer.folders = fe.folders;
+        }
         fe.tests.forEach(function(t) { if (t.folderId === folderId) t.folderId = 'f_root'; });
+
+        try {
+          localStorage.setItem('ethith_file_explorer', JSON.stringify(fe));
+        } catch(e) {}
+
         saveStore();
-        showToast("Papka o‘chirildi");
+        showToast("✓ Papka o‘chirildi");
         EE.renderExplorerView(container);
       }
     };

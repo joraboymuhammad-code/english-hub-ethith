@@ -3669,21 +3669,21 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       '</button>' +
     '</div>';
 
-    h += '<div class="ea-table-scroll-wrap qe-glass-panel" style="position:relative;width:100%;overflow-x:auto;border-radius:22px;padding:2px;">';
+    h += '<div class="ea-table-scroll-wrap qe-glass-panel" title="Sichqonchaning chap tugmasini bosib turib jadvalni pastga, tepaga va yonga erkin surishingiz mumkin" style="position:relative;width:100%;max-height:calc(100vh - 160px);overflow:auto;border-radius:22px;padding:2px;cursor:grab;user-select:none;">';
     h += '<table class="my-table" style="border-collapse:separate;border-spacing:0;width:max-content;min-width:100%;">';
 
     // TABLE HEADER
-    h += '<thead><tr style="background:rgba(8,13,26,0.65);">';
+    h += '<thead style="position:sticky;top:0;z-index:35;background:rgba(8,13,26,0.98);backdrop-filter:blur(20px);"><tr style="background:rgba(8,13,26,0.65);">';
 
     // Sticky Col 1: №
-    h += '<th class="ea-sticky-cell ea-sticky-num-col" style="position:sticky;left:0;z-index:30;background:rgba(8,13,26,0.98);backdrop-filter:blur(20px);width:' + numColW + 'px;min-width:' + numColW + 'px;max-width:' + numColW + 'px;padding:' + (isCollapsed ? '6px 4px' : '8px') + ';border-bottom:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.08);">' +
+    h += '<th class="ea-sticky-cell ea-sticky-num-col" style="position:sticky;left:0;top:0;z-index:50;background:rgba(8,13,26,0.98);backdrop-filter:blur(20px);width:' + numColW + 'px;min-width:' + numColW + 'px;max-width:' + numColW + 'px;padding:' + (isCollapsed ? '6px 4px' : '8px') + ';border-bottom:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.08);">' +
       '<div style="height:115px;display:flex;align-items:center;justify-content:center;font-size:' + (isCollapsed ? '12.5px' : '14px') + ';font-weight:900;color:#94a3b8;border:1px solid rgba(255,255,255,0.12);border-radius:12px;background:rgba(15,23,42,0.65);box-shadow:inset 0 1px 0 rgba(255,255,255,0.1);">' +
         '№' +
       '</div>' +
     '</th>';
 
     // Sticky Col 2: O'quvchi F.I.SH (Collapsible to the left!)
-    h += '<th class="ea-sticky-cell ea-names-col-cell" style="position:sticky;left:' + numColW + 'px;z-index:30;background:rgba(8,13,26,0.98);backdrop-filter:blur(20px);width:' + nameColW + 'px;min-width:' + nameColW + 'px;max-width:' + nameColW + 'px;padding:' + (isCollapsed ? '6px 5px' : '8px') + ';border-bottom:1px solid rgba(255,255,255,0.1);border-right:2px solid rgba(56,189,248,0.35);">' +
+    h += '<th class="ea-sticky-cell ea-names-col-cell" style="position:sticky;left:' + numColW + 'px;top:0;z-index:50;background:rgba(8,13,26,0.98);backdrop-filter:blur(20px);width:' + nameColW + 'px;min-width:' + nameColW + 'px;max-width:' + nameColW + 'px;padding:' + (isCollapsed ? '6px 5px' : '8px') + ';border-bottom:1px solid rgba(255,255,255,0.1);border-right:2px solid rgba(56,189,248,0.35);">' +
       '<div id="eaToggleNamesHeaderBox" title="' + (isCollapsed ? 'Ismlarni to\'liq ko\'rsatish (Kattalashtirish)' : 'Ismlarni chap tomonga yig\'ish (Kichraytirish)') + '" style="height:115px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:' + (isCollapsed ? '12px' : '14px') + ';font-weight:900;color:#f8fafc;border:1px solid rgba(56,189,248,0.22);border-radius:12px;background:rgba(15,23,42,0.72);padding:' + (isCollapsed ? '4px' : '0 12px') + ';text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.12);cursor:pointer;overflow:hidden;">' +
         (isCollapsed
           ? '<span style="font-size:11.5px;font-weight:900;color:#e2e8f0;letter-spacing:0.02em;">F.I.SH</span>' +
@@ -4520,6 +4520,79 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           scrollWrap.scrollTo({ left: 0, behavior: 'smooth' });
         }
       };
+    }
+
+    // Mouse Grab-and-Drag Pan Scroll (Sichqonchaning chap tugmasini bosib turib jadvalni pastga, tepaga, yonga erkin qimirlatish)
+    if (scrollWrap && !scrollWrap._mousePanBound) {
+      scrollWrap._mousePanBound = true;
+      var isMouseDown = false;
+      var hasMoved = false;
+      var startX = 0;
+      var startY = 0;
+      var startScrollLeft = 0;
+      var startScrollTop = 0;
+      var startWinY = 0;
+
+      scrollWrap.addEventListener('mousedown', function(e) {
+        if (e.button !== 0) return; // Only primary left mouse button
+        var tag = (e.target.tagName || '').toLowerCase();
+        if (tag === 'input' || tag === 'select' || tag === 'textarea') return;
+
+        isMouseDown = true;
+        hasMoved = false;
+        startX = e.pageX;
+        startY = e.pageY;
+        startScrollLeft = scrollWrap.scrollLeft;
+        startScrollTop = scrollWrap.scrollTop;
+        startWinY = window.pageYOffset || document.documentElement.scrollTop || 0;
+
+        scrollWrap.style.cursor = 'grabbing';
+      });
+
+      window.addEventListener('mousemove', function(e) {
+        if (!isMouseDown) return;
+        var dx = e.pageX - startX;
+        var dy = e.pageY - startY;
+
+        if (!hasMoved && (Math.abs(dx) > 4 || Math.abs(dy) > 4)) {
+          hasMoved = true;
+        }
+
+        if (hasMoved) {
+          // Horizontal pan (yonga surish)
+          scrollWrap.scrollLeft = startScrollLeft - dx;
+
+          // Vertical pan inside table container
+          if (scrollWrap.scrollHeight > scrollWrap.clientHeight) {
+            scrollWrap.scrollTop = startScrollTop - dy;
+          }
+          // Vertical pan the whole page
+          window.scrollTo({
+            top: startWinY - dy,
+            behavior: 'auto'
+          });
+        }
+      });
+
+      var endMousePan = function(e) {
+        if (isMouseDown) {
+          isMouseDown = false;
+          if (scrollWrap) scrollWrap.style.cursor = 'grab';
+          if (hasMoved) {
+            var preventClick = function(ev) {
+              ev.stopPropagation();
+              ev.preventDefault();
+              window.removeEventListener('click', preventClick, true);
+            };
+            window.addEventListener('click', preventClick, true);
+            setTimeout(function() {
+              window.removeEventListener('click', preventClick, true);
+            }, 120);
+          }
+        }
+      };
+
+      window.addEventListener('mouseup', endMousePan);
     }
 
     // High-responsiveness Touch Swiping for Mobile
