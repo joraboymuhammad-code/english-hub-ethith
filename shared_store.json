@@ -338,11 +338,50 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-02": {
+            "cls_ravshanov_doniyor_cefr_1_std_1": {
+              "status": "",
+              "score": ""
+            }
+          },
+          "2026-10-30": {
+            "cls_ravshanov_doniyor_cefr_1_std_1": {
+              "status": "",
+              "score": ""
+            }
+          },
+          "2026-11-06": {
+            "cls_ravshanov_doniyor_cefr_1_std_1": {
+              "status": "",
+              "score": ""
+            }
+          },
+          "2026-11-04": {
+            "cls_ravshanov_doniyor_cefr_1_std_1": {
+              "status": "",
+              "score": ""
+            }
+          },
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908011
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
         "homeworks": {},
-        "updatedAt": 1793213299615
+        "updatedAt": 1794575908011
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -360,8 +399,6 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningMonths": 0,
-      "learningDays": 0,
       "studentPayments": {
         "cls_ravshanov_doniyor_cefr_1_tester_1": {
           "fee": 300000,
@@ -616,12 +653,14 @@
           "date": "To‘lanmagan"
         }
       },
+      "learningMonths": 0,
+      "learningDays": 0,
       "deletedStudentIds": [],
+      "customStudentNamesTs": {},
       "learningLessons": 0,
       "baselineDate": "2026-11-06",
       "levelTestDate": "2027-02-04",
-      "durationUpdatedAt": 1794575908044,
-      "customStudentNamesTs": {}
+      "durationUpdatedAt": 1794575908044
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_2",
@@ -961,10 +1000,26 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908047
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908047
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -1100,9 +1155,9 @@
         }
       },
       "deletedStudentIds": [],
+      "customStudentNamesTs": {},
       "learningLessons": 0,
-      "durationUpdatedAt": 1794575908078,
-      "customStudentNamesTs": {}
+      "durationUpdatedAt": 1794575908078
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_3",
@@ -1442,9 +1497,23 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908082
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-29": "Vazifa: 1.1"
+          "2026-10-29": "Vazifa: 1.1",
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -1461,13 +1530,25 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1794575908082
       },
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 0,
-      "learningDays": 20,
+      "activeHomework": {
+        "dateKey": "2026-10-29",
+        "dateDisp": "29.10.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
       "studentPayments": {
         "cls_ravshanov_doniyor_cefr_3_tester_1": {
           "fee": 300000,
@@ -1594,25 +1675,140 @@
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_1": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_10": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_11": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_12": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_13": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_14": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_15": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_16": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_17": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_18": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_2": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_3": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_4": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_5": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_6": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_7": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_8": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "cls_ravshanov_doniyor_cefr_3_std_9": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
         }
       },
-      "activeHomework": {
-        "dateKey": "2026-10-29",
-        "dateDisp": "29.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
-        "pages": [
-          4,
-          5
-        ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
-      },
+      "learningMonths": 0,
+      "learningDays": 20,
       "deletedStudentIds": [],
+      "customStudentNamesTs": {},
       "learningLessons": 0,
-      "durationUpdatedAt": 1794575908111,
-      "customStudentNamesTs": {}
+      "durationUpdatedAt": 1794575908111
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_4",
@@ -1952,10 +2148,26 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908115
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908115
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -2091,9 +2303,9 @@
         }
       },
       "deletedStudentIds": [],
+      "customStudentNamesTs": {},
       "learningLessons": 0,
-      "durationUpdatedAt": 1794575908152,
-      "customStudentNamesTs": {}
+      "durationUpdatedAt": 1794575908152
     },
     {
       "id": "cls_qarshiboyev_humoyun_practice",
@@ -2433,10 +2645,26 @@
       "level": "Practice English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908155
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908155
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -2572,9 +2800,9 @@
         }
       },
       "deletedStudentIds": [],
+      "customStudentNamesTs": {},
       "learningLessons": 0,
-      "durationUpdatedAt": 1794575908200,
-      "customStudentNamesTs": {}
+      "durationUpdatedAt": 1794575908200
     },
     {
       "id": "cls_tovboyeva_marjona_beginner",
@@ -2914,10 +3142,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908205
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908205
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -3393,9 +3637,23 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908256
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-28": "Vazifa: 1.1"
+          "2026-10-28": "Vazifa: 1.1",
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -3412,7 +3670,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1794575908256
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -3901,10 +4160,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908313
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908313
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -4380,9 +4655,23 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908371
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-28": "Vazifa: 1.1"
+          "2026-10-28": "Vazifa: 1.1",
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -4400,7 +4689,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793213300749
+        "updatedAt": 1794575908371
       },
       "customStudentNames": {
         "cls_olimjonova_durdona_intermediate_1_tester_10": "Malika Karimova"
@@ -4893,10 +5182,26 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908427
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908427
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -5372,10 +5677,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908482
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908482
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -5851,16 +6172,32 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908535
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908535
       },
       "customStudentNames": {},
       "customStudentPhones": {},
       "extraHomework": [],
-      "learningMonths": 2,
-      "learningDays": 27,
+      "learningMonths": 0,
+      "learningDays": 0,
       "studentPayments": {
         "cls_tagaev_eldor_elementary_tester_1": {
           "fee": 300000,
@@ -5990,7 +6327,11 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "baselineDate": "2026-11-06",
+      "levelTestDate": "2027-02-04",
+      "durationUpdatedAt": 1793964909067
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_1",
@@ -6330,10 +6671,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908596
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908596
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -6809,10 +7166,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908657
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908657
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -7288,10 +7661,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908711
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908711
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -7767,10 +8156,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908762
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908762
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -8246,10 +8651,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908814
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908814
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -8725,10 +9146,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908869
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908869
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -9204,10 +9641,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908930
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908930
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -9683,10 +10136,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575908991
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575908991
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -10162,10 +10631,26 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909036
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909036
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -10641,10 +11126,26 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909093
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909093
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -11120,10 +11621,26 @@
       "level": "Upper-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909147
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909147
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -11599,10 +12116,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909206
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909206
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -12078,10 +12611,26 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909266
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909266
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -12557,10 +13106,26 @@
       "level": "Standard English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909316
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909316
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -13036,10 +13601,26 @@
       "level": "Standard English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909365
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909365
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -13515,10 +14096,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909417
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909417
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -13994,10 +14591,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909467
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909467
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -14473,10 +15086,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909523
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909523
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -14952,9 +15581,23 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909585
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-28": "Vazifa: 1.1"
+          "2026-10-28": "Vazifa: 1.1",
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -14971,7 +15614,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1794575909585
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -15460,10 +16104,26 @@
       "level": "Standard English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909635
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909635
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -15939,10 +16599,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909691
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909691
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -16418,10 +17094,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909741
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909741
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -16897,10 +17589,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909792
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909792
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -17376,10 +18084,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909858
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909858
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -17855,10 +18579,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909915
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909915
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -18334,10 +19074,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575909967
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575909967
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -18813,9 +19569,23 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575910019
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-10-29": "Vazifa: 1.1"
+          "2026-10-29": "Vazifa: 1.1",
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -18832,7 +19602,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1794575910019
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -19321,10 +20092,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575910068
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575910068
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -19800,10 +20587,26 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575910121
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575910121
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -20279,10 +21082,26 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575910174
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575910174
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -20758,10 +21577,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575910226
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575910226
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -21237,10 +22072,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575910278
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575910278
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -21716,10 +22567,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575910342
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575910342
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -22195,10 +23062,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575910395
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575910395
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -22674,10 +23557,26 @@
       "level": "Matematika",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575910451
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1794575910451
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -22837,17 +23736,41 @@
             "std_navroz_651_shavkatov": {
               "status": "",
               "score": ""
+            },
+            "std_azimjon_848_toirov": {
+              "score": "",
+              "status": ""
+            }
+          },
+          "2026-11-06": {
+            "std_azimjon_848_toirov": {
+              "status": "",
+              "score": ""
+            }
+          },
+          "2026-10-30": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575910504
             }
           }
         },
         "lessonTypes": {
-          "2026-10-30": "Vazifa: 1.1"
+          "2026-10-30": "Vazifa (B1+): U1 (1.1)"
         },
         "holidays": {},
         "homeworks": {
           "2026-10-30": {
+            "type": "workbook",
             "dateKey": "2026-10-30",
             "dateDisp": "30.10.2026",
+            "bookLevel": "B1+",
             "unit": 1,
             "lessonCode": "1.1",
             "lessonTitle": "1.1 Are you really my friend?",
@@ -22855,11 +23778,12 @@
               4,
               5
             ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 0
+            "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+            "assignedAt": 1794575694205,
+            "teacherName": "Azizbek Urolov"
           }
         },
-        "updatedAt": 1793734631041
+        "updatedAt": 1794575910504
       },
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
@@ -22905,8 +23829,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425283,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425283
         },
         {
           "id": "std_orazaliyev_514_amirshox",
@@ -22924,8 +23847,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_kamron_187_raimberdiyev",
@@ -22943,8 +23865,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_ziyoda_799_regdfggyj",
@@ -22962,8 +23883,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627422057,
-          "unpaidMonths": 0
+          "updatedAt": 1793627422057
         },
         {
           "id": "std_otkir_903_tursunmatov",
@@ -22981,8 +23901,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_navroz_651_shavkatov",
@@ -23000,8 +23919,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_niyatullo_582_asatullayev",
@@ -23019,8 +23937,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_behruz_942_oktamov",
@@ -23038,8 +23955,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_rayhona_554_qoshqarova",
@@ -23057,8 +23973,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_jamshid_843_komilov",
@@ -23076,8 +23991,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_ozodbek_578_mamatqulov",
@@ -23095,8 +24009,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_odina_419_zoirova",
@@ -23114,8 +24027,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_orozboyev_391_ollohberdi",
@@ -23133,8 +24045,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_yulduz_938_nosurname",
@@ -23152,8 +24063,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_xudoyberdiyeva_775_madina",
@@ -23171,8 +24081,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_gulruh_365_tangirova",
@@ -23190,8 +24099,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_shohsasnam_517_bayrbekova",
@@ -23209,8 +24117,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_azimjon_848_toirov",
@@ -23219,20 +24126,21 @@
           "lastName": "Toirov",
           "email": "azimjon_848_toirov@student.ethith",
           "role": "student",
-          "phone": "941973993",
-          "parentPhone": "941973993",
+          "phone": "941941527",
+          "parentPhone": "941941527",
           "login": "azimjon_848_toirov",
           "password": "azimjon848toi",
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
           "isOnline": true,
-          "coins": 160,
-          "updatedAt": 1793811297042,
+          "coins": 150,
+          "updatedAt": 1793948599638,
+          "lastLogin": "2026-11-13T13:11:08.094Z",
+          "dailyMinutes": 15,
           "hasLoggedIn": true,
           "isLoggedOut": false,
-          "lastSeen": 1794576241226,
-          "unpaidMonths": 0
+          "lastSeen": 1794576526399
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -23250,8 +24158,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_shohista_786_nosurname",
@@ -23269,8 +24176,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_diyor_772_suyundikov",
@@ -23288,8 +24194,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_sabina_672_ibodullayeva",
@@ -23307,8 +24212,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         },
         {
           "id": "std_charos_386_baxtiyorova",
@@ -23326,8 +24230,7 @@
           "manuallyEnrolled": true,
           "isOnline": false,
           "coins": 150,
-          "updatedAt": 1793627425284,
-          "unpaidMonths": 0
+          "updatedAt": 1793627425284
         }
       ],
       "deletedMsgIds": [
@@ -23350,6 +24253,276 @@
               "azimjon_848_toirov"
             ]
           }
+        },
+        {
+          "id": "msg_1793948173768_b3rr4",
+          "timestamp": 1793948173768,
+          "senderId": "admin_official_teacher",
+          "senderName": "Azizbek Urolov",
+          "senderEmail": "azizbek.urolov@ethith.uz",
+          "text": "salom",
+          "time": "11:56 AM",
+          "replyTo": null,
+          "reactions": {
+            "❤️": [
+              "azizbek.urolov@ethith.uz"
+            ]
+          }
+        },
+        {
+          "id": "msg_1794575494131_mn35h",
+          "timestamp": 1794575494131,
+          "senderId": "admin_official_teacher",
+          "senderName": "Azizbek Urolov",
+          "senderEmail": "azizbek.urolov@ethith.uz",
+          "text": "hi",
+          "time": "18:11",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1794575497844_9m8ix",
+          "timestamp": 1794575497844,
+          "senderId": "std_azimjon_848_toirov",
+          "senderName": "Azimjon Toirov",
+          "text": "hi",
+          "time": "18:11",
+          "replyTo": null,
+          "reactions": {
+            "❤️": [
+              "azizbek.urolov@ethith.uz",
+              "azimjon_848_toirov"
+            ]
+          }
+        },
+        {
+          "id": "msg_1794575512272_325yj",
+          "timestamp": 1794575512272,
+          "senderId": "std_azimjon_848_toirov",
+          "senderName": "Azimjon Toirov",
+          "text": "👍",
+          "time": "18:11",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_1794575515387_0i5dg",
+          "timestamp": 1794575515387,
+          "senderId": "admin_official_teacher",
+          "senderName": "Azizbek Urolov",
+          "senderEmail": "azizbek.urolov@ethith.uz",
+          "text": "😊",
+          "time": "18:11",
+          "replyTo": null,
+          "reactions": {}
+        },
+        {
+          "id": "msg_hw_1794575539733",
+          "sender": "Azizbek Urolov",
+          "senderRole": "teacher",
+          "text": "📢 [YANGI UYGA VAZIFA]\n📚 Oxford Workbook: Unit 1 (1.1), Unit 1 (1.2), Unit 1 (1.4), Unit 1 (1.3), Unit 2 (2.1), Unit 2 (2.2), Unit 2 (2.4), Unit 2 (2.3), Unit 2 (2.5)\n📅 Sana: 30.10.2026\n📝 Izoh: Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "timestamp": 1794575539733,
+          "isHomeworkNotice": true,
+          "homeworkData": {
+            "type": "workbook",
+            "dateKey": "2026-10-30",
+            "dateDisp": "30.10.2026",
+            "bookLevel": "B1+",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+            "assignedAt": 1794575539733,
+            "teacherName": "Azizbek Urolov"
+          },
+          "homeworksData": [
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 1,
+              "lessonCode": "1.1",
+              "lessonTitle": "1.1 Are you really my friend?",
+              "pages": [
+                4,
+                5
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 1,
+              "lessonCode": "1.2",
+              "lessonTitle": "1.2 Why spending's #trending",
+              "pages": [
+                6,
+                7
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 1,
+              "lessonCode": "1.4",
+              "lessonTitle": "1.4 Speaking and writing",
+              "pages": [
+                9
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 1,
+              "lessonCode": "1.3",
+              "lessonTitle": "1.3 Vocabulary development",
+              "pages": [
+                8
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.1",
+              "lessonTitle": "2.1 I'll never forget that day",
+              "pages": [
+                10,
+                11
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.2",
+              "lessonTitle": "2.2 Unbelievable?",
+              "pages": [
+                12,
+                13
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.4",
+              "lessonTitle": "2.4 Speaking and writing",
+              "pages": [
+                15
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.3",
+              "lessonTitle": "2.3 Vocabulary development",
+              "pages": [
+                14
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.5",
+              "lessonTitle": "2.5 Review & Reading",
+              "pages": [
+                16,
+                17
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            }
+          ]
+        },
+        {
+          "id": "msg_hw_1794575694205",
+          "sender": "Azizbek Urolov",
+          "senderRole": "teacher",
+          "text": "📢 [YANGI UYGA VAZIFA]\n📚 Oxford Workbook: Unit 1 (1.1)\n📅 Sana: 30.10.2026\n📝 Izoh: Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "timestamp": 1794575694205,
+          "isHomeworkNotice": true,
+          "homeworkData": {
+            "type": "workbook",
+            "dateKey": "2026-10-30",
+            "dateDisp": "30.10.2026",
+            "bookLevel": "B1+",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+            "assignedAt": 1794575694205,
+            "teacherName": "Azizbek Urolov"
+          },
+          "homeworksData": [
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 1,
+              "lessonCode": "1.1",
+              "lessonTitle": "1.1 Are you really my friend?",
+              "pages": [
+                4,
+                5
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575694205,
+              "teacherName": "Azizbek Urolov"
+            }
+          ]
         }
       ],
       "learningMonths": 0,
@@ -23606,11 +24779,174 @@
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
+        },
+        "std_azimjon_848_toirov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_behruz_942_oktamov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_charos_386_baxtiyorova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_diyor_772_suyundikov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_gulruh_365_tangirova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_jamshid_843_komilov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_kamron_187_raimberdiyev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_navroz_651_shavkatov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_niyatullo_582_asatullayev": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_nurlan_856_tangatov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_oktamova_798_zarina": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_orazaliyev_514_amirshox": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_orozboyev_391_ollohberdi": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_otkir_903_tursunmatov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_odina_419_zoirova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_ozodbek_578_mamatqulov": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_rayhona_554_qoshqarova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_sabina_672_ibodullayeva": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_shohista_786_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_shohsasnam_517_bayrbekova": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_xudoyberdiyeva_775_madina": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_yulduz_938_nosurname": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
+        },
+        "std_ziyoda_799_regdfggyj": {
+          "fee": 300000,
+          "paid": 0,
+          "status": "unpaid",
+          "method": "—",
+          "date": "To‘lanmagan"
         }
       },
       "activeHomework": {
+        "type": "workbook",
         "dateKey": "2026-10-30",
         "dateDisp": "30.10.2026",
+        "bookLevel": "B1+",
         "unit": 1,
         "lessonCode": "1.1",
         "lessonTitle": "1.1 Are you really my friend?",
@@ -23618,21 +24954,17 @@
           4,
           5
         ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
+        "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+        "assignedAt": 1794575694205,
+        "teacherName": "Azizbek Urolov"
       },
+      "pinnedId": null,
       "deletedStudentIds": [
         "std_rayxona_271_qoshqarova",
         "Rayxona Qo'shqarova",
         "rayxona_271_qoshqarova@student.ethith",
         "rayxona_271_qoshqarova"
       ],
-      "learningLessons": 0,
-      "baselineDate": "2026-11-05",
-      "levelTestDate": "2027-02-03",
-      "durationUpdatedAt": 1794575910553,
-      "pinnedIds": [],
-      "pinnedId": null,
       "customStudentNamesTs": {
         "std_nurlan_856_tangatov": 1793625077010,
         "std_orazaliyev_514_amirshox": 1793625077010,
@@ -23648,7 +24980,7 @@
         "std_xudoyberdiyeva_775_madina": 1793625077010,
         "std_gulruh_365_tangirova": 1793625077010,
         "std_shohsasnam_517_bayrbekova": 1793625077010,
-        "std_azimjon_848_toirov": 1793625077010,
+        "std_azimjon_848_toirov": 1793948599638,
         "std_oktamova_798_zarina": 1793625077010,
         "std_shohista_786_nosurname": 1793625077010,
         "std_diyor_772_suyundikov": 1793625077010,
@@ -23658,7 +24990,154 @@
         "std_niyatullo_582_asatullayev": 1793625077010,
         "std_navroz_651_shavkatov": 1793625077010,
         "std_otkir_903_tursunmatov": 1793625077010
-      }
+      },
+      "learningLessons": 0,
+      "baselineDate": "2026-11-05",
+      "levelTestDate": "2027-02-03",
+      "durationUpdatedAt": 1794575910553,
+      "pinnedIds": [],
+      "activeHomeworks": [
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 1,
+          "lessonCode": "1.1",
+          "lessonTitle": "1.1 Are you really my friend?",
+          "pages": [
+            4,
+            5
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 1,
+          "lessonCode": "1.2",
+          "lessonTitle": "1.2 Why spending's #trending",
+          "pages": [
+            6,
+            7
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 1,
+          "lessonCode": "1.4",
+          "lessonTitle": "1.4 Speaking and writing",
+          "pages": [
+            9
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 1,
+          "lessonCode": "1.3",
+          "lessonTitle": "1.3 Vocabulary development",
+          "pages": [
+            8
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 2,
+          "lessonCode": "2.1",
+          "lessonTitle": "2.1 I'll never forget that day",
+          "pages": [
+            10,
+            11
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 2,
+          "lessonCode": "2.2",
+          "lessonTitle": "2.2 Unbelievable?",
+          "pages": [
+            12,
+            13
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 2,
+          "lessonCode": "2.4",
+          "lessonTitle": "2.4 Speaking and writing",
+          "pages": [
+            15
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 2,
+          "lessonCode": "2.3",
+          "lessonTitle": "2.3 Vocabulary development",
+          "pages": [
+            14
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 2,
+          "lessonCode": "2.5",
+          "lessonTitle": "2.5 Review & Reading",
+          "pages": [
+            16,
+            17
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        }
+      ]
     },
     {
       "id": "cls_urolov_azizbek_standard",
@@ -23673,9 +25152,23 @@
       "maxCapacity": 18,
       "schedule": "juft",
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575910557
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-11-02": "Vazifa: 1.1"
+          "2026-11-02": "Vazifa: 1.1",
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -23692,7 +25185,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1794575910557
       },
       "customStudentNames": {
         "std_ruxshona_493_amalikova": "Ruxshona Amalikova",
@@ -24158,30 +25652,21 @@
           "date": "To‘lanmagan"
         }
       },
+      "activeHomework": {
+        "dateKey": "2026-11-02",
+        "dateDisp": "02.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {
-        "std_ruxshona_493_amalikova": 0,
-        "std_abdulaziz_454_shodiyorov": 0,
-        "std_iroda_252_isroilova": 0,
-        "std_parizoda_786_xalikova": 0,
-        "std_sevinch_279_nosurname": 0,
-        "std_lazizbek_393_nuriddinov": 0,
-        "std_jahongir_489_polatboyev": 0,
-        "std_orzumurod_789_bekmurodov": 0,
-        "std_shuhrat_255_rahmatullayev": 0,
-        "std_subhon_167_saidmurodov": 0,
-        "std_abdulaziz_982_habibullayev": 0,
-        "std_ulugbek_746_gulomov": 0,
-        "std_marvarid_151_anvarova": 0,
-        "std_malohat_489_abdulhamidova": 0,
-        "std_dildora_362_norsurname": 0,
-        "std_fariza_430_faxriddinova": 0,
-        "std_atham_184_xudoyberdiyev": 0,
-        "std_fayozbek_997_abdukarimov": 0,
-        "std_diyorbek_862_raimqulov": 0,
-        "std_hadicha_393_nosurname": 0,
-        "std_bahora_901_nosurname": 0
-      }
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_urolov_azizbek_intermediate",
@@ -24202,10 +25687,23 @@
               "status": "",
               "score": ""
             }
+          },
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575910621
+            }
           }
         },
         "lessonTypes": {
-          "2026-10-29": "Vazifa: 1.1"
+          "2026-10-29": "Vazifa: 1.1",
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -24223,7 +25721,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793606286867
+        "updatedAt": 1794575910621
       },
       "customStudentNames": {
         "std_orazaliyev_261_amirshox": "O'razaliyev Amirshox",
@@ -24556,7 +26054,19 @@
         }
       ],
       "deletedMsgIds": [],
-      "messages": [],
+      "messages": [
+        {
+          "id": "msg_1793948165761_leiji",
+          "timestamp": 1793948165761,
+          "senderId": "admin_official_teacher",
+          "senderName": "Azizbek Urolov",
+          "senderEmail": "azizbek.urolov@ethith.uz",
+          "text": "salom",
+          "time": "11:56 AM",
+          "replyTo": null,
+          "reactions": {}
+        }
+      ],
       "learningMonths": 1,
       "learningDays": 21,
       "studentPayments": {
@@ -24847,7 +26357,9 @@
         "std_asadbek_247_xolboyev": 1793606286867,
         "std_kazakov_769_husniddin": 1793606286867,
         "std_zebo_198_abduganiyeva": 1793606286867
-      }
+      },
+      "pinnedIds": [],
+      "pinnedId": null
     },
     {
       "id": "cls_urolov_azizbek_practice",
@@ -24862,26 +26374,27 @@
       "maxCapacity": 18,
       "schedule": "juft",
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575910678
+            }
+          }
+        },
         "lessonTypes": {
+          "2026-11-01": "Vazifa: 1.1",
           "2026-11-02": "Vazifa: 1.1",
-          "2026-11-01": "Vazifa: 1.1"
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
-          "2026-11-02": {
-            "dateKey": "2026-11-02",
-            "dateDisp": "02.11.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 0
-          },
           "2026-11-01": {
             "dateKey": "2026-11-01",
             "dateDisp": "01.11.2026",
@@ -24894,8 +26407,22 @@
             ],
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
+          },
+          "2026-11-02": {
+            "dateKey": "2026-11-02",
+            "dateDisp": "02.11.2026",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+            "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1794575910678
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -25209,8 +26736,8 @@
       ],
       "deletedMsgIds": [],
       "messages": [],
-      "learningMonths": 2,
-      "learningDays": 26,
+      "learningMonths": 0,
+      "learningDays": 0,
       "studentPayments": {
         "cls_urolov_azizbek_practice_tester_1": {
           "fee": 300000,
@@ -25339,15 +26866,32 @@
           "date": "To‘lanmagan"
         }
       },
+      "activeHomework": {
+        "dateKey": "2026-11-02",
+        "dateDisp": "02.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "baselineDate": "2026-11-06",
+      "levelTestDate": "2027-02-04",
+      "durationUpdatedAt": 1793965837592
     },
     {
       "id": "cls_1793728994224",
       "code": "ETH-AUW99R",
       "name": "asdasdasdasd",
       "teacher": "muhammad",
-      "teacherId": "",
+      "teacherId": "teacher_1793728925723",
       "teacherName": "Biriktirilmagan",
       "room": "302-xona",
       "schedule": "har_kuni",
@@ -25368,8 +26912,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_2",
@@ -25386,8 +26929,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_3",
@@ -25404,8 +26946,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_4",
@@ -25422,8 +26963,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_5",
@@ -25440,8 +26980,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_6",
@@ -25458,8 +26997,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_7",
@@ -25476,8 +27014,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_8",
@@ -25494,8 +27031,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_9",
@@ -25512,8 +27048,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_10",
@@ -25530,8 +27065,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_11",
@@ -25548,8 +27082,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_12",
@@ -25566,8 +27099,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_13",
@@ -25584,8 +27116,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_14",
@@ -25602,8 +27133,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_15",
@@ -25620,8 +27150,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_16",
@@ -25638,8 +27167,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_17",
@@ -25656,8 +27184,7 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         },
         {
           "id": "cls_1793728994224_std_18",
@@ -25674,15 +27201,28 @@
           "isTester": true,
           "isOnline": false,
           "lastLogin": null,
-          "updatedAt": 1793794747826,
-          "unpaidMonths": 0
+          "updatedAt": 1793794747826
         }
       ],
       "customStudentNames": {},
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-13": {
+            "std_azimjon_848_toirov": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 20,
+              "hwLesson": "Haftalik Onlayn Musobaqa",
+              "hwCorrect": 1,
+              "hwTotal": 5,
+              "hwCompletedAt": 1794575910740
+            }
+          }
+        },
         "lessonTypes": {
-          "2026-11-03": "Vazifa: 1.1"
+          "2026-11-03": "Vazifa: 1.1",
+          "2026-11-13": "Vazifa: Haftalik Onlayn Musobaqa"
         },
         "holidays": {},
         "homeworks": {
@@ -25699,12 +27239,27 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1794575910740
       },
       "deletedMsgIds": [],
       "messages": [],
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "activeHomework": {
+        "dateKey": "2026-11-03",
+        "dateDisp": "03.11.2026",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
+        "pages": [
+          4,
+          5
+        ],
+        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+        "assignedAt": 0
+      },
+      "customStudentNamesTs": {},
+      "customStudentPhones": {}
     }
   ],
   "exams": [
@@ -26237,58 +27792,53 @@
   ],
   "accounts": [
     {
+      "id": "tg_98124765",
+      "role": "student",
+      "name": "Striker_uzb",
+      "email": "mu_striker@telegram.org",
+      "coins": 101340,
+      "level": "A1",
+      "dailyMinutes": 28,
+      "updatedAt": 1793260926584,
+      "login": "mu_striker"
+    },
+    {
+      "id": "admin_official_root",
+      "role": "admin",
+      "name": "Bosh Admin",
+      "email": "ADMIN_12038F1aq8syash@ethith.uz",
+      "coins": 5000,
+      "createdAt": 1792612524777,
+      "level": "C2",
+      "dailyMinutes": 0,
+      "updatedAt": 1792612388994,
+      "gifts": [],
+      "isLoggedOut": false,
+      "hasLoggedIn": true,
+      "isOnline": true,
+      "lastSeen": 1794576526199,
+      "login": "admin_12038f1aq8syash"
+    },
+    {
       "id": "admin_official_teacher",
       "role": "teacher",
       "name": "Ustoz",
       "email": "admin@ethith.uz",
       "createdAt": 1792429101989,
       "coins": 100000,
-      "gifts": [],
       "level": "B1+",
       "dailyMinutes": 0,
-      "updatedAt": 1793739654663,
+      "updatedAt": 1793965896265,
       "avatar": null,
       "nameStyle": null,
       "title": null,
       "victorySound": null,
+      "login": "shodiyor50",
+      "password": "shodiyor2026",
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200,
-      "login": "muhammedjoraboyev1"
-    },
-    {
-      "id": "admin_official_root",
-      "role": "admin",
-      "name": "Bosh Admin",
-      "email": "admin_12038f1aq8syash@ethith.uz",
-      "coins": 5000,
-      "gifts": [],
-      "nameStyle": null,
-      "createdAt": 1792502058827,
-      "level": "C2",
-      "dailyMinutes": 0,
-      "updatedAt": 1792612388994,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794576240208,
-      "login": "admin_12038f1aq8syash"
-    },
-    {
-      "id": "tg_98124765",
-      "role": "student",
-      "name": "Striker_uzb",
-      "email": "mu_striker@telegram.org",
-      "coins": 101340,
-      "avatar": null,
-      "level": "A1",
-      "dailyMinutes": 28,
-      "nameStyle": null,
-      "title": null,
-      "victorySound": null,
-      "updatedAt": 1793260926584,
-      "login": "mu_striker"
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26306,7 +27856,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -26468,21 +28018,22 @@
       "title": "👑 IELTS Qiroli",
       "dailyMinutes": 0,
       "updatedAt": 1793215171236,
-      "login": "usmonqulovaetiborxon",
       "phone": "+998 95 007 96 21",
-      "parentPhone": "+998 95 007 96 21"
+      "parentPhone": "+998 95 007 96 21",
+      "login": "usmonqulovaetiborxon"
     },
     {
       "id": "admin_official_teacher",
+      "role": "teacher",
       "name": "Ustoz",
       "email": "muhammedjoraboyev1@gmail.com",
-      "role": "teacher",
       "coins": 100000,
+      "createdAt": 1793103428758,
       "level": "B1+",
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "std_13",
@@ -26638,16 +28189,28 @@
     },
     {
       "id": "admin_official_teacher",
-      "name": "Ustoz",
-      "email": "elyor.aborbekov@ethith.uz",
-      "login": "elyor70",
+      "name": "Azizbek Urolov",
+      "email": "azizbek.urolov@ethith.uz",
+      "login": "azizbek77",
+      "password": "azizbek2026",
       "role": "teacher",
       "coins": 1000,
-      "updatedAt": 1793392014532,
+      "hourlyRate": 120000,
+      "subject": "Ingliz tili (Upper / Inter)",
+      "teachingHours": 72,
+      "assignedClasses": [
+        "cls_urolov_azizbek_intermediate_practice",
+        "cls_urolov_azizbek_upper_intermediate_standard"
+      ],
+      "createdAt": 1793208669771,
+      "level": "C2",
+      "gifts": [],
+      "updatedAt": 1793773725443,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813,
+      "dailyMinutes": 0
     },
     {
       "id": "admin_official_teacher",
@@ -26666,12 +28229,13 @@
         "cls_ravshanov_doniyor_cefr_3",
         "cls_ravshanov_doniyor_cefr_4"
       ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
+      "createdAt": 1793278421878,
+      "gifts": [],
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26688,11 +28252,11 @@
         "cls_qarshiboyev_humoyun_practice"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26709,11 +28273,11 @@
         "cls_tovboyeva_marjona_beginner"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26733,11 +28297,11 @@
         "cls_olimjonova_durdona_intermediate_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26757,11 +28321,11 @@
         "cls_tagaev_eldor_pre_intermediate_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26779,11 +28343,11 @@
         "cls_yaxshilikova_kamola_elementary"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26801,11 +28365,36 @@
         "cls_sherqoziyeva_iroda_beginner_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
+    },
+    {
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
+      "email": "elyor.aborbekov@ethith.uz",
+      "login": "elyor70",
+      "password": "elyor2026",
+      "role": "teacher",
+      "coins": 1000,
+      "hourlyRate": 110000,
+      "subject": "Ingliz tili (Pre / Inter / Upper)",
+      "teachingHours": 72,
+      "assignedClasses": [
+        "cls_aborbekov_elyor_pre_intermediate_1",
+        "cls_aborbekov_elyor_pre_intermediate_2",
+        "cls_aborbekov_elyor_intermediate_1",
+        "cls_aborbekov_elyor_intermediate_2",
+        "cls_aborbekov_elyor_upper_intermediate"
+      ],
+      "createdAt": 1793202631415,
+      "updatedAt": 1793389353884,
+      "isLoggedOut": false,
+      "hasLoggedIn": true,
+      "isOnline": true,
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26825,11 +28414,11 @@
         "cls_orinboyev_jaloliddin_standard_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26846,11 +28435,11 @@
         "cls_jumanova_pokiza_beginner"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26868,11 +28457,11 @@
         "cls_hayrullayev_arslon_beginner_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26890,11 +28479,11 @@
         "cls_xudoyorova_sarvinoz_standard"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26912,11 +28501,11 @@
         "cls_aliqulova_sevinch_beginner_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014532,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26936,11 +28525,11 @@
         "cls_xojamqulova_diyora_elementary_3"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26960,11 +28549,11 @@
         "cls_bosimbekov_farrux_intermediate_2"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -26984,11 +28573,11 @@
         "cls_ahmadova_barno_pre_intermediate"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "admin_official_teacher",
@@ -27005,11 +28594,11 @@
         "cls_shodiyor_matematika_matematika"
       ],
       "createdAt": 1793202631415,
-      "updatedAt": 1793392014533,
+      "updatedAt": 1793389353884,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200
+      "lastSeen": 1794576525813
     },
     {
       "id": "st_998901239988",
@@ -27022,55 +28611,46 @@
       "level": "A1",
       "joinedAt": 1793214970956,
       "updatedAt": 1793215269858,
-      "login": "_998901239988",
-      "parentPhone": "+998901239988"
+      "parentPhone": "+998901239988",
+      "login": "_998901239988"
     },
     {
       "id": "st_998950079621",
+      "role": "student",
       "name": "Etiborxon Usmonqulova",
       "phone": "+998 95 007 96 21",
       "email": "+998950079621@student.ethith",
-      "role": "student",
+      "level": "A1",
+      "unlocked": {
+        "A1": 1,
+        "A2": 1,
+        "B1": 1,
+        "B2": 1,
+        "C1": 1,
+        "C2": 1
+      },
+      "quizScores": {},
+      "mistakes": [],
+      "dailyMinutes": 0,
       "coins": 5150,
       "avatar": "girl_v7_valkyrie_samurai_1",
-      "level": "A1",
-      "joinedAt": 1793215171236,
-      "title": "👑 IELTS Qiroli"
+      "title": "👑 IELTS Qiroli",
+      "nameStyle": "flame",
+      "gifts": [],
+      "createdAt": 1793215171236,
+      "updatedAt": 1793215171236
     },
     {
-      "id": "t_urolov_azizbek",
-      "name": "Azizbek Urolov",
-      "email": "azizbek.urolov@ethith.uz",
-      "login": "azizbek77",
-      "password": "azizbek2026",
+      "id": "admin_official_teacher",
+      "name": "Ustoz",
+      "email": "muhammadyusuf38@ethith.uz",
+      "login": "muhammadyusuf38",
       "role": "teacher",
       "coins": 1000,
-      "hourlyRate": 120000,
-      "subject": "Ingliz tili (Upper / Inter)",
-      "teachingHours": 72,
-      "assignedClasses": [
-        "cls_urolov_azizbek_intermediate_practice",
-        "cls_urolov_azizbek_upper_intermediate_standard"
-      ],
-      "createdAt": 1793202631415,
-      "updatedAt": 1793473052536,
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576240200,
-      "level": "C2"
-    },
-    {
-      "id": "shamshodbekibrohimov@telegram.org",
-      "role": "student",
-      "name": "𝙎𝙃𝘼𝙈𝙎𝙃𝙊𝘿𝘽𝙀𝙆",
-      "email": "shamshodbekibrohimov@telegram.org",
-      "coins": 150,
-      "gifts": [],
-      "nameStyle": null,
-      "createdAt": 1793630351584,
-      "updatedAt": 1793739506865,
-      "login": "shamshodbekibrohimov"
+      "lastSeen": 1794576525813
     },
     {
       "id": "std_mixswdasd_804_selixasdasd",
@@ -27087,6 +28667,42 @@
       "login": "mixswdasd_selixasdasd"
     },
     {
+      "id": "shamshodbekibrohimov@telegram.org",
+      "role": "student",
+      "name": "𝙎𝙃𝘼𝙈𝙎𝙃𝙊𝘿𝘽𝙀𝙆",
+      "email": "shamshodbekibrohimov@telegram.org",
+      "coins": 150,
+      "gifts": [],
+      "nameStyle": null,
+      "createdAt": 1793630351584,
+      "updatedAt": 1793782139091,
+      "login": "shamshodbekibrohimov"
+    },
+    {
+      "id": "std_azimjon_848_toirov",
+      "role": "student",
+      "name": "Azimjon Toirov",
+      "email": "azimjon.toirov@ethith.uz",
+      "coins": 210,
+      "gifts": [],
+      "avatar": null,
+      "title": null,
+      "nameStyle": null,
+      "createdAt": 1793720576586,
+      "updatedAt": 1793948599638,
+      "isLoggedOut": false,
+      "hasLoggedIn": true,
+      "isOnline": true,
+      "lastSeen": 1794576526399,
+      "login": "azimjon_848_toirov",
+      "password": "azimjon848toi",
+      "phone": "941941527",
+      "parentPhone": "941941527",
+      "classId": "cls_urolov_azizbek_upper",
+      "level": "A1",
+      "dailyMinutes": 3
+    },
+    {
       "id": "std_azimjon_848_toirov",
       "role": "student",
       "name": "Azimjon Toirov",
@@ -27101,9 +28717,450 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794576241226,
+      "lastSeen": 1794576526399,
       "classId": "cls_urolov_azizbek_upper",
-      "login": "azimjon_848_toirov"
+      "login": "azimjon_848_toirov",
+      "lastLogin": "2026-11-13T13:11:08.093Z"
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_1",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_1",
+      "role": "student",
+      "name": "tester_1",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_1@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_2",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_2",
+      "role": "student",
+      "name": "tester_2",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_2@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_3",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_3",
+      "role": "student",
+      "name": "tester_3",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_3@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_4",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_4",
+      "role": "student",
+      "name": "tester_4",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_4@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_5",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_5",
+      "role": "student",
+      "name": "tester_5",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_5@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_6",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_6",
+      "role": "student",
+      "name": "tester_6",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_6@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_7",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_7",
+      "role": "student",
+      "name": "tester_7",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_7@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_8",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_8",
+      "role": "student",
+      "name": "tester_8",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_8@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_9",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_9",
+      "role": "student",
+      "name": "tester_9",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_9@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_10",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_10",
+      "role": "student",
+      "name": "tester_10",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_10@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_11",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_11",
+      "role": "student",
+      "name": "tester_11",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_11@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_12",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_12",
+      "role": "student",
+      "name": "tester_12",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_12@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_13",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_13",
+      "role": "student",
+      "name": "tester_13",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_13@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_14",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_14",
+      "role": "student",
+      "name": "tester_14",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_14@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_15",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_15",
+      "role": "student",
+      "name": "tester_15",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_15@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_16",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_16",
+      "role": "student",
+      "name": "tester_16",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_16@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_17",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_17",
+      "role": "student",
+      "name": "tester_17",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_17@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "cls_ravshanov_doniyor_cefr_1_std_18",
+      "login": "cls_ravshanov_doniyor_cefr_1_std_18",
+      "role": "student",
+      "name": "tester_18",
+      "email": "cls_ravshanov_doniyor_cefr_1_std_18@ethith.uz",
+      "coins": 0,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793794747826
+    },
+    {
+      "id": "nurlan_856_tangatov",
+      "login": "nurlan_856_tangatov",
+      "role": "student",
+      "name": "Nurlan Tangatov",
+      "email": "nurlan_856_tangatov@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425283
+    },
+    {
+      "id": "orazaliyev_514_amirshox",
+      "login": "orazaliyev_514_amirshox",
+      "role": "student",
+      "name": "O'razaliyev Amirshox",
+      "email": "orazaliyev_514_amirshox@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "kamron_187_raimberdiyev",
+      "login": "kamron_187_raimberdiyev",
+      "role": "student",
+      "name": "Kamron Raimberdiyev",
+      "email": "kamron_187_raimberdiyev@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "ziyoda_799_regdfggyj",
+      "login": "ziyoda_799_regdfggyj",
+      "role": "student",
+      "name": "Ziyoda No username",
+      "email": "ziyoda_799_regdfggyj@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627422057
+    },
+    {
+      "id": "otkir_903_tursunmatov",
+      "login": "otkir_903_tursunmatov",
+      "role": "student",
+      "name": "O'tkir Tursunmatov",
+      "email": "otkir_903_tursunmatov@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "navroz_651_shavkatov",
+      "login": "navroz_651_shavkatov",
+      "role": "student",
+      "name": "Navro'z Shavkatov",
+      "email": "navroz_651_shavkatov@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "niyatullo_582_asatullayev",
+      "login": "niyatullo_582_asatullayev",
+      "role": "student",
+      "name": "Niyatullo Asatullayev",
+      "email": "niyatullo_582_asatullayev@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "behruz_942_oktamov",
+      "login": "behruz_942_oktamov",
+      "role": "student",
+      "name": "Behruz O'ktamov",
+      "email": "behruz_942_oktamov@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "rayhona_554_qoshqarova",
+      "login": "rayhona_554_qoshqarova",
+      "role": "student",
+      "name": "Rayhona Qo'shqarova",
+      "email": "rayhona_554_qoshqarova@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "jamshid_843_komilov",
+      "login": "jamshid_843_komilov",
+      "role": "student",
+      "name": "Jamshid Komilov",
+      "email": "jamshid_843_komilov@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "ozodbek_578_mamatqulov",
+      "login": "ozodbek_578_mamatqulov",
+      "role": "student",
+      "name": "Ozodbek Mamatqulov",
+      "email": "ozodbek_578_mamatqulov@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "odina_419_zoirova",
+      "login": "odina_419_zoirova",
+      "role": "student",
+      "name": "Odina Zoirova",
+      "email": "odina_419_zoirova@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "orozboyev_391_ollohberdi",
+      "login": "orozboyev_391_ollohberdi",
+      "role": "student",
+      "name": "O'rozboyev Ollohberdi",
+      "email": "orozboyev_391_ollohberdi@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "yulduz_938_nosurname",
+      "login": "yulduz_938_nosurname",
+      "role": "student",
+      "name": "Yulduz No Surname",
+      "email": "yulduz_938_nosurname@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "xudoyberdiyeva_775_madina",
+      "login": "xudoyberdiyeva_775_madina",
+      "role": "student",
+      "name": "Xudoyberdiyeva Madina",
+      "email": "xudoyberdiyeva_775_madina@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "gulruh_365_tangirova",
+      "login": "gulruh_365_tangirova",
+      "role": "student",
+      "name": "Gulruh Tangirova",
+      "email": "gulruh_365_tangirova@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "shohsasnam_517_bayrbekova",
+      "login": "shohsasnam_517_bayrbekova",
+      "role": "student",
+      "name": "Shohsasnam Bayrbekova",
+      "email": "shohsasnam_517_bayrbekova@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "oktamova_798_zarina",
+      "login": "oktamova_798_zarina",
+      "role": "student",
+      "name": "O'ktamova Zarina",
+      "email": "oktamova_798_zarina@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "shohista_786_nosurname",
+      "login": "shohista_786_nosurname",
+      "role": "student",
+      "name": "Shohista No Surname",
+      "email": "shohista_786_nosurname@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "diyor_772_suyundikov",
+      "login": "diyor_772_suyundikov",
+      "role": "student",
+      "name": "Diyor Suyundikov",
+      "email": "diyor_772_suyundikov@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "sabina_672_ibodullayeva",
+      "login": "sabina_672_ibodullayeva",
+      "role": "student",
+      "name": "Sabina Ibodullayeva",
+      "email": "sabina_672_ibodullayeva@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
+    },
+    {
+      "id": "charos_386_baxtiyorova",
+      "login": "charos_386_baxtiyorova",
+      "role": "student",
+      "name": "Charos Baxtiyorova",
+      "email": "charos_386_baxtiyorova@student.ethith",
+      "coins": 150,
+      "level": "B1+",
+      "dailyMinutes": 0,
+      "updatedAt": 1793627425284
     },
     {
       "id": "std_mix_416_selix",
@@ -150104,12 +152161,41 @@
   },
   "teachers": [
     {
+      "id": "t_urolov_azizbek",
+      "name": "Azizbek Urolov",
+      "email": "azizbek.urolov@ethith.uz",
+      "subject": "Ingliz tili (Upper / Inter)",
+      "hourlyRate": 120000,
+      "teachingHours": 72,
+      "card": "8600 9184 5348 5520",
+      "paidThisMonth": false,
+      "assignedClasses": [
+        "cls_urolov_azizbek_intermediate_practice",
+        "cls_urolov_azizbek_upper_intermediate_standard",
+        "cls_urolov_azizbek_upper",
+        "cls_urolov_azizbek_standard",
+        "cls_urolov_azizbek_intermediate",
+        "cls_urolov_azizbek_practice"
+      ],
+      "classOrder": [
+        "cls_urolov_azizbek_intermediate_practice",
+        "cls_urolov_azizbek_upper_intermediate_standard"
+      ],
+      "login": "azizbek77",
+      "password": "azizbek2026",
+      "salarySharePercent": 50,
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "AZIZBEK77",
+      "unpaidMonths": 0
+    },
+    {
       "id": "t_ravshanov_doniyor",
       "name": "Ravshanov Doniyor",
       "email": "doniyor.ravshanov@ethith.uz",
       "subject": "Ingliz tili (CEFR Multi-Level)",
       "hourlyRate": 110000,
-      "teachingHours": 0,
+      "teachingHours": 68,
       "card": "8600 1737 6773 7826",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150124,14 +152210,13 @@
         "cls_ravshanov_doniyor_cefr_3",
         "cls_ravshanov_doniyor_cefr_4"
       ],
-      "inviteCode": "RAVSHANOV24",
       "login": "doniyor24",
       "password": "doniyor2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "RAVSHANOV24",
+      "unpaidMonths": 0
     },
     {
       "id": "t_qarshiboyev_humoyun",
@@ -150139,7 +152224,7 @@
       "email": "humoyun.qarshiboyev@ethith.uz",
       "subject": "Ingliz tili (Practice English)",
       "hourlyRate": 95000,
-      "teachingHours": 0,
+      "teachingHours": 48,
       "card": "8600 9180 1074 6310",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150148,14 +152233,13 @@
       "classOrder": [
         "cls_qarshiboyev_humoyun_practice"
       ],
-      "inviteCode": "QARSHIBOYEV15",
       "login": "humoyun15",
       "password": "humoyun2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "QARSHIBOYEV15",
+      "unpaidMonths": 0
     },
     {
       "id": "t_tovboyeva_marjona",
@@ -150163,7 +152247,7 @@
       "email": "marjona.tovboyeva@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 90000,
-      "teachingHours": 0,
+      "teachingHours": 48,
       "card": "8600 7570 9747 6845",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150172,16 +152256,13 @@
       "classOrder": [
         "cls_tovboyeva_marjona_beginner"
       ],
-      "inviteCode": "MARJONA88",
       "login": "marjona88",
       "password": "marjona2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "phone": "+998 90 ..."
+      "inviteCode": "MARJONA88",
+      "unpaidMonths": 0
     },
     {
       "id": "t_olimjonova_durdona",
@@ -150189,7 +152270,7 @@
       "email": "durdona.olimjonova@ethith.uz",
       "subject": "Ingliz tili (Beginner / Inter)",
       "hourlyRate": 100000,
-      "teachingHours": 0,
+      "teachingHours": 64,
       "card": "8600 5388 3997 7659",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150204,14 +152285,13 @@
         "cls_olimjonova_durdona_intermediate_1",
         "cls_olimjonova_durdona_intermediate_2"
       ],
-      "inviteCode": "DURDONA12",
       "login": "durdona12",
       "password": "durdona2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "DURDONA12",
+      "unpaidMonths": 0
     },
     {
       "id": "t_tagaev_eldor",
@@ -150219,7 +152299,7 @@
       "email": "eldor.tagaev@ethith.uz",
       "subject": "Ingliz tili (General English)",
       "hourlyRate": 100000,
-      "teachingHours": 0,
+      "teachingHours": 64,
       "card": "8600 9836 2231 3521",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150234,14 +152314,13 @@
         "cls_tagaev_eldor_pre_intermediate_1",
         "cls_tagaev_eldor_pre_intermediate_2"
       ],
-      "inviteCode": "ELDOR33",
       "login": "eldor33",
       "password": "eldor2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "ELDOR33",
+      "unpaidMonths": 0
     },
     {
       "id": "t_yaxshilikova_kamola",
@@ -150249,7 +152328,7 @@
       "email": "kamola.yaxshilikova@ethith.uz",
       "subject": "Ingliz tili (Beginner / Elementary)",
       "hourlyRate": 95000,
-      "teachingHours": 0,
+      "teachingHours": 54,
       "card": "8600 3037 8661 9611",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150260,14 +152339,13 @@
         "cls_yaxshilikova_kamola_beginner",
         "cls_yaxshilikova_kamola_elementary"
       ],
-      "inviteCode": "KAMOLA45",
       "login": "kamola45",
       "password": "kamola2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "KAMOLA45",
+      "unpaidMonths": 0
     },
     {
       "id": "t_sherqoziyeva_iroda",
@@ -150275,7 +152353,7 @@
       "email": "iroda.sherqoziyeva@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 95000,
-      "teachingHours": 0,
+      "teachingHours": 54,
       "card": "8600 8200 8823 6053",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150286,14 +152364,13 @@
         "cls_sherqoziyeva_iroda_beginner_1",
         "cls_sherqoziyeva_iroda_beginner_2"
       ],
-      "inviteCode": "IRODA19",
       "login": "iroda19",
       "password": "iroda2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "IRODA19",
+      "unpaidMonths": 0
     },
     {
       "id": "t_aborbekov_elyor",
@@ -150301,7 +152378,7 @@
       "email": "elyor.aborbekov@ethith.uz",
       "subject": "Ingliz tili (Pre / Inter / Upper)",
       "hourlyRate": 110000,
-      "teachingHours": 0,
+      "teachingHours": 72,
       "card": "8600 4747 3927 9285",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150318,14 +152395,13 @@
         "cls_aborbekov_elyor_intermediate_2",
         "cls_aborbekov_elyor_upper_intermediate"
       ],
-      "inviteCode": "ELYOR70",
       "login": "elyor70",
       "password": "elyor2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "ELYOR70",
+      "unpaidMonths": 0
     },
     {
       "id": "t_orinboyev_jaloliddin",
@@ -150333,7 +152409,7 @@
       "email": "jaloliddin.orinboyev@ethith.uz",
       "subject": "Ingliz tili (Pre / Inter / Standard)",
       "hourlyRate": 105000,
-      "teachingHours": 0,
+      "teachingHours": 64,
       "card": "8600 3286 1441 8063",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150348,14 +152424,13 @@
         "cls_orinboyev_jaloliddin_standard_1",
         "cls_orinboyev_jaloliddin_standard_2"
       ],
-      "inviteCode": "JALOLIDDIN99",
       "login": "jaloliddin99",
       "password": "jaloliddin2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "JALOLIDDIN99",
+      "unpaidMonths": 0
     },
     {
       "id": "t_jumanova_pokiza",
@@ -150363,7 +152438,7 @@
       "email": "pokiza.jumanova@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 90000,
-      "teachingHours": 0,
+      "teachingHours": 48,
       "card": "8600 4814 2290 9478",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150372,14 +152447,13 @@
       "classOrder": [
         "cls_jumanova_pokiza_beginner"
       ],
-      "inviteCode": "POKIZA07",
       "login": "pokiza07",
       "password": "pokiza2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "POKIZA07",
+      "unpaidMonths": 0
     },
     {
       "id": "t_hayrullayev_arslon",
@@ -150387,7 +152461,7 @@
       "email": "arslon.hayrullayev@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 95000,
-      "teachingHours": 0,
+      "teachingHours": 54,
       "card": "8600 2983 6185 5341",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150398,14 +152472,13 @@
         "cls_hayrullayev_arslon_beginner_1",
         "cls_hayrullayev_arslon_beginner_2"
       ],
-      "inviteCode": "ARSLON64",
       "login": "arslon64",
       "password": "arslon2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "ARSLON64",
+      "unpaidMonths": 0
     },
     {
       "id": "t_xudoyorova_sarvinoz",
@@ -150413,7 +152486,7 @@
       "email": "sarvinoz.xudoyorova@ethith.uz",
       "subject": "Ingliz tili (Intermediate / Standard)",
       "hourlyRate": 100000,
-      "teachingHours": 0,
+      "teachingHours": 54,
       "card": "8600 2510 8636 7287",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150424,14 +152497,13 @@
         "cls_xudoyorova_sarvinoz_intermediate",
         "cls_xudoyorova_sarvinoz_standard"
       ],
-      "inviteCode": "SARVINOZ82",
       "login": "sarvinoz82",
       "password": "sarvinoz2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "SARVINOZ82",
+      "unpaidMonths": 0
     },
     {
       "id": "t_aliqulova_sevinch",
@@ -150439,7 +152511,7 @@
       "email": "sevinch.aliqulova@ethith.uz",
       "subject": "Ingliz tili (Beginner)",
       "hourlyRate": 95000,
-      "teachingHours": 0,
+      "teachingHours": 54,
       "card": "8600 9373 3768 6749",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150450,14 +152522,12 @@
         "cls_aliqulova_sevinch_beginner_1",
         "cls_aliqulova_sevinch_beginner_2"
       ],
-      "inviteCode": "SEVINCH55",
       "login": "sevinch55",
       "password": "sevinch2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "monthlyBonus": 1000000,
+      "studentMonthlyFee": 300000,
       "monthlySalary": 0,
+      "inviteCode": "SEVINCH55",
       "unpaidMonths": 0
     },
     {
@@ -150466,7 +152536,7 @@
       "email": "diyora.xojamqulova@ethith.uz",
       "subject": "Ingliz tili (Beginner / Elementary)",
       "hourlyRate": 100000,
-      "teachingHours": 0,
+      "teachingHours": 64,
       "card": "8600 7019 8442 4863",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150481,14 +152551,13 @@
         "cls_xojamqulova_diyora_elementary_2",
         "cls_xojamqulova_diyora_elementary_3"
       ],
-      "inviteCode": "DIYORA21",
       "login": "diyora21",
       "password": "diyora2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "DIYORA21",
+      "unpaidMonths": 0
     },
     {
       "id": "t_bosimbekov_farrux",
@@ -150496,7 +152565,7 @@
       "email": "farrux.bosimbekov@ethith.uz",
       "subject": "Ingliz tili (Pre-Inter / Inter)",
       "hourlyRate": 105000,
-      "teachingHours": 0,
+      "teachingHours": 64,
       "card": "8600 7883 1652 5691",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150511,14 +152580,13 @@
         "cls_bosimbekov_farrux_intermediate_1",
         "cls_bosimbekov_farrux_intermediate_2"
       ],
-      "inviteCode": "FARRUX93",
       "login": "farrux93",
       "password": "farrux2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
+      "studentMonthlyFee": 300000,
+      "monthlySalary": 0,
+      "inviteCode": "FARRUX93",
+      "unpaidMonths": 0
     },
     {
       "id": "t_ahmadova_barno",
@@ -150526,7 +152594,7 @@
       "email": "barno.ahmadova@ethith.uz",
       "subject": "Ingliz tili (Elementary / Pre-Inter)",
       "hourlyRate": 100000,
-      "teachingHours": 0,
+      "teachingHours": 64,
       "card": "8600 2725 8055 2896",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150541,15 +152609,12 @@
         "cls_ahmadova_barno_elementary_3",
         "cls_ahmadova_barno_pre_intermediate"
       ],
-      "inviteCode": "BARNO36",
       "login": "barno36",
       "password": "barno2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "phone": "+998 90 ...",
+      "inviteCode": "BARNO36",
       "unpaidMonths": 0
     },
     {
@@ -150558,7 +152623,7 @@
       "email": "shodiyor.matematika@ethith.uz",
       "subject": "Matematika",
       "hourlyRate": 110000,
-      "teachingHours": 0,
+      "teachingHours": 54,
       "card": "8600 5419 8367 2781",
       "paidThisMonth": false,
       "assignedClasses": [
@@ -150567,44 +152632,12 @@
       "classOrder": [
         "cls_shodiyor_matematika_matematika"
       ],
-      "inviteCode": "SHODIYOR50",
       "login": "shodiyor50",
       "password": "shodiyor2026",
       "salarySharePercent": 50,
-      "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "unpaidMonths": 0,
-      "monthlySalary": 0
-    },
-    {
-      "id": "t_urolov_azizbek",
-      "name": "Azizbek Urolov",
-      "email": "azizbek.urolov@ethith.uz",
-      "subject": "Ingliz tili (Upper / Inter)",
-      "hourlyRate": 120000,
-      "teachingHours": 0,
-      "card": "8600 9184 5348 5520",
-      "paidThisMonth": false,
-      "assignedClasses": [
-        "cls_urolov_azizbek_upper",
-        "cls_urolov_azizbek_standard",
-        "cls_urolov_azizbek_intermediate",
-        "cls_urolov_azizbek_practice",
-        "cls_urolov_azizbek_upper_intermediate_standard",
-        "cls_urolov_azizbek_intermediate_practice"
-      ],
-      "classOrder": [
-        "cls_urolov_azizbek_upper",
-        "cls_urolov_azizbek_standard",
-        "cls_urolov_azizbek_intermediate",
-        "cls_urolov_azizbek_practice"
-      ],
-      "login": "azizbek77",
-      "password": "azizbek2026",
-      "salarySharePercent": 55,
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
-      "inviteCode": "AZIZBEK77",
+      "inviteCode": "SHODIYOR50",
       "unpaidMonths": 0
     },
     {
@@ -150640,19 +152673,39 @@
         "id": "f_root",
         "name": "Bosh Papka",
         "parentId": null,
-        "createdAt": 1793024168370
+        "createdAt": 1793208683543
       },
       {
         "id": "f_grammar",
         "name": "Grammar Mastery",
         "parentId": "f_root",
-        "createdAt": 1793024168370
+        "createdAt": 1793208683543
+      },
+      {
+        "id": "f_vocab",
+        "name": "Vocabulary Builder",
+        "parentId": "f_root",
+        "createdAt": 1793208683543
       },
       {
         "id": "f_ielts",
         "name": "IELTS Mock Tests",
         "parentId": "f_root",
-        "createdAt": 1793024168370
+        "createdAt": 1793208683543
+      },
+      {
+        "id": "f_root_t_urolov_azizbek",
+        "name": "Azizbek Urolov (Shaxsiy Papka)",
+        "ownerId": "t_urolov_azizbek",
+        "parentId": null,
+        "createdAt": 1793208683543
+      },
+      {
+        "id": "f_root_admin_official_teacher",
+        "name": "Ustoz (Shaxsiy Papka)",
+        "ownerId": "admin_official_teacher",
+        "parentId": null,
+        "createdAt": 1793379976562
       },
       {
         "id": "f_1793028050497",
@@ -150681,19 +152734,6 @@
         "ownerRole": "teacher",
         "ownerId": "teacher_1793431051291",
         "isSystem": true
-      },
-      {
-        "id": "f_vocab",
-        "name": "Vocabulary Builder",
-        "parentId": "f_root",
-        "createdAt": 1792940000000
-      },
-      {
-        "id": "f_root_t_urolov_azizbek",
-        "name": "Azizbek Urolov (Shaxsiy Papka)",
-        "ownerId": "t_urolov_azizbek",
-        "parentId": null,
-        "createdAt": 1793202631415
       },
       {
         "id": "f_root_t_ravshanov_doniyor",
@@ -150823,13 +152863,6 @@
         "isSystem": true
       },
       {
-        "id": "f_root_admin_official_teacher",
-        "name": "Ustoz (Shaxsiy Papka)",
-        "ownerId": "admin_official_teacher",
-        "parentId": null,
-        "createdAt": 1793468183930
-      },
-      {
         "id": "f_1793596846702",
         "name": "fvc",
         "parentId": "f_root_t_urolov_azizbek",
@@ -150843,7 +152876,7 @@
         "title": "Unit 7: Modals of Deduction & Obligation",
         "folderId": "f_grammar",
         "authorName": "Ustoz",
-        "createdAt": 1793024168370,
+        "createdAt": 1793208683543,
         "maxAttempts": 1,
         "questions": [
           {
@@ -150903,7 +152936,7 @@
         "title": "Unit 8: Compound Adjectives & Participle Clauses",
         "folderId": "f_vocab",
         "authorName": "Zizi Ustoz",
-        "createdAt": 1793386368518,
+        "createdAt": 1793208683543,
         "maxAttempts": 1,
         "questions": [
           {
@@ -151443,9 +153476,59 @@
       "authorEmail": "teacher@ethith.uz",
       "startDate": 1793721166177,
       "endDate": 1794325966177,
-      "participants": {},
+      "participants": {
+        "std_azimjon_848_toirov": {
+          "id": "std_azimjon_848_toirov",
+          "name": "Azimjon Toirov",
+          "score": 20,
+          "timeSec": 15,
+          "completedAt": 1794575907951
+        }
+      },
       "status": "active",
       "coinsDistributed": false
+    },
+    {
+      "id": "cnt_kuzgi_2026",
+      "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
+      "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
+      "startDate": 1793122283543,
+      "endDate": 1793813483543,
+      "prizeCoins": 1000,
+      "testId": "TST-7K2M9",
+      "participants": {
+        "std_1": {
+          "name": "Ashurov Dilyorbek",
+          "score": 95,
+          "timeSec": 140,
+          "completedAt": 1793205083543
+        },
+        "std_2": {
+          "name": "Ergasheva Madina",
+          "score": 92,
+          "timeSec": 165,
+          "completedAt": 1793205183543
+        },
+        "std_4": {
+          "name": "JO‘RABOYEV MUXAMMADYUSUF",
+          "score": 98,
+          "timeSec": 110,
+          "completedAt": 1793205283543
+        },
+        "std_5": {
+          "name": "Jo'raboyev Javoxir",
+          "score": 88,
+          "timeSec": 180,
+          "completedAt": 1793205383543
+        },
+        "std_6": {
+          "name": "Mavlonova Ruxshona",
+          "score": 85,
+          "timeSec": 190,
+          "completedAt": 1793205483543
+        }
+      },
+      "status": "active"
     }
   ],
   "payments": {
@@ -151453,17 +153536,17 @@
       "std_1": {
         "status": "paid",
         "baseAmount": 200000,
-        "offsetAmount": 200081,
-        "paidAmount": 200081,
-        "paidAt": 1793024274243,
-        "verifiedBy": "admin_manual"
+        "offsetAmount": 200014,
+        "paidAmount": 200014,
+        "paidAt": 1792949483543,
+        "verifiedBy": "auto_offset"
       },
       "std_2": {
         "status": "paid",
         "baseAmount": 200000,
         "offsetAmount": 200028,
         "paidAmount": 200028,
-        "paidAt": 1792851368370,
+        "paidAt": 1793035883543,
         "verifiedBy": "auto_offset"
       },
       "std_3": {
@@ -151477,7 +153560,7 @@
         "baseAmount": 200000,
         "offsetAmount": 200056,
         "paidAmount": 200056,
-        "paidAt": 1792937768370,
+        "paidAt": 1793122283543,
         "verifiedBy": "auto_offset"
       },
       "std_5": {
@@ -151486,7 +153569,7 @@
         "offsetAmount": 200070,
         "paidAmount": 200070,
         "receiptUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='300' height='200' fill='%231e293b'/><text x='20' y='50' fill='%2338bdf8' font-size='16'>Click Chek: 200,070 UZS</text><text x='20' y='90' fill='%2394a3b8' font-size='12'>Sana: 25.10.2026 14:32</text></svg>",
-        "paidAt": 1793016968370
+        "paidAt": 1793201483543
       }
     }
   },
@@ -152097,5 +154180,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794576241608
+  "updatedAt": 1794576526862
 }
