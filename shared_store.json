@@ -22881,7 +22881,7 @@
           }
         },
         "lessonTypes": {
-          "2026-10-30": "Vazifa (A2): 7.1, 7.2, 7.3, 7.4"
+          "2026-10-30": "Vazifa (B1+): U1 (1.1), U1 (1.2), U1 (1.4), U1 (1.3), U2 (2.1), U2 (2.2), U2 (2.4), U2 (2.3), U2 (2.5)"
         },
         "holidays": {},
         "homeworks": {
@@ -22890,67 +22890,145 @@
               "type": "workbook",
               "dateKey": "2026-10-30",
               "dateDisp": "30.10.2026",
-              "bookLevel": "A2",
-              "unit": 7,
-              "lessonCode": "7.1",
-              "lessonTitle": "7.1 Staying healthy",
+              "bookLevel": "B1+",
+              "unit": 1,
+              "lessonCode": "1.1",
+              "lessonTitle": "1.1 Are you really my friend?",
               "pages": [
-                3046,
-                3047
+                4,
+                5
               ],
-              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-              "assignedAt": 1793948784202,
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
               "teacherName": "Azizbek Urolov"
             },
             {
               "type": "workbook",
               "dateKey": "2026-10-30",
               "dateDisp": "30.10.2026",
-              "bookLevel": "A2",
-              "unit": 7,
-              "lessonCode": "7.2",
-              "lessonTitle": "7.2 Sports and workouts",
+              "bookLevel": "B1+",
+              "unit": 1,
+              "lessonCode": "1.2",
+              "lessonTitle": "1.2 Why spending's #trending",
               "pages": [
-                3048,
-                3049
+                6,
+                7
               ],
-              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-              "assignedAt": 1793948784202,
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
               "teacherName": "Azizbek Urolov"
             },
             {
               "type": "workbook",
               "dateKey": "2026-10-30",
               "dateDisp": "30.10.2026",
-              "bookLevel": "A2",
-              "unit": 7,
-              "lessonCode": "7.3",
-              "lessonTitle": "7.3 Vocabulary development",
+              "bookLevel": "B1+",
+              "unit": 1,
+              "lessonCode": "1.4",
+              "lessonTitle": "1.4 Speaking and writing",
               "pages": [
-                3050
+                9
               ],
-              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-              "assignedAt": 1793948784202,
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
               "teacherName": "Azizbek Urolov"
             },
             {
               "type": "workbook",
               "dateKey": "2026-10-30",
               "dateDisp": "30.10.2026",
-              "bookLevel": "A2",
-              "unit": 7,
-              "lessonCode": "7.4",
-              "lessonTitle": "7.4 Speaking and writing",
+              "bookLevel": "B1+",
+              "unit": 1,
+              "lessonCode": "1.3",
+              "lessonTitle": "1.3 Vocabulary development",
               "pages": [
-                3051
+                8
               ],
-              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-              "assignedAt": 1793948784202,
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.1",
+              "lessonTitle": "2.1 I'll never forget that day",
+              "pages": [
+                10,
+                11
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.2",
+              "lessonTitle": "2.2 Unbelievable?",
+              "pages": [
+                12,
+                13
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.4",
+              "lessonTitle": "2.4 Speaking and writing",
+              "pages": [
+                15
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.3",
+              "lessonTitle": "2.3 Vocabulary development",
+              "pages": [
+                14
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.5",
+              "lessonTitle": "2.5 Review & Reading",
+              "pages": [
+                16,
+                17
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
               "teacherName": "Azizbek Urolov"
             }
           ]
         },
-        "updatedAt": 1793963033664
+        "updatedAt": 1794575539733
       },
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
@@ -23308,7 +23386,7 @@
           "lastLogin": "2026-11-06T12:12:39.376Z",
           "dailyMinutes": 18,
           "loggedOutAt": 1793969315893,
-          "lastSeen": 1794575515940
+          "lastSeen": 1794575540136
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -23483,6 +23561,172 @@
           "time": "18:11",
           "replyTo": null,
           "reactions": {}
+        },
+        {
+          "id": "msg_hw_1794575539733",
+          "sender": "Azizbek Urolov",
+          "senderRole": "teacher",
+          "text": "📢 [YANGI UYGA VAZIFA]\n📚 Oxford Workbook: Unit 1 (1.1), Unit 1 (1.2), Unit 1 (1.4), Unit 1 (1.3), Unit 2 (2.1), Unit 2 (2.2), Unit 2 (2.4), Unit 2 (2.3), Unit 2 (2.5)\n📅 Sana: 30.10.2026\n📝 Izoh: Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "timestamp": 1794575539733,
+          "isHomeworkNotice": true,
+          "homeworkData": {
+            "type": "workbook",
+            "dateKey": "2026-10-30",
+            "dateDisp": "30.10.2026",
+            "bookLevel": "B1+",
+            "unit": 1,
+            "lessonCode": "1.1",
+            "lessonTitle": "1.1 Are you really my friend?",
+            "pages": [
+              4,
+              5
+            ],
+            "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+            "assignedAt": 1794575539733,
+            "teacherName": "Azizbek Urolov"
+          },
+          "homeworksData": [
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 1,
+              "lessonCode": "1.1",
+              "lessonTitle": "1.1 Are you really my friend?",
+              "pages": [
+                4,
+                5
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 1,
+              "lessonCode": "1.2",
+              "lessonTitle": "1.2 Why spending's #trending",
+              "pages": [
+                6,
+                7
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 1,
+              "lessonCode": "1.4",
+              "lessonTitle": "1.4 Speaking and writing",
+              "pages": [
+                9
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 1,
+              "lessonCode": "1.3",
+              "lessonTitle": "1.3 Vocabulary development",
+              "pages": [
+                8
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.1",
+              "lessonTitle": "2.1 I'll never forget that day",
+              "pages": [
+                10,
+                11
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.2",
+              "lessonTitle": "2.2 Unbelievable?",
+              "pages": [
+                12,
+                13
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.4",
+              "lessonTitle": "2.4 Speaking and writing",
+              "pages": [
+                15
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.3",
+              "lessonTitle": "2.3 Vocabulary development",
+              "pages": [
+                14
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "B1+",
+              "unit": 2,
+              "lessonCode": "2.5",
+              "lessonTitle": "2.5 Review & Reading",
+              "pages": [
+                16,
+                17
+              ],
+              "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+              "assignedAt": 1794575539733,
+              "teacherName": "Azizbek Urolov"
+            }
+          ]
         }
       ],
       "learningMonths": 0,
@@ -23906,16 +24150,16 @@
         "type": "workbook",
         "dateKey": "2026-10-30",
         "dateDisp": "30.10.2026",
-        "bookLevel": "A2",
-        "unit": 7,
-        "lessonCode": "7.1",
-        "lessonTitle": "7.1 Staying healthy",
+        "bookLevel": "B1+",
+        "unit": 1,
+        "lessonCode": "1.1",
+        "lessonTitle": "1.1 Are you really my friend?",
         "pages": [
-          3046,
-          3047
+          4,
+          5
         ],
-        "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 1793948784202,
+        "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+        "assignedAt": 1794575539733,
         "teacherName": "Azizbek Urolov"
       },
       "deletedStudentIds": [
@@ -23955,7 +24199,149 @@
         "std_niyatullo_582_asatullayev": 1793625077010,
         "std_navroz_651_shavkatov": 1793625077010,
         "std_otkir_903_tursunmatov": 1793625077010
-      }
+      },
+      "activeHomeworks": [
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 1,
+          "lessonCode": "1.1",
+          "lessonTitle": "1.1 Are you really my friend?",
+          "pages": [
+            4,
+            5
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 1,
+          "lessonCode": "1.2",
+          "lessonTitle": "1.2 Why spending's #trending",
+          "pages": [
+            6,
+            7
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 1,
+          "lessonCode": "1.4",
+          "lessonTitle": "1.4 Speaking and writing",
+          "pages": [
+            9
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 1,
+          "lessonCode": "1.3",
+          "lessonTitle": "1.3 Vocabulary development",
+          "pages": [
+            8
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 2,
+          "lessonCode": "2.1",
+          "lessonTitle": "2.1 I'll never forget that day",
+          "pages": [
+            10,
+            11
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 2,
+          "lessonCode": "2.2",
+          "lessonTitle": "2.2 Unbelievable?",
+          "pages": [
+            12,
+            13
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 2,
+          "lessonCode": "2.4",
+          "lessonTitle": "2.4 Speaking and writing",
+          "pages": [
+            15
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 2,
+          "lessonCode": "2.3",
+          "lessonTitle": "2.3 Vocabulary development",
+          "pages": [
+            14
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "B1+",
+          "unit": 2,
+          "lessonCode": "2.5",
+          "lessonTitle": "2.5 Review & Reading",
+          "pages": [
+            16,
+            17
+          ],
+          "note": "Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.",
+          "assignedAt": 1794575539733,
+          "teacherName": "Azizbek Urolov"
+        }
+      ]
     },
     {
       "id": "cls_urolov_azizbek_standard",
@@ -26597,7 +26983,7 @@
       "hasLoggedIn": true,
       "isLoggedOut": false,
       "loggedOutAt": 1793967150607,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_root",
@@ -26616,7 +27002,7 @@
       "isOnline": true,
       "login": "admin_12038f1aq8syash",
       "loggedOutAt": 1793962599794,
-      "lastSeen": 1794575516202
+      "lastSeen": 1794575531203
     },
     {
       "id": "tg_98124765",
@@ -26651,7 +27037,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -26827,7 +27213,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "std_13",
@@ -26992,7 +27378,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27016,7 +27402,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27037,7 +27423,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27058,7 +27444,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27082,7 +27468,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27106,7 +27492,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27128,7 +27514,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27150,7 +27536,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27174,7 +27560,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27195,7 +27581,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27217,7 +27603,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27239,7 +27625,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27261,7 +27647,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27285,7 +27671,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27309,7 +27695,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27333,7 +27719,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "admin_official_teacher",
@@ -27354,7 +27740,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "st_998901239988",
@@ -27432,7 +27818,7 @@
       "dailyMinutes": 3,
       "lastLogin": "2026-11-06T12:12:39.376Z",
       "loggedOutAt": 1793969315893,
-      "lastSeen": 1794575515940
+      "lastSeen": 1794575540136
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -27888,7 +28274,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575515940
+      "lastSeen": 1794575540136
     },
     {
       "id": "admin_official_teacher",
@@ -27910,7 +28296,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794575516696
+      "lastSeen": 1794575540897
     },
     {
       "id": "std_mix_416_selix",
@@ -152818,5 +153204,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794575518114
+  "updatedAt": 1794575542011
 }
