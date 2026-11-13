@@ -3305,23 +3305,30 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
             hwHtml += '<div style="font-size:16px;font-weight:800;color:#94a3b8;margin-bottom:6px;">Hozircha yangi vazifa yo‘q</div>' +
               '<div style="font-size:12px;color:#64748b;">Ustozingiz vazifa belgilaganda shu yerda va chatda chiqadi</div>';
           } else {
-            hwHtml += '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">';
-            allHws.forEach(function(h, hIdx) {
-              var isT = (h.type === 'test' || h.testId);
-              var titleStr = isT ? (h.title || 'Shaxsiy Test') : ('Unit ' + h.unit + ' · ' + (h.lessonTitle || h.lessonCode));
-              var badgeStr = isT ? '📝 Test' : ('📘 ' + (h.bookLevel || 'B1+'));
-              hwHtml += '<div style="background:rgba(15,23,42,0.6);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;">' +
-                '<div>' +
-                  '<div style="font-size:14px;font-weight:900;color:#fff;">' + esc(titleStr) + '</div>' +
-                  '<div style="font-size:11px;color:#94a3b8;margin-top:2px;">' + esc(h.dateDisp || h.dateKey || 'Bugun') + (h.note ? (' · 💬 ' + esc(h.note)) : '') + '</div>' +
-                '</div>' +
-                '<span style="background:rgba(168,85,247,0.2);color:#c084fc;border:1px solid rgba(168,85,247,0.4);border-radius:8px;padding:3px 8px;font-size:10.5px;font-weight:800;white-space:nowrap;">' + badgeStr + '</span>' +
-              '</div>';
-            });
-            hwHtml += '</div>';
+            var activeIdx = Math.max(0, Math.min(allHws.length - 1, window._ethithActiveHwIdx || 0));
+            var curH = allHws[activeIdx] || allHws[0];
+            var isT = (curH.type === 'test' || curH.testId);
+            var titleStr = isT ? (curH.title || 'Shaxsiy Test') : ('Unit ' + curH.unit + ' · ' + (curH.lessonTitle || curH.lessonCode));
+            var badgeStr = isT ? '📝 Test' : ('📘 ' + (curH.bookLevel || 'B1+'));
 
-            // Launch button
-            hwHtml += '<button type="button" class="dash-start-hw-btn" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;border:none;border-radius:12px;padding:11px 16px;font-size:13px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 18px rgba(139,92,246,0.45);transition:all 0.15s;">' +
+            // Compact flippable card with switcher arrows
+            hwHtml += '<div style="background:rgba(15,23,42,0.6);border:1px solid rgba(139,92,246,0.3);border-radius:14px;padding:12px 14px;margin-bottom:12px;">' +
+              '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;">' +
+                '<span style="background:rgba(168,85,247,0.2);color:#c084fc;border:1px solid rgba(168,85,247,0.4);border-radius:8px;padding:3px 8px;font-size:11px;font-weight:800;">' + badgeStr + '</span>' +
+                (allHws.length > 1 ? (
+                  '<div style="display:flex;align-items:center;gap:6px;">' +
+                    '<button type="button" class="dash-prev-hw-btn" style="background:rgba(139,92,246,0.25);border:1px solid rgba(139,92,246,0.5);color:#c084fc;border-radius:6px;width:28px;height:24px;font-size:12px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;">◀</button>' +
+                    '<span style="font-size:11.5px;font-weight:900;color:#e2e8f0;padding:0 4px;">' + (activeIdx + 1) + ' / ' + allHws.length + '</span>' +
+                    '<button type="button" class="dash-next-hw-btn" style="background:rgba(139,92,246,0.25);border:1px solid rgba(139,92,246,0.5);color:#c084fc;border-radius:6px;width:28px;height:24px;font-size:12px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;">▶</button>' +
+                  '</div>'
+                ) : '') +
+              '</div>' +
+              '<div style="font-size:14.5px;font-weight:900;color:#fff;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="' + esc(titleStr) + '">' + esc(titleStr) + '</div>' +
+              '<div style="font-size:11.5px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(curH.dateDisp || curH.dateKey || 'Bugun') + (curH.note ? (' · 💬 ' + esc(curH.note)) : '') + '</div>' +
+            '</div>';
+
+            // Launch button for currently selected homework
+            hwHtml += '<button type="button" class="dash-start-hw-btn" data-hw-idx="' + activeIdx + '" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;border:none;border-radius:12px;padding:11px 16px;font-size:13px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 18px rgba(139,92,246,0.45);transition:all 0.15s;">' +
               '🚀 Vazifani Bajarish ➔' +
             '</button>';
           }
@@ -3720,6 +3727,18 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       return;
     }
 
+    var prevHwBtn = e.target.closest('.dash-prev-hw-btn');
+    if (prevHwBtn) {
+      window._ethithActiveHwIdx = Math.max(0, (window._ethithActiveHwIdx || 0) - 1);
+      if (typeof window.rDash === 'function') window.rDash();
+      return;
+    }
+    var nextHwBtn = e.target.closest('.dash-next-hw-btn');
+    if (nextHwBtn) {
+      window._ethithActiveHwIdx = (window._ethithActiveHwIdx || 0) + 1;
+      if (typeof window.rDash === 'function') window.rDash();
+      return;
+    }
     var startHwBtn = e.target.closest('.dash-start-hw-btn');
       if (startHwBtn) {
         var stCls = (S.classes || []).find(function(c) {
@@ -3728,7 +3747,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
             return (st.login && user.login && st.login.toLowerCase() === user.login.toLowerCase()) || (st.id && user.id && st.id === user.id);
           });
         }) || (S.classes && S.classes[0]);
-        var targetHw = (stCls && stCls.activeHomework) || (stCls && stCls.activeHomeworks && stCls.activeHomeworks[0]);
+        var allList = (stCls && Array.isArray(stCls.activeHomeworks) && stCls.activeHomeworks.length > 0) ? stCls.activeHomeworks : (stCls && stCls.activeHomework ? [stCls.activeHomework] : []);
+        var curIdx = parseInt(startHwBtn.getAttribute('data-hw-idx') || window._ethithActiveHwIdx || '0', 10);
+        var targetHw = allList[curIdx] || allList[0];
         if (targetHw && typeof window.ethithOpenHomeworkItem === 'function') {
           window.ethithOpenHomeworkItem(targetHw, stCls);
         } else if (typeof window.go === 'function') {

@@ -168540,6 +168540,9 @@
           '<button id="ethWbResetBtn" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:9px 18px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;">' +
             '↻ Tozalash' +
           '</button>' +
+          '<button id="ethWbBoostersBtn" type="button" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border:none;padding:10px 18px;border-radius:12px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 16px rgba(37,99,235,0.45);transition:all 0.15s;">' +
+            '⚡ Kuchaytirgichlar (19 ta)' +
+          '</button>' +
           '<button id="ethWbCheckBtn" style="background:linear-gradient(135deg,#0284c7,#154b89);color:#fff;border:none;padding:10px 24px;border-radius:12px;font-size:14px;font-weight:900;cursor:pointer;box-shadow:0 6px 20px rgba(2,132,199,0.4);">' +
             '✓ Tekshirish (Check Both Pages)' +
           '</button>' +
@@ -170384,6 +170387,20 @@
     }
 
     // Check Button Handler
+    var boostersBtn = container.querySelector('#ethWbBoostersBtn');
+    if (boostersBtn) {
+      boostersBtn.addEventListener('click', function() {
+        if (window.EthithBoosterEngine) {
+          window.EthithBoosterEngine.openBoosterDrawer({
+            mode: 'workbook',
+            onUse: function(bId, bObj) {
+              window.EthithBoosterEngine.applyWorkbookBooster(bId, bObj, container);
+            }
+          });
+        }
+      });
+    }
+
     var checkBtn = container.querySelector('#ethWbCheckBtn');
     if (checkBtn) {
       checkBtn.addEventListener('click', function() {
@@ -170586,8 +170603,14 @@
         }
 
         var coinsToAdd = 0;
-        if (pct >= 70 && window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) {
+        if (pct >= 50 && window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) {
           coinsToAdd = Math.round(correctCount * 3);
+          if (window._ethithWbBooster2xActive) coinsToAdd *= 2;
+          if (window._ethithWbCoinMagnetActive) coinsToAdd += 50;
+          if (window._ethithWbDiamondActive) coinsToAdd = Math.round(coinsToAdd * 1.5);
+          window._ethithWbBooster2xActive = false;
+          window._ethithWbCoinMagnetActive = false;
+          window._ethithWbDiamondActive = false;
           window.EthithApp.state.user.coins = (window.EthithApp.state.user.coins || 0) + coinsToAdd;
           if (window.EthithSync && window.EthithSync.syncUser) window.EthithSync.syncUser(window.EthithApp.state.user);
           if (window.toast) window.toast('Ajoyib natija! +' + coinsToAdd + ' ETHITH Coins qo‘shildi!');

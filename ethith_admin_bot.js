@@ -1,3 +1,10 @@
+
+process.on('uncaughtException', (err) => {
+  console.error('[ETHITH BOT RESILIENCE] Uncaught Exception caught, keeping alive:', err.message);
+});
+process.on('unhandledRejection', (reason) => {
+  console.error('[ETHITH BOT RESILIENCE] Unhandled Rejection caught, keeping alive:', reason);
+});
 /**
  * ETHITH TESTS - Official Online GitHub-Connected Admin Coin Transfer Bot
  * Bot: @ETHITHCOINbot
@@ -1149,12 +1156,12 @@ async function pollUpdates() {
       for (const msg of latestByChat.values()) {
         await handleMessage(msg);
       }
-    } else if (res && res.error_code === 409) {
-      if (process.env.GITHUB_ACTIONS === 'true') {
-        console.log('[ADMIN BOT] Primary bot instance is already active and polling. Cloud standby yielding cleanly.');
-        process.exit(0);
-      }
-      await new Promise(r => setTimeout(r, 1000));
+    } else if (res && (res.error_code === 409 || (res.description && res.description.includes('conflict')))) {
+      console.log('[ADMIN BOT] Conflict 409 detected. Another poller is active; clearing webhook & waiting 3s to take over cleanly...');
+      try {
+        await tgCall('deleteWebhook', { drop_pending_updates: false });
+      } catch (e) {}
+      await new Promise(r => setTimeout(r, 3000));
     }
   } catch (e) {
     console.error('[ADMIN BOT] Polling error:', e.message);

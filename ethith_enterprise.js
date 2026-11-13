@@ -3220,6 +3220,7 @@
 
           // Right Submit & Close
           '<div style="display:flex;align-items:center;gap:12px;">' +
+            '<button id="eeVisualTakeBoostersBtn" type="button" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border:none;padding:7px 14px;border-radius:10px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 3px 12px rgba(37,99,235,0.4);">⚡ Kuchaytirgichlar (19 ta)</button>' +
             '<span style="font-size:12.5px;font-weight:800;color:#94a3b8;">Jami ' + totalQuestions + ' ta savol</span>' +
             '<button id="eeSubmitTakeVisual" style="background:linear-gradient(135deg,#10b981,#059669);border:none;color:#fff;padding:9px 24px;border-radius:10px;font-weight:900;font-size:13.5px;cursor:pointer;box-shadow:0 4px 18px rgba(16,185,129,0.45);display:flex;align-items:center;gap:6px;">✓ Testni Yakunlash</button>' +
             '<button id="eeCloseTakeVisualTest" style="background:rgba(255,255,255,0.08);border:none;color:#94a3b8;font-size:18px;font-weight:900;cursor:pointer;padding:8px 12px;border-radius:10px;">✕</button>' +
@@ -3356,6 +3357,20 @@
       };
 
       // Submit test handler with instant feedback & band score
+      var visBoostersBtn = vm.querySelector('#eeVisualTakeBoostersBtn');
+      if (visBoostersBtn) {
+        visBoostersBtn.onclick = function() {
+          if (window.EthithBoosterEngine) {
+            window.EthithBoosterEngine.openBoosterDrawer({
+              mode: 'test',
+              onUse: function(bId, bObj) {
+                window.EthithBoosterEngine.applyWorkbookBooster(bId, bObj, vm);
+              }
+            });
+          }
+        };
+      }
+
       vm.querySelector('#eeSubmitTakeVisual').onclick = function() {
         var correctCount = 0;
         var totalCount = totalQuestions;
@@ -3523,7 +3538,10 @@
             '<h3 style="margin:0;font-size:17px;font-weight:900;color:#f8fafc;">' + esc(test.title) + '</h3>' +
             '<span style="font-size:12px;color:#94a3b8;">Savol ' + (curQIdx + 1) + ' / ' + totalQ + '</span>' +
           '</div>' +
-          '<button id="eeCloseTakeTest" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
+          '<div style="display:flex;align-items:center;gap:10px;">' +
+            '<button id="eeStandardTakeBoostersBtn" type="button" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border:none;padding:6px 14px;border-radius:10px;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 3px 12px rgba(37,99,235,0.4);">⚡ Kuchaytirgichlar (19 ta)</button>' +
+            '<button id="eeCloseTakeTest" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
+          '</div>' +
         '</div>' +
 
         createListeningBannerHtml() +
@@ -3553,6 +3571,33 @@
       m.innerHTML = qh;
 
       setupListeningAudioEvents(m);
+
+      var stdBoosterBtn = m.querySelector('#eeStandardTakeBoostersBtn');
+      if (stdBoosterBtn) {
+        stdBoosterBtn.onclick = function() {
+          if (window.EthithBoosterEngine) {
+            window.EthithBoosterEngine.openBoosterDrawer({
+              mode: 'test',
+              onUse: function(bId, bObj) {
+                window.EthithBoosterEngine.applyTestBooster(bId, bObj, {
+                  modal: m,
+                  q: q,
+                  curQIdx: curQIdx,
+                  onSkip: function() {
+                    userAnswers[curQIdx] = (q.correct !== undefined) ? Number(q.correct) : 0;
+                    if (!isLast) {
+                      curQIdx++;
+                      renderQuestionModal();
+                    } else {
+                      submitTest();
+                    }
+                  }
+                });
+              }
+            });
+          }
+        };
+      }
 
       m.querySelector('#eeCloseTakeTest').onclick = function() {
         if (confirm("Testni to‘xtatmoqchimisiz? Natijangiz saqlanmaydi.")) m.remove();
