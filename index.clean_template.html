@@ -3291,14 +3291,44 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
           '<div style="font-size:12.5px;color:#cbd5e1;font-weight:600;">Ustoz: <b style="color:#38bdf8;">' + esc(teacherName) + '</b> · Xona: <b style="color:#cbd5e1;">' + esc(myCls ? (myCls.room || '301-xona') : '301') + '</b></div>' +
         '</div>' +
 
-        '<div style="background:linear-gradient(135deg,rgba(139,92,246,0.15),rgba(15,23,42,0.85));border:1.5px solid rgba(139,92,246,0.4);border-radius:20px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,0.35);">' +
-          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
-            '<span style="font-size:12px;color:#c084fc;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">⚡ Faol Uy Vazifasi</span>' +
-            '<span style="width:38px;height:38px;border-radius:10px;background:rgba(139,92,246,0.25);color:#c084fc;display:flex;align-items:center;justify-content:center;font-size:18px;">📝</span>' +
-          '</div>' +
-          '<div style="font-size:18px;font-weight:900;color:#fff;margin-bottom:6px;">' + (activeHw ? (activeHw.title || ('Unit ' + activeHw.unit + ' · ' + activeHw.lessonTitle)) : 'Hozircha yangi vazifa yo‘q') + '</div>' +
-          '<div style="font-size:12px;color:#cbd5e1;">' + (activeHw ? (activeHw.dateDisp || activeHw.dateKey || 'Bugun') : 'Ustozingiz vazifa belgilaganda shu yerda chiqadi') + '</div>' +
-        '</div>' +
+        (function() {
+          var allHws = (myCls && Array.isArray(myCls.activeHomeworks) && myCls.activeHomeworks.length > 0) ? myCls.activeHomeworks : (activeHw ? [activeHw] : []);
+          var hasHw = allHws.length > 0;
+          var hwHtml = '<div style="background:linear-gradient(135deg,rgba(139,92,246,0.18),rgba(15,23,42,0.92));border:1.5px solid rgba(139,92,246,0.5);border-radius:20px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,0.35);display:flex;flex-direction:column;justify-content:space-between;">' +
+            '<div>' +
+              '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
+                '<span style="font-size:12px;color:#c084fc;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">⚡ Faol Uy Vazifasi</span>' +
+                '<span style="background:rgba(139,92,246,0.25);color:#c084fc;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:900;">' + (hasHw ? (allHws.length + ' ta topshiriq') : '0 ta') + '</span>' +
+              '</div>';
+
+          if (!hasHw) {
+            hwHtml += '<div style="font-size:16px;font-weight:800;color:#94a3b8;margin-bottom:6px;">Hozircha yangi vazifa yo‘q</div>' +
+              '<div style="font-size:12px;color:#64748b;">Ustozingiz vazifa belgilaganda shu yerda va chatda chiqadi</div>';
+          } else {
+            hwHtml += '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">';
+            allHws.forEach(function(h, hIdx) {
+              var isT = (h.type === 'test' || h.testId);
+              var titleStr = isT ? (h.title || 'Shaxsiy Test') : ('Unit ' + h.unit + ' · ' + (h.lessonTitle || h.lessonCode));
+              var badgeStr = isT ? '📝 Test' : ('📘 ' + (h.bookLevel || 'B1+'));
+              hwHtml += '<div style="background:rgba(15,23,42,0.6);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;">' +
+                '<div>' +
+                  '<div style="font-size:14px;font-weight:900;color:#fff;">' + esc(titleStr) + '</div>' +
+                  '<div style="font-size:11px;color:#94a3b8;margin-top:2px;">' + esc(h.dateDisp || h.dateKey || 'Bugun') + (h.note ? (' · 💬 ' + esc(h.note)) : '') + '</div>' +
+                '</div>' +
+                '<span style="background:rgba(168,85,247,0.2);color:#c084fc;border:1px solid rgba(168,85,247,0.4);border-radius:8px;padding:3px 8px;font-size:10.5px;font-weight:800;white-space:nowrap;">' + badgeStr + '</span>' +
+              '</div>';
+            });
+            hwHtml += '</div>';
+
+            // Launch button
+            hwHtml += '<button type="button" class="dash-start-hw-btn" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;border:none;border-radius:12px;padding:11px 16px;font-size:13px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 18px rgba(139,92,246,0.45);transition:all 0.15s;">' +
+              '🚀 Vazifani Bajarish ➔' +
+            '</button>';
+          }
+
+          hwHtml += '</div></div>';
+          return hwHtml;
+        })() +
 
         '<div style="background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(15,23,42,0.85));border:1px solid rgba(245,158,11,0.35);border-radius:20px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,0.35);">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
@@ -3690,7 +3720,24 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       return;
     }
 
-    var dashAddStBtn = e.target.closest('.dash-add-student-btn');
+    var startHwBtn = e.target.closest('.dash-start-hw-btn');
+      if (startHwBtn) {
+        var stCls = (S.classes || []).find(function(c) {
+          if (user.classId && c.id === user.classId) return true;
+          return c.students && c.students.some(function(st) {
+            return (st.login && user.login && st.login.toLowerCase() === user.login.toLowerCase()) || (st.id && user.id && st.id === user.id);
+          });
+        }) || (S.classes && S.classes[0]);
+        var targetHw = (stCls && stCls.activeHomework) || (stCls && stCls.activeHomeworks && stCls.activeHomeworks[0]);
+        if (targetHw && typeof window.ethithOpenHomeworkItem === 'function') {
+          window.ethithOpenHomeworkItem(targetHw, stCls);
+        } else if (typeof window.go === 'function') {
+          window.go('classes');
+        }
+        return;
+      }
+
+      var dashAddStBtn = e.target.closest('.dash-add-student-btn');
     if (dashAddStBtn) {
       var cid = dashAddStBtn.getAttribute('data-cid');
       if (window.EthithEnterprise && window.EthithEnterprise.openTelegramSearchStudentModal) {

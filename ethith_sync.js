@@ -103,6 +103,8 @@
         if (!e.data) return;
         if (e.data.type === 'LIVE_EVENT') {
           handleIncomingLiveEvent(e.data.event);
+        } else if (e.data.type === 'HOMEWORK_ASSIGNED') {
+          handleIncomingLiveEvent(e.data);
         } else if (e.data.type === 'SYNC_STATE' && window.EthithApp) {
           var S = window.EthithApp.state;
           var c1 = e.data.classes ? mergeClasses(S.classes, e.data.classes) : false;
@@ -1363,6 +1365,10 @@
         uiNeedsRefresh = true;
         if (window._ethithRefreshAttendance && window._ethithCurrentView === 'attendance') {
           try { window._ethithRefreshAttendance(); } catch(e) {}
+        } else if (window._ethithCurrentView === 'dash' && typeof window.go === 'function') {
+          try { window.go('dash', { keepState: true }); } catch(e) {}
+        } else if (['intermediate', 'upper_intermediate', 'beginner', 'elementary', 'pre_intermediate'].indexOf(window._ethithCurrentView) !== -1 && typeof window.go === 'function') {
+          try { window.go(window._ethithCurrentView, { keepState: true }); } catch(e) {}
         } else if (window.EA && typeof window.EA.render === 'function') {
           var apView = document.getElementById('apView') || document.getElementById('viewContainer');
           if (apView && (window._ethithCurrentView === 'attendance' || document.querySelector('.ea-teachers-grid') || document.querySelector('.ea-teacher-groups-wrap'))) {
@@ -2824,6 +2830,10 @@
           localCls.activeHomework = JSON.parse(JSON.stringify(rc.activeHomework));
           changed = true;
         }
+      }
+      if (rc.activeHomeworks && Array.isArray(rc.activeHomeworks)) {
+        localCls.activeHomeworks = JSON.parse(JSON.stringify(rc.activeHomeworks));
+        changed = true;
       }
       if (rc.schedule && rc.schedule !== localCls.schedule) {
         var rAttTs = (rc.attendance && rc.attendance.updatedAt) || 0;

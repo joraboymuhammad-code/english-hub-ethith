@@ -1274,6 +1274,7 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
 
   function formatDisplayDate(d) {
     if (!d) d = getUniversalToday();
+    if (typeof d === 'string') return formatIsoToDisplay(d);
     var day = String(d.getDate()).padStart(2, '0');
     var month = String(d.getMonth() + 1).padStart(2, '0');
     var year = d.getFullYear() < 2026 ? 2026 : d.getFullYear();
@@ -4158,7 +4159,65 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     }
 
     // Open active homework lesson directly (Supports specific multi-unit homework items!)
-    function openHwItem(hw) {
+    
+  // Global Universal Homework Launcher (Works for Student Dash, Chat, & Toast)
+  window.ethithOpenHomeworkItem = function(hw, cls) {
+    if (!hw) return;
+    if (hw.type === 'test' || hw.testId) {
+      if (window.EthithEnterprise && typeof window.EthithEnterprise.openTakeTestModal === 'function') {
+        window.EthithEnterprise.openTakeTestModal(hw.testId);
+        return;
+      }
+    }
+    if (cls) {
+      window._ethithActiveHwContext = {
+        classId: cls.id,
+        classCode: cls.code,
+        dateKey: hw.dateKey,
+        bookLevel: hw.bookLevel || 'B1+',
+        unit: hw.unit,
+        lessonCode: hw.lessonCode
+      };
+    }
+    var bLevel = hw.bookLevel || 'B1+';
+    var firstPg = (hw.pages && hw.pages[0]) || 4;
+    var wbObj = window.ETHITH_WORKBOOK_B1 || window.WB;
+
+    if (bLevel === 'A1' || bLevel === 'Beginner') {
+      if (wbObj && typeof wbObj.openLessonA1 === 'function') {
+        wbObj.openLessonA1(hw.unit, hw.lessonCode, firstPg);
+      } else if (typeof window.go === 'function') {
+        window.go('beginner', { unit: hw.unit, lesson: hw.lessonCode });
+      }
+    } else if (bLevel === 'A2' || bLevel === 'Elementary') {
+      if (wbObj && typeof wbObj.openLessonA2 === 'function') {
+        wbObj.openLessonA2(hw.unit, hw.lessonCode, firstPg);
+      } else if (typeof window.go === 'function') {
+        window.go('elementary', { unit: hw.unit, lesson: hw.lessonCode });
+      }
+    } else if (bLevel === 'B1' || bLevel === 'Pre-Intermediate') {
+      if (wbObj && typeof wbObj.openLessonPre === 'function') {
+        wbObj.openLessonPre(hw.unit, hw.lessonCode, firstPg);
+      } else if (typeof window.go === 'function') {
+        window.go('pre_intermediate', { unit: hw.unit, lesson: hw.lessonCode });
+      }
+    } else if (bLevel === 'B2' || bLevel === 'Upper-Intermediate' || firstPg > 2000) {
+      if (wbObj && typeof wbObj.openLessonB2 === 'function') {
+        wbObj.openLessonB2(hw.unit, hw.lessonCode, firstPg);
+      } else if (typeof window.go === 'function') {
+        window.go('upper_intermediate', { unit: hw.unit, lesson: hw.lessonCode });
+      }
+    } else {
+      if (wbObj && typeof wbObj.openLesson === 'function') {
+        wbObj.openLesson(hw.unit, hw.lessonCode, firstPg);
+      } else if (typeof window.go === 'function') {
+        window.go('intermediate', { unit: hw.unit, lesson: hw.lessonCode });
+      }
+    }
+  };
+  EA.openHomeworkItem = window.ethithOpenHomeworkItem;
+
+  function openHwItem(hw) {
       if (!hw) return;
       if (hw.type === 'test' || hw.testId) {
         if (window.EthithEnterprise && typeof window.EthithEnterprise.openTakeTestModal === 'function') {
@@ -5096,7 +5155,12 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           assignedAt: Date.now(),
           teacherName: cls.teacherName || 'Ustoz'
         };
+        cls.activeHomework = hwObj;
+        cls.activeHomeworks = [hwObj];
         cls.attendance.lessonTypes[dKey] = 'Test: ' + chosenTest.title;
+        if (!cls.attendance.homeworks) cls.attendance.homeworks = {};
+        cls.attendance.homeworks[dKey] = hwObj;
+        delete cls.attendance.holidays[dKey];
       } else {
         var bLvl = bookLvlSel.value || 'B1+';
         var selectedCodes = Object.keys(selectedLessonsMap);
@@ -5142,11 +5206,52 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         delete cls.attendance.holidays[dKey];
       }
 
+      // Post announcement message into Class Chat
+      var hwSummaryText = selectedMode === 'test' 
+        ? ('📝 Shaxsiy Test: ' + (hwObj.title || 'Imtihon'))
+        : ('📚 Oxford Workbook: ' + (cls.activeHomeworks || [hwObj]).map(function(h) { return 'Unit ' + h.unit + ' (' + h.lessonCode + ')'; }).join(', '));
+
+      if (!cls.messages) cls.messages = [];
+      var hwChatMsg = {
+        id: 'msg_hw_' + Date.now(),
+        sender: cls.teacherName || 'Ustoz',
+        senderRole: 'teacher',
+        text: '📢 [YANGI UYGA VAZIFA]\n' + hwSummaryText + '\n📅 Sana: ' + dDisp + (noteVal ? ('\n📝 Izoh: ' + noteVal) : '\n📝 Topshiriqni bajaring va yakunlang — baho avtomatik jurnalga qo‘yiladi.'),
+        timestamp: Date.now(),
+        isHomeworkNotice: true,
+        homeworkData: hwObj,
+        homeworksData: cls.activeHomeworks
+      };
+      cls.messages.push(hwChatMsg);
+
       persistAttendance(cls);
+
+      // Direct instant broadcast to all tabs and devices
+      try {
+        var hwBroadcastPayload = {
+          type: 'HOMEWORK_ASSIGNED',
+          classId: cls.id,
+          classCode: cls.code,
+          activeHomework: cls.activeHomework,
+          activeHomeworks: cls.activeHomeworks,
+          attendance: cls.attendance,
+          message: hwChatMsg,
+          ts: Date.now()
+        };
+        if (window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
+          window.EthithSync.publishLive(hwBroadcastPayload);
+        }
+        if (typeof BroadcastChannel !== 'undefined') {
+          var bc = new BroadcastChannel('ethith_cloud_channel');
+          bc.postMessage({ type: 'LIVE_EVENT', event: hwBroadcastPayload });
+          setTimeout(function() { try { bc.close(); } catch(e){} }, 500);
+        }
+      } catch(e) {}
+
       closeGlobalModal();
 
       if (window.EthithApp && typeof window.EthithApp.toast === 'function') {
-        window.EthithApp.toast("✅ Topshiriq muvaffaqiyatli belgilandi!");
+        window.EthithApp.toast("✅ Topshiriq muvaffaqiyatli belgilandi va barcha o‘quvchilarga yetkazildi!");
       }
 
       if (typeof onDoneCallback === 'function') {

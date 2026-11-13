@@ -168664,8 +168664,8 @@
             'data-correct="' + corrAttr.replace(/"/g, '&quot;') + '" ' +
             'value="' + corrDisplay.replace(/"/g, '&quot;') + '" ' +
             'readonly ' +
-            'style="width:100%;height:100%;background:rgba(16,185,129,0.18);border:1.5px solid #10b981;color:#059669;font-weight:900;border-radius:6px;cursor:pointer;box-shadow:0 0 6px rgba(16,185,129,0.3);' + 
-            (isSmallLetter ? 'text-align:center;padding:0;font-size:13px;' : 'padding:2px 6px;') + '" ' +
+            'style="width:100%;height:100%;min-height:22px;background:rgba(16,185,129,0.18);border:1.5px solid #10b981;color:#059669;font-weight:900;border-radius:6px;cursor:pointer;box-shadow:0 0 6px rgba(16,185,129,0.3);line-height:1.2;box-sizing:border-box;' + 
+            (isSmallLetter ? 'text-align:center;padding:0;font-size:13px;' : 'padding:2px 8px;font-size:13.5px;') + '" ' +
             'title="✏️ To‘g‘ri javob: ' + corrDisplay.replace(/"/g, '&quot;') + ' (Tahrirlash uchun bosing)" autocomplete="off" spellcheck="false" />' +
             '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
         } else {
