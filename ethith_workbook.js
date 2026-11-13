@@ -168534,9 +168534,9 @@
         '</div>' +
 
         '<div style="display:flex;align-items:center;gap:10px;">' +
-          '<button id="ethWbShowAnsBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:9px 18px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(16,185,129,0.3);">' +
+          (isTeacher ? ('<button id="ethWbShowAnsBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:9px 18px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(16,185,129,0.3);">' +
             '👁️ Javoblar' +
-          '</button>' +
+          '</button>') : '') +
           '<button id="ethWbResetBtn" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:9px 18px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;">' +
             '↻ Tozalash' +
           '</button>' +
@@ -170277,11 +170277,15 @@
       });
     }
 
-    // Show / Hide Answers Button
+    // Show / Hide Answers Button (Strictly for Teachers / Admins)
     var showAnsBtn = container.querySelector('#ethWbShowAnsBtn');
     if (showAnsBtn) {
-      showAnsBtn.addEventListener('click', function() {
-        var isShowing = showAnsBtn.getAttribute('data-showing') === 'true';
+      if (!isTeacher) {
+        showAnsBtn.remove();
+      } else {
+        showAnsBtn.addEventListener('click', function() {
+          if (!isTeacherRole()) return;
+          var isShowing = showAnsBtn.getAttribute('data-showing') === 'true';
         if (isShowing) {
           showAnsBtn.setAttribute('data-showing', 'false');
           showAnsBtn.innerHTML = '👁️ Javoblar';
@@ -170376,6 +170380,7 @@
           updateCount();
         }
       });
+      }
     }
 
     // Check Button Handler
@@ -170403,7 +170408,7 @@
           } else {
             inp.classList.add('incorrect');
             inp.classList.remove('correct');
-            if (hint) {
+            if (hint && isTeacher) {
               var displayCorrect = rawCorr;
               try {
                 var p = JSON.parse(rawCorr);
@@ -170411,6 +170416,8 @@
               } catch(e) {}
               hint.textContent = '✓ ' + displayCorrect;
               hint.style.display = 'block';
+            } else if (hint) {
+              hint.style.display = 'none';
             }
           }
         });
@@ -170472,7 +170479,7 @@
                 selectedChip.classList.add('incorrect');
                 selectedChip.classList.remove('correct');
               }
-              if (correctChip) {
+              if (correctChip && isTeacher) {
                 correctChip.classList.add('should-choose');
                 var wrapC = correctChip.closest('.eth-wb-item-wrap');
                 var hintC = wrapC ? wrapC.querySelector('.eth-wb-hint-badge') : null;
@@ -170505,9 +170512,11 @@
           } else {
             slot.classList.add('incorrect');
             slot.classList.remove('correct');
-            if (hint) {
+            if (hint && isTeacher) {
               hint.textContent = '✓ ' + correctLetter.toUpperCase();
               hint.style.display = 'block';
+            } else if (hint) {
+              hint.style.display = 'none';
             }
           }
         });
@@ -170549,9 +170558,11 @@
           } else {
             sel.classList.add('incorrect');
             sel.classList.remove('correct');
-            if (hint) {
+            if (hint && isTeacher) {
               hint.textContent = '✓ ' + correctRaw;
               hint.style.display = 'block';
+            } else if (hint) {
+              hint.style.display = 'none';
             }
           }
         });
