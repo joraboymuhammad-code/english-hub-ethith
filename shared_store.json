@@ -23327,16 +23327,14 @@
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
-          "isOnline": true,
+          "isOnline": false,
           "coins": 210,
           "updatedAt": 1793948599638,
-          "isLoggedOut": false,
           "hasLoggedIn": true,
-          "lastSeen": 1794637350972,
-          "avatar": null,
-          "nameStyle": null,
-          "title": null,
-          "dailyMinutes": 3
+          "isLoggedOut": true,
+          "lastLogin": "2026-11-06T06:53:04.194Z",
+          "dailyMinutes": 80,
+          "loggedOutAt": 1794637395450
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -24069,7 +24067,7 @@
       "learningLessons": 0,
       "baselineDate": "2026-11-05",
       "levelTestDate": "2027-02-03",
-      "durationUpdatedAt": 1794577791629,
+      "durationUpdatedAt": 1794637308813,
       "pinnedIds": [],
       "pinnedId": null,
       "activeHomeworks": [
@@ -26802,11 +26800,12 @@
       "updatedAt": 1792612388994,
       "nameStyle": null,
       "victorySound": null,
+      "login": "admin_12038f1aq8syash",
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794467374771,
-      "login": "admin_12038f1aq8syash"
+      "loggedOutAt": 1793947950903,
+      "lastSeen": 1793948778894
     },
     {
       "id": "tg_98124765",
@@ -26984,8 +26983,7 @@
       "isLoggedOut": true,
       "hasLoggedIn": true,
       "isOnline": false,
-      "loggedOutAt": 1794637383689,
-      "lastLogin": "2026-11-12T07:08:54.324Z"
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "std_13",
@@ -27140,7 +27138,7 @@
       "login": "vohidova"
     },
     {
-      "id": "t_urolov_azizbek",
+      "id": "admin_official_teacher",
       "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
@@ -27158,11 +27156,11 @@
       "level": "C2",
       "updatedAt": 1793773725443,
       "gifts": [],
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183,
-      "dailyMinutes": 0
+      "isOnline": false,
+      "dailyMinutes": 0,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27183,10 +27181,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27204,10 +27202,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27225,10 +27223,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27249,10 +27247,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27273,10 +27271,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27295,10 +27293,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27317,10 +27315,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27342,10 +27340,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27366,10 +27364,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27387,10 +27385,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27409,10 +27407,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27431,10 +27429,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27453,10 +27451,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27477,10 +27475,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27501,10 +27499,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27525,10 +27523,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27546,10 +27544,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "usmonqulovaetiborxon@gmail.com",
@@ -27597,10 +27595,10 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "admin_official_teacher",
@@ -27609,10 +27607,10 @@
       "role": "teacher",
       "coins": 100000,
       "level": "B1+",
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637382183
+      "isOnline": false,
+      "loggedOutAt": 1794637383689
     },
     {
       "id": "st_998950079621",
@@ -27664,10 +27662,9 @@
       "nameStyle": null,
       "createdAt": 1793720576586,
       "updatedAt": 1794575804118,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794637350972,
+      "isOnline": false,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "password": "azimjon848toi",
@@ -27675,7 +27672,8 @@
       "parentPhone": "941941527",
       "level": "A1",
       "dailyMinutes": 3,
-      "lastLogin": null
+      "lastLogin": null,
+      "loggedOutAt": 1794637395450
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -28140,7 +28138,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794637350972
+      "lastSeen": 1794637393953
     },
     {
       "id": "std_mix_416_selix",
@@ -151547,12 +151545,12 @@
       "password": "ustoz2026",
       "inviteCode": "USTOZ77",
       "subject": "Ingliz tili (IELTS Intensive)",
-      "monthlySalary": 0,
+      "monthlySalary": 6000000,
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "hourlyRate": 100000,
       "teachingHours": 72,
-      "paidThisMonth": false,
+      "paidThisMonth": true,
       "assignedClasses": [
         "cls_ethith_main",
         "cls_upper_intermediate"
@@ -151560,8 +151558,7 @@
       "classOrder": [
         "cls_ethith_main",
         "cls_upper_intermediate"
-      ],
-      "unpaidMonths": 0
+      ]
     }
   ],
   "fileExplorer": {
@@ -153034,5 +153031,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794637390597
+  "updatedAt": 1794637396956
 }
