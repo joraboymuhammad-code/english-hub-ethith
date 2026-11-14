@@ -22870,8 +22870,8 @@
           },
           "2026-11-09": {
             "std_azimjon_848_toirov": {
-              "status": "Q",
-              "score": "2"
+              "status": "",
+              "score": ""
             }
           }
         },
@@ -22977,7 +22977,7 @@
             }
           ]
         },
-        "updatedAt": 1794673854061
+        "updatedAt": 1794673864665
       },
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
@@ -26823,7 +26823,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794673856442,
+      "lastSeen": 1794673869636,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -152926,5 +152926,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794673856758
+  "updatedAt": 1794673869767
 }
