@@ -6000,10 +6000,14 @@
           "date": "To‘lanmagan"
         }
       },
-      "learningMonths": 2,
-      "learningDays": 27,
+      "learningMonths": 0,
+      "learningDays": 0,
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "baselineDate": "2026-11-06",
+      "levelTestDate": "2027-02-04",
+      "durationUpdatedAt": 1793964909067
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_1",
@@ -22860,25 +22864,76 @@
           }
         },
         "lessonTypes": {
-          "2026-10-30": "Vazifa: 1.1"
+          "2026-10-30": "Vazifa (A2): 7.1, 7.2, 7.3, 7.4"
         },
         "holidays": {},
         "homeworks": {
-          "2026-10-30": {
-            "dateKey": "2026-10-30",
-            "dateDisp": "30.10.2026",
-            "unit": 1,
-            "lessonCode": "1.1",
-            "lessonTitle": "1.1 Are you really my friend?",
-            "pages": [
-              4,
-              5
-            ],
-            "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-            "assignedAt": 0
-          }
+          "2026-10-30": [
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A2",
+              "unit": 7,
+              "lessonCode": "7.1",
+              "lessonTitle": "7.1 Staying healthy",
+              "pages": [
+                3046,
+                3047
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793948784202,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A2",
+              "unit": 7,
+              "lessonCode": "7.2",
+              "lessonTitle": "7.2 Sports and workouts",
+              "pages": [
+                3048,
+                3049
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793948784202,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A2",
+              "unit": 7,
+              "lessonCode": "7.3",
+              "lessonTitle": "7.3 Vocabulary development",
+              "pages": [
+                3050
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793948784202,
+              "teacherName": "Azizbek Urolov"
+            },
+            {
+              "type": "workbook",
+              "dateKey": "2026-10-30",
+              "dateDisp": "30.10.2026",
+              "bookLevel": "A2",
+              "unit": 7,
+              "lessonCode": "7.4",
+              "lessonTitle": "7.4 Speaking and writing",
+              "pages": [
+                3051
+              ],
+              "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+              "assignedAt": 1793948784202,
+              "teacherName": "Azizbek Urolov"
+            }
+          ]
         },
-        "updatedAt": 1793948682139
+        "updatedAt": 1793948784202
       },
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
@@ -23237,12 +23292,13 @@
           "isOnline": true,
           "coins": 210,
           "updatedAt": 1793948599638,
-          "hasLoggedIn": true,
           "isLoggedOut": false,
-          "lastLogin": "2026-11-06T06:53:04.194Z",
-          "dailyMinutes": 75,
-          "loggedOutAt": 1794467253348,
-          "lastSeen": 1794631990619
+          "hasLoggedIn": true,
+          "lastSeen": 1794632032423,
+          "avatar": null,
+          "nameStyle": null,
+          "title": null,
+          "dailyMinutes": 3
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -23790,17 +23846,20 @@
         }
       ],
       "activeHomework": {
+        "type": "workbook",
         "dateKey": "2026-10-30",
         "dateDisp": "30.10.2026",
-        "unit": 1,
-        "lessonCode": "1.1",
-        "lessonTitle": "1.1 Are you really my friend?",
+        "bookLevel": "A2",
+        "unit": 7,
+        "lessonCode": "7.1",
+        "lessonTitle": "7.1 Staying healthy",
         "pages": [
-          4,
-          5
+          3046,
+          3047
         ],
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
-        "assignedAt": 0
+        "assignedAt": 1793948784202,
+        "teacherName": "Azizbek Urolov"
       },
       "deletedStudentIds": [
         "std_rayxona_271_qoshqarova",
@@ -23839,7 +23898,71 @@
       "levelTestDate": "2027-02-03",
       "durationUpdatedAt": 1794577791629,
       "pinnedIds": [],
-      "pinnedId": null
+      "pinnedId": null,
+      "activeHomeworks": [
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "A2",
+          "unit": 7,
+          "lessonCode": "7.1",
+          "lessonTitle": "7.1 Staying healthy",
+          "pages": [
+            3046,
+            3047
+          ],
+          "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+          "assignedAt": 1793948784202,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "A2",
+          "unit": 7,
+          "lessonCode": "7.2",
+          "lessonTitle": "7.2 Sports and workouts",
+          "pages": [
+            3048,
+            3049
+          ],
+          "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+          "assignedAt": 1793948784202,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "A2",
+          "unit": 7,
+          "lessonCode": "7.3",
+          "lessonTitle": "7.3 Vocabulary development",
+          "pages": [
+            3050
+          ],
+          "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+          "assignedAt": 1793948784202,
+          "teacherName": "Azizbek Urolov"
+        },
+        {
+          "type": "workbook",
+          "dateKey": "2026-10-30",
+          "dateDisp": "30.10.2026",
+          "bookLevel": "A2",
+          "unit": 7,
+          "lessonCode": "7.4",
+          "lessonTitle": "7.4 Speaking and writing",
+          "pages": [
+            3051
+          ],
+          "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
+          "assignedAt": 1793948784202,
+          "teacherName": "Azizbek Urolov"
+        }
+      ]
     },
     {
       "id": "cls_urolov_azizbek_standard",
@@ -25543,8 +25666,8 @@
           "date": "To‘lanmagan"
         }
       },
-      "learningMonths": 2,
-      "learningDays": 26,
+      "learningMonths": 0,
+      "learningDays": 0,
       "deletedMsgIds": [],
       "messages": [],
       "activeHomework": {
@@ -25561,7 +25684,11 @@
         "assignedAt": 0
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "learningLessons": 0,
+      "baselineDate": "2026-11-06",
+      "levelTestDate": "2027-02-04",
+      "durationUpdatedAt": 1793965837592
     },
     {
       "id": "cls_1793728994224",
@@ -26470,12 +26597,11 @@
       "updatedAt": 1792612388994,
       "nameStyle": null,
       "victorySound": null,
-      "login": "admin_12038f1aq8syash",
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "loggedOutAt": 1793947950903,
-      "lastSeen": 1793948778894
+      "lastSeen": 1794467374771,
+      "login": "admin_12038f1aq8syash"
     },
     {
       "id": "tg_98124765",
@@ -26653,7 +26779,9 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "loggedOutAt": 1794467375739,
+      "lastLogin": "2026-11-12T07:08:54.324Z",
+      "lastSeen": 1794632033830
     },
     {
       "id": "std_13",
@@ -26808,7 +26936,7 @@
       "login": "vohidova"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_urolov_azizbek",
       "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
@@ -26829,7 +26957,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032,
+      "lastSeen": 1794632033830,
       "dailyMinutes": 0
     },
     {
@@ -26854,7 +26982,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -26875,7 +27003,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -26896,7 +27024,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -26920,7 +27048,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -26944,7 +27072,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -26966,7 +27094,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -26988,7 +27116,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -27013,7 +27141,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -27037,7 +27165,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -27058,7 +27186,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -27080,7 +27208,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -27102,7 +27230,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -27124,7 +27252,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -27148,7 +27276,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -27172,7 +27300,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -27196,7 +27324,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -27217,7 +27345,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "usmonqulovaetiborxon@gmail.com",
@@ -27268,7 +27396,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "admin_official_teacher",
@@ -27280,7 +27408,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794631992032
+      "lastSeen": 1794632033830
     },
     {
       "id": "st_998950079621",
@@ -27335,6 +27463,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
+      "lastSeen": 1794632032423,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "password": "azimjon848toi",
@@ -27342,9 +27471,7 @@
       "parentPhone": "941941527",
       "level": "A1",
       "dailyMinutes": 3,
-      "lastLogin": null,
-      "loggedOutAt": 1794467253348,
-      "lastSeen": 1794631990619
+      "lastLogin": null
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -27785,31 +27912,6 @@
       "level": "B1+",
       "dailyMinutes": 0,
       "updatedAt": 1793627425284
-    },
-    {
-      "id": "std_azimjon_848_toirov",
-      "role": "student",
-      "name": "Azimjon Toirov",
-      "email": "azimjon.toirov@ethith.uz",
-      "coins": 210,
-      "gifts": [
-        {
-          "id": 99,
-          "name": "Tugab Qolgan Tish Pastasi Tubiki",
-          "desc": "Qoshiq bilan siqib ham chiqarib bo'lmaydigan quruq truba!",
-          "icon": "🪥",
-          "rarity": "Rare",
-          "price": 160
-        }
-      ],
-      "avatar": null,
-      "title": null,
-      "nameStyle": null,
-      "createdAt": 1794467157512,
-      "isLoggedOut": false,
-      "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794631990619
     },
     {
       "id": "std_mix_416_selix",
@@ -131342,8 +131444,8 @@
         "y": 26.5,
         "w": 37,
         "h": 2.2,
-        "top": 26.5,
-        "left": 11,
+        "top": 25.7,
+        "left": 11.5,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -131359,8 +131461,8 @@
         "y": 30,
         "w": 37,
         "h": 2.2,
-        "top": 30,
-        "left": 11,
+        "top": 29,
+        "left": 11.7,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -131375,8 +131477,8 @@
         "y": 33.5,
         "w": 37,
         "h": 2.2,
-        "top": 33.5,
-        "left": 11,
+        "top": 32.3,
+        "left": 11.3,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -131391,8 +131493,8 @@
         "y": 37,
         "w": 37,
         "h": 2.2,
-        "top": 37,
-        "left": 11,
+        "top": 37.1,
+        "left": 11.5,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -131407,8 +131509,8 @@
         "y": 41.5,
         "w": 37,
         "h": 2.2,
-        "top": 41.5,
-        "left": 11,
+        "top": 40.8,
+        "left": 10.7,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -131423,8 +131525,8 @@
         "y": 45,
         "w": 37,
         "h": 2.2,
-        "top": 45,
-        "left": 11,
+        "top": 44.3,
+        "left": 11.3,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -131439,9 +131541,9 @@
         "y": 55.5,
         "w": 37,
         "h": 2.2,
-        "top": 55.5,
-        "left": 11,
-        "width": 37,
+        "top": 65.8,
+        "left": 20.6,
+        "width": 13.6,
         "height": 2.2,
         "correct": [
           "always does exercise",
@@ -131455,9 +131557,9 @@
         "y": 62.5,
         "w": 37,
         "h": 2.2,
-        "top": 62.5,
-        "left": 11,
-        "width": 37,
+        "top": 70.2,
+        "left": 17.4,
+        "width": 11.7,
         "height": 2.2,
         "correct": [
           "rarely have a lie-in",
@@ -131471,9 +131573,9 @@
         "y": 69.5,
         "w": 37,
         "h": 2.2,
-        "top": 69.5,
-        "left": 11,
-        "width": 37,
+        "top": 76.8,
+        "left": 12.4,
+        "width": 14.1,
         "height": 2.2,
         "correct": [
           "Most days my sister goes on Facebook",
@@ -131488,9 +131590,9 @@
         "y": 76.5,
         "w": 37,
         "h": 2.2,
-        "top": 76.5,
-        "left": 11,
-        "width": 37,
+        "top": 81.3,
+        "left": 22.3,
+        "width": 12.2,
         "height": 2.2,
         "correct": [
           "go on holiday once or twice a year",
@@ -131504,10 +131606,10 @@
         "y": 83.5,
         "w": 37,
         "h": 2.2,
-        "top": 83.5,
-        "left": 11,
-        "width": 37,
-        "height": 2.2,
+        "top": 85.9,
+        "left": 9.5,
+        "width": 17,
+        "height": 1.8,
         "correct": [
           "Every now and then we go clubbing",
           "We go clubbing every now and then"
@@ -131520,9 +131622,9 @@
         "y": 28,
         "w": 20,
         "h": 2.2,
-        "top": 28,
-        "left": 62,
-        "width": 20,
+        "top": 66.2,
+        "left": 75.7,
+        "width": 12,
         "height": 2.2,
         "correct": [
           "hardly ever have",
@@ -131536,8 +131638,8 @@
         "y": 36,
         "w": 16,
         "h": 2.2,
-        "top": 36,
-        "left": 62,
+        "top": 71.1,
+        "left": 57.7,
         "width": 16,
         "height": 2.2,
         "correct": [
@@ -131552,10 +131654,10 @@
         "y": 44,
         "w": 22,
         "h": 2.2,
-        "top": 44,
-        "left": 62,
-        "width": 22,
-        "height": 2.2,
+        "top": 75.3,
+        "left": 59.6,
+        "width": 12,
+        "height": 1.6,
         "correct": [
           "always eat healthily",
           "always eat"
@@ -131568,9 +131670,9 @@
         "y": 52,
         "w": 20,
         "h": 2.2,
-        "top": 52,
-        "left": 62,
-        "width": 20,
+        "top": 77.7,
+        "left": 77.1,
+        "width": 13.6,
         "height": 2.2,
         "correct": [
           "nearly always go",
@@ -131584,9 +131686,9 @@
         "y": 60,
         "w": 22,
         "h": 2.2,
-        "top": 60,
-        "left": 62,
-        "width": 22,
+        "top": 80.5,
+        "left": 71.9,
+        "width": 14.2,
         "height": 2.2,
         "correct": [
           "sometimes watch videos",
@@ -131600,9 +131702,9 @@
         "y": 68,
         "w": 16,
         "h": 2.2,
-        "top": 68,
-        "left": 62,
-        "width": 16,
+        "top": 86,
+        "left": 59.6,
+        "width": 11.8,
         "height": 2.2,
         "correct": [
           "occasionally",
@@ -131617,8 +131719,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "2",
-        "top": 42.5,
-        "left": 31,
+        "top": 20.5,
+        "left": 31.2,
         "width": 13,
         "height": 2,
         "correct": [
@@ -131633,8 +131735,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "3",
-        "top": 56.5,
-        "left": 11,
+        "top": 37,
+        "left": 11.5,
         "width": 13,
         "height": 2,
         "correct": [
@@ -131649,8 +131751,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "4",
-        "top": 56.5,
-        "left": 31,
+        "top": 37,
+        "left": 31.3,
         "width": 13,
         "height": 2,
         "correct": [
@@ -131665,8 +131767,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "5",
-        "top": 70.5,
-        "left": 11,
+        "top": 53.5,
+        "left": 11.5,
         "width": 13,
         "height": 2,
         "correct": [
@@ -131680,8 +131782,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "6",
-        "top": 70.5,
-        "left": 31,
+        "top": 53.4,
+        "left": 31.4,
         "width": 13,
         "height": 2,
         "correct": [
@@ -131696,7 +131798,7 @@
         "page": 4007,
         "exercise": "4",
         "label": "7",
-        "top": 84.5,
+        "top": 70.1,
         "left": 11,
         "width": 13,
         "height": 2,
@@ -131712,8 +131814,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "8",
-        "top": 84.5,
-        "left": 31,
+        "top": 70.1,
+        "left": 31.5,
         "width": 13,
         "height": 2,
         "correct": [
@@ -131728,9 +131830,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "2",
-        "top": 24.5,
-        "left": 59.5,
-        "width": 33,
+        "top": 11.7,
+        "left": 86,
+        "width": 12.6,
         "height": 2,
         "correct": [
           "swimming",
@@ -131743,9 +131845,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "3",
-        "top": 29.5,
-        "left": 59.5,
-        "width": 33,
+        "top": 14.4,
+        "left": 80.6,
+        "width": 12.5,
         "height": 2,
         "correct": [
           "golf",
@@ -131758,9 +131860,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "4",
-        "top": 33.5,
-        "left": 59.5,
-        "width": 33,
+        "top": 17.8,
+        "left": 68,
+        "width": 14.3,
         "height": 2,
         "correct": [
           "basketball",
@@ -131773,9 +131875,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "5",
-        "top": 38.5,
-        "left": 59.5,
-        "width": 33,
+        "top": 19.2,
+        "left": 82.9,
+        "width": 14.6,
         "height": 2,
         "correct": [
           "karate",
@@ -131788,9 +131890,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "6",
-        "top": 42.5,
-        "left": 59.5,
-        "width": 33,
+        "top": 21.6,
+        "left": 92.3,
+        "width": 8.6,
         "height": 2,
         "correct": [
           "exercise",
@@ -131803,8 +131905,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "2",
-        "top": 60.5,
-        "left": 57,
+        "top": 52.9,
+        "left": 57.6,
         "width": 14,
         "height": 2,
         "correct": [
@@ -131819,8 +131921,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "3",
-        "top": 64.5,
-        "left": 57,
+        "top": 57.5,
+        "left": 57.3,
         "width": 14,
         "height": 2,
         "correct": [
@@ -131835,8 +131937,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "4",
-        "top": 68.5,
-        "left": 57,
+        "top": 60.6,
+        "left": 58.2,
         "width": 14,
         "height": 2,
         "correct": [
@@ -131851,8 +131953,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "5",
-        "top": 73.5,
-        "left": 57,
+        "top": 64.2,
+        "left": 57.2,
         "width": 14,
         "height": 2,
         "correct": [
@@ -131867,8 +131969,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "6",
-        "top": 76.5,
-        "left": 59.5,
+        "top": 67.4,
+        "left": 60.1,
         "width": 14,
         "height": 2,
         "correct": [
@@ -131883,8 +131985,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "7",
-        "top": 81.5,
-        "left": 70,
+        "top": 70.1,
+        "left": 72.6,
         "width": 14,
         "height": 2,
         "correct": [
@@ -131899,8 +132001,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "8",
-        "top": 85.5,
-        "left": 73,
+        "top": 74.9,
+        "left": 73.7,
         "width": 14,
         "height": 2,
         "correct": [
@@ -131932,8 +132034,8 @@
         "page": 4008,
         "exercise": "1",
         "label": "2b",
-        "top": 35.3,
-        "left": 16.4,
+        "top": 35.2,
+        "left": 16.6,
         "width": 8,
         "height": 2,
         "correct": [
@@ -132008,7 +132110,7 @@
         "exercise": "1",
         "label": "5a",
         "top": 49.1,
-        "left": 14.2,
+        "left": 13.7,
         "width": 8,
         "height": 1.5,
         "correct": [
@@ -132054,8 +132156,8 @@
         "page": 4009,
         "exercise": "1",
         "label": "3",
-        "top": 54.2,
-        "left": 19,
+        "top": 53.9,
+        "left": 18.9,
         "width": 8,
         "height": 1.6,
         "correct": [
@@ -132069,8 +132171,8 @@
         "page": 4009,
         "exercise": "1",
         "label": "4",
-        "top": 55.9,
-        "left": 14.1,
+        "top": 55.6,
+        "left": 14.4,
         "width": 8,
         "height": 1.6,
         "correct": [
@@ -132084,8 +132186,8 @@
         "page": 4009,
         "exercise": "1",
         "label": "5",
-        "top": 54.8,
-        "left": 38.5,
+        "top": 55,
+        "left": 38.2,
         "width": 8,
         "height": 2,
         "correct": [
@@ -132099,7 +132201,7 @@
         "page": 4009,
         "exercise": "1",
         "label": "6",
-        "top": 60.1,
+        "top": 59.9,
         "left": 37.5,
         "width": 10,
         "height": 2,
@@ -132114,8 +132216,8 @@
         "page": 4009,
         "exercise": "2",
         "label": "5",
-        "top": 26.5,
-        "left": 56,
+        "top": 18.4,
+        "left": 56.3,
         "width": 33,
         "height": 2,
         "correct": [
@@ -132131,8 +132233,8 @@
         "page": 4009,
         "exercise": "2",
         "label": "6",
-        "top": 34,
-        "left": 56,
+        "top": 21.9,
+        "left": 56.3,
         "width": 33,
         "height": 2,
         "correct": [
@@ -132148,8 +132250,8 @@
         "page": 4009,
         "exercise": "2",
         "label": "7",
-        "top": 41.5,
-        "left": 56,
+        "top": 25.4,
+        "left": 56.3,
         "width": 33,
         "height": 2,
         "correct": [
@@ -132164,7 +132266,7 @@
         "page": 4009,
         "exercise": "2",
         "label": "8",
-        "top": 48.5,
+        "top": 28.8,
         "left": 56,
         "width": 33,
         "height": 2,
@@ -132180,8 +132282,8 @@
         "page": 4009,
         "exercise": "2",
         "label": "9",
-        "top": 56,
-        "left": 56,
+        "top": 32.6,
+        "left": 56.5,
         "width": 33,
         "height": 2,
         "correct": [
@@ -132197,8 +132299,8 @@
         "page": 4009,
         "exercise": "5",
         "label": "1",
-        "top": 74,
-        "left": 35,
+        "top": 73.7,
+        "left": 32.4,
         "width": 8.1,
         "height": 2,
         "correct": [
@@ -132212,8 +132314,8 @@
         "page": 4009,
         "exercise": "5",
         "label": "2",
-        "top": 78.1,
-        "left": 12,
+        "top": 77.3,
+        "left": 13.2,
         "width": 14,
         "height": 2,
         "correct": [
@@ -132228,7 +132330,7 @@
         "exercise": "5",
         "label": "3",
         "top": 81,
-        "left": 12.1,
+        "left": 12.5,
         "width": 35.1,
         "height": 2,
         "correct": [
@@ -132242,8 +132344,8 @@
         "page": 4009,
         "exercise": "5",
         "label": "4",
-        "top": 91.5,
-        "left": 65,
+        "top": 84.9,
+        "left": 14.3,
         "width": 14,
         "height": 2,
         "correct": [
@@ -132786,9 +132888,9 @@
       {
         "id": "p4011_ex5a_2",
         "type": "fill",
-        "top": 25.1,
-        "left": 32.5,
-        "width": 9,
+        "top": 23.1,
+        "left": 32.6,
+        "width": 6.8,
         "height": 1.9,
         "x": 32.5,
         "y": 25.1,
@@ -132804,9 +132906,9 @@
       {
         "id": "p4011_ex5a_3",
         "type": "fill",
-        "top": 28.8,
-        "left": 27.5,
-        "width": 10.5,
+        "top": 26,
+        "left": 28,
+        "width": 7.4,
         "height": 1.9,
         "x": 27.5,
         "y": 28.8,
@@ -132822,8 +132924,8 @@
       {
         "id": "p4011_ex5a_4",
         "type": "fill",
-        "top": 30.7,
-        "left": 25.5,
+        "top": 27.6,
+        "left": 24.8,
         "width": 9,
         "height": 1.9,
         "x": 25.5,
@@ -132840,8 +132942,8 @@
       {
         "id": "p4011_ex5a_5",
         "type": "fill",
-        "top": 32.6,
-        "left": 23.5,
+        "top": 29.4,
+        "left": 23.6,
         "width": 9,
         "height": 1.9,
         "x": 23.5,
@@ -132858,9 +132960,9 @@
       {
         "id": "p4011_ex5a_6",
         "type": "fill",
-        "top": 34.5,
-        "left": 28.5,
-        "width": 10,
+        "top": 31.2,
+        "left": 28.8,
+        "width": 7.1,
         "height": 1.9,
         "x": 28.5,
         "y": 34.5,
@@ -132876,9 +132978,9 @@
       {
         "id": "p4011_ex5a_7",
         "type": "fill",
-        "top": 36.4,
-        "left": 24.5,
-        "width": 9.5,
+        "top": 32.6,
+        "left": 24.2,
+        "width": 7.6,
         "height": 1.9,
         "x": 24.5,
         "y": 36.4,
@@ -132894,9 +132996,9 @@
       {
         "id": "p4011_ex5a_8",
         "type": "fill",
-        "top": 38.3,
-        "left": 31.5,
-        "width": 10.5,
+        "top": 35.2,
+        "left": 31.9,
+        "width": 7.3,
         "height": 1.9,
         "x": 31.5,
         "y": 38.3,
@@ -132912,8 +133014,8 @@
       {
         "id": "p4011_ex7_2",
         "type": "fill",
-        "top": 18.3,
-        "left": 55,
+        "top": 15.9,
+        "left": 55.4,
         "width": 37,
         "height": 1.9,
         "x": 55,
@@ -132930,8 +133032,8 @@
       {
         "id": "p4011_ex7_3",
         "type": "fill",
-        "top": 22.2,
-        "left": 55,
+        "top": 19.7,
+        "left": 55.4,
         "width": 37,
         "height": 1.9,
         "x": 55,
@@ -132948,8 +133050,8 @@
       {
         "id": "p4011_ex7_4",
         "type": "fill",
-        "top": 26.9,
-        "left": 55,
+        "top": 24.5,
+        "left": 55.3,
         "width": 37,
         "height": 1.9,
         "x": 55,
@@ -132966,8 +133068,8 @@
       {
         "id": "p4011_ex7_5",
         "type": "fill",
-        "top": 30.8,
-        "left": 55,
+        "top": 28.1,
+        "left": 55.6,
         "width": 37,
         "height": 1.9,
         "x": 55,
@@ -132984,8 +133086,8 @@
       {
         "id": "p4011_ex7_6",
         "type": "fill",
-        "top": 34.6,
-        "left": 55,
+        "top": 31.9,
+        "left": 55.7,
         "width": 37,
         "height": 1.9,
         "x": 55,
@@ -133002,8 +133104,8 @@
       {
         "id": "p4011_ex8_2",
         "type": "fill",
-        "top": 52.8,
-        "left": 57,
+        "top": 50.4,
+        "left": 54.8,
         "width": 8.5,
         "height": 1.9,
         "x": 57,
@@ -133019,8 +133121,8 @@
       {
         "id": "p4011_ex8_3",
         "type": "fill",
-        "top": 57.2,
-        "left": 62.5,
+        "top": 55,
+        "left": 62.6,
         "width": 7.5,
         "height": 1.9,
         "x": 62.5,
@@ -133036,8 +133138,8 @@
       {
         "id": "p4011_ex8_4",
         "type": "fill",
-        "top": 60.5,
-        "left": 63.5,
+        "top": 57.3,
+        "left": 62.9,
         "width": 7.5,
         "height": 1.9,
         "x": 63.5,
@@ -133053,7 +133155,7 @@
       {
         "id": "p4011_ex8_5",
         "type": "fill",
-        "top": 69.6,
+        "top": 66.5,
         "left": 55,
         "width": 9.5,
         "height": 1.9,
@@ -133071,8 +133173,8 @@
       {
         "id": "p4011_ex8_6",
         "type": "fill",
-        "top": 70.8,
-        "left": 66.5,
+        "top": 67.9,
+        "left": 66.1,
         "width": 9.5,
         "height": 1.9,
         "x": 66.5,
@@ -133089,8 +133191,8 @@
       {
         "id": "p4011_ex8_7",
         "type": "fill",
-        "top": 73.7,
-        "left": 55,
+        "top": 71,
+        "left": 54.9,
         "width": 9.5,
         "height": 1.9,
         "x": 55,
@@ -133107,8 +133209,8 @@
       {
         "id": "p4011_ex8_8",
         "type": "fill",
-        "top": 75.4,
-        "left": 65.5,
+        "top": 72.2,
+        "left": 66.2,
         "width": 9.5,
         "height": 1.9,
         "x": 65.5,
@@ -133125,8 +133227,8 @@
       {
         "id": "p4011_ex8_9",
         "type": "fill",
-        "top": 77,
-        "left": 68.5,
+        "top": 73.8,
+        "left": 68.2,
         "width": 8.5,
         "height": 1.9,
         "x": 68.5,
@@ -133142,8 +133244,8 @@
       {
         "id": "p4011_ex8_10",
         "type": "fill",
-        "top": 80.2,
-        "left": 63.5,
+        "top": 77.5,
+        "left": 64.7,
         "width": 8.5,
         "height": 1.9,
         "x": 63.5,
@@ -133159,8 +133261,8 @@
       {
         "id": "p4011_ex8_11",
         "type": "fill",
-        "top": 83.3,
-        "left": 55,
+        "top": 79.8,
+        "left": 55.7,
         "width": 9.5,
         "height": 1.9,
         "x": 55,
@@ -133177,8 +133279,8 @@
       {
         "id": "p4011_ex8_12",
         "type": "fill",
-        "top": 86.4,
-        "left": 55,
+        "top": 83.4,
+        "left": 54.7,
         "width": 9.5,
         "height": 1.9,
         "x": 55,
@@ -133198,8 +133300,8 @@
         "group": "p4011_ex6_1b",
         "text": "Do you want",
         "correct": true,
-        "top": 55.4,
-        "left": 21.5,
+        "top": 54.1,
+        "left": 22.4,
         "width": 8,
         "height": 1.9,
         "x": 21.5,
@@ -133213,8 +133315,8 @@
         "group": "p4011_ex6_1b",
         "text": "Are you wanting",
         "correct": false,
-        "top": 55.4,
-        "left": 30.5,
+        "top": 54.1,
+        "left": 31.4,
         "width": 10.5,
         "height": 1.9,
         "x": 30.5,
@@ -133228,8 +133330,8 @@
         "group": "p4011_ex6_2a",
         "text": "Do you listen",
         "correct": false,
-        "top": 59.3,
-        "left": 12.5,
+        "top": 57.3,
+        "left": 12.4,
         "width": 9,
         "height": 1.9,
         "x": 12.5,
@@ -133243,8 +133345,8 @@
         "group": "p4011_ex6_2a",
         "text": "Are you listening",
         "correct": true,
-        "top": 59.3,
-        "left": 22.5,
+        "top": 57.3,
+        "left": 22.4,
         "width": 11,
         "height": 1.9,
         "x": 22.5,
@@ -133258,8 +133360,8 @@
         "group": "p4011_ex6_2b",
         "text": "like",
         "correct": true,
-        "top": 62.2,
-        "left": 16.5,
+        "top": 60.3,
+        "left": 15.5,
         "width": 3.5,
         "height": 1.9,
         "x": 16.5,
@@ -133273,8 +133375,8 @@
         "group": "p4011_ex6_2b",
         "text": "'m liking",
         "correct": false,
-        "top": 62.2,
-        "left": 20.8,
+        "top": 60.3,
+        "left": 19.8,
         "width": 6.2,
         "height": 1.9,
         "x": 20.8,
@@ -133288,8 +133390,8 @@
         "group": "p4011_ex6_3a",
         "text": "do you do",
         "correct": true,
-        "top": 64.1,
-        "left": 19.5,
+        "top": 62.1,
+        "left": 15.8,
         "width": 7,
         "height": 1.9,
         "x": 19.5,
@@ -133303,8 +133405,8 @@
         "group": "p4011_ex6_3a",
         "text": "are you doing",
         "correct": false,
-        "top": 64.1,
-        "left": 27.5,
+        "top": 62.1,
+        "left": 23.8,
         "width": 9,
         "height": 1.9,
         "x": 27.5,
@@ -133313,28 +133415,13 @@
         "h": 1.9
       },
       {
-        "id": "p4011_ex6_3b_opt1",
-        "type": "choose",
-        "group": "p4011_ex6_3b",
-        "text": "go",
-        "correct": true,
-        "top": 66,
-        "left": 17.5,
-        "width": 2.8,
-        "height": 1.9,
-        "x": 17.5,
-        "y": 66,
-        "w": 2.8,
-        "h": 1.9
-      },
-      {
         "id": "p4011_ex6_3b_opt2",
         "type": "choose",
         "group": "p4011_ex6_3b",
         "text": "'m going",
         "correct": false,
-        "top": 66,
-        "left": 21,
+        "top": 63.9,
+        "left": 21.9,
         "width": 6,
         "height": 1.9,
         "x": 21,
@@ -133348,8 +133435,8 @@
         "group": "p4011_ex6_4a",
         "text": "does the market open",
         "correct": true,
-        "top": 67.9,
-        "left": 22,
+        "top": 65.6,
+        "left": 19.7,
         "width": 14.5,
         "height": 1.9,
         "x": 22,
@@ -133363,8 +133450,8 @@
         "group": "p4011_ex6_4a",
         "text": "is the market opening",
         "correct": false,
-        "top": 67.9,
-        "left": 37.5,
+        "top": 65.6,
+        "left": 35.2,
         "width": 15,
         "height": 1.9,
         "x": 37.5,
@@ -133378,8 +133465,8 @@
         "group": "p4011_ex6_4b",
         "text": "don't know",
         "correct": true,
-        "top": 70.8,
-        "left": 14,
+        "top": 68.5,
+        "left": 13.7,
         "width": 7.5,
         "height": 1.9,
         "x": 14,
@@ -133393,8 +133480,8 @@
         "group": "p4011_ex6_4b",
         "text": "'m not knowing",
         "correct": false,
-        "top": 70.8,
-        "left": 22.5,
+        "top": 68.5,
+        "left": 22.2,
         "width": 10.5,
         "height": 1.9,
         "x": 22.5,
@@ -133408,7 +133495,7 @@
         "group": "p4011_ex6_5a",
         "text": "Does your partner",
         "correct": false,
-        "top": 72.8,
+        "top": 70.7,
         "left": 12.5,
         "width": 11.5,
         "height": 1.9,
@@ -133423,8 +133510,8 @@
         "group": "p4011_ex6_5a",
         "text": "Is your partner",
         "correct": true,
-        "top": 72.8,
-        "left": 25,
+        "top": 70.9,
+        "left": 25.6,
         "width": 10.5,
         "height": 1.9,
         "x": 25,
@@ -133438,10 +133525,10 @@
         "group": "p4011_ex6_5b",
         "text": "doesn't work",
         "correct": true,
-        "top": 74.7,
-        "left": 17,
+        "top": 72.6,
+        "left": 16.1,
         "width": 9,
-        "height": 1.9,
+        "height": 1.6,
         "x": 17,
         "y": 74.7,
         "w": 9,
@@ -133453,8 +133540,8 @@
         "group": "p4011_ex6_5b",
         "text": "isn't working",
         "correct": false,
-        "top": 74.7,
-        "left": 27,
+        "top": 72.1,
+        "left": 25.6,
         "width": 9.5,
         "height": 1.9,
         "x": 27,
@@ -133468,8 +133555,8 @@
         "group": "p4011_ex6_6a",
         "text": "Do you have",
         "correct": false,
-        "top": 76.6,
-        "left": 12.5,
+        "top": 74,
+        "left": 12.4,
         "width": 8.5,
         "height": 1.9,
         "x": 12.5,
@@ -133483,8 +133570,8 @@
         "group": "p4011_ex6_6a",
         "text": "Are you having",
         "correct": true,
-        "top": 76.6,
-        "left": 22,
+        "top": 74,
+        "left": 22.8,
         "width": 9.5,
         "height": 1.9,
         "x": 22,
@@ -133498,8 +133585,8 @@
         "group": "p4011_ex6_6b",
         "text": "have",
         "correct": false,
-        "top": 78.5,
-        "left": 16.5,
+        "top": 75.9,
+        "left": 15.9,
         "width": 4,
         "height": 1.9,
         "x": 16.5,
@@ -133513,8 +133600,8 @@
         "group": "p4011_ex6_6b",
         "text": "'m having",
         "correct": true,
-        "top": 78.5,
-        "left": 21.5,
+        "top": 75.9,
+        "left": 21.4,
         "width": 7,
         "height": 1.9,
         "x": 21.5,
@@ -133528,8 +133615,8 @@
         "group": "p4011_ex6_7a",
         "text": "Do I need",
         "correct": true,
-        "top": 80.4,
-        "left": 12.5,
+        "top": 77.3,
+        "left": 12.4,
         "width": 7,
         "height": 1.9,
         "x": 12.5,
@@ -133543,8 +133630,8 @@
         "group": "p4011_ex6_7a",
         "text": "Am I needing",
         "correct": false,
-        "top": 80.4,
-        "left": 20.5,
+        "top": 77.2,
+        "left": 20.1,
         "width": 9,
         "height": 1.9,
         "x": 20.5,
@@ -133558,8 +133645,8 @@
         "group": "p4011_ex6_7b",
         "text": "doesn't rain",
         "correct": false,
-        "top": 82.4,
-        "left": 16.5,
+        "top": 78.8,
+        "left": 15.9,
         "width": 8.5,
         "height": 1.9,
         "x": 16.5,
@@ -133573,8 +133660,8 @@
         "group": "p4011_ex6_7b",
         "text": "isn't raining",
         "correct": true,
-        "top": 82.4,
-        "left": 26,
+        "top": 78.9,
+        "left": 25.9,
         "width": 8.5,
         "height": 1.9,
         "x": 26,
@@ -133588,8 +133675,8 @@
         "group": "p4011_ex6_8a",
         "text": "Is our team winning",
         "correct": true,
-        "top": 84.3,
-        "left": 12.5,
+        "top": 80.7,
+        "left": 12.6,
         "width": 13,
         "height": 1.9,
         "x": 12.5,
@@ -133603,8 +133690,8 @@
         "group": "p4011_ex6_8a",
         "text": "Does our team win",
         "correct": false,
-        "top": 84.3,
-        "left": 26.5,
+        "top": 80.5,
+        "left": 26.6,
         "width": 13,
         "height": 1.9,
         "x": 26.5,
@@ -133618,8 +133705,8 @@
         "group": "p4011_ex6_8b",
         "text": "play",
         "correct": false,
-        "top": 86.2,
-        "left": 18.5,
+        "top": 82.7,
+        "left": 17.8,
         "width": 4,
         "height": 1.9,
         "x": 18.5,
@@ -133633,14 +133720,27 @@
         "group": "p4011_ex6_8b",
         "text": "'re playing",
         "correct": true,
-        "top": 86.2,
-        "left": 23.5,
+        "top": 82.6,
+        "left": 23,
         "width": 8,
         "height": 1.9,
         "x": 23.5,
         "y": 86.2,
         "w": 8,
         "h": 1.9
+      },
+      {
+        "id": "p4011_custom_mwd808u8_marv",
+        "page": 4011,
+        "type": "choose",
+        "label": "53",
+        "top": 64.2,
+        "left": 16.7,
+        "width": 4.5,
+        "height": 1.6,
+        "group": "p4011_grp_3536",
+        "correct": true,
+        "text": ""
       }
     ],
     "4012": [
@@ -133651,8 +133751,8 @@
         "y": 24,
         "w": 12,
         "h": 2,
-        "top": 24,
-        "left": 25,
+        "top": 60.8,
+        "left": 31.7,
         "width": 12,
         "height": 2,
         "correct": [
@@ -133672,10 +133772,10 @@
         "y": 29.5,
         "w": 12,
         "h": 2,
-        "top": 29.5,
-        "left": 25,
+        "top": 64.4,
+        "left": 11.4,
         "width": 12,
-        "height": 2,
+        "height": 1.5,
         "correct": [
           "where"
         ],
@@ -133693,10 +133793,10 @@
         "y": 35,
         "w": 12,
         "h": 2,
-        "top": 35,
-        "left": 25,
+        "top": 66.2,
+        "left": 10.9,
         "width": 12,
-        "height": 2,
+        "height": 1.5,
         "correct": [
           "where"
         ],
@@ -133714,10 +133814,10 @@
         "y": 40.5,
         "w": 12,
         "h": 2,
-        "top": 40.5,
-        "left": 25,
+        "top": 70.5,
+        "left": 28,
         "width": 12,
-        "height": 2,
+        "height": 1.7,
         "correct": [
           "that"
         ],
@@ -133735,10 +133835,10 @@
         "y": 46,
         "w": 12,
         "h": 2,
-        "top": 46,
-        "left": 25,
+        "top": 72.3,
+        "left": 27.9,
         "width": 12,
-        "height": 2,
+        "height": 1.4,
         "correct": [
           "who"
         ],
@@ -133756,10 +133856,10 @@
         "y": 51.5,
         "w": 12,
         "h": 2,
-        "top": 51.5,
-        "left": 25,
-        "width": 12,
-        "height": 2,
+        "top": 74,
+        "left": 39.2,
+        "width": 8.5,
+        "height": 1.1,
         "correct": [
           "which"
         ],
@@ -133777,10 +133877,10 @@
         "y": 58,
         "w": 12,
         "h": 2,
-        "top": 58,
-        "left": 25,
-        "width": 12,
-        "height": 2,
+        "top": 24.3,
+        "left": 65.3,
+        "width": 4.2,
+        "height": 1.7,
         "correct": [
           "who"
         ],
@@ -133798,10 +133898,10 @@
         "y": 60.1,
         "w": 9.5,
         "h": 2,
-        "top": 60.1,
-        "left": 41.5,
-        "width": 9.5,
-        "height": 2,
+        "top": 26.1,
+        "left": 60.3,
+        "width": 7.3,
+        "height": 1.5,
         "correct": [
           "neighbour",
           "a neighbour"
@@ -133814,9 +133914,9 @@
         "y": 62.3,
         "w": 12,
         "h": 2,
-        "top": 62.3,
-        "left": 25,
-        "width": 12,
+        "top": 27.2,
+        "left": 65.8,
+        "width": 7.8,
         "height": 2,
         "correct": [
           "where"
@@ -133835,8 +133935,8 @@
         "y": 64.4,
         "w": 9.5,
         "h": 2,
-        "top": 64.4,
-        "left": 41.5,
+        "top": 27.3,
+        "left": 86.1,
         "width": 9.5,
         "height": 2,
         "correct": [
@@ -133851,10 +133951,10 @@
         "y": 66.5,
         "w": 12,
         "h": 2,
-        "top": 66.5,
-        "left": 25,
-        "width": 12,
-        "height": 2,
+        "top": 29.5,
+        "left": 65,
+        "width": 7,
+        "height": 1.5,
         "correct": [
           "which"
         ],
@@ -133872,8 +133972,8 @@
         "y": 68.6,
         "w": 9.5,
         "h": 2,
-        "top": 68.6,
-        "left": 41.5,
+        "top": 29.2,
+        "left": 86.1,
         "width": 9.5,
         "height": 2,
         "correct": [
@@ -133888,9 +133988,9 @@
         "y": 70.8,
         "w": 12,
         "h": 2,
-        "top": 70.8,
-        "left": 25,
-        "width": 12,
+        "top": 31.1,
+        "left": 64.7,
+        "width": 8.5,
         "height": 2,
         "correct": [
           "which"
@@ -133909,8 +134009,8 @@
         "y": 72.9,
         "w": 9.5,
         "h": 2,
-        "top": 72.9,
-        "left": 41.5,
+        "top": 32.4,
+        "left": 62.1,
         "width": 9.5,
         "height": 2,
         "correct": [
@@ -133925,9 +134025,9 @@
         "y": 75,
         "w": 12,
         "h": 2,
-        "top": 75,
-        "left": 25,
-        "width": 12,
+        "top": 34.5,
+        "left": 66.5,
+        "width": 7.9,
         "height": 2,
         "correct": [
           "who"
@@ -133946,8 +134046,8 @@
         "y": 77.1,
         "w": 9.5,
         "h": 2,
-        "top": 77.1,
-        "left": 41.5,
+        "top": 35.5,
+        "left": 57,
         "width": 9.5,
         "height": 2,
         "correct": [
@@ -133962,10 +134062,10 @@
         "y": 79.3,
         "w": 12,
         "h": 2,
-        "top": 79.3,
-        "left": 25,
-        "width": 12,
-        "height": 2,
+        "top": 38,
+        "left": 64.8,
+        "width": 7,
+        "height": 1.4,
         "correct": [
           "which"
         ],
@@ -133983,8 +134083,8 @@
         "y": 81.4,
         "w": 9.5,
         "h": 2,
-        "top": 81.4,
-        "left": 41.5,
+        "top": 36.9,
+        "left": 85.4,
         "width": 9.5,
         "height": 2,
         "correct": [
@@ -133999,10 +134099,10 @@
         "y": 83.5,
         "w": 12,
         "h": 2,
-        "top": 83.5,
-        "left": 25,
-        "width": 12,
-        "height": 2,
+        "top": 40,
+        "left": 66.5,
+        "width": 6.6,
+        "height": 1.3,
         "correct": [
           "where"
         ],
@@ -134020,8 +134120,8 @@
         "y": 85.6,
         "w": 9.5,
         "h": 2,
-        "top": 85.6,
-        "left": 41.5,
+        "top": 38.8,
+        "left": 85.2,
         "width": 9.5,
         "height": 2,
         "correct": [
@@ -134036,10 +134136,10 @@
         "y": 87.8,
         "w": 12,
         "h": 2,
-        "top": 87.8,
-        "left": 25,
-        "width": 12,
-        "height": 2,
+        "top": 41.7,
+        "left": 65.2,
+        "width": 7.5,
+        "height": 1.5,
         "correct": [
           "who"
         ],
@@ -134057,8 +134157,8 @@
         "y": 89.9,
         "w": 9.5,
         "h": 2,
-        "top": 89.9,
-        "left": 41.5,
+        "top": 40.9,
+        "left": 83.3,
         "width": 9.5,
         "height": 2,
         "correct": [
@@ -134073,9 +134173,9 @@
         "y": 52.1,
         "w": 35,
         "h": 2,
-        "top": 52.1,
-        "left": 55.5,
-        "width": 35,
+        "top": 53.2,
+        "left": 69.7,
+        "width": 24.5,
         "height": 2,
         "correct": [
           "which I wear to go running.",
@@ -134089,9 +134189,9 @@
         "y": 57.6,
         "w": 35,
         "h": 2,
-        "top": 57.6,
-        "left": 55.5,
-        "width": 35,
+        "top": 56.8,
+        "left": 69,
+        "width": 25.1,
         "height": 2,
         "correct": [
           "which I use for work.",
@@ -134105,9 +134205,9 @@
         "y": 63.1,
         "w": 35,
         "h": 2,
-        "top": 63.1,
-        "left": 55.5,
-        "width": 35,
+        "top": 59.7,
+        "left": 69.5,
+        "width": 24.5,
         "height": 2,
         "correct": [
           "who repairs my car.",
@@ -134121,9 +134221,9 @@
         "y": 68.6,
         "w": 35,
         "h": 2,
-        "top": 68.6,
-        "left": 55.5,
-        "width": 35,
+        "top": 63.5,
+        "left": 68.2,
+        "width": 27.1,
         "height": 2,
         "correct": [
           "where my grandfather always sits.",
@@ -134137,9 +134237,9 @@
         "y": 74.1,
         "w": 9.5,
         "h": 2,
-        "top": 74.1,
-        "left": 81.5,
-        "width": 9.5,
+        "top": 67,
+        "left": 72,
+        "width": 23.7,
         "height": 2,
         "correct": [
           "who cuts my hair.",
@@ -134153,9 +134253,9 @@
         "y": 79.6,
         "w": 35,
         "h": 2,
-        "top": 79.6,
-        "left": 55.5,
-        "width": 35,
+        "top": 69.9,
+        "left": 67.3,
+        "width": 29,
         "height": 2,
         "correct": [
           "which goes to the city centre.",
@@ -134169,9 +134269,9 @@
         "y": 85.1,
         "w": 35,
         "h": 2,
-        "top": 85.1,
-        "left": 55.5,
-        "width": 35,
+        "top": 73.5,
+        "left": 73,
+        "width": 23.9,
         "height": 2,
         "correct": [
           "where we do our shopping.",
@@ -152704,5 +152804,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794631992561
+  "updatedAt": 1794632034250
 }
