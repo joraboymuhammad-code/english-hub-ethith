@@ -2580,13 +2580,6 @@
           "status": "unpaid",
           "method": "—",
           "date": "To‘lanmagan"
-        },
-        "cls_qarshiboyev_humoyun_practice_std_8": {
-          "fee": 300000,
-          "paid": 300000,
-          "status": "paid",
-          "method": "Click",
-          "date": "2026-11-14"
         }
       },
       "learningMonths": 1,
@@ -23334,14 +23327,15 @@
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
-          "isOnline": false,
+          "isOnline": true,
           "coins": 210,
           "updatedAt": 1793948599638,
           "hasLoggedIn": true,
-          "isLoggedOut": true,
+          "isLoggedOut": false,
           "lastLogin": "2026-11-06T06:53:04.194Z",
-          "dailyMinutes": 80,
-          "loggedOutAt": 1794637395450
+          "dailyMinutes": 75,
+          "loggedOutAt": 1794467253348,
+          "lastSeen": 1794641448316
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -26262,8 +26256,7 @@
       "deletedMsgIds": [],
       "messages": [],
       "deletedStudentIds": [],
-      "customStudentNamesTs": {},
-      "studentPayments": {}
+      "customStudentNamesTs": {}
     }
   ],
   "exams": [
@@ -26813,7 +26806,7 @@
       "hasLoggedIn": true,
       "isOnline": true,
       "loggedOutAt": 1793947950903,
-      "lastSeen": 1794637444558
+      "lastSeen": 1793948778894
     },
     {
       "id": "tg_98124765",
@@ -26988,10 +26981,10 @@
       "dailyMinutes": 0,
       "login": "shodiyor50",
       "password": "shodiyor2026",
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "std_13",
@@ -27152,7 +27145,7 @@
       "login": "azizbek77",
       "password": "azizbek2026",
       "role": "teacher",
-      "coins": 1000,
+      "coins": 100000,
       "hourlyRate": 120000,
       "subject": "Ingliz tili (Upper / Inter)",
       "teachingHours": 72,
@@ -27162,13 +27155,12 @@
       ],
       "createdAt": 1793598048461,
       "level": "C2",
-      "updatedAt": 1793773725443,
+      "updatedAt": 1793473052536,
       "gifts": [],
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "dailyMinutes": 0,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27189,10 +27181,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27210,10 +27202,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27231,10 +27223,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27255,10 +27247,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27279,10 +27271,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27301,10 +27293,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27323,10 +27315,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27348,10 +27340,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27372,10 +27364,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27393,10 +27385,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27415,10 +27407,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27437,10 +27429,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27459,10 +27451,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27483,10 +27475,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27507,10 +27499,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27531,10 +27523,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27552,10 +27544,10 @@
       ],
       "createdAt": 1793202631415,
       "updatedAt": 1793428206565,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "usmonqulovaetiborxon@gmail.com",
@@ -27603,10 +27595,10 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -27615,10 +27607,10 @@
       "role": "teacher",
       "coins": 100000,
       "level": "B1+",
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "loggedOutAt": 1794637383689
+      "isOnline": true,
+      "lastSeen": 1793948779636
     },
     {
       "id": "st_998950079621",
@@ -27670,9 +27662,9 @@
       "nameStyle": null,
       "createdAt": 1793720576586,
       "updatedAt": 1794575804118,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
+      "isOnline": true,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "password": "azimjon848toi",
@@ -27681,7 +27673,8 @@
       "level": "A1",
       "dailyMinutes": 3,
       "lastLogin": null,
-      "loggedOutAt": 1794637395450
+      "loggedOutAt": 1794467253348,
+      "lastSeen": 1794641448316
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -28146,7 +28139,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794637393953
+      "lastSeen": 1794641448316
     },
     {
       "id": "std_mix_416_selix",
@@ -131679,8 +131672,8 @@
         "y": 26.5,
         "w": 37,
         "h": 2.2,
-        "top": 25.7,
-        "left": 11.5,
+        "top": 26.5,
+        "left": 11,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -131696,8 +131689,8 @@
         "y": 30,
         "w": 37,
         "h": 2.2,
-        "top": 29,
-        "left": 11.7,
+        "top": 30,
+        "left": 11,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -131712,8 +131705,8 @@
         "y": 33.5,
         "w": 37,
         "h": 2.2,
-        "top": 32.3,
-        "left": 11.3,
+        "top": 33.5,
+        "left": 11,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -131728,8 +131721,8 @@
         "y": 37,
         "w": 37,
         "h": 2.2,
-        "top": 37.1,
-        "left": 11.5,
+        "top": 37,
+        "left": 11,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -131744,8 +131737,8 @@
         "y": 41.5,
         "w": 37,
         "h": 2.2,
-        "top": 40.8,
-        "left": 10.7,
+        "top": 41.5,
+        "left": 11,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -131760,8 +131753,8 @@
         "y": 45,
         "w": 37,
         "h": 2.2,
-        "top": 44.3,
-        "left": 11.3,
+        "top": 45,
+        "left": 11,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -131776,9 +131769,9 @@
         "y": 55.5,
         "w": 37,
         "h": 2.2,
-        "top": 65.8,
-        "left": 20.6,
-        "width": 13.6,
+        "top": 55.5,
+        "left": 11,
+        "width": 37,
         "height": 2.2,
         "correct": [
           "always does exercise",
@@ -131792,9 +131785,9 @@
         "y": 62.5,
         "w": 37,
         "h": 2.2,
-        "top": 70.2,
-        "left": 17.4,
-        "width": 11.7,
+        "top": 62.5,
+        "left": 11,
+        "width": 37,
         "height": 2.2,
         "correct": [
           "rarely have a lie-in",
@@ -131808,9 +131801,9 @@
         "y": 69.5,
         "w": 37,
         "h": 2.2,
-        "top": 76.8,
-        "left": 12.4,
-        "width": 14.1,
+        "top": 69.5,
+        "left": 11,
+        "width": 37,
         "height": 2.2,
         "correct": [
           "Most days my sister goes on Facebook",
@@ -131825,9 +131818,9 @@
         "y": 76.5,
         "w": 37,
         "h": 2.2,
-        "top": 81.3,
-        "left": 22.3,
-        "width": 12.2,
+        "top": 76.5,
+        "left": 11,
+        "width": 37,
         "height": 2.2,
         "correct": [
           "go on holiday once or twice a year",
@@ -131841,10 +131834,10 @@
         "y": 83.5,
         "w": 37,
         "h": 2.2,
-        "top": 85.9,
-        "left": 9.5,
-        "width": 17,
-        "height": 1.8,
+        "top": 83.5,
+        "left": 11,
+        "width": 37,
+        "height": 2.2,
         "correct": [
           "Every now and then we go clubbing",
           "We go clubbing every now and then"
@@ -131857,9 +131850,9 @@
         "y": 28,
         "w": 20,
         "h": 2.2,
-        "top": 66.2,
-        "left": 75.7,
-        "width": 12,
+        "top": 28,
+        "left": 62,
+        "width": 20,
         "height": 2.2,
         "correct": [
           "hardly ever have",
@@ -131873,8 +131866,8 @@
         "y": 36,
         "w": 16,
         "h": 2.2,
-        "top": 71.1,
-        "left": 57.7,
+        "top": 36,
+        "left": 62,
         "width": 16,
         "height": 2.2,
         "correct": [
@@ -131889,10 +131882,10 @@
         "y": 44,
         "w": 22,
         "h": 2.2,
-        "top": 75.3,
-        "left": 59.6,
-        "width": 12,
-        "height": 1.6,
+        "top": 44,
+        "left": 62,
+        "width": 22,
+        "height": 2.2,
         "correct": [
           "always eat healthily",
           "always eat"
@@ -131905,9 +131898,9 @@
         "y": 52,
         "w": 20,
         "h": 2.2,
-        "top": 77.7,
-        "left": 77.1,
-        "width": 13.6,
+        "top": 52,
+        "left": 62,
+        "width": 20,
         "height": 2.2,
         "correct": [
           "nearly always go",
@@ -131921,9 +131914,9 @@
         "y": 60,
         "w": 22,
         "h": 2.2,
-        "top": 80.5,
-        "left": 71.9,
-        "width": 14.2,
+        "top": 60,
+        "left": 62,
+        "width": 22,
         "height": 2.2,
         "correct": [
           "sometimes watch videos",
@@ -131937,9 +131930,9 @@
         "y": 68,
         "w": 16,
         "h": 2.2,
-        "top": 86,
-        "left": 59.6,
-        "width": 11.8,
+        "top": 68,
+        "left": 62,
+        "width": 16,
         "height": 2.2,
         "correct": [
           "occasionally",
@@ -131954,8 +131947,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "2",
-        "top": 20.5,
-        "left": 31.2,
+        "top": 42.5,
+        "left": 31,
         "width": 13,
         "height": 2,
         "correct": [
@@ -131970,8 +131963,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "3",
-        "top": 37,
-        "left": 11.5,
+        "top": 56.5,
+        "left": 11,
         "width": 13,
         "height": 2,
         "correct": [
@@ -131986,8 +131979,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "4",
-        "top": 37,
-        "left": 31.3,
+        "top": 56.5,
+        "left": 31,
         "width": 13,
         "height": 2,
         "correct": [
@@ -132002,8 +131995,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "5",
-        "top": 53.5,
-        "left": 11.5,
+        "top": 70.5,
+        "left": 11,
         "width": 13,
         "height": 2,
         "correct": [
@@ -132017,8 +132010,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "6",
-        "top": 53.4,
-        "left": 31.4,
+        "top": 70.5,
+        "left": 31,
         "width": 13,
         "height": 2,
         "correct": [
@@ -132033,7 +132026,7 @@
         "page": 4007,
         "exercise": "4",
         "label": "7",
-        "top": 70.1,
+        "top": 84.5,
         "left": 11,
         "width": 13,
         "height": 2,
@@ -132049,8 +132042,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "8",
-        "top": 70.1,
-        "left": 31.5,
+        "top": 84.5,
+        "left": 31,
         "width": 13,
         "height": 2,
         "correct": [
@@ -132065,9 +132058,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "2",
-        "top": 11.7,
-        "left": 86,
-        "width": 12.6,
+        "top": 24.5,
+        "left": 59.5,
+        "width": 33,
         "height": 2,
         "correct": [
           "swimming",
@@ -132080,9 +132073,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "3",
-        "top": 14.4,
-        "left": 80.6,
-        "width": 12.5,
+        "top": 29.5,
+        "left": 59.5,
+        "width": 33,
         "height": 2,
         "correct": [
           "golf",
@@ -132095,9 +132088,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "4",
-        "top": 17.8,
-        "left": 68,
-        "width": 14.3,
+        "top": 33.5,
+        "left": 59.5,
+        "width": 33,
         "height": 2,
         "correct": [
           "basketball",
@@ -132110,9 +132103,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "5",
-        "top": 19.2,
-        "left": 82.9,
-        "width": 14.6,
+        "top": 38.5,
+        "left": 59.5,
+        "width": 33,
         "height": 2,
         "correct": [
           "karate",
@@ -132125,9 +132118,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "6",
-        "top": 21.6,
-        "left": 92.3,
-        "width": 8.6,
+        "top": 42.5,
+        "left": 59.5,
+        "width": 33,
         "height": 2,
         "correct": [
           "exercise",
@@ -132140,8 +132133,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "2",
-        "top": 52.9,
-        "left": 57.6,
+        "top": 60.5,
+        "left": 57,
         "width": 14,
         "height": 2,
         "correct": [
@@ -132156,8 +132149,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "3",
-        "top": 57.5,
-        "left": 57.3,
+        "top": 64.5,
+        "left": 57,
         "width": 14,
         "height": 2,
         "correct": [
@@ -132172,8 +132165,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "4",
-        "top": 60.6,
-        "left": 58.2,
+        "top": 68.5,
+        "left": 57,
         "width": 14,
         "height": 2,
         "correct": [
@@ -132188,8 +132181,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "5",
-        "top": 64.2,
-        "left": 57.2,
+        "top": 73.5,
+        "left": 57,
         "width": 14,
         "height": 2,
         "correct": [
@@ -132204,8 +132197,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "6",
-        "top": 67.4,
-        "left": 60.1,
+        "top": 76.5,
+        "left": 59.5,
         "width": 14,
         "height": 2,
         "correct": [
@@ -132220,8 +132213,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "7",
-        "top": 70.1,
-        "left": 72.6,
+        "top": 81.5,
+        "left": 70,
         "width": 14,
         "height": 2,
         "correct": [
@@ -132236,8 +132229,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "8",
-        "top": 74.9,
-        "left": 73.7,
+        "top": 85.5,
+        "left": 73,
         "width": 14,
         "height": 2,
         "correct": [
@@ -133123,9 +133116,9 @@
       {
         "id": "p4011_ex5a_2",
         "type": "fill",
-        "top": 23.1,
-        "left": 32.6,
-        "width": 6.8,
+        "top": 25.1,
+        "left": 32.5,
+        "width": 9,
         "height": 1.9,
         "x": 32.5,
         "y": 25.1,
@@ -133141,9 +133134,9 @@
       {
         "id": "p4011_ex5a_3",
         "type": "fill",
-        "top": 26,
-        "left": 28,
-        "width": 7.4,
+        "top": 28.8,
+        "left": 27.5,
+        "width": 10.5,
         "height": 1.9,
         "x": 27.5,
         "y": 28.8,
@@ -133159,8 +133152,8 @@
       {
         "id": "p4011_ex5a_4",
         "type": "fill",
-        "top": 27.6,
-        "left": 24.8,
+        "top": 30.7,
+        "left": 25.5,
         "width": 9,
         "height": 1.9,
         "x": 25.5,
@@ -133177,8 +133170,8 @@
       {
         "id": "p4011_ex5a_5",
         "type": "fill",
-        "top": 29.4,
-        "left": 23.6,
+        "top": 32.6,
+        "left": 23.5,
         "width": 9,
         "height": 1.9,
         "x": 23.5,
@@ -133195,9 +133188,9 @@
       {
         "id": "p4011_ex5a_6",
         "type": "fill",
-        "top": 31.2,
-        "left": 28.8,
-        "width": 7.1,
+        "top": 34.5,
+        "left": 28.5,
+        "width": 10,
         "height": 1.9,
         "x": 28.5,
         "y": 34.5,
@@ -133213,9 +133206,9 @@
       {
         "id": "p4011_ex5a_7",
         "type": "fill",
-        "top": 32.6,
-        "left": 24.2,
-        "width": 7.6,
+        "top": 36.4,
+        "left": 24.5,
+        "width": 9.5,
         "height": 1.9,
         "x": 24.5,
         "y": 36.4,
@@ -133231,9 +133224,9 @@
       {
         "id": "p4011_ex5a_8",
         "type": "fill",
-        "top": 35.2,
-        "left": 31.9,
-        "width": 7.3,
+        "top": 38.3,
+        "left": 31.5,
+        "width": 10.5,
         "height": 1.9,
         "x": 31.5,
         "y": 38.3,
@@ -133249,8 +133242,8 @@
       {
         "id": "p4011_ex7_2",
         "type": "fill",
-        "top": 15.9,
-        "left": 55.4,
+        "top": 18.3,
+        "left": 55,
         "width": 37,
         "height": 1.9,
         "x": 55,
@@ -133267,8 +133260,8 @@
       {
         "id": "p4011_ex7_3",
         "type": "fill",
-        "top": 19.7,
-        "left": 55.4,
+        "top": 22.2,
+        "left": 55,
         "width": 37,
         "height": 1.9,
         "x": 55,
@@ -133285,8 +133278,8 @@
       {
         "id": "p4011_ex7_4",
         "type": "fill",
-        "top": 24.5,
-        "left": 55.3,
+        "top": 26.9,
+        "left": 55,
         "width": 37,
         "height": 1.9,
         "x": 55,
@@ -133303,8 +133296,8 @@
       {
         "id": "p4011_ex7_5",
         "type": "fill",
-        "top": 28.1,
-        "left": 55.6,
+        "top": 30.8,
+        "left": 55,
         "width": 37,
         "height": 1.9,
         "x": 55,
@@ -133321,8 +133314,8 @@
       {
         "id": "p4011_ex7_6",
         "type": "fill",
-        "top": 31.9,
-        "left": 55.7,
+        "top": 34.6,
+        "left": 55,
         "width": 37,
         "height": 1.9,
         "x": 55,
@@ -133339,8 +133332,8 @@
       {
         "id": "p4011_ex8_2",
         "type": "fill",
-        "top": 50.4,
-        "left": 54.8,
+        "top": 52.8,
+        "left": 57,
         "width": 8.5,
         "height": 1.9,
         "x": 57,
@@ -133356,8 +133349,8 @@
       {
         "id": "p4011_ex8_3",
         "type": "fill",
-        "top": 55,
-        "left": 62.6,
+        "top": 57.2,
+        "left": 62.5,
         "width": 7.5,
         "height": 1.9,
         "x": 62.5,
@@ -133373,8 +133366,8 @@
       {
         "id": "p4011_ex8_4",
         "type": "fill",
-        "top": 57.3,
-        "left": 62.9,
+        "top": 60.5,
+        "left": 63.5,
         "width": 7.5,
         "height": 1.9,
         "x": 63.5,
@@ -133390,7 +133383,7 @@
       {
         "id": "p4011_ex8_5",
         "type": "fill",
-        "top": 66.5,
+        "top": 69.6,
         "left": 55,
         "width": 9.5,
         "height": 1.9,
@@ -133408,8 +133401,8 @@
       {
         "id": "p4011_ex8_6",
         "type": "fill",
-        "top": 67.9,
-        "left": 66.1,
+        "top": 70.8,
+        "left": 66.5,
         "width": 9.5,
         "height": 1.9,
         "x": 66.5,
@@ -133426,8 +133419,8 @@
       {
         "id": "p4011_ex8_7",
         "type": "fill",
-        "top": 71,
-        "left": 54.9,
+        "top": 73.7,
+        "left": 55,
         "width": 9.5,
         "height": 1.9,
         "x": 55,
@@ -133444,8 +133437,8 @@
       {
         "id": "p4011_ex8_8",
         "type": "fill",
-        "top": 72.2,
-        "left": 66.2,
+        "top": 75.4,
+        "left": 65.5,
         "width": 9.5,
         "height": 1.9,
         "x": 65.5,
@@ -133462,8 +133455,8 @@
       {
         "id": "p4011_ex8_9",
         "type": "fill",
-        "top": 73.8,
-        "left": 68.2,
+        "top": 77,
+        "left": 68.5,
         "width": 8.5,
         "height": 1.9,
         "x": 68.5,
@@ -133479,8 +133472,8 @@
       {
         "id": "p4011_ex8_10",
         "type": "fill",
-        "top": 77.5,
-        "left": 64.7,
+        "top": 80.2,
+        "left": 63.5,
         "width": 8.5,
         "height": 1.9,
         "x": 63.5,
@@ -133496,8 +133489,8 @@
       {
         "id": "p4011_ex8_11",
         "type": "fill",
-        "top": 79.8,
-        "left": 55.7,
+        "top": 83.3,
+        "left": 55,
         "width": 9.5,
         "height": 1.9,
         "x": 55,
@@ -133514,8 +133507,8 @@
       {
         "id": "p4011_ex8_12",
         "type": "fill",
-        "top": 83.4,
-        "left": 54.7,
+        "top": 86.4,
+        "left": 55,
         "width": 9.5,
         "height": 1.9,
         "x": 55,
@@ -133535,8 +133528,8 @@
         "group": "p4011_ex6_1b",
         "text": "Do you want",
         "correct": true,
-        "top": 54.1,
-        "left": 22.4,
+        "top": 55.4,
+        "left": 21.5,
         "width": 8,
         "height": 1.9,
         "x": 21.5,
@@ -133550,8 +133543,8 @@
         "group": "p4011_ex6_1b",
         "text": "Are you wanting",
         "correct": false,
-        "top": 54.1,
-        "left": 31.4,
+        "top": 55.4,
+        "left": 30.5,
         "width": 10.5,
         "height": 1.9,
         "x": 30.5,
@@ -133565,8 +133558,8 @@
         "group": "p4011_ex6_2a",
         "text": "Do you listen",
         "correct": false,
-        "top": 57.3,
-        "left": 12.4,
+        "top": 59.3,
+        "left": 12.5,
         "width": 9,
         "height": 1.9,
         "x": 12.5,
@@ -133580,8 +133573,8 @@
         "group": "p4011_ex6_2a",
         "text": "Are you listening",
         "correct": true,
-        "top": 57.3,
-        "left": 22.4,
+        "top": 59.3,
+        "left": 22.5,
         "width": 11,
         "height": 1.9,
         "x": 22.5,
@@ -133595,8 +133588,8 @@
         "group": "p4011_ex6_2b",
         "text": "like",
         "correct": true,
-        "top": 60.3,
-        "left": 15.5,
+        "top": 62.2,
+        "left": 16.5,
         "width": 3.5,
         "height": 1.9,
         "x": 16.5,
@@ -133610,8 +133603,8 @@
         "group": "p4011_ex6_2b",
         "text": "'m liking",
         "correct": false,
-        "top": 60.3,
-        "left": 19.8,
+        "top": 62.2,
+        "left": 20.8,
         "width": 6.2,
         "height": 1.9,
         "x": 20.8,
@@ -133625,8 +133618,8 @@
         "group": "p4011_ex6_3a",
         "text": "do you do",
         "correct": true,
-        "top": 62.1,
-        "left": 15.8,
+        "top": 64.1,
+        "left": 19.5,
         "width": 7,
         "height": 1.9,
         "x": 19.5,
@@ -133640,8 +133633,8 @@
         "group": "p4011_ex6_3a",
         "text": "are you doing",
         "correct": false,
-        "top": 62.1,
-        "left": 23.8,
+        "top": 64.1,
+        "left": 27.5,
         "width": 9,
         "height": 1.9,
         "x": 27.5,
@@ -133650,13 +133643,28 @@
         "h": 1.9
       },
       {
+        "id": "p4011_ex6_3b_opt1",
+        "type": "choose",
+        "group": "p4011_ex6_3b",
+        "text": "go",
+        "correct": true,
+        "top": 66,
+        "left": 17.5,
+        "width": 2.8,
+        "height": 1.9,
+        "x": 17.5,
+        "y": 66,
+        "w": 2.8,
+        "h": 1.9
+      },
+      {
         "id": "p4011_ex6_3b_opt2",
         "type": "choose",
         "group": "p4011_ex6_3b",
         "text": "'m going",
         "correct": false,
-        "top": 63.9,
-        "left": 21.9,
+        "top": 66,
+        "left": 21,
         "width": 6,
         "height": 1.9,
         "x": 21,
@@ -133670,8 +133678,8 @@
         "group": "p4011_ex6_4a",
         "text": "does the market open",
         "correct": true,
-        "top": 65.6,
-        "left": 19.7,
+        "top": 67.9,
+        "left": 22,
         "width": 14.5,
         "height": 1.9,
         "x": 22,
@@ -133685,8 +133693,8 @@
         "group": "p4011_ex6_4a",
         "text": "is the market opening",
         "correct": false,
-        "top": 65.6,
-        "left": 35.2,
+        "top": 67.9,
+        "left": 37.5,
         "width": 15,
         "height": 1.9,
         "x": 37.5,
@@ -133700,8 +133708,8 @@
         "group": "p4011_ex6_4b",
         "text": "don't know",
         "correct": true,
-        "top": 68.5,
-        "left": 13.7,
+        "top": 70.8,
+        "left": 14,
         "width": 7.5,
         "height": 1.9,
         "x": 14,
@@ -133715,8 +133723,8 @@
         "group": "p4011_ex6_4b",
         "text": "'m not knowing",
         "correct": false,
-        "top": 68.5,
-        "left": 22.2,
+        "top": 70.8,
+        "left": 22.5,
         "width": 10.5,
         "height": 1.9,
         "x": 22.5,
@@ -133730,7 +133738,7 @@
         "group": "p4011_ex6_5a",
         "text": "Does your partner",
         "correct": false,
-        "top": 70.7,
+        "top": 72.8,
         "left": 12.5,
         "width": 11.5,
         "height": 1.9,
@@ -133745,8 +133753,8 @@
         "group": "p4011_ex6_5a",
         "text": "Is your partner",
         "correct": true,
-        "top": 70.9,
-        "left": 25.6,
+        "top": 72.8,
+        "left": 25,
         "width": 10.5,
         "height": 1.9,
         "x": 25,
@@ -133760,10 +133768,10 @@
         "group": "p4011_ex6_5b",
         "text": "doesn't work",
         "correct": true,
-        "top": 72.6,
-        "left": 16.1,
+        "top": 74.7,
+        "left": 17,
         "width": 9,
-        "height": 1.6,
+        "height": 1.9,
         "x": 17,
         "y": 74.7,
         "w": 9,
@@ -133775,8 +133783,8 @@
         "group": "p4011_ex6_5b",
         "text": "isn't working",
         "correct": false,
-        "top": 72.1,
-        "left": 25.6,
+        "top": 74.7,
+        "left": 27,
         "width": 9.5,
         "height": 1.9,
         "x": 27,
@@ -133790,8 +133798,8 @@
         "group": "p4011_ex6_6a",
         "text": "Do you have",
         "correct": false,
-        "top": 74,
-        "left": 12.4,
+        "top": 76.6,
+        "left": 12.5,
         "width": 8.5,
         "height": 1.9,
         "x": 12.5,
@@ -133805,8 +133813,8 @@
         "group": "p4011_ex6_6a",
         "text": "Are you having",
         "correct": true,
-        "top": 74,
-        "left": 22.8,
+        "top": 76.6,
+        "left": 22,
         "width": 9.5,
         "height": 1.9,
         "x": 22,
@@ -133820,8 +133828,8 @@
         "group": "p4011_ex6_6b",
         "text": "have",
         "correct": false,
-        "top": 75.9,
-        "left": 15.9,
+        "top": 78.5,
+        "left": 16.5,
         "width": 4,
         "height": 1.9,
         "x": 16.5,
@@ -133835,8 +133843,8 @@
         "group": "p4011_ex6_6b",
         "text": "'m having",
         "correct": true,
-        "top": 75.9,
-        "left": 21.4,
+        "top": 78.5,
+        "left": 21.5,
         "width": 7,
         "height": 1.9,
         "x": 21.5,
@@ -133850,8 +133858,8 @@
         "group": "p4011_ex6_7a",
         "text": "Do I need",
         "correct": true,
-        "top": 77.3,
-        "left": 12.4,
+        "top": 80.4,
+        "left": 12.5,
         "width": 7,
         "height": 1.9,
         "x": 12.5,
@@ -133865,8 +133873,8 @@
         "group": "p4011_ex6_7a",
         "text": "Am I needing",
         "correct": false,
-        "top": 77.2,
-        "left": 20.1,
+        "top": 80.4,
+        "left": 20.5,
         "width": 9,
         "height": 1.9,
         "x": 20.5,
@@ -133880,8 +133888,8 @@
         "group": "p4011_ex6_7b",
         "text": "doesn't rain",
         "correct": false,
-        "top": 78.8,
-        "left": 15.9,
+        "top": 82.4,
+        "left": 16.5,
         "width": 8.5,
         "height": 1.9,
         "x": 16.5,
@@ -133895,8 +133903,8 @@
         "group": "p4011_ex6_7b",
         "text": "isn't raining",
         "correct": true,
-        "top": 78.9,
-        "left": 25.9,
+        "top": 82.4,
+        "left": 26,
         "width": 8.5,
         "height": 1.9,
         "x": 26,
@@ -133910,8 +133918,8 @@
         "group": "p4011_ex6_8a",
         "text": "Is our team winning",
         "correct": true,
-        "top": 80.7,
-        "left": 12.6,
+        "top": 84.3,
+        "left": 12.5,
         "width": 13,
         "height": 1.9,
         "x": 12.5,
@@ -133925,8 +133933,8 @@
         "group": "p4011_ex6_8a",
         "text": "Does our team win",
         "correct": false,
-        "top": 80.5,
-        "left": 26.6,
+        "top": 84.3,
+        "left": 26.5,
         "width": 13,
         "height": 1.9,
         "x": 26.5,
@@ -133940,8 +133948,8 @@
         "group": "p4011_ex6_8b",
         "text": "play",
         "correct": false,
-        "top": 82.7,
-        "left": 17.8,
+        "top": 86.2,
+        "left": 18.5,
         "width": 4,
         "height": 1.9,
         "x": 18.5,
@@ -133955,27 +133963,14 @@
         "group": "p4011_ex6_8b",
         "text": "'re playing",
         "correct": true,
-        "top": 82.6,
-        "left": 23,
+        "top": 86.2,
+        "left": 23.5,
         "width": 8,
         "height": 1.9,
         "x": 23.5,
         "y": 86.2,
         "w": 8,
         "h": 1.9
-      },
-      {
-        "id": "p4011_custom_mwd808u8_marv",
-        "page": 4011,
-        "type": "choose",
-        "label": "53",
-        "top": 64.2,
-        "left": 16.7,
-        "width": 4.5,
-        "height": 1.6,
-        "group": "p4011_grp_3536",
-        "correct": true,
-        "text": ""
       }
     ],
     "4012": [
@@ -133986,8 +133981,8 @@
         "y": 24,
         "w": 12,
         "h": 2,
-        "top": 60.8,
-        "left": 31.7,
+        "top": 24,
+        "left": 25,
         "width": 12,
         "height": 2,
         "correct": [
@@ -134007,10 +134002,10 @@
         "y": 29.5,
         "w": 12,
         "h": 2,
-        "top": 64.4,
-        "left": 11.4,
+        "top": 29.5,
+        "left": 25,
         "width": 12,
-        "height": 1.5,
+        "height": 2,
         "correct": [
           "where"
         ],
@@ -134028,10 +134023,10 @@
         "y": 35,
         "w": 12,
         "h": 2,
-        "top": 66.2,
-        "left": 10.9,
+        "top": 35,
+        "left": 25,
         "width": 12,
-        "height": 1.5,
+        "height": 2,
         "correct": [
           "where"
         ],
@@ -134049,10 +134044,10 @@
         "y": 40.5,
         "w": 12,
         "h": 2,
-        "top": 70.5,
-        "left": 28,
+        "top": 40.5,
+        "left": 25,
         "width": 12,
-        "height": 1.7,
+        "height": 2,
         "correct": [
           "that"
         ],
@@ -134070,10 +134065,10 @@
         "y": 46,
         "w": 12,
         "h": 2,
-        "top": 72.3,
-        "left": 27.9,
+        "top": 46,
+        "left": 25,
         "width": 12,
-        "height": 1.4,
+        "height": 2,
         "correct": [
           "who"
         ],
@@ -134091,10 +134086,10 @@
         "y": 51.5,
         "w": 12,
         "h": 2,
-        "top": 74,
-        "left": 39.2,
-        "width": 8.5,
-        "height": 1.1,
+        "top": 51.5,
+        "left": 25,
+        "width": 12,
+        "height": 2,
         "correct": [
           "which"
         ],
@@ -134112,10 +134107,10 @@
         "y": 58,
         "w": 12,
         "h": 2,
-        "top": 24.3,
-        "left": 65.3,
-        "width": 4.2,
-        "height": 1.7,
+        "top": 58,
+        "left": 25,
+        "width": 12,
+        "height": 2,
         "correct": [
           "who"
         ],
@@ -134133,10 +134128,10 @@
         "y": 60.1,
         "w": 9.5,
         "h": 2,
-        "top": 26.1,
-        "left": 60.3,
-        "width": 7.3,
-        "height": 1.5,
+        "top": 60.1,
+        "left": 41.5,
+        "width": 9.5,
+        "height": 2,
         "correct": [
           "neighbour",
           "a neighbour"
@@ -134149,9 +134144,9 @@
         "y": 62.3,
         "w": 12,
         "h": 2,
-        "top": 27.2,
-        "left": 65.8,
-        "width": 7.8,
+        "top": 62.3,
+        "left": 25,
+        "width": 12,
         "height": 2,
         "correct": [
           "where"
@@ -134170,8 +134165,8 @@
         "y": 64.4,
         "w": 9.5,
         "h": 2,
-        "top": 27.3,
-        "left": 86.1,
+        "top": 64.4,
+        "left": 41.5,
         "width": 9.5,
         "height": 2,
         "correct": [
@@ -134186,10 +134181,10 @@
         "y": 66.5,
         "w": 12,
         "h": 2,
-        "top": 29.5,
-        "left": 65,
-        "width": 7,
-        "height": 1.5,
+        "top": 66.5,
+        "left": 25,
+        "width": 12,
+        "height": 2,
         "correct": [
           "which"
         ],
@@ -134207,8 +134202,8 @@
         "y": 68.6,
         "w": 9.5,
         "h": 2,
-        "top": 29.2,
-        "left": 86.1,
+        "top": 68.6,
+        "left": 41.5,
         "width": 9.5,
         "height": 2,
         "correct": [
@@ -134223,9 +134218,9 @@
         "y": 70.8,
         "w": 12,
         "h": 2,
-        "top": 31.1,
-        "left": 64.7,
-        "width": 8.5,
+        "top": 70.8,
+        "left": 25,
+        "width": 12,
         "height": 2,
         "correct": [
           "which"
@@ -134244,8 +134239,8 @@
         "y": 72.9,
         "w": 9.5,
         "h": 2,
-        "top": 32.4,
-        "left": 62.1,
+        "top": 72.9,
+        "left": 41.5,
         "width": 9.5,
         "height": 2,
         "correct": [
@@ -134260,9 +134255,9 @@
         "y": 75,
         "w": 12,
         "h": 2,
-        "top": 34.5,
-        "left": 66.5,
-        "width": 7.9,
+        "top": 75,
+        "left": 25,
+        "width": 12,
         "height": 2,
         "correct": [
           "who"
@@ -134281,8 +134276,8 @@
         "y": 77.1,
         "w": 9.5,
         "h": 2,
-        "top": 35.5,
-        "left": 57,
+        "top": 77.1,
+        "left": 41.5,
         "width": 9.5,
         "height": 2,
         "correct": [
@@ -134297,10 +134292,10 @@
         "y": 79.3,
         "w": 12,
         "h": 2,
-        "top": 38,
-        "left": 64.8,
-        "width": 7,
-        "height": 1.4,
+        "top": 79.3,
+        "left": 25,
+        "width": 12,
+        "height": 2,
         "correct": [
           "which"
         ],
@@ -134318,8 +134313,8 @@
         "y": 81.4,
         "w": 9.5,
         "h": 2,
-        "top": 36.9,
-        "left": 85.4,
+        "top": 81.4,
+        "left": 41.5,
         "width": 9.5,
         "height": 2,
         "correct": [
@@ -134334,10 +134329,10 @@
         "y": 83.5,
         "w": 12,
         "h": 2,
-        "top": 40,
-        "left": 66.5,
-        "width": 6.6,
-        "height": 1.3,
+        "top": 83.5,
+        "left": 25,
+        "width": 12,
+        "height": 2,
         "correct": [
           "where"
         ],
@@ -134355,8 +134350,8 @@
         "y": 85.6,
         "w": 9.5,
         "h": 2,
-        "top": 38.8,
-        "left": 85.2,
+        "top": 85.6,
+        "left": 41.5,
         "width": 9.5,
         "height": 2,
         "correct": [
@@ -134371,10 +134366,10 @@
         "y": 87.8,
         "w": 12,
         "h": 2,
-        "top": 41.7,
-        "left": 65.2,
-        "width": 7.5,
-        "height": 1.5,
+        "top": 87.8,
+        "left": 25,
+        "width": 12,
+        "height": 2,
         "correct": [
           "who"
         ],
@@ -134392,8 +134387,8 @@
         "y": 89.9,
         "w": 9.5,
         "h": 2,
-        "top": 40.9,
-        "left": 83.3,
+        "top": 89.9,
+        "left": 41.5,
         "width": 9.5,
         "height": 2,
         "correct": [
@@ -134408,9 +134403,9 @@
         "y": 52.1,
         "w": 35,
         "h": 2,
-        "top": 53.2,
-        "left": 69.7,
-        "width": 24.5,
+        "top": 52.1,
+        "left": 55.5,
+        "width": 35,
         "height": 2,
         "correct": [
           "which I wear to go running.",
@@ -134424,9 +134419,9 @@
         "y": 57.6,
         "w": 35,
         "h": 2,
-        "top": 56.8,
-        "left": 69,
-        "width": 25.1,
+        "top": 57.6,
+        "left": 55.5,
+        "width": 35,
         "height": 2,
         "correct": [
           "which I use for work.",
@@ -134440,9 +134435,9 @@
         "y": 63.1,
         "w": 35,
         "h": 2,
-        "top": 59.7,
-        "left": 69.5,
-        "width": 24.5,
+        "top": 63.1,
+        "left": 55.5,
+        "width": 35,
         "height": 2,
         "correct": [
           "who repairs my car.",
@@ -134456,9 +134451,9 @@
         "y": 68.6,
         "w": 35,
         "h": 2,
-        "top": 63.5,
-        "left": 68.2,
-        "width": 27.1,
+        "top": 68.6,
+        "left": 55.5,
+        "width": 35,
         "height": 2,
         "correct": [
           "where my grandfather always sits.",
@@ -134472,9 +134467,9 @@
         "y": 74.1,
         "w": 9.5,
         "h": 2,
-        "top": 67,
-        "left": 72,
-        "width": 23.7,
+        "top": 74.1,
+        "left": 81.5,
+        "width": 9.5,
         "height": 2,
         "correct": [
           "who cuts my hair.",
@@ -134488,9 +134483,9 @@
         "y": 79.6,
         "w": 35,
         "h": 2,
-        "top": 69.9,
-        "left": 67.3,
-        "width": 29,
+        "top": 79.6,
+        "left": 55.5,
+        "width": 35,
         "height": 2,
         "correct": [
           "which goes to the city centre.",
@@ -134504,9 +134499,9 @@
         "y": 85.1,
         "w": 35,
         "h": 2,
-        "top": 73.5,
-        "left": 73,
-        "width": 23.9,
+        "top": 85.1,
+        "left": 55.5,
+        "width": 35,
         "height": 2,
         "correct": [
           "where we do our shopping.",
@@ -151053,9 +151048,7 @@
       "inviteCode": "RAVSHANOV24",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_qarshiboyev_humoyun",
@@ -151079,10 +151072,8 @@
       "monthlySalary": 0,
       "inviteCode": "QARSHIBOYEV15",
       "unpaidMonths": 0,
-      "livePaidStudents": 1,
-      "computedLiveSalary": 150000,
-      "liveCollectedRevenue": 300000,
-      "centerRetainedShare": 150000
+      "livePaidStudents": 0,
+      "computedLiveSalary": 0
     },
     {
       "id": "t_tovboyeva_marjona",
@@ -151107,9 +151098,7 @@
       "inviteCode": "MARJONA88",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_olimjonova_durdona",
@@ -151140,9 +151129,7 @@
       "inviteCode": "DURDONA12",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_tagaev_eldor",
@@ -151173,9 +151160,7 @@
       "inviteCode": "ELDOR33",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_yaxshilikova_kamola",
@@ -151202,9 +151187,7 @@
       "inviteCode": "KAMOLA45",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_sherqoziyeva_iroda",
@@ -151231,9 +151214,7 @@
       "inviteCode": "IRODA19",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_aborbekov_elyor",
@@ -151266,9 +151247,7 @@
       "inviteCode": "ELYOR70",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_orinboyev_jaloliddin",
@@ -151299,9 +151278,7 @@
       "inviteCode": "JALOLIDDIN99",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_jumanova_pokiza",
@@ -151326,9 +151303,7 @@
       "inviteCode": "POKIZA07",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_hayrullayev_arslon",
@@ -151355,9 +151330,7 @@
       "inviteCode": "ARSLON64",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_xudoyorova_sarvinoz",
@@ -151384,9 +151357,7 @@
       "inviteCode": "SARVINOZ82",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_aliqulova_sevinch",
@@ -151413,9 +151384,7 @@
       "inviteCode": "SEVINCH55",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_xojamqulova_diyora",
@@ -151446,9 +151415,7 @@
       "inviteCode": "DIYORA21",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_bosimbekov_farrux",
@@ -151479,9 +151446,7 @@
       "inviteCode": "FARRUX93",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_ahmadova_barno",
@@ -151512,9 +151477,7 @@
       "inviteCode": "BARNO36",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_shodiyor_matematika",
@@ -151539,9 +151502,7 @@
       "inviteCode": "SHODIYOR50",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "t_urolov_azizbek",
@@ -151574,9 +151535,7 @@
       "inviteCode": "AZIZBEK77",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0,
-      "liveCollectedRevenue": 0,
-      "centerRetainedShare": 0
+      "computedLiveSalary": 0
     },
     {
       "id": "admin_official_teacher",
@@ -153075,5 +153034,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794637446841
+  "updatedAt": 1794641448838
 }
