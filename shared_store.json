@@ -24682,7 +24682,7 @@
           "isLoggedOut": false,
           "hasLoggedIn": true,
           "loggedOutAt": 1794673976447,
-          "lastSeen": 1794673983641
+          "lastSeen": 1794674005643
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -29355,13 +29355,13 @@
       "title": "👑 IELTS Qiroli"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_urolov_azizbek",
       "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
       "password": "azizbek2026",
       "role": "teacher",
-      "coins": 100000,
+      "coins": 1000,
       "hourlyRate": 120000,
       "subject": "Ingliz tili (Upper / Inter)",
       "teachingHours": 72,
@@ -29369,13 +29369,13 @@
         "cls_urolov_azizbek_intermediate_practice",
         "cls_urolov_azizbek_upper_intermediate_standard"
       ],
-      "createdAt": 1793202631415,
+      "createdAt": 1794674005712,
       "updatedAt": 1793773725443,
       "level": "C2",
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793936667196,
+      "lastSeen": 1794674006384,
       "dailyMinutes": 0
     },
     {
@@ -29428,7 +29428,7 @@
       "lastLogin": "2026-11-04T14:59:52.209Z",
       "level": "A1",
       "dailyMinutes": 3,
-      "lastSeen": 1794673983641
+      "lastSeen": 1794674005643
     },
     {
       "id": "t_muhammadyusuf",
@@ -29918,7 +29918,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794673983641,
+      "lastSeen": 1794674005643,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "level": "A1"
@@ -153294,7 +153294,10 @@
       "studentMonthlyFee": 300000,
       "monthlySalary": 0,
       "inviteCode": "AZIZBEK77",
-      "unpaidMonths": 0
+      "unpaidMonths": 0,
+      "isOnline": true,
+      "hasLoggedIn": true,
+      "isLoggedOut": false
     },
     {
       "id": "admin_official_teacher",
@@ -154831,5 +154834,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794673984206
+  "updatedAt": 1794674007776
 }
