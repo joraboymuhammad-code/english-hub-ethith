@@ -26805,7 +26805,7 @@
       "hasLoggedIn": true,
       "isOnline": true,
       "loggedOutAt": 1793947950903,
-      "lastSeen": 1794637402755
+      "lastSeen": 1794637418153
     },
     {
       "id": "tg_98124765",
@@ -151045,7 +151045,9 @@
       "inviteCode": "RAVSHANOV24",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_qarshiboyev_humoyun",
@@ -151070,7 +151072,9 @@
       "inviteCode": "QARSHIBOYEV15",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_tovboyeva_marjona",
@@ -151095,7 +151099,9 @@
       "inviteCode": "MARJONA88",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_olimjonova_durdona",
@@ -151126,7 +151132,9 @@
       "inviteCode": "DURDONA12",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_tagaev_eldor",
@@ -151157,7 +151165,9 @@
       "inviteCode": "ELDOR33",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_yaxshilikova_kamola",
@@ -151184,7 +151194,9 @@
       "inviteCode": "KAMOLA45",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_sherqoziyeva_iroda",
@@ -151211,7 +151223,9 @@
       "inviteCode": "IRODA19",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_aborbekov_elyor",
@@ -151244,7 +151258,9 @@
       "inviteCode": "ELYOR70",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_orinboyev_jaloliddin",
@@ -151275,7 +151291,9 @@
       "inviteCode": "JALOLIDDIN99",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_jumanova_pokiza",
@@ -151300,7 +151318,9 @@
       "inviteCode": "POKIZA07",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_hayrullayev_arslon",
@@ -151327,7 +151347,9 @@
       "inviteCode": "ARSLON64",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_xudoyorova_sarvinoz",
@@ -151354,7 +151376,9 @@
       "inviteCode": "SARVINOZ82",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_aliqulova_sevinch",
@@ -151381,7 +151405,9 @@
       "inviteCode": "SEVINCH55",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_xojamqulova_diyora",
@@ -151412,7 +151438,9 @@
       "inviteCode": "DIYORA21",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_bosimbekov_farrux",
@@ -151443,7 +151471,9 @@
       "inviteCode": "FARRUX93",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_ahmadova_barno",
@@ -151474,7 +151504,9 @@
       "inviteCode": "BARNO36",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_shodiyor_matematika",
@@ -151499,7 +151531,9 @@
       "inviteCode": "SHODIYOR50",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_urolov_azizbek",
@@ -151532,7 +151566,9 @@
       "inviteCode": "AZIZBEK77",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "admin_official_teacher",
@@ -153031,5 +153067,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794637402956
+  "updatedAt": 1794637418732
 }
