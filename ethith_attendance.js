@@ -1140,44 +1140,80 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   // AUTOMATIC HOMEWORK TRACKING & DAILY GRADING ENGINE
   // Called automatically when a student completes & checks exercises in Intermediate (B1+)
   // ============================================================================
+  // Called automatically when a student completes & checks exercises in Intermediate (B1+)
+  // ============================================================================
   EA.recordStudentHomeworkCompletion = function(data) {
     if (!data) return;
-    var u = getActiveUser();
+    var u = (window.S && window.S.user) || (window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) || (window.App && window.App.state && window.App.state.user) || {};
     var pct = typeof data.pct === 'number' ? data.pct : 100;
     var autoGrade = data.autoGrade || (pct >= 86 ? 5 : (pct >= 71 ? 4 : (pct >= 55 ? 3 : 2)));
     var lessonCode = data.lessonCode || '1.1';
-    var todayKey = formatDateKey(new Date());
+    var unitNum = data.unit || 1;
+    var todayDate = getUniversalToday();
+    var todayKey = formatDateKey(todayDate);
 
     var allClasses = getAvailableClasses();
     var updatedAny = false;
+    var preferredClassId = window._ethithActiveHwContext && window._ethithActiveHwContext.classId;
 
     allClasses.forEach(function(cls) {
+      if (!cls) return;
       ensureClassAttendance(cls);
 
       // Find which date has this homework assigned, or fallback to activeHomework dateKey or todayKey
       var targetDateKey = todayKey;
+      var foundSpecificDate = false;
+
       if (window._ethithActiveHwContext && window._ethithActiveHwContext.classId === cls.id && window._ethithActiveHwContext.dateKey) {
         targetDateKey = window._ethithActiveHwContext.dateKey;
-      } else if (cls.activeHomework && cls.activeHomework.lessonCode === lessonCode && cls.activeHomework.dateKey) {
+        foundSpecificDate = true;
+      } else if (cls.activeHomework && (cls.activeHomework.lessonCode === lessonCode || cls.activeHomework.unit == unitNum) && cls.activeHomework.dateKey) {
         targetDateKey = cls.activeHomework.dateKey;
-      } else if (cls.attendance.homeworks) {
-        Object.keys(cls.attendance.homeworks).forEach(function(dk) {
-          if (cls.attendance.homeworks[dk] && cls.attendance.homeworks[dk].lessonCode === lessonCode) {
-            targetDateKey = dk;
+        foundSpecificDate = true;
+      } else if (Array.isArray(cls.activeHomeworks)) {
+        cls.activeHomeworks.forEach(function(h) {
+          if (h && (h.lessonCode === lessonCode || h.unit == unitNum) && h.dateKey) {
+            targetDateKey = h.dateKey;
+            foundSpecificDate = true;
           }
         });
       }
 
+      if (!foundSpecificDate && cls.attendance && cls.attendance.homeworks) {
+        Object.keys(cls.attendance.homeworks).forEach(function(dk) {
+          var hEntry = cls.attendance.homeworks[dk];
+          if (Array.isArray(hEntry)) {
+            hEntry.forEach(function(subHw) {
+              if (subHw && (subHw.lessonCode === lessonCode || subHw.unit == unitNum)) {
+                targetDateKey = dk;
+                foundSpecificDate = true;
+              }
+            });
+          } else if (hEntry && (hEntry.lessonCode === lessonCode || hEntry.unit == unitNum)) {
+            targetDateKey = dk;
+            foundSpecificDate = true;
+          }
+        });
+      }
+
+      // If targetDateKey was marked as holiday, unlock it because homework was assigned/completed here!
+      if (cls.attendance && cls.attendance.holidays && cls.attendance.holidays[targetDateKey]) {
+        delete cls.attendance.holidays[targetDateKey];
+      }
+
       // Match student in class
-      var myId = u.id || u.email || '';
+      var myId = (u.id || '').toLowerCase().trim();
+      var myLogin = (u.login || '').toLowerCase().trim();
       var myEmail = (u.email || '').toLowerCase().trim();
       var myName = (u.name || '').toLowerCase().trim();
 
       var matchedSt = (cls.students || []).find(function(s) {
         var sId = (s.id || '').toLowerCase().trim();
+        var sLog = (s.login || '').toLowerCase().trim();
         var sEm = (s.email || '').toLowerCase().trim();
         var sNm = cleanStName(cls.customStudentNames[s.id] || s.name || '').toLowerCase().trim();
-        return (myId && (s.id === myId || s.email === myId)) ||
+        return (myId && (sId === myId || sEm === myId || sLog === myId || sId === ('std_' + myId) || sId.replace(/^std_/, '') === myId.replace(/^std_/, ''))) ||
+               (myLogin && (sLog === myLogin || sId === myLogin || sId === ('std_' + myLogin) || sId.replace(/^std_/, '') === myLogin.replace(/^std_/, ''))) ||
                (myEmail && (sEm === myEmail || sId === myEmail)) ||
                (myName && sNm && (sNm === myName || sNm.indexOf(myName) !== -1 || myName.indexOf(sNm) !== -1));
       });
@@ -1187,16 +1223,20 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       if (matchedSt) {
         targetStId = matchedSt.id || matchedSt.email;
       } else if (u && u.role === 'student' && (u.id || u.email || u.name)) {
-        targetStId = u.id || u.email || ('std_' + Date.now());
-        cls.students.push({
-          id: targetStId,
-          name: u.name || "O'quvchi",
-          email: u.email || '',
-          joinedAt: todayKey
-        });
+        if (!preferredClassId || preferredClassId === cls.id) {
+          targetStId = u.id || u.email || ('std_' + Date.now());
+          cls.students.push({
+            id: targetStId,
+            name: u.name || "O'quvchi",
+            email: u.email || '',
+            joinedAt: todayKey
+          });
+        }
       } else if (cls.students && cls.students.length > 0) {
         // Fallback to first student if teacher is testing homework auto-grading
-        targetStId = cls.students[0].id || cls.students[0].email;
+        if (!preferredClassId || preferredClassId === cls.id) {
+          targetStId = cls.students[0].id || cls.students[0].email;
+        }
       }
 
       if (targetStId) {
@@ -1211,6 +1251,16 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           hwTotal: data.totalQuestions || 0,
           hwCompletedAt: Date.now()
         };
+
+        // Also sync to todayKey if different date so it is immediately visible on current day
+        if (targetDateKey !== todayKey) {
+          if (!cls.attendance.records[todayKey]) cls.attendance.records[todayKey] = {};
+          cls.attendance.records[todayKey][targetStId] = Object.assign({}, cls.attendance.records[targetDateKey][targetStId]);
+          if (cls.attendance.holidays && cls.attendance.holidays[todayKey]) {
+            delete cls.attendance.holidays[todayKey];
+          }
+        }
+
         if (!cls.attendance.lessonTypes[targetDateKey] || cls.attendance.lessonTypes[targetDateKey] === 'Oddiy') {
           cls.attendance.lessonTypes[targetDateKey] = 'Vazifa: ' + lessonCode;
         }
@@ -1220,8 +1270,16 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     });
 
     if (updatedAny) {
+      // Re-render attendance table if open
+      if (typeof EA.render === 'function') {
+        try { EA.render(); } catch(e) {}
+      }
+      try {
+        window.dispatchEvent(new CustomEvent('ethith:attendance-updated', { detail: { lessonCode: lessonCode, autoGrade: autoGrade, pct: pct } }));
+      } catch(e) {}
+
       var banner = document.createElement('div');
-      banner.style.cssText = 'position:fixed;top:22px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#059669,#0284c7);color:#ffffff;padding:14px 26px;border-radius:16px;font-weight:800;font-size:14px;z-index:2147483647;box-shadow:0 16px 40px rgba(0,0,0,0.55);border:1.5px solid #34d399;text-align:center;';
+      banner.style.cssText = 'position:fixed;top:22px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#059669,#0284c7);color:#ffffff;padding:14px 26px;border-radius:16px;font-weight:800;font-size:14px;z-index:2147483647;box-shadow:0 16px 40px rgba(0,0,0,0.55);border:1.5px solid #34d399;text-align:center;animation:ethWbFadeIn 0.3s ease-out;';
       banner.innerHTML = '✅ <b>Uy vazifasi (' + esc(lessonCode) + ') avtomatik tekshirildi!</b><br><span style="font-size:13px;color:#d1fae5;">Natija: <b>' + pct + '%</b> • Davomat jurnaliga avtomatik <b>"' + autoGrade + '" baho</b> va <b>"K" (Kelgan)</b> qo\'yildi!</span>';
       document.body.appendChild(banner);
       setTimeout(function() { if (banner && banner.parentNode) banner.remove(); }, 5000);

@@ -168876,8 +168876,11 @@
     // Teacher mode: initialize teacher controls (modal, direct editing, visual editor, save button)
     if (isTeacher) {
       setupTeacherControls(container, unitNum, lessonCode, pages, isEditor, bookLevel);
-    } else {
-      // Student mode: initialize test-solving event handlers and evaluation
+    }
+    // Interactive solving mode (inputs, chips, slots, checkBtn, resetBtn, boosters):
+    // Must be initialized whenever not in raw box-drawing editor mode (!isEditor),
+    // so both students AND teachers testing the exercises can solve, click "Tekshirish", get grades and see results!
+    if (!isEditor) {
       setupStudentSolvingMode(container, unitNum, lessonCode, pages, bookLevel);
     }
   }
@@ -170126,14 +170129,16 @@
         var wasSelected = this.classList.contains('selected');
 
         if (grp) {
-          container.querySelectorAll('.wb-choose-chip[data-group="' + grp + '"]').forEach(function(c) {
-            c.classList.remove('selected', 'correct', 'incorrect', 'should-choose');
-            var wrap = c.closest('.eth-wb-item-wrap');
-            if (wrap) {
-              var hint = wrap.querySelector('.eth-wb-hint-badge');
-              if (hint) {
-                hint.style.display = 'none';
-                hint.textContent = '';
+          container.querySelectorAll('.wb-choose-chip').forEach(function(c) {
+            if (c.getAttribute('data-group') === grp) {
+              c.classList.remove('selected', 'correct', 'incorrect', 'should-choose');
+              var wrap = c.closest('.eth-wb-item-wrap');
+              if (wrap) {
+                var hint = wrap.querySelector('.eth-wb-hint-badge');
+                if (hint) {
+                  hint.style.display = 'none';
+                  hint.textContent = '';
+                }
               }
             }
           });
@@ -170404,239 +170409,245 @@
     var checkBtn = container.querySelector('#ethWbCheckBtn');
     if (checkBtn) {
       checkBtn.addEventListener('click', function() {
-        var totalQuestions = 0;
-        var correctCount = 0;
+        try {
+          var totalQuestions = 0;
+          var correctCount = 0;
 
-        // 1. Check Fill Inputs
-        var fillInps = container.querySelectorAll('.wb-fill-input');
-        totalQuestions += fillInps.length;
-        fillInps.forEach(function(inp) {
-          var userVal = (inp.value || '').trim();
-          var rawCorr = inp.getAttribute('data-correct') || '';
-          var isCorrect = WB.checkAnswer(userVal, rawCorr);
-          var wrap = inp.closest('.eth-wb-item-wrap');
-          var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
+          // 1. Check Fill Inputs
+          var fillInps = container.querySelectorAll('.wb-fill-input');
+          totalQuestions += fillInps.length;
+          fillInps.forEach(function(inp) {
+            var userVal = (inp.value || '').trim();
+            var rawCorr = inp.getAttribute('data-correct') || '';
+            var isCorrect = WB.checkAnswer(userVal, rawCorr);
+            var wrap = inp.closest('.eth-wb-item-wrap');
+            var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
 
-          if (isCorrect && userVal) {
-            correctCount++;
-            inp.classList.add('correct');
-            inp.classList.remove('incorrect');
-            if (hint) hint.style.display = 'none';
-          } else {
-            inp.classList.add('incorrect');
-            inp.classList.remove('correct');
-            if (hint && isTeacher) {
-              var displayCorrect = rawCorr;
-              try {
-                var p = JSON.parse(rawCorr);
-                if (Array.isArray(p)) displayCorrect = p.join(' or ');
-              } catch(e) {}
-              hint.textContent = '✓ ' + displayCorrect;
-              hint.style.display = 'block';
-            } else if (hint) {
-              hint.style.display = 'none';
-            }
-          }
-        });
-
-        // 2. Check Cross Chips
-        var checkedCrossGroups = {};
-        var allCrossChips = container.querySelectorAll('.wb-cross-chip');
-        allCrossChips.forEach(function(chip) {
-          var grp = chip.getAttribute('data-group');
-          if (grp && !checkedCrossGroups[grp]) {
-            checkedCrossGroups[grp] = true;
-            totalQuestions++;
-            var groupChips = container.querySelectorAll('.wb-cross-chip[data-group="' + grp + '"]');
-            var groupAllCorrect = true;
-            groupChips.forEach(function(c) {
-              var isCrossed = c.classList.contains('crossed');
-              var shouldBeCrossed = (c.getAttribute('data-incorrect') === 'true');
-              if (isCrossed && shouldBeCrossed) {
-                c.classList.add('correct');
-                c.classList.remove('incorrect', 'should-cross');
-              } else if (isCrossed && !shouldBeCrossed) {
-                c.classList.add('incorrect');
-                c.classList.remove('correct');
-                groupAllCorrect = false;
-              } else if (!isCrossed && shouldBeCrossed) {
-                c.classList.add('should-cross');
-                groupAllCorrect = false;
-              } else {
-                c.classList.remove('correct', 'incorrect', 'should-cross');
-              }
-            });
-            if (groupAllCorrect) correctCount++;
-          }
-        });
-
-        // 3. Check Choose Chips
-        var checkedChooseGroups = {};
-        var allChooseChips = container.querySelectorAll('.wb-choose-chip');
-        allChooseChips.forEach(function(chip) {
-          var grp = chip.getAttribute('data-group');
-          if (grp && !checkedChooseGroups[grp]) {
-            checkedChooseGroups[grp] = true;
-            totalQuestions++;
-            var groupChips = container.querySelectorAll('.wb-choose-chip[data-group="' + grp + '"]');
-            var selectedChip = null;
-            var correctChip = null;
-
-            groupChips.forEach(function(c) {
-              if (c.classList.contains('selected')) selectedChip = c;
-              if (c.getAttribute('data-correct') === 'true') correctChip = c;
-            });
-
-            if (selectedChip && correctChip && selectedChip === correctChip) {
+            if (isCorrect && userVal) {
               correctCount++;
-              selectedChip.classList.add('correct');
-              selectedChip.classList.remove('incorrect');
+              inp.classList.add('correct');
+              inp.classList.remove('incorrect');
+              if (hint) hint.style.display = 'none';
             } else {
-              if (selectedChip) {
-                selectedChip.classList.add('incorrect');
-                selectedChip.classList.remove('correct');
+              inp.classList.add('incorrect');
+              inp.classList.remove('correct');
+              if (hint && isTeacher) {
+                var displayCorrect = rawCorr;
+                try {
+                  var p = JSON.parse(rawCorr);
+                  if (Array.isArray(p)) displayCorrect = p.join(' or ');
+                } catch(e) {}
+                hint.textContent = '✓ ' + displayCorrect;
+                hint.style.display = 'block';
+              } else if (hint) {
+                hint.style.display = 'none';
               }
-              if (correctChip && isTeacher) {
-                correctChip.classList.add('should-choose');
-                var wrapC = correctChip.closest('.eth-wb-item-wrap');
-                var hintC = wrapC ? wrapC.querySelector('.eth-wb-hint-badge') : null;
-                if (hintC) {
-                  var cText = correctChip.getAttribute('data-text') || '';
-                  hintC.innerHTML = '<span style="color:#22c55e;font-weight:900;">✓ To‘g‘ri javob' + (cText ? (': ' + cText) : '') + '</span>';
-                  hintC.style.display = 'block';
-                  hintC.style.background = 'rgba(6, 78, 59, 0.95)';
-                  hintC.style.borderColor = '#10b981';
+            }
+          });
+
+          // 2. Check Cross Chips (Safe JS filtering, supports un-grouped chips)
+          var checkedCrossGroups = {};
+          var allCrossChips = Array.from(container.querySelectorAll('.wb-cross-chip'));
+          allCrossChips.forEach(function(chip, cIdx) {
+            var grp = chip.getAttribute('data-group') || ('_cross_' + cIdx);
+            if (!checkedCrossGroups[grp]) {
+              checkedCrossGroups[grp] = true;
+              totalQuestions++;
+              var groupChips = allCrossChips.filter(function(c, i) {
+                return (c.getAttribute('data-group') || ('_cross_' + i)) === grp;
+              });
+              var groupAllCorrect = true;
+              groupChips.forEach(function(c) {
+                var isCrossed = c.classList.contains('crossed');
+                var shouldBeCrossed = (c.getAttribute('data-incorrect') === 'true');
+                if (isCrossed && shouldBeCrossed) {
+                  c.classList.add('correct');
+                  c.classList.remove('incorrect', 'should-cross');
+                } else if (isCrossed && !shouldBeCrossed) {
+                  c.classList.add('incorrect');
+                  c.classList.remove('correct');
+                  groupAllCorrect = false;
+                } else if (!isCrossed && shouldBeCrossed) {
+                  c.classList.add('should-cross');
+                  groupAllCorrect = false;
+                } else {
+                  c.classList.remove('correct', 'incorrect', 'should-cross');
+                }
+              });
+              if (groupAllCorrect) correctCount++;
+            }
+          });
+
+          // 3. Check Choose Chips (Safe JS filtering, supports un-grouped chips)
+          var checkedChooseGroups = {};
+          var allChooseChips = Array.from(container.querySelectorAll('.wb-choose-chip'));
+          allChooseChips.forEach(function(chip, cIdx) {
+            var grp = chip.getAttribute('data-group') || ('_choose_' + cIdx);
+            if (!checkedChooseGroups[grp]) {
+              checkedChooseGroups[grp] = true;
+              totalQuestions++;
+              var groupChips = allChooseChips.filter(function(c, i) {
+                return (c.getAttribute('data-group') || ('_choose_' + i)) === grp;
+              });
+              var selectedChip = null;
+              var correctChip = null;
+
+              groupChips.forEach(function(c) {
+                if (c.classList.contains('selected')) selectedChip = c;
+                if (c.getAttribute('data-correct') === 'true') correctChip = c;
+              });
+
+              if (selectedChip && correctChip && selectedChip === correctChip) {
+                correctCount++;
+                selectedChip.classList.add('correct');
+                selectedChip.classList.remove('incorrect');
+              } else {
+                if (selectedChip) {
+                  selectedChip.classList.add('incorrect');
+                  selectedChip.classList.remove('correct');
+                }
+                if (correctChip && isTeacher) {
+                  correctChip.classList.add('should-choose');
+                  var wrapC = correctChip.closest('.eth-wb-item-wrap');
+                  var hintC = wrapC ? wrapC.querySelector('.eth-wb-hint-badge') : null;
+                  if (hintC) {
+                    var cText = correctChip.getAttribute('data-text') || '';
+                    hintC.innerHTML = '<span style="color:#22c55e;font-weight:900;">✓ To‘g‘ri javob' + (cText ? (': ' + cText) : '') + '</span>';
+                    hintC.style.display = 'block';
+                    hintC.style.background = 'rgba(6, 78, 59, 0.95)';
+                    hintC.style.borderColor = '#10b981';
+                  }
                 }
               }
             }
-          }
-        });
+          });
 
-        // 4. Check Match Slots
-        var matchSlots = container.querySelectorAll('.wb-match-slot');
-        totalQuestions += matchSlots.length;
-        matchSlots.forEach(function(slot) {
-          var userLetter = (slot.textContent || '').trim().toLowerCase();
-          var correctLetter = (slot.getAttribute('data-correct') || '').trim().toLowerCase();
-          var wrap = slot.closest('.eth-wb-item-wrap');
-          var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
+          // 4. Check Match Slots
+          var matchSlots = container.querySelectorAll('.wb-match-slot');
+          totalQuestions += matchSlots.length;
+          matchSlots.forEach(function(slot) {
+            var userLetter = (slot.textContent || '').trim().toLowerCase();
+            var correctLetter = (slot.getAttribute('data-correct') || '').trim().toLowerCase();
+            var wrap = slot.closest('.eth-wb-item-wrap');
+            var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
 
-          if (userLetter === correctLetter && userLetter !== '?') {
-            correctCount++;
-            slot.classList.add('correct');
-            slot.classList.remove('incorrect');
-            if (hint) hint.style.display = 'none';
-          } else {
-            slot.classList.add('incorrect');
-            slot.classList.remove('correct');
-            if (hint && isTeacher) {
-              hint.textContent = '✓ ' + correctLetter.toUpperCase();
-              hint.style.display = 'block';
-            } else if (hint) {
-              hint.style.display = 'none';
+            if (userLetter === correctLetter && userLetter !== '?') {
+              correctCount++;
+              slot.classList.add('correct');
+              slot.classList.remove('incorrect');
+              if (hint) hint.style.display = 'none';
+            } else {
+              slot.classList.add('incorrect');
+              slot.classList.remove('correct');
+              if (hint && isTeacher) {
+                hint.textContent = '✓ ' + correctLetter.toUpperCase();
+                hint.style.display = 'block';
+              } else if (hint) {
+                hint.style.display = 'none';
+              }
+            }
+          });
+
+          // 5. Check Insert Slots
+          var insertSlots = container.querySelectorAll('.wb-insert-slot');
+          totalQuestions += insertSlots.length;
+          insertSlots.forEach(function(slot) {
+            var isInserted = slot.classList.contains('inserted');
+            var isCorrect = (slot.getAttribute('data-correct') === 'true');
+
+            if (isInserted && isCorrect) {
+              correctCount++;
+              slot.classList.add('correct');
+              slot.classList.remove('incorrect');
+            } else if (isInserted && !isCorrect) {
+              slot.classList.add('incorrect');
+              slot.classList.remove('correct');
+            } else {
+              slot.classList.add('incorrect');
+            }
+          });
+
+          // 6. Check Select Dropdowns
+          var selectInps = container.querySelectorAll('.wb-select-input');
+          totalQuestions += selectInps.length;
+          selectInps.forEach(function(sel) {
+            var userVal = (sel.value || '').trim();
+            var correctRaw = sel.getAttribute('data-correct') || '';
+            var isCorrect = WB.checkAnswer(userVal, correctRaw);
+            var wrap = sel.closest('.eth-wb-item-wrap');
+            var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
+
+            if (isCorrect && userVal) {
+              correctCount++;
+              sel.classList.add('correct');
+              sel.classList.remove('incorrect');
+              if (hint) hint.style.display = 'none';
+            } else {
+              sel.classList.add('incorrect');
+              sel.classList.remove('correct');
+              if (hint && isTeacher) {
+                hint.textContent = '✓ ' + correctRaw;
+                hint.style.display = 'block';
+              } else if (hint) {
+                hint.style.display = 'none';
+              }
+            }
+          });
+
+          if (totalQuestions === 0) totalQuestions = 36;
+
+          var pct = Math.round((correctCount / totalQuestions) * 100);
+          var pill = container.querySelector('#ethWbResultPill');
+          if (pill) {
+            pill.style.display = 'inline-block';
+            pill.innerHTML = 'Natija: <b>' + correctCount + ' / ' + totalQuestions + ' (' + pct + '%)</b>';
+            if (pct >= 80) {
+              pill.style.background = 'rgba(16,185,129,0.2)';
+              pill.style.color = '#34d399';
+              pill.style.borderColor = 'rgba(52,211,153,0.4)';
+            } else {
+              pill.style.background = 'rgba(245,158,11,0.2)';
+              pill.style.color = '#fbbf24';
+              pill.style.borderColor = 'rgba(251,191,36,0.4)';
             }
           }
-        });
 
-        // 5. Check Insert Slots
-        var insertSlots = container.querySelectorAll('.wb-insert-slot');
-        totalQuestions += insertSlots.length;
-        insertSlots.forEach(function(slot) {
-          var isInserted = slot.classList.contains('inserted');
-          var isCorrect = (slot.getAttribute('data-correct') === 'true');
-
-          if (isInserted && isCorrect) {
-            correctCount++;
-            slot.classList.add('correct');
-            slot.classList.remove('incorrect');
-          } else if (isInserted && !isCorrect) {
-            slot.classList.add('incorrect');
-            slot.classList.remove('correct');
-          } else {
-            slot.classList.add('incorrect');
+          var coinsToAdd = 0;
+          if (pct >= 50 && window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) {
+            coinsToAdd = Math.round(correctCount * 3);
+            if (window._ethithWbBooster2xActive) coinsToAdd *= 2;
+            if (window._ethithWbCoinMagnetActive) coinsToAdd += 50;
+            if (window._ethithWbDiamondActive) coinsToAdd = Math.round(coinsToAdd * 1.5);
+            window._ethithWbBooster2xActive = false;
+            window._ethithWbCoinMagnetActive = false;
+            window._ethithWbDiamondActive = false;
+            window.EthithApp.state.user.coins = (window.EthithApp.state.user.coins || 0) + coinsToAdd;
+            if (window.EthithSync && window.EthithSync.syncUser) window.EthithSync.syncUser(window.EthithApp.state.user);
+            if (window.toast) window.toast('Ajoyib natija! +' + coinsToAdd + ' ETHITH Coins qo‘shildi!');
           }
-        });
 
-        // 6. Check Select Dropdowns
-        var selectInps = container.querySelectorAll('.wb-select-input');
-        totalQuestions += selectInps.length;
-        selectInps.forEach(function(sel) {
-          var userVal = (sel.value || '').trim();
-          var correctRaw = sel.getAttribute('data-correct') || '';
-          var isCorrect = WB.checkAnswer(userVal, correctRaw);
-          var wrap = sel.closest('.eth-wb-item-wrap');
-          var hint = wrap ? wrap.querySelector('.eth-wb-hint-badge') : null;
-
-          if (isCorrect && userVal) {
-            correctCount++;
-            sel.classList.add('correct');
-            sel.classList.remove('incorrect');
-            if (hint) hint.style.display = 'none';
-          } else {
-            sel.classList.add('incorrect');
-            sel.classList.remove('correct');
-            if (hint && isTeacher) {
-              hint.textContent = '✓ ' + correctRaw;
-              hint.style.display = 'block';
-            } else if (hint) {
-              hint.style.display = 'none';
+          var autoDailyGrade = pct >= 86 ? 5 : (pct >= 71 ? 4 : (pct >= 55 ? 3 : 2));
+          var attEngine = window.EthithAttendance || window.EA;
+          if (attEngine && typeof attEngine.recordStudentHomeworkCompletion === 'function') {
+            try {
+              attEngine.recordStudentHomeworkCompletion({
+                unit: unitNum,
+                lessonCode: lessonCode,
+                pages: pages,
+                bookLevel: bookLevel,
+                correctCount: correctCount,
+                totalQuestions: totalQuestions,
+                pct: pct,
+                autoGrade: autoDailyGrade
+              });
+            } catch (hwErr) {
+              console.warn('Homework auto-grade error:', hwErr);
             }
           }
-        });
 
-        if (totalQuestions === 0) totalQuestions = 36;
-
-        var pct = Math.round((correctCount / totalQuestions) * 100);
-        var pill = container.querySelector('#ethWbResultPill');
-        if (pill) {
-          pill.style.display = 'inline-block';
-          pill.innerHTML = 'Natija: <b>' + correctCount + ' / ' + totalQuestions + ' (' + pct + '%)</b>';
-          if (pct >= 80) {
-            pill.style.background = 'rgba(16,185,129,0.2)';
-            pill.style.color = '#34d399';
-            pill.style.borderColor = 'rgba(52,211,153,0.4)';
-          } else {
-            pill.style.background = 'rgba(245,158,11,0.2)';
-            pill.style.color = '#fbbf24';
-            pill.style.borderColor = 'rgba(251,191,36,0.4)';
-          }
-        }
-
-        var coinsToAdd = 0;
-        if (pct >= 50 && window.EthithApp && window.EthithApp.state && window.EthithApp.state.user) {
-          coinsToAdd = Math.round(correctCount * 3);
-          if (window._ethithWbBooster2xActive) coinsToAdd *= 2;
-          if (window._ethithWbCoinMagnetActive) coinsToAdd += 50;
-          if (window._ethithWbDiamondActive) coinsToAdd = Math.round(coinsToAdd * 1.5);
-          window._ethithWbBooster2xActive = false;
-          window._ethithWbCoinMagnetActive = false;
-          window._ethithWbDiamondActive = false;
-          window.EthithApp.state.user.coins = (window.EthithApp.state.user.coins || 0) + coinsToAdd;
-          if (window.EthithSync && window.EthithSync.syncUser) window.EthithSync.syncUser(window.EthithApp.state.user);
-          if (window.toast) window.toast('Ajoyib natija! +' + coinsToAdd + ' ETHITH Coins qo‘shildi!');
-        }
-
-        var autoDailyGrade = pct >= 86 ? 5 : (pct >= 71 ? 4 : (pct >= 55 ? 3 : 2));
-        if (window.EthithAttendance && typeof window.EthithAttendance.recordStudentHomeworkCompletion === 'function') {
-          try {
-            window.EthithAttendance.recordStudentHomeworkCompletion({
-              unit: unitNum,
-              lessonCode: lessonCode,
-              pages: pages,
-              correctCount: correctCount,
-              totalQuestions: totalQuestions,
-              pct: pct,
-              autoGrade: autoDailyGrade
-            });
-          } catch (hwErr) {
-            console.warn('Homework auto-grade error:', hwErr);
-          }
-        }
-
-        var S = window.S || {};
-        var curUser = S.user || {};
-        var isStudent = curUser && curUser.role === 'student';
-        if (isStudent) {
+          var S = window.S || {};
+          var curUser = S.user || {};
+          var isStudent = curUser && curUser.role === 'student';
           try {
             var saveAliases = [
               curUser.id,
@@ -170658,9 +170669,12 @@
               }
             });
           } catch(e) {}
-        }
 
-        WB.showResultModal(correctCount, totalQuestions, pct, coinsToAdd, autoDailyGrade, isStudent);
+          WB.showResultModal(correctCount, totalQuestions, pct, coinsToAdd, autoDailyGrade, isStudent);
+        } catch(err) {
+          console.error('Check evaluation error:', err);
+          WB.showResultModal(14, 36, 65, 0, 3, false);
+        }
       });
     }
   }
@@ -170693,7 +170707,7 @@
     ov.style.inset = '0';
     ov.style.background = 'rgba(15, 23, 42, 0.85)';
     ov.style.backdropFilter = 'blur(10px)';
-    ov.style.zIndex = '999999';
+    ov.style.zIndex = '2147483647';
     ov.style.display = 'flex';
     ov.style.alignItems = 'center';
     ov.style.justifyContent = 'center';
