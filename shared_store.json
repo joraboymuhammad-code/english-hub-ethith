@@ -26820,11 +26820,11 @@
       "level": "C2",
       "dailyMinutes": 0,
       "updatedAt": 1792612388994,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1794673893838,
-      "login": "admin_12038f1aq8syash"
+      "isOnline": false,
+      "login": "admin_12038f1aq8syash",
+      "loggedOutAt": 1794673937817
     },
     {
       "id": "tg_98124765",
@@ -152964,5 +152964,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794673894220
+  "updatedAt": 1794673942074
 }
