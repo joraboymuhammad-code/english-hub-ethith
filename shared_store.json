@@ -23327,15 +23327,14 @@
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
-          "isOnline": true,
+          "isOnline": false,
           "coins": 210,
           "updatedAt": 1793948599638,
           "hasLoggedIn": true,
-          "isLoggedOut": false,
+          "isLoggedOut": true,
           "lastLogin": "2026-11-06T06:53:04.194Z",
-          "dailyMinutes": 75,
-          "loggedOutAt": 1794467253348,
-          "lastSeen": 1794641448316
+          "dailyMinutes": 79,
+          "loggedOutAt": 1794641715984
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -27662,9 +27661,9 @@
       "nameStyle": null,
       "createdAt": 1793720576586,
       "updatedAt": 1794575804118,
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
+      "isOnline": false,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "password": "azimjon848toi",
@@ -27673,8 +27672,7 @@
       "level": "A1",
       "dailyMinutes": 3,
       "lastLogin": null,
-      "loggedOutAt": 1794467253348,
-      "lastSeen": 1794641448316
+      "loggedOutAt": 1794641715984
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -28139,7 +28137,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794641448316
+      "lastSeen": 1794641714505
     },
     {
       "id": "std_mix_416_selix",
@@ -153034,5 +153032,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794641448838
+  "updatedAt": 1794641716717
 }
