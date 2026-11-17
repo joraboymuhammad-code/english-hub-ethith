@@ -28522,7 +28522,7 @@
       "hasLoggedIn": true,
       "isOnline": true,
       "loggedOutAt": 1793947950903,
-      "lastSeen": 1794886111749
+      "lastSeen": 1794888127008
     },
     {
       "id": "tg_98124765",
@@ -28861,7 +28861,7 @@
       "login": "azizbek77",
       "password": "azizbek2026",
       "role": "teacher",
-      "coins": 1000,
+      "coins": 100000,
       "hourlyRate": 120000,
       "subject": "Ingliz tili (Upper / Inter)",
       "teachingHours": 72,
@@ -28871,13 +28871,12 @@
       ],
       "createdAt": 1793598048461,
       "level": "C2",
-      "updatedAt": 1793773725443,
+      "updatedAt": 1793473052536,
       "gifts": [],
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948779636,
-      "dailyMinutes": 0
+      "lastSeen": 1793948779636
     },
     {
       "id": "admin_official_teacher",
@@ -29833,19 +29832,6 @@
       "updatedAt": 1793627425284
     },
     {
-      "id": "std_mix_416_selix",
-      "name": "Mix Selix",
-      "role": "student",
-      "login": "mix_416_selix",
-      "password": "mix416sel",
-      "phone": "91`23891738213",
-      "parentPhone": "91`23891738213",
-      "classId": "cls_1793380468126",
-      "isOnline": false,
-      "lastLogin": null,
-      "updatedAt": 1793629984912
-    },
-    {
       "id": "std_azimjon_848_toirov",
       "role": "student",
       "name": "Azimjon Toirov",
@@ -29869,6 +29855,19 @@
       "hasLoggedIn": true,
       "isOnline": true,
       "lastSeen": 1794885082151
+    },
+    {
+      "id": "std_mix_416_selix",
+      "name": "Mix Selix",
+      "role": "student",
+      "login": "mix_416_selix",
+      "password": "mix416sel",
+      "phone": "91`23891738213",
+      "parentPhone": "91`23891738213",
+      "classId": "cls_1793380468126",
+      "isOnline": false,
+      "lastLogin": null,
+      "updatedAt": 1793629984912
     }
   ],
   "p2pListings": [],
@@ -133388,8 +133387,8 @@
         "y": 26.5,
         "w": 37,
         "h": 2.2,
-        "top": 25.7,
-        "left": 11.5,
+        "top": 26.5,
+        "left": 11,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -133405,8 +133404,8 @@
         "y": 30,
         "w": 37,
         "h": 2.2,
-        "top": 29,
-        "left": 11.7,
+        "top": 30,
+        "left": 11,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -133421,8 +133420,8 @@
         "y": 33.5,
         "w": 37,
         "h": 2.2,
-        "top": 32.3,
-        "left": 11.3,
+        "top": 33.5,
+        "left": 11,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -133437,8 +133436,8 @@
         "y": 37,
         "w": 37,
         "h": 2.2,
-        "top": 37.1,
-        "left": 11.5,
+        "top": 37,
+        "left": 11,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -133453,8 +133452,8 @@
         "y": 41.5,
         "w": 37,
         "h": 2.2,
-        "top": 40.8,
-        "left": 10.7,
+        "top": 41.5,
+        "left": 11,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -133469,8 +133468,8 @@
         "y": 45,
         "w": 37,
         "h": 2.2,
-        "top": 44.3,
-        "left": 11.3,
+        "top": 45,
+        "left": 11,
         "width": 37,
         "height": 2.2,
         "correct": [
@@ -133485,9 +133484,9 @@
         "y": 55.5,
         "w": 37,
         "h": 2.2,
-        "top": 65.8,
-        "left": 20.6,
-        "width": 13.6,
+        "top": 55.5,
+        "left": 11,
+        "width": 37,
         "height": 2.2,
         "correct": [
           "always does exercise",
@@ -133501,9 +133500,9 @@
         "y": 62.5,
         "w": 37,
         "h": 2.2,
-        "top": 70.2,
-        "left": 17.4,
-        "width": 11.7,
+        "top": 62.5,
+        "left": 11,
+        "width": 37,
         "height": 2.2,
         "correct": [
           "rarely have a lie-in",
@@ -133517,9 +133516,9 @@
         "y": 69.5,
         "w": 37,
         "h": 2.2,
-        "top": 76.8,
-        "left": 12.4,
-        "width": 14.1,
+        "top": 69.5,
+        "left": 11,
+        "width": 37,
         "height": 2.2,
         "correct": [
           "Most days my sister goes on Facebook",
@@ -133534,9 +133533,9 @@
         "y": 76.5,
         "w": 37,
         "h": 2.2,
-        "top": 81.3,
-        "left": 22.3,
-        "width": 12.2,
+        "top": 76.5,
+        "left": 11,
+        "width": 37,
         "height": 2.2,
         "correct": [
           "go on holiday once or twice a year",
@@ -133550,10 +133549,10 @@
         "y": 83.5,
         "w": 37,
         "h": 2.2,
-        "top": 85.9,
-        "left": 9.5,
-        "width": 17,
-        "height": 1.8,
+        "top": 83.5,
+        "left": 11,
+        "width": 37,
+        "height": 2.2,
         "correct": [
           "Every now and then we go clubbing",
           "We go clubbing every now and then"
@@ -133566,9 +133565,9 @@
         "y": 28,
         "w": 20,
         "h": 2.2,
-        "top": 66.2,
-        "left": 75.7,
-        "width": 12,
+        "top": 28,
+        "left": 62,
+        "width": 20,
         "height": 2.2,
         "correct": [
           "hardly ever have",
@@ -133582,8 +133581,8 @@
         "y": 36,
         "w": 16,
         "h": 2.2,
-        "top": 71.1,
-        "left": 57.7,
+        "top": 36,
+        "left": 62,
         "width": 16,
         "height": 2.2,
         "correct": [
@@ -133598,10 +133597,10 @@
         "y": 44,
         "w": 22,
         "h": 2.2,
-        "top": 75.3,
-        "left": 59.6,
-        "width": 12,
-        "height": 1.6,
+        "top": 44,
+        "left": 62,
+        "width": 22,
+        "height": 2.2,
         "correct": [
           "always eat healthily",
           "always eat"
@@ -133614,9 +133613,9 @@
         "y": 52,
         "w": 20,
         "h": 2.2,
-        "top": 77.7,
-        "left": 77.1,
-        "width": 13.6,
+        "top": 52,
+        "left": 62,
+        "width": 20,
         "height": 2.2,
         "correct": [
           "nearly always go",
@@ -133630,9 +133629,9 @@
         "y": 60,
         "w": 22,
         "h": 2.2,
-        "top": 80.5,
-        "left": 71.9,
-        "width": 14.2,
+        "top": 60,
+        "left": 62,
+        "width": 22,
         "height": 2.2,
         "correct": [
           "sometimes watch videos",
@@ -133646,9 +133645,9 @@
         "y": 68,
         "w": 16,
         "h": 2.2,
-        "top": 86,
-        "left": 59.6,
-        "width": 11.8,
+        "top": 68,
+        "left": 62,
+        "width": 16,
         "height": 2.2,
         "correct": [
           "occasionally",
@@ -133663,8 +133662,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "2",
-        "top": 20.5,
-        "left": 31.2,
+        "top": 42.5,
+        "left": 31,
         "width": 13,
         "height": 2,
         "correct": [
@@ -133679,8 +133678,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "3",
-        "top": 37,
-        "left": 11.5,
+        "top": 56.5,
+        "left": 11,
         "width": 13,
         "height": 2,
         "correct": [
@@ -133695,8 +133694,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "4",
-        "top": 37,
-        "left": 31.3,
+        "top": 56.5,
+        "left": 31,
         "width": 13,
         "height": 2,
         "correct": [
@@ -133711,8 +133710,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "5",
-        "top": 53.5,
-        "left": 11.5,
+        "top": 70.5,
+        "left": 11,
         "width": 13,
         "height": 2,
         "correct": [
@@ -133726,8 +133725,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "6",
-        "top": 53.4,
-        "left": 31.4,
+        "top": 70.5,
+        "left": 31,
         "width": 13,
         "height": 2,
         "correct": [
@@ -133742,7 +133741,7 @@
         "page": 4007,
         "exercise": "4",
         "label": "7",
-        "top": 70.1,
+        "top": 84.5,
         "left": 11,
         "width": 13,
         "height": 2,
@@ -133758,8 +133757,8 @@
         "page": 4007,
         "exercise": "4",
         "label": "8",
-        "top": 70.1,
-        "left": 31.5,
+        "top": 84.5,
+        "left": 31,
         "width": 13,
         "height": 2,
         "correct": [
@@ -133774,9 +133773,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "2",
-        "top": 11.7,
-        "left": 86,
-        "width": 12.6,
+        "top": 24.5,
+        "left": 59.5,
+        "width": 33,
         "height": 2,
         "correct": [
           "swimming",
@@ -133789,9 +133788,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "3",
-        "top": 14.4,
-        "left": 80.6,
-        "width": 12.5,
+        "top": 29.5,
+        "left": 59.5,
+        "width": 33,
         "height": 2,
         "correct": [
           "golf",
@@ -133804,9 +133803,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "4",
-        "top": 17.8,
-        "left": 68,
-        "width": 14.3,
+        "top": 33.5,
+        "left": 59.5,
+        "width": 33,
         "height": 2,
         "correct": [
           "basketball",
@@ -133819,9 +133818,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "5",
-        "top": 19.2,
-        "left": 82.9,
-        "width": 14.6,
+        "top": 38.5,
+        "left": 59.5,
+        "width": 33,
         "height": 2,
         "correct": [
           "karate",
@@ -133834,9 +133833,9 @@
         "page": 4007,
         "exercise": "5",
         "label": "6",
-        "top": 21.6,
-        "left": 92.3,
-        "width": 8.6,
+        "top": 42.5,
+        "left": 59.5,
+        "width": 33,
         "height": 2,
         "correct": [
           "exercise",
@@ -133849,8 +133848,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "2",
-        "top": 52.9,
-        "left": 57.6,
+        "top": 60.5,
+        "left": 57,
         "width": 14,
         "height": 2,
         "correct": [
@@ -133865,8 +133864,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "3",
-        "top": 57.5,
-        "left": 57.3,
+        "top": 64.5,
+        "left": 57,
         "width": 14,
         "height": 2,
         "correct": [
@@ -133881,8 +133880,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "4",
-        "top": 60.6,
-        "left": 58.2,
+        "top": 68.5,
+        "left": 57,
         "width": 14,
         "height": 2,
         "correct": [
@@ -133897,8 +133896,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "5",
-        "top": 64.2,
-        "left": 57.2,
+        "top": 73.5,
+        "left": 57,
         "width": 14,
         "height": 2,
         "correct": [
@@ -133913,8 +133912,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "6",
-        "top": 67.4,
-        "left": 60.1,
+        "top": 76.5,
+        "left": 59.5,
         "width": 14,
         "height": 2,
         "correct": [
@@ -133929,8 +133928,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "7",
-        "top": 70.1,
-        "left": 72.6,
+        "top": 81.5,
+        "left": 70,
         "width": 14,
         "height": 2,
         "correct": [
@@ -133945,8 +133944,8 @@
         "page": 4007,
         "exercise": "6",
         "label": "8",
-        "top": 74.9,
-        "left": 73.7,
+        "top": 85.5,
+        "left": 73,
         "width": 14,
         "height": 2,
         "correct": [
@@ -154086,6 +154085,29 @@
   ],
   "contests": [
     {
+      "id": "cnt_haftalik_musobaqa",
+      "title": "Haftalik Onlayn Musobaqa",
+      "code": "QZ-WEEKLY-1",
+      "desc": "Barcha guruhlar o‘rtasida onlayn musobaqa! Top-5 eng yuqori natija qayd etgan o‘quvchilarga 1,000 coindan boshlab sovrinlar beriladi.",
+      "testId": "tst_haftalik_musobaqa",
+      "authorId": "t_urolov_azizbek",
+      "authorName": "Azizbek Urolov",
+      "authorEmail": "teacher@ethith.uz",
+      "startDate": 1793721166177,
+      "endDate": 1794325966177,
+      "participants": {
+        "std_azimjon_848_toirov": {
+          "id": "std_azimjon_848_toirov",
+          "name": "Azimjon Toirov",
+          "score": 40,
+          "timeSec": 15,
+          "completedAt": 1793862956196
+        }
+      },
+      "status": "finished",
+      "coinsDistributed": true
+    },
+    {
       "id": "cnt_1793806521934",
       "title": "Haftalik Onlayn Musobaqa",
       "code": "QZ-H3M*VYT",
@@ -154114,29 +154136,6 @@
       "participants": {},
       "status": "active",
       "coinsDistributed": false
-    },
-    {
-      "id": "cnt_haftalik_musobaqa",
-      "title": "Haftalik Onlayn Musobaqa",
-      "code": "QZ-WEEKLY-1",
-      "desc": "Barcha guruhlar o‘rtasida onlayn musobaqa! Top-5 eng yuqori natija qayd etgan o‘quvchilarga 1,000 coindan boshlab sovrinlar beriladi.",
-      "testId": "tst_haftalik_musobaqa",
-      "authorId": "t_urolov_azizbek",
-      "authorName": "Azizbek Urolov",
-      "authorEmail": "teacher@ethith.uz",
-      "startDate": 1793721166177,
-      "endDate": 1794325966177,
-      "participants": {
-        "std_azimjon_848_toirov": {
-          "id": "std_azimjon_848_toirov",
-          "name": "Azimjon Toirov",
-          "score": 40,
-          "timeSec": 15,
-          "completedAt": 1793862956196
-        }
-      },
-      "status": "finished",
-      "coinsDistributed": true
     }
   ],
   "payments": {
@@ -154188,8 +154187,8 @@
       "authorId": "admin_official_root",
       "authorName": "Bosh Admin",
       "authorRole": "admin",
-      "updatedAt": "2026-11-17 08:27",
-      "updatedTs": 1794886073345,
+      "updatedAt": "2026-11-17 08:28",
+      "updatedTs": 1794886125893,
       "data": [
         {
           "name": "Sheet1",
@@ -154806,5 +154805,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794886111914
+  "updatedAt": 1794888127954
 }
