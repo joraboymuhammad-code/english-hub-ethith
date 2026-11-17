@@ -53,6 +53,27 @@
     }
   }
 
+  async function fetchWithTimeout(url, opts, timeoutMs) {
+    timeoutMs = timeoutMs || 15000;
+    if (typeof AbortController === 'undefined') {
+      return fetch(url, opts);
+    }
+    var controller = new AbortController();
+    var timerId = setTimeout(function() {
+      try { controller.abort(); } catch(e){}
+    }, timeoutMs);
+    opts = opts ? Object.assign({}, opts) : {};
+    opts.signal = controller.signal;
+    try {
+      var res = await fetch(url, opts);
+      clearTimeout(timerId);
+      return res;
+    } catch(err) {
+      clearTimeout(timerId);
+      throw err;
+    }
+  }
+
   function safeStorageSetSync(key, val) {
     try {
       localStorage.setItem(key, val);
@@ -2449,7 +2470,7 @@
   async function fetchRemoteStore() {
     var token = getGHToken();
     try {
-      var res = await fetch(API_STORE_URL + '?_t=' + Date.now(), {
+      var res = await fetchWithTimeout(API_STORE_URL + '?_t=' + Date.now(), {
         headers: {
           'Authorization': 'token ' + token,
           'Accept': 'application/vnd.github.v3+json',
@@ -2470,7 +2491,7 @@
         }
         if (data.sha && (!b64 || data.encoding === 'none')) {
           try {
-            var blobRes = await fetch('https://api.github.com/repos/joraboymuhammad-code/english-hub-ethith/git/blobs/' + data.sha, {
+            var blobRes = await fetchWithTimeout('https://api.github.com/repos/joraboymuhammad-code/english-hub-ethith/git/blobs/' + data.sha, {
               headers: {
                 'Authorization': 'token ' + token,
                 'Accept': 'application/vnd.github.v3+json'
@@ -2490,7 +2511,7 @@
       }
     } catch(err) {
       try {
-        var rawRes = await fetch(RAW_STORE_URL + '?_t=' + Date.now(), { cache: 'no-store' });
+        var rawRes = await fetchWithTimeout(RAW_STORE_URL + '?_t=' + Date.now(), { cache: 'no-store' });
         if (rawRes.ok) return await rawRes.json();
       } catch(e) {}
     }
@@ -3226,7 +3247,7 @@
     var maxRetries = 6;
     for (var attempt = 1; attempt <= maxRetries; attempt++) {
       try {
-        var getRes = await fetch(API_STORE_URL + '?_t=' + Date.now(), {
+        var getRes = await fetchWithTimeout(API_STORE_URL + '?_t=' + Date.now(), {
           headers: {
             'Authorization': 'token ' + token,
             'Accept': 'application/vnd.github.v3+json',
@@ -3242,7 +3263,7 @@
           var b64Content = fileData.content;
           if (fileData.sha && (!b64Content || fileData.encoding === 'none')) {
             try {
-              var bRes = await fetch('https://api.github.com/repos/joraboymuhammad-code/english-hub-ethith/git/blobs/' + fileData.sha, {
+              var bRes = await fetchWithTimeout('https://api.github.com/repos/joraboymuhammad-code/english-hub-ethith/git/blobs/' + fileData.sha, {
                 headers: {
                   'Authorization': 'token ' + token,
                   'Accept': 'application/vnd.github.v3+json'
@@ -3418,31 +3439,56 @@
 
         if (!S.workbookOverrides) S.workbookOverrides = {};
         if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
-        // Also harvest any local v15/v14 workbook overrides from localStorage before pushing
+
+        // 1. Merge all offline-first pending workbook pushes from localStorage
+        try {
+          var pendMap = JSON.parse(localStorage.getItem('ethith_wb_pending_pushes') || '{}');
+          Object.keys(pendMap).forEach(function(pKey) {
+            var item = pendMap[pKey];
+            if (item && item.inputs && Array.isArray(item.inputs)) {
+              S.workbookOverrides[pKey] = item.inputs;
+              S.workbookOverridesTs[pKey] = item.ts || Date.now();
+            }
+          });
+        } catch(e) {}
+
+        // 2. Harvest all teacher local workbook overrides from localStorage across all keys (Teacher is King!)
         try {
           for (var lsIdx = 0; lsIdx < localStorage.length; lsIdx++) {
             var lsK = localStorage.key(lsIdx);
-            if (lsK && (lsK.indexOf('ethith_wb_coords_v15_') === 0 || lsK.indexOf('ethith_wb_coords_v14_') === 0)) {
-              var mPage = lsK.match(/ethith_wb_coords_v1[45]_(\d+)$/);
+            if (lsK) {
+              var mPage = lsK.match(/^(?:ethith_wb_override_|ethith_wb_coords_v(?:15|28|29)_|ethith_wb_coords_)(\d+)$/);
               if (mPage && mPage[1]) {
                 var pN = parseInt(mPage[1], 10);
                 var parsedInps = JSON.parse(localStorage.getItem(lsK));
                 var locTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pN) || '0', 10);
                 if (Array.isArray(parsedInps) && (parsedInps.length > 0 || locTs > 0)) {
-                  S.workbookOverrides[pN] = parsedInps;
-                  if (locTs > 0) S.workbookOverridesTs[pN] = locTs;
+                  var curTs = S.workbookOverridesTs[pN] || 0;
+                  if (locTs >= curTs || !S.workbookOverrides[pN]) {
+                    S.workbookOverrides[pN] = parsedInps;
+                    S.workbookOverridesTs[pN] = locTs || Date.now();
+                  }
                 }
               }
             }
           }
         } catch(e) {}
+
+        // 3. Merge with remote: locally edited pages are SACRED and NEVER overwritten by older remote data!
+        var editedPagesMap = {};
+        try { editedPagesMap = JSON.parse(localStorage.getItem('ethith_wb_edited_pages') || '{}'); } catch(e) {}
+
         if (remoteData.workbookOverrides && typeof remoteData.workbookOverrides === 'object') {
           var rTsMap = (remoteData.workbookOverridesTs && typeof remoteData.workbookOverridesTs === 'object') ? remoteData.workbookOverridesTs : {};
           Object.keys(remoteData.workbookOverrides).forEach(function(k) {
             var rTs = parseInt(rTsMap[k] || '0', 10);
-            var lTs = parseInt(S.workbookOverridesTs[k] || localStorage.getItem('ethith_wb_ts_' + k) || '0', 10);
-            var lSaved = localStorage.getItem('ethith_wb_coords_v15_' + k);
-            if (!lSaved || (rTs > lTs && rTs > 0)) {
+            var lTs = parseInt(S.workbookOverridesTs[k] || localStorage.getItem('ethith_wb_ts_' + k) || (editedPagesMap[k] || '0'), 10);
+            var lSaved = localStorage.getItem('ethith_wb_override_' + k) || localStorage.getItem('ethith_wb_coords_v15_' + k);
+            if (lSaved && (editedPagesMap[k] || lTs >= rTs || rTs === 0)) {
+              // Local edit is king! Never overwrite!
+              return;
+            }
+            if (!S.workbookOverrides[k] || rTs > lTs) {
               S.workbookOverrides[k] = remoteData.workbookOverrides[k];
               if (rTs > 0) S.workbookOverridesTs[k] = rTs;
             }
@@ -3550,7 +3596,7 @@
         };
         if (sha) body.sha = sha;
 
-        var putRes = await fetch(API_STORE_URL, {
+        var putRes = await fetchWithTimeout(API_STORE_URL, {
           method: 'PUT',
           headers: {
             'Authorization': 'token ' + token,
@@ -3563,6 +3609,10 @@
         if (putRes.status === 200 || putRes.status === 201) {
           var putResult = await putRes.json();
           _lastKnownSha = putResult.content ? putResult.content.sha : sha;
+          // Clear successfully committed pushes from offline queue
+          try {
+            localStorage.removeItem('ethith_wb_pending_pushes');
+          } catch(e) {}
           if (window.EthithApp) window.EthithApp.saveState();
           broadcastLocal(S.classes, S.exams);
           return;
@@ -3769,21 +3819,27 @@
         if (!S.workbookOverrides) S.workbookOverrides = {};
         if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
         var remoteTsMapInit = (remote.workbookOverridesTs && typeof remote.workbookOverridesTs === 'object') ? remote.workbookOverridesTs : {};
+        var editedPagesMapInit = {};
+        try { editedPagesMapInit = JSON.parse(localStorage.getItem('ethith_wb_edited_pages') || '{}'); } catch(e0) {}
+
         Object.keys(remote.workbookOverrides).forEach(function(pKey) {
           var pNum = parseInt(pKey, 10);
           var inps = remote.workbookOverrides[pKey];
           if (Array.isArray(inps) && inps.length > 0) {
             var remotePageTs = parseInt((remoteTsMapInit && remoteTsMapInit[pKey]) || '0', 10);
-            var localPageTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pNum) || '0', 10);
+            var localPageTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pNum) || (editedPagesMapInit[pNum] || '0'), 10);
             var localSavedInit = localStorage.getItem('ethith_wb_override_' + pNum) || localStorage.getItem('ethith_wb_coords_v15_' + pNum);
-            if (localSavedInit && (localPageTs >= remotePageTs || remotePageTs === 0)) {
+            if (localSavedInit && (editedPagesMapInit[pNum] || localPageTs >= remotePageTs || remotePageTs === 0)) {
               try {
                 var parsedLocal = JSON.parse(localSavedInit);
                 if (Array.isArray(parsedLocal) && parsedLocal.length > 0) {
                   S.workbookOverrides[pNum] = parsedLocal;
                   S.workbookOverridesTs[pNum] = localPageTs || Date.now();
-                  if (window.ETHITH_WORKBOOK_B1 && window.ETHITH_WORKBOOK_B1.defaultInputs) {
-                    window.ETHITH_WORKBOOK_B1.defaultInputs[pNum] = parsedLocal;
+                  if (window.ETHITH_WORKBOOK_B1) {
+                    if (window.ETHITH_WORKBOOK_B1.defaultInputs) window.ETHITH_WORKBOOK_B1.defaultInputs[pNum] = parsedLocal;
+                    if (pNum >= 2000 && pNum < 3000 && window.ETHITH_WORKBOOK_B1.defaultInputsB2) {
+                      window.ETHITH_WORKBOOK_B1.defaultInputsB2[pNum] = parsedLocal;
+                    }
                   }
                   return;
                 }
@@ -3796,7 +3852,7 @@
               localStorage.setItem('ethith_wb_ts_' + pNum, (remotePageTs || Date.now()).toString());
             } catch(e) {}
             if (window.ETHITH_WORKBOOK_B1) {
-              if (pNum > 2000 && window.ETHITH_WORKBOOK_B1.defaultInputsB2) {
+              if (pNum >= 2000 && pNum < 3000 && window.ETHITH_WORKBOOK_B1.defaultInputsB2) {
                 window.ETHITH_WORKBOOK_B1.defaultInputsB2[pNum] = inps;
               }
               if (window.ETHITH_WORKBOOK_B1.defaultInputs) {
@@ -4213,7 +4269,7 @@
   function saveWorkbookCloudOverrides(page, inputs) {
     page = parseInt(page, 10);
     var nowTs = Date.now();
-    var S = (window.EthithApp && window.EthithApp.state) || {};
+    var S = (window.EthithApp && window.EthithApp.state) || (window.S) || {};
     if (!S.workbookOverrides) S.workbookOverrides = {};
     if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
     S.workbookOverrides[page] = inputs;
@@ -4221,8 +4277,21 @@
 
     window._lastTeacherEditTime = nowTs;
     try {
-      localStorage.setItem('ethith_wb_coords_v15_' + page, JSON.stringify(inputs));
+      var jsonStr = JSON.stringify(inputs);
+      localStorage.setItem('ethith_wb_override_' + page, jsonStr);
+      localStorage.setItem('ethith_wb_coords_v15_' + page, jsonStr);
+      localStorage.setItem('ethith_wb_coords_v29_' + page, jsonStr);
       localStorage.setItem('ethith_wb_ts_' + page, nowTs.toString());
+
+      var ep = {};
+      try { ep = JSON.parse(localStorage.getItem('ethith_wb_edited_pages') || '{}'); } catch(e0) {}
+      ep[page] = nowTs;
+      localStorage.setItem('ethith_wb_edited_pages', JSON.stringify(ep));
+
+      var pq = {};
+      try { pq = JSON.parse(localStorage.getItem('ethith_wb_pending_pushes') || '{}'); } catch(e1) {}
+      pq[page] = { inputs: inputs, ts: nowTs };
+      localStorage.setItem('ethith_wb_pending_pushes', JSON.stringify(pq));
     } catch(e) {}
 
     // Instant live real-time broadcast via MQTT + BroadcastChannel (sub-millisecond!)
@@ -4234,47 +4303,56 @@
       ts: nowTs
     });
 
-    // Debounced background push to GitHub cloud store (0ms non-blocking!)
+    // Debounced background push to GitHub cloud store
     if (window._ethithWbPushTimer) clearTimeout(window._ethithWbPushTimer);
     window._ethithWbPushTimer = setTimeout(function() {
       pushRemoteStore().then(function() {
         console.log('[WB-Sync] Page ' + page + ' saved to cloud store successfully');
       }).catch(function(e) {
-        console.warn('[WB-Sync] Cloud save deferred:', e);
+        console.warn('[WB-Sync] Cloud save deferred (stored in offline queue):', e);
       });
-    }, 1500);
+    }, 1200);
   }
 
   function getWorkbookCloudOverrides(page) {
     page = parseInt(page, 10);
-    var S = (window.EthithApp && window.EthithApp.state) || {};
+    var S = (window.EthithApp && window.EthithApp.state) || (window.S) || {};
     return (S.workbookOverrides && S.workbookOverrides[page]) ? S.workbookOverrides[page] : null;
   }
 
   function syncAllLocalWorkbookOverridesToCloud() {
-    var S = (window.EthithApp && window.EthithApp.state) || {};
+    var S = (window.EthithApp && window.EthithApp.state) || (window.S) || {};
     if (!S.workbookOverrides) S.workbookOverrides = {};
     if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
     var count = 0;
     try {
+      var pendMap = JSON.parse(localStorage.getItem('ethith_wb_pending_pushes') || '{}');
+      for (var pk in pendMap) {
+        if (pendMap[pk] && Array.isArray(pendMap[pk].inputs)) {
+          var pNum = parseInt(pk, 10);
+          S.workbookOverrides[pNum] = pendMap[pk].inputs;
+          S.workbookOverridesTs[pNum] = pendMap[pk].ts || Date.now();
+          count++;
+        }
+      }
+
       for (var i = 0; i < localStorage.length; i++) {
         var k = localStorage.key(i);
-        if (k && (k.indexOf('ethith_wb_coords_v15_') === 0 || k.indexOf('ethith_wb_override_') === 0 || k.indexOf('ethith_wb_coords_v14_') === 0)) {
-          var match = k.match(/(?:ethith_wb_coords_v1[45]_|ethith_wb_override_)(\d+)$/);
+        if (k) {
+          var match = k.match(/^(?:ethith_wb_override_|ethith_wb_coords_v(?:15|28|29)_|ethith_wb_coords_)(\d+)$/);
           if (match && match[1]) {
-            var pNum = parseInt(match[1], 10);
+            var pN = parseInt(match[1], 10);
             try {
               var val = JSON.parse(localStorage.getItem(k));
               if (Array.isArray(val) && val.length > 0) {
-                localStorage.setItem('ethith_wb_coords_v15_' + pNum, JSON.stringify(val));
-                var localPageTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pNum) || '0', 10);
-                var prevStr = S.workbookOverrides[pNum] ? JSON.stringify(S.workbookOverrides[pNum]) : '';
+                var localPageTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pN) || '0', 10);
+                var prevStr = S.workbookOverrides[pN] ? JSON.stringify(S.workbookOverrides[pN]) : '';
                 if (prevStr !== JSON.stringify(val)) {
                   count++;
                 }
-                S.workbookOverrides[pNum] = val;
+                S.workbookOverrides[pN] = val;
                 if (localPageTs > 0) {
-                  S.workbookOverridesTs[pNum] = localPageTs;
+                  S.workbookOverridesTs[pN] = localPageTs;
                 }
               }
             } catch(e) {}
@@ -4361,3 +4439,22 @@
   } catch(e) {}
 
 })(window);
+
+  // ethith_wb_pending_pushes flusher: guarantees 100% sync on slow / weak / recovered internet
+  if (typeof window !== "undefined") {
+    window.addEventListener("online", function() {
+      console.log("[WB-Sync] Internet restored! Flushing pending offline workbook pushes...");
+      if (localStorage.getItem("ethith_wb_pending_pushes")) {
+        pushRemoteStore();
+      }
+    });
+
+    setInterval(function() {
+      try {
+        var pend = localStorage.getItem("ethith_wb_pending_pushes");
+        if (pend && pend !== "{}" && !isPushing) {
+          pushRemoteStore();
+        }
+      } catch(e) {}
+    }, 12000);
+  }

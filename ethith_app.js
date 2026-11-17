@@ -135,8 +135,23 @@
     }
   }
 
-  // Harvest ALL teacher local workbook overrides from localStorage (Local Teacher Edits are King!)
+  // Harvest ALL teacher local workbook overrides & pending offline edits from localStorage (Teacher Edits are King!)
   try {
+    var editedPagesMapInit = {};
+    try { editedPagesMapInit = JSON.parse(localStorage.getItem('ethith_wb_edited_pages') || '{}'); } catch(e0) {}
+
+    var pendPushesMapInit = {};
+    try { pendPushesMapInit = JSON.parse(localStorage.getItem('ethith_wb_pending_pushes') || '{}'); } catch(e1) {}
+    for (var ppk in pendPushesMapInit) {
+      if (pendPushesMapInit[ppk] && Array.isArray(pendPushesMapInit[ppk].inputs)) {
+        var ppNum = parseInt(ppk, 10);
+        if (!S.workbookOverrides) S.workbookOverrides = {};
+        if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
+        S.workbookOverrides[ppNum] = pendPushesMapInit[ppk].inputs;
+        S.workbookOverridesTs[ppNum] = pendPushesMapInit[ppk].ts || Date.now();
+      }
+    }
+
     for (var lsI = 0; lsI < localStorage.length; lsI++) {
       var lsK = localStorage.key(lsI);
       if (!lsK) continue;
@@ -146,13 +161,27 @@
         try {
           var savedVal = JSON.parse(localStorage.getItem(lsK));
           if (Array.isArray(savedVal) && savedVal.length > 0) {
-            var localTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pageNumber) || '0', 10);
+            var localTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pageNumber) || (editedPagesMapInit[pageNumber] || '0'), 10);
             if (!S.workbookOverrides) S.workbookOverrides = {};
             if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
-            S.workbookOverrides[pageNumber] = savedVal;
-            S.workbookOverridesTs[pageNumber] = localTs || Date.now();
+            var prevTs = S.workbookOverridesTs[pageNumber] || 0;
+            if (localTs >= prevTs || !S.workbookOverrides[pageNumber]) {
+              S.workbookOverrides[pageNumber] = savedVal;
+              S.workbookOverridesTs[pageNumber] = localTs || Date.now();
+            }
           }
         } catch(e) {}
+      }
+    }
+
+    // Pre-populate ETHITH_WORKBOOK_B1 defaultInputs immediately so it renders instantly on load
+    if (typeof window !== 'undefined' && window.ETHITH_WORKBOOK_B1) {
+      if (!window.ETHITH_WORKBOOK_B1.defaultInputs) window.ETHITH_WORKBOOK_B1.defaultInputs = {};
+      for (var sPage in S.workbookOverrides) {
+        window.ETHITH_WORKBOOK_B1.defaultInputs[sPage] = S.workbookOverrides[sPage];
+        if (parseInt(sPage, 10) >= 2000 && parseInt(sPage, 10) < 3000 && window.ETHITH_WORKBOOK_B1.defaultInputsB2) {
+          window.ETHITH_WORKBOOK_B1.defaultInputsB2[sPage] = S.workbookOverrides[sPage];
+        }
       }
     }
   } catch(e) {}
@@ -363,7 +392,17 @@
       if (S.fileExplorer) {
         localStorage.setItem('ethith_file_explorer', JSON.stringify(S.fileExplorer));
       }
-      localStorage.setItem('ethith_v2_state', JSON.stringify(S));
+      try {
+        localStorage.setItem('ethith_v2_state', JSON.stringify(S));
+      } catch(qErr) {
+        // Quota safety: if localStorage limit is reached, omit bulky workbook overrides copy (they are safely stored per page)
+        try {
+          var leanS = Object.assign({}, S);
+          delete leanS.workbookOverrides;
+          delete leanS.workbookOverridesTs;
+          localStorage.setItem('ethith_v2_state', JSON.stringify(leanS));
+        } catch(eLean) {}
+      }
       // Notify other tabs via BroadcastChannel if available
       if (window.BroadcastChannel) {
         if (!window._ethithChannel) window._ethithChannel = new BroadcastChannel('ethith_sync');
@@ -698,17 +737,22 @@
         });
       });
 
-      if (window.EthithSync && window.EthithSync.publishLive) {
-        window.EthithSync.publishLive({
-          type: 'USER_LOGOUT',
-          userId: curUser.id || curUser.login,
-          login: curUser.login || '',
-          email: curUser.email || '',
-          name: curUser.name || '',
-          ts: logoutTs
-        });
-        window.EthithSync.broadcastLocal(S.classes, S.exams);
-        window.EthithSync.pushRemoteStore(S.classes, S.exams);
+      if (window.EthithSync) {
+        if (typeof window.EthithSync.syncAllLocalWorkbookOverridesToCloud === 'function') {
+          try { window.EthithSync.syncAllLocalWorkbookOverridesToCloud(); } catch(eWb) {}
+        }
+        if (window.EthithSync.publishLive) {
+          window.EthithSync.publishLive({
+            type: 'USER_LOGOUT',
+            userId: curUser.id || curUser.login,
+            login: curUser.login || '',
+            email: curUser.email || '',
+            name: curUser.name || '',
+            ts: logoutTs
+          });
+          window.EthithSync.broadcastLocal(S.classes, S.exams);
+          window.EthithSync.pushRemoteStore();
+        }
       }
     }
     S.user = null;

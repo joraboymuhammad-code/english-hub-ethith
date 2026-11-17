@@ -134632,25 +134632,8 @@
   ]
 };
 
-  // PURGE ANY OBSOLETE / UNCALIBRATED WORKBOOK CACHE KEYS SO CALIBRATED COORDINATES ARE NEVER OVERWRITTEN
-  try {
-    var legacyKeysToRemove = [];
-    for (var kIdx = 0; kIdx < localStorage.length; kIdx++) {
-      var lk = localStorage.key(kIdx);
-      if (lk && (lk.indexOf('ethith_wb_coords_') === 0 || lk.indexOf('ethith_wb_ts_') === 0)) {
-        var m = lk.match(/_(\d+)$/);
-        var pNum = m ? parseInt(m[1], 10) : 0;
-        // Purge Beginner (1004..1083) and calibrated Elementary (2006..2040)
-        if (lk.indexOf('v15_') === -1 || (pNum >= 1004 && pNum <= 1083) || (pNum >= 2006 && pNum <= 2040)) {
-          legacyKeysToRemove.push(lk);
-        }
-      }
-    }
-    legacyKeysToRemove.forEach(function(k) {
-      try { localStorage.removeItem(k); } catch(e) {}
-    });
-    // (Preserve user overrides for 1004..1083)
-  } catch(e) {}
+  // PRESERVE ALL TEACHER WORKBOOK OVERRIDES PERMANENTLY (Beginner, Elementary, Pre-Int, Int, Upper)
+  // Teacher and Admin edits are sacred and must NEVER be deleted or purged on startup!
 
   // Helper to get human-readable book page number (e.g., 2004 -> 4)
   WB.getDisplayPageNum = function(pageNum) {
@@ -166383,6 +166366,7 @@
         var parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
           if (WB.defaultInputs) WB.defaultInputs[page] = parsed;
+          if (page >= 2000 && page < 3000 && WB.defaultInputsB2) WB.defaultInputsB2[page] = parsed;
           var S_loc = (window.S || (window.EthithApp && window.EthithApp.state)) || {};
           if (!S_loc.workbookOverrides) S_loc.workbookOverrides = {};
           S_loc.workbookOverrides[page] = parsed;
@@ -166395,6 +166379,7 @@
     var S = (window.S || (window.EthithApp && window.EthithApp.state)) || {};
     if (S.workbookOverrides && Array.isArray(S.workbookOverrides[page]) && S.workbookOverrides[page].length > 0) {
       if (WB.defaultInputs) WB.defaultInputs[page] = S.workbookOverrides[page];
+      if (page >= 2000 && page < 3000 && WB.defaultInputsB2) WB.defaultInputsB2[page] = S.workbookOverrides[page];
       return S.workbookOverrides[page];
     }
 
@@ -166403,6 +166388,7 @@
       var cloudInps = window.EthithSync.getWorkbookCloudOverrides(page);
       if (Array.isArray(cloudInps) && cloudInps.length > 0) {
         if (WB.defaultInputs) WB.defaultInputs[page] = cloudInps;
+        if (page >= 2000 && page < 3000 && WB.defaultInputsB2) WB.defaultInputsB2[page] = cloudInps;
         if (!S.workbookOverrides) S.workbookOverrides = {};
         S.workbookOverrides[page] = cloudInps;
         return cloudInps;
@@ -166423,19 +166409,34 @@
     var nowTs = Date.now();
     window._lastTeacherEditTime = nowTs;
 
-    // 1. Save to multiple localStorage keys for 100% backward/forward resilience
+    // 1. Save to multiple localStorage keys & master edited index for 100% resilience across all networks & re-logins
     try {
       var jsonStr = JSON.stringify(inputs);
       localStorage.setItem('ethith_wb_override_' + page, jsonStr);
+      localStorage.setItem('ethith_wb_coords_v15_' + page, jsonStr);
       localStorage.setItem('ethith_wb_coords_v29_' + page, jsonStr);
       localStorage.setItem('ethith_wb_coords_v28_' + page, jsonStr);
-      localStorage.setItem('ethith_wb_coords_v15_' + page, jsonStr);
       localStorage.setItem('ethith_wb_ts_' + page, nowTs.toString());
+
+      // Master persistent tracker of user-edited pages: never overwritten by older remote data!
+      var ep = {};
+      try { ep = JSON.parse(localStorage.getItem('ethith_wb_edited_pages') || '{}'); } catch(e0) {}
+      ep[page] = nowTs;
+      localStorage.setItem('ethith_wb_edited_pages', JSON.stringify(ep));
+
+      // Offline-first push queue: guarantees sync even on weak / intermittent / slow internet
+      var pq = {};
+      try { pq = JSON.parse(localStorage.getItem('ethith_wb_pending_pushes') || '{}'); } catch(e1) {}
+      pq[page] = { inputs: inputs, ts: nowTs };
+      localStorage.setItem('ethith_wb_pending_pushes', JSON.stringify(pq));
     } catch(e) {}
 
     // 2. Update memory state immediately
     if (WB.defaultInputs) {
       WB.defaultInputs[page] = inputs;
+    }
+    if (page >= 2000 && page < 3000 && WB.defaultInputsB2) {
+      WB.defaultInputsB2[page] = inputs;
     }
 
     var S = (window.S || (window.EthithApp && window.EthithApp.state)) || {};
@@ -166448,7 +166449,7 @@
       window.EthithApp.saveState();
     }
 
-    // 3. INSTANT ZERO-LATENCY REAL-TIME BROADCAST + GITHUB CLOUD STORE PERSISTENCE
+    // 3. INSTANT ZERO-LATENCY REAL-TIME BROADCAST + RESILIENT GITHUB CLOUD STORE PERSISTENCE
     if (!noBroadcast && window.EthithSync) {
       if (typeof window.EthithSync.saveWorkbookCloudOverrides === 'function') {
         window.EthithSync.saveWorkbookCloudOverrides(page, inputs);
