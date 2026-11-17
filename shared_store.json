@@ -24684,14 +24684,15 @@
           "joinedAt": "2026-10-28",
           "isTester": false,
           "manuallyEnrolled": true,
-          "isOnline": false,
+          "isOnline": true,
           "coins": 210,
           "updatedAt": 1794674068093,
           "hasLoggedIn": true,
-          "isLoggedOut": true,
-          "lastLogin": "2026-11-06T06:53:04.194Z",
+          "isLoggedOut": false,
+          "lastLogin": "2026-11-17T04:04:18.936Z",
           "dailyMinutes": 75,
-          "loggedOutAt": 1794885083419
+          "loggedOutAt": 1794885083419,
+          "lastSeen": 1794888260456
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -28522,7 +28523,7 @@
       "hasLoggedIn": true,
       "isOnline": true,
       "loggedOutAt": 1794888218960,
-      "lastSeen": 1794888230510
+      "lastSeen": 1794888259110
     },
     {
       "id": "tg_98124765",
@@ -29378,9 +29379,9 @@
       "nameStyle": null,
       "createdAt": 1793720576586,
       "updatedAt": 1794674068093,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
+      "isOnline": true,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "password": "azimjon848toi",
@@ -29388,8 +29389,9 @@
       "parentPhone": "941941527",
       "level": "A1",
       "dailyMinutes": 143,
-      "lastLogin": null,
-      "loggedOutAt": 1794885083419
+      "lastLogin": "2026-11-17T04:04:18.936Z",
+      "loggedOutAt": 1794885083419,
+      "lastSeen": 1794888260456
     },
     {
       "id": "cls_ravshanov_doniyor_cefr_1_std_1",
@@ -29854,7 +29856,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1794885082151
+      "lastSeen": 1794888260456
     },
     {
       "id": "std_mix_416_selix",
@@ -154805,5 +154807,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794888230674
+  "updatedAt": 1794888261379
 }
