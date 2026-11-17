@@ -28522,7 +28522,7 @@
       "hasLoggedIn": true,
       "isOnline": true,
       "loggedOutAt": 1793947950903,
-      "lastSeen": 1794885513356
+      "lastSeen": 1794885526554
     },
     {
       "id": "tg_98124765",
@@ -135604,8 +135604,8 @@
         "group": "p4011_ex6_7b",
         "text": "doesn't rain",
         "correct": false,
-        "top": 82.4,
-        "left": 16.5,
+        "top": 79.4,
+        "left": 16,
         "width": 8.5,
         "height": 1.9,
         "x": 16.5,
@@ -135619,8 +135619,8 @@
         "group": "p4011_ex6_7b",
         "text": "isn't raining",
         "correct": true,
-        "top": 82.4,
-        "left": 26,
+        "top": 79.4,
+        "left": 25.5,
         "width": 8.5,
         "height": 1.9,
         "x": 26,
@@ -135634,8 +135634,8 @@
         "group": "p4011_ex6_8a",
         "text": "Is our team winning",
         "correct": true,
-        "top": 84.3,
-        "left": 12.5,
+        "top": 80.9,
+        "left": 13.3,
         "width": 13,
         "height": 1.9,
         "x": 12.5,
@@ -135649,8 +135649,8 @@
         "group": "p4011_ex6_8a",
         "text": "Does our team win",
         "correct": false,
-        "top": 84.3,
-        "left": 26.5,
+        "top": 80.9,
+        "left": 27.3,
         "width": 13,
         "height": 1.9,
         "x": 26.5,
@@ -152650,7 +152650,7 @@
     "4008": 1794885062360,
     "4009": 1794885276434,
     "4010": 1794885374894,
-    "4011": 1794885515056,
+    "4011": 1794885526927,
     "4012": 1794885062362,
     "4013": 1794885062362,
     "4014": 1794885062362,
@@ -154806,5 +154806,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794885515390
+  "updatedAt": 1794885528464
 }
