@@ -28522,7 +28522,7 @@
       "hasLoggedIn": true,
       "isOnline": true,
       "loggedOutAt": 1794888218960,
-      "lastSeen": 1794888287706
+      "lastSeen": 1794888305307
     },
     {
       "id": "tg_98124765",
@@ -28855,13 +28855,13 @@
       "login": "vohidova"
     },
     {
-      "id": "admin_official_teacher",
+      "id": "t_urolov_azizbek",
       "name": "Azizbek Urolov",
       "email": "azizbek.urolov@ethith.uz",
       "login": "azizbek77",
       "password": "azizbek2026",
       "role": "teacher",
-      "coins": 100000,
+      "coins": 1000,
       "hourlyRate": 120000,
       "subject": "Ingliz tili (Upper / Inter)",
       "teachingHours": 72,
@@ -28869,14 +28869,14 @@
         "cls_urolov_azizbek_intermediate_practice",
         "cls_urolov_azizbek_upper_intermediate_standard"
       ],
-      "createdAt": 1793598048461,
+      "createdAt": 1794888304624,
       "level": "C2",
       "updatedAt": 1793473052536,
       "gifts": [],
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793948779636
+      "lastSeen": 1794888304625
     },
     {
       "id": "admin_official_teacher",
@@ -153250,7 +153250,10 @@
       "inviteCode": "AZIZBEK77",
       "unpaidMonths": 0,
       "livePaidStudents": 0,
-      "computedLiveSalary": 0
+      "computedLiveSalary": 0,
+      "isOnline": true,
+      "hasLoggedIn": true,
+      "isLoggedOut": false
     },
     {
       "id": "admin_official_teacher",
@@ -154805,5 +154808,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1794888288547
+  "updatedAt": 1794888306576
 }
