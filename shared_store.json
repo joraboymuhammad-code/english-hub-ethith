@@ -26272,7 +26272,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795178722211,
+      "lastSeen": 1795178737604,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -153828,8 +153828,8 @@
       {
         "id": "test_inp_5020_8",
         "type": "text",
-        "left": 12.8,
-        "top": 57.8,
+        "left": 12.9,
+        "top": 57.5,
         "width": 16,
         "height": 2.7,
         "correct": [
@@ -154441,7 +154441,7 @@
     "5002": 1795178660283,
     "5003": 1795178704195,
     "5004": 1795178704201,
-    "5020": 1795178722849
+    "5020": 1795178728644
   },
   "centerSettings": {
     "card": "8600 4912 7731 9024",
@@ -445320,5 +445320,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1795178724458
+  "updatedAt": 1795178738478
 }
