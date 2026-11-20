@@ -85,7 +85,9 @@
     p2pListings: [],
     fileExplorer: (typeof window !== 'undefined' && window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.fileExplorer) ? JSON.parse(JSON.stringify(window.ETHITH_INITIAL_STORE.fileExplorer)) : { folders: [], tests: [] },
     workbookOverrides: (typeof window !== 'undefined' && window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.workbookOverrides) ? Object.assign({}, window.ETHITH_INITIAL_STORE.workbookOverrides) : {},
-    workbookOverridesTs: (typeof window !== 'undefined' && window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.workbookOverridesTs) ? Object.assign({}, window.ETHITH_INITIAL_STORE.workbookOverridesTs) : {}
+    workbookOverridesTs: (typeof window !== 'undefined' && window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.workbookOverridesTs) ? Object.assign({}, window.ETHITH_INITIAL_STORE.workbookOverridesTs) : {},
+    allCurriculumTests: (typeof window !== 'undefined' && window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.allCurriculumTests) ? JSON.parse(JSON.stringify(window.ETHITH_INITIAL_STORE.allCurriculumTests)) : [],
+    customCurriculumTests: (typeof window !== 'undefined' && window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.customCurriculumTests) ? JSON.parse(JSON.stringify(window.ETHITH_INITIAL_STORE.customCurriculumTests)) : {}
   };
 
   // Load state from localStorage
@@ -95,6 +97,24 @@
       var parsed = JSON.parse(raw);
       for (var k in parsed) {
         if (parsed[k] !== undefined) S[k] = parsed[k];
+      }
+    }
+  } catch(e) {}
+
+  // Explicitly load curriculum tests from localStorage
+  try {
+    var curRaw = localStorage.getItem('ethith_all_curriculum_tests');
+    if (curRaw) {
+      var curArr = JSON.parse(curRaw);
+      if (Array.isArray(curArr) && curArr.length > 0) {
+        S.allCurriculumTests = curArr;
+      }
+    }
+    var custRaw = localStorage.getItem('ethith_custom_curriculum_tests');
+    if (custRaw) {
+      var custObj = JSON.parse(custRaw);
+      if (custObj && typeof custObj === 'object') {
+        S.customCurriculumTests = Object.assign({}, S.customCurriculumTests || {}, custObj);
       }
     }
   } catch(e) {}
