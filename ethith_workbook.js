@@ -167339,6 +167339,10 @@
 
   // 1. MAIN CATALOG VIEW (Clean Cards Portal)
   WB.renderCurriculumTestsHtml = function(bookLevel, tabType) {
+    var esc = function(s) {
+      if (!s) return '';
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    };
     // If user clicked into a specific unit, show the Dedicated Open Hub!
     if (WB._activeCurTestSlot && WB._activeCurTestSlot.level === bookLevel && WB._activeCurTestSlot.tabType === tabType) {
       return WB.renderCurriculumTestHubHtml(bookLevel, tabType, WB._activeCurTestSlot.num);
