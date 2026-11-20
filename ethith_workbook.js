@@ -167424,7 +167424,7 @@
 
         (function() {
           var testCode = (isProgress ? 'progress_test_' : 'unit_test_') + slotNum;
-          var curManifest = WB.testManifest || window.ETHITH_TEST_MANIFEST || {};
+          var curManifest = (WB.testManifest && Object.keys(WB.testManifest).length > 0) ? WB.testManifest : (window.ETHITH_TEST_MANIFEST || {});
           var pgs = curManifest[bookLevel + '_' + (isProgress ? 'progress_' : 'unit_') + slotNum] || [];
           var bHtml = '<div style="display:flex;flex-direction:column;gap:8px;">' +
             '<button type="button" class="eth-cur-start-direct-btn" data-level="' + bookLevel + '" data-code="' + testCode + '" data-num="' + slotNum + '" style="width:100%;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:11px 14px;font-size:13.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 15px rgba(2,132,199,0.4);">' +
@@ -167639,7 +167639,7 @@
         var code = btn.getAttribute('data-code');
         var num = parseInt(btn.getAttribute('data-num'), 10) || 1;
         var title = btn.getAttribute('data-title') || ('Unit ' + num + ' Oraliq Test (PDF)');
-        var curManifest = WB.testManifest || window.ETHITH_TEST_MANIFEST || {};
+        var curManifest = (WB.testManifest && Object.keys(WB.testManifest).length > 0) ? WB.testManifest : (window.ETHITH_TEST_MANIFEST || {});
         var isProg = code.indexOf('progress') !== -1;
         var tPages = curManifest[lvl + '_' + (isProg ? 'progress_' : 'unit_') + num] || [];
         
@@ -168426,7 +168426,7 @@
     if (lessonCode && (String(lessonCode).indexOf('unit_test_') !== -1 || String(lessonCode).indexOf('progress_test_') !== -1 || String(lessonCode).indexOf('cur_test_') !== -1)) {
       var isProg = (String(lessonCode).indexOf('progress') !== -1);
       var tNum = parseInt(String(lessonCode).replace(/[^0-9]/g, ''), 10) || unitNum || 1;
-      var curManifest = WB.testManifest || window.ETHITH_TEST_MANIFEST || {};
+      var curManifest = (WB.testManifest && Object.keys(WB.testManifest).length > 0) ? WB.testManifest : (window.ETHITH_TEST_MANIFEST || {});
       var tKey = bookLevel + '_' + (isProg ? 'progress_' : 'unit_') + tNum;
       var tPages = curManifest[tKey] || [];
       if (tPages.length > 0) {
@@ -168725,7 +168725,7 @@
         '<span style="color:' + (isTeacher ? '#34d399' : '#38bdf8') + ';">' + inputs.length + ' ta interaktiv topshiriq' + (isTeacher ? ' (To‘g‘ri javoblar ko‘rsatilgan)' : '') + '</span>' +
       '</div>' +
       '<div style="position:relative;width:100%;">' +
-      '<img src="' + imgSrc + '" class="eth-wb-img" data-page="' + pageNum + '" style="width:100%;height:auto;display:block;user-select:none;pointer-events:' + (isEditor ? 'none' : 'auto') + ';" alt="Oxford ' + bookLabel + ' Page ' + dispP + '" />' +
+      '<img src="' + imgSrc + '" class="eth-wb-img" data-page="' + pageNum + '" data-rel-src="' + (pageNum >= 5000 ? ('test_pages/page_' + pageNum + '.jpg') : '') + '" onerror="if(this.getAttribute(\'data-rel-src\') && !this.src.startsWith(\'https://joraboymuhammad-code.github.io\')){this.src=\'https://joraboymuhammad-code.github.io/english-hub-ethith/\' + this.getAttribute(\'data-rel-src\');}" style="width:100%;height:auto;display:block;user-select:none;pointer-events:' + (isEditor ? 'none' : 'auto') + ';" alt="Oxford ' + bookLabel + ' Page ' + dispP + '" />' +
       '<div class="eth-wb-overlay-layer" data-page="' + pageNum + '" style="position:absolute;inset:0;' + (isEditor ? 'cursor:crosshair;' : '') + '">';
 
     inputs.forEach(function(item) {
@@ -170911,7 +170911,7 @@
   
   // Automatically inject Unit Test and Progress Test lessons into units catalog
   function injectTestLessonsIntoUnits() {
-    var manifest = WB.testManifest || window.ETHITH_TEST_MANIFEST || {};
+    var manifest = (WB.testManifest && Object.keys(WB.testManifest).length > 0) ? WB.testManifest : (window.ETHITH_TEST_MANIFEST || {});
     var levels = [
       { lvl: 'a1', list: WB.unitsA1, uMax: 10, pMax: 3 },
       { lvl: 'b1_pre', list: WB.unitsB1Pre, uMax: 12, pMax: 4 },
