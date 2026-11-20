@@ -4221,6 +4221,19 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   // Global Universal Homework Launcher (Works for Student Dash, Chat, & Toast)
   window.ethithOpenHomeworkItem = function(hw, cls) {
     if (!hw) return;
+    // Dedicated handling for authentic Oxford Unit Tests and Progress Tests (PDF Pages)
+    if (hw.type === 'unit_test' || hw.type === 'progress_test' || (hw.lessonCode && (String(hw.lessonCode).indexOf('unit_test_') !== -1 || String(hw.lessonCode).indexOf('progress_test_') !== -1))) {
+      var bLevelKey = (bLevel === 'A1' || bLevel === 'Beginner') ? 'a1' :
+                      (bLevel === 'B1' || bLevel === 'Pre-Intermediate') ? 'b1_pre' :
+                      (bLevel === 'B2' || bLevel === 'Upper-Intermediate') ? 'b2' : 'b1';
+      var apView = document.getElementById('apView') || document.getElementById('ethith-main-content') || document.querySelector('.ea-main');
+      var wbObj = window.ETHITH_WORKBOOK_B1 || window.WB;
+      if (wbObj && typeof wbObj.renderLesson === 'function' && apView) {
+        wbObj.renderLesson(apView, hw.unit || 1, hw.lessonCode, bLevelKey);
+        return;
+      }
+    }
+
     if (hw.type === 'test' || hw.testId) {
       if (window.EthithEnterprise && typeof window.EthithEnterprise.openTakeTestModal === 'function') {
         window.EthithEnterprise.openTakeTestModal(hw.testId);
@@ -4824,6 +4837,56 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   // MULTI-UNIT HOMEWORK ASSIGNMENT SUPPORTED: Teachers can select lessons across multiple units
   // (e.g. Unit 1: 1.4 and Unit 2: 2.1 simultaneously)
   // ============================================================================
+  
+  // Quick Direct Homework Assignment for Teachers (from Unit Test cards)
+  EA.assignDirectHomework = function(hwItem) {
+    var cls = (typeof getActiveOrFirstClass === 'function' ? getActiveOrFirstClass() : null) || (getAvailableClasses()[0]);
+    if (!cls) {
+      if (window.toast) window.toast('Vazifa biriktirish uchun avval sinf/guruhni tanlang!');
+      else alert('Vazifa biriktirish uchun avval sinf/guruhni tanlang!');
+      return;
+    }
+    var todayKey = formatDateKey(new Date());
+    var title = hwItem.title || hwItem.lessonTitle || 'Oraliq Test';
+    var newHw = {
+      type: hwItem.type || 'unit_test',
+      bookLevel: hwItem.bookLevel || 'B1+',
+      unit: hwItem.unit || 1,
+      lessonCode: hwItem.lessonCode || 'unit_test_1',
+      lessonTitle: title,
+      title: title,
+      pages: hwItem.pages || [],
+      dateKey: todayKey,
+      note: 'Oxford Navigate rasmiy oraliq testi. Barcha topshiriqlarni bajaring va tekshiring.'
+    };
+
+    if (!cls.activeHomeworks) cls.activeHomeworks = [];
+    var existingIdx = cls.activeHomeworks.findIndex(function(x) { return x.lessonCode === newHw.lessonCode; });
+    if (existingIdx !== -1) {
+      cls.activeHomeworks[existingIdx] = newHw;
+    } else {
+      cls.activeHomeworks.push(newHw);
+    }
+    cls.activeHomework = newHw;
+
+    if (!cls.attendance) cls.attendance = {};
+    if (!cls.attendance.homeworks) cls.attendance.homeworks = {};
+    cls.attendance.homeworks[todayKey] = newHw;
+
+    // Save and broadcast
+    saveStateDirect();
+    try {
+      if (window.EthithSync && typeof window.EthithSync.pushStoreUpdate === 'function') {
+        window.EthithSync.pushStoreUpdate('classes');
+      }
+    } catch(e) {}
+
+    var successMsg = '🎯 "' + title + '" muvaffaqiyatli ' + cls.name + ' guruhiga uyga vazifa qilib belgilandi!';
+    if (window.toast) window.toast(successMsg);
+    else if (window.EthithApp && window.EthithApp.showToast) window.EthithApp.showToast(successMsg, 'success');
+    else alert(successMsg);
+  };
+
   EA.openHomeworkAssignModal = function(container, cls, defaultDateKey, onDoneCallback) {
     if (!cls) cls = (typeof getActiveOrFirstClass === 'function' ? getActiveOrFirstClass() : null) || (getAvailableClasses()[0]);
     if (!cls) return;

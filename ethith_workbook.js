@@ -30,6 +30,9 @@
     return !!(u && (u.role === 'teacher' || u.role === 'admin' || u.isTeacher === true)) || (window._ethithWbEditorMode === true);
   }
 
+  // Oxford Curriculum Test Manifest
+  WB.testManifest = window.ETHITH_TEST_MANIFEST || {};
+
   // 12 Authentic Units from Oxford Navigate Intermediate B1+
   WB.units = [
     {
@@ -166395,6 +166398,11 @@
       }
     }
 
+    // 3.5. TEST PAGES PRIORITY: Pre-calibrated Oxford Unit & Progress test inputs
+    if (page >= 5000 && window.ETHITH_TEST_PAGE_INPUTS && Array.isArray(window.ETHITH_TEST_PAGE_INPUTS[page]) && window.ETHITH_TEST_PAGE_INPUTS[page].length > 0) {
+      return window.ETHITH_TEST_PAGE_INPUTS[page];
+    }
+
     // 4. FOURTH PRIORITY: Initial calibrated master inputs bundled in JS
     if (WB.defaultInputs && Array.isArray(WB.defaultInputs[page]) && WB.defaultInputs[page].length > 0) {
       return WB.defaultInputs[page];
@@ -166647,7 +166655,9 @@
     var isLocalEthith = isFileProtocol && (decodedPath.includes('ethith') || decodedPath.includes('sayt') || decodedPath.includes('test') || rawPath.toLowerCase().includes('ethith%20test'));
     var prefix = (isFileProtocol && !isLocalEthith) ? remoteHost : basePath;
 
-    if (pageNum >= 4000) {
+    if (pageNum >= 5000) {
+      return prefix + 'test_pages/page_' + pageNum + '.jpg';
+    } else if (pageNum >= 4000) {
       // Pre-Intermediate (B1)
       var b1PrePage = pageNum - 4000;
       var b1PreFileNum = String(b1PrePage).padStart(3, '0');
@@ -167408,9 +167418,22 @@
           '</p>' +
         '</div>' +
 
-        '<button type="button" class="eth-cur-open-hub-btn" data-level="' + bookLevel + '" data-type="' + tabType + '" data-num="' + slotNum + '" style="width:100%;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:12px;font-size:13.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 15px rgba(2,132,199,0.4);transition:all 0.2s;">' +
-          '👉 Kirish va Barcha Testlarni Ko‘rish ' + (hasTests ? ('(' + matching.length + ' ta)') : '') +
-        '</button>' +
+        (function() {
+          var testCode = (isProgress ? 'progress_test_' : 'unit_test_') + slotNum;
+          var curManifest = WB.testManifest || window.ETHITH_TEST_MANIFEST || {};
+          var pgs = curManifest[bookLevel + '_' + (isProgress ? 'progress_' : 'unit_') + slotNum] || [];
+          var bHtml = '<div style="display:flex;flex-direction:column;gap:8px;">' +
+            '<button type="button" class="eth-cur-start-direct-btn" data-level="' + bookLevel + '" data-code="' + testCode + '" data-num="' + slotNum + '" style="width:100%;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:11px 14px;font-size:13.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 15px rgba(2,132,199,0.4);">' +
+              '🚀 Testni Ishlash (PDF ' + (pgs.length ? pgs.length + ' bet' : '') + ')' +
+            '</button>';
+          if (isStaff) {
+            bHtml += '<button type="button" class="eth-cur-assign-hw-btn" data-level="' + bookLevel + '" data-code="' + testCode + '" data-num="' + slotNum + '" data-title="' + esc(slotTitle) + ' (PDF)" style="width:100%;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;border:none;border-radius:12px;padding:9px 12px;font-size:12.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 12px rgba(139,92,246,0.35);">' +
+              '🎯 Uyga vazifa qilib berish' +
+            '</button>';
+          }
+          bHtml += '</div>';
+          return bHtml;
+        })() +
       '</div>';
     }
 
@@ -167591,6 +167614,54 @@
 
   WB.attachCurriculumTestsEvents = function(container, bookLevel, curTab, refreshCatalogFn) {
     if (!container) return;
+
+    // DIRECT START TEST BUTTON (Opens real PDF test pages in renderLesson)
+    container.querySelectorAll('.eth-cur-start-direct-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        var lvl = btn.getAttribute('data-level') || bookLevel;
+        var code = btn.getAttribute('data-code');
+        var num = parseInt(btn.getAttribute('data-num'), 10) || 1;
+        var apView = document.getElementById('apView') || container;
+        WB.renderLesson(apView, num, code, lvl);
+      };
+    });
+
+    // DIRECT HOMEWORK ASSIGN BUTTON (Teachers can assign unit or progress test directly)
+    container.querySelectorAll('.eth-cur-assign-hw-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        var lvl = btn.getAttribute('data-level') || bookLevel;
+        var code = btn.getAttribute('data-code');
+        var num = parseInt(btn.getAttribute('data-num'), 10) || 1;
+        var title = btn.getAttribute('data-title') || ('Unit ' + num + ' Oraliq Test (PDF)');
+        var curManifest = WB.testManifest || window.ETHITH_TEST_MANIFEST || {};
+        var isProg = code.indexOf('progress') !== -1;
+        var tPages = curManifest[lvl + '_' + (isProg ? 'progress_' : 'unit_') + num] || [];
+        
+        var EA = window.EA || window.EthithAttendance;
+        if (EA && typeof EA.assignDirectHomework === 'function') {
+          EA.assignDirectHomework({
+            bookLevel: (lvl === 'a1' ? 'A1' : lvl === 'b1_pre' ? 'B1' : lvl === 'b2' ? 'B2' : 'B1+'),
+            unit: num,
+            lessonCode: code,
+            lessonTitle: title,
+            title: title,
+            pages: tPages,
+            type: 'unit_test'
+          });
+        } else if (EA && typeof EA.openHomeworkAssignModal === 'function') {
+          EA.openHomeworkAssignModal(container, null, null, null, {
+            bookLevel: (lvl === 'a1' ? 'A1' : lvl === 'b1_pre' ? 'B1' : lvl === 'b2' ? 'B2' : 'B1+'),
+            unit: num,
+            lessonCode: code,
+            title: title,
+            pages: tPages,
+            type: 'unit_test'
+          });
+        }
+      };
+    });
 
     // A) Open Dedicated Slot Hub Button
     container.querySelectorAll('.eth-cur-open-hub-btn, .eth-cur-portal-card').forEach(function(el) {
@@ -168347,6 +168418,28 @@
     if (unitData && unitData.lessons) {
       lessonData = unitData.lessons.find(function(l) { return l.code === lessonCode; });
     }
+    // Intercept Unit Tests and Progress Tests to load real authentic PDF pages
+    if (lessonCode && (String(lessonCode).indexOf('unit_test_') !== -1 || String(lessonCode).indexOf('progress_test_') !== -1 || String(lessonCode).indexOf('cur_test_') !== -1)) {
+      var isProg = (String(lessonCode).indexOf('progress') !== -1);
+      var tNum = parseInt(String(lessonCode).replace(/[^0-9]/g, ''), 10) || unitNum || 1;
+      var curManifest = WB.testManifest || window.ETHITH_TEST_MANIFEST || {};
+      var tKey = bookLevel + '_' + (isProg ? 'progress_' : 'unit_') + tNum;
+      var tPages = curManifest[tKey] || [];
+      if (tPages.length > 0) {
+        var lvlName = (bookLevel === 'a1') ? 'Beginner A1' :
+                       (bookLevel === 'b1_pre') ? 'Pre-Intermediate B1' :
+                       (bookLevel === 'b2') ? 'Upper-Intermediate B2' : 'Intermediate B1+';
+        lessonData = {
+          code: lessonCode,
+          title: (isProg ? ('Progress Test ' + tNum) : ('Unit ' + tNum + ' Oraliq Test')),
+          desc: 'Oxford Navigate ' + lvlName + ' Rasmiy Interaktiv PDF Test (' + tPages.length + ' sahifa)',
+          pages: tPages,
+          isCurriculumTest: true,
+          isTest: true
+        };
+      }
+    }
+
     if (!lessonData) {
       lessonData = { code: lessonCode, title: "Unit " + lessonCode, desc: "Interactive Workbook Pages", pages: isB2 ? [2004, 2005] : isA1 ? [1004, 1005] : isA2 ? [3004, 3005] : isB1Pre ? [4004, 4005] : [4, 5] };
     }
@@ -170811,6 +170904,59 @@
 
     WB.isTeacherRole = isTeacherRole;
   window.isTeacherRole = isTeacherRole;
+  
+  // Automatically inject Unit Test and Progress Test lessons into units catalog
+  function injectTestLessonsIntoUnits() {
+    var manifest = WB.testManifest || window.ETHITH_TEST_MANIFEST || {};
+    var levels = [
+      { lvl: 'a1', list: WB.unitsA1, uMax: 10, pMax: 3 },
+      { lvl: 'b1_pre', list: WB.unitsB1Pre, uMax: 12, pMax: 4 },
+      { lvl: 'b1', list: WB.units, uMax: 12, pMax: 4 },
+      { lvl: 'b2', list: WB.unitsB2, uMax: 12, pMax: 4 }
+    ];
+
+    levels.forEach(function(lvlObj) {
+      if (!Array.isArray(lvlObj.list)) return;
+      lvlObj.list.forEach(function(uObj) {
+        if (!uObj || !Array.isArray(uObj.lessons)) return;
+        var uNum = uObj.unit;
+
+        // Check if unit test already injected
+        var testCode = 'unit_test_' + uNum;
+        if (!uObj.lessons.some(function(l) { return l.code === testCode; })) {
+          var testPages = manifest[lvlObj.lvl + '_unit_' + uNum] || [];
+          uObj.lessons.push({
+            code: testCode,
+            title: 'Unit ' + uNum + ' Oraliq Test (PDF)',
+            desc: 'Rasmiy Oxford Navigate Unit ' + uNum + ' Testi (' + (testPages.length || 2) + ' sahifa, interaktiv topshiriqlar)',
+            pages: testPages,
+            active: true,
+            isTest: true
+          });
+        }
+
+        // Check if progress test applies to this unit
+        var pNum = (uNum === 3) ? 1 : (uNum === 6) ? 2 : (uNum === 9) ? 3 : (uNum === lvlObj.uMax) ? (lvlObj.lvl === 'a1' ? 3 : 4) : 0;
+        if (pNum > 0 && pNum <= lvlObj.pMax) {
+          var progCode = 'progress_test_' + pNum;
+          if (!uObj.lessons.some(function(l) { return l.code === progCode; })) {
+            var progPages = manifest[lvlObj.lvl + '_progress_' + pNum] || [];
+            uObj.lessons.push({
+              code: progCode,
+              title: 'Progress Test ' + pNum + ' (PDF)',
+              desc: 'Rasmiy Oxford Navigate Progress Test ' + pNum + ' (' + (progPages.length || 5) + ' sahifa, katta oraliq imtihon)',
+              pages: progPages,
+              active: true,
+              isTest: true,
+              isProgress: true
+            });
+          }
+        }
+      });
+    });
+  }
+  setTimeout(injectTestLessonsIntoUnits, 50);
+
   WB.renderLesson = renderLesson;
   WB.renderLesson1_1 = function(container) {
     renderLesson(container, 1, '1.1', 'b1');
