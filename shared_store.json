@@ -2009,10 +2009,26 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183624958
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183624958
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -2149,7 +2165,7 @@
       },
       "deletedStudentIds": [],
       "learningLessons": 0,
-      "durationUpdatedAt": 1794575908152,
+      "durationUpdatedAt": 1795183625206,
       "customStudentNamesTs": {}
     },
     {
@@ -2490,10 +2506,26 @@
       "level": "Practice English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183625208
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183625208
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -2630,7 +2662,7 @@
       },
       "deletedStudentIds": [],
       "learningLessons": 0,
-      "durationUpdatedAt": 1794575908200,
+      "durationUpdatedAt": 1795183625455,
       "customStudentNamesTs": {}
     },
     {
@@ -2971,10 +3003,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183625458
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183625458
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -3110,7 +3158,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183625743,
+      "learningLessons": 0
     },
     {
       "id": "cls_olimjonova_durdona_beginner",
@@ -3450,7 +3500,32 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-10-28": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183625746
+            }
+          },
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183625746
+            }
+          }
+        },
         "lessonTypes": {
           "2026-10-28": "Vazifa: 1.1"
         },
@@ -3469,7 +3544,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1795183625746
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -3618,7 +3694,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183626027,
+      "learningLessons": 0
     },
     {
       "id": "cls_olimjonova_durdona_pre_intermediate",
@@ -3958,10 +4036,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183626030
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183626030
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -4097,7 +4191,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183626347,
+      "learningLessons": 0
     },
     {
       "id": "cls_olimjonova_durdona_intermediate_1",
@@ -4437,7 +4533,32 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-10-28": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183626349
+            }
+          },
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183626349
+            }
+          }
+        },
         "lessonTypes": {
           "2026-10-28": "Vazifa: 1.1"
         },
@@ -4457,7 +4578,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793213300749
+        "updatedAt": 1795183626349
       },
       "customStudentNames": {
         "cls_olimjonova_durdona_intermediate_1_tester_10": "Malika Karimova"
@@ -4610,7 +4731,9 @@
       "deletedStudentIds": [],
       "customStudentNamesTs": {
         "cls_olimjonova_durdona_intermediate_1_tester_10": 1793213300749
-      }
+      },
+      "durationUpdatedAt": 1795183626639,
+      "learningLessons": 0
     },
     {
       "id": "cls_olimjonova_durdona_intermediate_2",
@@ -4950,10 +5073,26 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183626642
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183626642
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -5089,7 +5228,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183626928,
+      "learningLessons": 0
     },
     {
       "id": "cls_tagaev_eldor_beginner",
@@ -5429,10 +5570,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183626929
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183626929
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -5568,7 +5725,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183627194,
+      "learningLessons": 0
     },
     {
       "id": "cls_tagaev_eldor_elementary",
@@ -5908,10 +6067,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183627196
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183627196
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -6047,7 +6222,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183627453,
+      "learningLessons": 0
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_1",
@@ -6387,10 +6564,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183627455
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183627455
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -6526,7 +6719,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183627719,
+      "learningLessons": 0
     },
     {
       "id": "cls_tagaev_eldor_pre_intermediate_2",
@@ -6866,10 +7061,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183627723
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183627723
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -7005,7 +7216,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183628047,
+      "learningLessons": 0
     },
     {
       "id": "cls_yaxshilikova_kamola_beginner",
@@ -7345,10 +7558,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183628052
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183628052
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -7484,7 +7713,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183628386,
+      "learningLessons": 0
     },
     {
       "id": "cls_yaxshilikova_kamola_elementary",
@@ -7824,10 +8055,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183628389
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183628389
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -7963,7 +8210,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183628705,
+      "learningLessons": 0
     },
     {
       "id": "cls_sherqoziyeva_iroda_beginner_1",
@@ -8303,10 +8552,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183628708
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183628708
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -8442,7 +8707,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183629037,
+      "learningLessons": 0
     },
     {
       "id": "cls_sherqoziyeva_iroda_beginner_2",
@@ -8782,10 +9049,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183629040
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183629040
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -8921,7 +9204,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183629375,
+      "learningLessons": 0
     },
     {
       "id": "cls_aborbekov_elyor_pre_intermediate_1",
@@ -9261,10 +9546,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183629378
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183629378
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -9400,7 +9701,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183629704,
+      "learningLessons": 0
     },
     {
       "id": "cls_aborbekov_elyor_pre_intermediate_2",
@@ -9740,10 +10043,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183629708
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183629708
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -9879,7 +10198,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183630026,
+      "learningLessons": 0
     },
     {
       "id": "cls_aborbekov_elyor_intermediate_1",
@@ -10219,10 +10540,26 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183630029
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183630029
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -10358,7 +10695,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183630332,
+      "learningLessons": 0
     },
     {
       "id": "cls_aborbekov_elyor_intermediate_2",
@@ -10698,10 +11037,26 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183630335
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183630335
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -10837,7 +11192,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183630615,
+      "learningLessons": 0
     },
     {
       "id": "cls_aborbekov_elyor_upper_intermediate",
@@ -11177,10 +11534,26 @@
       "level": "Upper-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183630617
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183630617
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -11316,7 +11689,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183630890,
+      "learningLessons": 0
     },
     {
       "id": "cls_orinboyev_jaloliddin_pre_intermediate",
@@ -11656,10 +12031,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183630892
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183630892
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -11795,7 +12186,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183631127,
+      "learningLessons": 0
     },
     {
       "id": "cls_orinboyev_jaloliddin_intermediate",
@@ -12135,10 +12528,26 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183631130
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183631130
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -12274,7 +12683,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183631405,
+      "learningLessons": 0
     },
     {
       "id": "cls_orinboyev_jaloliddin_standard_1",
@@ -12614,10 +13025,26 @@
       "level": "Standard English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183631409
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183631409
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -12753,7 +13180,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183631684,
+      "learningLessons": 0
     },
     {
       "id": "cls_orinboyev_jaloliddin_standard_2",
@@ -13093,10 +13522,26 @@
       "level": "Standard English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183631687
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183631687
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -13232,7 +13677,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183631947,
+      "learningLessons": 0
     },
     {
       "id": "cls_jumanova_pokiza_beginner",
@@ -13572,10 +14019,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183631950
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183631950
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -13711,7 +14174,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183632217,
+      "learningLessons": 0
     },
     {
       "id": "cls_hayrullayev_arslon_beginner_1",
@@ -14051,10 +14516,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183632219
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183632219
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -14190,7 +14671,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183632496,
+      "learningLessons": 0
     },
     {
       "id": "cls_hayrullayev_arslon_beginner_2",
@@ -14530,10 +15013,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183632499
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183632499
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -14669,7 +15168,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183632754,
+      "learningLessons": 0
     },
     {
       "id": "cls_xudoyorova_sarvinoz_intermediate",
@@ -15009,7 +15510,32 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-10-28": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183632758
+            }
+          },
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183632758
+            }
+          }
+        },
         "lessonTypes": {
           "2026-10-28": "Vazifa: 1.1"
         },
@@ -15028,7 +15554,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1795183632758
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -15177,7 +15704,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183632978,
+      "learningLessons": 0
     },
     {
       "id": "cls_xudoyorova_sarvinoz_standard",
@@ -15517,10 +16046,26 @@
       "level": "Standard English",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183632980
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183632980
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -15656,7 +16201,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183633224,
+      "learningLessons": 0
     },
     {
       "id": "cls_aliqulova_sevinch_beginner_1",
@@ -15996,10 +16543,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183633226
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183633226
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -16135,7 +16698,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183633494,
+      "learningLessons": 0
     },
     {
       "id": "cls_aliqulova_sevinch_beginner_2",
@@ -16475,10 +17040,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183633497
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183633497
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -16614,7 +17195,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183633774,
+      "learningLessons": 0
     },
     {
       "id": "cls_xojamqulova_diyora_beginner",
@@ -16954,10 +17537,26 @@
       "level": "Beginner",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183633777
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183633777
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -17093,7 +17692,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183634075,
+      "learningLessons": 0
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_1",
@@ -17433,10 +18034,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183634080
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183634080
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -17572,7 +18189,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183634354,
+      "learningLessons": 0
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_2",
@@ -17912,10 +18531,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183634357
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183634357
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -18051,7 +18686,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183634642,
+      "learningLessons": 0
     },
     {
       "id": "cls_xojamqulova_diyora_elementary_3",
@@ -18391,10 +19028,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183634645
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183634645
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -18530,7 +19183,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183634877,
+      "learningLessons": 0
     },
     {
       "id": "cls_bosimbekov_farrux_pre_intermediate_1",
@@ -18870,7 +19525,32 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-10-29": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183634880
+            }
+          },
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183634880
+            }
+          }
+        },
         "lessonTypes": {
           "2026-10-29": "Vazifa: 1.1"
         },
@@ -18889,7 +19569,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1795183634880
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -19038,7 +19719,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183635109,
+      "learningLessons": 0
     },
     {
       "id": "cls_bosimbekov_farrux_pre_intermediate_2",
@@ -19378,10 +20061,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183635112
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183635112
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -19517,7 +20216,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183635338,
+      "learningLessons": 0
     },
     {
       "id": "cls_bosimbekov_farrux_intermediate_1",
@@ -19857,10 +20558,26 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183635340
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183635340
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -19996,7 +20713,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183635583,
+      "learningLessons": 0
     },
     {
       "id": "cls_bosimbekov_farrux_intermediate_2",
@@ -20336,10 +21055,26 @@
       "level": "Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183635585
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183635585
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -20475,7 +21210,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183635834,
+      "learningLessons": 0
     },
     {
       "id": "cls_ahmadova_barno_elementary_1",
@@ -20815,10 +21552,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183635835
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183635835
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -20954,7 +21707,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183636072,
+      "learningLessons": 0
     },
     {
       "id": "cls_ahmadova_barno_elementary_2",
@@ -21294,10 +22049,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183636075
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183636075
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -21433,7 +22204,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183636309,
+      "learningLessons": 0
     },
     {
       "id": "cls_ahmadova_barno_elementary_3",
@@ -21773,10 +22546,26 @@
       "level": "Elementary",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183636310
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183636310
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -21912,7 +22701,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183636550,
+      "learningLessons": 0
     },
     {
       "id": "cls_ahmadova_barno_pre_intermediate",
@@ -22252,10 +23043,26 @@
       "level": "Pre-Intermediate",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183636552
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183636552
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -22391,7 +23198,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183636793,
+      "learningLessons": 0
     },
     {
       "id": "cls_shodiyor_matematika_matematika",
@@ -22731,10 +23540,26 @@
       "level": "Matematika",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183636796
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183636796
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -22870,7 +23695,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183637044,
+      "learningLessons": 0
     },
     {
       "id": "cls_urolov_azizbek_upper",
@@ -22883,7 +23710,7 @@
       "teacherEmail": "azizbek.urolov@ethith.uz",
       "room": "302-xona",
       "maxCapacity": 23,
-      "schedule": "juft",
+      "schedule": "toq",
       "attendance": {
         "records": {
           "2026-11-04": {
@@ -22894,6 +23721,30 @@
             "std_navroz_651_shavkatov": {
               "status": "",
               "score": ""
+            }
+          },
+          "2026-10-30": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183637046
+            }
+          },
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183637046
             }
           }
         },
@@ -22916,7 +23767,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793734631041
+        "updatedAt": 1795183637046
       },
       "customStudentNames": {
         "std_nurlan_856_tangatov": "Nurlan Tangatov",
@@ -23409,8 +24260,8 @@
           }
         }
       ],
-      "learningMonths": 0,
-      "learningDays": 0,
+      "learningMonths": 2,
+      "learningDays": 28,
       "studentPayments": {
         "cls_urolov_azizbek_upper_tester_1": {
           "fee": 300000,
@@ -23687,7 +24538,7 @@
       "learningLessons": 0,
       "baselineDate": "2026-11-05",
       "levelTestDate": "2027-02-03",
-      "durationUpdatedAt": 1794674292971,
+      "durationUpdatedAt": 1795183637290,
       "pinnedId": null,
       "pinnedIds": [],
       "customStudentNamesTs": {
@@ -23730,7 +24581,32 @@
       "maxCapacity": 18,
       "schedule": "juft",
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-02": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183637292
+            }
+          },
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183637292
+            }
+          }
+        },
         "lessonTypes": {
           "2026-11-02": "Vazifa: 1.1"
         },
@@ -23749,7 +24625,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1795183637292
       },
       "customStudentNames": {
         "std_ruxshona_493_amalikova": "Ruxshona Amalikova",
@@ -24238,7 +25115,9 @@
         "std_diyorbek_862_raimqulov": 0,
         "std_hadicha_393_nosurname": 0,
         "std_bahora_901_nosurname": 0
-      }
+      },
+      "durationUpdatedAt": 1795183637534,
+      "learningLessons": 0
     },
     {
       "id": "cls_urolov_azizbek_intermediate",
@@ -24258,6 +25137,30 @@
             "std_azamova_593_asila": {
               "status": "",
               "score": ""
+            }
+          },
+          "2026-10-29": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183637536
+            }
+          },
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183637536
             }
           }
         },
@@ -24280,7 +25183,7 @@
             "assignedAt": 0
           }
         },
-        "updatedAt": 1793606286867
+        "updatedAt": 1795183637536
       },
       "customStudentNames": {
         "std_orazaliyev_261_amirshox": "O'razaliyev Amirshox",
@@ -24904,7 +25807,9 @@
         "std_asadbek_247_xolboyev": 1793606286867,
         "std_kazakov_769_husniddin": 1793606286867,
         "std_zebo_198_abduganiyeva": 1793606286867
-      }
+      },
+      "durationUpdatedAt": 1795183637781,
+      "learningLessons": 0
     },
     {
       "id": "cls_urolov_azizbek_practice",
@@ -24919,7 +25824,32 @@
       "maxCapacity": 18,
       "schedule": "juft",
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-01": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183637783
+            }
+          },
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183637783
+            }
+          }
+        },
         "lessonTypes": {
           "2026-11-02": "Vazifa: 1.1",
           "2026-11-01": "Vazifa: 1.1"
@@ -24952,7 +25882,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1795183637783
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -25397,7 +26328,9 @@
         }
       },
       "deletedStudentIds": [],
-      "customStudentNamesTs": {}
+      "customStudentNamesTs": {},
+      "durationUpdatedAt": 1795183638026,
+      "learningLessons": 0
     },
     {
       "id": "cls_1793728994224",
@@ -25737,7 +26670,32 @@
       ],
       "customStudentNames": {},
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-11-03": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183638030
+            }
+          },
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183638030
+            }
+          }
+        },
         "lessonTypes": {
           "2026-11-03": "Vazifa: 1.1"
         },
@@ -25756,7 +26714,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1795183638030
       },
       "deletedMsgIds": [],
       "messages": [],
@@ -26312,7 +27271,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_root",
@@ -26363,7 +27322,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -26539,7 +27498,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "std_13",
@@ -26704,7 +27663,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -26728,7 +27687,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -26749,7 +27708,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -26770,7 +27729,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -26794,7 +27753,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -26818,7 +27777,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -26840,7 +27799,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -26862,7 +27821,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -26886,7 +27845,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -26907,7 +27866,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -26929,7 +27888,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -26951,7 +27910,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -26973,7 +27932,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -26997,7 +27956,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -27021,7 +27980,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -27045,7 +28004,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "admin_official_teacher",
@@ -27066,7 +28025,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795183507866
+      "lastSeen": 1795183643998
     },
     {
       "id": "st_998901239988",
@@ -445013,7 +445972,7 @@
       "authorRole": "admin",
       "createdAt": 1793874221440,
       "updatedAt": "2026-11-20 19:07",
-      "updatedTs": 1795183625329,
+      "updatedTs": 1795183640803,
       "data": [
         {
           "name": "Sheet1",
@@ -488423,5 +489382,5 @@
     "sheet_admin_official_root_1793874213170_c6baof",
     "sheet_admin_official_root_1793874217569"
   ],
-  "updatedAt": 1795183626422
+  "updatedAt": 1795183651852
 }
