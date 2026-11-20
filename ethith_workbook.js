@@ -80268,13 +80268,37 @@
 ],
                                                     "4004": [
     {
+        "id": "p4004_ex1_m1",
+        "type": "match",
+        "left": 29.23,
+        "top": 32.81,
+        "width": 3.4,
+        "height": 2.05,
+        "correct": "D",
+        "letters": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+        ],
+        "page": 4004,
+        "x": 29.23,
+        "y": 32.81,
+        "w": 3.4,
+        "h": 2.05
+    },
+    {
         "id": "p4004_ex1_m2",
         "type": "match",
         "left": 29.23,
         "top": 36.12,
         "width": 3.4,
         "height": 2.05,
-        "correct": "D",
+        "correct": "F",
         "letters": [
             "A",
             "B",
@@ -80298,7 +80322,7 @@
         "top": 37.77,
         "width": 3.4,
         "height": 2.05,
-        "correct": "F",
+        "correct": "B",
         "letters": [
             "A",
             "B",
@@ -80322,7 +80346,7 @@
         "top": 41.02,
         "width": 3.4,
         "height": 2.05,
-        "correct": "B",
+        "correct": "H",
         "letters": [
             "A",
             "B",
@@ -80370,7 +80394,7 @@
         "top": 44.48,
         "width": 3.4,
         "height": 2.05,
-        "correct": "A",
+        "correct": "C",
         "letters": [
             "A",
             "B",
@@ -80394,30 +80418,6 @@
         "top": 46.19,
         "width": 3.4,
         "height": 2.05,
-        "correct": "C",
-        "letters": [
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H"
-        ],
-        "page": 4004,
-        "x": 29.23,
-        "y": 46.19,
-        "w": 3.4,
-        "h": 2.05
-    },
-    {
-        "id": "p4004_ex1_m8",
-        "type": "match",
-        "left": 29.23,
-        "top": 47.89,
-        "width": 3.4,
-        "height": 2.05,
         "correct": "E",
         "letters": [
             "A",
@@ -80431,7 +80431,7 @@
         ],
         "page": 4004,
         "x": 29.23,
-        "y": 47.89,
+        "y": 46.19,
         "w": 3.4,
         "h": 2.05
     },
@@ -81228,28 +81228,12 @@
     {
         "id": "p4006_ex3_q2",
         "type": "fill",
-        "left": 70.77,
-        "top": 46.39,
-        "width": 23.31,
-        "height": 2.1,
-        "correct": [
-            "is never"
-        ],
-        "page": 4006,
-        "x": 70.77,
-        "y": 46.39,
-        "w": 23.31,
-        "h": 2.1
-    },
-    {
-        "id": "p4006_ex3_q3",
-        "type": "fill",
         "left": 76.5,
         "top": 65.61,
         "width": 14.39,
         "height": 2.1,
         "correct": [
-            "always eat healthily"
+            "is never"
         ],
         "page": 4006,
         "x": 76.5,
@@ -81258,14 +81242,14 @@
         "h": 2.1
     },
     {
-        "id": "p4006_ex3_q4",
+        "id": "p4006_ex3_q3",
         "type": "fill",
         "left": 74.74,
         "top": 67.16,
         "width": 14.45,
         "height": 2.1,
         "correct": [
-            "nearly always go"
+            "always eat healthily"
         ],
         "page": 4006,
         "x": 74.74,
@@ -81274,14 +81258,14 @@
         "h": 2.1
     },
     {
-        "id": "p4006_ex3_q5",
+        "id": "p4006_ex3_q4",
         "type": "fill",
         "left": 58.53,
         "top": 71.76,
         "width": 14.39,
         "height": 2.1,
         "correct": [
-            "sometimes watch videos"
+            "nearly always go"
         ],
         "page": 4006,
         "x": 58.53,
@@ -81290,14 +81274,14 @@
         "h": 2.1
     },
     {
-        "id": "p4006_ex3_q6",
+        "id": "p4006_ex3_q5",
         "type": "fill",
         "left": 58.53,
         "top": 74.85,
         "width": 14.39,
         "height": 2.1,
         "correct": [
-            "occasionally spend time with relatives"
+            "sometimes watch videos"
         ],
         "page": 4006,
         "x": 58.53,
@@ -81306,14 +81290,14 @@
         "h": 2.1
     },
     {
-        "id": "p4006_ex3_q7",
+        "id": "p4006_ex3_q6",
         "type": "fill",
         "left": 76.5,
         "top": 77.95,
         "width": 14.39,
         "height": 2.1,
         "correct": [
-            "often chat with friends online"
+            "occasionally spend time with relatives"
         ],
         "page": 4006,
         "x": 76.5,
@@ -81322,18 +81306,34 @@
         "h": 2.1
     },
     {
-        "id": "p4006_ex3_q8",
+        "id": "p4006_ex3_q7",
         "type": "fill",
         "left": 71.61,
         "top": 81,
         "width": 14.39,
         "height": 2.1,
         "correct": [
-            "are usually"
+            "often chat with friends online"
         ],
         "page": 4006,
         "x": 71.61,
         "y": 81,
+        "w": 14.39,
+        "h": 2.1
+    },
+    {
+        "id": "p4006_ex3_q8",
+        "type": "fill",
+        "left": 58.53,
+        "top": 85.6,
+        "width": 14.39,
+        "height": 2.1,
+        "correct": [
+            "are usually"
+        ],
+        "page": 4006,
+        "x": 58.53,
+        "y": 85.6,
         "w": 14.39,
         "h": 2.1
     }
@@ -81733,7 +81733,7 @@
         "top": 21.86,
         "width": 5.71,
         "height": 1.8,
-        "correct": false,
+        "correct": true,
         "page": 4007,
         "x": 67.33,
         "y": 21.86,
@@ -82356,7 +82356,7 @@
         "id": "p4009_ex2a_q2",
         "type": "fill",
         "left": 11.65,
-        "top": 77.44,
+        "top": 80.85,
         "width": 35.68,
         "height": 2.1,
         "correct": [
@@ -82373,16 +82373,16 @@
         ],
         "page": 4009,
         "x": 11.65,
-        "y": 77.44,
+        "y": 80.85,
         "w": 35.68,
         "h": 2.1
     },
     {
         "id": "p4009_ex2a_q3",
         "type": "fill",
-        "left": 11.65,
-        "top": 80.85,
-        "width": 35.68,
+        "left": 13.28,
+        "top": 84.31,
+        "width": 34.18,
         "height": 2.1,
         "correct": [
             "I'm really into yoga.",
@@ -82401,17 +82401,17 @@
             "i am really into yoga"
         ],
         "page": 4009,
-        "x": 11.65,
-        "y": 80.85,
-        "w": 35.68,
+        "x": 13.28,
+        "y": 84.31,
+        "w": 34.18,
         "h": 2.1
     },
     {
         "id": "p4009_ex2a_q4",
         "type": "fill",
-        "left": 13.28,
-        "top": 84.31,
-        "width": 34.18,
+        "left": 56.05,
+        "top": 17.98,
+        "width": 35.68,
         "height": 2.1,
         "correct": [
             "My favourite sport is basketball.",
@@ -82420,16 +82420,16 @@
             "my favourite sport is basketball"
         ],
         "page": 4009,
-        "x": 13.28,
-        "y": 84.31,
-        "w": 34.18,
+        "x": 56.05,
+        "y": 17.98,
+        "w": 35.68,
         "h": 2.1
     },
     {
         "id": "p4009_ex2a_q5",
         "type": "fill",
         "left": 56.05,
-        "top": 17.98,
+        "top": 21.45,
         "width": 35.68,
         "height": 2.1,
         "correct": [
@@ -82446,7 +82446,7 @@
         ],
         "page": 4009,
         "x": 56.05,
-        "y": 17.98,
+        "y": 21.45,
         "w": 35.68,
         "h": 2.1
     },
@@ -82454,7 +82454,7 @@
         "id": "p4009_ex2a_q6",
         "type": "fill",
         "left": 56.05,
-        "top": 21.45,
+        "top": 24.91,
         "width": 35.68,
         "height": 2.1,
         "correct": [
@@ -82475,7 +82475,7 @@
         ],
         "page": 4009,
         "x": 56.05,
-        "y": 21.45,
+        "y": 24.91,
         "w": 35.68,
         "h": 2.1
     },
@@ -82483,7 +82483,7 @@
         "id": "p4009_ex2a_q7",
         "type": "fill",
         "left": 56.05,
-        "top": 24.91,
+        "top": 28.32,
         "width": 35.68,
         "height": 2.1,
         "correct": [
@@ -82494,7 +82494,7 @@
         ],
         "page": 4009,
         "x": 56.05,
-        "y": 24.91,
+        "y": 28.32,
         "w": 35.68,
         "h": 2.1
     },
@@ -82502,43 +82502,14 @@
         "id": "p4009_ex2a_q8",
         "type": "fill",
         "left": 56.05,
-        "top": 28.32,
-        "width": 35.68,
+        "top": 31.78,
+        "width": 35.61,
         "height": 2.1,
         "correct": [
             "I prefer football to golf.",
             "i prefer football to golf.",
             "I prefer football to golf",
             "i prefer football to golf"
-        ],
-        "page": 4009,
-        "x": 56.05,
-        "y": 28.32,
-        "w": 35.68,
-        "h": 2.1
-    },
-    {
-        "id": "p4009_ex2a_q9",
-        "type": "fill",
-        "left": 56.05,
-        "top": 31.78,
-        "width": 35.61,
-        "height": 2.1,
-        "correct": [
-            "I'm really interested in doing karate.",
-            "i'm really interested in doing karate.",
-            "Im really interested in doing karate.",
-            "im really interested in doing karate.",
-            "I'm really interested in doing karate",
-            "i'm really interested in doing karate",
-            "Iam really interested in doing karate.",
-            "iam really interested in doing karate.",
-            "Iam really interested in doing karate",
-            "iam really interested in doing karate",
-            "I am really interested in doing karate.",
-            "i am really interested in doing karate.",
-            "I am really interested in doing karate",
-            "i am really interested in doing karate"
         ],
         "page": 4009,
         "x": 56.05,
@@ -83587,12 +83558,28 @@
         "id": "p4011_ex6_q13_0_0",
         "type": "choose",
         "group": "p4011_ex6_q13_0",
+        "text": "Do",
+        "left": 12.45,
+        "top": 77.69,
+        "width": 2.45,
+        "height": 1.8,
+        "correct": true,
+        "page": 4011,
+        "x": 12.45,
+        "y": 77.69,
+        "w": 2.45,
+        "h": 1.8
+    },
+    {
+        "id": "p4011_ex6_q13_0_1",
+        "type": "choose",
+        "group": "p4011_ex6_q13_0",
         "text": "need",
         "left": 15.64,
         "top": 77.64,
         "width": 3.62,
         "height": 1.8,
-        "correct": true,
+        "correct": false,
         "page": 4011,
         "x": 15.64,
         "y": 77.64,
@@ -83600,19 +83587,35 @@
         "h": 1.8
     },
     {
-        "id": "p4011_ex6_q13_0_1",
+        "id": "p4011_ex6_q13_0_2",
         "type": "choose",
         "group": "p4011_ex6_q13_0",
-        "text": "Am I",
+        "text": "Am",
         "left": 19.93,
         "top": 77.69,
-        "width": 3.82,
+        "width": 2.84,
         "height": 1.8,
         "correct": false,
         "page": 4011,
         "x": 19.93,
         "y": 77.69,
-        "w": 3.82,
+        "w": 2.84,
+        "h": 1.8
+    },
+    {
+        "id": "p4011_ex6_q13_0_3",
+        "type": "choose",
+        "group": "p4011_ex6_q13_0",
+        "text": "needing",
+        "left": 23.51,
+        "top": 77.64,
+        "width": 5.71,
+        "height": 1.8,
+        "correct": false,
+        "page": 4011,
+        "x": 23.51,
+        "y": 77.64,
+        "w": 5.71,
         "h": 1.8
     },
     {
@@ -86119,15 +86122,111 @@
         "h": 1.8
     },
     {
-        "id": "p4017_ex2_q3_0_0",
+        "id": "p4017_ex2_q5_0_0",
         "type": "choose",
-        "group": "p4017_ex2_q3_0",
+        "group": "p4017_ex2_q5_0",
+        "text": "lasts",
+        "left": 39.4,
+        "top": 54.66,
+        "width": 3.04,
+        "height": 1.8,
+        "correct": true,
+        "page": 4017,
+        "x": 39.4,
+        "y": 54.66,
+        "w": 3.04,
+        "h": 1.8
+    },
+    {
+        "id": "p4017_ex2_q5_0_1",
+        "type": "choose",
+        "group": "p4017_ex2_q5_0",
+        "text": "is lasting",
+        "left": 21.95,
+        "top": 56.05,
+        "width": 5.65,
+        "height": 1.8,
+        "correct": false,
+        "page": 4017,
+        "x": 21.95,
+        "y": 56.05,
+        "w": 5.65,
+        "h": 1.8
+    },
+    {
+        "id": "p4017_ex2_q6_0_0",
+        "type": "choose",
+        "group": "p4017_ex2_q6_0",
+        "text": "offer",
+        "left": 27.74,
+        "top": 57.5,
+        "width": 3.23,
+        "height": 1.8,
+        "correct": false,
+        "page": 4017,
+        "x": 27.74,
+        "y": 57.5,
+        "w": 3.23,
+        "h": 1.8
+    },
+    {
+        "id": "p4017_ex2_q6_0_1",
+        "type": "choose",
+        "group": "p4017_ex2_q6_0",
+        "text": "are offering",
+        "left": 31.52,
+        "top": 57.5,
+        "width": 7.34,
+        "height": 1.8,
+        "correct": true,
+        "page": 4017,
+        "x": 31.52,
+        "y": 57.5,
+        "w": 7.34,
+        "h": 1.8
+    },
+    {
+        "id": "p4017_ex2_q7_0_0",
+        "type": "choose",
+        "group": "p4017_ex2_q7_0",
+        "text": "do",
+        "left": 42.65,
+        "top": 58.89,
+        "width": 2.4,
+        "height": 1.8,
+        "correct": false,
+        "page": 4017,
+        "x": 42.65,
+        "y": 58.89,
+        "w": 2.4,
+        "h": 1.8
+    },
+    {
+        "id": "p4017_ex2_q7_0_1",
+        "type": "choose",
+        "group": "p4017_ex2_q7_0",
+        "text": "are doing",
+        "left": 24.1,
+        "top": 60.29,
+        "width": 3.82,
+        "height": 1.8,
+        "correct": true,
+        "page": 4017,
+        "x": 24.1,
+        "y": 60.29,
+        "w": 3.82,
+        "h": 1.8
+    },
+    {
+        "id": "p4017_ex2_q7_0_0",
+        "type": "choose",
+        "group": "p4017_ex2_q7_0",
         "text": "8100k",
         "left": 38.36,
         "top": 60.23,
         "width": 3.89,
         "height": 1.8,
-        "correct": true,
+        "correct": false,
         "page": 4017,
         "x": 38.36,
         "y": 60.23,
@@ -86135,15 +86234,15 @@
         "h": 1.8
     },
     {
-        "id": "p4017_ex2_q3_0_1",
+        "id": "p4017_ex2_q7_0_1",
         "type": "choose",
-        "group": "p4017_ex2_q3_0",
+        "group": "p4017_ex2_q7_0",
         "text": "are looking",
         "left": 22.02,
         "top": 61.73,
         "width": 4.99,
         "height": 1.8,
-        "correct": false,
+        "correct": true,
         "page": 4017,
         "x": 22.02,
         "y": 61.73,
@@ -87051,8 +87150,10 @@
         "width": 36.59,
         "height": 2.1,
         "correct": [
-            "Did you go on holiday in the",
-            "did you go on holiday in the"
+            "Did you go on holiday in the summer?",
+            "did you go on holiday in the summer?",
+            "Did you go on holiday in the summer",
+            "did you go on holiday in the summer"
         ],
         "page": 4019,
         "x": 10.94,
@@ -88707,7 +88808,7 @@
         "width": 26,
         "height": 1.85,
         "correct": [
-            "graduated"
+            "passed"
         ],
         "page": 4024,
         "x": 15.51,
@@ -88723,7 +88824,7 @@
         "width": 26,
         "height": 1.85,
         "correct": [
-            "passed"
+            "bought a house"
         ],
         "page": 4024,
         "x": 17.01,
@@ -88739,7 +88840,7 @@
         "width": 26,
         "height": 1.85,
         "correct": [
-            "bought a house"
+            "had children"
         ],
         "page": 4024,
         "x": 16.95,
@@ -88755,7 +88856,7 @@
         "width": 26,
         "height": 1.85,
         "correct": [
-            "had children"
+            "started a career"
         ],
         "page": 4024,
         "x": 15.84,
@@ -88771,27 +88872,11 @@
         "width": 26,
         "height": 1.85,
         "correct": [
-            "started a career"
+            "retired"
         ],
         "page": 4024,
         "x": 17.14,
         "y": 66.07,
-        "w": 26,
-        "h": 1.85
-    },
-    {
-        "id": "p4024_ex2_q7",
-        "type": "fill",
-        "left": 16.42,
-        "top": 67.78,
-        "width": 26,
-        "height": 1.85,
-        "correct": [
-            "retired"
-        ],
-        "page": 4024,
-        "x": 16.42,
-        "y": 67.78,
         "w": 26,
         "h": 1.85
     },
@@ -89035,54 +89120,6 @@
         "y": 32.14,
         "w": 36.07,
         "h": 2.1
-    },
-    {
-        "id": "p4025_ex7_q1_0_0",
-        "type": "choose",
-        "group": "p4025_ex7_q1_0",
-        "text": "learnedQVD')",
-        "left": 11.47,
-        "top": 48.97,
-        "width": 9.88,
-        "height": 2.26,
-        "correct": true,
-        "page": 4025,
-        "x": 11.47,
-        "y": 48.97,
-        "w": 9.88,
-        "h": 2.26
-    },
-    {
-        "id": "p4025_ex7_q1_0_1",
-        "type": "choose",
-        "group": "p4025_ex7_q1_0",
-        "text": "",
-        "left": null,
-        "top": null,
-        "width": 2.4,
-        "height": 1.8,
-        "correct": false,
-        "page": 4025,
-        "x": null,
-        "y": null,
-        "w": 2.4,
-        "h": 1.8
-    },
-    {
-        "id": "p4025_ex7_q1_0_2",
-        "type": "choose",
-        "group": "p4025_ex7_q1_0",
-        "text": "playing",
-        "left": 22.67,
-        "top": 49.54,
-        "width": 5.51,
-        "height": 1.8,
-        "correct": false,
-        "page": 4025,
-        "x": 22.67,
-        "y": 49.54,
-        "w": 5.51,
-        "h": 1.8
     },
     {
         "id": "p4025_ex7_q2_0_0",
@@ -89457,28 +89494,12 @@
     {
         "id": "p4026_ex2_q2",
         "type": "fill",
-        "left": 15.36,
-        "top": 62.56,
-        "width": 15.95,
-        "height": 2.1,
-        "correct": [
-            "deal with emails"
-        ],
-        "page": 4026,
-        "x": 15.36,
-        "y": 62.56,
-        "w": 15.95,
-        "h": 2.1
-    },
-    {
-        "id": "p4026_ex2_q3",
-        "type": "fill",
         "left": 17.97,
         "top": 66.02,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "read the news"
+            "deal with emails"
         ],
         "page": 4026,
         "x": 17.97,
@@ -89487,14 +89508,14 @@
         "h": 2.1
     },
     {
-        "id": "p4026_ex2_q4",
+        "id": "p4026_ex2_q3",
         "type": "fill",
         "left": 26.24,
         "top": 69.43,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "do online banking"
+            "read the news"
         ],
         "page": 4026,
         "x": 26.24,
@@ -89503,15 +89524,14 @@
         "h": 2.1
     },
     {
-        "id": "p4026_ex2_q5",
+        "id": "p4026_ex2_q4",
         "type": "fill",
         "left": 32.55,
         "top": 74.44,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "update your Facebook page",
-            "update your facebook page"
+            "do online banking"
         ],
         "page": 4026,
         "x": 32.55,
@@ -89520,14 +89540,15 @@
         "h": 2.1
     },
     {
-        "id": "p4026_ex2_q6",
+        "id": "p4026_ex2_q5",
         "type": "fill",
         "left": 33.72,
         "top": 79.4,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "download music"
+            "update your Facebook page",
+            "update your facebook page"
         ],
         "page": 4026,
         "x": 33.72,
@@ -89536,14 +89557,14 @@
         "h": 2.1
     },
     {
-        "id": "p4026_ex2_q7",
+        "id": "p4026_ex2_q6",
         "type": "fill",
         "left": 41.41,
         "top": 84.36,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "share photos"
+            "download music"
         ],
         "page": 4026,
         "x": 41.41,
@@ -92132,29 +92153,13 @@
     {
         "id": "p4033_ex7_q5",
         "type": "fill",
-        "left": 66.8,
-        "top": 12.77,
-        "width": 7.62,
-        "height": 2.1,
-        "correct": [
-            "X",
-            "x"
-        ],
-        "page": 4033,
-        "x": 66.8,
-        "y": 12.77,
-        "w": 7.62,
-        "h": 2.1
-    },
-    {
-        "id": "p4033_ex7_q5_1",
-        "type": "fill",
         "left": 70.9,
         "top": 14.47,
         "width": 7.62,
         "height": 2.1,
         "correct": [
-            "the"
+            "X",
+            "x"
         ],
         "page": 4033,
         "x": 70.9,
@@ -92163,7 +92168,7 @@
         "h": 2.1
     },
     {
-        "id": "p4033_ex7_q6",
+        "id": "p4033_ex7_q5_1",
         "type": "fill",
         "left": 65.95,
         "top": 17.88,
@@ -92179,7 +92184,7 @@
         "h": 2.1
     },
     {
-        "id": "p4033_ex7_q6_1",
+        "id": "p4033_ex7_q6",
         "type": "fill",
         "left": 71.61,
         "top": 19.59,
@@ -92191,6 +92196,22 @@
         "page": 4033,
         "x": 71.61,
         "y": 19.59,
+        "w": 7.62,
+        "h": 2.1
+    },
+    {
+        "id": "p4033_ex7_q6_1",
+        "type": "fill",
+        "left": 69.53,
+        "top": 24.6,
+        "width": 7.62,
+        "height": 2.1,
+        "correct": [
+            "the"
+        ],
+        "page": 4033,
+        "x": 69.53,
+        "y": 24.6,
         "w": 7.62,
         "h": 2.1
     }
@@ -92309,14 +92330,14 @@
         "h": 2.1
     },
     {
-        "id": "p4034_ex3_q5",
+        "id": "p4034_ex3_q3",
         "type": "fill",
         "left": 57.81,
         "top": 69.02,
         "width": 7.55,
         "height": 2.1,
         "correct": [
-            "borrows"
+            "save up"
         ],
         "page": 4034,
         "x": 57.81,
@@ -92325,18 +92346,66 @@
         "h": 2.1
     },
     {
-        "id": "p4034_ex3_q6",
+        "id": "p4034_ex3_q4",
         "type": "fill",
         "left": 79.1,
         "top": 70.72,
         "width": 7.62,
         "height": 2.1,
         "correct": [
-            "pay for"
+            "spend"
         ],
         "page": 4034,
         "x": 79.1,
         "y": 70.72,
+        "w": 7.62,
+        "h": 2.1
+    },
+    {
+        "id": "p4034_ex3_q5",
+        "type": "fill",
+        "left": 65.43,
+        "top": 74.03,
+        "width": 7.62,
+        "height": 2.1,
+        "correct": [
+            "borrows"
+        ],
+        "page": 4034,
+        "x": 65.43,
+        "y": 74.03,
+        "w": 7.62,
+        "h": 2.1
+    },
+    {
+        "id": "p4034_ex3_q6",
+        "type": "fill",
+        "left": 57.75,
+        "top": 75.73,
+        "width": 7.62,
+        "height": 2.1,
+        "correct": [
+            "pay for"
+        ],
+        "page": 4034,
+        "x": 57.75,
+        "y": 75.73,
+        "w": 7.62,
+        "h": 2.1
+    },
+    {
+        "id": "p4034_ex3_q7",
+        "type": "fill",
+        "left": 67.25,
+        "top": 77.39,
+        "width": 7.62,
+        "height": 2.1,
+        "correct": [
+            "lends"
+        ],
+        "page": 4034,
+        "x": 67.25,
+        "y": 77.39,
         "w": 7.62,
         "h": 2.1
     }
@@ -93196,6 +93265,22 @@
         "h": 2.1
     },
     {
+        "id": "p4036_ex5_q2",
+        "type": "fill",
+        "left": 67.71,
+        "top": 73.56,
+        "width": 7.68,
+        "height": 2.1,
+        "correct": [
+            "information"
+        ],
+        "page": 4036,
+        "x": 67.71,
+        "y": 73.56,
+        "w": 7.68,
+        "h": 2.1
+    },
+    {
         "id": "p4036_ex5_q3",
         "type": "fill",
         "left": 58.79,
@@ -93228,14 +93313,30 @@
         "h": 2.1
     },
     {
-        "id": "p4036_ex5_q2",
+        "id": "p4036_ex5_q5",
+        "type": "fill",
+        "left": 85.48,
+        "top": 82.55,
+        "width": 7.68,
+        "height": 2.1,
+        "correct": [
+            "suitable"
+        ],
+        "page": 4036,
+        "x": 85.48,
+        "y": 82.55,
+        "w": 7.68,
+        "h": 2.1
+    },
+    {
+        "id": "p4036_ex5_q6",
         "type": "fill",
         "left": 72.92,
         "top": 84.93,
         "width": 7.55,
         "height": 2.1,
         "correct": [
-            "information"
+            "normal"
         ],
         "page": 4036,
         "x": 72.92,
@@ -94298,10 +94399,8 @@
         "width": 36.65,
         "height": 2.1,
         "correct": [
-            "My hometown is the liveliest place I know.",
-            "my hometown is the liveliest place i know.",
-            "My hometown is the liveliest place I know",
-            "my hometown is the liveliest place i know"
+            "My hometown is the liveliest place",
+            "my hometown is the liveliest place"
         ],
         "page": 4039,
         "x": 10.87,
@@ -94583,28 +94682,12 @@
     {
         "id": "p4040_ex2_q2",
         "type": "fill",
-        "left": 28.91,
-        "top": 63.28,
-        "width": 7.55,
-        "height": 2.1,
-        "correct": [
-            "only child"
-        ],
-        "page": 4040,
-        "x": 28.91,
-        "y": 63.28,
-        "w": 7.55,
-        "h": 2.1
-    },
-    {
-        "id": "p4040_ex2_q3",
-        "type": "fill",
         "left": 38.54,
         "top": 63.28,
         "width": 7.62,
         "height": 2.1,
         "correct": [
-            "relatives"
+            "only child"
         ],
         "page": 4040,
         "x": 38.54,
@@ -94613,14 +94696,14 @@
         "h": 2.1
     },
     {
-        "id": "p4040_ex2_q4",
+        "id": "p4040_ex2_q3",
         "type": "fill",
         "left": 29.49,
         "top": 66.75,
         "width": 7.62,
         "height": 2.1,
         "correct": [
-            "get divorced"
+            "relatives"
         ],
         "page": 4040,
         "x": 29.49,
@@ -94629,14 +94712,14 @@
         "h": 2.1
     },
     {
-        "id": "p4040_ex2_q5",
+        "id": "p4040_ex2_q4",
         "type": "fill",
         "left": 29.23,
         "top": 70.15,
         "width": 16.48,
         "height": 2.1,
         "correct": [
-            "twins"
+            "get divorced"
         ],
         "page": 4040,
         "x": 29.23,
@@ -94645,14 +94728,14 @@
         "h": 2.1
     },
     {
-        "id": "p4040_ex2_q6",
+        "id": "p4040_ex2_q5",
         "type": "fill",
         "left": 22.92,
         "top": 73.61,
         "width": 7.68,
         "height": 2.1,
         "correct": [
-            "single parent"
+            "twins"
         ],
         "page": 4040,
         "x": 22.92,
@@ -94661,19 +94744,51 @@
         "h": 2.1
     },
     {
-        "id": "p4040_ex2_q7",
+        "id": "p4040_ex2_q6",
         "type": "fill",
         "left": 21.35,
         "top": 77.02,
         "width": 16.47,
         "height": 2.1,
         "correct": [
-            "adopt engaged"
+            "single parent"
         ],
         "page": 4040,
         "x": 21.35,
         "y": 77.02,
         "w": 16.47,
+        "h": 2.1
+    },
+    {
+        "id": "p4040_ex2_q7",
+        "type": "fill",
+        "left": 36.39,
+        "top": 80.48,
+        "width": 7.62,
+        "height": 2.1,
+        "correct": [
+            "adopt"
+        ],
+        "page": 4040,
+        "x": 36.39,
+        "y": 80.48,
+        "w": 7.62,
+        "h": 2.1
+    },
+    {
+        "id": "p4040_ex2_q8",
+        "type": "fill",
+        "left": 29.23,
+        "top": 83.89,
+        "width": 16.35,
+        "height": 2.1,
+        "correct": [
+            "get engaged"
+        ],
+        "page": 4040,
+        "x": 29.23,
+        "y": 83.89,
+        "w": 16.35,
         "h": 2.1
     },
     {
@@ -96267,86 +96382,6 @@
 ],
     "4045": [
     {
-        "id": "p4045_ex1_q1_0_0",
-        "type": "choose",
-        "group": "p4045_ex1_q1_0",
-        "text": "",
-        "left": 23.51,
-        "top": 22.27,
-        "width": 2.4,
-        "height": 2.16,
-        "correct": true,
-        "page": 4045,
-        "x": 23.51,
-        "y": 22.27,
-        "w": 2.4,
-        "h": 2.16
-    },
-    {
-        "id": "p4045_ex1_q1_0_1",
-        "type": "choose",
-        "group": "p4045_ex1_q1_0",
-        "text": "(@ö@)",
-        "left": 25.02,
-        "top": 22.27,
-        "width": 4.28,
-        "height": 2.16,
-        "correct": false,
-        "page": 4045,
-        "x": 25.02,
-        "y": 22.27,
-        "w": 4.28,
-        "h": 2.16
-    },
-    {
-        "id": "p4045_ex1_q1_0_2",
-        "type": "choose",
-        "group": "p4045_ex1_q1_0",
-        "text": "",
-        "left": null,
-        "top": null,
-        "width": 2.4,
-        "height": 1.8,
-        "correct": false,
-        "page": 4045,
-        "x": null,
-        "y": null,
-        "w": 2.4,
-        "h": 1.8
-    },
-    {
-        "id": "p4045_ex1_q1_0_3",
-        "type": "choose",
-        "group": "p4045_ex1_q1_0",
-        "text": "most large",
-        "left": 33.67,
-        "top": 22.63,
-        "width": 4.08,
-        "height": 1.8,
-        "correct": false,
-        "page": 4045,
-        "x": 33.67,
-        "y": 22.63,
-        "w": 4.08,
-        "h": 1.8
-    },
-    {
-        "id": "p4045_ex1_q1_0_4",
-        "type": "choose",
-        "group": "p4045_ex1_q1_0",
-        "text": "least",
-        "left": 38.29,
-        "top": 22.63,
-        "width": 3.56,
-        "height": 1.8,
-        "correct": false,
-        "page": 4045,
-        "x": 38.29,
-        "y": 22.63,
-        "w": 3.56,
-        "h": 1.8
-    },
-    {
         "id": "p4045_ex1_q2_0_0",
         "type": "choose",
         "group": "p4045_ex1_q2_0",
@@ -97773,9 +97808,9 @@
     {
         "id": "p4047_ex7_q2",
         "type": "fill",
-        "left": 62.89,
-        "top": 37.3,
-        "width": 29.23,
+        "left": 55.4,
+        "top": 49.75,
+        "width": 16.02,
         "height": 2.1,
         "correct": [
             "will not (won't) see",
@@ -97786,36 +97821,20 @@
             "will not (will not) see"
         ],
         "page": 4047,
-        "x": 62.89,
-        "y": 37.3,
-        "w": 29.23,
-        "h": 2.1
-    },
-    {
-        "id": "p4047_ex7_q3",
-        "type": "fill",
-        "left": 55.4,
-        "top": 49.75,
-        "width": 16.02,
-        "height": 2.1,
-        "correct": [
-            "will be"
-        ],
-        "page": 4047,
         "x": 55.4,
         "y": 49.75,
         "w": 16.02,
         "h": 2.1
     },
     {
-        "id": "p4047_ex7_q4",
+        "id": "p4047_ex7_q3",
         "type": "fill",
         "left": 70.12,
         "top": 52.7,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "might not arrive"
+            "will be"
         ],
         "page": 4047,
         "x": 70.12,
@@ -97824,14 +97843,14 @@
         "h": 2.1
     },
     {
-        "id": "p4047_ex7_q5",
+        "id": "p4047_ex7_q4",
         "type": "fill",
         "left": 74.09,
         "top": 54.19,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "will spend"
+            "might not arrive"
         ],
         "page": 4047,
         "x": 74.09,
@@ -97840,10 +97859,26 @@
         "h": 2.1
     },
     {
-        "id": "p4047_ex7_q6",
+        "id": "p4047_ex7_q5",
         "type": "fill",
         "left": 57.49,
         "top": 60.08,
+        "width": 16.02,
+        "height": 2.1,
+        "correct": [
+            "will spend"
+        ],
+        "page": 4047,
+        "x": 57.49,
+        "y": 60.08,
+        "w": 16.02,
+        "h": 2.1
+    },
+    {
+        "id": "p4047_ex7_q6",
+        "type": "fill",
+        "left": 67.58,
+        "top": 61.53,
         "width": 16.02,
         "height": 2.1,
         "correct": [
@@ -97855,36 +97890,20 @@
             "will not (will not) meet"
         ],
         "page": 4047,
-        "x": 57.49,
-        "y": 60.08,
-        "w": 16.02,
-        "h": 2.1
-    },
-    {
-        "id": "p4047_ex7_q7",
-        "type": "fill",
-        "left": 67.58,
-        "top": 61.53,
-        "width": 16.02,
-        "height": 2.1,
-        "correct": [
-            "will feel"
-        ],
-        "page": 4047,
         "x": 67.58,
         "y": 61.53,
         "w": 16.02,
         "h": 2.1
     },
     {
-        "id": "p4047_ex7_q8",
+        "id": "p4047_ex7_q7",
         "type": "fill",
         "left": 72.98,
         "top": 64.47,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "will join"
+            "will feel"
         ],
         "page": 4047,
         "x": 72.98,
@@ -97893,14 +97912,14 @@
         "h": 2.1
     },
     {
-        "id": "p4047_ex7_q9",
+        "id": "p4047_ex7_q8",
         "type": "fill",
         "left": 71.09,
         "top": 67.47,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "will watch"
+            "will join"
         ],
         "page": 4047,
         "x": 71.09,
@@ -97909,18 +97928,34 @@
         "h": 2.1
     },
     {
-        "id": "p4047_ex7_q10",
+        "id": "p4047_ex7_q9",
         "type": "fill",
         "left": 70.96,
         "top": 76.3,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "will be"
+            "will watch"
         ],
         "page": 4047,
         "x": 70.96,
         "y": 76.3,
+        "w": 16.02,
+        "h": 2.1
+    },
+    {
+        "id": "p4047_ex7_q10",
+        "type": "fill",
+        "left": 64.52,
+        "top": 79.25,
+        "width": 16.02,
+        "height": 2.1,
+        "correct": [
+            "will be"
+        ],
+        "page": 4047,
+        "x": 64.52,
+        "y": 79.25,
         "w": 16.02,
         "h": 2.1
     }
@@ -98732,45 +98767,13 @@
         "width": 26,
         "height": 1.85,
         "correct": [
-            "1b"
+            "b"
         ],
         "page": 4050,
         "x": 61.61,
         "y": 46.13,
         "w": 26,
         "h": 1.85
-    },
-    {
-        "id": "p4050_ex5_q1_0_0",
-        "type": "choose",
-        "group": "p4050_ex5_q1_0",
-        "text": "amazed",
-        "left": 56.85,
-        "top": 61.22,
-        "width": 5.84,
-        "height": 1.8,
-        "correct": true,
-        "page": 4050,
-        "x": 56.85,
-        "y": 61.22,
-        "w": 5.84,
-        "h": 1.8
-    },
-    {
-        "id": "p4050_ex5_q1_0_1",
-        "type": "choose",
-        "group": "p4050_ex5_q1_0",
-        "text": "ing",
-        "left": 63.49,
-        "top": 61.27,
-        "width": 2.58,
-        "height": 1.8,
-        "correct": false,
-        "page": 4050,
-        "x": 63.49,
-        "y": 61.27,
-        "w": 2.58,
-        "h": 1.8
     },
     {
         "id": "p4050_ex5_q2_0_0",
@@ -98941,7 +98944,7 @@
         "top": 71.49,
         "width": 5.71,
         "height": 1.8,
-        "correct": true,
+        "correct": false,
         "page": 4050,
         "x": 56.78,
         "y": 71.49,
@@ -98957,7 +98960,7 @@
         "top": 71.55,
         "width": 3.49,
         "height": 1.8,
-        "correct": false,
+        "correct": true,
         "page": 4050,
         "x": 63.23,
         "y": 71.55,
@@ -99507,22 +99510,30 @@
         "width": 37.04,
         "height": 2.1,
         "correct": [
-            "I'm able to drive but I haven't got",
-            "i'm able to drive but i haven't got",
-            "Im able to drive but I havent got",
-            "im able to drive but i havent got",
-            "Iam able to drive but I haven't got",
-            "iam able to drive but i haven't got",
-            "Iam able to drive but I havent got",
-            "iam able to drive but i havent got",
-            "I'm able to drive but I have not got",
-            "i'm able to drive but i have not got",
-            "Im able to drive but I have not got",
-            "im able to drive but i have not got",
-            "I am able to drive but I haven't got",
-            "i am able to drive but i haven't got",
-            "I am able to drive but I havent got",
-            "i am able to drive but i havent got"
+            "I'm able to drive but I haven't got a car.",
+            "i'm able to drive but i haven't got a car.",
+            "Im able to drive but I havent got a car.",
+            "im able to drive but i havent got a car.",
+            "I'm able to drive but I haven't got a car",
+            "i'm able to drive but i haven't got a car",
+            "Iam able to drive but I haven't got a car.",
+            "iam able to drive but i haven't got a car.",
+            "Iam able to drive but I havent got a car.",
+            "iam able to drive but i havent got a car.",
+            "Iam able to drive but I haven't got a car",
+            "iam able to drive but i haven't got a car",
+            "I'm able to drive but I have not got a car.",
+            "i'm able to drive but i have not got a car.",
+            "Im able to drive but I have not got a car.",
+            "im able to drive but i have not got a car.",
+            "I'm able to drive but I have not got a car",
+            "i'm able to drive but i have not got a car",
+            "I am able to drive but I haven't got a car.",
+            "i am able to drive but i haven't got a car.",
+            "I am able to drive but I havent got a car.",
+            "i am able to drive but i havent got a car.",
+            "I am able to drive but I haven't got a car",
+            "i am able to drive but i haven't got a car"
         ],
         "page": 4052,
         "x": 12.7,
@@ -99603,24 +99614,6 @@
         "x": 12.7,
         "y": 52.75,
         "w": 37.04,
-        "h": 2.1
-    },
-    {
-        "id": "p4052_ex2_q2",
-        "type": "fill",
-        "left": 13.54,
-        "top": 74.23,
-        "width": 15.95,
-        "height": 2.1,
-        "correct": [
-            "won't be able to",
-            "wont be able to",
-            "will not be able to"
-        ],
-        "page": 4052,
-        "x": 13.54,
-        "y": 74.23,
-        "w": 15.95,
         "h": 2.1
     },
     {
@@ -100123,31 +100116,13 @@
     {
         "id": "p4053_ex6_q2",
         "type": "fill",
-        "left": 68.42,
-        "top": 62.41,
-        "width": 16.02,
-        "height": 2.1,
-        "correct": [
-            "'s good at organizing",
-            "s good at organizing"
-        ],
-        "page": 4053,
-        "x": 68.42,
-        "y": 62.41,
-        "w": 16.02,
-        "h": 2.1
-    },
-    {
-        "id": "p4053_ex6_q2_1",
-        "type": "fill",
         "left": 58.01,
         "top": 67.21,
         "width": 15.95,
         "height": 2.1,
         "correct": [
-            "isn't very good at learning",
-            "isnt very good at learning",
-            "is not very good at learning"
+            "'s good at organizing",
+            "s good at organizing"
         ],
         "page": 4053,
         "x": 58.01,
@@ -100156,15 +100131,16 @@
         "h": 2.1
     },
     {
-        "id": "p4053_ex6_q2_2",
+        "id": "p4053_ex6_q2_1",
         "type": "fill",
         "left": 55.21,
         "top": 68.76,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "'s very good at making b",
-            "s very good at making b"
+            "isn't very good at learning",
+            "isnt very good at learning",
+            "is not very good at learning"
         ],
         "page": 4053,
         "x": 55.21,
@@ -100173,15 +100149,15 @@
         "h": 2.1
     },
     {
-        "id": "p4053_ex6_q3",
+        "id": "p4053_ex6_q2_2",
         "type": "fill",
         "left": 55.21,
         "top": 70.26,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "'s very good at understanding",
-            "s very good at understanding"
+            "'s very good at making b",
+            "s very good at making b"
         ],
         "page": 4053,
         "x": 55.21,
@@ -100190,17 +100166,15 @@
         "h": 2.1
     },
     {
-        "id": "p4053_ex6_q3_1",
+        "id": "p4053_ex6_q3",
         "type": "fill",
         "left": 57.42,
         "top": 72.01,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "'s 0K at giving",
-            "'s 0k at giving",
-            "s 0K at giving",
-            "s 0k at giving"
+            "'s very good at understanding",
+            "s very good at understanding"
         ],
         "page": 4053,
         "x": 57.42,
@@ -100209,15 +100183,17 @@
         "h": 2.1
     },
     {
-        "id": "p4053_ex6_q3_2",
+        "id": "p4053_ex6_q3_1",
         "type": "fill",
         "left": 64.26,
         "top": 73.56,
         "width": 15.95,
         "height": 2.1,
         "correct": [
-            "'s really good at fixing",
-            "s really good at fixing"
+            "'s 0K at giving",
+            "'s 0k at giving",
+            "s 0K at giving",
+            "s 0k at giving"
         ],
         "page": 4053,
         "x": 64.26,
@@ -100226,15 +100202,15 @@
         "h": 2.1
     },
     {
-        "id": "p4053_ex6_q4",
+        "id": "p4053_ex6_q3_2",
         "type": "fill",
         "left": 57.42,
         "top": 75.06,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "'s quite good at following",
-            "s quite good at following"
+            "'s really good at fixing a",
+            "s really good at fixing a"
         ],
         "page": 4053,
         "x": 57.42,
@@ -100243,15 +100219,15 @@
         "h": 2.1
     },
     {
-        "id": "p4053_ex6_q4_1",
+        "id": "p4053_ex6_q4",
         "type": "fill",
         "left": 57.94,
         "top": 78.32,
         "width": 16.02,
         "height": 2.1,
         "correct": [
-            "'s terrible at telling",
-            "s terrible at telling"
+            "'s quite good at following",
+            "s quite good at following"
         ],
         "page": 4053,
         "x": 57.94,
@@ -100260,10 +100236,27 @@
         "h": 2.1
     },
     {
-        "id": "p4053_ex6_q4_2",
+        "id": "p4053_ex6_q4_1",
         "type": "fill",
         "left": 60.35,
         "top": 79.86,
+        "width": 16.02,
+        "height": 2.1,
+        "correct": [
+            "'s terrible at telling",
+            "s terrible at telling"
+        ],
+        "page": 4053,
+        "x": 60.35,
+        "y": 79.86,
+        "w": 16.02,
+        "h": 2.1
+    },
+    {
+        "id": "p4053_ex6_q4_2",
+        "type": "fill",
+        "left": 55.21,
+        "top": 81.41,
         "width": 16.02,
         "height": 2.1,
         "correct": [
@@ -100271,8 +100264,8 @@
             "s brilliant at taking d"
         ],
         "page": 4053,
-        "x": 60.35,
-        "y": 79.86,
+        "x": 55.21,
+        "y": 81.41,
         "w": 16.02,
         "h": 2.1
     }
@@ -100848,11 +100841,29 @@
         "h": 2.1
     },
     {
-        "id": "p4055_ex6_q4",
+        "id": "p4055_ex6_q3",
         "type": "fill",
         "left": 72.01,
         "top": 61.27,
         "width": 16.02,
+        "height": 2.1,
+        "correct": [
+            "has to",
+            "must prepare",
+            "has to / must prepare"
+        ],
+        "page": 4055,
+        "x": 72.01,
+        "y": 61.27,
+        "w": 16.02,
+        "h": 2.1
+    },
+    {
+        "id": "p4055_ex6_q4",
+        "type": "fill",
+        "left": 63.87,
+        "top": 64.47,
+        "width": 15.95,
         "height": 2.1,
         "correct": [
             "mustn't",
@@ -100865,16 +100876,16 @@
             "mustnt / cannot be"
         ],
         "page": 4055,
-        "x": 72.01,
-        "y": 61.27,
-        "w": 16.02,
+        "x": 63.87,
+        "y": 64.47,
+        "w": 15.95,
         "h": 2.1
     },
     {
         "id": "p4055_ex6_q5",
         "type": "fill",
-        "left": 63.87,
-        "top": 64.47,
+        "left": 50.78,
+        "top": 69.28,
         "width": 15.95,
         "height": 2.1,
         "correct": [
@@ -100883,17 +100894,17 @@
             "must / has to start"
         ],
         "page": 4055,
-        "x": 63.87,
-        "y": 64.47,
+        "x": 50.78,
+        "y": 69.28,
         "w": 15.95,
         "h": 2.1
     },
     {
         "id": "p4055_ex6_q6",
         "type": "fill",
-        "left": 50.78,
-        "top": 69.28,
-        "width": 15.95,
+        "left": 61.72,
+        "top": 70.88,
+        "width": 16.02,
         "height": 2.1,
         "correct": [
             "can't",
@@ -100906,33 +100917,33 @@
             "cannot / mustnt relax"
         ],
         "page": 4055,
-        "x": 50.78,
-        "y": 69.28,
-        "w": 15.95,
-        "h": 2.1
-    },
-    {
-        "id": "p4055_ex6_q7",
-        "type": "fill",
-        "left": 61.72,
-        "top": 70.88,
-        "width": 16.02,
-        "height": 2.1,
-        "correct": [
-            "can get out"
-        ],
-        "page": 4055,
         "x": 61.72,
         "y": 70.88,
         "w": 16.02,
         "h": 2.1
     },
     {
-        "id": "p4055_ex6_q8",
+        "id": "p4055_ex6_q7",
         "type": "fill",
         "left": 50.78,
         "top": 74.08,
         "width": 15.95,
+        "height": 2.1,
+        "correct": [
+            "can get out"
+        ],
+        "page": 4055,
+        "x": 50.78,
+        "y": 74.08,
+        "w": 15.95,
+        "h": 2.1
+    },
+    {
+        "id": "p4055_ex6_q8",
+        "type": "fill",
+        "left": 56.71,
+        "top": 77.28,
+        "width": 16.02,
         "height": 2.1,
         "correct": [
             "doesn't have to do",
@@ -100940,9 +100951,9 @@
             "does not have to do"
         ],
         "page": 4055,
-        "x": 50.78,
-        "y": 74.08,
-        "w": 15.95,
+        "x": 56.71,
+        "y": 77.28,
+        "w": 16.02,
         "h": 2.1
     }
 ],
@@ -101316,18 +101327,18 @@
         "h": 2.1
     },
     {
-        "id": "p4056_ex3_q1",
+        "id": "p4056_ex3_q5",
         "type": "fill",
-        "left": 65.12,
-        "top": 22.58,
+        "left": 65.19,
+        "top": 29.5,
         "width": 26,
         "height": 1.85,
         "correct": [
-            "5b"
+            "b"
         ],
         "page": 4056,
-        "x": 65.12,
-        "y": 22.58,
+        "x": 65.19,
+        "y": 29.5,
         "w": 26,
         "h": 1.85
     },
@@ -101624,7 +101635,7 @@
         "width": 7.62,
         "height": 2.1,
         "correct": [
-            "due to illness"
+            "hand in the essay"
         ],
         "page": 4057,
         "x": 57.1,
@@ -101640,7 +101651,7 @@
         "width": 7.62,
         "height": 2.1,
         "correct": [
-            "hand in the essay"
+            "apologise for"
         ],
         "page": 4057,
         "x": 57.1,
@@ -101656,7 +101667,7 @@
         "width": 7.62,
         "height": 2.1,
         "correct": [
-            "apologise for"
+            "due to illness"
         ],
         "page": 4057,
         "x": 57.1,
@@ -102600,38 +102611,6 @@
         "y": 42.21,
         "w": 7.62,
         "h": 2.1
-    },
-    {
-        "id": "p4059_ex5_q1_0_0",
-        "type": "choose",
-        "group": "p4059_ex5_q1_0",
-        "text": "doing",
-        "left": 76.57,
-        "top": 47.89,
-        "width": 4.73,
-        "height": 2.16,
-        "correct": true,
-        "page": 4059,
-        "x": 76.57,
-        "y": 47.89,
-        "w": 4.73,
-        "h": 2.16
-    },
-    {
-        "id": "p4059_ex5_q1_0_1",
-        "type": "choose",
-        "group": "p4059_ex5_q1_0",
-        "text": "@!@@i@a",
-        "left": 81.65,
-        "top": 47.89,
-        "width": 6.42,
-        "height": 2.16,
-        "correct": false,
-        "page": 4059,
-        "x": 81.65,
-        "y": 47.89,
-        "w": 6.42,
-        "h": 2.16
     },
     {
         "id": "p4059_ex5_q2_0_0",
@@ -105947,7 +105926,9 @@
         "width": 5,
         "height": 2.1,
         "correct": [
-            "cooks"
+            "didn't use to like",
+            "didnt use to like",
+            "did not use to like"
         ],
         "page": 4067,
         "x": 33.07,
@@ -105963,9 +105944,7 @@
         "width": 5,
         "height": 2.1,
         "correct": [
-            "didn't use to like",
-            "didnt use to like",
-            "did not use to like"
+            "eats"
         ],
         "page": 4067,
         "x": 33.07,
@@ -105981,7 +105960,7 @@
         "width": 5,
         "height": 2.1,
         "correct": [
-            "eats"
+            "used to eat"
         ],
         "page": 4067,
         "x": 33.07,
@@ -105997,7 +105976,7 @@
         "width": 5,
         "height": 2.1,
         "correct": [
-            "used to eat"
+            "cooks"
         ],
         "page": 4067,
         "x": 33.07,
@@ -106538,12 +106517,16 @@
         "width": 36.59,
         "height": 2.1,
         "correct": [
-            "Milk wasn't sold in cartons in",
-            "milk wasn't sold in cartons in",
-            "Milk wasnt sold in cartons in",
-            "milk wasnt sold in cartons in",
-            "Milk was not sold in cartons in",
-            "milk was not sold in cartons in"
+            "Milk wasn't sold in cartons in the past.",
+            "milk wasn't sold in cartons in the past.",
+            "Milk wasnt sold in cartons in the past.",
+            "milk wasnt sold in cartons in the past.",
+            "Milk wasn't sold in cartons in the past",
+            "milk wasn't sold in cartons in the past",
+            "Milk was not sold in cartons in the past.",
+            "milk was not sold in cartons in the past.",
+            "Milk was not sold in cartons in the past",
+            "milk was not sold in cartons in the past"
         ],
         "page": 4069,
         "x": 10.87,
@@ -106737,14 +106720,14 @@
 ],
     "4070": [
     {
-        "id": "p4070_ex1_q1",
+        "id": "p4070_ex1_q2",
         "type": "fill",
         "left": 10.94,
         "top": 24.7,
         "width": 38.48,
         "height": 2.1,
         "correct": [
-            "1b"
+            "b"
         ],
         "page": 4070,
         "x": 10.94,
@@ -106904,11 +106887,27 @@
         "width": 26,
         "height": 1.85,
         "correct": [
-            "g 8b"
+            "g"
         ],
         "page": 4070,
         "x": 65.91,
         "y": 42.57,
+        "w": 26,
+        "h": 1.85
+    },
+    {
+        "id": "p4070_ex4_q8",
+        "type": "fill",
+        "left": 62.98,
+        "top": 47.58,
+        "width": 26,
+        "height": 1.85,
+        "correct": [
+            "b"
+        ],
+        "page": 4070,
+        "x": 62.98,
+        "y": 47.58,
         "w": 26,
         "h": 1.85
     },
@@ -107027,28 +107026,12 @@
     {
         "id": "p4070_ex6_q2",
         "type": "fill",
-        "left": 61.52,
-        "top": 73.1,
-        "width": 5,
-        "height": 2.1,
-        "correct": [
-            "clear"
-        ],
-        "page": 4070,
-        "x": 61.52,
-        "y": 73.1,
-        "w": 5,
-        "h": 2.1
-    },
-    {
-        "id": "p4070_ex6_q3",
-        "type": "fill",
         "left": 58.2,
         "top": 74.8,
         "width": 7.62,
         "height": 2.1,
         "correct": [
-            "diet"
+            "clear"
         ],
         "page": 4070,
         "x": 58.2,
@@ -107057,14 +107040,14 @@
         "h": 2.1
     },
     {
-        "id": "p4070_ex6_q4",
+        "id": "p4070_ex6_q3",
         "type": "fill",
         "left": 57.94,
         "top": 78.06,
         "width": 7.62,
         "height": 2.1,
         "correct": [
-            "figure"
+            "diet"
         ],
         "page": 4070,
         "x": 57.94,
@@ -107073,14 +107056,14 @@
         "h": 2.1
     },
     {
-        "id": "p4070_ex6_q5",
+        "id": "p4070_ex6_q4",
         "type": "fill",
         "left": 57.49,
         "top": 81.31,
         "width": 7.68,
         "height": 2.1,
         "correct": [
-            "funny"
+            "figure"
         ],
         "page": 4070,
         "x": 57.49,
@@ -107089,14 +107072,14 @@
         "h": 2.1
     },
     {
-        "id": "p4070_ex6_q6",
+        "id": "p4070_ex6_q5",
         "type": "fill",
         "left": 57.49,
         "top": 83.02,
         "width": 7.68,
         "height": 2.1,
         "correct": [
-            "left"
+            "funny"
         ],
         "page": 4070,
         "x": 57.49,
@@ -107105,14 +107088,14 @@
         "h": 2.1
     },
     {
-        "id": "p4070_ex6_q7",
+        "id": "p4070_ex6_q6",
         "type": "fill",
         "left": 57.49,
         "top": 84.77,
         "width": 7.62,
         "height": 2.1,
         "correct": [
-            "mark"
+            "left"
         ],
         "page": 4070,
         "x": 57.49,
@@ -107121,14 +107104,14 @@
         "h": 2.1
     },
     {
-        "id": "p4070_ex6_q8",
+        "id": "p4070_ex6_q7",
         "type": "fill",
         "left": 58.53,
         "top": 86.48,
         "width": 7.49,
         "height": 2.1,
         "correct": [
-            "past"
+            "mark"
         ],
         "page": 4070,
         "x": 58.53,
@@ -107471,7 +107454,7 @@
         "width": 26,
         "height": 1.85,
         "correct": [
-            "ferment"
+            "roast"
         ],
         "page": 4072,
         "x": 16.68,
@@ -107487,27 +107470,11 @@
         "width": 26,
         "height": 1.85,
         "correct": [
-            "roast"
+            "grind"
         ],
         "page": 4072,
         "x": 16.55,
         "y": 49.8,
-        "w": 26,
-        "h": 1.85
-    },
-    {
-        "id": "p4072_ex1_q4",
-        "type": "fill",
-        "left": 17.47,
-        "top": 51.51,
-        "width": 26,
-        "height": 1.85,
-        "correct": [
-            "grind"
-        ],
-        "page": 4072,
-        "x": 17.47,
-        "y": 51.51,
         "w": 26,
         "h": 1.85
     },
@@ -108303,22 +108270,6 @@
         "h": 2.1
     },
     {
-        "id": "p4073_ex5_q2",
-        "type": "fill",
-        "left": 64.97,
-        "top": 46.39,
-        "width": 7.55,
-        "height": 2.1,
-        "correct": [
-            "of"
-        ],
-        "page": 4073,
-        "x": 64.97,
-        "y": 46.39,
-        "w": 7.55,
-        "h": 2.1
-    },
-    {
         "id": "p4073_ex5_q3",
         "type": "fill",
         "left": 71.16,
@@ -108479,68 +108430,20 @@
 ],
     "4074": [
     {
-        "id": "p4074_ex1_q1",
+        "id": "p4074_ex1_q7",
         "type": "fill",
         "left": 18.95,
         "top": 31.88,
         "width": 5,
         "height": 2.1,
         "correct": [
-            "c"
+            "b"
         ],
         "page": 4074,
         "x": 18.95,
         "y": 31.88,
         "w": 5,
         "h": 2.1
-    },
-    {
-        "id": "p4074_ex2_q1_0_0",
-        "type": "choose",
-        "group": "p4074_ex2_q1_0",
-        "text": "shop",
-        "left": 70.39,
-        "top": 28.93,
-        "width": 4.02,
-        "height": 2.16,
-        "correct": true,
-        "page": 4074,
-        "x": 70.39,
-        "y": 28.93,
-        "w": 4.02,
-        "h": 2.16
-    },
-    {
-        "id": "p4074_ex2_q1_0_1",
-        "type": "choose",
-        "group": "p4074_ex2_q1_0",
-        "text": "",
-        "left": null,
-        "top": null,
-        "width": 2.4,
-        "height": 1.8,
-        "correct": false,
-        "page": 4074,
-        "x": null,
-        "y": null,
-        "w": 2.4,
-        "h": 1.8
-    },
-    {
-        "id": "p4074_ex2_q1_0_2",
-        "type": "choose",
-        "group": "p4074_ex2_q1_0",
-        "text": "@@j)in",
-        "left": 75.66,
-        "top": 28.93,
-        "width": 5.78,
-        "height": 2.16,
-        "correct": false,
-        "page": 4074,
-        "x": 75.66,
-        "y": 28.93,
-        "w": 5.78,
-        "h": 2.16
     },
     {
         "id": "p4074_ex2_q2_0_0",
@@ -110102,6 +110005,22 @@
         "h": 2.1
     },
     {
+        "id": "p4078_ex5_q4",
+        "type": "fill",
+        "left": 60.68,
+        "top": 67.83,
+        "width": 8.4,
+        "height": 2.1,
+        "correct": [
+            "up"
+        ],
+        "page": 4078,
+        "x": 60.68,
+        "y": 67.83,
+        "w": 8.4,
+        "h": 2.1
+    },
+    {
         "id": "p4078_ex5_q5",
         "type": "fill",
         "left": 59.64,
@@ -110148,41 +110067,25 @@
         "y": 73,
         "w": 9.83,
         "h": 2.1
+    },
+    {
+        "id": "p4078_ex5_q8",
+        "type": "fill",
+        "left": 60.22,
+        "top": 74.7,
+        "width": 8.85,
+        "height": 2.1,
+        "correct": [
+            "up"
+        ],
+        "page": 4078,
+        "x": 60.22,
+        "y": 74.7,
+        "w": 8.85,
+        "h": 2.1
     }
 ],
     "4079": [
-    {
-        "id": "p4079_ex1a_q1_0_0",
-        "type": "choose",
-        "group": "p4079_ex1a_q1_0",
-        "text": "Oh",
-        "left": 10.69,
-        "top": 57.55,
-        "width": 2.78,
-        "height": 1.8,
-        "correct": true,
-        "page": 4079,
-        "x": 10.69,
-        "y": 57.55,
-        "w": 2.78,
-        "h": 1.8
-    },
-    {
-        "id": "p4079_ex1a_q1_0_1",
-        "type": "choose",
-        "group": "p4079_ex1a_q1_0",
-        "text": "1",
-        "left": 14.27,
-        "top": 57.55,
-        "width": 2.4,
-        "height": 1.8,
-        "correct": false,
-        "page": 4079,
-        "x": 14.27,
-        "y": 57.55,
-        "w": 2.4,
-        "h": 1.8
-    },
     {
         "id": "p4079_ex1a_q2_0_0",
         "type": "choose",
@@ -110817,8 +110720,8 @@
         "width": 36.13,
         "height": 2.1,
         "correct": [
-            "I C",
-            "i c"
+            "C",
+            "c"
         ],
         "page": 4081,
         "x": 10.87,
@@ -111708,7 +111611,7 @@
         "top": 14.94,
         "width": 3.4,
         "height": 2.2,
-        "correct": "C",
+        "correct": "A",
         "letters": [
             "A",
             "B",
@@ -111728,7 +111631,7 @@
         "top": 16.64,
         "width": 3.4,
         "height": 2.2,
-        "correct": "A",
+        "correct": "D",
         "letters": [
             "A",
             "B",
@@ -111748,7 +111651,7 @@
         "top": 18.35,
         "width": 3.4,
         "height": 2.2,
-        "correct": "D",
+        "correct": "B",
         "letters": [
             "A",
             "B",
@@ -111762,13 +111665,13 @@
         "h": 2.2
     },
     {
-        "id": "p4083_ex4_m5",
+        "id": "p4083_ex4_m1",
         "type": "match",
         "left": 43.1,
         "top": 20.1,
         "width": 3.4,
         "height": 2.2,
-        "correct": "B",
+        "correct": "C",
         "letters": [
             "A",
             "B",
@@ -112128,7 +112031,7 @@
         "width": 29.17,
         "height": 2.1,
         "correct": [
-            "in the middle of"
+            "in the middle of in detail"
         ],
         "page": 4084,
         "x": 20.57,
@@ -113187,22 +113090,6 @@
         "h": 2.1
     },
     {
-        "id": "p4087_ex3_q2",
-        "type": "fill",
-        "left": 22.14,
-        "top": 78.57,
-        "width": 7.62,
-        "height": 2.1,
-        "correct": [
-            "reach"
-        ],
-        "page": 4087,
-        "x": 22.14,
-        "y": 78.57,
-        "w": 7.62,
-        "h": 2.1
-    },
-    {
         "id": "p4087_ex3_q3",
         "type": "fill",
         "left": 15.36,
@@ -113219,14 +113106,14 @@
         "h": 2.1
     },
     {
-        "id": "p4087_ex3_q5",
+        "id": "p4087_ex3_q4",
         "type": "fill",
         "left": 18.36,
         "top": 85.08,
         "width": 7.62,
         "height": 2.1,
         "correct": [
-            "recruit"
+            "report"
         ],
         "page": 4087,
         "x": 18.36,
@@ -113235,14 +113122,14 @@
         "h": 2.1
     },
     {
-        "id": "p4087_ex3_q6",
+        "id": "p4087_ex3_q5",
         "type": "fill",
         "left": 27.93,
         "top": 86.84,
         "width": 7.62,
         "height": 2.1,
         "correct": [
-            "judge"
+            "recruit"
         ],
         "page": 4087,
         "x": 27.93,
@@ -177068,6 +176955,22 @@
   // One-time migration: clear legacy misaligned Pre-Intermediate (4004..4087) local overrides once
   (function() {
     try {
+      if (typeof localStorage !== 'undefined' && !localStorage.getItem('ethith_pre_perfect_v5_migrated')) {
+        for (var p = 4004; p <= 4087; p++) {
+          localStorage.removeItem('ethith_wb_override_' + p);
+          localStorage.removeItem('ethith_wb_coords_v15_' + p);
+          localStorage.removeItem('ethith_wb_coords_v29_' + p);
+          localStorage.removeItem('ethith_wb_coords_v28_' + p);
+          localStorage.removeItem('ethith_wb_ts_' + p);
+        }
+        localStorage.setItem('ethith_pre_perfect_v5_migrated', String(Date.now()));
+      }
+    } catch(e) {}
+  })();
+
+  // One-time migration: clear legacy misaligned Pre-Intermediate (4004..4087) local overrides once
+  (function() {
+    try {
       if (typeof localStorage !== 'undefined' && !localStorage.getItem('ethith_pre_perfect_v4_migrated')) {
         for (var p = 4004; p <= 4087; p++) {
           localStorage.removeItem('ethith_wb_override_' + p);
@@ -177091,7 +176994,7 @@
       return arr.every(function(x) { return x && x.type === 'text'; });
     }
 
-    // 1. FIRST PRIORITY: Teacher's local edits in localStorage (always authoritative!)
+    // 1. FIRST PRIORITY: Teacher's local/synced edits in localStorage (always authoritative!)
     try {
       var saved = localStorage.getItem('ethith_wb_override_' + page) ||
                   localStorage.getItem('ethith_wb_coords_v15_' + page) ||
@@ -177104,9 +177007,10 @@
           localStorage.removeItem('ethith_wb_coords_v15_' + page);
           localStorage.removeItem('ethith_wb_coords_v29_' + page);
           localStorage.removeItem('ethith_wb_coords_v28_' + page);
-        } else if (Array.isArray(parsed) && parsed.length > 0) {
+        } else if (Array.isArray(parsed)) {
           if (WB.defaultInputs) WB.defaultInputs[page] = parsed;
           if (page >= 2000 && page < 3000 && WB.defaultInputsB2) WB.defaultInputsB2[page] = parsed;
+          if (page >= 5000 && window.ETHITH_TEST_PAGE_INPUTS) window.ETHITH_TEST_PAGE_INPUTS[page] = parsed;
           var S_loc = (window.S || (window.EthithApp && window.EthithApp.state)) || {};
           if (!S_loc.workbookOverrides) S_loc.workbookOverrides = {};
           S_loc.workbookOverrides[page] = parsed;
@@ -177154,38 +177058,41 @@
 
   WB.savePageInputs = function(page, inputs, noBroadcast) {
     page = parseInt(page, 10);
-    if (!page) return;
+    if (!page || !Array.isArray(inputs)) return;
     var nowTs = Date.now();
     window._lastTeacherEditTime = nowTs;
 
-    // 1. Save to multiple localStorage keys & master edited index for 100% resilience across all networks & re-logins
+    // 1. Lean single-key localStorage persistence (removes old 4x duplicate keys to prevent 5MB QuotaExceededError!)
     try {
       var jsonStr = JSON.stringify(inputs);
+      localStorage.removeItem('ethith_wb_coords_v15_' + page);
+      localStorage.removeItem('ethith_wb_coords_v29_' + page);
+      localStorage.removeItem('ethith_wb_coords_v28_' + page);
       localStorage.setItem('ethith_wb_override_' + page, jsonStr);
-      localStorage.setItem('ethith_wb_coords_v15_' + page, jsonStr);
-      localStorage.setItem('ethith_wb_coords_v29_' + page, jsonStr);
-      localStorage.setItem('ethith_wb_coords_v28_' + page, jsonStr);
       localStorage.setItem('ethith_wb_ts_' + page, nowTs.toString());
 
-      // Master persistent tracker of user-edited pages: never overwritten by older remote data!
-      var ep = {};
-      try { ep = JSON.parse(localStorage.getItem('ethith_wb_edited_pages') || '{}'); } catch(e0) {}
-      ep[page] = nowTs;
-      localStorage.setItem('ethith_wb_edited_pages', JSON.stringify(ep));
+      if (!noBroadcast) {
+        var ep = {};
+        try { ep = JSON.parse(localStorage.getItem('ethith_wb_edited_pages') || '{}'); } catch(e0) {}
+        ep[page] = nowTs;
+        localStorage.setItem('ethith_wb_edited_pages', JSON.stringify(ep));
 
-      // Offline-first push queue: guarantees sync even on weak / intermittent / slow internet
-      var pq = {};
-      try { pq = JSON.parse(localStorage.getItem('ethith_wb_pending_pushes') || '{}'); } catch(e1) {}
-      pq[page] = { inputs: inputs, ts: nowTs };
-      localStorage.setItem('ethith_wb_pending_pushes', JSON.stringify(pq));
+        var pq = {};
+        try { pq = JSON.parse(localStorage.getItem('ethith_wb_pending_pushes') || '{}'); } catch(e1) {}
+        pq[page] = { inputs: inputs, ts: nowTs };
+        localStorage.setItem('ethith_wb_pending_pushes', JSON.stringify(pq));
+      }
     } catch(e) {}
 
-    // 2. Update memory state immediately
+    // 2. Update memory state immediately across all stores (including Test pages >= 5000)
     if (WB.defaultInputs) {
       WB.defaultInputs[page] = inputs;
     }
     if (page >= 2000 && page < 3000 && WB.defaultInputsB2) {
       WB.defaultInputsB2[page] = inputs;
+    }
+    if (page >= 5000 && window.ETHITH_TEST_PAGE_INPUTS) {
+      window.ETHITH_TEST_PAGE_INPUTS[page] = inputs;
     }
 
     var S = (window.S || (window.EthithApp && window.EthithApp.state)) || {};
@@ -177198,7 +177105,7 @@
       window.EthithApp.saveState();
     }
 
-    // 3. INSTANT ZERO-LATENCY REAL-TIME BROADCAST + RESILIENT GITHUB CLOUD STORE PERSISTENCE
+    // 3. INSTANT ZERO-LATENCY REAL-TIME BROADCAST + DEDICATED GITHUB workbook_overrides.json CLOUD PERSISTENCE
     if (!noBroadcast && window.EthithSync) {
       if (typeof window.EthithSync.saveWorkbookCloudOverrides === 'function') {
         window.EthithSync.saveWorkbookCloudOverrides(page, inputs);
@@ -177211,7 +177118,7 @@
           ts: nowTs
         });
       }
-      console.log('[WB-Sync] Broadcasted & Saved page ' + page + ' to cloud & mesh in real time!');
+      console.log('[WB-Sync] Broadcasted & Saved page ' + page + ' to dedicated cloud store & mesh!');
     }
   };
 
@@ -177347,10 +177254,12 @@
       }
     });
 
-    // If new items were added that weren't in existing DOM, do a safe non-flicker render or append
+    // If new items were added or any item's type changed (e.g. fill -> choose/match), re-render cleanly
     var hasNewItems = false;
-    incomingIds.forEach(function(id) {
-      if (!existingDom[id]) hasNewItems = true;
+    inputs.forEach(function(item) {
+      var w = existingDom[item.id];
+      var nt = (item.type === 'choice' ? 'choose' : (item.type || 'fill'));
+      if (!w || w.getAttribute('data-type') !== nt) hasNewItems = true;
     });
 
     if (hasNewItems) {

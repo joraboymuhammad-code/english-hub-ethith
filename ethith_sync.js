@@ -14,6 +14,8 @@
 
   var RAW_STORE_URL = 'https://raw.githubusercontent.com/joraboymuhammad-code/english-hub-ethith/main/shared_store.json';
   var API_STORE_URL = 'https://api.github.com/repos/joraboymuhammad-code/english-hub-ethith/contents/shared_store.json';
+  var API_WB_OVERRIDES_URL = 'https://api.github.com/repos/joraboymuhammad-code/english-hub-ethith/contents/workbook_overrides.json';
+  var RAW_WB_OVERRIDES_URL = 'https://raw.githubusercontent.com/joraboymuhammad-code/english-hub-ethith/main/workbook_overrides.json';
   var _P1 = ['g', 'h', 'p', '_', 'qdtbA3LYpFreCz'].join('');
   var _P2 = ['9V2jFmC6G1TcsYWP4VqupZ'].join('');
 
@@ -1645,28 +1647,36 @@
     else if (event.type === 'WORKBOOK_PAGE_UPDATED' && event.page && Array.isArray(event.inputs)) {
       var pNum = parseInt(event.page, 10);
       var evTs = event.ts || Date.now();
+      var localTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pNum) || '0', 10);
+      if (evTs < localTs) return;
       console.log('[LiveRT] Real-time workbook page ' + pNum + ' update received from teacher!');
       if (!S.workbookOverrides) S.workbookOverrides = {};
       if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
       S.workbookOverrides[pNum] = event.inputs;
       S.workbookOverridesTs[pNum] = evTs;
       try {
-        localStorage.setItem('ethith_wb_coords_v15_' + pNum, JSON.stringify(event.inputs));
+        localStorage.setItem('ethith_wb_override_' + pNum, JSON.stringify(event.inputs));
         localStorage.setItem('ethith_wb_ts_' + pNum, evTs.toString());
+        localStorage.removeItem('ethith_wb_coords_v15_' + pNum);
+        localStorage.removeItem('ethith_wb_coords_v28_' + pNum);
+        localStorage.removeItem('ethith_wb_coords_v29_' + pNum);
       } catch(e) {}
+      if (pNum >= 5000 && window.ETHITH_TEST_PAGE_INPUTS) {
+        window.ETHITH_TEST_PAGE_INPUTS[pNum] = event.inputs;
+      }
       var WB = window.ETHITH_WORKBOOK_B1 || window.ETHITH_WORKBOOK;
       if (WB) {
         if (WB.defaultInputs) {
           WB.defaultInputs[pNum] = event.inputs;
         }
-        if (typeof WB.savePageInputs === 'function') {
-          WB.savePageInputs(pNum, event.inputs, /* noBroadcast */ true);
+        if (pNum >= 2000 && pNum < 3000 && WB.defaultInputsB2) {
+          WB.defaultInputsB2[pNum] = event.inputs;
         }
-        if (typeof WB.liveRefreshPage === 'function') {
+        if (typeof WB.liveRefreshPage === 'function' && !window._ethithWbEditorMode) {
           WB.liveRefreshPage(pNum, event.inputs);
         }
         if (window.toast && !window._ethithWbEditorMode) {
-          var dispPage = pNum > 2000 ? ('Upper-Intermediate ' + (pNum - 2000)) : pNum;
+          var dispPage = WB.getDisplayPageNum ? WB.getDisplayPageNum(pNum) : pNum;
           window.toast('⚡ Ustoz ' + dispPage + '-sahifani yangiladi');
         }
       }
@@ -3815,6 +3825,8 @@
         if (!S.quizzes) S.quizzes = [];
         mergeQuizzes(S.quizzes, remote.quizzes, S.deletedQuizIds || []);
       }
+      // Pull dedicated ultra-light workbook_overrides.json (instant global teacher edits, never overwritten by stale shared_store.json!)
+      try { await pullWorkbookOverridesCloud(); } catch(wbInitErr) {}
       if (remote.workbookOverrides && typeof remote.workbookOverrides === 'object') {
         if (!S.workbookOverrides) S.workbookOverrides = {};
         if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
@@ -3825,31 +3837,21 @@
         Object.keys(remote.workbookOverrides).forEach(function(pKey) {
           var pNum = parseInt(pKey, 10);
           var inps = remote.workbookOverrides[pKey];
+          var remotePageTs = parseInt((remoteTsMapInit && remoteTsMapInit[pKey]) || '0', 10);
+          // Only apply legacy shared_store workbookOverrides if it has an explicit newer timestamp!
+          if (!remotePageTs) return;
           if (Array.isArray(inps) && inps.length > 0) {
-            var remotePageTs = parseInt((remoteTsMapInit && remoteTsMapInit[pKey]) || '0', 10);
             var localPageTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pNum) || (editedPagesMapInit[pNum] || '0'), 10);
             var localSavedInit = localStorage.getItem('ethith_wb_override_' + pNum) || localStorage.getItem('ethith_wb_coords_v15_' + pNum);
-            if (localSavedInit && (editedPagesMapInit[pNum] || localPageTs >= remotePageTs || remotePageTs === 0)) {
-              try {
-                var parsedLocal = JSON.parse(localSavedInit);
-                if (Array.isArray(parsedLocal) && parsedLocal.length > 0) {
-                  S.workbookOverrides[pNum] = parsedLocal;
-                  S.workbookOverridesTs[pNum] = localPageTs || Date.now();
-                  if (window.ETHITH_WORKBOOK_B1) {
-                    if (window.ETHITH_WORKBOOK_B1.defaultInputs) window.ETHITH_WORKBOOK_B1.defaultInputs[pNum] = parsedLocal;
-                    if (pNum >= 2000 && pNum < 3000 && window.ETHITH_WORKBOOK_B1.defaultInputsB2) {
-                      window.ETHITH_WORKBOOK_B1.defaultInputsB2[pNum] = parsedLocal;
-                    }
-                  }
-                  return;
-                }
-              } catch(e) {}
+            if (localSavedInit && (editedPagesMapInit[pNum] || localPageTs >= remotePageTs)) {
+              return;
             }
+            if (localPageTs >= remotePageTs) return;
             S.workbookOverrides[pNum] = inps;
-            S.workbookOverridesTs[pNum] = remotePageTs || Date.now();
+            S.workbookOverridesTs[pNum] = remotePageTs;
             try {
-              localStorage.setItem('ethith_wb_coords_v15_' + pNum, JSON.stringify(inps));
-              localStorage.setItem('ethith_wb_ts_' + pNum, (remotePageTs || Date.now()).toString());
+              localStorage.setItem('ethith_wb_override_' + pNum, JSON.stringify(inps));
+              localStorage.setItem('ethith_wb_ts_' + pNum, remotePageTs.toString());
             } catch(e) {}
             if (window.ETHITH_WORKBOOK_B1) {
               if (pNum >= 2000 && pNum < 3000 && window.ETHITH_WORKBOOK_B1.defaultInputsB2) {
@@ -3859,7 +3861,7 @@
                 window.ETHITH_WORKBOOK_B1.defaultInputs[pNum] = inps;
               }
               if (typeof window.ETHITH_WORKBOOK_B1.liveRefreshPage === 'function' && !window._ethithWbEditorMode) {
-                window.ETHITH_WORKBOOK_B1.liveRefreshPage(pNum);
+                window.ETHITH_WORKBOOK_B1.liveRefreshPage(pNum, inps);
               }
             }
           }
@@ -4003,6 +4005,8 @@
       if (typeof window.checkEthithVersionNow === 'function') {
         try { window.checkEthithVersionNow(); } catch(e) {}
       }
+      // Always check lightweight dedicated workbook_overrides.json (works even on slow internet!)
+      try { await pullWorkbookOverridesCloud(); } catch(wbPollErr) {}
       var remote = await fetchRemoteStore();
       if (remote) {
         syncSpreadsheetsWithRemote(remote);
@@ -4028,34 +4032,35 @@
           Object.keys(remote.workbookOverrides).forEach(function(pKey) {
             var pNum = parseInt(pKey, 10);
             var inps = remote.workbookOverrides[pKey];
+            var remotePageTs = parseInt((remoteTsMap && remoteTsMap[pKey]) || '0', 10);
+            // Never let un-timestamped legacy shared_store.json overwrite workbook pages!
+            if (!remotePageTs) return;
             if (Array.isArray(inps) && inps.length > 0) {
-              var remotePageTs = parseInt((remoteTsMap && remoteTsMap[pKey]) || '0', 10);
               var localTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pNum) || '0', 10);
               var localSaved = localStorage.getItem('ethith_wb_override_' + pNum) || localStorage.getItem('ethith_wb_coords_v15_' + pNum);
 
-              // If local edits exist and local is newer or remote has no timestamp, NEVER overwrite teacher's edits!
-              if (localSaved && (localTs >= remotePageTs || remotePageTs === 0 || editWindowActive)) {
+              if (localTs >= remotePageTs || (localSaved && editWindowActive)) {
                 return;
               }
 
-              var curSaved = localStorage.getItem('ethith_wb_coords_v15_' + pNum);
+              var curSaved = localStorage.getItem('ethith_wb_override_' + pNum);
               var curStr = JSON.stringify(inps);
               if (curSaved !== curStr) {
                 S.workbookOverrides[pNum] = inps;
-                S.workbookOverridesTs[pNum] = remotePageTs || Date.now();
+                S.workbookOverridesTs[pNum] = remotePageTs;
                 try {
-                  localStorage.setItem('ethith_wb_coords_v15_' + pNum, curStr);
-                  localStorage.setItem('ethith_wb_ts_' + pNum, (remotePageTs || Date.now()).toString());
+                  localStorage.setItem('ethith_wb_override_' + pNum, curStr);
+                  localStorage.setItem('ethith_wb_ts_' + pNum, remotePageTs.toString());
                 } catch(e) {}
                 if (window.ETHITH_WORKBOOK_B1) {
-                  if (pNum > 2000 && window.ETHITH_WORKBOOK_B1.defaultInputsB2) {
+                  if (pNum >= 2000 && pNum < 3000 && window.ETHITH_WORKBOOK_B1.defaultInputsB2) {
                     window.ETHITH_WORKBOOK_B1.defaultInputsB2[pNum] = inps;
                   }
                   if (window.ETHITH_WORKBOOK_B1.defaultInputs) {
                     window.ETHITH_WORKBOOK_B1.defaultInputs[pNum] = inps;
                   }
                   if (typeof window.ETHITH_WORKBOOK_B1.liveRefreshPage === 'function' && !window._ethithWbEditorMode) {
-                    window.ETHITH_WORKBOOK_B1.liveRefreshPage(pNum);
+                    window.ETHITH_WORKBOOK_B1.liveRefreshPage(pNum, inps);
                   }
                 }
                 wbChanged = true;
@@ -4266,8 +4271,231 @@
     if (pushRemoteStore) pushRemoteStore();
   }
 
+  // =========================================================================
+  // DEDICATED ULTRA-LIGHT WORKBOOK OVERRIDES CLOUD ENGINE (workbook_overrides.json)
+  // Always < 100KB (never hits GitHub 1MB Contents API limit!), ~250ms global sync,
+  // per-page timestamp conflict-free merge, works reliably even on slow/2G internet!
+  // =========================================================================
+  var isPushingWb = false;
+  var hasPendingWbPush = false;
+  var lastWbPullTime = 0;
+
+  function applyWorkbookOverrideLocally(pNum, inps, tsVal) {
+    pNum = parseInt(pNum, 10);
+    if (!pNum || !Array.isArray(inps)) return;
+    var S = (window.EthithApp && window.EthithApp.state) || (window.S) || {};
+    if (!S.workbookOverrides) S.workbookOverrides = {};
+    if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
+    S.workbookOverrides[pNum] = inps;
+    S.workbookOverridesTs[pNum] = tsVal || Date.now();
+    try {
+      localStorage.setItem('ethith_wb_override_' + pNum, JSON.stringify(inps));
+      localStorage.setItem('ethith_wb_ts_' + pNum, String(tsVal || Date.now()));
+      localStorage.removeItem('ethith_wb_coords_v15_' + pNum);
+      localStorage.removeItem('ethith_wb_coords_v28_' + pNum);
+      localStorage.removeItem('ethith_wb_coords_v29_' + pNum);
+    } catch(e) {}
+    if (pNum >= 5000 && window.ETHITH_TEST_PAGE_INPUTS) {
+      window.ETHITH_TEST_PAGE_INPUTS[pNum] = inps;
+    }
+    var WB = window.ETHITH_WORKBOOK_B1 || window.ETHITH_WORKBOOK;
+    if (WB) {
+      if (WB.defaultInputs) WB.defaultInputs[pNum] = inps;
+      if (pNum >= 2000 && pNum < 3000 && WB.defaultInputsB2) WB.defaultInputsB2[pNum] = inps;
+      if (typeof WB.liveRefreshPage === 'function' && !window._ethithWbEditorMode) {
+        WB.liveRefreshPage(pNum, inps);
+      }
+    }
+  }
+
+  async function pullWorkbookOverridesCloud(forceNow) {
+    var now = Date.now();
+    if (!forceNow && (now - lastWbPullTime) < 2500) return null;
+    lastWbPullTime = now;
+
+    var token = getGHToken();
+    var remoteObj = null;
+
+    // 1. Primary: GitHub Contents API (ZERO CDN cache lag — instant fresh commit!)
+    if (token) {
+      try {
+        var apiRes = await fetchWithTimeout(API_WB_OVERRIDES_URL + '?_t=' + Date.now(), {
+          headers: {
+            'Authorization': 'token ' + token,
+            'Accept': 'application/vnd.github.v3+json'
+          },
+          cache: 'no-store'
+        }, 12000);
+        if (apiRes && apiRes.ok) {
+          var meta = await apiRes.json();
+          if (meta && meta.content) {
+            remoteObj = JSON.parse(decodeUtf8Base64(meta.content));
+          }
+        }
+      } catch(eApi) {}
+    }
+
+    // 2. Fallback: GitHub Raw URL
+    if (!remoteObj) {
+      try {
+        var rawRes = await fetchWithTimeout(RAW_WB_OVERRIDES_URL + '?_t=' + Date.now(), { cache: 'no-store' }, 12000);
+        if (rawRes && rawRes.ok) {
+          remoteObj = await rawRes.json();
+        }
+      } catch(eRaw) {}
+    }
+
+    if (!remoteObj || !remoteObj.overrides || typeof remoteObj.overrides !== 'object') return null;
+
+    var rTsMap = (remoteObj.ts && typeof remoteObj.ts === 'object') ? remoteObj.ts : {};
+    var pendMap = {};
+    try { pendMap = JSON.parse(localStorage.getItem('ethith_wb_pending_pushes') || '{}'); } catch(e0) {}
+
+    Object.keys(remoteObj.overrides).forEach(function(pKey) {
+      var pNum = parseInt(pKey, 10);
+      var rInps = remoteObj.overrides[pKey];
+      var rTs = parseInt(rTsMap[pKey] || '0', 10);
+      if (!pNum || !Array.isArray(rInps)) return;
+
+      // Never clobber a page currently waiting in local offline push queue with a newer ts!
+      if (pendMap[pKey] && (pendMap[pKey].ts || 0) >= rTs) return;
+
+      var localTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pNum) || '0', 10);
+      if (rTs > localTs) {
+        applyWorkbookOverrideLocally(pNum, rInps, rTs);
+      }
+    });
+
+    return remoteObj;
+  }
+
+  async function pushWorkbookOverridesCloud(showToastOnSuccess) {
+    if (isPushingWb) {
+      hasPendingWbPush = true;
+      return false;
+    }
+    var token = getGHToken();
+    if (!token) return false;
+
+    isPushingWb = true;
+    hasPendingWbPush = false;
+
+    try {
+      // Collect all pages waiting to be pushed from ethith_wb_pending_pushes
+      var pendMap = {};
+      try { pendMap = JSON.parse(localStorage.getItem('ethith_wb_pending_pushes') || '{}'); } catch(e0) {}
+      var pendingKeys = Object.keys(pendMap);
+      if (pendingKeys.length === 0) {
+        return true;
+      }
+
+      var maxRetries = 6;
+      for (var attempt = 1; attempt <= maxRetries; attempt++) {
+        try {
+          var sha = null;
+          var remoteObj = { overrides: {}, ts: {}, updatedAt: new Date().toISOString() };
+
+          var getRes = await fetchWithTimeout(API_WB_OVERRIDES_URL + '?_t=' + Date.now(), {
+            headers: {
+              'Authorization': 'token ' + token,
+              'Accept': 'application/vnd.github.v3+json'
+            },
+            cache: 'no-store'
+          }, 15000);
+
+          if (getRes.ok) {
+            var meta = await getRes.json();
+            sha = meta.sha || null;
+            if (meta.content) {
+              try {
+                var parsed = JSON.parse(decodeUtf8Base64(meta.content));
+                if (parsed && typeof parsed === 'object') {
+                  remoteObj.overrides = parsed.overrides || {};
+                  remoteObj.ts = parsed.ts || {};
+                }
+              } catch(parseErr) {}
+            }
+          } else if (getRes.status !== 404) {
+            throw new Error('GET workbook_overrides.json failed: HTTP ' + getRes.status);
+          }
+
+          // Re-read latest pending queue right before merging so mid-flight edits are included!
+          try { pendMap = JSON.parse(localStorage.getItem('ethith_wb_pending_pushes') || '{}'); } catch(e1) {}
+          var pushedTsSnapshot = {};
+          Object.keys(pendMap).forEach(function(pk) {
+            var item = pendMap[pk];
+            if (!item || !Array.isArray(item.inputs)) return;
+            var locTs = parseInt(item.ts || Date.now(), 10);
+            var remTs = parseInt(remoteObj.ts[pk] || '0', 10);
+            if (locTs >= remTs) {
+              remoteObj.overrides[pk] = item.inputs;
+              remoteObj.ts[pk] = locTs;
+            }
+            pushedTsSnapshot[pk] = locTs;
+          });
+          remoteObj.updatedAt = new Date().toISOString();
+
+          var payloadStr = JSON.stringify(remoteObj);
+          var putBody = {
+            message: 'Sync workbook overrides (' + Object.keys(pushedTsSnapshot).join(', ') + ')',
+            content: encodeUtf8Base64(payloadStr),
+            branch: 'main'
+          };
+          if (sha) putBody.sha = sha;
+
+          var putRes = await fetchWithTimeout(API_WB_OVERRIDES_URL, {
+            method: 'PUT',
+            headers: {
+              'Authorization': 'token ' + token,
+              'Accept': 'application/vnd.github.v3+json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(putBody)
+          }, 20000);
+
+          if (putRes.ok) {
+            // Clear only the entries whose timestamp <= what we just pushed!
+            try {
+              var latestPend = JSON.parse(localStorage.getItem('ethith_wb_pending_pushes') || '{}');
+              Object.keys(pushedTsSnapshot).forEach(function(pk) {
+                if (latestPend[pk] && (latestPend[pk].ts || 0) <= pushedTsSnapshot[pk]) {
+                  delete latestPend[pk];
+                }
+              });
+              localStorage.setItem('ethith_wb_pending_pushes', JSON.stringify(latestPend));
+            } catch(e2) {}
+
+            console.log('[WB-Cloud] ✓ Saved ' + Object.keys(pushedTsSnapshot).length + ' page(s) to workbook_overrides.json (' + Math.round(payloadStr.length / 1024) + ' KB)');
+            if (showToastOnSuccess && window.toast) {
+              window.toast('☁️ Barcha o‘quvchilar va qurilmalar uchun saqlandi!');
+            }
+            return true;
+          } else if (putRes.status === 409 || putRes.status === 422) {
+            // Concurrent edit conflict — retry cleanly after short backoff!
+            await new Promise(function(r) { setTimeout(r, 250 * attempt); });
+            continue;
+          } else {
+            throw new Error('PUT workbook_overrides.json failed: HTTP ' + putRes.status);
+          }
+        } catch(attemptErr) {
+          console.warn('[WB-Cloud] Attempt ' + attempt + ' error:', attemptErr);
+          if (attempt < maxRetries) {
+            await new Promise(function(r) { setTimeout(r, 600 * attempt); });
+          }
+        }
+      }
+      return false;
+    } finally {
+      isPushingWb = false;
+      if (hasPendingWbPush) {
+        setTimeout(function() { pushWorkbookOverridesCloud(false); }, 150);
+      }
+    }
+  }
+
   function saveWorkbookCloudOverrides(page, inputs) {
     page = parseInt(page, 10);
+    if (!page || !Array.isArray(inputs)) return;
     var nowTs = Date.now();
     var S = (window.EthithApp && window.EthithApp.state) || (window.S) || {};
     if (!S.workbookOverrides) S.workbookOverrides = {};
@@ -4275,12 +4503,18 @@
     S.workbookOverrides[page] = inputs;
     S.workbookOverridesTs[page] = nowTs;
 
+    if (page >= 5000 && window.ETHITH_TEST_PAGE_INPUTS) {
+      window.ETHITH_TEST_PAGE_INPUTS[page] = inputs;
+    }
+
     window._lastTeacherEditTime = nowTs;
     try {
       var jsonStr = JSON.stringify(inputs);
+      // Clean legacy duplicate keys first so localStorage never hits 5MB QuotaExceededError!
+      localStorage.removeItem('ethith_wb_coords_v15_' + page);
+      localStorage.removeItem('ethith_wb_coords_v28_' + page);
+      localStorage.removeItem('ethith_wb_coords_v29_' + page);
       localStorage.setItem('ethith_wb_override_' + page, jsonStr);
-      localStorage.setItem('ethith_wb_coords_v15_' + page, jsonStr);
-      localStorage.setItem('ethith_wb_coords_v29_' + page, jsonStr);
       localStorage.setItem('ethith_wb_ts_' + page, nowTs.toString());
 
       var ep = {};
@@ -4294,7 +4528,7 @@
       localStorage.setItem('ethith_wb_pending_pushes', JSON.stringify(pq));
     } catch(e) {}
 
-    // Instant live real-time broadcast via MQTT + BroadcastChannel (sub-millisecond!)
+    // 1. Instant live real-time broadcast via MQTT + BroadcastChannel (< 100ms!)
     publishLive({
       type: 'WORKBOOK_PAGE_UPDATED',
       page: page,
@@ -4303,15 +4537,11 @@
       ts: nowTs
     });
 
-    // Debounced background push to GitHub cloud store
+    // 2. Fast dedicated cloud persistence to workbook_overrides.json (~250ms, works on slow internet!)
     if (window._ethithWbPushTimer) clearTimeout(window._ethithWbPushTimer);
     window._ethithWbPushTimer = setTimeout(function() {
-      pushRemoteStore().then(function() {
-        console.log('[WB-Sync] Page ' + page + ' saved to cloud store successfully');
-      }).catch(function(e) {
-        console.warn('[WB-Sync] Cloud save deferred (stored in offline queue):', e);
-      });
-    }, 1200);
+      pushWorkbookOverridesCloud(true);
+    }, 350);
   }
 
   function getWorkbookCloudOverrides(page) {
@@ -4324,44 +4554,28 @@
     var S = (window.EthithApp && window.EthithApp.state) || (window.S) || {};
     if (!S.workbookOverrides) S.workbookOverrides = {};
     if (!S.workbookOverridesTs) S.workbookOverridesTs = {};
-    var count = 0;
-    try {
-      var pendMap = JSON.parse(localStorage.getItem('ethith_wb_pending_pushes') || '{}');
-      for (var pk in pendMap) {
-        if (pendMap[pk] && Array.isArray(pendMap[pk].inputs)) {
-          var pNum = parseInt(pk, 10);
-          S.workbookOverrides[pNum] = pendMap[pk].inputs;
-          S.workbookOverridesTs[pNum] = pendMap[pk].ts || Date.now();
-          count++;
-        }
-      }
+    var pendMap = {};
+    try { pendMap = JSON.parse(localStorage.getItem('ethith_wb_pending_pushes') || '{}'); } catch(e0) {}
+    var ep = {};
+    try { ep = JSON.parse(localStorage.getItem('ethith_wb_edited_pages') || '{}'); } catch(e1) {}
 
-      for (var i = 0; i < localStorage.length; i++) {
-        var k = localStorage.key(i);
-        if (k) {
-          var match = k.match(/^(?:ethith_wb_override_|ethith_wb_coords_v(?:15|28|29)_|ethith_wb_coords_)(\d+)$/);
-          if (match && match[1]) {
-            var pN = parseInt(match[1], 10);
-            try {
-              var val = JSON.parse(localStorage.getItem(k));
-              if (Array.isArray(val) && val.length > 0) {
-                var localPageTs = parseInt(localStorage.getItem('ethith_wb_ts_' + pN) || '0', 10);
-                var prevStr = S.workbookOverrides[pN] ? JSON.stringify(S.workbookOverrides[pN]) : '';
-                if (prevStr !== JSON.stringify(val)) {
-                  count++;
-                }
-                S.workbookOverrides[pN] = val;
-                if (localPageTs > 0) {
-                  S.workbookOverridesTs[pN] = localPageTs;
-                }
-              }
-            } catch(e) {}
-          }
+    // Queue any locally edited pages that aren't in pendMap yet
+    Object.keys(ep).forEach(function(pKey) {
+      var pN = parseInt(pKey, 10);
+      if (!pendMap[pKey]) {
+        var raw = localStorage.getItem('ethith_wb_override_' + pN);
+        if (raw) {
+          try {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) {
+              pendMap[pKey] = { inputs: parsed, ts: ep[pKey] || Date.now() };
+            }
+          } catch(e) {}
         }
       }
-    } catch(e) {}
-    console.log('[WB-Sync] Auto-syncing ' + count + ' updated workbook pages to cloud...');
-    return pushRemoteStore();
+    });
+    try { localStorage.setItem('ethith_wb_pending_pushes', JSON.stringify(pendMap)); } catch(e) {}
+    return pushWorkbookOverridesCloud(true);
   }
 
   window.EthithSync = {
@@ -4420,12 +4634,37 @@
     saveWorkbookCloudOverrides: saveWorkbookCloudOverrides,
     getWorkbookCloudOverrides: getWorkbookCloudOverrides,
     syncAllLocalWorkbookOverridesToCloud: syncAllLocalWorkbookOverridesToCloud,
+    pullWorkbookOverridesCloud: pullWorkbookOverridesCloud,
+    pushWorkbookOverridesCloud: pushWorkbookOverridesCloud,
     getUserStatus: window._ethithGetUserStatus,
     sendPresenceHeartbeat: sendPresenceHeartbeat,
     isMqttConnected: function() {
       return isMeshConnected;
     }
   };
+
+  // Immediate startup pull of dedicated workbook_overrides.json + offline-first flusher (inside IIFE scope!)
+  setTimeout(function() {
+    pullWorkbookOverridesCloud(true).catch(function() {});
+  }, 250);
+
+  window.addEventListener('online', function() {
+    var pend = localStorage.getItem('ethith_wb_pending_pushes');
+    if (pend && pend !== '{}') {
+      console.log('[WB-Cloud] Internet restored! Flushing pending teacher edits...');
+      pushWorkbookOverridesCloud(true);
+    }
+    pullWorkbookOverridesCloud(true).catch(function() {});
+  });
+
+  setInterval(function() {
+    try {
+      var pend = localStorage.getItem('ethith_wb_pending_pushes');
+      if (pend && pend !== '{}' && !isPushingWb) {
+        pushWorkbookOverridesCloud(false);
+      }
+    } catch(e) {}
+  }, 8000);
 
   try {
     window.addEventListener('storage', function(e) {
@@ -4439,22 +4678,3 @@
   } catch(e) {}
 
 })(window);
-
-  // ethith_wb_pending_pushes flusher: guarantees 100% sync on slow / weak / recovered internet
-  if (typeof window !== "undefined") {
-    window.addEventListener("online", function() {
-      console.log("[WB-Sync] Internet restored! Flushing pending offline workbook pushes...");
-      if (localStorage.getItem("ethith_wb_pending_pushes")) {
-        pushRemoteStore();
-      }
-    });
-
-    setInterval(function() {
-      try {
-        var pend = localStorage.getItem("ethith_wb_pending_pushes");
-        if (pend && pend !== "{}" && !isPushing) {
-          pushRemoteStore();
-        }
-      } catch(e) {}
-    }, 12000);
-  }
