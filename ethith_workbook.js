@@ -134641,6 +134641,10 @@
   // Helper to get human-readable book page number (e.g., 2004 -> 4)
   WB.getDisplayPageNum = function(pageNum) {
     pageNum = parseInt(pageNum, 10);
+    if (pageNum >= 8000) return (pageNum - 8000);
+    if (pageNum >= 7000) return (pageNum - 7000);
+    if (pageNum >= 6000) return (pageNum - 6000);
+    if (pageNum >= 5000) return (pageNum - 5000);
     if (pageNum >= 4000) return (pageNum - 4000);
     if (pageNum >= 3000) return (pageNum - 3000);
     if (pageNum >= 2000) return (pageNum - 2000);
@@ -134650,6 +134654,10 @@
 
   WB.getBookLabel = function(pageNum) {
     pageNum = parseInt(pageNum, 10);
+    if (pageNum >= 8000) return 'Navigate B2 Upper-Intermediate Test';
+    if (pageNum >= 7000) return 'Navigate B1+ Intermediate Test';
+    if (pageNum >= 6000) return 'Navigate B1 Pre-Intermediate Test';
+    if (pageNum >= 5000) return 'Navigate A1 Beginner Test';
     if (pageNum >= 4000) return 'Navigate B1 Pre-Intermediate';
     if (pageNum >= 3000) return 'Navigate A2 Elementary';
     if (pageNum >= 2000) return 'Navigate B2 Upper-Intermediate';
@@ -166359,6 +166367,13 @@
     page = parseInt(page, 10);
     if (!page) return [];
 
+    // Helper: detect legacy v1 test page snapshots where every item was generated with type==='text'
+    function isLegacyTextOnlyTestSnapshot(p, arr) {
+      if (p < 5000 || !Array.isArray(arr) || arr.length === 0) return false;
+      if (!window.ETHITH_TEST_PAGE_INPUTS || !Array.isArray(window.ETHITH_TEST_PAGE_INPUTS[p])) return false;
+      return arr.every(function(x) { return x && x.type === 'text'; });
+    }
+
     // 1. FIRST PRIORITY: Teacher's local edits in localStorage (always authoritative!)
     try {
       var saved = localStorage.getItem('ethith_wb_override_' + page) ||
@@ -166367,7 +166382,12 @@
                   localStorage.getItem('ethith_wb_coords_v28_' + page);
       if (saved) {
         var parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
+        if (isLegacyTextOnlyTestSnapshot(page, parsed)) {
+          localStorage.removeItem('ethith_wb_override_' + page);
+          localStorage.removeItem('ethith_wb_coords_v15_' + page);
+          localStorage.removeItem('ethith_wb_coords_v29_' + page);
+          localStorage.removeItem('ethith_wb_coords_v28_' + page);
+        } else if (Array.isArray(parsed) && parsed.length > 0) {
           if (WB.defaultInputs) WB.defaultInputs[page] = parsed;
           if (page >= 2000 && page < 3000 && WB.defaultInputsB2) WB.defaultInputsB2[page] = parsed;
           var S_loc = (window.S || (window.EthithApp && window.EthithApp.state)) || {};
@@ -166381,15 +166401,19 @@
     // 2. SECOND PRIORITY: Active in-memory / cloud overrides from teacher (persisted in sync store)
     var S = (window.S || (window.EthithApp && window.EthithApp.state)) || {};
     if (S.workbookOverrides && Array.isArray(S.workbookOverrides[page]) && S.workbookOverrides[page].length > 0) {
-      if (WB.defaultInputs) WB.defaultInputs[page] = S.workbookOverrides[page];
-      if (page >= 2000 && page < 3000 && WB.defaultInputsB2) WB.defaultInputsB2[page] = S.workbookOverrides[page];
-      return S.workbookOverrides[page];
+      if (isLegacyTextOnlyTestSnapshot(page, S.workbookOverrides[page])) {
+        delete S.workbookOverrides[page];
+      } else {
+        if (WB.defaultInputs) WB.defaultInputs[page] = S.workbookOverrides[page];
+        if (page >= 2000 && page < 3000 && WB.defaultInputsB2) WB.defaultInputsB2[page] = S.workbookOverrides[page];
+        return S.workbookOverrides[page];
+      }
     }
 
     // 3. THIRD PRIORITY: Cloud sync helper if available
     if (window.EthithSync && typeof window.EthithSync.getWorkbookCloudOverrides === 'function') {
       var cloudInps = window.EthithSync.getWorkbookCloudOverrides(page);
-      if (Array.isArray(cloudInps) && cloudInps.length > 0) {
+      if (Array.isArray(cloudInps) && cloudInps.length > 0 && !isLegacyTextOnlyTestSnapshot(page, cloudInps)) {
         if (WB.defaultInputs) WB.defaultInputs[page] = cloudInps;
         if (page >= 2000 && page < 3000 && WB.defaultInputsB2) WB.defaultInputsB2[page] = cloudInps;
         if (!S.workbookOverrides) S.workbookOverrides = {};
@@ -168728,8 +168752,27 @@
       '<img src="' + imgSrc + '" class="eth-wb-img" data-page="' + pageNum + '" data-rel-src="' + (pageNum >= 5000 ? ('test_pages/page_' + pageNum + '.jpg') : '') + '" onerror="if(this.getAttribute(\'data-rel-src\') && !this.src.startsWith(\'https://joraboymuhammad-code.github.io\')){this.src=\'https://joraboymuhammad-code.github.io/english-hub-ethith/\' + this.getAttribute(\'data-rel-src\');}" style="width:100%;height:auto;display:block;user-select:none;pointer-events:' + (isEditor ? 'none' : 'auto') + ';" alt="Oxford ' + bookLabel + ' Page ' + dispP + '" />' +
       '<div class="eth-wb-overlay-layer" data-page="' + pageNum + '" style="position:absolute;inset:0;' + (isEditor ? 'cursor:crosshair;' : '') + '">';
 
+    // Auto-detect single-letter matching items in workbook defaultInputs (where >= 3 items on a page are single letters a-h)
+    var singleLetterFillItems = inputs.filter(function(it) {
+      var t = it.type || 'fill';
+      if (t !== 'fill' && t !== 'text') return false;
+      var c = Array.isArray(it.correct) ? (it.correct[0] || '') : String(it.correct || '');
+      return /^[a-hA-H]$/.test(c.trim());
+    });
+    var hasNonArticleLetter = singleLetterFillItems.some(function(it) {
+      var c = Array.isArray(it.correct) ? (it.correct[0] || '') : String(it.correct || '');
+      return /^[b-hB-H]$/.test(c.trim());
+    });
+    var autoMatchIds = {};
+    if (singleLetterFillItems.length >= 3 && hasNonArticleLetter) {
+      singleLetterFillItems.forEach(function(it) { autoMatchIds[it.id] = true; });
+    }
+
     inputs.forEach(function(item) {
       var itemType = item.type || 'fill';
+      if (autoMatchIds[item.id]) {
+        itemType = 'match';
+      }
       if (Array.isArray(item.options) && item.options.length > 0) {
         itemType = 'select';
       }
@@ -168811,14 +168854,17 @@
           'title="' + (isTeacher ? ('✏️ Tahrirlash uchun bosing: ' + (item.text || item.label || '') + (isItemCorrect ? ' (To‘g‘ri variant)' : '')) : ('Tanlash uchun bosing: ' + (item.text || item.label || ''))) + '"></div>' +
           '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
       } else if (itemType === 'match') {
-        var matchCorr = (item.correct || '').toUpperCase();
+        var rawMatchCorr = Array.isArray(item.correct) ? (item.correct[0] || '') : String(item.correct || '');
+        var matchCorr = rawMatchCorr.trim().toUpperCase();
+        var customLettersAttr = (Array.isArray(item.letters) && item.letters.length > 0) ? item.letters.join(',') : '';
         h += '<div class="wb-match-slot' + (isTeacher && matchCorr ? ' correct' : '') + (isTeacher ? ' wb-teacher-box' : '') + '" ' +
           'data-id="' + item.id + '" ' +
           'data-page="' + pageNum + '" ' +
           'data-type="match" ' +
-          'data-correct="' + (item.correct || '') + '" ' +
+          'data-correct="' + matchCorr.replace(/"/g, '&quot;') + '" ' +
+          (customLettersAttr ? ('data-letters="' + customLettersAttr.replace(/"/g, '&quot;') + '" ') : '') +
           'style="width:100%;height:100%;' + (isEditor ? 'pointer-events:none;' : 'cursor:pointer;') + (isTeacher ? 'background:rgba(16,185,129,0.18);border:1.5px solid #10b981;color:#059669;font-weight:900;display:flex;align-items:center;justify-content:center;' : '') + '" ' +
-          'title="' + (isTeacher ? ('✏️ Tahrirlash uchun bosing: ' + matchCorr) : 'Javob harfini tanlang (a-f)') + '">' + (isTeacher && matchCorr ? matchCorr : '?') + '</div>' +
+          'title="' + (isTeacher ? ('✏️ Tahrirlash uchun bosing: ' + matchCorr) : 'Javob harfini tanlang') + '">' + (isTeacher && matchCorr ? matchCorr : '?') + '</div>' +
           '<div class="eth-wb-hint-badge" style="display:none;position:absolute;top:100%;left:0;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;z-index:90;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-top:3px;pointer-events:none;"></div>';
       } else if (itemType === 'insert') {
         var isInsCorr = (item.correct === true);
@@ -170125,6 +170171,7 @@
   // STUDENT MODE: SOLVING, EVALUATING & HOMEWORK
   // ==========================================
   function setupStudentSolvingMode(container, unitNum, lessonCode, pages, bookLevel) {
+    var isTeacher = isTeacherRole();
     // Dynamic Counter for Answered Questions across ALL pages
     function updateCount() {
       var distinctCount = 0;
@@ -170153,11 +170200,19 @@
       // 3. Choose groups
       var allChooseGroups = {};
       var selectedGroups = {};
+      var chooseGroupCounts = {};
+      var chooseGroupHasCorrect = {};
       container.querySelectorAll('.wb-choose-chip').forEach(function(chip) {
         var grp = chip.getAttribute('data-group');
         if (grp) {
-          allChooseGroups[grp] = true;
+          chooseGroupCounts[grp] = (chooseGroupCounts[grp] || 0) + 1;
+          if (chip.getAttribute('data-correct') === 'true') chooseGroupHasCorrect[grp] = true;
           if (chip.classList.contains('selected')) selectedGroups[grp] = true;
+        }
+      });
+      Object.keys(chooseGroupCounts).forEach(function(grp) {
+        if (chooseGroupCounts[grp] > 1 || chooseGroupHasCorrect[grp] || selectedGroups[grp]) {
+          allChooseGroups[grp] = true;
         }
       });
       distinctCount += Object.keys(allChooseGroups).length;
@@ -170251,10 +170306,15 @@
 
     // 4. Match Slot Interaction
     var activePopover = null;
+    var activePopoverWrap = null;
     function closePopover() {
       if (activePopover) {
         activePopover.remove();
         activePopover = null;
+      }
+      if (activePopoverWrap) {
+        activePopoverWrap.style.zIndex = '10';
+        activePopoverWrap = null;
       }
     }
     document.addEventListener('click', closePopover);
@@ -170264,7 +170324,13 @@
         e.stopPropagation();
         closePopover();
 
-        var letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+        var customL = slot.getAttribute('data-letters');
+        var letters = customL ? customL.split(',') : ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+        var wrapEl = slot.closest('.eth-wb-item-wrap');
+        if (wrapEl) {
+          wrapEl.style.zIndex = '9999';
+          activePopoverWrap = wrapEl;
+        }
         var pop = document.createElement('div');
         pop.className = 'wb-letter-picker';
         pop.style.position = 'absolute';
@@ -170576,14 +170642,13 @@
             }
           });
 
-          // 3. Check Choose Chips (Safe JS filtering, supports un-grouped chips)
+          // 3. Check Choose Chips (Safe JS filtering, supports un-grouped chips & single-chip tick items)
           var checkedChooseGroups = {};
           var allChooseChips = Array.from(container.querySelectorAll('.wb-choose-chip'));
           allChooseChips.forEach(function(chip, cIdx) {
             var grp = chip.getAttribute('data-group') || ('_choose_' + cIdx);
             if (!checkedChooseGroups[grp]) {
               checkedChooseGroups[grp] = true;
-              totalQuestions++;
               var groupChips = allChooseChips.filter(function(c, i) {
                 return (c.getAttribute('data-group') || ('_choose_' + i)) === grp;
               });
@@ -170594,6 +170659,12 @@
                 if (c.classList.contains('selected')) selectedChip = c;
                 if (c.getAttribute('data-correct') === 'true') correctChip = c;
               });
+
+              // Single-chip distractor tick slot left unselected: skip counting as a required question
+              if (groupChips.length === 1 && !correctChip && !selectedChip) {
+                return;
+              }
+              totalQuestions++;
 
               if (selectedChip && correctChip && selectedChip === correctChip) {
                 correctCount++;
