@@ -26272,7 +26272,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795181454604,
+      "lastSeen": 1795181494208,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -444955,8 +444955,8 @@
       "authorName": "Bosh Admin",
       "authorRole": "admin",
       "createdAt": 1793874221440,
-      "updatedAt": "2026-11-20 18:30",
-      "updatedTs": 1795181449216,
+      "updatedAt": "2026-11-20 18:31",
+      "updatedTs": 1795181493056,
       "data": [
         {
           "name": "Sheet1",
@@ -445045,6 +445045,30 @@
               }
             },
             {
+              "r": 0,
+              "c": 9,
+              "v": {
+                "v": null,
+                "bg": "#c8bba4"
+              }
+            },
+            {
+              "r": 0,
+              "c": 10,
+              "v": {
+                "v": null,
+                "bg": "#c8bba4"
+              }
+            },
+            {
+              "r": 0,
+              "c": 11,
+              "v": {
+                "v": null,
+                "bg": "#c8bba4"
+              }
+            },
+            {
               "r": 1,
               "c": 0,
               "v": {
@@ -445117,21 +445141,21 @@
               "r": 1,
               "c": 9,
               "v": {
-                "bg": "#fef08a"
+                "bg": "#c8bba4"
               }
             },
             {
               "r": 1,
               "c": 10,
               "v": {
-                "bg": "#fef08a"
+                "bg": "#c8bba4"
               }
             },
             {
               "r": 1,
               "c": 11,
               "v": {
-                "bg": "#fef08a"
+                "bg": "#c8bba4"
               }
             },
             {
@@ -445232,21 +445256,21 @@
               "r": 2,
               "c": 9,
               "v": {
-                "bg": "#fef08a"
+                "bg": "#c8bba4"
               }
             },
             {
               "r": 2,
               "c": 10,
               "v": {
-                "bg": "#fef08a"
+                "bg": "#c8bba4"
               }
             },
             {
               "r": 2,
               "c": 11,
               "v": {
-                "bg": "#fef08a"
+                "bg": "#c8bba4"
               }
             },
             {
@@ -488340,5 +488364,5 @@
     "sheet_admin_official_root_1793874213170_c6baof",
     "sheet_admin_official_root_1793874217569"
   ],
-  "updatedAt": 1795181457009
+  "updatedAt": 1795181496372
 }
