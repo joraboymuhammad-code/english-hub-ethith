@@ -26272,7 +26272,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795178737604,
+      "lastSeen": 1795178990610,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -154033,6 +154033,136 @@
         ],
         "placeholder": "25..."
       }
+    ],
+    "8501": [
+      {
+        "id": "test_inp_8501_1",
+        "type": "text",
+        "left": 8.3,
+        "top": 23.5,
+        "width": 16,
+        "height": 2.7,
+        "correct": [
+          "1"
+        ],
+        "placeholder": "2..."
+      },
+      {
+        "id": "test_inp_8501_2",
+        "type": "text",
+        "left": 8.4,
+        "top": 29.2,
+        "width": 16,
+        "height": 2.7,
+        "correct": [
+          "true",
+          "t"
+        ],
+        "placeholder": "3..."
+      },
+      {
+        "id": "test_inp_8501_3",
+        "type": "text",
+        "left": 8.4,
+        "top": 36.1,
+        "width": 16,
+        "height": 2.7,
+        "correct": [
+          "false",
+          "f"
+        ],
+        "placeholder": "4..."
+      },
+      {
+        "id": "test_inp_8501_4",
+        "type": "text",
+        "left": 8.4,
+        "top": 43,
+        "width": 16,
+        "height": 2.7,
+        "correct": [
+          "true",
+          "t"
+        ],
+        "placeholder": "5..."
+      },
+      {
+        "id": "test_inp_8501_5",
+        "type": "text",
+        "left": 8.4,
+        "top": 49.9,
+        "width": 16,
+        "height": 2.7,
+        "correct": [
+          "true",
+          "t"
+        ],
+        "placeholder": "6..."
+      },
+      {
+        "id": "test_inp_8501_6",
+        "type": "text",
+        "left": 55.4,
+        "top": 18.8,
+        "width": 29.5,
+        "height": 2.7,
+        "correct": [
+          "false",
+          "f"
+        ],
+        "placeholder": "7..."
+      },
+      {
+        "id": "test_inp_8501_7",
+        "type": "text",
+        "left": 55.4,
+        "top": 22.3,
+        "width": 30,
+        "height": 2.7,
+        "correct": [
+          "1"
+        ],
+        "placeholder": "8..."
+      },
+      {
+        "id": "test_inp_8501_8",
+        "type": "text",
+        "left": 55.4,
+        "top": 25.7,
+        "width": 30,
+        "height": 2.7,
+        "correct": [
+          "true",
+          "t"
+        ],
+        "placeholder": "9..."
+      },
+      {
+        "id": "test_inp_8501_9",
+        "type": "text",
+        "left": 55.4,
+        "top": 29.2,
+        "width": 30,
+        "height": 2.7,
+        "correct": [
+          "false",
+          "f"
+        ],
+        "placeholder": "10..."
+      },
+      {
+        "id": "test_inp_8501_10",
+        "type": "text",
+        "left": 55.4,
+        "top": 34.4,
+        "width": 30,
+        "height": 2.7,
+        "correct": [
+          "true",
+          "t"
+        ],
+        "placeholder": "11..."
+      }
     ]
   },
   "workbookOverridesTs": {
@@ -154441,7 +154571,8 @@
     "5002": 1795178660283,
     "5003": 1795178704195,
     "5004": 1795178704201,
-    "5020": 1795178728644
+    "5020": 1795178728644,
+    "8501": 1795178988685
   },
   "centerSettings": {
     "card": "8600 4912 7731 9024",
@@ -445320,5 +445451,5 @@
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365"
   ],
-  "updatedAt": 1795178738478
+  "updatedAt": 1795178991395
 }
