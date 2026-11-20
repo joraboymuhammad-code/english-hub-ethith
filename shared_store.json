@@ -26272,7 +26272,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795181494208,
+      "lastSeen": 1795181511803,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -444956,7 +444956,7 @@
       "authorRole": "admin",
       "createdAt": 1793874221440,
       "updatedAt": "2026-11-20 18:31",
-      "updatedTs": 1795181493056,
+      "updatedTs": 1795181508564,
       "data": [
         {
           "name": "Sheet1",
@@ -445182,7 +445182,9 @@
             {
               "r": 1,
               "c": 15,
-              "v": {}
+              "v": {
+                "bg": "#d53f21"
+              }
             },
             {
               "r": 1,
@@ -488364,5 +488366,5 @@
     "sheet_admin_official_root_1793874213170_c6baof",
     "sheet_admin_official_root_1793874217569"
   ],
-  "updatedAt": 1795181496372
+  "updatedAt": 1795181513042
 }
