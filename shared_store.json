@@ -26272,7 +26272,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795181157605,
+      "lastSeen": 1795181179603,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -444949,191 +444949,6 @@
       ]
     },
     {
-      "id": "sheet_admin_official_root_1793874198639",
-      "name": "Asosiy Jadval",
-      "authorId": "admin_official_root",
-      "authorName": "Bosh Admin",
-      "authorRole": "admin",
-      "updatedAt": "2026-11-05 15:31",
-      "updatedTs": 1793874715425,
-      "data": [
-        {
-          "name": "Sheet1",
-          "color": "",
-          "index": 0,
-          "status": 1,
-          "order": 0,
-          "row": 584,
-          "column": 500,
-          "defaultRowHeight": 20,
-          "defaultColWidth": 73,
-          "celldata": [
-            {
-              "r": 0,
-              "c": 0,
-              "v": {
-                "m": "zxczx",
-                "ct": {
-                  "fa": "General",
-                  "t": "g"
-                },
-                "v": "zxczx"
-              }
-            },
-            {
-              "r": 0,
-              "c": 1,
-              "v": {
-                "m": "czxc",
-                "ct": {
-                  "fa": "General",
-                  "t": "g"
-                },
-                "v": "czxc"
-              }
-            },
-            {
-              "r": 1,
-              "c": 0,
-              "v": {
-                "m": "czx",
-                "ct": {
-                  "fa": "General",
-                  "t": "g"
-                },
-                "v": "czx"
-              }
-            },
-            {
-              "r": 1,
-              "c": 1,
-              "v": {
-                "m": "czx",
-                "ct": {
-                  "fa": "General",
-                  "t": "g"
-                },
-                "v": "czx"
-              }
-            },
-            {
-              "r": 2,
-              "c": 0,
-              "v": {
-                "m": "czxczx",
-                "ct": {
-                  "fa": "General",
-                  "t": "g"
-                },
-                "v": "czxczx"
-              }
-            },
-            {
-              "r": 2,
-              "c": 1,
-              "v": {
-                "m": "zxc",
-                "ct": {
-                  "fa": "General",
-                  "t": "g"
-                },
-                "v": "zxc"
-              }
-            },
-            {
-              "r": 3,
-              "c": 1,
-              "v": {
-                "m": "zxc",
-                "ct": {
-                  "fa": "General",
-                  "t": "g"
-                },
-                "v": "zxc"
-              }
-            }
-          ],
-          "config": {}
-        }
-      ]
-    },
-    {
-      "id": "sheet_admin_official_root_1793874208719",
-      "name": "Asosiy Jadval",
-      "authorId": "admin_official_root",
-      "authorLogin": "",
-      "authorName": "Bosh Admin",
-      "authorRole": "admin",
-      "updatedAt": "2026-11-05",
-      "updatedTs": 1793874208719,
-      "data": [
-        {
-          "name": "Sheet1",
-          "color": "",
-          "index": 0,
-          "status": 1,
-          "order": 0,
-          "row": 584,
-          "column": 500,
-          "defaultRowHeight": 20,
-          "defaultColWidth": 73,
-          "celldata": [],
-          "config": {}
-        }
-      ]
-    },
-    {
-      "id": "sheet_admin_official_root_1793874213170_c6baof",
-      "name": "Yangi Jadval 1",
-      "authorId": "admin_official_root",
-      "authorLogin": "",
-      "authorName": "Bosh Admin",
-      "authorRole": "admin",
-      "createdAt": 1793874213170,
-      "updatedAt": "2026-11-05 15:23",
-      "updatedTs": 1793874213170,
-      "data": [
-        {
-          "name": "Sheet1",
-          "color": "",
-          "index": 0,
-          "status": 1,
-          "order": 0,
-          "row": 584,
-          "column": 500,
-          "defaultRowHeight": 20,
-          "defaultColWidth": 73,
-          "celldata": [],
-          "config": {}
-        }
-      ]
-    },
-    {
-      "id": "sheet_admin_official_root_1793874217569",
-      "name": "Asosiy Jadval",
-      "authorId": "admin_official_root",
-      "authorLogin": "",
-      "authorName": "Bosh Admin",
-      "authorRole": "admin",
-      "updatedAt": "2026-11-05",
-      "updatedTs": 1793874217569,
-      "data": [
-        {
-          "name": "Sheet1",
-          "color": "",
-          "index": 0,
-          "status": 1,
-          "order": 0,
-          "row": 584,
-          "column": 500,
-          "defaultRowHeight": 20,
-          "defaultColWidth": 73,
-          "celldata": [],
-          "config": {}
-        }
-      ]
-    },
-    {
       "id": "sheet_admin_official_root_1793874221440_gr66kr",
       "name": "Yangi Jadval 1",
       "authorId": "admin_official_root",
@@ -445426,7 +445241,11 @@
     "sheet_admin_official_root_1793876324677",
     "sheet_admin_official_root_1793876321905_e2no20",
     "sheet_admin_official_root_1793876326365",
-    "sheet_admin_official_root_1793876327233"
+    "sheet_admin_official_root_1793876327233",
+    "sheet_admin_official_root_1793874198639",
+    "sheet_admin_official_root_1793874208719",
+    "sheet_admin_official_root_1793874213170_c6baof",
+    "sheet_admin_official_root_1793874217569"
   ],
-  "updatedAt": 1795181158094
+  "updatedAt": 1795181181066
 }
