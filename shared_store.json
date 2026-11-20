@@ -338,11 +338,26 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183624170
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
         "homeworks": {},
-        "updatedAt": 1793213299615
+        "updatedAt": 1795183624170
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -360,8 +375,8 @@
         "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
         "assignedAt": 0
       },
-      "learningMonths": 0,
-      "learningDays": 0,
+      "learningMonths": 2,
+      "learningDays": 24,
       "studentPayments": {
         "cls_ravshanov_doniyor_cefr_1_tester_1": {
           "fee": 300000,
@@ -620,7 +635,7 @@
       "learningLessons": 0,
       "baselineDate": "2026-11-06",
       "levelTestDate": "2027-02-04",
-      "durationUpdatedAt": 1794578867703,
+      "durationUpdatedAt": 1795183624432,
       "customStudentNamesTs": {}
     },
     {
@@ -961,10 +976,26 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
-        "lessonTypes": {},
+        "records": {
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183624436
+            }
+          }
+        },
+        "lessonTypes": {
+          "2026-11-20": "Vazifa: unit_test_1"
+        },
         "holidays": {},
-        "homeworks": {}
+        "homeworks": {},
+        "updatedAt": 1795183624436
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -1101,7 +1132,7 @@
       },
       "deletedStudentIds": [],
       "learningLessons": 0,
-      "durationUpdatedAt": 1794575908078,
+      "durationUpdatedAt": 1795183624693,
       "customStudentNamesTs": {}
     },
     {
@@ -1442,7 +1473,32 @@
       "level": "CEFR Multi-Level",
       "maxCapacity": 18,
       "attendance": {
-        "records": {},
+        "records": {
+          "2026-10-29": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183624695
+            }
+          },
+          "2026-11-20": {
+            "s_test": {
+              "status": "K",
+              "score": "2",
+              "hwDone": true,
+              "hwPct": 5,
+              "hwLesson": "unit_test_1",
+              "hwCorrect": 3,
+              "hwTotal": 60,
+              "hwCompletedAt": 1795183624695
+            }
+          }
+        },
         "lessonTypes": {
           "2026-10-29": "Vazifa: 1.1"
         },
@@ -1461,7 +1517,8 @@
             "note": "Intermediate (B1+) Workbook 4–5 betlardagi mashqlarni bajarib 'Tekshirish' tugmasini bosing — kunlik baho avtomatik qo'yiladi.",
             "assignedAt": 0
           }
-        }
+        },
+        "updatedAt": 1795183624695
       },
       "customStudentNames": {},
       "customStudentPhones": {},
@@ -1611,7 +1668,7 @@
       },
       "deletedStudentIds": [],
       "learningLessons": 0,
-      "durationUpdatedAt": 1794575908111,
+      "durationUpdatedAt": 1795183624955,
       "customStudentNamesTs": {}
     },
     {
@@ -26254,8 +26311,8 @@
       "login": "muhammedjoraboyev1",
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_root",
@@ -26272,7 +26329,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795181569011,
+      "lastSeen": 1795183604207,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -26305,8 +26362,8 @@
       "updatedAt": 1792606425762,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -26481,8 +26538,8 @@
       "level": "B1+",
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "std_13",
@@ -26646,8 +26703,8 @@
       "updatedAt": 1793392014532,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26670,8 +26727,8 @@
       "updatedAt": 1793392014532,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26691,8 +26748,8 @@
       "updatedAt": 1793392014532,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26712,8 +26769,8 @@
       "updatedAt": 1793392014532,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26736,8 +26793,8 @@
       "updatedAt": 1793392014532,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26760,8 +26817,8 @@
       "updatedAt": 1793392014532,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26782,8 +26839,8 @@
       "updatedAt": 1793392014532,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26804,8 +26861,8 @@
       "updatedAt": 1793392014532,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26828,8 +26885,8 @@
       "updatedAt": 1793392014532,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26849,8 +26906,8 @@
       "updatedAt": 1793392014532,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26871,8 +26928,8 @@
       "updatedAt": 1793392014532,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26893,8 +26950,8 @@
       "updatedAt": 1793392014532,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26915,8 +26972,8 @@
       "updatedAt": 1793392014532,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26939,8 +26996,8 @@
       "updatedAt": 1793392014533,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26963,8 +27020,8 @@
       "updatedAt": 1793392014533,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -26987,8 +27044,8 @@
       "updatedAt": 1793392014533,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "admin_official_teacher",
@@ -27008,8 +27065,8 @@
       "updatedAt": 1793392014533,
       "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
-      "lastSeen": 1794959879668
+      "isOnline": true,
+      "lastSeen": 1795183507866
     },
     {
       "id": "st_998901239988",
@@ -444955,8 +445012,8 @@
       "authorName": "Bosh Admin",
       "authorRole": "admin",
       "createdAt": 1793874221440,
-      "updatedAt": "2026-11-20 18:32",
-      "updatedTs": 1795181556677,
+      "updatedAt": "2026-11-20 19:07",
+      "updatedTs": 1795183625329,
       "data": [
         {
           "name": "Sheet1",
@@ -488366,5 +488423,5 @@
     "sheet_admin_official_root_1793874213170_c6baof",
     "sheet_admin_official_root_1793874217569"
   ],
-  "updatedAt": 1795181571514
+  "updatedAt": 1795183626422
 }
