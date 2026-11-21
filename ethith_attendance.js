@@ -4221,9 +4221,11 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   // Global Universal Homework Launcher (Works for Student Dash, Chat, & Toast)
   window.ethithOpenHomeworkItem = function(hw, cls) {
     if (!hw) return;
+    var bLevel = hw.bookLevel || 'B1+';
     // Dedicated handling for authentic Oxford Unit Tests and Progress Tests (PDF Pages)
     if (hw.type === 'unit_test' || hw.type === 'progress_test' || (hw.lessonCode && (String(hw.lessonCode).indexOf('unit_test_') !== -1 || String(hw.lessonCode).indexOf('progress_test_') !== -1))) {
       var bLevelKey = (bLevel === 'A1' || bLevel === 'Beginner') ? 'a1' :
+                      (bLevel === 'A2' || bLevel === 'Elementary') ? 'a2' :
                       (bLevel === 'B1' || bLevel === 'Pre-Intermediate') ? 'b1_pre' :
                       (bLevel === 'B2' || bLevel === 'Upper-Intermediate') ? 'b2' : 'b1';
       var apView = document.getElementById('apView') || document.getElementById('ethith-main-content') || document.querySelector('.ea-main');

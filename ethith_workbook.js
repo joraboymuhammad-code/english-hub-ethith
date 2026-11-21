@@ -145230,9 +145230,15 @@
   // Helper to get human-readable book page number (e.g., 2004 -> 4)
   WB.getDisplayPageNum = function(pageNum) {
     pageNum = parseInt(pageNum, 10);
+    if (pageNum >= 9500) return (pageNum - 9500);
+    if (pageNum >= 9000) return (pageNum - 9000);
+    if (pageNum >= 8500) return (pageNum - 8500);
     if (pageNum >= 8000) return (pageNum - 8000);
+    if (pageNum >= 7500) return (pageNum - 7500);
     if (pageNum >= 7000) return (pageNum - 7000);
+    if (pageNum >= 6500) return (pageNum - 6500);
     if (pageNum >= 6000) return (pageNum - 6000);
+    if (pageNum >= 5500) return (pageNum - 5500);
     if (pageNum >= 5000) return (pageNum - 5000);
     if (pageNum >= 4000) return (pageNum - 4000);
     if (pageNum >= 3000) return (pageNum - 3000);
@@ -145243,6 +145249,7 @@
 
   WB.getBookLabel = function(pageNum) {
     pageNum = parseInt(pageNum, 10);
+    if (pageNum >= 9000) return 'Navigate A2 Elementary Test';
     if (pageNum >= 8000) return 'Navigate B2 Upper-Intermediate Test';
     if (pageNum >= 7000) return 'Navigate B1+ Intermediate Test';
     if (pageNum >= 6000) return 'Navigate B1 Pre-Intermediate Test';
@@ -178013,6 +178020,14 @@
                      (bookLevel === 'a2') ? 'Elementary A2' :
                      (bookLevel === 'b1_pre') ? 'Pre-Intermediate B1' : bookLevel.toUpperCase();
 
+    var curManifestTop = (WB.testManifest && Object.keys(WB.testManifest).length > 0) ? WB.testManifest : (window.ETHITH_TEST_MANIFEST || {});
+    var pdfReadyCount = 0;
+    for (var sc = 1; sc <= totalSlots; sc++) {
+      var sp = curManifestTop[bookLevel + '_' + (isProgress ? 'progress_' : 'unit_') + sc] || [];
+      if (sp.length > 0) pdfReadyCount++;
+    }
+    var displayTotalTests = Math.max(allTests.length, pdfReadyCount);
+
     // Top Overview Banner
     var h = '<div style="background:radial-gradient(circle at 10% 20%, rgba(56,189,248,0.18), transparent 45%), linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.92));border:1px solid rgba(56,189,248,0.35);border-radius:22px;padding:26px 28px;box-shadow:0 12px 40px rgba(0,0,0,0.5);margin-bottom:24px;">' +
       '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;">' +
@@ -178029,7 +178044,7 @@
           '</p>' +
         '</div>' +
         '<div style="background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:12px 20px;text-align:center;">' +
-          '<div style="font-size:22px;font-weight:900;color:#38bdf8;">' + allTests.length + '</div>' +
+          '<div style="font-size:22px;font-weight:900;color:#38bdf8;">' + displayTotalTests + '</div>' +
           '<div style="font-size:11px;font-weight:700;color:#94a3b8;">Jami Yuklangan Testlar</div>' +
         '</div>' +
       '</div>' +
@@ -178046,7 +178061,11 @@
       var slotBadgeLabel = isProgress ? ('PROGRESS TEST ' + slotNum) : ('UNIT TEST ' + slotNum);
 
       var matching = allTests.filter(function(t) { return t.unitOrProgressNum == slotNum; });
-      var hasTests = matching.length > 0;
+      var testCode = (isProgress ? 'progress_test_' : 'unit_test_') + slotNum;
+      var curManifest = (WB.testManifest && Object.keys(WB.testManifest).length > 0) ? WB.testManifest : (window.ETHITH_TEST_MANIFEST || {});
+      var pgs = curManifest[bookLevel + '_' + (isProgress ? 'progress_' : 'unit_') + slotNum] || [];
+      var hasPdfPages = pgs.length > 0;
+      var hasTests = matching.length > 0 || hasPdfPages;
 
       var teacherNames = [];
       matching.forEach(function(t) {
@@ -178059,23 +178078,24 @@
         '<div>' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
             '<span style="font-size:11px;font-weight:900;padding:4px 10px;border-radius:8px;background:' + (hasTests ? 'rgba(56,189,248,0.18);color:#38bdf8;' : 'rgba(255,255,255,0.06);color:#94a3b8;') + 'text-transform:uppercase;">' + slotBadgeLabel + '</span>' +
-            (hasTests ?
+            (matching.length > 0 ?
               ('<span style="font-size:11.5px;font-weight:800;padding:3px 10px;border-radius:12px;background:rgba(16,185,129,0.18);border:1px solid rgba(16,185,129,0.4);color:#10b981;">● ' + matching.length + ' ta test mavjud</span>') :
-              ('<span style="font-size:11px;font-weight:700;padding:3px 8px;border-radius:10px;background:rgba(255,255,255,0.05);color:#64748b;">🔒 Hozircha bo‘sh</span>')
+              hasPdfPages ?
+                ('<span style="font-size:11.5px;font-weight:800;padding:3px 10px;border-radius:12px;background:rgba(16,185,129,0.18);border:1px solid rgba(16,185,129,0.4);color:#10b981;">● PDF tayyor (' + pgs.length + ' bet)</span>') :
+                ('<span style="font-size:11px;font-weight:700;padding:3px 8px;border-radius:10px;background:rgba(255,255,255,0.05);color:#64748b;">🔒 Hozircha bo‘sh</span>')
             ) +
           '</div>' +
           '<h4 style="margin:0 0 8px;font-size:18px;font-weight:900;color:#fff;">' + slotTitle + '</h4>' +
           '<p style="margin:0 0 16px;font-size:13px;color:#94a3b8;line-height:1.5;">' +
-            (hasTests ?
+            (matching.length > 0 ?
               ('Tuzuvchilar: <b style="color:#e2e8f0;">' + teacherNames.join(', ') + '</b>. Barcha variantlarni ko‘rish uchun bosing.') :
-              'Savollar bazasi hali kiritilmagan. Ustozlar o‘zlarining PDF testini yuklashi mumkin.') +
+              hasPdfPages ?
+                ('Rasmiy Oxford Navigate PDF testi (<b style="color:#e2e8f0;">' + pgs.length + ' sahifa</b>). Ochib ko‘rish yoki Visual Editor orqali javob qo‘shish uchun bosing.') :
+                'Savollar bazasi hali kiritilmagan. Ustozlar o‘zlarining PDF testini yuklashi mumkin.') +
           '</p>' +
         '</div>' +
 
         (function() {
-          var testCode = (isProgress ? 'progress_test_' : 'unit_test_') + slotNum;
-          var curManifest = (WB.testManifest && Object.keys(WB.testManifest).length > 0) ? WB.testManifest : (window.ETHITH_TEST_MANIFEST || {});
-          var pgs = curManifest[bookLevel + '_' + (isProgress ? 'progress_' : 'unit_') + slotNum] || [];
           var bHtml = '<div style="display:flex;flex-direction:column;gap:8px;">' +
             '<button type="button" class="eth-cur-start-direct-btn" data-level="' + bookLevel + '" data-code="' + testCode + '" data-num="' + slotNum + '" style="width:100%;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:11px 14px;font-size:13.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 15px rgba(2,132,199,0.4);">' +
               '🚀 Testni Ishlash (PDF ' + (pgs.length ? pgs.length + ' bet' : '') + ')' +
@@ -178296,7 +178316,7 @@
         var EA = window.EA || window.EthithAttendance;
         if (EA && typeof EA.assignDirectHomework === 'function') {
           EA.assignDirectHomework({
-            bookLevel: (lvl === 'a1' ? 'A1' : lvl === 'b1_pre' ? 'B1' : lvl === 'b2' ? 'B2' : 'B1+'),
+            bookLevel: (lvl === 'a1' ? 'A1' : lvl === 'a2' ? 'A2' : lvl === 'b1_pre' ? 'B1' : lvl === 'b2' ? 'B2' : 'B1+'),
             unit: num,
             lessonCode: code,
             lessonTitle: title,
@@ -179081,6 +179101,7 @@
       var tPages = curManifest[tKey] || [];
       if (tPages.length > 0) {
         var lvlName = (bookLevel === 'a1') ? 'Beginner A1' :
+                       (bookLevel === 'a2') ? 'Elementary A2' :
                        (bookLevel === 'b1_pre') ? 'Pre-Intermediate B1' :
                        (bookLevel === 'b2') ? 'Upper-Intermediate B2' : 'Intermediate B1+';
         lessonData = {
@@ -181611,6 +181632,7 @@
     var manifest = (WB.testManifest && Object.keys(WB.testManifest).length > 0) ? WB.testManifest : (window.ETHITH_TEST_MANIFEST || {});
     var levels = [
       { lvl: 'a1', list: WB.unitsA1, uMax: 10, pMax: 3 },
+      { lvl: 'a2', list: WB.unitsA2, uMax: 12, pMax: 4 },
       { lvl: 'b1_pre', list: WB.unitsB1Pre, uMax: 12, pMax: 4 },
       { lvl: 'b1', list: WB.units, uMax: 12, pMax: 4 },
       { lvl: 'b2', list: WB.unitsB2, uMax: 12, pMax: 4 }
