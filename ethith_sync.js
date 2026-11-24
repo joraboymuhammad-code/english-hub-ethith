@@ -2867,10 +2867,17 @@
         changed = true;
       }
       if (rc.schedule && rc.schedule !== localCls.schedule) {
-        var rAttTs = (rc.attendance && rc.attendance.updatedAt) || 0;
-        var lAttTs = (localCls.attendance && localCls.attendance.updatedAt) || 0;
-        if (rAttTs >= lAttTs) {
+        var rSchedTs = Math.max((rc.attendance && rc.attendance.updatedAt) || 0, Number(rc.durationUpdatedAt || 0));
+        var lSchedTs = Math.max((localCls.attendance && localCls.attendance.updatedAt) || 0, Number(localCls.durationUpdatedAt || 0), locDurTs);
+        if (rSchedTs > lSchedTs) {
           localCls.schedule = rc.schedule;
+          localCls.durationUpdatedAt = rSchedTs;
+          try {
+            var updDur = locDurObj ? Object.assign({}, locDurObj) : {};
+            updDur.schedule = rc.schedule;
+            updDur.ts = rSchedTs;
+            localStorage.setItem('ethith_class_duration_' + localCls.id, JSON.stringify(updDur));
+          } catch(e) {}
           changed = true;
         }
       }

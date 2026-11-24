@@ -5414,15 +5414,15 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           'Guruhingiz dars o\'tadigan kunlarni tanlang. Yakshanba kuni har doim avtomatik qizil dam olish kuni bo\'lib turadi.' +
         '</p>' +
         '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:22px;">' +
-          '<label style="display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid ' + (cur === 'har_kuni' ? '#38bdf8' : 'rgba(255,255,255,0.12)') + ';border-radius:14px;cursor:pointer;background:' + (cur === 'har_kuni' ? 'rgba(56,189,248,0.15)' : 'rgba(255,255,255,0.03)') + ';color:#f8fafc;">' +
+          '<label class="ea-sched-choice-card" data-val="har_kuni" style="display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid ' + (cur === 'har_kuni' ? '#38bdf8' : 'rgba(255,255,255,0.12)') + ';border-radius:14px;cursor:pointer;background:' + (cur === 'har_kuni' ? 'rgba(56,189,248,0.15)' : 'rgba(255,255,255,0.03)') + ';color:#f8fafc;transition:all 0.15s;">' +
             '<input type="radio" name="eaSchedChoice" value="har_kuni" ' + (cur === 'har_kuni' ? 'checked' : '') + ' style="accent-color:#38bdf8;width:16px;height:16px;" />' +
             '<div><b style="color:#ffffff;">Har kungi dars</b> <span style="color:#94a3b8;font-size:12.5px;">(Dushanba – Shanba)</span></div>' +
           '</label>' +
-          '<label style="display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid ' + (cur === 'juft' ? '#38bdf8' : 'rgba(255,255,255,0.12)') + ';border-radius:14px;cursor:pointer;background:' + (cur === 'juft' ? 'rgba(56,189,248,0.15)' : 'rgba(255,255,255,0.03)') + ';color:#f8fafc;">' +
+          '<label class="ea-sched-choice-card" data-val="juft" style="display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid ' + (cur === 'juft' ? '#38bdf8' : 'rgba(255,255,255,0.12)') + ';border-radius:14px;cursor:pointer;background:' + (cur === 'juft' ? 'rgba(56,189,248,0.15)' : 'rgba(255,255,255,0.03)') + ';color:#f8fafc;transition:all 0.15s;">' +
             '<input type="radio" name="eaSchedChoice" value="juft" ' + (cur === 'juft' ? 'checked' : '') + ' style="accent-color:#38bdf8;width:16px;height:16px;" />' +
             '<div><b style="color:#ffffff;">Juft kunlari</b> <span style="color:#94a3b8;font-size:12.5px;">(Seshanba, Payshanba, Shanba)</span></div>' +
           '</label>' +
-          '<label style="display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid ' + (cur === 'toq' ? '#38bdf8' : 'rgba(255,255,255,0.12)') + ';border-radius:14px;cursor:pointer;background:' + (cur === 'toq' ? 'rgba(56,189,248,0.15)' : 'rgba(255,255,255,0.03)') + ';color:#f8fafc;">' +
+          '<label class="ea-sched-choice-card" data-val="toq" style="display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid ' + (cur === 'toq' ? '#38bdf8' : 'rgba(255,255,255,0.12)') + ';border-radius:14px;cursor:pointer;background:' + (cur === 'toq' ? 'rgba(56,189,248,0.15)' : 'rgba(255,255,255,0.03)') + ';color:#f8fafc;transition:all 0.15s;">' +
             '<input type="radio" name="eaSchedChoice" value="toq" ' + (cur === 'toq' ? 'checked' : '') + ' style="accent-color:#38bdf8;width:16px;height:16px;" />' +
             '<div><b style="color:#ffffff;">Toq kunlari</b> <span style="color:#94a3b8;font-size:12.5px;">(Dushanba, Chorshanba, Juma)</span></div>' +
           '</label>' +
@@ -5441,11 +5441,100 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       if (e.target.id === 'eaSchedOverlayBg') closeGlobalModal();
     };
 
+    // Live visual highlight when switching radio choices
+    modalRoot.querySelectorAll('input[name="eaSchedChoice"]').forEach(function(rad) {
+      rad.onchange = function() {
+        var val = rad.value;
+        modalRoot.querySelectorAll('.ea-sched-choice-card').forEach(function(card) {
+          var isAct = (card.dataset.val === val);
+          card.style.borderColor = isAct ? '#38bdf8' : 'rgba(255,255,255,0.12)';
+          card.style.background = isAct ? 'rgba(56,189,248,0.15)' : 'rgba(255,255,255,0.03)';
+        });
+      };
+    });
+
     modalRoot.querySelector('#eaSaveSchedBtn').onclick = function() {
       var selected = modalRoot.querySelector('input[name="eaSchedChoice"]:checked');
       if (selected) {
-        cls.schedule = selected.value;
+        var newSched = selected.value;
+        var nowTs = Date.now();
+        cls.schedule = newSched;
+        cls.durationUpdatedAt = nowTs;
+
+        // 1. Update localStorage ethith_class_duration_<id> so getAvailableClasses() NEVER reverts schedule!
+        try {
+          var existingDur = {};
+          var rawDur = localStorage.getItem('ethith_class_duration_' + cls.id);
+          if (rawDur) existingDur = JSON.parse(rawDur) || {};
+          existingDur.schedule = newSched;
+          existingDur.ts = nowTs;
+          if (existingDur.learningMonths === undefined && cls.learningMonths !== undefined) existingDur.learningMonths = Number(cls.learningMonths) || 0;
+          if (existingDur.learningDays === undefined && cls.learningDays !== undefined) existingDur.learningDays = Number(cls.learningDays) || 0;
+          if (existingDur.learningLessons === undefined && cls.learningLessons !== undefined) existingDur.learningLessons = Number(cls.learningLessons);
+          if (!existingDur.baselineDate && cls.baselineDate) existingDur.baselineDate = cls.baselineDate;
+          if (!existingDur.levelTestDate && cls.levelTestDate) existingDur.levelTestDate = cls.levelTestDate;
+          localStorage.setItem('ethith_class_duration_' + cls.id, JSON.stringify(existingDur));
+        } catch(e) {}
+
+        // 2. Sync across ALL 4 in-memory class stores
+        [
+          window.S && window.S.classes,
+          window.EthithApp && window.EthithApp.state && window.EthithApp.state.classes,
+          window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.classes,
+          window.EthithEnterprise && window.EthithEnterprise.getStore && window.EthithEnterprise.getStore().classes
+        ].forEach(function(arr) {
+          if (!Array.isArray(arr)) return;
+          var target = arr.find(function(it) { return it && (it.id === cls.id || (cls.code && it.code === cls.code)); });
+          if (target) {
+            target.schedule = newSched;
+            target.durationUpdatedAt = nowTs;
+          }
+        });
+
+        // 3. Persist locally & broadcast in real time
         persistAttendance(cls);
+        if (window.EthithEnterprise && typeof window.EthithEnterprise.saveStore === 'function') {
+          window.EthithEnterprise.saveStore();
+        }
+        if (window.EthithApp && typeof window.EthithApp.saveState === 'function') {
+          window.EthithApp.saveState();
+        }
+        try {
+          if (window.EthithApp && window.EthithApp.state) {
+            localStorage.setItem('ethith_v2_state', JSON.stringify(window.EthithApp.state));
+          }
+          if (window.EthithEnterprise && window.EthithEnterprise.getStore) {
+            localStorage.setItem('ethith_enterprise_store', JSON.stringify(window.EthithEnterprise.getStore()));
+          }
+        } catch(e) {}
+
+        if (window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
+          window.EthithSync.publishLive({
+            type: 'CLASS_DURATION_UPDATED',
+            classId: cls.id,
+            classCode: cls.code,
+            schedule: newSched,
+            learningMonths: cls.learningMonths,
+            learningDays: cls.learningDays,
+            learningLessons: cls.learningLessons,
+            baselineDate: cls.baselineDate,
+            levelTestDate: cls.levelTestDate,
+            ts: nowTs
+          });
+        }
+        if (window.EthithSync && typeof window.EthithSync.pushRemoteStore === 'function') {
+          window.EthithSync.pushRemoteStore();
+        }
+
+        var schedNameMap = {
+          'toq': 'Toq kunlari (Dush, Chor, Jum)',
+          'juft': 'Juft kunlari (Sesh, Pay, Shan)',
+          'har_kuni': 'Har kungi dars (Dush – Shan)'
+        };
+        if (window.EthithApp && typeof window.EthithApp.toast === 'function') {
+          window.EthithApp.toast('✓ Dars jadvali "' + (schedNameMap[newSched] || newSched) + '" ga o‘zgartirildi!');
+        }
+
         closeGlobalModal();
         EA.render(container);
       }
@@ -7053,15 +7142,21 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       cls.learningMonths = nMonths;
       cls.learningDays = nDays;
 
-      // Save duration to localStorage
+      // Save duration & schedule to localStorage with fresh timestamp
+      var editDurTs = Date.now();
+      cls.durationUpdatedAt = editDurTs;
       try {
-        localStorage.setItem('ethith_class_duration_' + cls.id, JSON.stringify({
-          baseTimestamp: Date.now(),
+        var prevDur = {};
+        var rawPrev = localStorage.getItem('ethith_class_duration_' + cls.id);
+        if (rawPrev) prevDur = JSON.parse(rawPrev) || {};
+        localStorage.setItem('ethith_class_duration_' + cls.id, JSON.stringify(Object.assign(prevDur, {
+          baseTimestamp: editDurTs,
+          ts: editDurTs,
           learningMonths: nMonths,
           learningDays: nDays,
           learningLessons: nMonths * 8 + Math.floor(nDays / 3),
           schedule: nSched
-        }));
+        })));
       } catch(e) {}
 
       // Sync across all store locations
