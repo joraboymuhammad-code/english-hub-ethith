@@ -7353,13 +7353,36 @@
       }
     });
 
+    function getActiveClassStudents() {
+      return (cls.students || []).filter(function(st) {
+        return st && !st.isTester && !String(st.name || '').toLowerCase().startsWith('tester_');
+      });
+    }
+
+    function getFailedStudentsList() {
+      var list = [];
+      getActiveClassStudents().forEach(function(st) {
+        var stId = st.id || st.email;
+        var r = cls.levelTestResults[stId];
+        if (r && r.passed === false) {
+          var badge = (r.score !== null && r.score !== undefined && r.score !== '')
+            ? (r.score + ' ball • ✕ Yiqildi')
+            : '✕ Yiqildi';
+          var copy = Object.assign({}, st);
+          copy._transferBadge = badge;
+          list.push(copy);
+        }
+      });
+      return list;
+    }
+
     function getStats() {
       var passedCount = 0;
       var failedCount = 0;
       var totalScore = 0;
       var scoredCount = 0;
 
-      students.forEach(function(st) {
+      getActiveClassStudents().forEach(function(st) {
         var stId = st.id || st.email;
         var r = cls.levelTestResults[stId];
         if (r) {
@@ -7422,8 +7445,9 @@
           '<button id="eeExportLevelDoc" style="background:#0284c7;color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:12.5px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">📄 Word (.doc)</button>' +
         '</div>' +
         '<div style="display:flex;gap:10px;flex-wrap:wrap;">' +
-          (isTeacher ? '<button id="eeSendFailedSmsBtn" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(245,158,11,0.35);" title="Imtihondan yiqilgan o‘quvchilarning ota-onalariga smsapi.uz orqali avtomatik SMS yuborish">📱 Yiqilganlarga SMS Yuborish</button>' : '') +
-          (isTeacher ? '<button id="eeSaveLevelScoresBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:9px 20px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(16,185,129,0.4);display:inline-flex;align-items:center;gap:6px;" title="Barcha ballarni saqlash va platformaga jonli tezlikda joylash">💾 To‘plagan ballarni saqlash</button>' : '') +
+          (isTeacher ? '<button id="eeTransferFailedBtn" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;border:none;border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(139,92,246,0.4);" title="Imtihondan yiqilgan barcha o‘quvchilarni bittada boshqa guruhga ko‘chirish">🔄 Yiqilganlarni Ko‘chirish (<span id="eeTransferFailedCount">' + stats.failedCount + '</span> ta)</button>' : '') +
+          (isTeacher ? '<button id="eeSendFailedSmsBtn" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(245,158,11,0.35);" title="Imtihondan yiqilgan o‘quvchilarning ota-onalariga smsapi.uz orqali avtomatik SMS yuborish">📱 Yiqilganlarga SMS</button>' : '') +
+          (isTeacher ? '<button id="eeSaveLevelScoresBtn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(16,185,129,0.4);display:inline-flex;align-items:center;gap:6px;" title="Barcha ballarni saqlash va platformaga jonli tezlikda joylash">💾 Ballarni saqlash</button>' : '') +
         '</div>' +
       '</div>' +
 
@@ -7448,7 +7472,7 @@
     m.querySelector('#eeCloseLevelTestModal').onclick = function() { m.remove(); };
 
     function getSortedStudents() {
-      return (cls.students || []).slice().sort(function(a, b) {
+      return getActiveClassStudents().slice().sort(function(a, b) {
         var idA = a.id || a.email;
         var idB = b.id || b.email;
         var rA = cls.levelTestResults[idA] || {};
@@ -7488,9 +7512,14 @@
           '</td>' +
           '<td style="padding:11px 14px;text-align:center;">' +
             (isTeacher ? (
-              '<button type="button" class="ee-level-toggle-decision-btn" data-stid="' + esc(stId) + '" style="background:' + (r.passed ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)') + ';border:1.5px solid ' + (r.passed ? '#10b981' : '#ef4444') + ';color:' + (r.passed ? '#4ade80' : '#fca5a5') + ';padding:5px 14px;border-radius:10px;font-weight:900;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all 0.15s;" title="Bosish: Qarorni o‘zgartirish">' +
-                (r.passed ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi (Qoladi)') +
-              '</button>'
+              '<div style="display:inline-flex;align-items:center;gap:6px;justify-content:center;">' +
+                '<button type="button" class="ee-level-toggle-decision-btn" data-stid="' + esc(stId) + '" style="background:' + (r.passed ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)') + ';border:1.5px solid ' + (r.passed ? '#10b981' : '#ef4444') + ';color:' + (r.passed ? '#4ade80' : '#fca5a5') + ';padding:5px 12px;border-radius:10px;font-weight:900;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:all 0.15s;" title="Bosish: Qarorni o‘zgartirish">' +
+                  (r.passed ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi (Qoladi)') +
+                '</button>' +
+                (r.passed === false
+                  ? '<button type="button" class="ee-level-transfer-one-btn" data-stid="' + esc(stId) + '" style="background:rgba(139,92,246,0.22);border:1px solid rgba(139,92,246,0.55);color:#c4b5fd;padding:5px 9px;border-radius:9px;font-weight:900;font-size:12px;cursor:pointer;" title="Ushbu o‘quvchini boshqa guruhga ko‘chirish">🔄</button>'
+                  : '') +
+              '</div>'
             ) : (
               '<span style="background:' + (r.passed ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)') + ';color:' + (r.passed ? '#34d399' : '#f87171') + ';padding:4px 10px;border-radius:8px;font-weight:800;font-size:11.5px;">' +
                 (r.passed ? '✓ Keyingi Levelga O‘tdi' : '✕ Yiqildi') +
@@ -7566,6 +7595,24 @@
           }
           refreshStatsUI();
           persistLevelTestResults();
+          renderTableRows();
+        };
+      });
+
+      m.querySelectorAll('.ee-level-transfer-one-btn').forEach(function(tBtn) {
+        tBtn.onclick = function() {
+          var stId = tBtn.dataset.stid;
+          var stObj = getActiveClassStudents().find(function(s) { return (s.id || s.email) === stId; });
+          if (!stObj) return;
+          var eaRef = window.EA || window.EthithAttendance;
+          if (!eaRef || typeof eaRef.openTransferStudentModal !== 'function') {
+            alert("Guruhga ko‘chirish moduli yuklanmagan!");
+            return;
+          }
+          eaRef.openTransferStudentModal(cls, stObj, function() {
+            renderTableRows();
+            refreshStatsUI();
+          });
         };
       });
     }
@@ -7595,9 +7642,37 @@
       var pEl = m.querySelector('#eeLevelPassedCount');
       var fEl = m.querySelector('#eeLevelFailedCount');
       var aEl = m.querySelector('#eeLevelAvgScore');
+      var trCntEl = m.querySelector('#eeTransferFailedCount');
       if (pEl) pEl.textContent = s.passedCount + ' ta';
       if (fEl) fEl.textContent = s.failedCount + ' ta';
       if (aEl) aEl.textContent = s.avgScore + '%';
+      if (trCntEl) trCntEl.textContent = s.failedCount;
+    }
+
+    // Bulk Transfer ALL Failed Students to Another Group in One Click
+    var transferFailedBtn = m.querySelector('#eeTransferFailedBtn');
+    if (transferFailedBtn) {
+      transferFailedBtn.onclick = function() {
+        var failedStudents = getFailedStudentsList();
+        if (failedStudents.length === 0) {
+          alert("Imtihondan yiqilgan o‘quvchilar topilmadi! Avval o‘quvchilarning ballarini kiriting yoki 'Yiqildi' holatini belgilang.");
+          return;
+        }
+        var eaRef = window.EA || window.EthithAttendance;
+        if (!eaRef || typeof eaRef.openBulkTransferModal !== 'function') {
+          alert("Ommaviy guruhga ko‘chirish moduli yuklanmagan!");
+          return;
+        }
+        eaRef.openBulkTransferModal(cls, failedStudents, {
+          isBulk: true,
+          title: '🎯 Imtihondan Yiqilganlarni Boshqa Guruhga Ko‘chirish',
+          subtitle: 'Yiqilgan o‘quvchilarning hammasini bittada tanlangan guruhga shundoqligicha ko‘chiring',
+          onComplete: function() {
+            renderTableRows();
+            refreshStatsUI();
+          }
+        });
+      };
     }
 
     // Automatic SMS to Failed Students via smsapi.uz API
@@ -7605,7 +7680,7 @@
     if (sendFailedSmsBtn) {
       sendFailedSmsBtn.onclick = async function() {
         var failedList = [];
-        students.forEach(function(st) {
+        getActiveClassStudents().forEach(function(st) {
           var stId = st.id || st.email;
           var r = cls.levelTestResults[stId];
           if (r && !r.passed) {

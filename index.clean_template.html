@@ -358,6 +358,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet/dist/assets/iconfont/iconfont.css" />
 <script src="https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/js/plugin.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/luckysheet/dist/luckysheet.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
 
 
 </head>
@@ -2227,13 +2228,18 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
               var cell = row[c];
               if (cell !== null && cell !== undefined) {
                 if (typeof cell === 'object') {
-                  var v = cell.v, m = cell.m, f = cell.f, bg = cell.bg, fc = cell.fc, bl = cell.bl;
+                  var v = cell.v, m = cell.m, f = cell.f, bg = cell.bg, fc = cell.fc, bl = cell.bl, it = cell.it, un = cell.un, cl = cell.cl;
+                  var hasRich = cell.ct && Array.isArray(cell.ct.s) && cell.ct.s.length > 0;
                   if ((v !== undefined && v !== null && v !== '') ||
                       (m !== undefined && m !== null && m !== '') ||
                       (f !== undefined && f !== null && f !== '') ||
                       (bg !== undefined && bg !== null && bg !== '') ||
                       (fc !== undefined && fc !== null && fc !== '') ||
-                      (bl !== undefined && bl !== null && bl !== 0)) {
+                      (bl !== undefined && bl !== null && bl !== 0) ||
+                      (it !== undefined && it !== null && it !== 0) ||
+                      (un !== undefined && un !== null && un !== 0) ||
+                      (cl !== undefined && cl !== null && cl !== 0) ||
+                      hasRich) {
                     var cleanCell = {};
                     if (v !== undefined) cleanCell.v = v;
                     if (m !== undefined) cleanCell.m = m;
@@ -2241,10 +2247,16 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
                     if (bg) cleanCell.bg = bg;
                     if (fc) cleanCell.fc = fc;
                     if (bl) cleanCell.bl = bl;
+                    if (it) cleanCell.it = it;
+                    if (un) cleanCell.un = un;
+                    if (cl) cleanCell.cl = cl;
+                    if (cell.ff !== undefined) cleanCell.ff = cell.ff;
                     if (cell.ct) cleanCell.ct = cell.ct;
                     if (cell.fs) cleanCell.fs = cell.fs;
-                    if (cell.ht) cleanCell.ht = cell.ht;
-                    if (cell.vt) cleanCell.vt = cell.vt;
+                    if (cell.ht !== undefined) cleanCell.ht = cell.ht;
+                    if (cell.vt !== undefined) cleanCell.vt = cell.vt;
+                    if (cell.tb !== undefined) cleanCell.tb = cell.tb;
+                    if (cell.mc) cleanCell.mc = cell.mc;
                     celldata.push({ r: r, c: c, v: cleanCell });
                   }
                 } else if (cell !== '') {
@@ -2263,8 +2275,6 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         var cleanConfig = Object.assign({}, sh.config || {});
         delete cleanConfig.defaultRowHeight;
         delete cleanConfig.defaultColWidth;
-        delete cleanConfig.rowlen;
-        delete cleanConfig.columnlen;
 
         return {
           name: sh.name || ('Sheet' + (i + 1)),
@@ -2873,65 +2883,379 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       } catch(e) {}
     });
 
-    // Export XLSX File Button
+    // Helper: Ensure ExcelJS is loaded (for 100% genuine styled .xlsx with colors, fonts, borders, merges)
+    function ensureExcelJsLoaded() {
+      if (typeof window.ExcelJS !== 'undefined' && window.ExcelJS.Workbook) {
+        return Promise.resolve(window.ExcelJS);
+      }
+      var cdns = [
+        'https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js',
+        'https://unpkg.com/exceljs@4.4.0/dist/exceljs.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js'
+      ];
+      return new Promise(function(resolve, reject) {
+        var idx = 0;
+        function tryNext() {
+          if (idx >= cdns.length) return reject(new Error('ExcelJS kutubxonasini yuklab bo‘lmadi'));
+          var sc = document.createElement('script');
+          sc.src = cdns[idx++];
+          sc.onload = function() {
+            if (window.ExcelJS && window.ExcelJS.Workbook) resolve(window.ExcelJS);
+            else tryNext();
+          };
+          sc.onerror = tryNext;
+          document.head.appendChild(sc);
+        }
+        tryNext();
+      });
+    }
+
+    // Helper: Convert CSS color (#RGB, #RRGGBB, rgb(...), rgba(...), named) -> OOXML ARGB (FFRRGGBB)
+    function cssColorToArgb(col) {
+      if (!col || typeof col !== 'string') return null;
+      var s = col.trim().toLowerCase();
+      if (!s || s === 'transparent' || s === 'none' || s === 'initial' || s === 'inherit') return null;
+      var named = {
+        white: 'FFFFFF', black: '000000', red: 'FF0000', green: '008000', blue: '0000FF',
+        yellow: 'FFFF00', orange: 'FFA500', purple: '800080', pink: 'FFC0CB', gray: '808080',
+        grey: '808080', cyan: '00FFFF', magenta: 'FF00FF', lime: '00FF00', navy: '000080',
+        teal: '008080', maroon: '800000', olive: '808000', silver: 'C0C0C0', aqua: '00FFFF',
+        gold: 'FFD700', brown: 'A52A2A'
+      };
+      if (named[s]) return 'FF' + named[s];
+      if (s[0] === '#') {
+        var hex = s.slice(1).replace(/[^0-9a-f]/g, '');
+        if (hex.length === 3) {
+          return 'FF' + (hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2]).toUpperCase();
+        }
+        if (hex.length === 6) return 'FF' + hex.toUpperCase();
+        if (hex.length === 8) return (hex.slice(6, 8) + hex.slice(0, 6)).toUpperCase();
+      }
+      var m = s.match(/rgba?\s*\(\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)(?:\s*,\s*(\d+(?:\.\d+)?))?\s*\)/);
+      if (m) {
+        if (m[4] !== undefined && parseFloat(m[4]) === 0) return null;
+        var r = Math.max(0, Math.min(255, Math.round(parseFloat(m[1])))).toString(16).padStart(2, '0');
+        var g = Math.max(0, Math.min(255, Math.round(parseFloat(m[2])))).toString(16).padStart(2, '0');
+        var b = Math.max(0, Math.min(255, Math.round(parseFloat(m[3])))).toString(16).padStart(2, '0');
+        return ('FF' + r + g + b).toUpperCase();
+      }
+      return null;
+    }
+
+    function mapLuckyBorderStyle(st) {
+      var n = parseInt(st, 10);
+      if (n === 1) return 'thin';
+      if (n === 2) return 'hair';
+      if (n === 3) return 'dotted';
+      if (n === 4 || n === 5 || n === 6 || n === 11) return 'dashed';
+      if (n === 7) return 'dashDot';
+      if (n === 8 || n === 9 || n === 10) return 'medium';
+      if (n === 12) return 'double';
+      if (n === 13) return 'thick';
+      return 'thin';
+    }
+
+    function mapLuckyFontName(ff) {
+      var fontList = ['Times New Roman', 'Arial', 'Tahoma', 'Verdana', 'Microsoft YaHei', 'SimSun', 'SimHei', 'Kaiti', 'FangSong', 'Calibri', 'Georgia', 'Courier New'];
+      if (typeof ff === 'number' && fontList[ff]) return fontList[ff];
+      if (typeof ff === 'string' && ff.trim()) {
+        if (/^\d+$/.test(ff.trim()) && fontList[parseInt(ff.trim(), 10)]) return fontList[parseInt(ff.trim(), 10)];
+        return ff.replace(/['"]/g, '').trim();
+      }
+      return 'Calibri';
+    }
+
+    // Export Styled XLSX File Button (100% preserves ALL cell background colors, font colors, bold/italic, borders, merges, widths, formulas!)
     var btnExportXlsx = document.getElementById('ethLuckyExportXlsxBtn');
     if (btnExportXlsx) {
-      btnExportXlsx.onclick = function() {
+      btnExportXlsx.onclick = async function() {
+        var origBtnHtml = btnExportXlsx.innerHTML;
         try {
-          if (typeof window.XLSX === 'undefined') {
-            toast('XLSX kutubxonasi yuklanmagan');
-            return;
-          }
-          var sheets = getActiveWorkbookData();
-          var wb = window.XLSX.utils.book_new();
+          btnExportXlsx.disabled = true;
+          btnExportXlsx.innerHTML = '<span>⏳</span> Rangli Excel tayyorlanmoqda...';
+          commitActiveLuckysheetCell();
 
-          sheets.forEach(function(sh, sIdx) {
-            var maxRow = 0, maxCol = 0;
-            var cellList = sh.celldata || [];
-            cellList.forEach(function(c) {
-              if (c.r > maxRow) maxRow = c.r;
-              if (c.c > maxCol) maxCol = c.c;
-            });
-            var wsData = [];
-            for (var r = 0; r <= Math.max(maxRow, 20); r++) {
-              var row = [];
-              for (var col = 0; col <= Math.max(maxCol, 15); col++) {
-                row.push('');
-              }
-              wsData.push(row);
+          // Get live raw sheets directly from Luckysheet so every color, border, width, height & merge is preserved 1:1
+          var rawSheets = [];
+          if (typeof window.luckysheet !== 'undefined') {
+            if (typeof window.luckysheet.getAllSheets === 'function') {
+              try { rawSheets = window.luckysheet.getAllSheets(); } catch(e) {}
             }
-            cellList.forEach(function(c) {
-              if (c.v) {
-                var val = c.v.m !== undefined ? c.v.m : (c.v.v !== undefined ? c.v.v : '');
-                if (wsData[c.r]) wsData[c.r][c.c] = val;
-              }
-            });
-            while (wsData.length > 0 && wsData[wsData.length - 1].every(function(x) { return x === ''; })) {
-              wsData.pop();
+            if ((!Array.isArray(rawSheets) || rawSheets.length === 0) && typeof window.luckysheet.getluckysheetfile === 'function') {
+              try { rawSheets = window.luckysheet.getluckysheetfile(); } catch(e) {}
             }
-            var ws = window.XLSX.utils.aoa_to_sheet(wsData);
-            window.XLSX.utils.book_append_sheet(wb, ws, sh.name || ('Sheet' + (sIdx + 1)));
+          }
+          if (!Array.isArray(rawSheets) || rawSheets.length === 0) {
+            rawSheets = getActiveWorkbookData();
+          }
+
+          var ExcelJSRef = await ensureExcelJsLoaded();
+          var workbook = new ExcelJSRef.Workbook();
+          workbook.creator = 'English House';
+          workbook.created = new Date();
+
+          var usedSheetNames = {};
+
+          rawSheets.forEach(function(sh, sIdx) {
+            var baseName = String(sh.name || ('Sheet' + (sIdx + 1))).replace(/[\\\/\?\*\[\]:]/g, '_').slice(0, 31) || ('Sheet' + (sIdx + 1));
+            var finalName = baseName;
+            var dupN = 2;
+            while (usedSheetNames[finalName.toLowerCase()]) {
+              finalName = baseName.slice(0, 28) + '_' + (dupN++);
+            }
+            usedSheetNames[finalName.toLowerCase()] = true;
+
+            var wsOpts = { properties: {} };
+            var tabArgb = cssColorToArgb(sh.color);
+            if (tabArgb) wsOpts.properties.tabColor = { argb: tabArgb };
+            var worksheet = workbook.addWorksheet(finalName, wsOpts);
+
+            // Build unified cell map (r_c -> cellObj) from live 2D sh.data AND sparse sh.celldata
+            var cellMap = {};
+            var maxColUsed = 0;
+
+            function recordCell(r, c, cell) {
+              if (cell === null || cell === undefined) return;
+              if (typeof cell !== 'object') {
+                if (cell === '') return;
+                cell = { v: cell, m: String(cell) };
+              }
+              var hasVal = (cell.v !== undefined && cell.v !== null && cell.v !== '') ||
+                           (cell.m !== undefined && cell.m !== null && cell.m !== '') ||
+                           (cell.f !== undefined && cell.f !== null && cell.f !== '') ||
+                           (cell.ct && Array.isArray(cell.ct.s) && cell.ct.s.length > 0);
+              var hasStyle = Boolean(cssColorToArgb(cell.bg) || cssColorToArgb(cell.fc) || cell.bl || cell.it || cell.un || cell.cl || cell.fs || cell.mc);
+              if (!hasVal && !hasStyle) return;
+              cellMap[r + '_' + c] = { r: r, c: c, cell: cell };
+              if (c > maxColUsed) maxColUsed = c;
+            }
+
+            if (Array.isArray(sh.data) && sh.data.length > 0) {
+              for (var r = 0; r < sh.data.length; r++) {
+                var rowArr = sh.data[r];
+                if (!Array.isArray(rowArr)) continue;
+                for (var c = 0; c < rowArr.length; c++) {
+                  if (rowArr[c] !== null && rowArr[c] !== undefined) {
+                    recordCell(r, c, rowArr[c]);
+                  }
+                }
+              }
+            }
+            if (Object.keys(cellMap).length === 0 && Array.isArray(sh.celldata)) {
+              sh.celldata.forEach(function(item) {
+                if (item && item.r !== undefined && item.c !== undefined) {
+                  recordCell(item.r, item.c, item.v);
+                }
+              });
+            }
+
+            // Apply cell values, formulas, background fills, font styles, and alignments
+            Object.keys(cellMap).forEach(function(k) {
+              var entry = cellMap[k];
+              var cell = entry.cell;
+              var xlCell = worksheet.getCell(entry.r + 1, entry.c + 1);
+
+              // 1. Value / Formula / RichText
+              if (cell.f && typeof cell.f === 'string' && cell.f.trim().charAt(0) === '=') {
+                var resVal = (cell.v !== undefined && cell.v !== null && cell.v !== '') ? cell.v : undefined;
+                xlCell.value = { formula: cell.f.trim().slice(1), result: resVal };
+              } else if (cell.ct && cell.ct.t === 'inlineStr' && Array.isArray(cell.ct.s) && cell.ct.s.length > 0) {
+                xlCell.value = {
+                  richText: cell.ct.s.map(function(run) {
+                    var rFont = {
+                      name: mapLuckyFontName(run.ff !== undefined ? run.ff : cell.ff),
+                      size: Number(run.fs || cell.fs) || 11,
+                      bold: (run.bl === 1 || run.bl === true),
+                      italic: (run.it === 1 || run.it === true),
+                      underline: (run.un === 1 || run.un === true),
+                      strike: (run.cl === 1 || run.cl === true)
+                    };
+                    var runColor = cssColorToArgb(run.fc || cell.fc);
+                    if (runColor) rFont.color = { argb: runColor };
+                    return { text: String(run.v !== undefined ? run.v : ''), font: rFont };
+                  })
+                };
+              } else if (cell.v !== undefined && cell.v !== null && cell.v !== '') {
+                var rawV = cell.v;
+                if (typeof rawV === 'number' && !isNaN(rawV)) {
+                  xlCell.value = rawV;
+                } else if (cell.ct && cell.ct.t === 'n' && !isNaN(Number(rawV)) && String(rawV).trim() !== '') {
+                  xlCell.value = Number(rawV);
+                } else {
+                  xlCell.value = (cell.m !== undefined && cell.m !== null && cell.m !== '') ? String(cell.m) : rawV;
+                }
+              } else if (cell.m !== undefined && cell.m !== null && cell.m !== '') {
+                xlCell.value = String(cell.m);
+              }
+
+              // Number format if specified
+              if (cell.ct && cell.ct.fa && cell.ct.fa !== 'General' && cell.ct.fa !== '@') {
+                xlCell.numFmt = cell.ct.fa;
+              }
+
+              // 2. Background Fill Color (bg)
+              var bgArgb = cssColorToArgb(cell.bg);
+              if (bgArgb) {
+                xlCell.fill = {
+                  type: 'pattern',
+                  pattern: 'solid',
+                  fgColor: { argb: bgArgb }
+                };
+              }
+
+              // 3. Font (color, bold, italic, underline, strike, size, family)
+              var fcArgb = cssColorToArgb(cell.fc);
+              var fontObj = {
+                name: mapLuckyFontName(cell.ff),
+                size: Number(cell.fs) || 11
+              };
+              if (cell.bl === 1 || cell.bl === '1' || cell.bl === true) fontObj.bold = true;
+              if (cell.it === 1 || cell.it === '1' || cell.it === true) fontObj.italic = true;
+              if (cell.un === 1 || cell.un === '1' || cell.un === true) fontObj.underline = true;
+              if (cell.cl === 1 || cell.cl === '1' || cell.cl === true) fontObj.strike = true;
+              if (fcArgb) fontObj.color = { argb: fcArgb };
+              xlCell.font = fontObj;
+
+              // 4. Alignment
+              var hMap = { '0': 'center', '1': 'left', '2': 'right' };
+              var vMap = { '0': 'middle', '1': 'top', '2': 'bottom' };
+              var alignObj = {};
+              if (cell.ht !== undefined && hMap[String(cell.ht)]) alignObj.horizontal = hMap[String(cell.ht)];
+              if (cell.vt !== undefined && vMap[String(cell.vt)]) alignObj.vertical = vMap[String(cell.vt)];
+              else alignObj.vertical = 'middle';
+              if (cell.tb === 2 || cell.tb === '2') alignObj.wrapText = true;
+              xlCell.alignment = alignObj;
+            });
+
+            var cfg = sh.config || {};
+
+            // 5. Borders (both cell-level and range-level borderInfo)
+            if (Array.isArray(cfg.borderInfo)) {
+              cfg.borderInfo.forEach(function(bi) {
+                if (!bi) return;
+                if (bi.rangeType === 'cell' && bi.value) {
+                  var bv = bi.value;
+                  var bCell = worksheet.getCell((bv.row_index || 0) + 1, (bv.col_index || 0) + 1);
+                  var curB = Object.assign({}, bCell.border || {});
+                  var sideMap = [['top', 't'], ['bottom', 'b'], ['left', 'l'], ['right', 'r']];
+                  sideMap.forEach(function(pair) {
+                    var side = pair[0], shortK = pair[1];
+                    var spec = bv[side] || bv[shortK];
+                    if (spec) {
+                      var bCol = cssColorToArgb(spec.color) || 'FF000000';
+                      curB[side] = { style: mapLuckyBorderStyle(spec.style), color: { argb: bCol } };
+                    }
+                  });
+                  bCell.border = curB;
+                } else if (bi.rangeType === 'range' && Array.isArray(bi.range)) {
+                  var bStyle = mapLuckyBorderStyle(bi.style);
+                  var bArgb = cssColorToArgb(bi.color) || 'FF000000';
+                  var sideSpec = { style: bStyle, color: { argb: bArgb } };
+                  var bt = bi.borderType || 'border-all';
+                  bi.range.forEach(function(rg) {
+                    if (!rg || !rg.row || !rg.column) return;
+                    var r1 = rg.row[0], r2 = rg.row[1], c1 = rg.column[0], c2 = rg.column[1];
+                    for (var rr = r1; rr <= r2; rr++) {
+                      for (var cc = c1; cc <= c2; cc++) {
+                        var bc = worksheet.getCell(rr + 1, cc + 1);
+                        var bObj = Object.assign({}, bc.border || {});
+                        if (bt === 'border-none') {
+                          bc.border = {};
+                          continue;
+                        }
+                        if (bt === 'border-all') {
+                          bObj.top = sideSpec; bObj.bottom = sideSpec; bObj.left = sideSpec; bObj.right = sideSpec;
+                        } else if (bt === 'border-outside') {
+                          if (rr === r1) bObj.top = sideSpec;
+                          if (rr === r2) bObj.bottom = sideSpec;
+                          if (cc === c1) bObj.left = sideSpec;
+                          if (cc === c2) bObj.right = sideSpec;
+                        } else if (bt === 'border-inside') {
+                          if (rr > r1) bObj.top = sideSpec;
+                          if (rr < r2) bObj.bottom = sideSpec;
+                          if (cc > c1) bObj.left = sideSpec;
+                          if (cc < c2) bObj.right = sideSpec;
+                        } else if (bt === 'border-top' && rr === r1) {
+                          bObj.top = sideSpec;
+                        } else if (bt === 'border-bottom' && rr === r2) {
+                          bObj.bottom = sideSpec;
+                        } else if (bt === 'border-left' && cc === c1) {
+                          bObj.left = sideSpec;
+                        } else if (bt === 'border-right' && cc === c2) {
+                          bObj.right = sideSpec;
+                        } else if (bt === 'border-horizontal') {
+                          if (rr > r1) bObj.top = sideSpec;
+                          if (rr < r2) bObj.bottom = sideSpec;
+                        } else if (bt === 'border-vertical') {
+                          if (cc > c1) bObj.left = sideSpec;
+                          if (cc < c2) bObj.right = sideSpec;
+                        }
+                        bc.border = bObj;
+                      }
+                    }
+                  });
+                }
+              });
+            }
+
+            // 6. Merged Cells
+            if (cfg.merge && typeof cfg.merge === 'object') {
+              Object.keys(cfg.merge).forEach(function(mk) {
+                var mg = cfg.merge[mk];
+                if (mg && mg.r !== undefined && mg.c !== undefined && mg.rs && mg.cs) {
+                  try {
+                    worksheet.mergeCells(mg.r + 1, mg.c + 1, mg.r + mg.rs, mg.c + mg.cs);
+                  } catch(e) {}
+                }
+              });
+            }
+
+            // 7. Column widths & Row heights
+            if (cfg.columnlen && typeof cfg.columnlen === 'object') {
+              Object.keys(cfg.columnlen).forEach(function(cKey) {
+                var ci = parseInt(cKey, 10);
+                var px = Number(cfg.columnlen[cKey]);
+                if (!isNaN(ci) && px > 0) {
+                  worksheet.getColumn(ci + 1).width = Math.max(4, Math.round((px / 7.5) * 10) / 10);
+                }
+              });
+            } else {
+              // Give used columns sensible readable width so text never clips
+              for (var ci = 0; ci <= maxColUsed; ci++) {
+                var colObj = worksheet.getColumn(ci + 1);
+                if (!colObj.width) colObj.width = 14;
+              }
+            }
+            if (cfg.rowlen && typeof cfg.rowlen === 'object') {
+              Object.keys(cfg.rowlen).forEach(function(rKey) {
+                var ri = parseInt(rKey, 10);
+                var px = Number(cfg.rowlen[rKey]);
+                if (!isNaN(ri) && px > 0) {
+                  worksheet.getRow(ri + 1).height = Math.max(12, Math.round((px * 0.75) * 10) / 10);
+                }
+              });
+            }
           });
 
-          var docName = (docNameInput ? docNameInput.value : activeDoc.name).replace(/[^a-zA-Z0-9_\-]/g, '_');
+          var docName = (docNameInput ? docNameInput.value : activeDoc.name).replace(/[^a-zA-Z0-9_\-\u0400-\u04FF]/g, '_');
           var fileName = (docName || 'English_House_Jadval') + '.xlsx';
 
-          var wbout = window.XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
-          var buf = new ArrayBuffer(wbout.length);
-          var view = new Uint8Array(buf);
-          for (var i = 0; i < wbout.length; i++) view[i] = wbout.charCodeAt(i) & 0xFF;
-          var blob = new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+          var buffer = await workbook.xlsx.writeBuffer();
+          var blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
           var url = URL.createObjectURL(blob);
           var a = document.createElement('a');
           a.href = url;
           a.download = fileName;
           document.body.appendChild(a);
           a.click();
-          setTimeout(function() { a.remove(); URL.revokeObjectURL(url); }, 500);
-          toast('✅ Excel fayli (' + fileName + ') yuklandi!');
+          setTimeout(function() { a.remove(); URL.revokeObjectURL(url); }, 800);
+          toast('✅ Rangli Excel fayli (' + fileName + ') barcha rang va stillari bilan yuklandi!');
         } catch(err) {
-          console.error('Export error:', err);
+          console.error('Styled Export error:', err);
           toast('Eksportda xatolik: ' + err.message);
+        } finally {
+          btnExportXlsx.disabled = false;
+          btnExportXlsx.innerHTML = origBtnHtml;
         }
       };
     }
@@ -2979,74 +3303,257 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       };
     }
 
-    // File Upload (Import .xlsx) Input
+    // File Upload (Import .xlsx) Input — ExcelJS preserves colors, fonts, alignment, merges & widths
     var fileInput = document.getElementById('ethLuckyFileInputBottom');
     if (fileInput) {
+      function argbToHex(colorObj) {
+        if (!colorObj || typeof colorObj !== 'object') return null;
+        if (colorObj.argb && typeof colorObj.argb === 'string') {
+          var s = colorObj.argb.replace(/^#/, '').trim();
+          if (s.length === 8) {
+            if (s.slice(0, 2).toUpperCase() === '00') return null;
+            return '#' + s.slice(2).toUpperCase();
+          }
+          if (s.length === 6) return '#' + s.toUpperCase();
+        }
+        return null;
+      }
+
+      function applyImportedSheets(f, newLuckySheets) {
+        if (!newLuckySheets || newLuckySheets.length === 0) return;
+        var importTitle = f.name.replace(/\.[^/.]+$/, "");
+        var curList = loadSavedList();
+        var importedDoc = {
+          id: 'sheet_imp_' + Date.now(),
+          name: importTitle,
+          updatedAt: new Date().toLocaleDateString('uz-UZ'),
+          data: newLuckySheets
+        };
+        curList.unshift(importedDoc);
+        saveList(curList, true);
+        if (window.EthithSync && typeof window.EthithSync.broadcastSpreadsheetSaved === 'function') {
+          window.EthithSync.broadcastSpreadsheetSaved(importedDoc);
+        }
+        localStorage.setItem(ACTIVE_ID_KEY, importedDoc.id);
+        activeDoc = importedDoc;
+        if (docNameInput) docNameInput.value = importTitle;
+        renderSelectOptions(importedDoc.id);
+        renderLuckysheet(newLuckySheets);
+        toast('✅ Excel fayli (' + f.name + ') rang va stillari bilan ochildi!');
+      }
+
       fileInput.onchange = function(e) {
         var f = e.target.files && e.target.files[0];
         if (!f) return;
+        var isXlsx = /\.xlsx$/i.test(f.name || '');
         var reader = new FileReader();
-        reader.onload = function(ev) {
+        reader.onload = async function(ev) {
           try {
-            var data = new Uint8Array(ev.target.result);
-            var workbook = window.XLSX.read(data, { type: 'array' });
+            var buf = ev.target.result;
             var newLuckySheets = [];
 
-            workbook.SheetNames.forEach(function(name, sIdx) {
-              var ws = workbook.Sheets[name];
-              var json = window.XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
-              var cellData = [];
+            // Prefer ExcelJS for .xlsx so background colors, font colors, merges & widths survive import
+            if (isXlsx && typeof ensureExcelJsLoaded === 'function') {
+              try {
+                await ensureExcelJsLoaded();
+                if (typeof window.ExcelJS !== 'undefined') {
+                  var wb = new window.ExcelJS.Workbook();
+                  await wb.xlsx.load(buf);
 
-              for (var r = 0; r < json.length; r++) {
-                var rowArr = json[r];
-                for (var c = 0; c < rowArr.length; c++) {
-                  var rawVal = rowArr[c];
-                  if (rawVal !== '' && rawVal !== null && rawVal !== undefined) {
-                    var cellObj = { v: rawVal, m: String(rawVal) };
-                    if (typeof rawVal === 'number') {
-                      cellObj.ct = { fa: "General", t: "n" };
+                  wb.eachSheet(function(ws, sheetId) {
+                    var sIdx = newLuckySheets.length;
+                    var cellData = [];
+                    var mergeCfg = {};
+                    var colLenCfg = {};
+                    var rowLenCfg = {};
+                    var maxR = 0, maxC = 0;
+
+                    // Column widths
+                    if (ws.columns && ws.columns.length) {
+                      ws.columns.forEach(function(col, ci) {
+                        if (col && col.width) colLenCfg[ci] = Math.max(24, Math.round(col.width * 7.5));
+                      });
                     }
-                    cellData.push({ r: r, c: c, v: cellObj });
+
+                    // Merged cells
+                    var mergedRanges = (ws.model && Array.isArray(ws.model.merges)) ? ws.model.merges : [];
+                    var mergeSkip = {};
+                    mergedRanges.forEach(function(rngStr) {
+                      var mParts = String(rngStr).split(':');
+                      if (mParts.length !== 2) return;
+                      var parseRef = function(ref) {
+                        var mm = ref.match(/^([A-Z]+)(\d+)$/i);
+                        if (!mm) return null;
+                        var letters = mm[1].toUpperCase();
+                        var colN = 0;
+                        for (var li = 0; li < letters.length; li++) colN = colN * 26 + (letters.charCodeAt(li) - 64);
+                        return { r: parseInt(mm[2], 10) - 1, c: colN - 1 };
+                      };
+                      var p1 = parseRef(mParts[0]);
+                      var p2 = parseRef(mParts[1]);
+                      if (!p1 || !p2) return;
+                      var rs = p2.r - p1.r + 1;
+                      var cs = p2.c - p1.c + 1;
+                      mergeCfg[p1.r + '_' + p1.c] = { r: p1.r, c: p1.c, rs: rs, cs: cs };
+                      for (var mr = p1.r; mr <= p2.r; mr++) {
+                        for (var mc = p1.c; mc <= p2.c; mc++) {
+                          if (mr !== p1.r || mc !== p1.c) {
+                            mergeSkip[mr + '_' + mc] = { r: p1.r, c: p1.c };
+                          }
+                        }
+                      }
+                    });
+
+                    ws.eachRow({ includeEmpty: true }, function(row, rowNumber) {
+                      var r0 = rowNumber - 1;
+                      if (r0 > maxR) maxR = r0;
+                      if (row.height) rowLenCfg[r0] = Math.max(16, Math.round(row.height * 1.333));
+
+                      row.eachCell({ includeEmpty: true }, function(cell, colNumber) {
+                        var c0 = colNumber - 1;
+                        if (c0 > maxC) maxC = c0;
+
+                        var rawVal = cell.value;
+                        var valOut = null;
+                        var mOut = '';
+                        var formulaStr = null;
+
+                        if (rawVal !== null && rawVal !== undefined) {
+                          if (typeof rawVal === 'object') {
+                            if (rawVal.formula !== undefined) {
+                              formulaStr = '=' + String(rawVal.formula).replace(/^=/, '');
+                              valOut = rawVal.result !== undefined ? rawVal.result : '';
+                              mOut = String(valOut);
+                            } else if (Array.isArray(rawVal.richText)) {
+                              mOut = rawVal.richText.map(function(rt) { return rt.text || ''; }).join('');
+                              valOut = mOut;
+                            } else if (rawVal instanceof Date) {
+                              mOut = rawVal.toLocaleDateString('uz-UZ');
+                              valOut = mOut;
+                            } else if (rawVal.text !== undefined) {
+                              mOut = String(rawVal.text);
+                              valOut = mOut;
+                            } else {
+                              mOut = String(rawVal);
+                              valOut = mOut;
+                            }
+                          } else {
+                            valOut = rawVal;
+                            mOut = String(rawVal);
+                          }
+                        }
+
+                        var bgHex = (cell.fill && cell.fill.type === 'pattern' && cell.fill.pattern === 'solid')
+                          ? argbToHex(cell.fill.fgColor)
+                          : null;
+                        var fcHex = (cell.font && cell.font.color) ? argbToHex(cell.font.color) : null;
+                        var hasStyle = !!(bgHex || fcHex || (cell.font && (cell.font.bold || cell.font.italic || cell.font.underline || cell.font.strike || cell.font.size)));
+                        var masterMerge = mergeCfg[r0 + '_' + c0];
+                        var childMerge = mergeSkip[r0 + '_' + c0];
+
+                        if (valOut === null && !hasStyle && !masterMerge && !childMerge) return;
+
+                        var cellObj = {};
+                        if (valOut !== null && valOut !== undefined && valOut !== '') {
+                          cellObj.v = valOut;
+                          cellObj.m = mOut;
+                          if (typeof valOut === 'number') cellObj.ct = { fa: 'General', t: 'n' };
+                        }
+                        if (formulaStr) cellObj.f = formulaStr;
+                        if (bgHex) cellObj.bg = bgHex;
+                        if (fcHex) cellObj.fc = fcHex;
+                        if (cell.font) {
+                          if (cell.font.bold) cellObj.bl = 1;
+                          if (cell.font.italic) cellObj.it = 1;
+                          if (cell.font.underline) cellObj.un = 1;
+                          if (cell.font.strike) cellObj.cl = 1;
+                          if (cell.font.size) cellObj.fs = cell.font.size;
+                          if (cell.font.name) cellObj.ff = cell.font.name;
+                        }
+                        if (cell.alignment) {
+                          if (cell.alignment.horizontal === 'center') cellObj.ht = 0;
+                          else if (cell.alignment.horizontal === 'left') cellObj.ht = 1;
+                          else if (cell.alignment.horizontal === 'right') cellObj.ht = 2;
+                          if (cell.alignment.vertical === 'middle') cellObj.vt = 0;
+                          else if (cell.alignment.vertical === 'top') cellObj.vt = 1;
+                          else if (cell.alignment.vertical === 'bottom') cellObj.vt = 2;
+                          if (cell.alignment.wrapText) cellObj.tb = 2;
+                        }
+                        if (masterMerge) cellObj.mc = masterMerge;
+                        else if (childMerge) cellObj.mc = childMerge;
+
+                        cellData.push({ r: r0, c: c0, v: cellObj });
+                      });
+                    });
+
+                    var sheetCfg = {};
+                    if (Object.keys(mergeCfg).length > 0) sheetCfg.merge = mergeCfg;
+                    if (Object.keys(colLenCfg).length > 0) sheetCfg.columnlen = colLenCfg;
+                    if (Object.keys(rowLenCfg).length > 0) sheetCfg.rowlen = rowLenCfg;
+
+                    var tabHex = (ws.properties && ws.properties.tabColor) ? argbToHex(ws.properties.tabColor) : null;
+                    newLuckySheets.push({
+                      name: ws.name || ('Sheet' + (sIdx + 1)),
+                      color: tabHex || '#38bdf8',
+                      index: sIdx,
+                      status: sIdx === 0 ? 1 : 0,
+                      order: sIdx,
+                      row: Math.max(maxR + 50, 1000),
+                      column: Math.max(maxC + 10, 60),
+                      celldata: cellData,
+                      config: sheetCfg
+                    });
+                  });
+                }
+              } catch (excelJsImpErr) {
+                console.warn('ExcelJS import fallback to XLSX:', excelJsImpErr);
+                newLuckySheets = [];
+              }
+            }
+
+            // Fallback for .xls / .csv or if ExcelJS failed
+            if (newLuckySheets.length === 0) {
+              var data = new Uint8Array(buf);
+              var workbook = window.XLSX.read(data, { type: 'array' });
+
+              workbook.SheetNames.forEach(function(name, sIdx) {
+                var ws = workbook.Sheets[name];
+                var json = window.XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+                var cellData = [];
+
+                for (var r = 0; r < json.length; r++) {
+                  var rowArr = json[r];
+                  for (var c = 0; c < rowArr.length; c++) {
+                    var rawVal = rowArr[c];
+                    if (rawVal !== '' && rawVal !== null && rawVal !== undefined) {
+                      var cellObj = { v: rawVal, m: String(rawVal) };
+                      if (typeof rawVal === 'number') {
+                        cellObj.ct = { fa: "General", t: "n" };
+                      }
+                      cellData.push({ r: r, c: c, v: cellObj });
+                    }
                   }
                 }
-              }
 
-              newLuckySheets.push({
-                name: name,
-                color: '#38bdf8',
-                index: sIdx,
-                status: sIdx === 0 ? 1 : 0,
-                order: sIdx,
-                row: Math.max(json.length + 50, 1000),
-                column: Math.max((json[0] ? json[0].length : 20) + 10, 60),
-                celldata: cellData
+                newLuckySheets.push({
+                  name: name,
+                  color: '#38bdf8',
+                  index: sIdx,
+                  status: sIdx === 0 ? 1 : 0,
+                  order: sIdx,
+                  row: Math.max(json.length + 50, 1000),
+                  column: Math.max((json[0] ? json[0].length : 20) + 10, 60),
+                  celldata: cellData
+                });
               });
-            });
-
-            if (newLuckySheets.length > 0) {
-              var importTitle = f.name.replace(/\.[^/.]+$/, "");
-              var curList = loadSavedList();
-              var importedDoc = {
-                id: 'sheet_imp_' + Date.now(),
-                name: importTitle,
-                updatedAt: new Date().toLocaleDateString('uz-UZ'),
-                data: newLuckySheets
-              };
-              curList.unshift(importedDoc);
-              saveList(curList, true);
-              if (window.EthithSync && typeof window.EthithSync.broadcastSpreadsheetSaved === 'function') {
-                window.EthithSync.broadcastSpreadsheetSaved(importedDoc);
-              }
-              localStorage.setItem(ACTIVE_ID_KEY, importedDoc.id);
-              activeDoc = importedDoc;
-              if (docNameInput) docNameInput.value = importTitle;
-              renderSelectOptions(importedDoc.id);
-              renderLuckysheet(newLuckySheets);
-              toast('✅ Excel fayli (' + f.name + ') muvaffaqiyatli ochildi!');
             }
+
+            applyImportedSheets(f, newLuckySheets);
           } catch(err) {
             console.error('Import error:', err);
             toast('Faylni ochishda xatolik: ' + err.message);
+          } finally {
+            fileInput.value = '';
           }
         };
         reader.readAsArrayBuffer(f);

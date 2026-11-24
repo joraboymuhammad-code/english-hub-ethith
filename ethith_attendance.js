@@ -958,35 +958,11 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           cls.students = realSt;
         }
       } else {
-        cls.maxCapacity = 18;
-        // Strip Azimjon and force exactly 18 tester students: tester_1 .. tester_18
-        var hasNonTester = cls.students.some(function(s) {
-          if (!s || !s.name) return true;
-          var nl = s.name.toLowerCase();
-          return nl.includes('azimjon') || nl.includes('toirov') || (!s.isTester && !nl.startsWith('tester_'));
+        cls.maxCapacity = Math.max(cls.students.length, cls.maxCapacity || 18);
+        // Preserve ALL real enrolled & transferred students cleanly; only drop null/corrupted entries
+        cls.students = (cls.students || []).filter(function(s) {
+          return s && typeof s === 'object';
         });
-        if (hasNonTester || cls.students.length !== 18) {
-          var testers = [];
-          for (var curIdx = 1; curIdx <= 18; curIdx++) {
-            testers.push({
-              id: cls.id + '_std_' + curIdx,
-              name: 'tester_' + curIdx,
-              email: cls.id + '_std_' + curIdx + '@ethith.uz',
-              role: 'student',
-              phone: '',
-              parentPhone: '',
-              login: '',
-              password: '',
-              joinedAt: '2026-10-28',
-              dailyMinutes: 0,
-              coins: 0,
-              isTester: true,
-              isOnline: false,
-              lastLogin: null
-            });
-          }
-          cls.students = testers;
-        }
       }
     });
 
@@ -1007,45 +983,10 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     if (!cls.schedule) cls.schedule = 'har_kuni';
     if (!cls.students) cls.students = [];
 
-    // Special: cls_urolov_azizbek_upper is Azizbek Urolov's Upper group and keeps its real students and Azimjon Toirov!
-    if (cls.id === 'cls_urolov_azizbek_upper') {
-      var realStEnsure = (cls.students || []).filter(function(st) {
-        return st && !st.isTester && st.name && !st.name.toLowerCase().startsWith('tester_');
-      });
-      if (realStEnsure.length > 0) {
-        cls.students = realStEnsure;
-      }
-    } else {
-      // ALL OTHER GROUPS OF ALL TEACHERS: strictly 18 tester students (tester_1 .. tester_18)
-      // Azimjon Toirov is strictly banned from any other group!
-      var hasInvalid = cls.students.some(function(s) {
-        if (!s || !s.name) return true;
-        var nl = s.name.toLowerCase();
-        return nl.includes('azimjon') || nl.includes('toirov') || (!s.isTester && !nl.startsWith('tester_'));
-      });
-      if (hasInvalid || cls.students.length !== 18) {
-        var testersList = [];
-        for (var cIdx = 1; cIdx <= 18; cIdx++) {
-          testersList.push({
-            id: cls.id + '_std_' + cIdx,
-            name: 'tester_' + cIdx,
-            email: cls.id + '_std_' + cIdx + '@ethith.uz',
-            role: 'student',
-            phone: '',
-            parentPhone: '',
-            login: '',
-            password: '',
-            joinedAt: '2026-10-28',
-            dailyMinutes: 0,
-            coins: 0,
-            isTester: true,
-            isOnline: false,
-            lastLogin: null
-          });
-        }
-        cls.students = testersList;
-      }
-    }
+    // Preserve ALL real enrolled / transferred students intact (never wipe with fake tester_ slots!)
+    cls.students = (cls.students || []).filter(function(st) {
+      return st && typeof st === 'object';
+    });
 
     cls.students.forEach(function(st) {
       if (!st.joinedAt) {
@@ -5728,129 +5669,8 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     };
   };
 
-  // ============================================================================
-  // MODAL: REAL-TIME STUDENT TRANSFER ("🔄 O'quvchini boshqa guruhga ko'chirish")
-  // ============================================================================
-  EA.openTransferStudentModal = function(container, fromCls, stId, curName) {
-    EA.isModalOpen = true;
-    var modalRoot = getGlobalModalRoot();
-    if (!fromCls) fromCls = (EA.classes && EA.classes.find(function(c) { return c.id === EA.currentClassId; })) || {};
-    var allClasses = (typeof getAvailableClasses === 'function' ? getAvailableClasses() : (EA.classes || []));
-    var targetClasses = allClasses.filter(function(c) { return c.id !== fromCls.id; });
-
-    var stObj = (fromCls.students || []).find(function(s) { return (s.id || s.email) === stId; });
-    var cleanName = curName || (stObj && stObj.name) || "O'quvchi";
-
-    var optsHtml = targetClasses.map(function(c) {
-      var realCount = (c.students || []).filter(function(s) { return !s.isTester && !(s.name || '').startsWith('tester_'); }).length;
-      var tName = c.teacherName || c.teacher || 'Ustoz';
-      return '<option value="' + esc(c.id) + '">' + esc(tName) + ' — ' + esc(c.name) + ' (' + realCount + '/18 o\'quvchi)</option>';
-    }).join('');
-
-    var mHtml = '<div id="eaTransferStOverlayBg" style="position:fixed;inset:0;background:rgba(2,6,23,0.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:2147483640;display:flex;align-items:center;justify-content:center;padding:16px;">' +
-      '<div style="background:rgba(15,23,42,0.96);backdrop-filter:blur(24px);border:1px solid rgba(56,189,248,0.4);border-radius:24px;max-width:500px;width:100%;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,0.8),0 0 35px rgba(56,189,248,0.2);color:#f8fafc;font-family:inherit;">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:12px;">' +
-          '<div style="display:flex;align-items:center;gap:10px;">' +
-            '<span style="font-size:24px;">🔄</span>' +
-            '<div>' +
-              '<h3 style="margin:0;font-size:17.5px;font-weight:900;color:#ffffff;">O‘quvchini Boshqa Guruhga Ko‘chirish</h3>' +
-              '<div style="font-size:12px;color:#94a3b8;margin-top:2px;">Real vaqtda bir guruhdan ikkinchisiga ko‘chirish</div>' +
-            '</div>' +
-          '</div>' +
-          '<button type="button" id="eaCloseTransferStModal" style="border:none;background:rgba(255,255,255,0.08);width:32px;height:32px;border-radius:10px;font-size:16px;cursor:pointer;color:#cbd5e1;">✕</button>' +
-        '</div>' +
-
-        '<div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);border-radius:14px;padding:14px 16px;margin-bottom:18px;">' +
-          '<div style="font-size:11.5px;color:#94a3b8;font-weight:700;">Ko‘chirilayotgan O‘quvchi:</div>' +
-          '<div style="font-size:16px;font-weight:900;color:#38bdf8;margin-top:2px;">👤 ' + esc(cleanName) + '</div>' +
-          '<div style="font-size:12px;color:#cbd5e1;margin-top:4px;">Hozirgi guruh: <b style="color:#fff;">' + esc(fromCls.name || 'Guruh') + '</b> (' + esc(fromCls.teacher || '') + ')</div>' +
-        '</div>' +
-
-        '<div style="margin-bottom:22px;">' +
-          '<label style="display:block;font-size:12.5px;font-weight:800;color:#94a3b8;margin-bottom:8px;">Qaysi guruhga ko‘chirilsin?</label>' +
-          '<select id="eaTargetClassSelect" style="width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid rgba(56,189,248,0.5);background:rgba(8,13,26,0.9);font-weight:800;font-size:13.5px;box-sizing:border-box;color:#ffffff;outline:none;">' +
-            optsHtml +
-          '</select>' +
-          '<div style="font-size:11.5px;color:#64748b;margin-top:6px;">Bo‘sh joy (tester) bo‘lgan guruhga o‘quvchi darhol joylashtiriladi</div>' +
-        '</div>' +
-
-        '<div style="display:flex;gap:10px;justify-content:flex-end;">' +
-          '<button type="button" id="eaCancelTransferStBtn" style="background:rgba(255,255,255,0.07);color:#cbd5e1;border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
-          '<button type="button" id="eaConfirmTransferStBtn" style="background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border:none;border-radius:12px;padding:10px 24px;font-size:13.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(2,132,199,0.4);">🔄 Guruhga Ko‘chirish</button>' +
-        '</div>' +
-      '</div></div>';
-
-    modalRoot.innerHTML = mHtml;
-
-    modalRoot.querySelector('#eaCloseTransferStModal').onclick = closeGlobalModal;
-    modalRoot.querySelector('#eaCancelTransferStBtn').onclick = closeGlobalModal;
-    modalRoot.querySelector('#eaTransferStOverlayBg').onclick = function(e) {
-      if (e.target.id === 'eaTransferStOverlayBg') closeGlobalModal();
-    };
-
-    modalRoot.querySelector('#eaConfirmTransferStBtn').onclick = function() {
-      var targetCid = modalRoot.querySelector('#eaTargetClassSelect').value;
-      var toCls = allClasses.find(function(c) { return c.id === targetCid; });
-      if (!toCls) return;
-
-      var movingSt = (fromCls.students || []).find(function(s) { return (s.id || s.email) === stId; });
-      if (!movingSt) {
-        movingSt = { id: stId, name: cleanName, email: stId + '@ethith.uz', role: 'student', isTester: false };
-      }
-      movingSt.isTester = false;
-
-      // 1. Remove from source class and replenish tester slot so it keeps 18
-      fromCls.students = (fromCls.students || []).filter(function(s) { return (s.id || s.email) !== stId; });
-      replenishTesterSlots(fromCls);
-
-      // 2. Add to target class (replace available tester slot if exists)
-      if (!toCls.students) toCls.students = [];
-      var testerIdx = toCls.students.findIndex(function(s) {
-        return s.isTester || (s.name && s.name.startsWith('tester_'));
-      });
-      if (testerIdx !== -1) {
-        toCls.students[testerIdx] = movingSt;
-      } else {
-        toCls.students.push(movingSt);
-      }
-      if (toCls.students.length > (toCls.maxCapacity || 18)) {
-        toCls.maxCapacity = toCls.students.length;
-      }
-
-      // Preserve custom name & phone in target class
-      if (fromCls.customStudentNames && fromCls.customStudentNames[stId]) {
-        if (!toCls.customStudentNames) toCls.customStudentNames = {};
-        toCls.customStudentNames[stId] = fromCls.customStudentNames[stId];
-      }
-      if (fromCls.customStudentPhones && fromCls.customStudentPhones[stId]) {
-        if (!toCls.customStudentPhones) toCls.customStudentPhones = {};
-        toCls.customStudentPhones[stId] = fromCls.customStudentPhones[stId];
-      }
-
-      persistAttendance(fromCls);
-      persistAttendance(toCls);
-
-      if (window.EthithEnterprise && window.EthithEnterprise.saveStore) {
-        window.EthithEnterprise.saveStore();
-      }
-
-      if (window.EthithSync && typeof window.EthithSync.broadcast === 'function') {
-        window.EthithSync.broadcast('STUDENT_TRANSFER', {
-          fromClassId: fromCls.id,
-          toClassId: toCls.id,
-          studentId: stId,
-          student: movingSt
-        });
-      }
-
-      if (window.EthithApp && window.EthithApp.toast) {
-        window.EthithApp.toast(cleanName + " muvaffaqiyatli '" + toCls.name + "' guruhiga ko‘chirildi!");
-      }
-
-      closeGlobalModal();
-      EA.render(container);
-    };
-  };
+  // Note: Unified EA.openTransferStudentModal & EA.openBulkTransferModal are defined below
+  // (supporting both legacy (container, fromCls, stId, curName) and (curClass, curSt, onComplete) calls).
 
   // ============================================================================
   // MODAL: SEND ABSENT SMS TO PARENTS ("📲 Ota-onalarga xabar yuborish")
@@ -7603,183 +7423,577 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
   };
 
   // ============================================================================
-  // STUDENT TRANSFER MODAL (Move student between teachers & groups in real time)
+  // LOSSLESS ATOMIC STUDENT TRANSFER ENGINE (Single & Bulk)
   // ============================================================================
-  EA.openTransferStudentModal = function(curClass, curSt, onComplete) {
-    if (!curSt) return;
-    var overlay = document.createElement('div');
-    overlay.className = 'eth-modal-overlay animate-fade-in';
-    overlay.id = 'eaTransferStudentOverlay';
-    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;z-index:99999999;padding:16px;';
+  EA.transferStudentsToClass = function(fromClass, studentsList, targetClassId) {
+    var allClasses = getAvailableClasses();
+    var targetClass = allClasses.find(function(c) { return c && c.id === targetClassId; });
+    if (!targetClass) return { ok: false, error: 'Guruh topilmadi!' };
 
-    var teachers = (typeof EA.getStoreTeachers === 'function') ? EA.getStoreTeachers() : [];
-    if (teachers.length === 0) {
-      teachers = [{ id: 't_urolov_azizbek', name: 'Azizbek Urolov' }, { id: 't_ravshanov_doniyor', name: 'Ravshanov Doniyor' }];
+    var srcClass = null;
+    if (fromClass) {
+      srcClass = allClasses.find(function(c) { return c && c.id === fromClass.id; }) || fromClass;
+    }
+    if (srcClass && srcClass.id === targetClass.id) {
+      return { ok: false, error: "O‘quvchi allaqachon ushbu guruhda turibdi!" };
     }
 
-    var curTeacher = teachers.find(function(t) {
-      return (curClass && ((t.id === curClass.teacherId) || (t.name && curClass.teacherName && t.name.toLowerCase() === curClass.teacherName.toLowerCase())));
-    }) || teachers[0];
+    var rawList = Array.isArray(studentsList) ? studentsList : (studentsList ? [studentsList] : []);
+    if (rawList.length === 0) return { ok: false, error: "Ko‘chiriladigan o‘quvchi tanlanmagan!" };
 
-    function getClassesForT(tId) {
-      if (typeof EA.getClassesForTeacher === 'function') {
-        return EA.getClassesForTeacher(tId);
+    if (!Array.isArray(targetClass.students)) targetClass.students = [];
+    if (!targetClass.customStudentNames) targetClass.customStudentNames = {};
+    if (!targetClass.customStudentPhones) targetClass.customStudentPhones = {};
+    if (!targetClass.studentPayments) targetClass.studentPayments = {};
+
+    var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
+    var nowTs = Date.now();
+    var movedStudents = [];
+    var touchedSourceClasses = {};
+
+    function matchesStudent(a, b) {
+      if (!a || !b) return false;
+      if (a.id && b.id && a.id === b.id) return true;
+      if (a.login && b.login && String(a.login).toLowerCase() === String(b.login).toLowerCase()) return true;
+      if (a.email && b.email && String(a.email).toLowerCase() === String(b.email).toLowerCase()) return true;
+      return false;
+    }
+
+    rawList.forEach(function(item) {
+      if (!item) return;
+      var itemId = (typeof item === 'string') ? item : (item.id || item.email || item.login);
+      var itemLogin = (typeof item === 'object') ? item.login : null;
+      var itemEmail = (typeof item === 'object') ? item.email : null;
+
+      // Locate original class & complete student object
+      var ownerCls = srcClass;
+      var fullObj = null;
+      if (ownerCls && Array.isArray(ownerCls.students)) {
+        fullObj = ownerCls.students.find(function(s) {
+          return s && (s.id === itemId || s.email === itemId || s.login === itemId || (typeof item === 'object' && matchesStudent(s, item)));
+        });
       }
-      var allClasses = getAvailableClasses();
-      return allClasses.filter(function(c) {
-        return c.teacherId === tId || (curTeacher && c.teacherName && c.teacherName.toLowerCase() === curTeacher.name.toLowerCase());
+      if (!fullObj) {
+        for (var ci = 0; ci < allClasses.length; ci++) {
+          var candCls = allClasses[ci];
+          if (!candCls || !Array.isArray(candCls.students)) continue;
+          var found = candCls.students.find(function(s) {
+            return s && (s.id === itemId || s.email === itemId || s.login === itemId || (typeof item === 'object' && matchesStudent(s, item)));
+          });
+          if (found) {
+            ownerCls = candCls;
+            fullObj = found;
+            break;
+          }
+        }
+      }
+
+      if (ownerCls && ownerCls.id === targetClass.id) return;
+
+      var movingSt = fullObj
+        ? Object.assign({}, fullObj)
+        : (typeof item === 'object' ? Object.assign({}, item) : { id: itemId, name: String(itemId), role: 'student' });
+      delete movingSt._transferBadge;
+
+      if (!movingSt.id) movingSt.id = itemId || ('std_' + (movingSt.login || nowTs));
+      var stKey = movingSt.id || movingSt.email || movingSt.login;
+      movingSt.isTester = false;
+      movingSt.manuallyEnrolled = true;
+      movingSt.classId = targetClass.id;
+      movingSt.updatedAt = nowTs;
+
+      // Preserve custom name, phone, payment from ownerCls
+      if (ownerCls) {
+        if (ownerCls.customStudentNames && ownerCls.customStudentNames[stKey]) {
+          targetClass.customStudentNames[stKey] = ownerCls.customStudentNames[stKey];
+          if (!movingSt.name) movingSt.name = ownerCls.customStudentNames[stKey];
+          delete ownerCls.customStudentNames[stKey];
+        } else if (movingSt.name) {
+          targetClass.customStudentNames[stKey] = movingSt.name;
+        }
+        if (ownerCls.customStudentPhones && ownerCls.customStudentPhones[stKey]) {
+          targetClass.customStudentPhones[stKey] = ownerCls.customStudentPhones[stKey];
+          if (!movingSt.phone) movingSt.phone = ownerCls.customStudentPhones[stKey];
+          if (!movingSt.parentPhone) movingSt.parentPhone = ownerCls.customStudentPhones[stKey];
+          delete ownerCls.customStudentPhones[stKey];
+        } else if (movingSt.parentPhone || movingSt.phone) {
+          targetClass.customStudentPhones[stKey] = movingSt.parentPhone || movingSt.phone;
+        }
+        if (ownerCls.studentPayments && ownerCls.studentPayments[stKey]) {
+          targetClass.studentPayments[stKey] = Object.assign({}, ownerCls.studentPayments[stKey]);
+          delete ownerCls.studentPayments[stKey];
+        }
+
+        // Remove cleanly from source class (no fake tester_ slots!)
+        if (Array.isArray(ownerCls.students)) {
+          ownerCls.students = ownerCls.students.filter(function(s) {
+            if (!s) return false;
+            return !matchesStudent(s, movingSt) && s.id !== stKey && s.email !== stKey && s.login !== stKey;
+          });
+        }
+        ownerCls.updatedAt = nowTs;
+        touchedSourceClasses[ownerCls.id] = ownerCls;
+      } else {
+        if (movingSt.name) targetClass.customStudentNames[stKey] = movingSt.name;
+        if (movingSt.parentPhone || movingSt.phone) targetClass.customStudentPhones[stKey] = movingSt.parentPhone || movingSt.phone;
+      }
+
+      // Clean from targetClass.deletedStudentIds if previously removed
+      if (Array.isArray(targetClass.deletedStudentIds)) {
+        targetClass.deletedStudentIds = targetClass.deletedStudentIds.filter(function(did) {
+          return did !== movingSt.id && did !== movingSt.login && did !== movingSt.email && did !== movingSt.name;
+        });
+      }
+
+      // Insert into targetClass without duplicating
+      var existingIdx = targetClass.students.findIndex(function(s) { return matchesStudent(s, movingSt); });
+      if (existingIdx !== -1) {
+        targetClass.students[existingIdx] = movingSt;
+      } else {
+        var testerIdx = targetClass.students.findIndex(function(s) {
+          return s && (s.isTester === true || (s.name && String(s.name).toLowerCase().startsWith('tester_')));
+        });
+        if (testerIdx !== -1) {
+          targetClass.students[testerIdx] = movingSt;
+        } else {
+          targetClass.students.push(movingSt);
+        }
+      }
+
+      movedStudents.push({ student: movingSt, fromClassId: ownerCls ? ownerCls.id : null });
+    });
+
+    if (movedStudents.length === 0) {
+      return { ok: false, error: "Hech bir o‘quvchi ko‘chirilmadi (allaqachon shu guruhda bo‘lishi mumkin)." };
+    }
+
+    targetClass.updatedAt = nowTs;
+    if (targetClass.students.length > (targetClass.maxCapacity || 18)) {
+      targetClass.maxCapacity = targetClass.students.length;
+    }
+    if (typeof ensureClassAttendance === 'function') ensureClassAttendance(targetClass);
+
+    // Sync BOTH targetClass and all touched source classes across ALL 4 in-memory class arrays
+    var classesToSync = [targetClass];
+    Object.keys(touchedSourceClasses).forEach(function(cid) {
+      classesToSync.push(touchedSourceClasses[cid]);
+    });
+
+    var allClsSources = [
+      window.S && window.S.classes,
+      window.EthithApp && window.EthithApp.state && window.EthithApp.state.classes,
+      window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.classes,
+      window.EthithEnterprise && window.EthithEnterprise.getStore && window.EthithEnterprise.getStore().classes
+    ];
+    allClsSources.forEach(function(arr) {
+      if (!Array.isArray(arr)) return;
+      classesToSync.forEach(function(clsObj) {
+        var f = arr.find(function(c) { return c && c.id === clsObj.id; });
+        if (f && f !== clsObj) {
+          f.students = JSON.parse(JSON.stringify(clsObj.students || []));
+          f.customStudentNames = Object.assign({}, clsObj.customStudentNames || {});
+          f.customStudentPhones = Object.assign({}, clsObj.customStudentPhones || {});
+          f.studentPayments = Object.assign({}, clsObj.studentPayments || {});
+          f.updatedAt = clsObj.updatedAt;
+          if (clsObj.maxCapacity) f.maxCapacity = clsObj.maxCapacity;
+        }
+      });
+    });
+
+    // Update S.accounts across ALL 4 in-memory account arrays
+    var allAccSources = [
+      window.S && window.S.accounts,
+      window.EthithApp && window.EthithApp.state && window.EthithApp.state.accounts,
+      window.ETHITH_INITIAL_STORE && window.ETHITH_INITIAL_STORE.accounts,
+      window.EthithEnterprise && window.EthithEnterprise.getStore && window.EthithEnterprise.getStore().accounts
+    ];
+    allAccSources.forEach(function(arr) {
+      if (!Array.isArray(arr)) return;
+      movedStudents.forEach(function(entry) {
+        var st = entry.student;
+        var mAcc = arr.find(function(a) {
+          return a && (a.id === st.id || (st.login && a.login && String(a.login).toLowerCase() === String(st.login).toLowerCase()) || (st.email && a.email && String(a.email).toLowerCase() === String(st.email).toLowerCase()));
+        });
+        if (mAcc) {
+          mAcc.classId = targetClass.id;
+          mAcc.updatedAt = nowTs;
+        }
+      });
+    });
+
+    // Persist locally
+    classesToSync.forEach(function(clsObj) {
+      if (typeof persistAttendance === 'function') {
+        try { persistAttendance(clsObj); } catch(e) {}
+      }
+    });
+    if (typeof EA.saveClasses === 'function') {
+      try { EA.saveClasses(allClasses); } catch(e) {}
+    }
+    if (window.EthithApp && typeof window.EthithApp.saveState === 'function') {
+      try { window.EthithApp.saveState(); } catch(e) {}
+    }
+    if (window.EthithEnterprise && typeof window.EthithEnterprise.saveStore === 'function') {
+      try { window.EthithEnterprise.saveStore(); } catch(e) {}
+    }
+    try {
+      if (window.EthithApp && window.EthithApp.state) {
+        localStorage.setItem('ethith_v2_state', JSON.stringify(window.EthithApp.state));
+      }
+      if (window.EthithEnterprise && window.EthithEnterprise.getStore) {
+        localStorage.setItem('ethith_enterprise_store', JSON.stringify(window.EthithEnterprise.getStore()));
+      }
+    } catch(e) {}
+
+    // Broadcast real-time MQTT & push to cloud store
+    movedStudents.forEach(function(entry) {
+      var st = entry.student;
+      var payload = {
+        type: 'STUDENT_TRANSFER',
+        studentId: st.id,
+        studentLogin: st.login,
+        studentName: st.name,
+        fromClassId: entry.fromClassId,
+        toClassId: targetClass.id,
+        toTeacherName: targetClass.teacherName || targetClass.teacher || 'Ustoz',
+        toClassName: targetClass.name,
+        student: st,
+        timestamp: nowTs
+      };
+      if (window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
+        window.EthithSync.publishLive(payload);
+      } else if (window.EthithSync && typeof window.EthithSync.publishMqtt === 'function') {
+        window.EthithSync.publishMqtt('ethith/v3/global', payload);
+      }
+    });
+
+    if (window.EthithSync && typeof window.EthithSync.publishLive === 'function') {
+      window.EthithSync.publishLive({
+        type: 'STATE_MUTATION',
+        mutationType: 'student_transfer',
+        classes: (window.S && window.S.classes) || allClasses,
+        accounts: (window.S && window.S.accounts) || []
+      });
+    }
+    if (window.EthithSync && typeof window.EthithSync.pushRemoteStore === 'function') {
+      window.EthithSync.pushRemoteStore();
+    } else if (window.EthithSync && typeof window.EthithSync.pushStore === 'function') {
+      window.EthithSync.pushStore();
+    }
+
+    return {
+      ok: true,
+      movedCount: movedStudents.length,
+      movedNames: movedStudents.map(function(e) { return e.student.name || e.student.id; }),
+      targetClass: targetClass,
+      fromClass: srcClass
+    };
+  };
+
+  // ============================================================================
+  // SEQUENTIAL ALL-GROUPS TRANSFER MODAL (Single Student & Bulk Failed Students)
+  // ============================================================================
+  EA.openBulkTransferModal = function(fromClass, studentsList, options) {
+    options = options || {};
+    var rawStudents = (Array.isArray(studentsList) ? studentsList : [studentsList]).filter(Boolean);
+    if (rawStudents.length === 0) {
+      if (window.EthithApp && window.EthithApp.toast) window.EthithApp.toast("Ko‘chirish uchun o‘quvchi topilmadi!");
+      return;
+    }
+
+    // Remove any existing transfer modal
+    var prev = document.getElementById('eaTransferStudentOverlay');
+    if (prev) prev.remove();
+
+    var allClasses = getAvailableClasses().filter(Boolean);
+    var isBulk = !!options.isBulk || rawStudents.length > 1;
+    var modalTitle = options.title || (isBulk ? 'O‘quvchilarni Boshqa Guruhga Ko‘chirish' : 'O‘quvchini Boshqa Guruhga Ko‘chirish');
+    var modalSubtitle = options.subtitle || (isBulk
+      ? 'Belgilangan barcha o‘quvchilar bittada tanlangan guruhga shundoqligicha ko‘chiriladi'
+      : 'Tizimdagi barcha guruhlardan birini belgilang — o‘quvchi ma‘lumotlari shundoqligicha ko‘chiriladi');
+
+    var selectedStudentKeys = {};
+    rawStudents.forEach(function(st) {
+      var k = st.id || st.email || st.login;
+      selectedStudentKeys[k] = true;
+    });
+    var selectedTargetClassId = null;
+
+    var overlay = document.createElement('div');
+    overlay.className = 'animate-fade-in';
+    overlay.id = 'eaTransferStudentOverlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(2,6,23,0.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;z-index:2147483647;padding:16px;';
+
+    function getRealCount(c) {
+      return (c.students || []).filter(function(s) {
+        return s && !s.isTester && !String(s.name || '').toLowerCase().startsWith('tester_');
+      }).length;
+    }
+
+    function getSelectedStudentsArray() {
+      return rawStudents.filter(function(st) {
+        var k = st.id || st.email || st.login;
+        return !!selectedStudentKeys[k];
       });
     }
 
-    var selectedTId = curTeacher.id;
-    var tClasses = getClassesForT(selectedTId);
+    var singleSt = rawStudents[0];
+    var singleName = (fromClass && fromClass.customStudentNames && fromClass.customStudentNames[singleSt.id || singleSt.email]) || singleSt.name || 'O‘quvchi';
 
-    var html = '<div style="background:linear-gradient(145deg,rgba(15,23,42,0.98),rgba(30,41,59,0.96));border:2px solid #8b5cf6;border-radius:24px;max-width:480px;width:100%;box-shadow:0 24px 60px rgba(0,0,0,0.85),0 0 30px rgba(139,92,246,0.3);padding:24px 26px;color:#f8fafc;box-sizing:border-box;position:relative;">' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:12px;">' +
-        '<div style="display:flex;align-items:center;gap:10px;">' +
-          '<div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#8b5cf6,#6366f1);display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 14px rgba(139,92,246,0.4);">🔄</div>' +
+    var studentsSummaryHtml = '';
+    if (!isBulk) {
+      studentsSummaryHtml =
+        '<div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.28);border-radius:14px;padding:12px 14px;margin-bottom:14px;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">' +
+            '<div>' +
+              '<div style="font-size:14.5px;font-weight:900;color:#ffffff;">👤 ' + esc(singleName) + '</div>' +
+              '<div style="font-size:12px;color:#94a3b8;margin-top:3px;">Hozirgi guruhi: <b style="color:#38bdf8;">' + esc(fromClass ? fromClass.name : 'Noma‘lum') + '</b>' +
+                (fromClass && (fromClass.teacherName || fromClass.teacher) ? (' (' + esc(fromClass.teacherName || fromClass.teacher) + ')') : '') +
+              '</div>' +
+            '</div>' +
+            (singleSt.login ? '<code style="background:rgba(15,23,42,0.8);border:1px solid rgba(56,189,248,0.3);color:#7dd3fc;padding:4px 9px;border-radius:8px;font-size:11.5px;font-weight:800;">' + esc(singleSt.login) + '</code>' : '') +
+          '</div>' +
+        '</div>';
+    } else {
+      var stCardsHtml = rawStudents.map(function(st, i) {
+        var k = st.id || st.email || st.login;
+        var sName = (fromClass && fromClass.customStudentNames && fromClass.customStudentNames[k]) || st.name || k;
+        var badge = st._transferBadge || '';
+        return '<label style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 10px;border-radius:10px;background:rgba(15,23,42,0.75);border:1px solid rgba(255,255,255,0.08);cursor:pointer;">' +
+          '<span style="display:flex;align-items:center;gap:9px;min-width:0;">' +
+            '<input type="checkbox" class="ea-bulk-tr-st-cb" data-stkey="' + esc(k) + '" checked style="width:16px;height:16px;accent-color:#8b5cf6;cursor:pointer;flex-shrink:0;" />' +
+            '<span style="font-size:12.5px;font-weight:800;color:#f8fafc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + (i + 1) + '. ' + esc(sName) + '</span>' +
+          '</span>' +
+          (badge ? '<span style="font-size:11px;font-weight:800;color:#fca5a5;background:rgba(239,68,68,0.16);border:1px solid rgba(239,68,68,0.35);padding:2px 8px;border-radius:7px;flex-shrink:0;">' + esc(badge) + '</span>' : '') +
+        '</label>';
+      }).join('');
+
+      studentsSummaryHtml =
+        '<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.28);border-radius:14px;padding:12px 14px;margin-bottom:14px;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;">' +
+            '<div style="font-size:12.5px;font-weight:900;color:#fca5a5;">👥 Ko‘chiriladigan o‘quvchilar: <span id="eaBulkSelectedCount" style="color:#fff;">' + rawStudents.length + ' / ' + rawStudents.length + ' ta</span></div>' +
+            '<button type="button" id="eaBulkToggleAllStBtn" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);color:#e2e8f0;font-size:11px;font-weight:800;padding:4px 9px;border-radius:8px;cursor:pointer;">Hammasini bekor qilish</button>' +
+          '</div>' +
+          '<div style="display:flex;flex-direction:column;gap:6px;max-height:145px;overflow-y:auto;padding-right:4px;">' + stCardsHtml + '</div>' +
+        '</div>';
+    }
+
+    var html = '<div style="background:linear-gradient(145deg,rgba(15,23,42,0.99),rgba(30,41,59,0.97));border:2px solid rgba(139,92,246,0.75);border-radius:24px;max-width:560px;width:100%;max-height:92vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 28px 70px rgba(0,0,0,0.88),0 0 36px rgba(139,92,246,0.28);padding:22px 24px 18px;color:#f8fafc;box-sizing:border-box;">' +
+      // Header
+      '<div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:12px;">' +
+        '<div style="display:flex;align-items:center;gap:11px;">' +
+          '<div style="width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#8b5cf6,#6366f1);display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 6px 16px rgba(139,92,246,0.45);flex-shrink:0;">🔄</div>' +
           '<div>' +
-            '<h3 style="margin:0;font-size:18px;font-weight:900;color:#fff;">O‘quvchini Boshqa Guruhga Ko‘chirish</h3>' +
-            '<p style="margin:2px 0 0;font-size:12px;color:#c084fc;">Real-vaqt rejimida guruh va chat almashadi</p>' +
+            '<h3 style="margin:0;font-size:17.5px;font-weight:900;color:#fff;line-height:1.25;">' + esc(modalTitle) + '</h3>' +
+            '<p style="margin:3px 0 0;font-size:11.5px;color:#c4b5fd;">' + esc(modalSubtitle) + '</p>' +
           '</div>' +
         '</div>' +
-        '<button type="button" id="btnCloseTransferModal" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;">✕</button>' +
+        '<button type="button" id="btnCloseTransferModal" style="background:rgba(255,255,255,0.08);border:none;color:#cbd5e1;font-size:18px;cursor:pointer;width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✕</button>' +
       '</div>' +
 
-      '<div style="background:rgba(255,255,255,0.04);border-radius:14px;padding:12px 14px;margin-bottom:16px;border:1px solid rgba(255,255,255,0.06);">' +
-        '<div style="font-size:13.5px;font-weight:900;color:#f8fafc;margin-bottom:4px;">👤 ' + esc(curSt.name) + '</div>' +
-        '<div style="font-size:12px;color:#94a3b8;">Hozirgi guruh: <b style="color:#38bdf8;">' + esc(curClass ? curClass.name : 'Noma‘lum') + '</b> (' + esc(curClass ? curClass.teacherName : 'Ustoz') + ') • ID: <code>' + esc(curSt.login || curSt.id) + '</code></div>' +
-      '</div>' +
+      // Scrollable body
+      '<div style="flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden;">' +
+        studentsSummaryHtml +
 
-      '<div style="display:flex;flex-direction:column;gap:14px;margin-bottom:20px;">' +
-        '<div>' +
-          '<label style="display:block;font-size:12.5px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">1. Yangi Ustozni Tanlang: <span style="color:#8b5cf6;">*</span></label>' +
-          '<select id="eaTransferTeacherSelect" style="width:100%;box-sizing:border-box;background:#0f172a;border:1.5px solid rgba(139,92,246,0.4);border-radius:12px;padding:11px 14px;color:#fff;font-size:13.5px;font-weight:700;outline:none;">';
-          teachers.forEach(function(t) {
-            var sel = (t.id === selectedTId) ? 'selected' : '';
-            html += '<option value="' + esc(t.id) + '" ' + sel + '>👨‍🏫 ' + esc(t.name) + '</option>';
-          });
-          html += '</select>' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;">' +
+          '<label style="font-size:12.5px;font-weight:900;color:#e2e8f0;">📋 Tizimdagi barcha guruhlar (' + allClasses.length + ' ta) — birini belgilang:</label>' +
         '</div>' +
 
-        '<div>' +
-          '<label style="display:block;font-size:12.5px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">2. Ushbu Ustozning Guruhini Tanlang: <span style="color:#8b5cf6;">*</span></label>' +
-          '<select id="eaTransferGroupSelect" style="width:100%;box-sizing:border-box;background:#0f172a;border:1.5px solid rgba(139,92,246,0.4);border-radius:12px;padding:11px 14px;color:#fff;font-size:13.5px;font-weight:700;outline:none;">';
-          tClasses.forEach(function(c) {
-            var isCurrent = curClass && (c.id === curClass.id);
-            html += '<option value="' + esc(c.id) + '" ' + (isCurrent ? 'disabled style="color:#64748b;"' : '') + '>' + esc(c.name) + (isCurrent ? ' (Hozirgi guruhi)' : '') + '</option>';
-          });
-          html += '</select>' +
-        '</div>' +
+        '<input type="text" id="eaTransferGroupSearch" placeholder="🔍 Guruh nomi, level yoki ustoz bo‘yicha qidirish..." style="width:100%;box-sizing:border-box;background:rgba(8,13,26,0.92);border:1.5px solid rgba(139,92,246,0.4);border-radius:12px;padding:10px 14px;color:#fff;font-size:13px;font-weight:700;outline:none;margin-bottom:10px;" />' +
+
+        '<div id="eaSequentialGroupList" style="flex:1 1 auto;min-height:140px;max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:7px;padding-right:4px;"></div>' +
       '</div>' +
 
-      '<div style="display:flex;justify-content:flex-end;gap:10px;">' +
-        '<button type="button" id="btnCancelTransfer" style="padding:10px 18px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
-        '<button type="button" id="btnConfirmTransfer" style="padding:10px 22px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;border:none;border-radius:12px;font-size:13.5px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(139,92,246,0.45);display:inline-flex;align-items:center;gap:6px;">🚀 Ko‘chirish (Real-vaqtda)</button>' +
+      // Footer
+      '<div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08);">' +
+        '<div id="eaTransferTargetPreview" style="font-size:12px;color:#94a3b8;font-weight:700;">Guruh tanlanmagan</div>' +
+        '<div style="display:flex;gap:10px;flex-shrink:0;">' +
+          '<button type="button" id="btnCancelTransfer" style="padding:10px 16px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;">Bekor qilish</button>' +
+          '<button type="button" id="btnConfirmTransfer" disabled style="padding:10px 20px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;border:none;border-radius:12px;font-size:13px;font-weight:900;cursor:not-allowed;opacity:0.45;box-shadow:0 4px 16px rgba(139,92,246,0.4);display:inline-flex;align-items:center;gap:6px;transition:all 0.15s;">🚀 Ko‘chirish</button>' +
+        '</div>' +
       '</div>' +
     '</div>';
 
     overlay.innerHTML = html;
     document.body.appendChild(overlay);
 
-    var tSelect = overlay.querySelector('#eaTransferTeacherSelect');
-    var gSelect = overlay.querySelector('#eaTransferGroupSelect');
+    var searchInp = overlay.querySelector('#eaTransferGroupSearch');
+    var listEl = overlay.querySelector('#eaSequentialGroupList');
+    var previewEl = overlay.querySelector('#eaTransferTargetPreview');
+    var confirmBtn = overlay.querySelector('#btnConfirmTransfer');
 
-    tSelect.onchange = function() {
-      var nTId = tSelect.value;
-      var nClasses = getClassesForT(nTId);
-      var gHtml = '';
-      nClasses.forEach(function(c) {
-        var isCurrent = curClass && (c.id === curClass.id);
-        gHtml += '<option value="' + esc(c.id) + '" ' + (isCurrent ? 'disabled style="color:#64748b;"' : '') + '>' + esc(c.name) + (isCurrent ? ' (Hozirgi guruhi)' : '') + '</option>';
+    function updateConfirmState() {
+      var chosenCount = getSelectedStudentsArray().length;
+      var targetObj = allClasses.find(function(c) { return c.id === selectedTargetClassId; });
+      if (isBulk) {
+        var countSpan = overlay.querySelector('#eaBulkSelectedCount');
+        if (countSpan) countSpan.textContent = chosenCount + ' / ' + rawStudents.length + ' ta';
+      }
+      if (targetObj) {
+        previewEl.innerHTML = 'Tanlangan: <b style="color:#a78bfa;">' + esc(targetObj.name) + '</b>';
+      } else {
+        previewEl.textContent = 'Guruh tanlanmagan';
+      }
+      var canGo = !!targetObj && chosenCount > 0;
+      confirmBtn.disabled = !canGo;
+      confirmBtn.style.opacity = canGo ? '1' : '0.45';
+      confirmBtn.style.cursor = canGo ? 'pointer' : 'not-allowed';
+      confirmBtn.innerHTML = isBulk
+        ? ('🚀 Hammasini ko‘chirish (' + chosenCount + ' ta)')
+        : '🚀 Tanlangan guruhga ko‘chirish';
+    }
+
+    function renderGroupList(filterText) {
+      var q = String(filterText || '').trim().toLowerCase();
+      var filtered = allClasses.filter(function(c) {
+        if (!q) return true;
+        var hay = [c.name, c.teacherName, c.teacher, c.level, c.bookLevel, c.code, c.id].filter(Boolean).join(' ').toLowerCase();
+        return hay.indexOf(q) !== -1;
       });
-      gSelect.innerHTML = gHtml;
-    };
 
-    overlay.querySelector('#btnCloseTransferModal').onclick = function() { overlay.remove(); };
-    overlay.querySelector('#btnCancelTransfer').onclick = function() { overlay.remove(); };
-
-    overlay.querySelector('#btnConfirmTransfer').onclick = function() {
-      var targetClassId = gSelect.value;
-      if (!targetClassId) {
-        alert("Iltimos, o‘quvchini ko‘chirmoqchi bo‘lgan guruhni tanlang!");
-        return;
-      }
-      if (curClass && targetClassId === curClass.id) {
-        alert("O‘quvchi allaqachon ushbu guruhda turibdi! Iltimos, boshqa guruhni tanlang.");
+      if (filtered.length === 0) {
+        listEl.innerHTML = '<div style="padding:26px 14px;text-align:center;color:#94a3b8;font-size:13px;font-weight:700;">Mos guruh topilmadi</div>';
         return;
       }
 
-      var allClasses = getAvailableClasses();
-      var targetClass = allClasses.find(function(c) { return c && c.id === targetClassId; });
-      if (!targetClass) {
-        alert("Guruh topilmadi!");
+      listEl.innerHTML = filtered.map(function(c, idx) {
+        var isCurrent = !!(fromClass && c.id === fromClass.id);
+        var isSelected = !isCurrent && (selectedTargetClassId === c.id);
+        var tName = c.teacherName || c.teacher || 'Ustoz';
+        var realCount = getRealCount(c);
+        var lvl = c.level || c.bookLevel || '';
+
+        var bg = isCurrent
+          ? 'rgba(255,255,255,0.02)'
+          : (isSelected ? 'rgba(139,92,246,0.22)' : 'rgba(15,23,42,0.8)');
+        var border = isCurrent
+          ? '1px solid rgba(255,255,255,0.06)'
+          : (isSelected ? '2px solid #a78bfa' : '1px solid rgba(255,255,255,0.1)');
+
+        return '<button type="button" class="ea-seq-group-item" data-cid="' + esc(c.id) + '" ' + (isCurrent ? 'disabled' : '') + ' style="width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px;border-radius:13px;background:' + bg + ';border:' + border + ';color:#fff;cursor:' + (isCurrent ? 'not-allowed' : 'pointer') + ';opacity:' + (isCurrent ? '0.45' : '1') + ';transition:all 0.14s;box-sizing:border-box;">' +
+          '<div style="display:flex;align-items:center;gap:11px;min-width:0;">' +
+            '<div style="width:24px;height:24px;border-radius:50%;border:2px solid ' + (isSelected ? '#a78bfa' : 'rgba(148,163,184,0.45)') + ';background:' + (isSelected ? '#8b5cf6' : 'transparent') + ';display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;flex-shrink:0;">' +
+              (isSelected ? '✓' : '<span style="font-size:10.5px;color:#94a3b8;">' + (idx + 1) + '</span>') +
+            '</div>' +
+            '<div style="min-width:0;">' +
+              '<div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;">' +
+                '<span style="font-size:13.5px;font-weight:900;color:#fff;">' + esc(c.name || c.id) + '</span>' +
+                (lvl ? '<span style="font-size:10.5px;font-weight:800;color:#7dd3fc;background:rgba(56,189,248,0.14);border:1px solid rgba(56,189,248,0.3);padding:1px 7px;border-radius:6px;">' + esc(lvl) + '</span>' : '') +
+                (isCurrent ? '<span style="font-size:10.5px;font-weight:800;color:#fbbf24;background:rgba(251,191,36,0.14);border:1px solid rgba(251,191,36,0.3);padding:1px 7px;border-radius:6px;">Hozirgi guruhi</span>' : '') +
+              '</div>' +
+              '<div style="font-size:11.5px;color:#94a3b8;margin-top:2px;">👨‍🏫 ' + esc(tName) + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div style="flex-shrink:0;font-size:11.5px;font-weight:800;color:#cbd5e1;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);padding:4px 9px;border-radius:9px;">👥 ' + realCount + ' ta</div>' +
+        '</button>';
+      }).join('');
+
+      listEl.querySelectorAll('.ea-seq-group-item').forEach(function(itemBtn) {
+        if (itemBtn.disabled) return;
+        itemBtn.onclick = function() {
+          selectedTargetClassId = itemBtn.dataset.cid;
+          renderGroupList(searchInp.value);
+          updateConfirmState();
+        };
+      });
+    }
+
+    if (isBulk) {
+      overlay.querySelectorAll('.ea-bulk-tr-st-cb').forEach(function(cb) {
+        cb.onchange = function() {
+          selectedStudentKeys[cb.dataset.stkey] = !!cb.checked;
+          updateConfirmState();
+        };
+      });
+      var toggleAllBtn = overlay.querySelector('#eaBulkToggleAllStBtn');
+      if (toggleAllBtn) {
+        toggleAllBtn.onclick = function() {
+          var allChecked = getSelectedStudentsArray().length === rawStudents.length;
+          var nextVal = !allChecked;
+          overlay.querySelectorAll('.ea-bulk-tr-st-cb').forEach(function(cb) {
+            cb.checked = nextVal;
+            selectedStudentKeys[cb.dataset.stkey] = nextVal;
+          });
+          toggleAllBtn.textContent = nextVal ? 'Hammasini bekor qilish' : 'Hammasini belgilash';
+          updateConfirmState();
+        };
+      }
+    }
+
+    searchInp.oninput = function() { renderGroupList(searchInp.value); };
+    renderGroupList('');
+    updateConfirmState();
+
+    function closeModal() { overlay.remove(); }
+    overlay.querySelector('#btnCloseTransferModal').onclick = closeModal;
+    overlay.querySelector('#btnCancelTransfer').onclick = closeModal;
+    overlay.onclick = function(e) { if (e.target === overlay) closeModal(); };
+
+    confirmBtn.onclick = function() {
+      var chosenStudents = getSelectedStudentsArray();
+      if (!selectedTargetClassId) {
+        alert("Iltimos, ro‘yxatdan guruhni belgilang!");
+        return;
+      }
+      if (chosenStudents.length === 0) {
+        alert("Kamida bitta o‘quvchini belgilang!");
         return;
       }
 
-      // Execute atomic transfer
-      var selectedTeacher = teachers.find(function(t) { return t.id === tSelect.value; }) || { name: targetClass.teacherName || 'Ustoz' };
-
-      // 1. Remove from source class
-      if (curClass && Array.isArray(curClass.students)) {
-        curClass.students = curClass.students.filter(function(s) {
-          if (!s) return false;
-          return (s.id !== curSt.id && s.login !== curSt.login && s.email !== curSt.email);
-        });
+      var res = EA.transferStudentsToClass(fromClass, chosenStudents, selectedTargetClassId);
+      if (!res || !res.ok) {
+        alert((res && res.error) || "Ko‘chirishda xatolik yuz berdi!");
+        return;
       }
 
-      // 2. Add into target class
-      if (!Array.isArray(targetClass.students)) targetClass.students = [];
-      curSt.classId = targetClass.id;
-      targetClass.students.push(curSt);
-
-      // 3. Update in S.accounts
-      var S_app = window.S || (window.EthithApp && window.EthithApp.state) || {};
-      if (Array.isArray(S_app.accounts)) {
-        var mAcc = S_app.accounts.find(function(a) {
-          return a && (a.id === curSt.id || a.login === curSt.login || a.email === curSt.email || (curSt.name && a.name && a.name.toLowerCase() === curSt.name.toLowerCase()));
-        });
-        if (mAcc) {
-          mAcc.classId = targetClass.id;
-          mAcc.updatedAt = Date.now();
-        }
+      var toastMsg = res.movedCount === 1
+        ? ("✓ " + res.movedNames[0] + " '" + res.targetClass.name + "' guruhiga shundoqligicha ko‘chirildi!")
+        : ("✓ " + res.movedCount + " nafar o‘quvchi '" + res.targetClass.name + "' guruhiga bittada ko‘chirildi!");
+      if (window.EthithApp && typeof window.EthithApp.toast === 'function') {
+        window.EthithApp.toast(toastMsg);
+      } else if (window.showToast) {
+        window.showToast(toastMsg);
       }
 
-      // 4. Save locally
-      if (typeof EA.saveClasses === 'function') EA.saveClasses(allClasses);
-      if (window.EthithApp && typeof window.EthithApp.saveState === 'function') window.EthithApp.saveState();
+      closeModal();
+      if (typeof options.onComplete === 'function') options.onComplete(res);
 
-      // 5. Broadcast in real time via MQTT
-      if (window.EthithSync && typeof window.EthithSync.publishMqtt === 'function') {
-        window.EthithSync.publishMqtt('ethith/v3/global', {
-          type: 'STUDENT_TRANSFER',
-          studentId: curSt.id,
-          studentLogin: curSt.login,
-          studentName: curSt.name,
-          fromClassId: curClass ? curClass.id : null,
-          toClassId: targetClass.id,
-          toTeacherName: selectedTeacher.name,
-          toClassName: targetClass.name,
-          student: curSt,
-          timestamp: Date.now()
-        });
-      }
-      if (window.EthithSync && typeof window.EthithSync.pushStore === 'function') {
-        window.EthithSync.pushStore();
-      }
-
-      if (window.showToast) {
-        window.showToast("✓ " + curSt.name + " " + selectedTeacher.name + " ning " + targetClass.name + " guruhiga ko‘chirildi!");
-      }
-
-      overlay.remove();
-      if (typeof onComplete === 'function') onComplete();
-
-      var apView = document.getElementById('apView') || document.getElementById('viewContainer');
+      var apView = options.container || document.getElementById('apView') || document.getElementById('viewContainer');
       if (apView && typeof EA.render === 'function') {
         EA.render(apView);
       }
     };
+  };
+
+  // Unified Student Transfer Modal (supports BOTH (curClass, curSt, onComplete) AND legacy (container, fromCls, stId, curName))
+  EA.openTransferStudentModal = function(arg1, arg2, arg3, arg4) {
+    var curClass, curSt, onComplete, targetContainer = null;
+
+    if (arg1 && (arg1 instanceof Element || arg1.nodeType === 1)) {
+      // Legacy signature: (container, fromCls, stId, curName)
+      targetContainer = arg1;
+      curClass = arg2 || (EA.classes && EA.classes.find(function(c) { return c.id === EA.currentClassId; })) || null;
+      var stId = arg3;
+      var curName = arg4;
+      curSt = (curClass && Array.isArray(curClass.students))
+        ? curClass.students.find(function(s) { return s && (s.id === stId || s.email === stId || s.login === stId); })
+        : null;
+      if (!curSt && stId) {
+        curSt = { id: stId, name: curName || "O‘quvchi", email: stId + '@ethith.uz', role: 'student', isTester: false };
+      }
+    } else {
+      // Standard signature: (curClass, curSt, onComplete)
+      curClass = arg1;
+      curSt = arg2;
+      onComplete = arg3;
+    }
+
+    if (!curSt) return;
+    EA.openBulkTransferModal(curClass, [curSt], {
+      isBulk: false,
+      container: targetContainer,
+      onComplete: onComplete
+    });
   };
 
   // ============================================================================
@@ -7902,7 +8116,10 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
         '<div style="flex:1 1 auto;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding-right:6px;scrollbar-width:thin;">' +
         // Class selection
         '<div style="margin-bottom:14px;">' +
-          '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:6px;">Biriktirilgan Guruh:</label>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;flex-wrap:wrap;">' +
+            '<label style="display:block;font-size:12px;font-weight:800;color:#cbd5e1;margin:0;">Biriktirilgan Guruh:</label>' +
+            (isEdit ? '<button type="button" id="eaTransferStudentTopBtn" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);border:none;color:#fff;border-radius:9px;padding:5px 12px;font-size:11.5px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:5px;box-shadow:0 3px 12px rgba(139,92,246,0.38);">🔄 Boshqa guruhga ko‘chirish</button>' : '') +
+          '</div>' +
           '<select id="eaEnrollClassSelect" style="width:100%;background:rgba(15,23,42,0.85);border:1px solid rgba(56,189,248,0.35);border-radius:12px;padding:10px 14px;color:#fff;font-size:13.5px;font-weight:700;outline:none;">';
           classes.forEach(function(c) {
             var sel = (curClass && curClass.id === c.id) ? 'selected' : '';
@@ -8023,13 +8240,15 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
     overlay.querySelector('#eaCancelEnrollBtn').onclick = function() { overlay.remove(); };
 
     var mTransferBtn = overlay.querySelector('#eaTransferStudentBtn');
-    if (mTransferBtn && curSt) {
-      mTransferBtn.onclick = function() {
-        EA.openTransferStudentModal(curClass, curSt, function() {
-          overlay.remove();
-        });
-      };
-    }
+    var mTransferTopBtn = overlay.querySelector('#eaTransferStudentTopBtn');
+    var openTransferHandler = function() {
+      if (!curSt) return;
+      EA.openTransferStudentModal(curClass, curSt, function() {
+        overlay.remove();
+      });
+    };
+    if (mTransferBtn && curSt) mTransferBtn.onclick = openTransferHandler;
+    if (mTransferTopBtn && curSt) mTransferTopBtn.onclick = openTransferHandler;
 
     var mDelBtn = overlay.querySelector('#eaModalDeleteStudentBtn');
     if (mDelBtn && curSt) {
@@ -8120,33 +8339,19 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
       if (!chosenClass.customStudentNamesTs) chosenClass.customStudentNamesTs = {};
       chosenClass.customStudentNamesTs[studentObj.id] = nowTs;
 
-      // If transferring from another class
+      // If transferring from another class via dropdown
+      var movedFromOtherClass = false;
       if (curClass && curClass.id !== chosenClass.id && curSt) {
-        var oldIdx = (curClass.students || []).findIndex(function(s) {
-          return s && ((s.id && s.id === curSt.id) || (s.login && s.login === curSt.login));
+        curClass.students = (curClass.students || []).filter(function(s) {
+          if (!s) return false;
+          return !((s.id && s.id === curSt.id) || (s.login && s.login === curSt.login) || (s.email && curSt.email && s.email === curSt.email));
         });
-        if (oldIdx !== -1) {
-          var cleanTester = {
-            id: 'cls_' + curClass.id + '_std_' + (oldIdx + 1) + '_' + Date.now().toString(36).substr(-4),
-            name: 'tester_' + (oldIdx + 1),
-            email: 'tester_' + (oldIdx + 1) + '@ethith.uz',
-            role: 'student',
-            phone: '',
-            parentPhone: '',
-            login: '',
-            password: '',
-            joinedAt: new Date().toISOString().split('T')[0],
-            dailyMinutes: 0,
-            coins: 0,
-            isTester: true,
-            isOnline: false,
-            lastLogin: null
-          };
-          curClass.students[oldIdx] = cleanTester;
-          if (curClass.customStudentNames) delete curClass.customStudentNames[curSt.id];
-          if (curClass.customStudentPhones) delete curClass.customStudentPhones[curSt.id];
-          if (typeof persistAttendance === 'function') persistAttendance(curClass);
-        }
+        if (curClass.customStudentNames) delete curClass.customStudentNames[curSt.id];
+        if (curClass.customStudentPhones) delete curClass.customStudentPhones[curSt.id];
+        if (curClass.studentPayments) delete curClass.studentPayments[curSt.id];
+        curClass.updatedAt = nowTs;
+        if (typeof persistAttendance === 'function') persistAttendance(curClass);
+        movedFromOtherClass = true;
       }
 
       // Clean from deletedStudentIds if previously deleted
@@ -8228,6 +8433,15 @@ var EA = window.EthithAttendance = window.EA = window.EthithAttendance || {};
           f.studentPayments = Object.assign({}, f.studentPayments || {}, chosenClass.studentPayments);
         } else {
           arr.push(JSON.parse(JSON.stringify(chosenClass)));
+        }
+        if (movedFromOtherClass && curClass) {
+          var fOld = arr.find(function(c) { return c && c.id === curClass.id; });
+          if (fOld && fOld !== curClass) {
+            fOld.students = JSON.parse(JSON.stringify(curClass.students || []));
+            fOld.customStudentNames = Object.assign({}, curClass.customStudentNames || {});
+            fOld.customStudentPhones = Object.assign({}, curClass.customStudentPhones || {});
+            fOld.studentPayments = Object.assign({}, curClass.studentPayments || {});
+          }
         }
       });
 
