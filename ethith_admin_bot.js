@@ -62,14 +62,26 @@ function authorizeAdmin(chatId) {
   }
 }
 
-// Telegram API Helper
-async function tgCall(method, body = {}) {
+// Strict timeout fetch wrapper so a stalled TCP socket can NEVER freeze the bot
+async function fetchWithTimeout(url, options = {}, timeoutMs = 15000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/${method}`, {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+// Telegram API Helper (strict timeout: 32s for long-poll getUpdates, 15s for all other calls)
+async function tgCall(method, body = {}) {
+  const timeoutMs = (method === 'getUpdates') ? 32000 : 15000;
+  try {
+    const res = await fetchWithTimeout(`https://api.telegram.org/bot${BOT_TOKEN}/${method}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
-    });
+    }, timeoutMs);
     return await res.json();
   } catch (err) {
     console.error(`[ADMIN BOT] Telegram API error on ${method}:`, err.message);
@@ -184,13 +196,13 @@ async function fetchLiveStoreFromGitHub() {
   };
 
   try {
-    const res = await fetch(url, { headers, cache: 'no-store' });
+    const res = await fetchWithTimeout(url, { headers, cache: 'no-store' }, 15000);
     if (res.ok) {
       const data = await res.json();
       let b64 = data.content;
       if (data.sha && (!b64 || data.encoding === 'none')) {
         try {
-          const blobRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/git/blobs/${data.sha}`, { headers, cache: 'no-store' });
+          const blobRes = await fetchWithTimeout(`https://api.github.com/repos/${OWNER}/${REPO}/git/blobs/${data.sha}`, { headers, cache: 'no-store' }, 15000);
           if (blobRes.ok) {
             const blobData = await blobRes.json();
             b64 = blobData.content;
@@ -236,7 +248,7 @@ async function updateStudentCoinsOnGitHub(targetIdentifier, targetName, amountTo
 
   for (let attempt = 1; attempt <= 5; attempt++) {
     try {
-      const getRes = await fetch(`${url}?_t=${Date.now()}`, { headers, cache: 'no-store' });
+      const getRes = await fetchWithTimeout(`${url}?_t=${Date.now()}`, { headers, cache: 'no-store' }, 15000);
       let sha = null;
       let store = { accounts: [], classes: [] };
 
@@ -246,7 +258,7 @@ async function updateStudentCoinsOnGitHub(targetIdentifier, targetName, amountTo
         let b64 = getData.content;
         if (getData.sha && (!b64 || getData.encoding === 'none')) {
           try {
-            const bRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/git/blobs/${getData.sha}`, { headers, cache: 'no-store' });
+            const bRes = await fetchWithTimeout(`https://api.github.com/repos/${OWNER}/${REPO}/git/blobs/${getData.sha}`, { headers, cache: 'no-store' }, 15000);
             if (bRes.ok) {
               const bData = await bRes.json();
               b64 = bData.content;
@@ -333,7 +345,7 @@ async function updateStudentCoinsOnGitHub(targetIdentifier, targetName, amountTo
         ? `Admin Coin Bot: Set ${acc.login || cleanId} balance to ${acc.coins}`
         : `Admin Coin Bot: ${sign} Coin to ${acc.login || cleanId} (Total: ${acc.coins})`;
       const contentBase64 = Buffer.from(JSON.stringify(store, null, 2), 'utf8').toString('base64');
-      const putRes = await fetch(url, {
+      const putRes = await fetchWithTimeout(url, {
         method: 'PUT',
         headers,
         body: JSON.stringify({
@@ -341,7 +353,7 @@ async function updateStudentCoinsOnGitHub(targetIdentifier, targetName, amountTo
           content: contentBase64,
           sha: sha || undefined
         })
-      });
+      }, 20000);
 
       if (putRes.ok) {
         const putData = await putRes.json();
@@ -1120,81 +1132,160 @@ async function handleCallbackQuery(cb) {
   }
 }
 
-// Telegram Long Polling Runner with Batch Deduplication (no spam on reconnect)
+// Telegram Long Polling Runner with Batch Deduplication, Self-Healing Watchdog & Zero-Gap Cloud Handoff
 let lastUpdateId = 0;
 let isPollingActive = true;
+let isShuttingDown = false;
+let lastPollCycleAt = Date.now();
+let pollInFlight = false;
+let consecutiveErrors = 0;
+
+async function triggerNextCloudCycle(reason = 'scheduled_handoff') {
+  const tokens = [process.env.GITHUB_TOKEN, GH_TOKEN].filter(Boolean);
+  for (let attempt = 1; attempt <= 6; attempt++) {
+    const tok = tokens[(attempt - 1) % tokens.length];
+    try {
+      const res = await fetchWithTimeout(
+        `https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/ethith_coin_bot.yml/dispatches`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `token ${tok}`,
+            'User-Agent': 'ETHITH-AdminBot-Chain',
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ ref: 'main' })
+        },
+        15000
+      );
+      if (res.ok || res.status === 204) {
+        console.log(`[ADMIN BOT] Next 24/7 cloud cycle dispatched cleanly (reason=${reason}, attempt=${attempt}, status=${res.status})`);
+        return true;
+      }
+      const errTxt = await res.text().catch(() => '');
+      console.error(`[ADMIN BOT] Dispatch failed (attempt ${attempt}, status ${res.status}): ${errTxt.slice(0, 200)}`);
+    } catch (e) {
+      console.error(`[ADMIN BOT] Dispatch error (attempt ${attempt}):`, e.message);
+    }
+    await new Promise(r => setTimeout(r, 4000));
+  }
+  return false;
+}
 
 async function pollUpdates() {
-  if (!isPollingActive) return;
+  if (!isPollingActive || pollInFlight) return;
+  pollInFlight = true;
   try {
     const res = await tgCall('getUpdates', {
       offset: lastUpdateId + 1,
       timeout: 20,
       allowed_updates: ['message', 'callback_query']
     });
+    lastPollCycleAt = Date.now();
 
-    if (res && res.ok && Array.isArray(res.result) && res.result.length > 0) {
-      // Advance offset past all received updates
-      for (const u of res.result) {
-        if (u.update_id > lastUpdateId) lastUpdateId = u.update_id;
-      }
+    if (res && res.ok && Array.isArray(res.result)) {
+      consecutiveErrors = 0;
+      if (res.result.length > 0) {
+        // Advance offset past all received updates
+        for (const u of res.result) {
+          if (u.update_id > lastUpdateId) lastUpdateId = u.update_id;
+        }
 
-      // If multiple messages queued up from the same chat while offline, only process the LATEST update per chat!
-      const latestByChat = new Map();
-      const callbacks = [];
-      for (const u of res.result) {
-        if (u.callback_query) {
-          callbacks.push(u.callback_query);
-        } else if (u.message && u.message.chat) {
-          latestByChat.set(u.message.chat.id, u.message);
+        // If multiple messages queued up from the same chat while offline, only process the LATEST update per chat!
+        const latestByChat = new Map();
+        const callbacks = [];
+        for (const u of res.result) {
+          if (u.callback_query) {
+            callbacks.push(u.callback_query);
+          } else if (u.message && u.message.chat) {
+            latestByChat.set(u.message.chat.id, u.message);
+          }
+        }
+
+        for (const cb of callbacks) {
+          await handleCallbackQuery(cb);
+        }
+        for (const msg of latestByChat.values()) {
+          await handleMessage(msg);
         }
       }
-
-      for (const cb of callbacks) {
-        await handleCallbackQuery(cb);
-      }
-      for (const msg of latestByChat.values()) {
-        await handleMessage(msg);
-      }
     } else if (res && (res.error_code === 409 || (res.description && res.description.includes('conflict')))) {
-      console.log('[ADMIN BOT] Conflict 409 detected. Another poller is active; clearing webhook & waiting 3s to take over cleanly...');
+      if (isShuttingDown) {
+        console.log('[ADMIN BOT] Incoming replacement instance took over polling cleanly (409 during handoff). Exiting old instance.');
+        isPollingActive = false;
+        setTimeout(() => process.exit(0), 200);
+        return;
+      }
+      console.log('[ADMIN BOT] Conflict 409 detected. Clearing webhook & waiting 3s to take over cleanly...');
       try {
         await tgCall('deleteWebhook', { drop_pending_updates: false });
       } catch (e) {}
       await new Promise(r => setTimeout(r, 3000));
+    } else {
+      consecutiveErrors++;
+      console.warn(`[ADMIN BOT] getUpdates non-ok (#${consecutiveErrors}):`, res && (res.description || res.error || 'unknown'));
+      await new Promise(r => setTimeout(r, Math.min(10000, 1000 * consecutiveErrors)));
     }
   } catch (e) {
-    console.error('[ADMIN BOT] Polling error:', e.message);
+    consecutiveErrors++;
+    lastPollCycleAt = Date.now();
+    console.error(`[ADMIN BOT] Polling error (#${consecutiveErrors}):`, e.message);
+    await new Promise(r => setTimeout(r, 2000));
+  } finally {
+    pollInFlight = false;
   }
 
   if (isPollingActive) {
-    setTimeout(pollUpdates, 400);
+    setTimeout(pollUpdates, 350);
   }
 }
 
-// If running inside GitHub Actions, re-dispatch workflow before 50-minute mark for 24/7 cloud operation
-if (process.env.GITHUB_ACTIONS === 'true') {
-  const MAX_RUN_MS = 45 * 60 * 1000; // 45 minutes
-  setTimeout(async () => {
-    console.log('[ADMIN BOT] 45m cycle complete on GitHub Actions. Triggering next cloud cycle...');
+// Self-healing internal watchdog: catches any unexpected poll stall & auto-recovers
+setInterval(async () => {
+  if (!isPollingActive || isShuttingDown) return;
+  const idleMs = Date.now() - lastPollCycleAt;
+  if (idleMs > 95000) {
+    console.warn(`[ADMIN BOT WATCHDOG] Polling stalled for ${Math.round(idleMs / 1000)}s! Resetting poll state...`);
+    pollInFlight = false;
+    lastPollCycleAt = Date.now();
+    try { await tgCall('deleteWebhook', { drop_pending_updates: false }); } catch (e) {}
+    pollUpdates();
+  }
+  if (process.env.GITHUB_ACTIONS === 'true' && consecutiveErrors >= 15) {
+    console.error('[ADMIN BOT WATCHDOG] 15 consecutive errors on GitHub Actions. Dispatching replacement and exiting...');
+    isShuttingDown = true;
+    await triggerNextCloudCycle('error_recovery');
     isPollingActive = false;
-    try {
-      await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/ethith_coin_bot.yml/dispatches`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `token ${GH_TOKEN}`,
-          'User-Agent': 'ETHITH-AdminBot-Chain',
-          'Accept': 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ ref: 'main' })
-      });
-    } catch (e) {}
-    setTimeout(() => process.exit(0), 1500);
-  }, MAX_RUN_MS);
+    process.exit(1);
+  }
+}, 30000);
+
+// 24/7 Cloud Handoff on GitHub Actions: run 4h 50m (290m), dispatch replacement BEFORE exiting, hard-exit at 300m
+if (process.env.GITHUB_ACTIONS === 'true') {
+  const HANDOFF_MS = 290 * 60 * 1000; // 4 hours 50 minutes (GitHub allows 6h max)
+  const HARD_EXIT_MS = 300 * 60 * 1000; // 5 hours unconditional failsafe
+
+  setTimeout(async () => {
+    console.log('[ADMIN BOT] 4h50m cloud cycle complete. Triggering seamless next cycle while keeping bot alive...');
+    isShuttingDown = true;
+    await triggerNextCloudCycle('290m_seamless_handoff');
+    // Keep polling briefly while the replacement runner queues up, then exit cleanly so queued job starts immediately
+    setTimeout(() => {
+      isPollingActive = false;
+      console.log('[ADMIN BOT] Handing off cleanly to queued cloud runner.');
+      process.exit(0);
+    }, 3000);
+  }, HANDOFF_MS);
+
+  // Unconditional failsafe so this job NEVER hits GitHub's 330m timeout
+  setTimeout(() => {
+    console.log('[ADMIN BOT] Hard 300m failsafe exit.');
+    process.exit(0);
+  }, HARD_EXIT_MS);
 }
 
-console.log('[ETHITH ADMIN BOT] Starting @ETHITHCOINbot (GitHub Live Cloud Sync)...');
+console.log('[ETHITH ADMIN BOT] Starting @ETHITHCOINbot (24/7 Self-Healing GitHub Cloud Sync)...');
 // Ensure webhook is cleared so getUpdates works reliably
 tgCall('deleteWebhook', { drop_pending_updates: false }).then(() => {
   pollUpdates();

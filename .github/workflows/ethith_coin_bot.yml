@@ -7,7 +7,7 @@ on:
       - 'ethith_admin_bot.js'
       - '.github/workflows/ethith_coin_bot.yml'
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '0 */3 * * *'
 
 permissions:
   contents: write
@@ -15,12 +15,12 @@ permissions:
 
 concurrency:
   group: ethith-coin-bot-cloud
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   run-coin-bot:
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 330
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -30,7 +30,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Run ETHITH Coin Admin Bot (GitHub Cloud Standby/Active)
+      - name: Run ETHITH Coin Admin Bot (24/7 Self-Healing Cloud)
         env:
           GITHUB_ACTIONS: 'true'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node ethith_admin_bot.js

@@ -1,0 +1,79 @@
+name: ETHITH Coin Bot 24/7 Watchdog
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: ethith-coin-bot-watchdog
+  cancel-in-progress: true
+
+jobs:
+  check-and-revive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Verify Coin Bot is Alive (Auto-Revive if Dead or Stuck)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          node -e '
+          const token = process.env.GITHUB_TOKEN;
+          const repo = process.env.REPO;
+          const headers = {
+            Authorization: "token " + token,
+            "User-Agent": "ETHITH-CoinBot-Watchdog",
+            Accept: "application/vnd.github.v3+json",
+            "Content-Type": "application/json"
+          };
+
+          async function run() {
+            const url = `https://api.github.com/repos/${repo}/actions/workflows/ethith_coin_bot.yml/runs?per_page=10`;
+            const res = await fetch(url, { headers });
+            const data = await res.json();
+            const runs = data.workflow_runs || [];
+            const now = Date.now();
+            const STUCK_MS = 315 * 60 * 1000; // 5h 15m
+
+            let hasHealthyRunning = false;
+            let hasQueued = false;
+
+            for (const r of runs) {
+              if (r.status === "in_progress") {
+                const ageMs = now - new Date(r.run_started_at || r.created_at).getTime();
+                if (ageMs > STUCK_MS) {
+                  console.log("Cancelling stuck bot run:", r.id, "ageMin:", Math.round(ageMs / 60000));
+                  await fetch(`https://api.github.com/repos/${repo}/actions/runs/${r.id}/cancel`, { method: "POST", headers });
+                } else {
+                  console.log("Healthy bot run active:", r.id, "ageMin:", Math.round(ageMs / 60000));
+                  hasHealthyRunning = true;
+                }
+              } else if (r.status === "queued" || r.status === "waiting") {
+                hasQueued = true;
+              }
+            }
+
+            if (!hasHealthyRunning && !hasQueued) {
+              console.log("No active Coin Bot run detected! Dispatching ethith_coin_bot.yml immediately...");
+              const dRes = await fetch(`https://api.github.com/repos/${repo}/actions/workflows/ethith_coin_bot.yml/dispatches`, {
+                method: "POST",
+                headers,
+                body: JSON.stringify({ ref: "main" })
+              });
+              console.log("Dispatch status:", dRes.status);
+              if (!dRes.ok && dRes.status !== 204) {
+                console.error(await dRes.text());
+                process.exit(1);
+              }
+            } else {
+              console.log("Coin Bot 24/7 Watchdog OK: bot is live.");
+            }
+          }
+          run().catch(e => { console.error(e); process.exit(1); });
+          '
