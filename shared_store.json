@@ -27385,12 +27385,12 @@
       "role": "teacher",
       "coins": 100000,
       "level": "B1+",
-      "isLoggedOut": false,
+      "isLoggedOut": true,
       "hasLoggedIn": true,
-      "isOnline": true,
-      "lastSeen": 1789191502244,
+      "isOnline": false,
       "updatedAt": 1793739654663,
-      "login": "muhammedjoraboyev1"
+      "login": "muhammedjoraboyev1",
+      "loggedOutAt": 1789191514697
     },
     {
       "id": "std_13",
@@ -27555,7 +27555,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27579,7 +27579,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27600,7 +27600,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27621,7 +27621,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27645,7 +27645,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27669,7 +27669,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27691,7 +27691,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27713,7 +27713,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27737,7 +27737,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27758,7 +27758,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27780,7 +27780,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27802,7 +27802,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27824,7 +27824,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27848,7 +27848,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27872,7 +27872,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27896,7 +27896,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "admin_official_teacher",
@@ -27917,7 +27917,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "st_998901239988",
@@ -27967,7 +27967,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191502244
+      "lastSeen": 1789191513247
     },
     {
       "id": "shamshodbekibrohimov@telegram.org",
@@ -320277,5 +320277,5 @@
     }
   ],
   "deletedSpreadsheetIds": [],
-  "updatedAt": 1789191504382
+  "updatedAt": 1789191518107
 }
