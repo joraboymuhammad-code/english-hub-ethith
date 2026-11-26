@@ -23987,9 +23987,10 @@
           "updatedAt": 1793811297042,
           "hasLoggedIn": true,
           "isLoggedOut": false,
-          "lastSeen": 1789191603446,
+          "lastSeen": 1789191623247,
           "unpaidMonths": 0,
-          "lastLogin": "2026-09-12T05:39:41.190Z"
+          "lastLogin": "2026-09-12T05:39:41.190Z",
+          "dailyMinutes": 1
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -28011,7 +28012,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191603446,
+      "lastSeen": 1789191623247,
       "classId": "cls_urolov_azizbek_upper",
       "login": "azimjon_848_toirov",
       "lastLogin": "2026-09-12T05:39:41.189Z",
@@ -320143,8 +320144,8 @@
       "authorLogin": "azizbek77",
       "authorName": "Azimjon Toirov",
       "authorRole": "student",
-      "updatedAt": "12/09/2026 10:39",
-      "updatedTs": 1789191591828,
+      "updatedAt": "12/09/2026 10:40",
+      "updatedTs": 1789191623422,
       "data": [
         {
           "name": "Sheet1",
@@ -320280,5 +320281,5 @@
     }
   ],
   "deletedSpreadsheetIds": [],
-  "updatedAt": 1789191603800
+  "updatedAt": 1789191623793
 }
