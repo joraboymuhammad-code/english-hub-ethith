@@ -23987,8 +23987,9 @@
           "updatedAt": 1793811297042,
           "hasLoggedIn": true,
           "isLoggedOut": false,
-          "lastSeen": 1793739652731,
-          "unpaidMonths": 0
+          "lastSeen": 1789191585846,
+          "unpaidMonths": 0,
+          "lastLogin": "2026-09-12T05:39:41.190Z"
         },
         {
           "id": "std_oktamova_798_zarina",
@@ -27390,7 +27391,7 @@
       "isOnline": false,
       "updatedAt": 1793739654663,
       "login": "muhammedjoraboyev1",
-      "loggedOutAt": 1789191514697
+      "loggedOutAt": 1789191572185
     },
     {
       "id": "std_13",
@@ -27967,7 +27968,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1789191568251
+      "lastSeen": 1789191571429
     },
     {
       "id": "shamshodbekibrohimov@telegram.org",
@@ -28010,9 +28011,10 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1793739652731,
+      "lastSeen": 1789191585846,
       "classId": "cls_urolov_azizbek_upper",
-      "login": "azimjon_848_toirov"
+      "login": "azimjon_848_toirov",
+      "lastLogin": "2026-09-12T05:39:41.189Z"
     },
     {
       "id": "std_mix_416_selix",
@@ -320138,10 +320140,10 @@
       "name": "Asosiy Jadval",
       "authorId": "admin_official_teacher",
       "authorLogin": "azizbek77",
-      "authorName": "Azizbek Urolov",
-      "authorRole": "teacher",
+      "authorName": "Azimjon Toirov",
+      "authorRole": "student",
       "updatedAt": "12/09/2026 10:39",
-      "updatedTs": 1789191557494,
+      "updatedTs": 1789191581490,
       "data": [
         {
           "name": "Sheet1",
@@ -320277,5 +320279,5 @@
     }
   ],
   "deletedSpreadsheetIds": [],
-  "updatedAt": 1789191569693
+  "updatedAt": 1789191586850
 }
