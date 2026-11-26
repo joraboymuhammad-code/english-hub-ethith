@@ -1420,78 +1420,87 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       return '<div class="ap-label">' + esc(title) + '</div>';
     }
 
+    function navTile(iconName, tone) {
+      if (typeof window.ethTile === 'function') return window.ethTile(iconName, tone);
+      return ic(iconName);
+    }
+
     var h = '<a class="ap-logo" id="apLogo" style="color:var(--text);cursor:pointer">' + logo() + '</a>' + contactBlock() + '<nav class="ap-nav">';
-    h += item('dash', ic('grid'), 'Dashboard');
+    h += item('dash', navTile('grid', 'sky'), 'Dashboard');
 
     if (isAdmin) {
       // 1. ADMIN NAVIGATION: Full administrative management, attendance, billing, payroll, timetable, contests, workbook editors
       h += sec('Admin Boshqaruvi');
-      h += item('luckysheet', '📑', 'Boshqaruv Jadvali (Excel format)');
-      h += item('attendance', '📅', 'Attendance');
-      h += item('billing', '💳', 'Oylik To‘lovlar (Moliya)');
-      h += item('staff', '👨‍🏫', 'O‘qituvchilar (Payroll)');
-      h += item('contests', '🏆', 'Onlayn Musobaqalar');
+      h += item('luckysheet', navTile('spreadsheet', 'emerald'), 'Boshqaruv Jadvali (Excel format)');
+      h += item('attendance', navTile('calendar', 'blue'), 'Attendance');
+      h += item('billing', navTile('card', 'amber'), 'Oylik To‘lovlar (Moliya)');
+      h += item('staff', navTile('teacher', 'teal'), 'O‘qituvchilar (Payroll)');
+      h += item('contests', navTile('trophy', 'violet'), 'Onlayn Musobaqalar');
 
       h += sec('Dasturlar & Tahrirlovchi');
-      h += item('beginner', ic('book'), 'Beginner (A1) Tahrir');
-      h += item('elementary', ic('book'), 'Elementary (A2) Tahrir');
-      h += item('pre_intermediate', ic('book'), 'Pre-Intermediate (B1) Tahrir');
-      h += item('intermediate', ic('book'), 'Intermediate (B1+) Tahrir');
-      h += item('upper_intermediate', ic('book'), 'Upper-Intermediate (B2) Tahrir');
+      h += item('beginner', navTile('book', 'emerald'), 'Beginner (A1) Tahrir');
+      h += item('elementary', navTile('book', 'sky'), 'Elementary (A2) Tahrir');
+      h += item('pre_intermediate', navTile('book', 'indigo'), 'Pre-Intermediate (B1) Tahrir');
+      h += item('intermediate', navTile('bookOpen', 'blue'), 'Intermediate (B1+) Tahrir');
+      h += item('upper_intermediate', navTile('books', 'violet'), 'Upper-Intermediate (B2) Tahrir');
     } else if (isTeacher) {
       // 2. TEACHER NAVIGATION: Excel Jadval, Qo'shimcha testlar, Sinflar, Davomat, Dars jadvallari, Kitoblar, Musobaqalar
       h += sec('O‘qituvchi Kabineti');
-      h += item('luckysheet', '📑', 'Boshqaruv Jadvali (Excel format)');
-      h += item('explorer', '💻', 'Qo‘shimcha testlar');
-      h += item('attendance', '📅', 'Attendance');
-      h += item('classes', '<span class="neon-badge neon-badge-cyan">💬</span>', 'Sinf Chati');
-      // timetable merged into attendance
+      h += item('luckysheet', navTile('spreadsheet', 'emerald'), 'Boshqaruv Jadvali (Excel format)');
+      h += item('explorer', navTile('laptop', 'cyan'), 'Qo‘shimcha testlar');
+      h += item('attendance', navTile('calendar', 'blue'), 'Attendance');
+      h += item('classes', navTile('chat', 'sky'), 'Sinf Chati');
 
       h += sec('Darsliklar & Materiallar');
-      h += item('beginner', ic('book'), 'Beginner (A1)');
-      h += item('elementary', ic('book'), 'Elementary (A2)');
-      h += item('pre_intermediate', ic('book'), 'Pre-Intermediate (B1)');
-      h += item('intermediate', ic('book'), 'Intermediate (B1+)');
-      h += item('upper_intermediate', ic('book'), 'Upper-Intermediate (B2)');
-      h += item('contests', '<span class="neon-badge neon-badge-amber">🏆</span>', 'Onlayn Musobaqalar');
-      h += item('quiz', '<span class="neon-badge neon-badge-cyan">⚡</span>', 'Quiz Test');
+      h += item('beginner', navTile('book', 'emerald'), 'Beginner (A1)');
+      h += item('elementary', navTile('book', 'sky'), 'Elementary (A2)');
+      h += item('pre_intermediate', navTile('book', 'indigo'), 'Pre-Intermediate (B1)');
+      h += item('intermediate', navTile('bookOpen', 'blue'), 'Intermediate (B1+)');
+      h += item('upper_intermediate', navTile('books', 'violet'), 'Upper-Intermediate (B2)');
+      h += item('contests', navTile('trophy', 'amber'), 'Onlayn Musobaqalar');
+      h += item('quiz', navTile('bolt', 'rose'), 'Quiz Test');
     } else {
       // 3. STUDENT NAVIGATION: Kitoblar, Qo'shimcha vazifalar, Sinflarim, Oylik To'lov, Musobaqalar, Quiz, Leaderboard, Market
       h += sec('Darslar & Kitoblar');
-      h += item('beginner', ic('book'), 'Beginner (A1)');
-      h += item('elementary', ic('book'), 'Elementary (A2)');
-      h += item('pre_intermediate', ic('book'), 'Pre-Intermediate (B1)');
-      h += item('intermediate', ic('book'), 'Intermediate (B1+)');
-      h += item('upper_intermediate', ic('book'), 'Upper-Intermediate (B2)');
-      h += item('explorer', '📝', 'Qo‘shimcha vazifalar');
-      h += item('attendance', '📅', 'Attendance');
-      h += item('classes', '<span class="neon-badge neon-badge-cyan">💬</span>', 'Sinf Chati');
+      h += item('beginner', navTile('book', 'emerald'), 'Beginner (A1)');
+      h += item('elementary', navTile('book', 'sky'), 'Elementary (A2)');
+      h += item('pre_intermediate', navTile('book', 'indigo'), 'Pre-Intermediate (B1)');
+      h += item('intermediate', navTile('bookOpen', 'blue'), 'Intermediate (B1+)');
+      h += item('upper_intermediate', navTile('books', 'violet'), 'Upper-Intermediate (B2)');
+      h += item('explorer', navTile('note', 'cyan'), 'Qo‘shimcha vazifalar');
+      h += item('attendance', navTile('calendar', 'blue'), 'Attendance');
+      h += item('classes', navTile('chat', 'sky'), 'Sinf Chati');
       h += sec('Reyting & Musobaqalar');
-      h += item('contests', '<span class="neon-badge neon-badge-amber">🏆</span>', 'Onlayn Musobaqalar');
-      h += item('quiz', '<span class="neon-badge neon-badge-cyan">⚡</span>', 'Quiz Test');
-      h += item('leaderboard', '<span class="neon-badge neon-badge-gold">👑</span>', 'Leaderboard (Reyting)');
-      h += item('market', '<span class="neon-badge neon-badge-emerald">💎</span>', 'Market (Packlar)');
-      h += item('ask_ai', '<span class="neon-badge neon-badge-purple">🤖</span>', 'Ask AI Teacher');
+      h += item('contests', navTile('trophy', 'amber'), 'Onlayn Musobaqalar');
+      h += item('quiz', navTile('bolt', 'rose'), 'Quiz Test');
+      h += item('leaderboard', navTile('crown', 'amber'), 'Leaderboard (Reyting)');
+      h += item('market', navTile('gem', 'emerald'), 'Market (Packlar)');
+      h += item('ask_ai', navTile('aiBot', 'violet'), 'Ask AI Teacher');
     }
 
-    var roleLabel = isAdmin ? '🛡️ Bosh Admin' : (isTeacher ? '👨‍🏫 Ustoz' : '🎓 O‘quvchi');
+    var roleLabel = isAdmin
+      ? ((window.ethIcon ? window.ethIcon('shield') : '') + ' Bosh Admin')
+      : (isTeacher
+        ? ((window.ethIcon ? window.ethIcon('teacher') : '') + ' Ustoz')
+        : ((window.ethIcon ? window.ethIcon('graduation') : '') + ' O‘quvchi'));
     var myAvHtml = isAdmin ? '<span class="av" style="background:#dc2626;color:#fff;">A</span>' : (isTeacher ? '<span class="av" style="background:#0284c7;color:#fff;">U</span>' : (window.ETHITH_RENDER_USER_AVATAR ? window.ETHITH_RENDER_USER_AVATAR(S.user, 36) : ('<span class="av">' + (S.user && S.user.name ? S.user.name.charAt(0).toUpperCase() : 'U') + '</span>')));
 
     h += '</nav><div class="ap-plan">' +
       '<div style="display:flex;align-items:center;gap:10px;cursor:pointer" data-go="profile">' +
         myAvHtml +
         '<div style="min-width:0;flex:1">' +
-          '<small style="font-weight:800;color:#38bdf8">' + roleLabel + '</small>' +
+          '<small style="font-weight:800;color:#38bdf8;display:inline-flex;align-items:center;gap:5px;">' + roleLabel + '</small>' +
           '<h4 style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13.5px;color:#f8fafc;margin:2px 0 0">' + (window.ETHITH_RENDER_USER_NAME_HTML ? window.ETHITH_RENDER_USER_NAME_HTML(S.user) : esc(S.user ? S.user.name : 'Guest')) + '</h4>' +
         '</div>' +
       '</div>' +
-      '<button id="apProfileSideBtn" type="button" data-go="profile" style="background:rgba(255,255,255,0.06);color:#38bdf8;border:1px solid rgba(56,189,248,0.25);padding:8px 12px;border-radius:10px;font-weight:800;font-size:12px;cursor:pointer;width:100%;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s;">' + ic('user') + ' Profilni Ochish</button>' +
-      '<a href="https://github.com/joraboymuhammad-code/english-hub-ethith/releases/download/apk-latest/ETHITH-Education.apk" target="_blank" rel="noopener noreferrer" style="background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(5,150,105,0.25));color:#34d399;border:1.5px solid rgba(16,185,129,0.4);padding:8px 12px;border-radius:10px;font-weight:900;font-size:12px;cursor:pointer;width:100%;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;box-sizing:border-box;transition:all 0.2s;">📲 Android APK (Ilova)</a>' +
-      '<button id="apLogoutBtn" type="button" style="background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid rgba(239,68,68,0.3);padding:8px 12px;border-radius:10px;font-weight:800;font-size:12px;cursor:pointer;width:100%;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s;">' + ic('lock') + ' Tizimdan Chiqish</button>' +
+      '<button id="apProfileSideBtn" type="button" data-go="profile" style="background:rgba(255,255,255,0.06);color:#38bdf8;border:1px solid rgba(56,189,248,0.25);padding:8px 12px;border-radius:10px;font-weight:800;font-size:12px;cursor:pointer;width:100%;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s;">' + (window.ethIcon ? window.ethIcon('user') : ic('user')) + ' Profilni Ochish</button>' +
+      '<a href="https://github.com/joraboymuhammad-code/english-hub-ethith/releases/download/apk-latest/ETHITH-Education.apk" target="_blank" rel="noopener noreferrer" style="background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(5,150,105,0.25));color:#34d399;border:1.5px solid rgba(16,185,129,0.4);padding:8px 12px;border-radius:10px;font-weight:900;font-size:12px;cursor:pointer;width:100%;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;box-sizing:border-box;transition:all 0.2s;">' + (window.ethIcon ? window.ethIcon('download') : '') + ' Android APK (Ilova)</a>' +
+      '<button id="apLogoutBtn" type="button" style="background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid rgba(239,68,68,0.3);padding:8px 12px;border-radius:10px;font-weight:800;font-size:12px;cursor:pointer;width:100%;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s;">' + (window.ethIcon ? window.ethIcon('lock') : ic('lock')) + ' Tizimdan Chiqish</button>' +
     '</div>';
 
     $('apSide').innerHTML = h;
     $('apSide').scrollTop = 0;
+    if (window.ETHITH_UPGRADE_UI_ICONS) window.ETHITH_UPGRADE_UI_ICONS($('apSide'));
   }
 
   var TITLES = {
@@ -1503,9 +1512,9 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
     upper_intermediate: 'Oxford Navigate Upper-Intermediate (B2)',
     ask_ai: 'ETHITH AI Teacher',
     quiz: 'Live Quiz Battle & Test',
-    classes: '💬 Sinf Chati',
+    classes: 'Sinf Chati',
     attendance: 'Attendance (O‘qituvchilar & Guruhlar)',
-    chat: '💬 Sinf Chati',
+    chat: 'Sinf Chati',
     explorer: 'Qo‘shimcha testlar va Savollar Banki',
     timetable: 'Attendance (O‘qituvchilar & Guruhlar)',
     billing: 'Oylik To‘lovlar & Moliya',
@@ -3669,8 +3678,8 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       h += '<div class="ap-grid g3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:20px;margin-bottom:28px;">' +
         '<div style="background:linear-gradient(135deg,rgba(14,165,233,0.12),rgba(15,23,42,0.85));border:1px solid rgba(56,189,248,0.3);border-radius:20px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,0.35);">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
-            '<span style="font-size:12px;color:#94a3b8;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">👥 O‘quvchilar Soni</span>' +
-            '<span style="width:38px;height:38px;border-radius:10px;background:rgba(56,189,248,0.2);color:#38bdf8;display:flex;align-items:center;justify-content:center;font-size:18px;">👥</span>' +
+            '<span style="font-size:12px;color:#94a3b8;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">O‘quvchilar Soni</span>' +
+            (window.ethTile ? window.ethTile('users', 'sky') : '') +
           '</div>' +
           '<div style="font-size:32px;font-weight:900;color:#fff;line-height:1;margin-bottom:8px;">' + totalStudents + ' <span style="font-size:16px;color:#94a3b8;font-weight:700;">ta o‘quvchi</span></div>' +
           '<div style="font-size:12.5px;color:#38bdf8;font-weight:700;">To‘laganlar: <b style="color:#4ade80;">' + paidStudentsCount + ' ta</b> / ' + totalStudents + ' jami (' + myClasses.length + ' ta guruhda)</div>' +
@@ -3678,8 +3687,8 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
         '<div style="background:linear-gradient(135deg,rgba(168,85,247,0.12),rgba(15,23,42,0.85));border:1px solid rgba(168,85,247,0.3);border-radius:20px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,0.35);">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
-            '<span style="font-size:12px;color:#94a3b8;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">🏫 Guruhlar Soni</span>' +
-            '<span style="width:38px;height:38px;border-radius:10px;background:rgba(168,85,247,0.2);color:#c084fc;display:flex;align-items:center;justify-content:center;font-size:18px;">🏫</span>' +
+            '<span style="font-size:12px;color:#94a3b8;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">Guruhlar Soni</span>' +
+            (window.ethTile ? window.ethTile('school', 'violet') : '') +
           '</div>' +
           '<div style="font-size:32px;font-weight:900;color:#fff;line-height:1;margin-bottom:8px;">' + myClasses.length + ' <span style="font-size:16px;color:#94a3b8;font-weight:700;">ta guruh</span></div>' +
           '<div style="font-size:12.5px;color:#c084fc;font-weight:700;">Barcha dars jurnallari faol va tayyor</div>' +
@@ -3687,8 +3696,8 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
         '<div style="background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(15,23,42,0.85));border:1px solid rgba(16,185,129,0.35);border-radius:20px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,0.35);">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
-            '<span style="font-size:12px;color:#94a3b8;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">💰 Sizning Maoshingiz (Real Vaqtda)</span>' +
-            '<span style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.2);color:#34d399;display:flex;align-items:center;justify-content:center;font-size:18px;">💰</span>' +
+            '<span style="font-size:12px;color:#94a3b8;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">Sizning Maoshingiz (Real Vaqtda)</span>' +
+            (window.ethTile ? window.ethTile('coin', 'emerald') : '') +
           '</div>' +
           '<div style="font-size:28px;font-weight:900;color:#34d399;line-height:1;margin-bottom:8px;">' + computedSalary.toLocaleString() + ' <span style="font-size:14px;color:#a7f3d0;font-weight:700;">so‘m</span></div>' +
           '<div style="font-size:12.5px;color:#34d399;font-weight:700;">To‘lov ulushi: ' + sharePercent + '% (' + paidStudentsCount + ' ta to‘lagan o‘quvchidan)</div>' +
@@ -3771,12 +3780,12 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       h += '<div class="ap-sec" style="margin-top:28px;">' +
         '<div style="background:linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.9));border:1.5px solid rgba(56,189,248,0.35);border-radius:24px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;box-shadow:0 12px 40px rgba(0,0,0,0.5);backdrop-filter:blur(20px);">' +
           '<div style="display:flex;align-items:center;gap:16px;">' +
-            '<div style="width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 8px 24px rgba(2,132,199,0.4);font-weight:900;">👨‍🎓</div>' +
+            (window.ethTile ? window.ethTile('graduation', 'sky', 'lg') : '<div style="width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;">' + (user.name ? user.name.charAt(0).toUpperCase() : 'O') + '</div>') +
             '<div>' +
               '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
                 '<h2 style="margin:0;font-size:22px;font-weight:900;color:#fff;">' + esc(user.name || "O‘quvchi") + '</h2>' +
                 '<span style="background:rgba(56,189,248,0.18);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);border-radius:20px;padding:3px 10px;font-size:11.5px;font-weight:900;">O‘quvchi Profili</span>' +
-                '<span style="background:rgba(16,185,129,0.18);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:20px;padding:3px 10px;font-size:11.5px;font-weight:900;">Online 🟢</span>' +
+                '<span style="background:rgba(16,185,129,0.18);color:#34d399;border:1px solid rgba(16,185,129,0.4);border-radius:20px;padding:3px 10px;font-size:11.5px;font-weight:900;display:inline-flex;align-items:center;gap:6px;"><span style="width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 8px rgba(16,185,129,0.85);display:inline-block;"></span>Online</span>' +
               '</div>' +
               '<p style="margin:4px 0 0;font-size:13.5px;color:#94a3b8;font-weight:600;">Ustozingiz: <b style="color:#38bdf8;">' + esc(teacherName) + '</b> | Guruh: <b style="color:#34d399;">' + esc(myCls ? myCls.name : 'Guruh') + '</b></p>' +
             '</div>' +
@@ -3791,8 +3800,8 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       h += '<div class="ap-grid g3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:20px;margin-bottom:28px;">' +
         '<div style="background:linear-gradient(135deg,rgba(14,165,233,0.12),rgba(15,23,42,0.85));border:1px solid rgba(56,189,248,0.3);border-radius:20px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,0.35);">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
-            '<span style="font-size:12px;color:#94a3b8;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">🏫 Biriktirilgan Guruh</span>' +
-            '<span style="width:38px;height:38px;border-radius:10px;background:rgba(56,189,248,0.2);color:#38bdf8;display:flex;align-items:center;justify-content:center;font-size:18px;">📚</span>' +
+            '<span style="font-size:12px;color:#94a3b8;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">Biriktirilgan Guruh</span>' +
+            (window.ethTile ? window.ethTile('books', 'sky') : '') +
           '</div>' +
           '<div style="font-size:24px;font-weight:900;color:#fff;margin-bottom:6px;">' + esc(myCls ? myCls.name : 'Guruh') + '</div>' +
           '<div style="font-size:12.5px;color:#cbd5e1;font-weight:600;">Ustoz: <b style="color:#38bdf8;">' + esc(teacherName) + '</b> · Xona: <b style="color:#cbd5e1;">' + esc(myCls ? (myCls.room || '301-xona') : '301') + '</b></div>' +
@@ -3804,7 +3813,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
           var hwHtml = '<div style="background:linear-gradient(135deg,rgba(139,92,246,0.18),rgba(15,23,42,0.92));border:1.5px solid rgba(139,92,246,0.5);border-radius:20px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,0.35);display:flex;flex-direction:column;justify-content:space-between;">' +
             '<div>' +
               '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
-                '<span style="font-size:12px;color:#c084fc;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">⚡ Faol Uy Vazifasi</span>' +
+                '<span style="font-size:12px;color:#c084fc;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;display:inline-flex;align-items:center;gap:6px;">' + (window.ethIcon ? window.ethIcon('bolt') : '') + 'Faol Uy Vazifasi</span>' +
                 '<span style="background:rgba(139,92,246,0.25);color:#c084fc;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:900;">' + (hasHw ? (allHws.length + ' ta topshiriq') : '0 ta') + '</span>' +
               '</div>';
 
@@ -3816,7 +3825,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
             var curH = allHws[activeIdx] || allHws[0];
             var isT = (curH.type === 'test' || curH.testId);
             var titleStr = isT ? (curH.title || 'Shaxsiy Test') : ('Unit ' + curH.unit + ' · ' + (curH.lessonTitle || curH.lessonCode));
-            var badgeStr = isT ? '📝 Test' : ('📘 ' + (curH.bookLevel || 'B1+'));
+            var badgeStr = isT ? ((window.ethIcon ? window.ethIcon('note') : '') + 'Test') : ((window.ethIcon ? window.ethIcon('bookOpen') : '') + (curH.bookLevel || 'B1+'));
 
             // Compact flippable card with switcher arrows
             hwHtml += '<div style="background:rgba(15,23,42,0.6);border:1px solid rgba(139,92,246,0.3);border-radius:14px;padding:12px 14px;margin-bottom:12px;">' +
@@ -3846,8 +3855,8 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
         '<div style="background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(15,23,42,0.85));border:1px solid rgba(245,158,11,0.35);border-radius:20px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,0.35);">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
-            '<span style="font-size:12px;color:#fbbf24;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">💰 Jamg‘arilgan Coinlar</span>' +
-            '<span style="width:38px;height:38px;border-radius:10px;background:rgba(245,158,11,0.25);color:#fbbf24;display:flex;align-items:center;justify-content:center;font-size:18px;">🪙</span>' +
+            '<span style="font-size:12px;color:#fbbf24;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">Jamg‘arilgan Coinlar</span>' +
+            (window.ethTile ? window.ethTile('coin', 'amber') : '') +
           '</div>' +
           '<div style="font-size:32px;font-weight:900;color:#fde047;line-height:1;margin-bottom:8px;">' + (user.coins || 150) + ' <span style="font-size:16px;color:#94a3b8;font-weight:700;">coin</span></div>' +
           '<div style="font-size:12px;color:#cbd5e1;">Vazifalarni va testlarni a\'lo bahoga topshirib coin ishlang</div>' +
@@ -3912,14 +3921,17 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       h += '</div>';
     }
 
-    // 2. RAQAMLI DARSLIKLAR & WORKBOOKLAR (Intermediate & Upper-Intermediate)
+    // 2. RAQAMLI DARSLIKLAR & WORKBOOKLAR (Bespoke Apple-Grade Book Tiles — zero emoji stickers, no duplicates)
+    var bookTile = function(tag, tone) {
+      return (typeof window.ethBookTile === 'function') ? window.ethBookTile(tag, tone) : '';
+    };
     h += '<div class="ap-sec" style="margin-top:20px;"><div><h2>' + ic('book') + ' Raqamli Darsliklar & Workbooklar</h2><p style="margin:2px 0 0;font-size:13px;color:#94a3b8;">Oxford Navigate 12 ta Unit, to‘liq interaktiv mashqlar va audio matnlar</p></div></div>';
-    h += '<div class="ap-grid g2" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-bottom:28px;">';
+    h += '<div class="ap-grid g2" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:28px;">';
 
     h += '<div class="ap-card" style="background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(30,41,59,0.7));border:1px solid rgba(16,185,129,0.35);border-radius:18px;padding:20px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.3);" data-go="beginner">' +
       '<div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;">' +
         '<div style="display:flex;align-items:center;gap:12px;">' +
-          '<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#059669,#10b981);display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;">📗</div>' +
+          bookTile('A1', 'emerald') +
           '<div>' +
             '<span style="background:rgba(16,185,129,0.2);color:#34d399;font-size:11px;font-weight:900;padding:2px 8px;border-radius:6px;">A1 Darslik</span>' +
             '<h3 style="margin:4px 0 0;font-size:17px;font-weight:900;color:#fff;">Oxford Navigate Beginner</h3>' +
@@ -3929,14 +3941,14 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       '<p style="font-size:12.5px;color:#cbd5e1;line-height:1.4;margin:0 0 14px;">10 ta Unit: First meetings, Questions, People and possessions va barcha interaktiv mashqlar.</p>' +
       '<div style="display:flex;align-items:center;justify-content:space-between;">' +
         '<span style="font-size:12px;font-weight:800;color:#34d399;">10 ta Unit • 105 Sahifa</span>' +
-        '<span style="font-size:12.5px;font-weight:900;color:#fff;background:linear-gradient(135deg,#059669,#10b981);padding:6px 14px;border-radius:8px;">Kitobni Ochish →</span>' +
+        '<span style="font-size:12.5px;font-weight:900;color:#fff;background:linear-gradient(135deg,#059669,#10b981);padding:6px 14px;border-radius:8px;white-space:nowrap;">Kitobni Ochish →</span>' +
       '</div>' +
     '</div>';
 
     h += '<div class="ap-card" style="background:linear-gradient(135deg,rgba(2,132,199,0.12),rgba(30,41,59,0.7));border:1px solid rgba(2,132,199,0.35);border-radius:18px;padding:20px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.3);" data-go="elementary">' +
       '<div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;">' +
         '<div style="display:flex;align-items:center;gap:12px;">' +
-          '<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#0284c7,#0ea5e9);display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;">📘</div>' +
+          bookTile('A2', 'sky') +
           '<div>' +
             '<span style="background:rgba(2,132,199,0.2);color:#38bdf8;font-size:11px;font-weight:900;padding:2px 8px;border-radius:6px;">A2 Darslik</span>' +
             '<h3 style="margin:4px 0 0;font-size:17px;font-weight:900;color:#fff;">Oxford Navigate Elementary</h3>' +
@@ -3946,14 +3958,14 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       '<p style="font-size:12.5px;color:#cbd5e1;line-height:1.4;margin:0 0 14px;">12 ta Unit: Your world, My day, The world of work, Places and things va barcha mashqlar.</p>' +
       '<div style="display:flex;align-items:center;justify-content:space-between;">' +
         '<span style="font-size:12px;font-weight:800;color:#38bdf8;">12 ta Unit • 113 Sahifa</span>' +
-        '<span style="font-size:12.5px;font-weight:900;color:#fff;background:linear-gradient(135deg,#0284c7,#0ea5e9);padding:6px 14px;border-radius:8px;">Kitobni Ochish →</span>' +
+        '<span style="font-size:12.5px;font-weight:900;color:#fff;background:linear-gradient(135deg,#0284c7,#0ea5e9);padding:6px 14px;border-radius:8px;white-space:nowrap;">Kitobni Ochish →</span>' +
       '</div>' +
     '</div>';
 
     h += '<div class="ap-card" style="background:linear-gradient(135deg,rgba(139,92,246,0.12),rgba(30,41,59,0.7));border:1px solid rgba(139,92,246,0.35);border-radius:18px;padding:20px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.3);" data-go="pre_intermediate">' +
       '<div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;">' +
         '<div style="display:flex;align-items:center;gap:12px;">' +
-          '<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#7c3aed,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;">📙</div>' +
+          bookTile('B1', 'indigo') +
           '<div>' +
             '<span style="background:rgba(139,92,246,0.2);color:#c084fc;font-size:11px;font-weight:900;padding:2px 8px;border-radius:6px;">B1 Darslik</span>' +
             '<h3 style="margin:4px 0 0;font-size:17px;font-weight:900;color:#fff;">Oxford Navigate Pre-Intermediate</h3>' +
@@ -3963,14 +3975,14 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       '<p style="font-size:12.5px;color:#cbd5e1;line-height:1.4;margin:0 0 14px;">12 ta Unit: Time, Inside outside, Going up, Changes, Stuff and things va to‘liq interaktiv sahifalar.</p>' +
       '<div style="display:flex;align-items:center;justify-content:space-between;">' +
         '<span style="font-size:12px;font-weight:800;color:#c084fc;">12 ta Unit • 112 Sahifa</span>' +
-        '<span style="font-size:12.5px;font-weight:900;color:#fff;background:linear-gradient(135deg,#7c3aed,#8b5cf6);padding:6px 14px;border-radius:8px;">Kitobni Ochish →</span>' +
+        '<span style="font-size:12.5px;font-weight:900;color:#fff;background:linear-gradient(135deg,#7c3aed,#8b5cf6);padding:6px 14px;border-radius:8px;white-space:nowrap;">Kitobni Ochish →</span>' +
       '</div>' +
     '</div>';
 
     h += '<div class="ap-card" style="background:linear-gradient(135deg,rgba(14,165,233,0.12),rgba(30,41,59,0.7));border:1px solid rgba(56,189,248,0.35);border-radius:18px;padding:20px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.3);" data-go="intermediate">' +
       '<div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;">' +
         '<div style="display:flex;align-items:center;gap:12px;">' +
-          '<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#0284c7,#2563eb);display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;">📖</div>' +
+          bookTile('B1+', 'blue') +
           '<div>' +
             '<span style="background:rgba(14,165,233,0.2);color:#38bdf8;font-size:11px;font-weight:900;padding:2px 8px;border-radius:6px;">B1+ Darslik</span>' +
             '<h3 style="margin:4px 0 0;font-size:17px;font-weight:900;color:#fff;">Oxford Navigate Intermediate</h3>' +
@@ -3980,47 +3992,30 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
       '<p style="font-size:12.5px;color:#cbd5e1;line-height:1.4;margin:0 0 14px;">12 ta Unit: Trends, Spending, Stories, Water, Opportunity va barcha interaktiv mashqlar.</p>' +
       '<div style="display:flex;align-items:center;justify-content:space-between;">' +
         '<span style="font-size:12px;font-weight:800;color:#38bdf8;">12 ta Unit • 113 Sahifa</span>' +
-        '<span style="font-size:12.5px;font-weight:900;color:#fff;background:linear-gradient(135deg,#0284c7,#2563eb);padding:6px 14px;border-radius:8px;">Kitobni Ochish →</span>' +
+        '<span style="font-size:12.5px;font-weight:900;color:#fff;background:linear-gradient(135deg,#0284c7,#2563eb);padding:6px 14px;border-radius:8px;white-space:nowrap;">Kitobni Ochish →</span>' +
       '</div>' +
     '</div>';
 
     h += '<div class="ap-card" style="background:linear-gradient(135deg,rgba(168,85,247,0.12),rgba(30,41,59,0.7));border:1px solid rgba(168,85,247,0.35);border-radius:18px;padding:20px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.3);" data-go="upper_intermediate">' +
       '<div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;">' +
         '<div style="display:flex;align-items:center;gap:12px;">' +
-          '<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#9333ea,#6366f1);display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;">📚</div>' +
+          bookTile('B2', 'violet') +
           '<div>' +
             '<span style="background:rgba(168,85,247,0.2);color:#c084fc;font-size:11px;font-weight:900;padding:2px 8px;border-radius:6px;">B2 Darslik</span>' +
             '<h3 style="margin:4px 0 0;font-size:17px;font-weight:900;color:#fff;">Oxford Navigate Upper-Intermediate</h3>' +
           '</div>' +
         '</div>' +
       '</div>' +
-      '<p style="font-size:12.5px;color:#cbd5e1;line-height:1.4;margin:0 0 14px;">12 ta Unit: Communication, Escape, Investing, Innovation va barcha 1-59 sahifalar.</p>' +
+      '<p style="font-size:12.5px;color:#cbd5e1;line-height:1.4;margin:0 0 14px;">12 ta Unit: Communication, Escape, Investing, Innovation va barcha interaktiv mashqlar.</p>' +
       '<div style="display:flex;align-items:center;justify-content:space-between;">' +
         '<span style="font-size:12px;font-weight:800;color:#c084fc;">12 ta Unit • 113 Sahifa</span>' +
-        '<span style="font-size:12.5px;font-weight:900;color:#fff;background:linear-gradient(135deg,#9333ea,#6366f1);padding:6px 14px;border-radius:8px;">Kitobni Ochish →</span>' +
-      '</div>' +
-    '</div>';
-
-    h += '<div class="ap-card" style="background:linear-gradient(135deg,rgba(168,85,247,0.12),rgba(30,41,59,0.7));border:1px solid rgba(168,85,247,0.35);border-radius:18px;padding:20px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.3);" data-go="upper_intermediate">' +
-      '<div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;">' +
-        '<div style="display:flex;align-items:center;gap:12px;">' +
-          '<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#9333ea,#6366f1);display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;">📚</div>' +
-          '<div>' +
-            '<span style="background:rgba(168,85,247,0.2);color:#c084fc;font-size:11px;font-weight:900;padding:2px 8px;border-radius:6px;">B2 Darslik</span>' +
-            '<h3 style="margin:4px 0 0;font-size:17px;font-weight:900;color:#fff;">Oxford Navigate Upper-Intermediate</h3>' +
-          '</div>' +
-        '</div>' +
-      '</div>' +
-      '<p style="font-size:12.5px;color:#cbd5e1;line-height:1.4;margin:0 0 14px;">12 ta Unit: Communication, Escape, Investing, Innovation va barcha 1-59 sahifalar.</p>' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;">' +
-        '<span style="font-size:12px;font-weight:800;color:#c084fc;">Sahifalar 1-59 • 100% Aniq</span>' +
-        '<span style="font-size:12.5px;font-weight:900;color:#fff;background:linear-gradient(135deg,#9333ea,#6366f1);padding:6px 14px;border-radius:8px;">Kitobni Ochish →</span>' +
+        '<span style="font-size:12.5px;font-weight:900;color:#fff;background:linear-gradient(135deg,#9333ea,#6366f1);padding:6px 14px;border-radius:8px;white-space:nowrap;">Kitobni Ochish →</span>' +
       '</div>' +
     '</div>';
 
     h += '</div>';
 
-    // 3. TEZKOR BOSHQARUV VOSITALARI (Cyber-Glass Motion Cards)
+    // 3. TEZKOR BOSHQARUV VOSITALARI (Apple-Grade Squircle Glass Tool Cards)
     h += '<div class="ap-sec" style="margin-top:24px;"><div><h2>' + ic('sparkles') + ' Tezkor Boshqaruv Vositalari</h2><p style="margin:2px 0 0;font-size:13px;color:#94a3b8;">Attendance davomat, moliya, testlar va musobaqalar</p></div></div>';
     h += '<div class="ap-grid g4" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));gap:18px;margin-bottom:30px;">';
 
@@ -4029,84 +4024,91 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
         id: 'explorer',
         title: 'Qo‘shimcha testlar',
         desc: 'Kompyuter explorer kabi testlar va interaktiv rasm/PDF yaratuvchi',
-        icon: '💻',
+        iconName: 'laptop',
+        tone: 'cyan',
         badge: 'Test Studio',
-        color: '#00e5ff',
-        gradient: 'linear-gradient(135deg, rgba(0, 229, 255, 0.28), rgba(15, 23, 42, 0.85))',
-        border: 'rgba(0, 229, 255, 0.65)',
-        glow: 'rgba(0, 229, 255, 0.55)',
-        btnBg: 'linear-gradient(135deg, #00b4d8, #0077b6)'
+        color: '#22d3ee',
+        gradient: 'linear-gradient(135deg, rgba(6, 182, 212, 0.22), rgba(15, 23, 42, 0.88))',
+        border: 'rgba(34, 211, 238, 0.45)',
+        glow: 'rgba(6, 182, 212, 0.35)',
+        btnBg: 'linear-gradient(135deg, #06b6d4, #0284c7)'
       },
       {
         id: 'attendance',
         title: 'Attendance',
         desc: 'O‘qituvchilar bo‘yicha tartibli guruhlar va kunlik davomat jurnali',
-        icon: '📅',
+        iconName: 'calendar',
+        tone: 'blue',
         badge: 'Davomat',
-        color: '#00e5ff',
-        gradient: 'linear-gradient(135deg, rgba(0, 229, 255, 0.28), rgba(15, 23, 42, 0.85))',
-        border: 'rgba(0, 229, 255, 0.65)',
-        glow: 'rgba(0, 229, 255, 0.55)',
-        btnBg: 'linear-gradient(135deg, #00b4d8, #0077b6)'
+        color: '#38bdf8',
+        gradient: 'linear-gradient(135deg, rgba(37, 99, 235, 0.22), rgba(15, 23, 42, 0.88))',
+        border: 'rgba(56, 189, 248, 0.45)',
+        glow: 'rgba(37, 99, 235, 0.35)',
+        btnBg: 'linear-gradient(135deg, #0284c7, #2563eb)'
       },
       (S.user && S.user.role === 'admin' ? {
         id: 'billing',
         title: 'Kirim-Chiqim (Moliya)',
         desc: 'Admin kassa kirim-chiqimlari, o‘quvchilar to‘lovlari va markaz daromad tahlili',
-        icon: '💼',
+        iconName: 'briefcase',
+        tone: 'emerald',
         badge: 'Admin Moliya',
-        color: '#00e676',
-        gradient: 'linear-gradient(135deg, rgba(0, 230, 118, 0.28), rgba(15, 23, 42, 0.85))',
-        border: 'rgba(0, 230, 118, 0.65)',
-        glow: 'rgba(0, 230, 118, 0.55)',
-        btnBg: 'linear-gradient(135deg, #00c853, #009624)'
+        color: '#34d399',
+        gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(15, 23, 42, 0.88))',
+        border: 'rgba(52, 211, 153, 0.45)',
+        glow: 'rgba(16, 185, 129, 0.35)',
+        btnBg: 'linear-gradient(135deg, #10b981, #059669)'
       } : null),
       {
         id: 'contests',
         title: 'Onlayn Musobaqalar',
         desc: 'Vaqtli topshiriqlar, bellashuvlar va Top-10 Coin sovrinlari',
-        icon: '🏆',
+        iconName: 'trophy',
+        tone: 'amber',
         badge: 'Top-10 Coins',
-        color: '#d500f9',
-        gradient: 'linear-gradient(135deg, rgba(213, 0, 249, 0.28), rgba(15, 23, 42, 0.85))',
-        border: 'rgba(213, 0, 249, 0.65)',
-        glow: 'rgba(213, 0, 249, 0.55)',
-        btnBg: 'linear-gradient(135deg, #aa00ff, #7200ca)'
+        color: '#fbbf24',
+        gradient: 'linear-gradient(135deg, rgba(217, 119, 6, 0.22), rgba(15, 23, 42, 0.88))',
+        border: 'rgba(251, 191, 36, 0.45)',
+        glow: 'rgba(245, 158, 11, 0.35)',
+        btnBg: 'linear-gradient(135deg, #f59e0b, #d97706)'
       },
       (!isAdmin ? {
         id: 'ask_ai',
         title: 'Ask AI Teacher',
         desc: '24/7 sun‘iy intellekt repetitori bilan erkin inglizcha muloqot',
-        icon: '🤖',
+        iconName: 'aiBot',
+        tone: 'violet',
         badge: 'AI 24/7',
-        color: '#3d5afe',
-        gradient: 'linear-gradient(135deg, rgba(61, 90, 254, 0.28), rgba(15, 23, 42, 0.85))',
-        border: 'rgba(61, 90, 254, 0.65)',
-        glow: 'rgba(61, 90, 254, 0.55)',
-        btnBg: 'linear-gradient(135deg, #304ffe, #1a237e)'
+        color: '#c084fc',
+        gradient: 'linear-gradient(135deg, rgba(124, 58, 237, 0.24), rgba(15, 23, 42, 0.88))',
+        border: 'rgba(192, 132, 252, 0.45)',
+        glow: 'rgba(139, 92, 246, 0.35)',
+        btnBg: 'linear-gradient(135deg, #8b5cf6, #6366f1)'
       } : null),
       {
         id: 'quiz',
         title: 'Quiz Test Studio',
         desc: 'Jonli testlar, qiziqarli savollar va interaktiv sinovlar',
-        icon: '⚡',
+        iconName: 'bolt',
+        tone: 'rose',
         badge: 'Live Quiz',
-        color: '#ff1744',
-        gradient: 'linear-gradient(135deg, rgba(255, 23, 68, 0.28), rgba(15, 23, 42, 0.85))',
-        border: 'rgba(255, 23, 68, 0.65)',
-        glow: 'rgba(255, 23, 68, 0.55)',
-        btnBg: 'linear-gradient(135deg, #d50000, #b71c1c)'
+        color: '#fb7185',
+        gradient: 'linear-gradient(135deg, rgba(225, 29, 72, 0.22), rgba(15, 23, 42, 0.88))',
+        border: 'rgba(251, 113, 133, 0.45)',
+        glow: 'rgba(244, 63, 94, 0.35)',
+        btnBg: 'linear-gradient(135deg, #f43f5e, #e11d48)'
       }
     ];
 
     quickTools.filter(Boolean).forEach(function(q) {
+      var tileHtml = (typeof window.ethTile === 'function')
+        ? window.ethTile(q.iconName, q.tone, 'lg')
+        : '<div class="eth-card-icon-box" style="background:' + q.glow + ';border:1px solid ' + q.border + ';"></div>';
       h += '<div class="eth-motion-card" data-go="' + q.id + '" style="--c-accent:' + q.color + '; --c-glow:' + q.glow + '; --c-border:' + q.border + '; background:' + q.gradient + ';">' +
         '<div class="eth-card-ambient-glow"></div>' +
         '<div class="eth-card-shimmer"></div>' +
         '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;position:relative;z-index:2;">' +
-          '<div class="eth-card-icon-box" style="background:' + q.glow + ';border:1px solid ' + q.border + ';">' +
-            '<span style="font-size:22px;">' + q.icon + '</span>' +
-          '</div>' +
+          tileHtml +
           '<span class="eth-card-badge" style="color:' + q.color + ';background:rgba(255,255,255,0.06);border:1px solid ' + q.border + ';">' + q.badge + '</span>' +
         '</div>' +
         '<h3 class="eth-card-title" style="color:#ffffff;font-size:16.5px;font-weight:900;margin:0 0 6px;position:relative;z-index:2;letter-spacing:-0.3px;">' + q.title + '</h3>' +
@@ -4121,6 +4123,7 @@ font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;col
 
     h += '</div>';
     v.innerHTML = h;
+    if (window.ETHITH_UPGRADE_UI_ICONS) window.ETHITH_UPGRADE_UI_ICONS(v);
   }
 
   // Global Click Handlers
