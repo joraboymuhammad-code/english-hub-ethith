@@ -26874,11 +26874,12 @@
       "nameStyle": null,
       "title": null,
       "victorySound": null,
-      "isLoggedOut": true,
+      "isLoggedOut": false,
       "hasLoggedIn": true,
-      "isOnline": false,
+      "isOnline": true,
       "loggedOutAt": 1795704939285,
-      "login": "muhammedjoraboyev1"
+      "login": "muhammedjoraboyev1",
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_root",
@@ -26895,7 +26896,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704978574,
+      "lastSeen": 1795704998372,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -26929,7 +26930,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "sardorbek@ethith.uz",
@@ -27105,7 +27106,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "std_13",
@@ -27271,7 +27272,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704977423,
+      "lastSeen": 1795704999419,
       "password": "azizbek2026",
       "createdAt": 1795704970643
     },
@@ -27286,7 +27287,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27310,7 +27311,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27331,7 +27332,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27352,7 +27353,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27376,7 +27377,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27400,7 +27401,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27422,7 +27423,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27444,7 +27445,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27468,7 +27469,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27489,7 +27490,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27511,7 +27512,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27533,7 +27534,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27555,7 +27556,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27579,7 +27580,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27603,7 +27604,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27627,7 +27628,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "admin_official_teacher",
@@ -27648,7 +27649,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795704937818
+      "lastSeen": 1795704999419
     },
     {
       "id": "st_998901239988",
@@ -436621,6 +436622,48 @@
       "participants": {},
       "status": "active",
       "coinsDistributed": false
+    },
+    {
+      "id": "cnt_kuzgi_2026",
+      "title": "🏆 Kuzgi Katta IELTS & Grammar Musobaqasi",
+      "desc": "Barcha guruhlar o'rtasida 1 oylik katta musobaqa! Top-10 eng yuqori natija qayd etgan o'quvchilarga 1,000 Coin va sertifikatlar!",
+      "startDate": 1793294080007,
+      "endDate": 1793985280007,
+      "prizeCoins": 1000,
+      "testId": "TST-7K2M9",
+      "participants": {
+        "std_1": {
+          "name": "Ashurov Dilyorbek",
+          "score": 95,
+          "timeSec": 140,
+          "completedAt": 1793376880007
+        },
+        "std_2": {
+          "name": "Ergasheva Madina",
+          "score": 92,
+          "timeSec": 165,
+          "completedAt": 1793376980007
+        },
+        "std_4": {
+          "name": "JO‘RABOYEV MUXAMMADYUSUF",
+          "score": 98,
+          "timeSec": 110,
+          "completedAt": 1793377080007
+        },
+        "std_5": {
+          "name": "Jo'raboyev Javoxir",
+          "score": 88,
+          "timeSec": 180,
+          "completedAt": 1793377180007
+        },
+        "std_6": {
+          "name": "Mavlonova Ruxshona",
+          "score": 85,
+          "timeSec": 190,
+          "completedAt": 1793377280007
+        }
+      },
+      "status": "active"
     }
   ],
   "payments": {
@@ -436667,5 +436710,5 @@
   },
   "savedSpreadsheets": [],
   "deletedSpreadsheetIds": [],
-  "updatedAt": 1795704979747
+  "updatedAt": 1795705000242
 }
