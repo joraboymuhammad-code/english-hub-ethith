@@ -38,8 +38,8 @@ jobs:
           gradle assembleDirectRelease bundleDirectRelease bundlePlayStoreRelease assemblePlayStoreRelease --stacktrace
           mkdir -p output
           cp app/build/outputs/bundle/playStoreRelease/app-playStore-release.aab output/English-House-PlayStore.aab
-          cp app/build/outputs/apk/playStoreRelease/app-playStore-release.apk output/English-House-PlayStore.apk
-          cp app/build/outputs/apk/directRelease/app-direct-release.apk output/English-House-by-ETHITH.apk
+          cp app/build/outputs/apk/playStore/release/app-playStore-release.apk output/English-House-PlayStore.apk
+          cp app/build/outputs/apk/direct/release/app-direct-release.apk output/English-House-by-ETHITH.apk
           cp app/build/outputs/bundle/directRelease/app-direct-release.aab output/English-House-by-ETHITH.aab
           cp output/English-House-by-ETHITH.apk output/ETHITH-Education.apk
           cp output/English-House-by-ETHITH.aab output/ETHITH-Education.aab
