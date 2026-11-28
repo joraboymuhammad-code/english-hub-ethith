@@ -25715,7 +25715,9 @@
       },
       "customStudentPhones": {},
       "maxCapacity": 18,
-      "studentPayments": {}
+      "studentPayments": {},
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_1793380468126",
@@ -25959,7 +25961,9 @@
         }
       },
       "deletedMsgIds": [],
-      "messages": []
+      "messages": [],
+      "deletedStudentIds": [],
+      "customStudentNamesTs": {}
     },
     {
       "id": "cls_1793728994224",
@@ -26891,7 +26895,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795859585953,
+      "lastSeen": 1795859788351,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -436683,8 +436687,33 @@
           "config": {}
         }
       ]
+    },
+    {
+      "id": "sheet_admin_official_root_main",
+      "name": "Asosiy Jadval",
+      "authorId": "admin_official_root",
+      "authorLogin": "",
+      "authorName": "Bosh Admin",
+      "authorRole": "admin",
+      "updatedAt": "28/11/2026",
+      "updatedTs": 1795859785935,
+      "data": [
+        {
+          "name": "Sheet1",
+          "color": "",
+          "index": 0,
+          "status": 1,
+          "order": 0,
+          "row": 584,
+          "column": 500,
+          "defaultRowHeight": 20,
+          "defaultColWidth": 73,
+          "celldata": [],
+          "config": {}
+        }
+      ]
     }
   ],
   "deletedSpreadsheetIds": [],
-  "updatedAt": 1795859588090
+  "updatedAt": 1795859789852
 }
