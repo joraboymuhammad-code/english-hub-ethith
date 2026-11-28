@@ -26895,7 +26895,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795859836751,
+      "lastSeen": 1795859907153,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -146738,7 +146738,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_ravshanov_doniyor",
@@ -146768,7 +146770,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_qarshiboyev_humoyun",
@@ -146792,7 +146796,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_tovboyeva_marjona",
@@ -146816,7 +146822,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_olimjonova_durdona",
@@ -146846,7 +146854,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_tagaev_eldor",
@@ -146876,7 +146886,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_yaxshilikova_kamola",
@@ -146902,7 +146914,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_sherqoziyeva_iroda",
@@ -146928,7 +146942,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_aborbekov_elyor",
@@ -146960,7 +146976,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_orinboyev_jaloliddin",
@@ -146990,7 +147008,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_jumanova_pokiza",
@@ -147014,7 +147034,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_hayrullayev_arslon",
@@ -147040,7 +147062,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_xudoyorova_sarvinoz",
@@ -147066,7 +147090,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_aliqulova_sevinch",
@@ -147092,7 +147118,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_xojamqulova_diyora",
@@ -147122,7 +147150,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_bosimbekov_farrux",
@@ -147152,7 +147182,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_ahmadova_barno",
@@ -147182,7 +147214,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "t_shodiyor_matematika",
@@ -147206,7 +147240,9 @@
       "livePaidStudents": 0,
       "computedLiveSalary": 0,
       "unpaidMonths": 0,
-      "monthlySalary": 0
+      "monthlySalary": 0,
+      "liveCollectedRevenue": 0,
+      "centerRetainedShare": 0
     },
     {
       "id": "admin_official_teacher",
@@ -436694,8 +436730,8 @@
       "authorId": "admin_official_root",
       "authorName": "Bosh Admin",
       "authorRole": "admin",
-      "updatedAt": "28/11/2026 01:57",
-      "updatedTs": 1795859834692,
+      "updatedAt": "28/11/2026 01:58",
+      "updatedTs": 1795859905445,
       "data": [
         {
           "name": "Sheet1",
@@ -436714,5 +436750,5 @@
     }
   ],
   "deletedSpreadsheetIds": [],
-  "updatedAt": 1795859837593
+  "updatedAt": 1795859908796
 }
