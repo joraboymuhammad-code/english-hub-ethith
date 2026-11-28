@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'uz.ethith.app'
-    compileSdk 34
+    compileSdk 36
 
     signingConfigs {
         release {
@@ -16,13 +16,25 @@ android {
     }
 
     defaultConfig {
-        applicationId 'uz.ethith.app'
+        applicationId 'english_house.app'
         minSdk 24
-        targetSdk 34
-        versionCode 2029
-        versionName '2.0.3'
+        targetSdk 36
+        versionCode 2030
+        versionName '2.1.0'
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    flavorDimensions += 'distribution'
+    productFlavors {
+        playStore {
+            dimension 'distribution'
+            applicationId 'english_house.app'
+        }
+        direct {
+            dimension 'distribution'
+            applicationId 'uz.ethith.app'
+        }
     }
 
     buildTypes {
@@ -37,13 +49,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 }

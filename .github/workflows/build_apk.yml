@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   build:
-    name: Build Signed APK and AAB
+    name: Build Signed APK and AAB (SDK 36)
     runs-on: ubuntu-latest
 
     steps:
@@ -28,17 +28,19 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+        uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.4'
+          gradle-version: '8.11.1'
 
-      - name: Build APK and AAB
+      - name: Build Play Store (english_house.app) & Direct (uz.ethith.app) APK & AAB
         working-directory: ./android
         run: |
-          gradle assembleRelease bundleRelease --stacktrace
+          gradle assembleDirectRelease bundleDirectRelease bundlePlayStoreRelease assemblePlayStoreRelease --stacktrace
           mkdir -p output
-          cp app/build/outputs/apk/release/app-release.apk output/English-House-by-ETHITH.apk
-          cp app/build/outputs/bundle/release/app-release.aab output/English-House-by-ETHITH.aab
+          cp app/build/outputs/bundle/playStoreRelease/app-playStore-release.aab output/English-House-PlayStore.aab
+          cp app/build/outputs/apk/playStoreRelease/app-playStore-release.apk output/English-House-PlayStore.apk
+          cp app/build/outputs/apk/directRelease/app-direct-release.apk output/English-House-by-ETHITH.apk
+          cp app/build/outputs/bundle/directRelease/app-direct-release.aab output/English-House-by-ETHITH.aab
           cp output/English-House-by-ETHITH.apk output/ETHITH-Education.apk
           cp output/English-House-by-ETHITH.aab output/ETHITH-Education.aab
           ls -lh output/
@@ -54,16 +56,16 @@ jobs:
         if: success()
         with:
           tag_name: apk-latest
-          name: "English House by ETHITH — Android App (APK & AAB)"
+          name: "English House by ETHITH — Android App (APK & AAB, SDK 36)"
           body: |
-            ### 📱 English House by ETHITH — Rasmiy Android Ilovasi
-            
-            Ushbu ilovaga **English House** rasmiy oltin emblemasi o'rnatilgan va ilova nomi **English House by ETHITH** deb nomlangan.
+            ### 📱 English House by ETHITH — Rasmiy Android Ilovasi (v2.1.0, Target SDK 36)
 
-            - **To‘g‘ridan-to‘g‘ri o‘rnatish uchun APK**: [English-House-by-ETHITH.apk](https://github.com/joraboymuhammad-code/english-hub-ethith/releases/download/apk-latest/English-House-by-ETHITH.apk)
-            - **Google Play Console uchun AAB**: [English-House-by-ETHITH.aab](https://github.com/joraboymuhammad-code/english-hub-ethith/releases/download/apk-latest/English-House-by-ETHITH.aab)
-            - **Doimiy yangilanish**: Saytga kiritilgan har bir o'zgarish ilovada avtomatik aks etadi.
+            - **Google Play Console uchun AAB (`english_house.app`)**: [English-House-PlayStore.aab](https://github.com/joraboymuhammad-code/english-hub-ethith/releases/download/apk-latest/English-House-PlayStore.aab)
+            - **To‘g‘ridan-to‘g‘ri o‘rnatish uchun APK (`uz.ethith.app`)**: [English-House-by-ETHITH.apk](https://github.com/joraboymuhammad-code/english-hub-ethith/releases/download/apk-latest/English-House-by-ETHITH.apk)
+            - **Google Play AAB (`uz.ethith.app`)**: [English-House-by-ETHITH.aab](https://github.com/joraboymuhammad-code/english-hub-ethith/releases/download/apk-latest/English-House-by-ETHITH.aab)
           files: |
+            android/output/English-House-PlayStore.aab
+            android/output/English-House-PlayStore.apk
             android/output/English-House-by-ETHITH.apk
             android/output/English-House-by-ETHITH.aab
             android/output/ETHITH-Education.apk

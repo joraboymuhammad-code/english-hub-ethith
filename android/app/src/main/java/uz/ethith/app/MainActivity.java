@@ -15,8 +15,12 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +43,15 @@ public class MainActivity extends AppCompatActivity {
         FrameLayout rootLayout = new FrameLayout(this);
         rootLayout.setBackgroundColor(0xFF060B14);
 
+        // Handle Android 15/16 edge-to-edge system bars & keyboard insets cleanly
+        ViewCompat.setOnApplyWindowInsetsListener(rootLayout, (v, windowInsets) -> {
+            Insets insets = windowInsets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout() | WindowInsetsCompat.Type.ime()
+            );
+            v.setPadding(insets.left, insets.top, insets.right, insets.bottom);
+            return WindowInsetsCompat.CONSUMED;
+        });
+
         swipeRefresh = new SwipeRefreshLayout(this);
         swipeRefresh.setColorSchemeColors(0xFF0284C7, 0xFFF59E0B, 0xFF10B981);
         swipeRefresh.setProgressBackgroundColorSchemeColor(0xFF0F172A);
@@ -56,7 +69,37 @@ public class MainActivity extends AppCompatActivity {
         configureWebView();
         loadFreshUrl();
 
-        swipeRefresh.setOnRefreshListener(() -> loadFreshUrl());
+        swipeRefresh.setOnRefreshListener(this::loadFreshUrl);
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (webView != null) {
+                    webView.evaluateJavascript(
+                        "(function() { " +
+                        "  if (window.ETHITH_WORKBOOK_B1 && window.ETHITH_WORKBOOK_B1._currentLesson) { " +
+                        "    window.ETHITH_WORKBOOK_B1.goBackToCatalog(); " +
+                        "    return true; " +
+                        "  } " +
+                        "  return false; " +
+                        "})();",
+                        value -> {
+                            if (!"true".equals(value)) {
+                                if (webView.canGoBack()) {
+                                    webView.goBack();
+                                } else {
+                                    setEnabled(false);
+                                    getOnBackPressedDispatcher().onBackPressed();
+                                }
+                            }
+                        }
+                    );
+                } else {
+                    setEnabled(false);
+                    getOnBackPressedDispatcher().onBackPressed();
+                }
+            }
+        });
     }
 
     public class WebAppInterface {
@@ -95,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
         settings.setDatabaseEnabled(true);
-        settings.setAllowFileAccess(true);
+        settings.setAllowFileAccess(false);
         settings.setAllowContentAccess(true);
         settings.setUseWideViewPort(false);
         settings.setLoadWithOverviewMode(false);
@@ -104,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         settings.setDisplayZoomControls(false);
         settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         settings.setMediaPlaybackRequiresUserGesture(false);
-        settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
 
         webView.addJavascriptInterface(new WebAppInterface(), "AndroidBridge");
 
@@ -166,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == FILE_CHOOSER_REQUEST_CODE) {
@@ -185,32 +229,6 @@ public class MainActivity extends AppCompatActivity {
             }
             uploadMessage.onReceiveValue(results);
             uploadMessage = null;
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (webView != null) {
-            webView.evaluateJavascript(
-                "(function() { " +
-                "  if (window.ETHITH_WORKBOOK_B1 && window.ETHITH_WORKBOOK_B1._currentLesson) { " +
-                "    window.ETHITH_WORKBOOK_B1.goBackToCatalog(); " +
-                "    return true; " +
-                "  } " +
-                "  return false; " +
-                "})();",
-                value -> {
-                    if (!"true".equals(value)) {
-                        if (webView.canGoBack()) {
-                            webView.goBack();
-                        } else {
-                            super.onBackPressed();
-                        }
-                    }
-                }
-            );
-        } else {
-            super.onBackPressed();
         }
     }
 }
