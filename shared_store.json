@@ -26895,7 +26895,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795859788351,
+      "lastSeen": 1795859816954,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -436692,11 +436692,10 @@
       "id": "sheet_admin_official_root_main",
       "name": "Asosiy Jadval",
       "authorId": "admin_official_root",
-      "authorLogin": "",
       "authorName": "Bosh Admin",
       "authorRole": "admin",
-      "updatedAt": "28/11/2026",
-      "updatedTs": 1795859785935,
+      "updatedAt": "28/11/2026 01:56",
+      "updatedTs": 1795859817119,
       "data": [
         {
           "name": "Sheet1",
@@ -436715,5 +436714,5 @@
     }
   ],
   "deletedSpreadsheetIds": [],
-  "updatedAt": 1795859789852
+  "updatedAt": 1795859819301
 }
