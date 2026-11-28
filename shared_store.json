@@ -26895,7 +26895,7 @@
       "isLoggedOut": false,
       "hasLoggedIn": true,
       "isOnline": true,
-      "lastSeen": 1795860144753,
+      "lastSeen": 1795860164551,
       "login": "admin_12038f1aq8syash"
     },
     {
@@ -147255,12 +147255,12 @@
       "password": "ustoz2026",
       "inviteCode": "USTOZ77",
       "subject": "Ingliz tili (IELTS Intensive)",
-      "monthlySalary": 6000000,
+      "monthlySalary": 0,
       "salarySharePercent": 50,
       "studentMonthlyFee": 300000,
       "hourlyRate": 100000,
       "teachingHours": 72,
-      "paidThisMonth": true,
+      "paidThisMonth": false,
       "assignedClasses": [
         "cls_ethith_main",
         "cls_upper_intermediate"
@@ -147268,7 +147268,8 @@
       "classOrder": [
         "cls_ethith_main",
         "cls_upper_intermediate"
-      ]
+      ],
+      "unpaidMonths": 0
     }
   ],
   "fileExplorer": {
@@ -436731,7 +436732,7 @@
       "authorName": "Bosh Admin",
       "authorRole": "admin",
       "updatedAt": "28/11/2026 02:02",
-      "updatedTs": 1795860143457,
+      "updatedTs": 1795860162923,
       "data": [
         {
           "name": "Sheet1",
@@ -436750,5 +436751,5 @@
     }
   ],
   "deletedSpreadsheetIds": [],
-  "updatedAt": 1795860145762
+  "updatedAt": 1795860165563
 }
